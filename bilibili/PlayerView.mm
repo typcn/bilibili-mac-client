@@ -93,12 +93,12 @@ static void wakeup(void *context) {
         
         // Get Sign
         
-        NSString *param = [NSString stringWithFormat:@"appkey=%@&cid=%@&quality=4%@",APIKey,vCID,APISecret];
+        NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=4%@",APIKey,vCID,APISecret];
         NSString *sign = [self md5:[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         // Parse Video URL
 
-        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&cid=%@&quality=4&sign=%@",APIKey,vCID,sign]];
+        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=4&sign=%@",APIKey,vCID,sign]];
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"GET";
         request.timeoutInterval = 5;
@@ -108,28 +108,31 @@ static void wakeup(void *context) {
         
         NSURLResponse * response = nil;
         NSError * error = nil;
-        NSData * videoAddressXmlData = [NSURLConnection sendSynchronousRequest:request
+        NSData * videoAddressJSONData = [NSURLConnection sendSynchronousRequest:request
                                               returningResponse:&response
                                                           error:&error];
-        NSString *xml = [[NSString alloc]initWithData:videoAddressXmlData encoding:NSUTF8StringEncoding];
+        NSError *jsonError;
+        NSMutableDictionary *videoResult = [NSJSONSerialization JSONObjectWithData:videoAddressJSONData options:NSJSONWritingPrettyPrinted error:&jsonError];
         
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<durl>.*?<url><!\\[CDATA\\[(.*?)\\]\\]></url>.*?</durl>" options:NSRegularExpressionDotMatchesLineSeparators error:nil];
-        NSArray *matches = [regex matchesInString:xml options:0 range:NSMakeRange(0, [xml length])];
+        NSArray *dUrls = [videoResult objectForKey:@"durl"];
 
-        if([matches count] == 0){
-            [self.textTip setStringValue:@"视频无法解析"];
+        if(![dUrls count]){
+            [self.textTip setStringValue:@"视频无法解析，切换中"];
             return;
         }
         
         NSString *firstVideo;
-        
-        for (NSTextCheckingResult *match in matches) {
-            NSRange matchRange = [match rangeAtIndex:1];
-            if([matches count] == 1){
-                vUrl = [xml substringWithRange:matchRange];
+        NSArray *BackupUrls;
+        for (NSDictionary *match in dUrls) {
+            if([dUrls count] == 1){
+                vUrl = [match valueForKey:@"url"];
                 firstVideo = vUrl;
+                NSArray *burl = [match objectForKey:@"backup_url"];
+                if([burl count] > 0){
+                    BackupUrls = burl;
+                }
             }else{
-                NSString *tmp = [xml substringWithRange:matchRange];
+                NSString *tmp = [match valueForKey:@"url"];
                 if(!firstVideo){
                     firstVideo = tmp;
                     vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",(unsigned long)[tmp length], @"%" , tmp ,@";"];
@@ -142,71 +145,34 @@ static void wakeup(void *context) {
         
         // ffprobe
         [self.textTip setStringValue:@"正在获取视频信息"];
-        NSPipe *pipe = [NSPipe pipe];
-        NSFileHandle *file = pipe.fileHandleForReading;
+
+GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
+
+        int usingBackup = 0;
         
-        NSTask *task = [[NSTask alloc] init];
-        task.launchPath = [[NSBundle mainBundle] pathForResource:@"ffprobe" ofType:@""];
-        task.arguments = @[@"-print_format",@"json",@"-loglevel",@"repeat+error",@"-icy",@"0",@"-select_streams",@"v",@"-show_streams",@"-user-agent",@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0",@"--",firstVideo];
-        task.standardOutput = pipe;
-        
-        [task launch];
-        
-        NSData *data = [file readDataToEndOfFile];
-        [file closeFile];
-        
-        NSError *jsonError;
-        NSMutableDictionary *d = [NSJSONSerialization JSONObjectWithData:data options:NSJSONWritingPrettyPrinted error:&jsonError];
+        if([VideoInfoJson count] == 0){
+            if(!BackupUrls){
+                [self.textTip setStringValue:@"读取视频失败"];
+            }else{
+                usingBackup++;
+                NSString *backupVideoUrl = [BackupUrls objectAtIndex:usingBackup];
+                if([backupVideoUrl length] > 0){
+                    firstVideo = backupVideoUrl;
+                    vUrl = backupVideoUrl;
+                    NSLog(@"Timeout! Change to backup url: %@",vUrl);
+                    goto GetInfo;
+                }else{
+                    [self.textTip setStringValue:@"读取视频失败"];
+                }
+            }
+        }
+    
         
         if(!jsonError){
-            
-            NSDictionary *info = [[d objectForKey:@"streams"] objectAtIndex:0];
-            NSNumber *width = [info objectForKey:@"width"];
-            NSNumber *height = [info objectForKey:@"height"];
-            NSString *resolution = [NSString stringWithFormat:@"%@x%@",width,height];
-            NSLog(@"Video resolution: %@",resolution);
-            
             // Get Comment
-            [self.textTip setStringValue:@"正在读取弹幕"];
-            
-            NSString *stringURL = [NSString stringWithFormat:@"http://comment.bilibili.com/%@.xml",vCID];
-            NSLog(@"Getting Comments from %@",stringURL);
-            NSURL  *url = [NSURL URLWithString:stringURL];
-            NSData *urlData = [NSData dataWithContentsOfURL:url];
-            NSString *commentFile;
-            if ( urlData )
-            {
-                NSString  *filePath = [NSString stringWithFormat:@"%@/%@.cminfo.xml", @"/tmp",vCID];
-                [urlData writeToFile:filePath atomically:YES];
-                
-                NSPipe *pipe = [NSPipe pipe];
-
-                NSString *OutFile = [NSString stringWithFormat:@"%@/%@.cminfo.ass", @"/tmp",vCID];
-                
-                NSString *fontSize = [NSString stringWithFormat:@"-fs=%f",(int)[height doubleValue]/21.6];
-                
-                float mq = 6.75*[width doubleValue]/[height doubleValue]-4;
-                if(mq < 3.0){
-                    mq = 3.0;
-                }
-                if(mq > 8.0){
-                    mq = 8.0;
-                }
-                
-                NSString *marquee = [NSString stringWithFormat:@"-dm=%f",mq];
-                
-                NSFileHandle *file = pipe.fileHandleForReading;
-                NSTask *task = [[NSTask alloc] init];
-                task.launchPath = [[NSBundle mainBundle] pathForResource:@"danmaku2ass/danmaku2ass.app/Contents/MacOS/danmaku2ass" ofType:@""];
-                task.arguments = @[@"-s",resolution,@"-o",OutFile,fontSize,marquee,filePath];
-                task.standardOutput = pipe;
-                
-                [task launch];
-                [file readDataToEndOfFile];
-                [file closeFile];
-                NSLog(@"Comment converted to %@",OutFile);
-                commentFile = OutFile;
-            }
+            NSNumber *width = [VideoInfoJson objectForKey:@"width"];
+            NSNumber *height = [VideoInfoJson objectForKey:@"height"];
+            NSString *commentFile = [self getComments:width :height];
             
             // Start Playing Video
             mpv = mpv_create();
@@ -258,6 +224,72 @@ static void wakeup(void *context) {
     
 }
 
+- (NSDictionary *) getVideoInfo:(NSString *)url{
+    
+    NSPipe *pipe = [NSPipe pipe];
+    NSFileHandle *file = pipe.fileHandleForReading;
+    
+    NSTask *task = [[NSTask alloc] init];
+    task.launchPath = [[NSBundle mainBundle] pathForResource:@"ffprobe" ofType:@""];
+    task.arguments = @[@"-print_format",@"json",@"-loglevel",@"repeat+error",@"-icy",@"0",@"-select_streams",@"v",@"-show_streams",@"-user-agent",@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0",@"-timeout",@"3",@"--",url];
+    task.standardOutput = pipe;
+    
+    [task launch];
+    
+    NSData *data = [file readDataToEndOfFile];
+    [file closeFile];
+    NSMutableDictionary *d = [NSJSONSerialization JSONObjectWithData:data options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSDictionary *info = [[d objectForKey:@"streams"] objectAtIndex:0];
+    return info;
+}
+
+- (NSString *) getComments:(NSNumber *)width :(NSNumber *)height {
+    
+    NSString *resolution = [NSString stringWithFormat:@"%@x%@",width,height];
+    NSLog(@"Video resolution: %@",resolution);
+    [self.textTip setStringValue:@"正在读取弹幕"];
+    
+    NSString *stringURL = [NSString stringWithFormat:@"http://comment.bilibili.com/%@.xml",vCID];
+    NSLog(@"Getting Comments from %@",stringURL);
+    NSURL  *url = [NSURL URLWithString:stringURL];
+    NSData *urlData = [NSData dataWithContentsOfURL:url];
+    if ( urlData )
+    {
+        NSString  *filePath = [NSString stringWithFormat:@"%@/%@.cminfo.xml", @"/tmp",vCID];
+        [urlData writeToFile:filePath atomically:YES];
+        
+        NSPipe *pipe = [NSPipe pipe];
+        
+        NSString *OutFile = [NSString stringWithFormat:@"%@/%@.cminfo.ass", @"/tmp",vCID];
+        
+        NSString *fontSize = [NSString stringWithFormat:@"-fs=%f",(int)[height doubleValue]/21.6];
+        
+        float mq = 6.75*[width doubleValue]/[height doubleValue]-4;
+        if(mq < 3.0){
+            mq = 3.0;
+        }
+        if(mq > 8.0){
+            mq = 8.0;
+        }
+        
+        NSString *marquee = [NSString stringWithFormat:@"-dm=%f",mq];
+        
+        NSFileHandle *file = pipe.fileHandleForReading;
+        NSTask *task = [[NSTask alloc] init];
+        task.launchPath = [[NSBundle mainBundle] pathForResource:@"danmaku2ass/danmaku2ass.app/Contents/MacOS/danmaku2ass" ofType:@""];
+        task.arguments = @[@"-s",resolution,@"-o",OutFile,fontSize,marquee,filePath];
+        task.standardOutput = pipe;
+        
+        [task launch];
+        [file readDataToEndOfFile];
+        [file closeFile];
+        NSLog(@"Comment converted to %@",OutFile);
+        return OutFile;
+    }else{
+        return @"";
+    }
+}
 - (void) handleEvent:(mpv_event *)event
 {
     switch (event->event_id) {
