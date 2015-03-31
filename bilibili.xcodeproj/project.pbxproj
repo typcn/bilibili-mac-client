@@ -189,6 +189,7 @@
 		FD471F451AC9106400A2A727 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../Volumes/M3/biliPlayer/mpvBuild/build/lib/libz.1.dylib; sourceTree = "<group>"; };
 		FD471FD31AC9320800A2A727 /* ffprobe */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = ffprobe; path = ../../../../Volumes/M3/biliPlayer/ffprobe; sourceTree = "<group>"; };
 		FD51A85D1ACA7736007D8972 /* danmaku2ass.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = danmaku2ass.app; path = bilibili/danmaku2ass/danmaku2ass.app; sourceTree = "<group>"; };
+		FD51A8601ACA8464007D8972 /* APIKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
 		FDAF8B9C1ACA4BFA00C0C55D /* ISSoundAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISSoundAdditions.h; sourceTree = "<group>"; };
 		FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSoundAdditions.m; sourceTree = "<group>"; };
 		FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = bilibili/sparkle/Sparkle.framework; sourceTree = "<group>"; };
@@ -281,6 +282,7 @@
 				FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */,
 				FDAF8BA81ACA5A3100C0C55D /* AboutView.h */,
 				FDAF8BA91ACA5A3100C0C55D /* AboutView.m */,
+				FD51A8601ACA8464007D8972 /* APIKey.h */,
 			);
 			path = bilibili;
 			sourceTree = "<group>";

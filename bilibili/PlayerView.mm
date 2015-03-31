@@ -9,6 +9,8 @@
 #import "client.h"
 #import "PlayerView.h"
 #import "ISSoundAdditions.h"
+#import <CommonCrypto/CommonDigest.h>
+#import "APIKey.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -63,6 +65,20 @@ static void wakeup(void *context) {
     }
 }
 
+- (NSString *) md5:(NSString *) input
+{
+    const char *cStr = [input UTF8String];
+    unsigned char digest[16];
+    CC_MD5( cStr, strlen(cStr), digest ); // This is the md5 call
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    
+    return  output;
+    
+}
 
 - (void)viewDidLoad {
     NSLog(@"Success");
@@ -75,16 +91,20 @@ static void wakeup(void *context) {
         
         [self.textTip setStringValue:@"正在解析视频地址"];
         
-        // Parse Video URL
+        // Get Sign
         
+        NSString *param = [NSString stringWithFormat:@"appkey=%@&cid=%@&quality=4%@",APIKey,vCID,APISecret];
+        NSString *sign = [self md5:[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        
+        // Parse Video URL
 
-        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=a&cid=%@&quality=4",vCID]];
+        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&cid=%@&quality=4&sign=%@",APIKey,vCID,sign]];
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"GET";
         request.timeoutInterval = 5;
         
         
-        [request addValue:userAgent forHTTPHeaderField:@"User-Agent"];
+        [request addValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" forHTTPHeaderField:@"User-Agent"];
         
         NSURLResponse * response = nil;
         NSError * error = nil;
@@ -97,7 +117,7 @@ static void wakeup(void *context) {
         NSArray *matches = [regex matchesInString:xml options:0 range:NSMakeRange(0, [xml length])];
 
         if([matches count] == 0){
-            [self.textTip setStringValue:@"视频源不支持"];
+            [self.textTip setStringValue:@"视频无法解析"];
             return;
         }
         
@@ -150,6 +170,7 @@ static void wakeup(void *context) {
             [self.textTip setStringValue:@"正在读取弹幕"];
             
             NSString *stringURL = [NSString stringWithFormat:@"http://comment.bilibili.com/%@.xml",vCID];
+            NSLog(@"Getting Comments from %@",stringURL);
             NSURL  *url = [NSURL URLWithString:stringURL];
             NSData *urlData = [NSData dataWithContentsOfURL:url];
             NSString *commentFile;
@@ -183,7 +204,7 @@ static void wakeup(void *context) {
                 [task launch];
                 [file readDataToEndOfFile];
                 [file closeFile];
-                
+                NSLog(@"Comment converted to %@",OutFile);
                 commentFile = OutFile;
             }
             

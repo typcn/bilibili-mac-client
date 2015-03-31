@@ -836,7 +836,7 @@ def main():
         height = int(height)
     except ValueError:
         raise ValueError(_('Invalid stage size: %r') % args.size)
-    Danmaku2ASS(args.file, args.output, width, height, args.protect, "Heiti SC", args.fontsize, 0.8, args.duration_marquee, args.duration_still, args.reduce)
+    Danmaku2ASS(args.file, args.output, width, height, args.protect, "SimHei", args.fontsize, 0.8, args.duration_marquee, args.duration_still, args.reduce)
 
 
 if __name__ == '__main__':
