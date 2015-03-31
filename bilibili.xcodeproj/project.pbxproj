@@ -526,9 +526,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FD076C4F1AC8CBBB00C893FA /* bilibili */ = {
+		FD076C4F1AC8CBBB00C893FA /* Bilibili */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FD076C701AC8CBBB00C893FA /* Build configuration list for PBXNativeTarget "bilibili" */;
+			buildConfigurationList = FD076C701AC8CBBB00C893FA /* Build configuration list for PBXNativeTarget "Bilibili" */;
 			buildPhases = (
 				FD076C4C1AC8CBBB00C893FA /* Sources */,
 				FD076C4D1AC8CBBB00C893FA /* Frameworks */,
@@ -542,7 +542,7 @@
 			);
 			dependencies = (
 			);
-			name = bilibili;
+			name = Bilibili;
 			productName = bilibili;
 			productReference = FD076C501AC8CBBB00C893FA /* bilibili.app */;
 			productType = "com.apple.product-type.application";
@@ -596,7 +596,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FD076C4F1AC8CBBB00C893FA /* bilibili */,
+				FD076C4F1AC8CBBB00C893FA /* Bilibili */,
 				FD076C651AC8CBBB00C893FA /* bilibiliTests */,
 			);
 		};
@@ -649,7 +649,7 @@
 /* Begin PBXTargetDependency section */
 		FD076C681AC8CBBB00C893FA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FD076C4F1AC8CBBB00C893FA /* bilibili */;
+			target = FD076C4F1AC8CBBB00C893FA /* Bilibili */;
 			targetProxy = FD076C671AC8CBBB00C893FA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -843,7 +843,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FD076C701AC8CBBB00C893FA /* Build configuration list for PBXNativeTarget "bilibili" */ = {
+		FD076C701AC8CBBB00C893FA /* Build configuration list for PBXNativeTarget "Bilibili" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FD076C711AC8CBBB00C893FA /* Debug */,
