@@ -47,10 +47,17 @@ static inline void check_error(int status)
 
 static void wakeup(void *context) {
     if(context){
-        PlayerView *a = (__bridge PlayerView *) context;
-        if(a){
-            [a readEvents];
+        @try {
+            PlayerView *a = (__bridge PlayerView *) context;
+            if(a){
+                [a readEvents];
+            }
         }
+        @catch (NSException * e) {
+            
+        }
+        
+
     }
 }
 
@@ -69,7 +76,7 @@ static void wakeup(void *context) {
         // Parse Video URL
         
 
-        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=a&cid=%@",vCID]];
+        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=a&cid=%@&quality=4",vCID]];
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"GET";
         request.timeoutInterval = 5;
@@ -192,14 +199,17 @@ static void wakeup(void *context) {
             // Maybe set some options here, like default key bindings.
             // NOTE: Interaction with the window seems to be broken for now.
             check_error(mpv_set_option_string(mpv, "input-default-bindings", "yes"));
-            
-            // for testing!
-            check_error(mpv_set_option_string(mpv, "input-media-keys", "yes"));
-            check_error(mpv_set_option_string(mpv, "input-cursor", "no"));
-            check_error(mpv_set_option_string(mpv, "user-agent", [userAgent cStringUsingEncoding:NSUTF8StringEncoding]));
             check_error(mpv_set_option_string(mpv, "input-vo-keyboard", "yes"));
+            check_error(mpv_set_option_string(mpv, "input-media-keys", "yes"));
+            check_error(mpv_set_option_string(mpv, "input-cursor", "yes"));
+            
+            check_error(mpv_set_option_string(mpv, "osc", "yes"));
+            check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
+            
+            check_error(mpv_set_option_string(mpv, "user-agent", [userAgent cStringUsingEncoding:NSUTF8StringEncoding]));
             check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
             check_error(mpv_set_option_string(mpv, "vf", "lavfi=\"fps=fps=60:round=down\""));
+            
             check_error(mpv_set_option_string(mpv, "sub-ass", "yes"));
             check_error(mpv_set_option_string(mpv, "sub-file", [commentFile cStringUsingEncoding:NSUTF8StringEncoding]));
             
@@ -247,6 +257,18 @@ static void wakeup(void *context) {
                     NSView *eview = [self->wrapper subviews][0];
                     [self->w makeFirstResponder:eview];
                 }
+            });
+        }
+        
+        case MPV_EVENT_START_FILE:{
+            [self.textTip setStringValue:@"正在缓冲"];
+        }
+            
+        case MPV_EVENT_PLAYBACK_RESTART: {
+            double delayInSeconds = 20.0;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                 [self.textTip setStringValue:@"播放完成"];
             });
         }
             
