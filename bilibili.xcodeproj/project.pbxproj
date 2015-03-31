@@ -96,6 +96,11 @@
 		FD471FCE1AC92D5500A2A727 /* array.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FAC1AC92D5500A2A727 /* array.so */; };
 		FD471FCF1AC92D5500A2A727 /* _struct.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FAD1AC92D5500A2A727 /* _struct.so */; };
 		FD471FD61AC9322200A2A727 /* ffprobe in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FD31AC9320800A2A727 /* ffprobe */; };
+		FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */; };
+		FDAF8BA11ACA4ECC00C0C55D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; };
+		FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
+		FDAF8BAA1ACA5A3100C0C55D /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAF8BA91ACA5A3100C0C55D /* AboutView.m */; };
 		FDD5EEF71AC944020036B829 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD5EEF61AC944020036B829 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -195,6 +200,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FDAF8BA21ACA4EF100C0C55D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -272,6 +287,12 @@
 		FD471FAC1AC92D5500A2A727 /* array.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = array.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/array.so; sourceTree = "<absolute>"; };
 		FD471FAD1AC92D5500A2A727 /* _struct.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _struct.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_struct.so; sourceTree = "<absolute>"; };
 		FD471FD31AC9320800A2A727 /* ffprobe */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = ffprobe; path = ../../../../Volumes/M3/biliPlayer/ffprobe; sourceTree = "<group>"; };
+		FDAF8B9C1ACA4BFA00C0C55D /* ISSoundAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISSoundAdditions.h; sourceTree = "<group>"; };
+		FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSoundAdditions.m; sourceTree = "<group>"; };
+		FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = bilibili/sparkle/Sparkle.framework; sourceTree = "<group>"; };
+		FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		FDAF8BA81ACA5A3100C0C55D /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
+		FDAF8BA91ACA5A3100C0C55D /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
 		FDD5EEF61AC944020036B829 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -303,6 +324,7 @@
 				FD471F5A1AC9106400A2A727 /* libx264.142.dylib in Frameworks */,
 				FD471F551AC9106400A2A727 /* libpng16.16.dylib in Frameworks */,
 				FD471F4F1AC9106400A2A727 /* libfribidi.0.dylib in Frameworks */,
+				FDAF8BA11ACA4ECC00C0C55D /* Sparkle.framework in Frameworks */,
 				FD471F5B1AC9106400A2A727 /* libz.1.dylib in Frameworks */,
 				FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */,
 			);
@@ -321,6 +343,7 @@
 		FD076C471AC8CBBB00C893FA = {
 			isa = PBXGroup;
 			children = (
+				FDAF8B9F1ACA4D9900C0C55D /* sparkle */,
 				FD471FD21AC931F800A2A727 /* ffprobe */,
 				FD471FD11AC92D7C00A2A727 /* frameworks */,
 				FD471FD01AC92D6D00A2A727 /* danmaku2ass */,
@@ -352,6 +375,10 @@
 				FD076C531AC8CBBB00C893FA /* Supporting Files */,
 				FD471B4C1AC8FF3C00A2A727 /* PlayerView.h */,
 				FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */,
+				FDAF8B9C1ACA4BFA00C0C55D /* ISSoundAdditions.h */,
+				FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */,
+				FDAF8BA81ACA5A3100C0C55D /* AboutView.h */,
+				FDAF8BA91ACA5A3100C0C55D /* AboutView.m */,
 			);
 			path = bilibili;
 			sourceTree = "<group>";
@@ -359,6 +386,7 @@
 		FD076C531AC8CBBB00C893FA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */,
 				FD076C541AC8CBBB00C893FA /* Info.plist */,
 				FD076C581AC8CBBB00C893FA /* main.m */,
 			);
@@ -487,6 +515,14 @@
 			name = ffprobe;
 			sourceTree = "<group>";
 		};
+		FDAF8B9F1ACA4D9900C0C55D /* sparkle */ = {
+			isa = PBXGroup;
+			children = (
+				FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */,
+			);
+			name = sparkle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -500,6 +536,7 @@
 				FD471F8B1AC92D1B00A2A727 /* CopyFiles */,
 				FD471FD51AC9321300A2A727 /* CopyFiles */,
 				FD076C4E1AC8CBBB00C893FA /* Resources */,
+				FDAF8BA21ACA4EF100C0C55D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -571,6 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */,
+				FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */,
 				FD076C611AC8CBBB00C893FA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,6 +631,8 @@
 				FD076C591AC8CBBB00C893FA /* main.m in Sources */,
 				FD076C571AC8CBBB00C893FA /* AppDelegate.m in Sources */,
 				FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */,
+				FDAF8BAA1ACA5A3100C0C55D /* AboutView.m in Sources */,
+				FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +753,10 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/bilibili/sparkle",
+				);
 				INFOPLIST_FILE = bilibili/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -721,6 +765,7 @@
 					/Volumes/M3/biliPlayer/mpvBuild/build/lib,
 					"$(PROJECT_DIR)",
 				);
+				OTHER_LDFLAGS = "-Wl,-rpath,@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.9;
 			};
@@ -732,6 +777,10 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/bilibili/sparkle",
+				);
 				INFOPLIST_FILE = bilibili/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -740,6 +789,7 @@
 					/Volumes/M3/biliPlayer/mpvBuild/build/lib,
 					"$(PROJECT_DIR)",
 				);
+				OTHER_LDFLAGS = "-Wl,-rpath,@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.9;
 			};

@@ -8,9 +8,11 @@
 
 #import "client.h"
 #import "PlayerView.h"
+#import "ISSoundAdditions.h"
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <sstream>
 
 extern NSString *vUrl;
 extern NSString *vCID;
@@ -125,7 +127,7 @@ static void wakeup(void *context) {
         
         NSTask *task = [[NSTask alloc] init];
         task.launchPath = [[NSBundle mainBundle] pathForResource:@"ffprobe" ofType:@""];
-        task.arguments = @[@"-print_format",@"json",@"-loglevel",@"repeat+error",@"-icy",@"0",@"-select_streams",@"v",@"-show_streams",@"--",firstVideo];
+        task.arguments = @[@"-print_format",@"json",@"-loglevel",@"repeat+error",@"-icy",@"0",@"-select_streams",@"v",@"-show_streams",@"-user-agent",@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0",@"--",firstVideo];
         task.standardOutput = pipe;
         
         [task launch];
@@ -206,7 +208,7 @@ static void wakeup(void *context) {
             check_error(mpv_set_option_string(mpv, "osc", "yes"));
             check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
             
-            check_error(mpv_set_option_string(mpv, "user-agent", [userAgent cStringUsingEncoding:NSUTF8StringEncoding]));
+            check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
             check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
             check_error(mpv_set_option_string(mpv, "vf", "lavfi=\"fps=fps=60:round=down\""));
             
@@ -304,10 +306,49 @@ static void wakeup(void *context) {
 
 @interface PlayerWindow : NSWindow <NSWindowDelegate>
 
+-(void)keyDown:(NSEvent*)event;
+
 @end
 
 @implementation PlayerWindow{
     
+}
+
+BOOL paused = NO;
+
+-(void)keyDown:(NSEvent*)event
+{
+    switch( [event keyCode] ) {
+        case 125:{
+            [NSSound decreaseSystemVolumeBy:0.05];
+            break;
+        }
+        case 126:{
+            [NSSound increaseSystemVolumeBy:0.05];
+            break;
+        }
+        case 124:{
+            const char *args[] = {"seek", "5" ,NULL};
+            mpv_command(mpv, args);
+            break;
+        }
+        case 123:{
+            const char *args[] = {"seek", "-5" ,NULL};
+            mpv_command(mpv, args);
+            break;
+        }
+        case 49:{
+            if(strcmp(mpv_get_property_string(mpv,"pause"),"no")){
+                mpv_set_property_string(mpv,"pause","no");
+            }else{
+                mpv_set_property_string(mpv,"pause","yes");
+            }
+            break;
+        }
+        default:
+            NSLog(@"Key pressed: %hu", [event keyCode]);
+            break;
+    }
 }
 
 - (void) mpv_stop

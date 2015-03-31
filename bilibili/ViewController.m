@@ -131,9 +131,14 @@ BOOL parsing = false;
     }
 
 }
+- (IBAction)openAv:(id)sender {
+    if([[sender stringValue] length] > 0 ){
+        webView.mainFrameURL = [NSString stringWithFormat:@"http://www.bilibili.com/video/av%@",[sender stringValue]];
+        [sender setStringValue:@""];
+    }
+}
 
 @end
-
 
 @interface PlayerWindowController : NSWindowController
 
