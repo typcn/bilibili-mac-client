@@ -61,44 +61,11 @@
 		FD471F881AC911DD00A2A727 /* libx264.142.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F441AC9106400A2A727 /* libx264.142.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD471F891AC911DD00A2A727 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F451AC9106400A2A727 /* libz.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD471F8A1AC911DD00A2A727 /* libmpv.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F2E1AC9105D00A2A727 /* libmpv.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		FD471FAE1AC92D5500A2A727 /* danmaku2ass in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F8C1AC92D5500A2A727 /* danmaku2ass */; };
-		FD471FAF1AC92D5500A2A727 /* Python in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F8D1AC92D5500A2A727 /* Python */; };
-		FD471FB01AC92D5500A2A727 /* _scproxy.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F8E1AC92D5500A2A727 /* _scproxy.so */; };
-		FD471FB11AC92D5500A2A727 /* _codecs_iso2022.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F8F1AC92D5500A2A727 /* _codecs_iso2022.so */; };
-		FD471FB21AC92D5500A2A727 /* _codecs_hk.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F901AC92D5500A2A727 /* _codecs_hk.so */; };
-		FD471FB31AC92D5500A2A727 /* _codecs_cn.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F911AC92D5500A2A727 /* _codecs_cn.so */; };
-		FD471FB41AC92D5500A2A727 /* _codecs_tw.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F921AC92D5500A2A727 /* _codecs_tw.so */; };
-		FD471FB51AC92D5500A2A727 /* _codecs_jp.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F931AC92D5500A2A727 /* _codecs_jp.so */; };
-		FD471FB61AC92D5500A2A727 /* _codecs_kr.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F941AC92D5500A2A727 /* _codecs_kr.so */; };
-		FD471FB71AC92D5500A2A727 /* _multibytecodec.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F951AC92D5500A2A727 /* _multibytecodec.so */; };
-		FD471FB81AC92D5500A2A727 /* pyexpat.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F961AC92D5500A2A727 /* pyexpat.so */; };
-		FD471FB91AC92D5500A2A727 /* _lzma.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F971AC92D5500A2A727 /* _lzma.so */; };
-		FD471FBA1AC92D5500A2A727 /* _bz2.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F981AC92D5500A2A727 /* _bz2.so */; };
-		FD471FBB1AC92D5500A2A727 /* binascii.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F991AC92D5500A2A727 /* binascii.so */; };
-		FD471FBC1AC92D5500A2A727 /* zlib.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F9A1AC92D5500A2A727 /* zlib.so */; };
-		FD471FBD1AC92D5500A2A727 /* termios.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F9B1AC92D5500A2A727 /* termios.so */; };
-		FD471FBE1AC92D5500A2A727 /* _md5.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F9C1AC92D5500A2A727 /* _md5.so */; };
-		FD471FBF1AC92D5500A2A727 /* _sha1.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F9D1AC92D5500A2A727 /* _sha1.so */; };
-		FD471FC01AC92D5500A2A727 /* _sha512.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F9E1AC92D5500A2A727 /* _sha512.so */; };
-		FD471FC11AC92D5500A2A727 /* _sha256.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471F9F1AC92D5500A2A727 /* _sha256.so */; };
-		FD471FC21AC92D5500A2A727 /* _hashlib.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FA01AC92D5500A2A727 /* _hashlib.so */; };
-		FD471FC31AC92D5500A2A727 /* _ssl.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FA11AC92D5500A2A727 /* _ssl.so */; };
-		FD471FC41AC92D5500A2A727 /* _socket.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FA21AC92D5500A2A727 /* _socket.so */; };
-		FD471FC51AC92D5500A2A727 /* grp.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FA31AC92D5500A2A727 /* grp.so */; };
-		FD471FC61AC92D5500A2A727 /* unicodedata.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FA41AC92D5500A2A727 /* unicodedata.so */; };
-		FD471FC71AC92D5500A2A727 /* _json.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FA51AC92D5500A2A727 /* _json.so */; };
-		FD471FC81AC92D5500A2A727 /* _bisect.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FA61AC92D5500A2A727 /* _bisect.so */; };
-		FD471FC91AC92D5500A2A727 /* _heapq.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FA71AC92D5500A2A727 /* _heapq.so */; };
-		FD471FCA1AC92D5500A2A727 /* _random.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FA81AC92D5500A2A727 /* _random.so */; };
-		FD471FCB1AC92D5500A2A727 /* _datetime.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FA91AC92D5500A2A727 /* _datetime.so */; };
-		FD471FCC1AC92D5500A2A727 /* math.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FAA1AC92D5500A2A727 /* math.so */; };
-		FD471FCD1AC92D5500A2A727 /* time.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FAB1AC92D5500A2A727 /* time.so */; };
-		FD471FCE1AC92D5500A2A727 /* array.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FAC1AC92D5500A2A727 /* array.so */; };
-		FD471FCF1AC92D5500A2A727 /* _struct.so in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FAD1AC92D5500A2A727 /* _struct.so */; };
 		FD471FD61AC9322200A2A727 /* ffprobe in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD471FD31AC9320800A2A727 /* ffprobe */; };
+		FD51A85F1ACA7740007D8972 /* danmaku2ass.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD51A85D1ACA7736007D8972 /* danmaku2ass.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */; };
 		FDAF8BA11ACA4ECC00C0C55D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; };
-		FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDAF8BAA1ACA5A3100C0C55D /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAF8BA91ACA5A3100C0C55D /* AboutView.m */; };
 		FDD5EEF71AC944020036B829 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD5EEF61AC944020036B829 /* WebKit.framework */; };
@@ -153,40 +120,7 @@
 			dstPath = danmaku2ass;
 			dstSubfolderSpec = 7;
 			files = (
-				FD471FAE1AC92D5500A2A727 /* danmaku2ass in CopyFiles */,
-				FD471FAF1AC92D5500A2A727 /* Python in CopyFiles */,
-				FD471FB01AC92D5500A2A727 /* _scproxy.so in CopyFiles */,
-				FD471FB11AC92D5500A2A727 /* _codecs_iso2022.so in CopyFiles */,
-				FD471FB21AC92D5500A2A727 /* _codecs_hk.so in CopyFiles */,
-				FD471FB31AC92D5500A2A727 /* _codecs_cn.so in CopyFiles */,
-				FD471FB41AC92D5500A2A727 /* _codecs_tw.so in CopyFiles */,
-				FD471FB51AC92D5500A2A727 /* _codecs_jp.so in CopyFiles */,
-				FD471FB61AC92D5500A2A727 /* _codecs_kr.so in CopyFiles */,
-				FD471FB71AC92D5500A2A727 /* _multibytecodec.so in CopyFiles */,
-				FD471FB81AC92D5500A2A727 /* pyexpat.so in CopyFiles */,
-				FD471FB91AC92D5500A2A727 /* _lzma.so in CopyFiles */,
-				FD471FBA1AC92D5500A2A727 /* _bz2.so in CopyFiles */,
-				FD471FBB1AC92D5500A2A727 /* binascii.so in CopyFiles */,
-				FD471FBC1AC92D5500A2A727 /* zlib.so in CopyFiles */,
-				FD471FBD1AC92D5500A2A727 /* termios.so in CopyFiles */,
-				FD471FBE1AC92D5500A2A727 /* _md5.so in CopyFiles */,
-				FD471FBF1AC92D5500A2A727 /* _sha1.so in CopyFiles */,
-				FD471FC01AC92D5500A2A727 /* _sha512.so in CopyFiles */,
-				FD471FC11AC92D5500A2A727 /* _sha256.so in CopyFiles */,
-				FD471FC21AC92D5500A2A727 /* _hashlib.so in CopyFiles */,
-				FD471FC31AC92D5500A2A727 /* _ssl.so in CopyFiles */,
-				FD471FC41AC92D5500A2A727 /* _socket.so in CopyFiles */,
-				FD471FC51AC92D5500A2A727 /* grp.so in CopyFiles */,
-				FD471FC61AC92D5500A2A727 /* unicodedata.so in CopyFiles */,
-				FD471FC71AC92D5500A2A727 /* _json.so in CopyFiles */,
-				FD471FC81AC92D5500A2A727 /* _bisect.so in CopyFiles */,
-				FD471FC91AC92D5500A2A727 /* _heapq.so in CopyFiles */,
-				FD471FCA1AC92D5500A2A727 /* _random.so in CopyFiles */,
-				FD471FCB1AC92D5500A2A727 /* _datetime.so in CopyFiles */,
-				FD471FCC1AC92D5500A2A727 /* math.so in CopyFiles */,
-				FD471FCD1AC92D5500A2A727 /* time.so in CopyFiles */,
-				FD471FCE1AC92D5500A2A727 /* array.so in CopyFiles */,
-				FD471FCF1AC92D5500A2A727 /* _struct.so in CopyFiles */,
+				FD51A85F1ACA7740007D8972 /* danmaku2ass.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,20 +134,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FDAF8BA21ACA4EF100C0C55D /* CopyFiles */ = {
+		FDAF8BA21ACA4EF100C0C55D /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in CopyFiles */,
+				FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FD076C501AC8CBBB00C893FA /* bilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD076C501AC8CBBB00C893FA /* Bilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C541AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C551AC8CBBB00C893FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FD076C561AC8CBBB00C893FA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -252,41 +187,8 @@
 		FD471F431AC9106400A2A727 /* libvo-aacenc.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libvo-aacenc.0.dylib"; path = "../../../../Volumes/M3/biliPlayer/mpvBuild/build/lib/libvo-aacenc.0.dylib"; sourceTree = "<group>"; };
 		FD471F441AC9106400A2A727 /* libx264.142.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libx264.142.dylib; path = ../../../../Volumes/M3/biliPlayer/mpvBuild/build/lib/libx264.142.dylib; sourceTree = "<group>"; };
 		FD471F451AC9106400A2A727 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../Volumes/M3/biliPlayer/mpvBuild/build/lib/libz.1.dylib; sourceTree = "<group>"; };
-		FD471F8C1AC92D5500A2A727 /* danmaku2ass */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = danmaku2ass; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/danmaku2ass; sourceTree = "<absolute>"; };
-		FD471F8D1AC92D5500A2A727 /* Python */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = Python; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/Python; sourceTree = "<absolute>"; };
-		FD471F8E1AC92D5500A2A727 /* _scproxy.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _scproxy.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_scproxy.so; sourceTree = "<absolute>"; };
-		FD471F8F1AC92D5500A2A727 /* _codecs_iso2022.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _codecs_iso2022.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_codecs_iso2022.so; sourceTree = "<absolute>"; };
-		FD471F901AC92D5500A2A727 /* _codecs_hk.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _codecs_hk.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_codecs_hk.so; sourceTree = "<absolute>"; };
-		FD471F911AC92D5500A2A727 /* _codecs_cn.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _codecs_cn.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_codecs_cn.so; sourceTree = "<absolute>"; };
-		FD471F921AC92D5500A2A727 /* _codecs_tw.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _codecs_tw.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_codecs_tw.so; sourceTree = "<absolute>"; };
-		FD471F931AC92D5500A2A727 /* _codecs_jp.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _codecs_jp.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_codecs_jp.so; sourceTree = "<absolute>"; };
-		FD471F941AC92D5500A2A727 /* _codecs_kr.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _codecs_kr.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_codecs_kr.so; sourceTree = "<absolute>"; };
-		FD471F951AC92D5500A2A727 /* _multibytecodec.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _multibytecodec.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_multibytecodec.so; sourceTree = "<absolute>"; };
-		FD471F961AC92D5500A2A727 /* pyexpat.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = pyexpat.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/pyexpat.so; sourceTree = "<absolute>"; };
-		FD471F971AC92D5500A2A727 /* _lzma.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _lzma.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_lzma.so; sourceTree = "<absolute>"; };
-		FD471F981AC92D5500A2A727 /* _bz2.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _bz2.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_bz2.so; sourceTree = "<absolute>"; };
-		FD471F991AC92D5500A2A727 /* binascii.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = binascii.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/binascii.so; sourceTree = "<absolute>"; };
-		FD471F9A1AC92D5500A2A727 /* zlib.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = zlib.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/zlib.so; sourceTree = "<absolute>"; };
-		FD471F9B1AC92D5500A2A727 /* termios.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = termios.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/termios.so; sourceTree = "<absolute>"; };
-		FD471F9C1AC92D5500A2A727 /* _md5.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _md5.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_md5.so; sourceTree = "<absolute>"; };
-		FD471F9D1AC92D5500A2A727 /* _sha1.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _sha1.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_sha1.so; sourceTree = "<absolute>"; };
-		FD471F9E1AC92D5500A2A727 /* _sha512.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _sha512.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_sha512.so; sourceTree = "<absolute>"; };
-		FD471F9F1AC92D5500A2A727 /* _sha256.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _sha256.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_sha256.so; sourceTree = "<absolute>"; };
-		FD471FA01AC92D5500A2A727 /* _hashlib.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _hashlib.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_hashlib.so; sourceTree = "<absolute>"; };
-		FD471FA11AC92D5500A2A727 /* _ssl.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _ssl.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_ssl.so; sourceTree = "<absolute>"; };
-		FD471FA21AC92D5500A2A727 /* _socket.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _socket.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_socket.so; sourceTree = "<absolute>"; };
-		FD471FA31AC92D5500A2A727 /* grp.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = grp.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/grp.so; sourceTree = "<absolute>"; };
-		FD471FA41AC92D5500A2A727 /* unicodedata.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = unicodedata.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/unicodedata.so; sourceTree = "<absolute>"; };
-		FD471FA51AC92D5500A2A727 /* _json.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _json.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_json.so; sourceTree = "<absolute>"; };
-		FD471FA61AC92D5500A2A727 /* _bisect.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _bisect.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_bisect.so; sourceTree = "<absolute>"; };
-		FD471FA71AC92D5500A2A727 /* _heapq.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _heapq.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_heapq.so; sourceTree = "<absolute>"; };
-		FD471FA81AC92D5500A2A727 /* _random.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _random.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_random.so; sourceTree = "<absolute>"; };
-		FD471FA91AC92D5500A2A727 /* _datetime.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _datetime.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_datetime.so; sourceTree = "<absolute>"; };
-		FD471FAA1AC92D5500A2A727 /* math.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = math.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/math.so; sourceTree = "<absolute>"; };
-		FD471FAB1AC92D5500A2A727 /* time.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = time.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/time.so; sourceTree = "<absolute>"; };
-		FD471FAC1AC92D5500A2A727 /* array.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = array.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/array.so; sourceTree = "<absolute>"; };
-		FD471FAD1AC92D5500A2A727 /* _struct.so */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; name = _struct.so; path = /Volumes/M3/biliPlayer/danmaku2ass_bin/_struct.so; sourceTree = "<absolute>"; };
 		FD471FD31AC9320800A2A727 /* ffprobe */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = ffprobe; path = ../../../../Volumes/M3/biliPlayer/ffprobe; sourceTree = "<group>"; };
+		FD51A85D1ACA7736007D8972 /* danmaku2ass.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = danmaku2ass.app; path = bilibili/danmaku2ass/danmaku2ass.app; sourceTree = "<group>"; };
 		FDAF8B9C1ACA4BFA00C0C55D /* ISSoundAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISSoundAdditions.h; sourceTree = "<group>"; };
 		FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSoundAdditions.m; sourceTree = "<group>"; };
 		FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = bilibili/sparkle/Sparkle.framework; sourceTree = "<group>"; };
@@ -357,7 +259,7 @@
 		FD076C511AC8CBBB00C893FA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FD076C501AC8CBBB00C893FA /* bilibili.app */,
+				FD076C501AC8CBBB00C893FA /* Bilibili.app */,
 				FD076C661AC8CBBB00C893FA /* bilibiliTests.xctest */,
 			);
 			name = Products;
@@ -460,40 +362,7 @@
 		FD471FD01AC92D6D00A2A727 /* danmaku2ass */ = {
 			isa = PBXGroup;
 			children = (
-				FD471F8C1AC92D5500A2A727 /* danmaku2ass */,
-				FD471F8D1AC92D5500A2A727 /* Python */,
-				FD471F8E1AC92D5500A2A727 /* _scproxy.so */,
-				FD471F8F1AC92D5500A2A727 /* _codecs_iso2022.so */,
-				FD471F901AC92D5500A2A727 /* _codecs_hk.so */,
-				FD471F911AC92D5500A2A727 /* _codecs_cn.so */,
-				FD471F921AC92D5500A2A727 /* _codecs_tw.so */,
-				FD471F931AC92D5500A2A727 /* _codecs_jp.so */,
-				FD471F941AC92D5500A2A727 /* _codecs_kr.so */,
-				FD471F951AC92D5500A2A727 /* _multibytecodec.so */,
-				FD471F961AC92D5500A2A727 /* pyexpat.so */,
-				FD471F971AC92D5500A2A727 /* _lzma.so */,
-				FD471F981AC92D5500A2A727 /* _bz2.so */,
-				FD471F991AC92D5500A2A727 /* binascii.so */,
-				FD471F9A1AC92D5500A2A727 /* zlib.so */,
-				FD471F9B1AC92D5500A2A727 /* termios.so */,
-				FD471F9C1AC92D5500A2A727 /* _md5.so */,
-				FD471F9D1AC92D5500A2A727 /* _sha1.so */,
-				FD471F9E1AC92D5500A2A727 /* _sha512.so */,
-				FD471F9F1AC92D5500A2A727 /* _sha256.so */,
-				FD471FA01AC92D5500A2A727 /* _hashlib.so */,
-				FD471FA11AC92D5500A2A727 /* _ssl.so */,
-				FD471FA21AC92D5500A2A727 /* _socket.so */,
-				FD471FA31AC92D5500A2A727 /* grp.so */,
-				FD471FA41AC92D5500A2A727 /* unicodedata.so */,
-				FD471FA51AC92D5500A2A727 /* _json.so */,
-				FD471FA61AC92D5500A2A727 /* _bisect.so */,
-				FD471FA71AC92D5500A2A727 /* _heapq.so */,
-				FD471FA81AC92D5500A2A727 /* _random.so */,
-				FD471FA91AC92D5500A2A727 /* _datetime.so */,
-				FD471FAA1AC92D5500A2A727 /* math.so */,
-				FD471FAB1AC92D5500A2A727 /* time.so */,
-				FD471FAC1AC92D5500A2A727 /* array.so */,
-				FD471FAD1AC92D5500A2A727 /* _struct.so */,
+				FD51A85D1ACA7736007D8972 /* danmaku2ass.app */,
 			);
 			name = danmaku2ass;
 			sourceTree = "<group>";
@@ -532,11 +401,11 @@
 			buildPhases = (
 				FD076C4C1AC8CBBB00C893FA /* Sources */,
 				FD076C4D1AC8CBBB00C893FA /* Frameworks */,
+				FDAF8BA21ACA4EF100C0C55D /* Copy Files */,
 				FD471F731AC911CD00A2A727 /* CopyFiles */,
 				FD471F8B1AC92D1B00A2A727 /* CopyFiles */,
 				FD471FD51AC9321300A2A727 /* CopyFiles */,
 				FD076C4E1AC8CBBB00C893FA /* Resources */,
-				FDAF8BA21ACA4EF100C0C55D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -544,7 +413,7 @@
 			);
 			name = Bilibili;
 			productName = bilibili;
-			productReference = FD076C501AC8CBBB00C893FA /* bilibili.app */;
+			productReference = FD076C501AC8CBBB00C893FA /* Bilibili.app */;
 			productType = "com.apple.product-type.application";
 		};
 		FD076C651AC8CBBB00C893FA /* bilibiliTests */ = {

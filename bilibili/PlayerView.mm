@@ -162,7 +162,7 @@ static void wakeup(void *context) {
 
                 NSString *OutFile = [NSString stringWithFormat:@"%@/%@.cminfo.ass", @"/tmp",vCID];
                 
-                NSString *fontSize = [NSString stringWithFormat:@"%f",(int)[height doubleValue]/21.6];
+                NSString *fontSize = [NSString stringWithFormat:@"-fs=%f",(int)[height doubleValue]/21.6];
                 
                 float mq = 6.75*[width doubleValue]/[height doubleValue]-4;
                 if(mq < 3.0){
@@ -172,11 +172,12 @@ static void wakeup(void *context) {
                     mq = 8.0;
                 }
                 
-                NSString *marquee = [NSString stringWithFormat:@"%f",mq];
+                NSString *marquee = [NSString stringWithFormat:@"-dm=%f",mq];
+                
                 NSFileHandle *file = pipe.fileHandleForReading;
                 NSTask *task = [[NSTask alloc] init];
-                task.launchPath = [[NSBundle mainBundle] pathForResource:@"danmaku2ass/danmaku2ass" ofType:@""];
-                task.arguments = @[@"-s",resolution,@"-o",OutFile,@"-fn",@"Heiti SC",@"-a",@"0.8",@"-fs",fontSize,@"-dm",marquee,filePath];
+                task.launchPath = [[NSBundle mainBundle] pathForResource:@"danmaku2ass/danmaku2ass.app/Contents/MacOS/danmaku2ass" ofType:@""];
+                task.arguments = @[@"-s",resolution,@"-o",OutFile,fontSize,marquee,filePath];
                 task.standardOutput = pipe;
                 
                 [task launch];
