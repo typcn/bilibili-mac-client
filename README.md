@@ -2,6 +2,8 @@
 
 An unofficial bilibili client for mac
 
+[![Build Status](https://secure.travis-ci.org/typcn/bilibili-mac-client.svg?branch=master)](https://travis-ci.org/typcn/bilibili-mac-client)
+
 # Why
 
 众所周知的原因，Flash 不支持硬解，Macbook 热的烤鸡蛋！
