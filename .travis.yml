@@ -1,8 +1,3 @@
 language: Objective-C
-before_script:
-  - echo "NSString *APIKey = @\"" >> bilibili/APIKey.h;
-  - echo $APIKey >> bilibili/APIKey.h;
-  - echo "\";\nNSString *APISecret = @\"" >> bilibili/APIKey.h;
-  - echo $APISecret >> bilibili/APIKey.h;
-  - echo "\";\n" >> bilibili/APIKey.h;
+before_script: genkey.sh
 script: xcodebuild -configuration Release
