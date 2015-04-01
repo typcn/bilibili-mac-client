@@ -1,0 +1,8 @@
+最低支持 OS X 10.9
+
+新增一个文件 bilibili/APIKey.h
+
+NSString *APIKey = @"你的 API KEY";
+NSString *APISecret = @"你的 API Secret";
+
+然后使用 XCode 编辑或编译
