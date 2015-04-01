@@ -408,6 +408,7 @@
 				FD471F8B1AC92D1B00A2A727 /* CopyFiles */,
 				FD471FD51AC9321300A2A727 /* CopyFiles */,
 				FD076C4E1AC8CBBB00C893FA /* Resources */,
+				FD5101611ACBAE5800C49430 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -492,6 +493,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FD5101611ACBAE5800C49430 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -r ${SRCROOT}/bilibili/fontconfig ${CONFIGURATION_BUILD_DIR}/Bilibili.app/Contents/Resources/";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FD076C4C1AC8CBBB00C893FA /* Sources */ = {
