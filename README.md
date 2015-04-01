@@ -12,6 +12,10 @@ An unofficial bilibili client for mac
 - 自动拼接分段视频
 - 视频缓冲过慢自动切换备用源
 
+# Screenshot
+
+![](http://ww2.sinaimg.cn/large/a74f330bjw1eqq21b23c7j21740npqbp.jpg)
+
 # Download
 
 [GitHub](https://github.com/typcn/bilibili-mac-client/releases)
