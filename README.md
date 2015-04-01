@@ -2,7 +2,7 @@
 
 An unofficial bilibili client for mac
 
-[![Build Status](https://secure.travis-ci.org/typcn/bilibili-mac-client.svg?branch=master)](https://travis-ci.org/typcn/bilibili-mac-client)
+![Build Status](https://app.ship.io/jobs/LajSkdYLuE7THK7n/build_status.png)
 
 # Why
 
