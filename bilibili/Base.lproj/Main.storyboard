@@ -92,7 +92,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" id="6Cc-jO-u6M">
                                     <font key="font" size="12" name="STHeitiSC-Light"/>
-                                    <mutableString key="title">开发者: typcn 博客: http://blog.eqoe.cn 源代码: https://github.com/typcn/bilibili-mac-client 许可协议: GPLv2  感谢： Bilidan - https://github.com/m13253/BiliDan  使用以下开源项目: MPV - https://github.com/mpv-player/mpv ISSoundAdditions - https://github.com/InerziaSoft/ISSoundAdditions Sparkle - https://github.com/sparkle-project/Sparkle Danmaku2ASS - https://github.com/m13253/danmaku2ass FFmpeg - https://www.ffmpeg.org/  Copyleft 2015 TYPCN</mutableString>
+                                    <string key="title">开发者: typcn 博客: http://blog.eqoe.cn 源代码: https://github.com/typcn/bilibili-mac-client 许可协议: GPLv2  感谢： Bilidan - https://github.com/m13253/BiliDan  使用以下开源项目: MPV - https://github.com/mpv-player/mpv ISSoundAdditions - https://github.com/InerziaSoft/ISSoundAdditions Sparkle - https://github.com/sparkle-project/Sparkle Danmaku2ASS - https://github.com/m13253/danmaku2ass FFmpeg - https://www.ffmpeg.org/  Copyleft 2015 TYPCN</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -162,12 +162,22 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="nwA-xX-SSg">
+                                <rect key="frame" x="518" y="281" width="244" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="lbG-e1-MKm">
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="subtip" destination="nwA-xX-SSg" id="oAy-Dk-ud7"/>
                         <outlet property="textTip" destination="q3q-RS-pq9" id="aqJ-eF-Wbt"/>
                     </connections>
                 </viewController>
