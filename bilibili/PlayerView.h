@@ -10,5 +10,6 @@
 
 @interface PlayerView : NSViewController
 @property (weak) IBOutlet NSTextField *textTip;
+@property (weak) IBOutlet NSTextField *subtip;
 
 @end
