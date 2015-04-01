@@ -116,32 +116,40 @@ static void wakeup(void *context) {
         
         NSArray *dUrls = [videoResult objectForKey:@"durl"];
 
-        if(![dUrls count]){
+        if([dUrls count] == 0){
             [self.textTip setStringValue:@"视频无法解析，切换中"];
             return;
         }
         
         NSString *firstVideo;
         NSArray *BackupUrls;
-        for (NSDictionary *match in dUrls) {
-            if([dUrls count] == 1){
-                vUrl = [match valueForKey:@"url"];
-                firstVideo = vUrl;
-                NSArray *burl = [match objectForKey:@"backup_url"];
-                if([burl count] > 0){
-                    BackupUrls = burl;
-                }
-            }else{
-                NSString *tmp = [match valueForKey:@"url"];
-                if(!firstVideo){
-                    firstVideo = tmp;
-                    vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",(unsigned long)[tmp length], @"%" , tmp ,@";"];
+        
+        if([[[[videoResult objectForKey:@"durl"] valueForKey:@"url"] className] isEqualToString:@"__NSCFString"]){
+            vUrl = [[videoResult objectForKey:@"durl"] valueForKey:@"url"];
+            firstVideo = vUrl;
+        }else{
+            for (NSDictionary *match in dUrls) {
+                if([dUrls count] == 1){
+                    vUrl = [match valueForKey:@"url"];
+                    firstVideo = vUrl;
+                    
+                    NSArray *burl = [match valueForKey:@"backup_url"];
+                    if([burl count] > 0){
+                        BackupUrls = burl;
+                    }
                 }else{
-                    vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@",   vUrl   , @"%",(unsigned long)[tmp length], @"%" , tmp ,@";"];
+                    NSString *tmp = [match valueForKey:@"url"];
+                    if(!firstVideo){
+                        firstVideo = tmp;
+                        vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",(unsigned long)[tmp length], @"%" , tmp ,@";"];
+                    }else{
+                        vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@",   vUrl   , @"%",(unsigned long)[tmp length], @"%" , tmp ,@";"];
+                    }
+                    
                 }
-                
             }
         }
+
         
         // ffprobe
         [self.textTip setStringValue:@"正在获取视频信息"];
