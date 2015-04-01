@@ -1,0 +1,10 @@
+env:
+	secure: "KfVm2REZD+cD4NnOsW8VK94IbVNB58L7EtBsQ0KgO8Uqj28F5FgYPq5MM7lV+aNnjYi9K1u2PwGh4HKi5ewgiQdR5lZwLD2cthdevRm5PT18+qM/gdSQgc+bilcXeBq6QToBZyLRTaywFVL1l/wAH1zrNlzDsBkkfZkrZNVArSw="
+	secure: "BuRVA3dnwB+Nn3BSjRdNSzm6EQSOCoaWBVuQ1gSxu9L1PMNwsZIoRqfJ7n9Cs6HvaAss9QjL0fix0CY9C1Ff0lFI3QsCTspT5ty40vYlMQjGiacwFKQPBh5qFwsDfzLiPxaTRCiyz8JnITcRU0kVFrC8uWZhV87sAfYmVIpc6iM="
+before_install:
+  - echo "NSString *APIKey = @\"" >> bilibili/APIKey.h;
+  - echo $APIKey >> bilibili/APIKey.h;
+  - echo "\";\nNSString *APISecret = @\"" >> bilibili/APIKey.h;
+  - echo $APISecret >> bilibili/APIKey.h;
+  - echo "\";\n" >> bilibili/APIKey.h;
+script: xcodebuild -configuration Release
