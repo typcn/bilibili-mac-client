@@ -27,8 +27,8 @@ BOOL parsing = false;
     NSLog(@"USER INPUT: %@",vUrl);
 }
 
-- (void)loadView {
-    [super loadView];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     [self.view.window setBackgroundColor:NSColor.whiteColor];
     self.view.layer.backgroundColor = CGColorCreateGenericRGB(255, 255, 255, 1.0f);
     currWindow = self.view.window;
