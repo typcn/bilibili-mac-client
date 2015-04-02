@@ -506,7 +506,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -r ${SRCROOT}/bilibili/fontconfig ${CONFIGURATION_BUILD_DIR}/Bilibili.app/Contents/Resources/";
+			shellScript = "cp -r \"${SRCROOT}/bilibili/fontconfig\" \"${CONFIGURATION_BUILD_DIR}/Bilibili.app/Contents/Resources/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
