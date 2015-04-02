@@ -81,7 +81,8 @@ static void wakeup(void *context) {
 }
 
 - (void)viewDidLoad {
-    NSLog(@"Success");
+    [super viewDidLoad];
+    NSLog(@"Playerview load success");
     self->wrapper = [self view];
 
     [self.view.window makeKeyWindow];
@@ -357,17 +358,6 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             [self handleEvent:event];
         }
     });
-}
-
-- (void)loadView {
-    
-    [self viewWillLoad];
-    
-    [super loadView];
-    
-    [self viewDidLoad];
-    
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.view.window];
 }
 
 @end
