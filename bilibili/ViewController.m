@@ -116,7 +116,7 @@ BOOL parsing = false;
     NSString *isLogged = [webView stringByEvaluatingJavaScriptFromString:@"$('.i_face').attr('src')"];
     
     if([isLogged length] < 5){
-        [webView stringByEvaluatingJavaScriptFromString:@"$('.login').css('width',30).html('点击登陆客户端以便发送弹幕');"];
+        [webView stringByEvaluatingJavaScriptFromString:@"$('.login').css('width',200).children('a').html('点击登陆客户端以便发送弹幕');"];
     }
     
     NSString *flashvars =  [webView stringByEvaluatingJavaScriptFromString:@"               \
