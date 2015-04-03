@@ -19,10 +19,16 @@
 extern NSString *vUrl;
 extern NSString *vCID;
 extern NSString *userAgent;
+NSString *vAID;
+NSString *vPID;
+
 extern BOOL parsing;
+
 mpv_handle *mpv;
 BOOL isCancelled;
+
 NSButton *postCommentButton;
+
 static inline void check_error(int status)
 {
     if (status < 0) {
@@ -112,6 +118,28 @@ static void wakeup(void *context) {
         
         // Parse Video URL
 
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http:/*[^/]+/video/av(\\d+)(/|/index.html|/index_(\\d+).html)?(\\?|#|$)" options:NSRegularExpressionCaseInsensitive error:nil];
+        
+        NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
+        
+        NSRange aidRange = [match rangeAtIndex:1];
+        
+        if(aidRange.length > 0){
+            vAID = [vUrl substringWithRange:aidRange];
+            NSRange pidRange = [match rangeAtIndex:3];
+            if(pidRange.length > 0 ){
+                vPID = [vUrl substringWithRange:pidRange];
+            }
+        }else{
+            vAID = @"0";
+        }
+        
+        if(![vPID length]){
+            vPID = @"1";
+        }
+        
+        // Get Playback URL
+        
         NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=4&sign=%@",APIKey,vCID,sign]];
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"GET";
@@ -403,6 +431,9 @@ BOOL paused = NO;
 
 -(void)keyDown:(NSEvent*)event
 {
+    if(!mpv){
+        return;
+    }
     switch( [event keyCode] ) {
         case 125:{
             [NSSound decreaseSystemVolumeBy:0.05];
