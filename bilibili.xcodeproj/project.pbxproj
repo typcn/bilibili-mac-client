@@ -16,6 +16,7 @@
 		FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
+		FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */; };
 		FD5101791ACC1A6800C49430 /* libass.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5101621ACC1A6800C49430 /* libass.5.dylib */; };
 		FD51017A1ACC1A6800C49430 /* libavcodec.56.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5101631ACC1A6800C49430 /* libavcodec.56.dylib */; };
 		FD51017B1ACC1A6800C49430 /* libavdevice.56.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5101641ACC1A6800C49430 /* libavdevice.56.dylib */; };
@@ -165,6 +166,8 @@
 		FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerView.mm; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FD4D376A1ACEF3FE0022ABF3 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = loading.gif; path = bilibili/img/loading.gif; sourceTree = "<group>"; };
+		FD4D376C1ACEFD7B0022ABF3 /* PostComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostComment.h; sourceTree = "<group>"; };
+		FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostComment.m; sourceTree = "<group>"; };
 		FD5101621ACC1A6800C49430 /* libass.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libass.5.dylib; path = bilibili/libs/libass.5.dylib; sourceTree = "<group>"; };
 		FD5101631ACC1A6800C49430 /* libavcodec.56.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavcodec.56.dylib; path = bilibili/libs/libavcodec.56.dylib; sourceTree = "<group>"; };
 		FD5101641ACC1A6800C49430 /* libavdevice.56.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavdevice.56.dylib; path = bilibili/libs/libavdevice.56.dylib; sourceTree = "<group>"; };
@@ -286,6 +289,8 @@
 				FDAF8BA81ACA5A3100C0C55D /* AboutView.h */,
 				FDAF8BA91ACA5A3100C0C55D /* AboutView.m */,
 				FD51A8601ACA8464007D8972 /* APIKey.h */,
+				FD4D376C1ACEFD7B0022ABF3 /* PostComment.h */,
+				FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */,
 			);
 			path = bilibili;
 			sourceTree = "<group>";
@@ -530,6 +535,7 @@
 				FD076C5C1AC8CBBB00C893FA /* ViewController.m in Sources */,
 				FD076C591AC8CBBB00C893FA /* main.m in Sources */,
 				FD076C571AC8CBBB00C893FA /* AppDelegate.m in Sources */,
+				FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */,
 				FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */,
 				FDAF8BAA1ACA5A3100C0C55D /* AboutView.m in Sources */,
 				FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */,

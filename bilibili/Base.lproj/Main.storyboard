@@ -159,8 +159,8 @@
         <!--Main Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" userLabel="Main Window Controller" sceneMemberID="viewController">
-                    <window key="window" title="Bilibili Browser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="documentWindow" id="IQv-IB-iLA">
+                <windowController storyboardIdentifier="MainWindowController" showSeguePresentationStyle="single" id="B8D-0N-5wS" userLabel="Main Window Controller" sceneMemberID="viewController">
+                    <window key="window" title="Bilibili Browser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="documentWindow" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="1280" height="720"/>
@@ -224,12 +224,24 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="loading" id="s2c-ae-PoS"/>
                             </imageView>
+                            <button hidden="YES" verticalHuggingPriority="750" id="xVW-zA-HWk">
+                                <rect key="frame" x="7" y="2" width="14" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="259-A0-YXE">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="eqf-bZ-eNQ" kind="show" id="UeL-LC-7bY"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="PostCommentButton" destination="xVW-zA-HWk" id="Exg-Nr-pCW"/>
                         <outlet property="loadingImage" destination="d4M-72-jUI" id="fmB-92-FBV"/>
                         <outlet property="subtip" destination="nwA-xX-SSg" id="oAy-Dk-ud7"/>
                         <outlet property="textTip" destination="q3q-RS-pq9" id="aqJ-eF-Wbt"/>
@@ -238,6 +250,47 @@
                 <customObject id="9mi-6H-m99" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="453" y="455"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="bs0-gn-v1d">
+            <objects>
+                <windowController showSeguePresentationStyle="single" id="eqf-bZ-eNQ" sceneMemberID="viewController">
+                    <window key="window" title="发送弹幕" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="utilityWindow" id="uoV-BV-vze">
+                        <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
+                        <rect key="contentRect" x="640" y="200" width="480" height="36"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                    </window>
+                    <connections>
+                        <segue destination="cwy-KF-di8" kind="relationship" relationship="window.shadowedContentViewController" id="k1m-kA-8W1"/>
+                    </connections>
+                </windowController>
+                <customObject id="JYl-4e-l1T" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-202" y="1223"/>
+        </scene>
+        <!--Post Comment View Controller-->
+        <scene sceneID="iBg-Rg-Hcu">
+            <objects>
+                <viewController id="cwy-KF-di8" userLabel="Post Comment View Controller" customClass="PostComment" sceneMemberID="viewController">
+                    <view key="view" id="1q0-bF-Idw">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="36"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" id="TUk-1C-0AA">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="发送弹幕" drawsBackground="YES" id="yn2-rr-jS0">
+                                    <font key="font" metaFont="system" size="22"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="D1f-jv-4Zv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="352" y="1228"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="hIz-AP-VOD">
