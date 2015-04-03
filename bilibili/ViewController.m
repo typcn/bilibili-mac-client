@@ -17,6 +17,9 @@ BOOL parsing = false;
 
 @implementation ViewController
 
+- (BOOL)canBecomeMainWindow { return YES; }
+- (BOOL)canBecomeKeyWindow { return YES; }
+
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
 
@@ -32,11 +35,13 @@ BOOL parsing = false;
     [self.view.window setBackgroundColor:NSColor.whiteColor];
     self.view.layer.backgroundColor = CGColorCreateGenericRGB(255, 255, 255, 1.0f);
     currWindow = self.view.window;
+    [self.view.window makeKeyWindow];
 }
 
 @end
 
 @implementation WebController
+
 
 +(NSString*)webScriptNameForSelector:(SEL)sel
 {

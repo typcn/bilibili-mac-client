@@ -22,7 +22,7 @@ extern NSString *userAgent;
 extern BOOL parsing;
 mpv_handle *mpv;
 BOOL isCancelled;
-
+NSButton *postCommentButton;
 static inline void check_error(int status)
 {
     if (status < 0) {
@@ -59,7 +59,7 @@ static void wakeup(void *context) {
             
         }
         
-
+ 
     }
 }
 
@@ -80,11 +80,15 @@ static void wakeup(void *context) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [[[NSApplication sharedApplication] keyWindow] orderBack:nil];
+    [[[NSApplication sharedApplication] keyWindow] resignKeyWindow];
+    [self.view.window makeKeyWindow];
+    [self.view.window makeMainWindow];
+    postCommentButton = self.PostCommentButton;
     NSLog(@"Playerview load success");
     self->wrapper = [self view];
 
-    [self.view.window makeKeyWindow];
+    //[self.view.window makeKeyWindow];
     
     isCancelled = false;
     
@@ -416,6 +420,10 @@ BOOL paused = NO;
             }else{
                 mpv_set_property_string(mpv,"pause","yes");
             }
+            break;
+        }
+        case 36:{
+            [postCommentButton performClick:nil];
             break;
         }
         default:
