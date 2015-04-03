@@ -14,12 +14,26 @@
 
 @implementation PostComment
 
-- (BOOL)canBecomeMainWindow { return YES; }
-- (BOOL)canBecomeKeyWindow { return YES; }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    //[self.view.window makeKeyWindow];
+    [self.view.window makeFirstResponder:self];
 }
+
+@end
+
+@interface PostCommentWindow : NSWindow <NSWindowDelegate>
+
+@end
+
+@implementation PostCommentWindow{
+    
+}
+
+- (BOOL)canBecomeMainWindow { return YES; }
+- (BOOL)canBecomeKeyWindow { return YES; }
+- (BOOL) becomeFirstResponder { return YES; }
+- (BOOL) resignFirstResponder { return YES; }
 
 @end

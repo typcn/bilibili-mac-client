@@ -84,6 +84,13 @@ static void wakeup(void *context) {
     [[[NSApplication sharedApplication] keyWindow] resignKeyWindow];
     [self.view.window makeKeyWindow];
     [self.view.window makeMainWindow];
+    
+    NSRect rect = [[NSScreen mainScreen] visibleFrame];
+    NSNumber *viewHeight = [NSNumber numberWithFloat:rect.size.height];
+    NSNumber *viewWidth = [NSNumber numberWithFloat:rect.size.width];
+    NSString *res = [NSString stringWithFormat:@"%dx%d",[viewWidth intValue],[viewHeight intValue]];
+    [self.view setFrame:rect];
+    
     postCommentButton = self.PostCommentButton;
     NSLog(@"Playerview load success");
     self->wrapper = [self view];
@@ -217,6 +224,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             check_error(mpv_set_option_string(mpv, "input-cursor", "yes"));
             
             check_error(mpv_set_option_string(mpv, "osc", "yes"));
+            check_error(mpv_set_option_string(mpv, "autofit", [res cStringUsingEncoding:NSUTF8StringEncoding]));
             check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
             
             check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
@@ -286,7 +294,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         
         NSString *OutFile = [NSString stringWithFormat:@"%@/%@.cminfo.ass", @"/tmp",vCID];
         
-        NSString *fontSize = [NSString stringWithFormat:@"-fs=%f",(int)[height doubleValue]/21.6];
+        NSString *fontSize = [NSString stringWithFormat:@"-fs=%f",(int)[height intValue]/25.1];
         
         float mq = 6.75*[width doubleValue]/[height doubleValue]-4;
         if(mq < 3.0){

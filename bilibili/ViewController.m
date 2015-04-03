@@ -36,6 +36,8 @@ BOOL parsing = false;
     self.view.layer.backgroundColor = CGColorCreateGenericRGB(255, 255, 255, 1.0f);
     currWindow = self.view.window;
     [self.view.window makeKeyWindow];
+    NSRect rect = [[NSScreen mainScreen] visibleFrame];
+    [self.view setFrame:rect];
 }
 
 @end
