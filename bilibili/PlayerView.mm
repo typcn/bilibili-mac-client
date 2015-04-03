@@ -87,6 +87,8 @@ static void wakeup(void *context) {
 
     [self.view.window makeKeyWindow];
     
+    
+    
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
     dispatch_async(queue, ^{
         
@@ -312,6 +314,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         case MPV_EVENT_LOG_MESSAGE: {
             struct mpv_event_log_message *msg = (struct mpv_event_log_message *)event->data;
             NSLog(@"[%s] %s: %s", msg->prefix, msg->level, msg->text);
+            break;
         }
             
         case MPV_EVENT_VIDEO_RECONFIG: {
@@ -323,24 +326,28 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
                     [self->w makeFirstResponder:eview];
                 }
             });
+            break;
         }
         
         case MPV_EVENT_START_FILE:{
-            [self.textTip setStringValue:@"正在缓冲"];
-        }
-            
-        case MPV_EVENT_PLAYBACK_RESTART: {
             if([[[NSUserDefaults standardUserDefaults] objectForKey:@"FirstPlayed"] length] < 1){
                 [[NSUserDefaults standardUserDefaults]  setObject:@"yes" forKey:@"FirstPlayed"];
                 [self.textTip setStringValue:@"正在创建字体缓存"];
                 [self.subtip setStringValue:@"首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口"];
             }else{
-                double delayInSeconds = 20.0;
-                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                    [self.textTip setStringValue:@"播放完成"];
-                });
+                [self.textTip setStringValue:@"正在缓冲"];
             }
+            break;
+        }
+            
+        case MPV_EVENT_PLAYBACK_RESTART: {
+
+            break;
+        }
+        
+        case MPV_EVENT_END_FILE:{
+            [self.textTip setStringValue:@"播放完成"];
+            break;
         }
             
         default:
