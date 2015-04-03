@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D87h" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
         <plugIn identifier="com.apple.WebKitIBPlugin" version="6751"/>
     </dependencies>
@@ -284,14 +283,14 @@
                                 </connections>
                             </button>
                             <button hidden="YES" verticalHuggingPriority="750" id="8yE-wH-ldY">
-                                <rect key="frame" x="940" y="680" width="13" height="32"/>
+                                <rect key="frame" x="941" y="680" width="36" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BEt-iK-waU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <segue destination="3Nx-YC-zmP" kind="modal" id="foe-gx-YsW"/>
+                                    <segue destination="3Nx-YC-zmP" kind="show" id="D5B-9p-dnr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -302,7 +301,7 @@
                 <customObject id="0dz-Mn-O6m" customClass="WebController">
                     <connections>
                         <outlet property="switchButton" destination="8yE-wH-ldY" id="8bl-4p-Kcg"/>
-                        <outlet property="webView" destination="hgl-YZ-N9w" id="Tqv-PP-HbV"/>
+                        <outlet property="webView" destination="hgl-YZ-N9w" id="FaM-Vz-nYX"/>
                     </connections>
                 </customObject>
             </objects>
