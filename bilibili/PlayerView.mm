@@ -20,8 +20,8 @@ extern NSString *vUrl;
 extern NSString *vCID;
 extern NSString *userAgent;
 extern BOOL parsing;
-
 mpv_handle *mpv;
+BOOL isCancelled;
 
 static inline void check_error(int status)
 {
@@ -45,13 +45,11 @@ static inline void check_error(int status)
 - (BOOL)canBecomeMainWindow { return YES; }
 - (BOOL)canBecomeKeyWindow { return YES; }
 
-- (void)viewWillLoad {
-
-}
-
 static void wakeup(void *context) {
     if(context){
         @try {
+            NSLog(@"%@",context);
+            
             PlayerView *a = (__bridge PlayerView *) context;
             if(a){
                 [a readEvents];
@@ -82,16 +80,18 @@ static void wakeup(void *context) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     NSLog(@"Playerview load success");
     self->wrapper = [self view];
 
     [self.view.window makeKeyWindow];
     
-    
+    isCancelled = false;
     
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
+
     dispatch_async(queue, ^{
-        
+       
         [self.textTip setStringValue:@"正在解析视频地址"];
         
         // Get Sign
@@ -153,6 +153,10 @@ static void wakeup(void *context) {
             }
         }
 
+        if(isCancelled){
+            NSLog(@"Unloading");
+            return;
+        }
         
         // ffprobe
         [self.textTip setStringValue:@"正在获取视频信息"];
@@ -178,6 +182,10 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             }
         }
     
+        if(isCancelled){
+            NSLog(@"Unloading");
+            return;
+        }
         
         if(!jsonError){
             // Get Comment
@@ -433,6 +441,7 @@ BOOL paused = NO;
 }
 
 - (BOOL)windowShouldClose:(id)sender{
+    isCancelled = true;
     [self mpv_stop];
     [self mpv_quit];
     parsing = false;
