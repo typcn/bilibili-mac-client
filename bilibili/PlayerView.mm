@@ -349,7 +349,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         }
             
         case MPV_EVENT_PLAYBACK_RESTART: {
-
+            self.loadingImage.animates = false;
             break;
         }
         
