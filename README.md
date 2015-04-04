@@ -4,6 +4,8 @@ An unofficial bilibili client for mac
 
 [![Build Status](https://jenkins.tgod.co/job/Bilibili-for-mac/badge/icon)](http://jenkins.eqoe.cn/job/Bilibili-for-mac/)
 
+[![Coverage Status](https://coveralls.io/repos/typcn/bilibili-mac-client/badge.svg)](https://coveralls.io/r/typcn/bilibili-mac-client)
+
 # Why
 
 众所周知的原因，Flash 不支持硬解，Macbook 热的烤鸡蛋！

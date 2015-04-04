@@ -16,6 +16,7 @@ NSString *vCID;
 NSString *userAgent;
 NSWindow *currWindow;
 BOOL parsing = false;
+BOOL isTesting;
 
 @implementation ViewController
 
@@ -40,7 +41,6 @@ BOOL parsing = false;
     [self.view.window makeKeyWindow];
     NSRect rect = [[NSScreen mainScreen] visibleFrame];
     [self.view setFrame:rect];
-    
 //    NSArray *cookieJar = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:@"http://interface.bilibili.com"]];
 //    NSLog(@"%@",cookieJar);
 }
@@ -107,6 +107,14 @@ BOOL parsing = false;
 {
     if(parsing){
         return;
+    }
+    
+    if(isTesting){
+        if([webView.mainFrameURL isEqualToString:@"http://www.bilibili.com/ranking"]){
+            [webView stringByEvaluatingJavaScriptFromString:@"window.location=$('#rank_list li:first-child .content > a').attr('href')"];
+        }else if(![webView.mainFrameURL hasPrefix:@"http://www.bilibili.com/video/av"]){
+            webView.mainFrameURL = @"http://www.bilibili.com/ranking";
+        }
     }
     
     parsing = true;

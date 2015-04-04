@@ -251,10 +251,10 @@
             </objects>
             <point key="canvasLocation" x="453" y="455"/>
         </scene>
-        <!--Window Controller-->
+        <!--Post Comment Window Controller-->
         <scene sceneID="bs0-gn-v1d">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="eqf-bZ-eNQ" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="eqf-bZ-eNQ" userLabel="Post Comment Window Controller" sceneMemberID="viewController">
                     <window key="window" title="发送弹幕" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" id="uoV-BV-vze" customClass="PostCommentWindow">
                         <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
                         <rect key="contentRect" x="640" y="200" width="480" height="36"/>
