@@ -1,7 +1,7 @@
 # Xcode
 #
 build/
-xcshareddata/
+xcbaselines/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
