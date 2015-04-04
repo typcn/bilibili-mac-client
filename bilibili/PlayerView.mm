@@ -23,9 +23,11 @@ NSString *vAID;
 NSString *vPID;
 
 extern BOOL parsing;
+extern BOOL isTesting;
 
 mpv_handle *mpv;
 BOOL isCancelled;
+BOOL isPlaying;
 
 NSButton *postCommentButton;
 
@@ -86,6 +88,7 @@ static void wakeup(void *context) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [[[NSApplication sharedApplication] keyWindow] orderBack:nil];
     [[[NSApplication sharedApplication] keyWindow] resignKeyWindow];
     [self.view.window makeKeyWindow];
@@ -271,7 +274,9 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             mpv_set_wakeup_callback(mpv, wakeup, (__bridge void *) self);
             
             // Load the indicated file
-            NSLog(@"Video url : %@",vUrl);
+            if(!isTesting){
+                NSLog(@"Video url : %@",vUrl);
+            }
             const char *cmd[] = {"loadfile", [vUrl cStringUsingEncoding:NSUTF8StringEncoding], NULL};
             check_error(mpv_command(mpv, cmd));
         }else{
@@ -390,6 +395,13 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             
         case MPV_EVENT_PLAYBACK_RESTART: {
             self.loadingImage.animates = false;
+            isPlaying = YES;
+            if(isTesting){
+                const char *args[] = {"stop", NULL};
+                mpv_command(mpv, args);
+                const char *args2[] = {"quit", NULL};
+                mpv_command(mpv, args2);
+            }
             break;
         }
         

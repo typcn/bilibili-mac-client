@@ -65,6 +65,7 @@
 		FD5101A91ACC1AF300C49430 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101781ACC1A6800C49430 /* libz.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD5101AA1ACC1B0A00C49430 /* ffprobe in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101911ACC1AB500C49430 /* ffprobe */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD51A85F1ACA7740007D8972 /* danmaku2ass.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD51A85D1ACA7736007D8972 /* danmaku2ass.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FD53BEC91ACF8E440004C366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */; };
 		FDAF8BA11ACA4ECC00C0C55D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; };
 		FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -506,6 +507,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD53BEC91ACF8E440004C366 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,7 +719,7 @@
 				INFOPLIST_FILE = bilibiliTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bilibili.app/Contents/MacOS/bilibili";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bilibili.app/Contents/MacOS/Bilibili";
 			};
 			name = Debug;
 		};
@@ -733,7 +735,7 @@
 				INFOPLIST_FILE = bilibiliTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bilibili.app/Contents/MacOS/bilibili";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bilibili.app/Contents/MacOS/Bilibili";
 			};
 			name = Release;
 		};

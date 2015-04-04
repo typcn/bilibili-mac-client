@@ -1,0 +1,4 @@
+[
+  "-scheme","bilibili",
+  "-project","bilibili.xcodeproj"
+]
