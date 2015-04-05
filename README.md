@@ -56,8 +56,7 @@ A: 点击播放器右下角的字幕按钮关闭，再次点击开启
 
 - [] 直播弹幕显示
 - [] 弹幕透明度调整
-- [x] 本地视频弹幕播放
-![](https://cloud.githubusercontent.com/assets/8022103/6996040/8ff60778-dba1-11e4-8580-b54f3a297a9d.png)
+- [x] 本地视频弹幕播放 ![](https://cloud.githubusercontent.com/assets/8022103/6996040/8ff60778-dba1-11e4-8580-b54f3a297a9d.png)
 - [] 自动换 P
 - [] 不用 ffprobe， 缩减客户端大小
 - [] 视频清晰度切换
