@@ -14,8 +14,15 @@
 
 @implementation AppDelegate
 
+- (void)applicationWillFinishLaunching:(NSNotification *)notification {
+    [[NSAppleEventManager sharedAppleEventManager]
+     setEventHandler:self
+     andSelector:@selector(handleURLEvent:withReplyEvent:)
+     forEventClass:kInternetEventClass
+     andEventID:kAEGetURL];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -36,5 +43,16 @@
         return YES;
     }
 }
+
+- (void)handleURLEvent:(NSAppleEventDescriptor*)event
+        withReplyEvent:(NSAppleEventDescriptor*)replyEvent
+{
+    NSString* url = [[event paramDescriptorForKeyword:keyDirectObject]
+                      stringValue];
+    url = [url substringFromIndex:5];
+    NSLog(@"URL:%@",url);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"AVNumberUpdate" object:url];
+}
+
 
 @end
