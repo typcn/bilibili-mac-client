@@ -170,11 +170,12 @@ BOOL isTesting;
 }
 - (IBAction)openAv:(id)sender {
     NSString *avNumber = [sender stringValue];
-    if([[sender stringValue] length] > 0 ){
+    if([[sender stringValue] length] > 2 ){
         if ([[avNumber substringToIndex:2] isEqual: @"av"]) {
             avNumber = [avNumber substringFromIndex:2];
         }
-        
+
+
         webView.mainFrameURL = [NSString stringWithFormat:@"http://www.bilibili.com/video/av%@",avNumber];
         [sender setStringValue:@""];
     }
