@@ -2,7 +2,9 @@
 
 An unofficial bilibili client for mac
 
-![Build Status](https://app.ship.io/jobs/LajSkdYLuE7THK7n/build_status.png)
+[![Build Status](https://jenkins.tgod.co/job/Bilibili-for-mac/badge/icon)](http://jenkins.eqoe.cn/job/Bilibili-for-mac/)
+
+[![Coverage Status](https://coveralls.io/repos/typcn/bilibili-mac-client/badge.svg)](https://coveralls.io/r/typcn/bilibili-mac-client)
 
 # Why
 
@@ -13,6 +15,7 @@ An unofficial bilibili client for mac
 - libass 显示弹幕，超低 CPU 占用
 - 自动拼接分段视频
 - 视频缓冲过慢自动切换备用源
+- 支持发送弹幕
 
 # Screenshot
 
@@ -34,7 +37,7 @@ A: 请到设置 - 安全与隐私 - 通用 - 点击左下角的锁 - 允许任�
 
 Q: 是否支持弹幕发送
 
-A: 当前暂时不支持，下一个版本加入
+A: 在视频播放界面按回车出现发送框，再次按回车隐藏
 
 Q: 程序为何会连接 app.eqoe.cn
 
@@ -46,15 +49,18 @@ A: 点击播放器右下角的字幕按钮关闭，再次点击开启
 
 # Known problems
 
-- 在视频开始播放之前，关闭窗口会导致程序在一段时间后崩溃
-- 首次播放可能创建字体缓存，播放器唤醒时间过长，程序可能误判播放已完成，多等一会即可开始播放
+- <del>在视频开始播放之前，关闭窗口会导致程序在一段时间后崩溃</del> 已修复
+- 首次播放可能创建字体缓存，大约需要两分钟，多等一会即可开始播放
 
-# TODO
+# 1.3 新特性进度
 
-- [ ] 发送弹幕 (未完成)
-- [ ] 防挡字幕 (未完成)
-- [ ] 弹幕屏蔽 (未完成)
-- [ ] 官方 API 无法解析时，切换到 flvcd 等第三方解析
+- [] 直播弹幕显示
+- [] 弹幕透明度调整
+- [x] 本地视频弹幕播放 ![](https://cloud.githubusercontent.com/assets/8022103/6996040/8ff60778-dba1-11e4-8580-b54f3a297a9d.png)
+- [] 自动换 P
+- [] 不用 ffprobe， 缩减客户端大小
+- [] 视频清晰度切换
+- [] 网页书签调用播放器
 
 # Thanks
 

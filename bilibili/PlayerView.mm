@@ -19,9 +19,17 @@
 extern NSString *vUrl;
 extern NSString *vCID;
 extern NSString *userAgent;
+NSString *vAID;
+NSString *vPID;
+
 extern BOOL parsing;
+extern BOOL isTesting;
 
 mpv_handle *mpv;
+BOOL isCancelled;
+BOOL isPlaying;
+
+NSButton *postCommentButton;
 
 static inline void check_error(int status)
 {
@@ -45,13 +53,11 @@ static inline void check_error(int status)
 - (BOOL)canBecomeMainWindow { return YES; }
 - (BOOL)canBecomeKeyWindow { return YES; }
 
-- (void)viewWillLoad {
-
-}
-
 static void wakeup(void *context) {
     if(context){
         @try {
+            NSLog(@"%@",context);
+            
             PlayerView *a = (__bridge PlayerView *) context;
             if(a){
                 [a readEvents];
@@ -61,7 +67,7 @@ static void wakeup(void *context) {
             
         }
         
-
+ 
     }
 }
 
@@ -81,14 +87,31 @@ static void wakeup(void *context) {
 }
 
 - (void)viewDidLoad {
-    NSLog(@"Success");
+    [super viewDidLoad];
+
+    [[[NSApplication sharedApplication] keyWindow] orderBack:nil];
+    [[[NSApplication sharedApplication] keyWindow] resignKeyWindow];
+    [self.view.window makeKeyWindow];
+    [self.view.window makeMainWindow];
+    
+    NSRect rect = [[NSScreen mainScreen] visibleFrame];
+    NSNumber *viewHeight = [NSNumber numberWithFloat:rect.size.height];
+    NSNumber *viewWidth = [NSNumber numberWithFloat:rect.size.width];
+    NSString *res = [NSString stringWithFormat:@"%dx%d",[viewWidth intValue],[viewHeight intValue]];
+    [self.view setFrame:rect];
+    
+    postCommentButton = self.PostCommentButton;
+    NSLog(@"Playerview load success");
     self->wrapper = [self view];
 
-    [self.view.window makeKeyWindow];
+    //[self.view.window makeKeyWindow];
+    
+    isCancelled = false;
     
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
+
     dispatch_async(queue, ^{
-        
+       
         [self.textTip setStringValue:@"正在解析视频地址"];
         
         // Get Sign
@@ -98,6 +121,28 @@ static void wakeup(void *context) {
         
         // Parse Video URL
 
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http:/*[^/]+/video/av(\\d+)(/|/index.html|/index_(\\d+).html)?(\\?|#|$)" options:NSRegularExpressionCaseInsensitive error:nil];
+        
+        NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
+        
+        NSRange aidRange = [match rangeAtIndex:1];
+        
+        if(aidRange.length > 0){
+            vAID = [vUrl substringWithRange:aidRange];
+            NSRange pidRange = [match rangeAtIndex:3];
+            if(pidRange.length > 0 ){
+                vPID = [vUrl substringWithRange:pidRange];
+            }
+        }else{
+            vAID = @"0";
+        }
+        
+        if(![vPID length]){
+            vPID = @"1";
+        }
+        
+        // Get Playback URL
+        
         NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=4&sign=%@",APIKey,vCID,sign]];
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"GET";
@@ -116,40 +161,54 @@ static void wakeup(void *context) {
         
         NSArray *dUrls = [videoResult objectForKey:@"durl"];
 
-        if(![dUrls count]){
+        if([dUrls count] == 0){
             [self.textTip setStringValue:@"视频无法解析，切换中"];
             return;
         }
         
         NSString *firstVideo;
         NSArray *BackupUrls;
-        for (NSDictionary *match in dUrls) {
-            if([dUrls count] == 1){
-                vUrl = [match valueForKey:@"url"];
-                firstVideo = vUrl;
-                NSArray *burl = [match objectForKey:@"backup_url"];
-                if([burl count] > 0){
-                    BackupUrls = burl;
-                }
-            }else{
-                NSString *tmp = [match valueForKey:@"url"];
-                if(!firstVideo){
-                    firstVideo = tmp;
-                    vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",(unsigned long)[tmp length], @"%" , tmp ,@";"];
+        
+        if([[[[videoResult objectForKey:@"durl"] valueForKey:@"url"] className] isEqualToString:@"__NSCFString"]){
+            vUrl = [[videoResult objectForKey:@"durl"] valueForKey:@"url"];
+            firstVideo = vUrl;
+        }else{
+            for (NSDictionary *match in dUrls) {
+                if([dUrls count] == 1){
+                    vUrl = [match valueForKey:@"url"];
+                    firstVideo = vUrl;
+                    
+                    NSArray *burl = [match valueForKey:@"backup_url"];
+                    if([burl count] > 0){
+                        BackupUrls = burl;
+                    }
                 }else{
-                    vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@",   vUrl   , @"%",(unsigned long)[tmp length], @"%" , tmp ,@";"];
+                    NSString *tmp = [match valueForKey:@"url"];
+                    if(!firstVideo){
+                        firstVideo = tmp;
+                        vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",(unsigned long)[tmp length], @"%" , tmp ,@";"];
+                    }else{
+                        vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@",   vUrl   , @"%",(unsigned long)[tmp length], @"%" , tmp ,@";"];
+                    }
+                    
                 }
-                
             }
+        }
+
+        if(isCancelled){
+            NSLog(@"Unloading");
+            return;
         }
         
         // ffprobe
         [self.textTip setStringValue:@"正在获取视频信息"];
 
-GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
-
         int usingBackup = 0;
         
+GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
+
+        
+        NSLog(@"%lu",(unsigned long)[VideoInfoJson count]);
         if([VideoInfoJson count] == 0){
             if(!BackupUrls){
                 [self.textTip setStringValue:@"读取视频失败"];
@@ -167,6 +226,10 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             }
         }
     
+        if(isCancelled){
+            NSLog(@"Unloading");
+            return;
+        }
         
         if(!jsonError){
             // Get Comment
@@ -194,6 +257,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             check_error(mpv_set_option_string(mpv, "input-cursor", "yes"));
             
             check_error(mpv_set_option_string(mpv, "osc", "yes"));
+            check_error(mpv_set_option_string(mpv, "autofit", [res cStringUsingEncoding:NSUTF8StringEncoding]));
             check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
             
             check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
@@ -212,7 +276,9 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             mpv_set_wakeup_callback(mpv, wakeup, (__bridge void *) self);
             
             // Load the indicated file
-            NSLog(@"Video url : %@",vUrl);
+            if(!isTesting){
+                NSLog(@"Video url : %@",vUrl);
+            }
             const char *cmd[] = {"loadfile", [vUrl cStringUsingEncoding:NSUTF8StringEncoding], NULL};
             check_error(mpv_command(mpv, cmd));
         }else{
@@ -263,7 +329,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         
         NSString *OutFile = [NSString stringWithFormat:@"%@/%@.cminfo.ass", @"/tmp",vCID];
         
-        NSString *fontSize = [NSString stringWithFormat:@"-fs=%f",(int)[height doubleValue]/21.6];
+        NSString *fontSize = [NSString stringWithFormat:@"-fs=%f",(int)[height intValue]/25.1];
         
         float mq = 6.75*[width doubleValue]/[height doubleValue]-4;
         if(mq < 3.0){
@@ -303,6 +369,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         case MPV_EVENT_LOG_MESSAGE: {
             struct mpv_event_log_message *msg = (struct mpv_event_log_message *)event->data;
             NSLog(@"[%s] %s: %s", msg->prefix, msg->level, msg->text);
+            break;
         }
             
         case MPV_EVENT_VIDEO_RECONFIG: {
@@ -314,24 +381,35 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
                     [self->w makeFirstResponder:eview];
                 }
             });
+            break;
         }
         
         case MPV_EVENT_START_FILE:{
-            [self.textTip setStringValue:@"正在缓冲"];
-        }
-            
-        case MPV_EVENT_PLAYBACK_RESTART: {
             if([[[NSUserDefaults standardUserDefaults] objectForKey:@"FirstPlayed"] length] < 1){
                 [[NSUserDefaults standardUserDefaults]  setObject:@"yes" forKey:@"FirstPlayed"];
                 [self.textTip setStringValue:@"正在创建字体缓存"];
                 [self.subtip setStringValue:@"首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口"];
             }else{
-                double delayInSeconds = 20.0;
-                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                    [self.textTip setStringValue:@"播放完成"];
-                });
+                [self.textTip setStringValue:@"正在缓冲"];
             }
+            break;
+        }
+            
+        case MPV_EVENT_PLAYBACK_RESTART: {
+            self.loadingImage.animates = false;
+            isPlaying = YES;
+            if(isTesting){
+                const char *args[] = {"stop", NULL};
+                mpv_command(mpv, args);
+                const char *args2[] = {"quit", NULL};
+                mpv_command(mpv, args2);
+            }
+            break;
+        }
+        
+        case MPV_EVENT_END_FILE:{
+            [self.textTip setStringValue:@"播放完成"];
+            break;
         }
             
         default:
@@ -351,17 +429,6 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     });
 }
 
-- (void)loadView {
-    
-    [self viewWillLoad];
-    
-    [super loadView];
-    
-    [self viewDidLoad];
-    
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.view.window];
-}
-
 @end
 
 @interface PlayerWindow : NSWindow <NSWindowDelegate>
@@ -378,6 +445,9 @@ BOOL paused = NO;
 
 -(void)keyDown:(NSEvent*)event
 {
+    if(!mpv){
+        return;
+    }
     switch( [event keyCode] ) {
         case 125:{
             [NSSound decreaseSystemVolumeBy:0.05];
@@ -405,6 +475,10 @@ BOOL paused = NO;
             }
             break;
         }
+        case 36:{
+            [postCommentButton performClick:nil];
+            break;
+        }
         default:
             NSLog(@"Key pressed: %hu", [event keyCode]);
             break;
@@ -428,6 +502,7 @@ BOOL paused = NO;
 }
 
 - (BOOL)windowShouldClose:(id)sender{
+    isCancelled = true;
     [self mpv_stop];
     [self mpv_quit];
     parsing = false;

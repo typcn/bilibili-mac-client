@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import <Sparkle/Sparkle.h>
+
 @import AppKit;
 
 NSString *vUrl;
@@ -14,8 +16,12 @@ NSString *vCID;
 NSString *userAgent;
 NSWindow *currWindow;
 BOOL parsing = false;
+BOOL isTesting;
 
 @implementation ViewController
+
+- (BOOL)canBecomeMainWindow { return YES; }
+- (BOOL)canBecomeKeyWindow { return YES; }
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
@@ -27,25 +33,40 @@ BOOL parsing = false;
     NSLog(@"USER INPUT: %@",vUrl);
 }
 
-- (void)loadView {
-    [super loadView];
+- (void)viewDidLoad {
+    [super viewDidLoad];
     [self.view.window setBackgroundColor:NSColor.whiteColor];
     self.view.layer.backgroundColor = CGColorCreateGenericRGB(255, 255, 255, 1.0f);
     currWindow = self.view.window;
+    [self.view.window makeKeyWindow];
+    NSRect rect = [[NSScreen mainScreen] visibleFrame];
+    [self.view setFrame:rect];
+//    NSArray *cookieJar = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:@"http://interface.bilibili.com"]];
+//    NSLog(@"%@",cookieJar);
 }
 
 @end
 
 @implementation WebController
 
+
 +(NSString*)webScriptNameForSelector:(SEL)sel
 {
+    if(sel == @selector(checkForUpdates))
+        return @"checkForUpdates";
     return nil;
 }
 
 + (BOOL)isSelectorExcludedFromWebScript:(SEL)sel
 {
-    return YES;
+    if(sel == @selector(checkForUpdates))//JS对应的本地函数
+        return NO;
+    return YES; //返回 YES 表示函数被排除，不会在网页上注册
+}
+
+- (void)checkForUpdates
+{
+    [[SUUpdater sharedUpdater] checkForUpdates:nil];
 }
 
 - (void)awakeFromNib //当 WebContoller 加载完成后执行的动作
@@ -79,7 +100,7 @@ BOOL parsing = false;
 
 - (void)webView:(WebView *)sender didClearWindowObject:(WebScriptObject *)windowScriptObject forFrame:(WebFrame *)frame
 {
-
+     [windowScriptObject setValue:self forKeyPath:@"window.external"];
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
@@ -88,7 +109,23 @@ BOOL parsing = false;
         return;
     }
     
+    if(isTesting){
+        if([webView.mainFrameURL isEqualToString:@"http://www.bilibili.com/ranking"]){
+            [webView stringByEvaluatingJavaScriptFromString:@"window.location=$('#rank_list li:first-child .content > a').attr('href')"];
+        }else if(![webView.mainFrameURL hasPrefix:@"http://www.bilibili.com/video/av"]){
+            webView.mainFrameURL = @"http://www.bilibili.com/ranking";
+        }
+    }
+    
     parsing = true;
+    
+    [webView stringByEvaluatingJavaScriptFromString:@"$(\".i-link[href='http://app.bilibili.com']\").html('检查更新').attr('href','javascript:window.external.checkForUpdates()');"];
+    
+    NSString *isLogged = [webView stringByEvaluatingJavaScriptFromString:@"$('.i_face').attr('src')"];
+    
+    if([isLogged length] < 5){
+        [webView stringByEvaluatingJavaScriptFromString:@"$('.login').css('width',200).children('a').html('点击登陆客户端以便发送弹幕');"];
+    }
     
     NSString *flashvars =  [webView stringByEvaluatingJavaScriptFromString:@"               \
                             $('object').attr('type','application/x-typcn-flashblock');      \
