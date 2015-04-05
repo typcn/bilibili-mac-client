@@ -13,6 +13,7 @@
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
 		FD076C611AC8CBBB00C893FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FD076C6D1AC8CBBB00C893FA /* bilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */; };
+		FD2BD5631AD11319001A7E16 /* playLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2BD5621AD11319001A7E16 /* playLocalFile.m */; };
 		FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
@@ -163,6 +164,8 @@
 		FD076C661AC8CBBB00C893FA /* bilibiliTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bilibiliTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C6B1AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bilibiliTests.m; sourceTree = "<group>"; };
+		FD2BD5611AD11319001A7E16 /* playLocalFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playLocalFile.h; sourceTree = "<group>"; };
+		FD2BD5621AD11319001A7E16 /* playLocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playLocalFile.m; sourceTree = "<group>"; };
 		FD471B4C1AC8FF3C00A2A727 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerView.mm; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -292,6 +295,8 @@
 				FD51A8601ACA8464007D8972 /* APIKey.h */,
 				FD4D376C1ACEFD7B0022ABF3 /* PostComment.h */,
 				FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */,
+				FD2BD5611AD11319001A7E16 /* playLocalFile.h */,
+				FD2BD5621AD11319001A7E16 /* playLocalFile.m */,
 			);
 			path = bilibili;
 			sourceTree = "<group>";
@@ -537,6 +542,7 @@
 				FD076C5C1AC8CBBB00C893FA /* ViewController.m in Sources */,
 				FD076C591AC8CBBB00C893FA /* main.m in Sources */,
 				FD076C571AC8CBBB00C893FA /* AppDelegate.m in Sources */,
+				FD2BD5631AD11319001A7E16 /* playLocalFile.m in Sources */,
 				FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */,
 				FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */,
 				FDAF8BAA1ACA5A3100C0C55D /* AboutView.m in Sources */,
