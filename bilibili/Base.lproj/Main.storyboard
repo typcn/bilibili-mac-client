@@ -5,6 +5,90 @@
         <plugIn identifier="com.apple.WebKitIBPlugin" version="6751"/>
     </dependencies>
     <scenes>
+        <!--playLocalVideo Window-->
+        <scene sceneID="5yT-xO-Jog">
+            <objects>
+                <windowController showSeguePresentationStyle="single" id="nNF-Yo-e9X" userLabel="playLocalVideo Window" sceneMemberID="viewController">
+                    <window key="window" title="打开本地视频" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="XmJ-ty-8vV">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                    </window>
+                    <connections>
+                        <segue destination="0d3-4B-65W" kind="relationship" relationship="window.shadowedContentViewController" id="uDC-KP-EaI"/>
+                    </connections>
+                </windowController>
+                <customObject id="ogv-UC-wLe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="836" y="-228"/>
+        </scene>
+        <!--playLocalVideo-->
+        <scene sceneID="gmX-b4-iwl">
+            <objects>
+                <viewController id="0d3-4B-65W" userLabel="playLocalVideo" customClass="playLocalFile" sceneMemberID="viewController">
+                    <view key="view" id="cmr-KX-AqT">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" id="bwu-t8-jef">
+                                <rect key="frame" x="199" y="20" width="82" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="立即播放" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g4M-p0-FkK">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="3Nx-YC-zmP" kind="show" id="Y0Z-ee-aqu"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" id="nUV-At-1HF">
+                                <rect key="frame" x="90" y="106" width="82" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="选择弹幕" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wtj-ZP-diZ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="selectComment:" target="0d3-4B-65W" id="v6q-DE-GFs"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LX8-zA-OlO">
+                                <rect key="frame" x="188" y="159" width="172" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="允许所有 ffmpeg 支持的格式" id="9eb-5r-SWr">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EP3-TH-MpO">
+                                <rect key="frame" x="188" y="115" width="199" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="支持 Bilibili Acfun Niconico 格式" id="E2h-KF-1Hp">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" id="MRM-cn-yyW">
+                                <rect key="frame" x="90" y="148" width="82" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="选择视频" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VnN-7Y-cRN">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="selectVideo:" target="0d3-4B-65W" id="sF9-Ev-ytw"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="Daq-P9-kIP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1555" y="-236"/>
+        </scene>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
             <objects>
@@ -35,7 +119,7 @@
                                         <menuItem title="打开本地视频" id="UaC-DW-g4c">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="undo:" target="Ady-hI-5gd" id="Ic9-at-4NB"/>
+                                                <segue destination="nNF-Yo-e9X" kind="show" id="kEj-1z-37L"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -169,7 +253,7 @@
         <!--Comment block settings window-->
         <scene sceneID="asJ-fJ-uCB">
             <objects>
-                <windowController id="Nzf-SC-WYt" userLabel="Comment block settings window" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="Nzf-SC-WYt" userLabel="Comment block settings window" sceneMemberID="viewController">
                     <window key="window" title="弹幕屏蔽设置" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="bZL-tO-5vd">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -331,7 +415,7 @@
         <!--Miedia Player View Controller-->
         <scene sceneID="HPp-cU-Hxk">
             <objects>
-                <viewController id="Xuz-Nv-8zc" userLabel="Miedia Player View Controller" customClass="PlayerView" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerView" id="Xuz-Nv-8zc" userLabel="Miedia Player View Controller" customClass="PlayerView" sceneMemberID="viewController">
                     <view key="view" id="nKN-Uv-bMF">
                         <rect key="frame" x="0.0" y="0.0" width="432" height="265"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -507,7 +591,7 @@
         <!--settings window-->
         <scene sceneID="3Jf-4c-wFD">
             <objects>
-                <windowController id="qMe-fF-qTw" userLabel="settings window" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="qMe-fF-qTw" userLabel="settings window" sceneMemberID="viewController">
                     <window key="window" title="一般设置" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="C4l-Ie-Hw1">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -541,7 +625,7 @@
                             <slider verticalHuggingPriority="750" id="dP9-DC-elz">
                                 <rect key="frame" x="25" y="38" width="329" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="NRf-l9-8Cv"/>
+                                <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.80000000000000004" tickMarkPosition="above" sliderType="linear" id="NRf-l9-8Cv"/>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wLx-ha-LJe">
                                 <rect key="frame" x="25" y="65" width="90" height="17"/>
@@ -563,4 +647,7 @@
     <resources>
         <image name="loading" width="145" height="91"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Y0Z-ee-aqu"/>
+    </inferredMetricsTieBreakers>
 </document>
