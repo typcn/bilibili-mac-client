@@ -203,10 +203,12 @@ static void wakeup(void *context) {
         // ffprobe
         [self.textTip setStringValue:@"正在获取视频信息"];
 
-GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
-
         int usingBackup = 0;
         
+GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
+
+        
+        NSLog(@"%lu",(unsigned long)[VideoInfoJson count]);
         if([VideoInfoJson count] == 0){
             if(!BackupUrls){
                 [self.textTip setStringValue:@"读取视频失败"];
