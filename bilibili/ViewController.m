@@ -76,6 +76,7 @@ BOOL isTesting;
     [webView setFrameLoadDelegate:self];
     NSLog(@"Start");
     webView.mainFrameURL = @"http://www.bilibili.com";
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AVNumberUpdated:) name:@"AVNumberUpdate" object:nil];
 }
 
 - (WebView *)webView:(WebView *)sender createWebViewWithRequest:(NSURLRequest *)request
@@ -170,14 +171,23 @@ BOOL isTesting;
 }
 - (IBAction)openAv:(id)sender {
     NSString *avNumber = [sender stringValue];
-    if([[sender stringValue] length] > 0 ){
+    if([[sender stringValue] length] > 2 ){
         if ([[avNumber substringToIndex:2] isEqual: @"av"]) {
             avNumber = [avNumber substringFromIndex:2];
         }
-        
+
+
         webView.mainFrameURL = [NSString stringWithFormat:@"http://www.bilibili.com/video/av%@",avNumber];
         [sender setStringValue:@""];
     }
+}
+
+- (void)AVNumberUpdated:(NSNotification *)notification {
+    NSString *url = [notification object];
+    if (![[url substringToIndex:7] isEqual: @"http://"]) {
+        url = [NSString stringWithFormat:@"http://%@", url]; //如果用户在Safari中手动加入bl://则需要添加http://
+    }
+    webView.mainFrameURL = url;
 }
 
 @end
