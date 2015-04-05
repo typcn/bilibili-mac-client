@@ -19,8 +19,10 @@
 extern NSString *vUrl;
 extern NSString *vCID;
 extern NSString *userAgent;
+extern NSString *cmFile;
 NSString *vAID;
 NSString *vPID;
+
 
 extern BOOL parsing;
 extern BOOL isTesting;
@@ -88,7 +90,11 @@ static void wakeup(void *context) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    if([vCID isEqualToString:@"LOCALVIDEO"]){
+        [[[NSApplication sharedApplication] keyWindow] performClose:self];
+    }
+    
     [[[NSApplication sharedApplication] keyWindow] orderBack:nil];
     [[[NSApplication sharedApplication] keyWindow] resignKeyWindow];
     [self.view.window makeKeyWindow];
@@ -111,7 +117,23 @@ static void wakeup(void *context) {
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
 
     dispatch_async(queue, ^{
-       
+        if([vCID isEqualToString:@"LOCALVIDEO"]){
+            if([vUrl length] > 5){
+                NSDictionary *VideoInfoJson = [self getVideoInfo:vUrl];
+                NSNumber *width = [VideoInfoJson objectForKey:@"width"];
+                NSNumber *height = [VideoInfoJson objectForKey:@"height"];
+                NSString *commentFile = @"/NotFound";
+                if([cmFile length] > 5){
+                    commentFile = [self getComments:width :height];
+                }
+                [self PlayVideo:commentFile :res];
+                return;
+            }else{
+                [self.view.window performClose:self];
+            }
+            return;
+        }
+        
         [self.textTip setStringValue:@"正在解析视频地址"];
         
         // Get Sign
@@ -207,8 +229,6 @@ static void wakeup(void *context) {
         
 GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
 
-        
-        NSLog(@"%lu",(unsigned long)[VideoInfoJson count]);
         if([VideoInfoJson count] == 0){
             if(!BackupUrls){
                 [self.textTip setStringValue:@"读取视频失败"];
@@ -236,51 +256,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             NSNumber *width = [VideoInfoJson objectForKey:@"width"];
             NSNumber *height = [VideoInfoJson objectForKey:@"height"];
             NSString *commentFile = [self getComments:width :height];
-            
-            // Start Playing Video
-            mpv = mpv_create();
-            if (!mpv) {
-                NSLog(@"Failed creating context");
-                exit(1);
-            }
-            
-            [self.textTip setStringValue:@"正在载入视频"];
-            
-            int64_t wid = (intptr_t) self->wrapper;
-            check_error(mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid));
-            
-            // Maybe set some options here, like default key bindings.
-            // NOTE: Interaction with the window seems to be broken for now.
-            check_error(mpv_set_option_string(mpv, "input-default-bindings", "yes"));
-            check_error(mpv_set_option_string(mpv, "input-vo-keyboard", "yes"));
-            check_error(mpv_set_option_string(mpv, "input-media-keys", "yes"));
-            check_error(mpv_set_option_string(mpv, "input-cursor", "yes"));
-            
-            check_error(mpv_set_option_string(mpv, "osc", "yes"));
-            check_error(mpv_set_option_string(mpv, "autofit", [res cStringUsingEncoding:NSUTF8StringEncoding]));
-            check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
-            
-            check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
-            check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
-            check_error(mpv_set_option_string(mpv, "vf", "lavfi=\"fps=fps=60:round=down\""));
-            
-            check_error(mpv_set_option_string(mpv, "sub-ass", "yes"));
-            check_error(mpv_set_option_string(mpv, "sub-file", [commentFile cStringUsingEncoding:NSUTF8StringEncoding]));
-            
-            // request important errors
-            check_error(mpv_request_log_messages(mpv, "warn"));
-            
-            check_error(mpv_initialize(mpv));
-            
-            // Register to be woken up whenever mpv generates new events.
-            mpv_set_wakeup_callback(mpv, wakeup, (__bridge void *) self);
-            
-            // Load the indicated file
-            if(!isTesting){
-                NSLog(@"Video url : %@",vUrl);
-            }
-            const char *cmd[] = {"loadfile", [vUrl cStringUsingEncoding:NSUTF8StringEncoding], NULL};
-            check_error(mpv_command(mpv, cmd));
+            [self PlayVideo:commentFile :res];
         }else{
             [self.textTip setStringValue:@"视频信息读取失败"];
             parsing = false;
@@ -290,6 +266,53 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     
 }
 
+- (void)PlayVideo:(NSString*) commentFile :(NSString*)res{
+    // Start Playing Video
+    mpv = mpv_create();
+    if (!mpv) {
+        NSLog(@"Failed creating context");
+        exit(1);
+    }
+    
+    [self.textTip setStringValue:@"正在载入视频"];
+    
+    int64_t wid = (intptr_t) self->wrapper;
+    check_error(mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid));
+    
+    // Maybe set some options here, like default key bindings.
+    // NOTE: Interaction with the window seems to be broken for now.
+    check_error(mpv_set_option_string(mpv, "input-default-bindings", "yes"));
+    check_error(mpv_set_option_string(mpv, "input-vo-keyboard", "yes"));
+    check_error(mpv_set_option_string(mpv, "input-media-keys", "yes"));
+    check_error(mpv_set_option_string(mpv, "input-cursor", "yes"));
+    
+    check_error(mpv_set_option_string(mpv, "osc", "yes"));
+    check_error(mpv_set_option_string(mpv, "autofit", [res cStringUsingEncoding:NSUTF8StringEncoding]));
+    check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
+    
+    check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
+    check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
+    check_error(mpv_set_option_string(mpv, "vf", "lavfi=\"fps=fps=60:round=down\""));
+    
+    check_error(mpv_set_option_string(mpv, "sub-ass", "yes"));
+    check_error(mpv_set_option_string(mpv, "sub-file", [commentFile cStringUsingEncoding:NSUTF8StringEncoding]));
+    
+    // request important errors
+    check_error(mpv_request_log_messages(mpv, "warn"));
+    
+    check_error(mpv_initialize(mpv));
+    
+    // Register to be woken up whenever mpv generates new events.
+    mpv_set_wakeup_callback(mpv, wakeup, (__bridge void *) self);
+    
+    // Load the indicated file
+    if(!isTesting){
+        NSLog(@"Video url : %@",vUrl);
+    }
+    const char *cmd[] = {"loadfile", [vUrl cStringUsingEncoding:NSUTF8StringEncoding], NULL};
+    check_error(mpv_command(mpv, cmd));
+}
+
 - (NSDictionary *) getVideoInfo:(NSString *)url{
     
     NSPipe *pipe = [NSPipe pipe];
@@ -297,7 +320,12 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     
     NSTask *task = [[NSTask alloc] init];
     task.launchPath = [[NSBundle mainBundle] pathForResource:@"ffprobe" ofType:@""];
-    task.arguments = @[@"-print_format",@"json",@"-loglevel",@"repeat+error",@"-icy",@"0",@"-select_streams",@"v",@"-show_streams",@"-user-agent",@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0",@"-timeout",@"3",@"--",url];
+    if([vCID isEqualToString:@"LOCALVIDEO"]){
+        task.arguments = @[@"-print_format",@"json",@"-loglevel",@"repeat+error",@"-select_streams",@"v",@"-show_streams",@"--",url];
+    }else{
+        task.arguments = @[@"-print_format",@"json",@"-loglevel",@"repeat+error",@"-icy",@"0",@"-select_streams",@"v",@"-show_streams",@"-user-agent",@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0",@"-timeout",@"3",@"--",url];
+    }
+
     task.standardOutput = pipe;
     
     [task launch];
@@ -311,18 +339,33 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
 }
 
 - (NSString *) getComments:(NSNumber *)width :(NSNumber *)height {
-    
+
     NSString *resolution = [NSString stringWithFormat:@"%@x%@",width,height];
     NSLog(@"Video resolution: %@",resolution);
     [self.textTip setStringValue:@"正在读取弹幕"];
     
+    
+    BOOL LC = [vCID isEqualToString:@"LOCALVIDEO"];
+    
     NSString *stringURL = [NSString stringWithFormat:@"http://comment.bilibili.com/%@.xml",vCID];
+    if(LC){
+        stringURL = cmFile;
+    }
+    
     NSLog(@"Getting Comments from %@",stringURL);
+    
     NSURL  *url = [NSURL URLWithString:stringURL];
     NSData *urlData = [NSData dataWithContentsOfURL:url];
-    if ( urlData )
+    
+    if (urlData or LC)
     {
         NSString  *filePath = [NSString stringWithFormat:@"%@/%@.cminfo.xml", @"/tmp",vCID];
+        
+        if(LC){
+            NSString *correctString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
+            urlData = [correctString dataUsingEncoding:NSUTF8StringEncoding];
+        }
+        
         [urlData writeToFile:filePath atomically:YES];
         
         NSPipe *pipe = [NSPipe pipe];
