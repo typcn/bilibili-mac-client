@@ -15,6 +15,8 @@
 		FD076C6D1AC8CBBB00C893FA /* bilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */; };
 		FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
+		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
+		FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */; };
 		FD5101791ACC1A6800C49430 /* libass.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5101621ACC1A6800C49430 /* libass.5.dylib */; };
 		FD51017A1ACC1A6800C49430 /* libavcodec.56.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5101631ACC1A6800C49430 /* libavcodec.56.dylib */; };
 		FD51017B1ACC1A6800C49430 /* libavdevice.56.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5101641ACC1A6800C49430 /* libavdevice.56.dylib */; };
@@ -63,6 +65,7 @@
 		FD5101A91ACC1AF300C49430 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101781ACC1A6800C49430 /* libz.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD5101AA1ACC1B0A00C49430 /* ffprobe in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101911ACC1AB500C49430 /* ffprobe */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD51A85F1ACA7740007D8972 /* danmaku2ass.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD51A85D1ACA7736007D8972 /* danmaku2ass.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FD53BEC91ACF8E440004C366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */; };
 		FDAF8BA11ACA4ECC00C0C55D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; };
 		FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -163,6 +166,9 @@
 		FD471B4C1AC8FF3C00A2A727 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerView.mm; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		FD4D376A1ACEF3FE0022ABF3 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = loading.gif; path = bilibili/img/loading.gif; sourceTree = "<group>"; };
+		FD4D376C1ACEFD7B0022ABF3 /* PostComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostComment.h; sourceTree = "<group>"; };
+		FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostComment.m; sourceTree = "<group>"; };
 		FD5101621ACC1A6800C49430 /* libass.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libass.5.dylib; path = bilibili/libs/libass.5.dylib; sourceTree = "<group>"; };
 		FD5101631ACC1A6800C49430 /* libavcodec.56.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavcodec.56.dylib; path = bilibili/libs/libavcodec.56.dylib; sourceTree = "<group>"; };
 		FD5101641ACC1A6800C49430 /* libavdevice.56.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavdevice.56.dylib; path = bilibili/libs/libavdevice.56.dylib; sourceTree = "<group>"; };
@@ -246,6 +252,7 @@
 		FD076C471AC8CBBB00C893FA = {
 			isa = PBXGroup;
 			children = (
+				FD4D37691ACEF3F20022ABF3 /* img */,
 				FDAF8B9F1ACA4D9900C0C55D /* sparkle */,
 				FD471FD21AC931F800A2A727 /* ffprobe */,
 				FD471FD11AC92D7C00A2A727 /* frameworks */,
@@ -283,6 +290,8 @@
 				FDAF8BA81ACA5A3100C0C55D /* AboutView.h */,
 				FDAF8BA91ACA5A3100C0C55D /* AboutView.m */,
 				FD51A8601ACA8464007D8972 /* APIKey.h */,
+				FD4D376C1ACEFD7B0022ABF3 /* PostComment.h */,
+				FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */,
 			);
 			path = bilibili;
 			sourceTree = "<group>";
@@ -386,6 +395,14 @@
 			name = ffprobe;
 			sourceTree = "<group>";
 		};
+		FD4D37691ACEF3F20022ABF3 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				FD4D376A1ACEF3FE0022ABF3 /* loading.gif */,
+			);
+			name = img;
+			sourceTree = "<group>";
+		};
 		FDAF8B9F1ACA4D9900C0C55D /* sparkle */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,6 +498,7 @@
 			files = (
 				FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */,
 				FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */,
+				FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */,
 				FD076C611AC8CBBB00C893FA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,6 +507,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD53BEC91ACF8E440004C366 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,7 +525,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -r ${SRCROOT}/bilibili/fontconfig ${CONFIGURATION_BUILD_DIR}/Bilibili.app/Contents/Resources/";
+			shellScript = "cp -r \"${SRCROOT}/bilibili/fontconfig\" \"${CONFIGURATION_BUILD_DIR}/Bilibili.app/Contents/Resources/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -518,6 +537,7 @@
 				FD076C5C1AC8CBBB00C893FA /* ViewController.m in Sources */,
 				FD076C591AC8CBBB00C893FA /* main.m in Sources */,
 				FD076C571AC8CBBB00C893FA /* AppDelegate.m in Sources */,
+				FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */,
 				FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */,
 				FDAF8BAA1ACA5A3100C0C55D /* AboutView.m in Sources */,
 				FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */,
@@ -589,10 +609,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx10.10;
 				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
@@ -627,10 +647,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx10.10;
 				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Release;
@@ -652,9 +672,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/bilibili/libs",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "-Wl,-rpath,@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -675,9 +696,10 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/bilibili/libs",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				OTHER_LDFLAGS = "-Wl,-rpath,@loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.9;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -697,7 +719,7 @@
 				INFOPLIST_FILE = bilibiliTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bilibili.app/Contents/MacOS/bilibili";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bilibili.app/Contents/MacOS/Bilibili";
 			};
 			name = Debug;
 		};
@@ -713,7 +735,7 @@
 				INFOPLIST_FILE = bilibiliTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bilibili.app/Contents/MacOS/bilibili";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bilibili.app/Contents/MacOS/Bilibili";
 			};
 			name = Release;
 		};

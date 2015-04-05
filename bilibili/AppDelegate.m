@@ -25,4 +25,16 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/typcn/bilibili-mac-client/issues"]];
 }
 
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
+{
+    if (flag) {
+        return NO;
+    }
+    else
+    {
+        NSApplicationMain(0,NULL);
+        return YES;
+    }
+}
+
 @end

@@ -8,8 +8,16 @@
 
 #import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
+#import "PlayerView.h"
 
-@interface bilibiliTests : XCTestCase
+extern NSString *vCID;
+extern NSString *vUrl;
+extern BOOL isTesting;
+extern BOOL isPlaying;
+
+@interface bilibiliTests : XCTestCase{
+    PlayerView *pv;
+}
 
 @end
 
@@ -17,7 +25,7 @@
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    isTesting = true;
 }
 
 - (void)tearDown {
@@ -25,15 +33,26 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
-}
+- (void)testVideoPlayback {
+    XCTestExpectation *videoPlayExpectation = [self expectationWithDescription:@"Video Playing"];
+    
+    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil]; // get a reference to the storyboard
+    NSWindowController *myController = [storyBoard instantiateControllerWithIdentifier:@"MainWindowController"]; // instantiate your window controller
+    [myController showWindow:self]; // show the window
+    [[NSRunningApplication currentApplication] hide];
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        while(!isPlaying){
+            [[NSRunningApplication currentApplication] hide];
+            sleep(0.3);
+        }
+        
+        NSLog(@"Will exit");
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+        [videoPlayExpectation fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:30 handler:^(NSError *error) {
+        
     }];
 }
 
