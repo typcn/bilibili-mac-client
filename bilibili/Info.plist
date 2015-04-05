@@ -36,5 +36,16 @@
 	<string>http://app.eqoe.cn/updates/bilimac.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.bilibili.url</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>bl</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
