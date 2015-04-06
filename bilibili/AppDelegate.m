@@ -50,7 +50,6 @@
     NSString* url = [[event paramDescriptorForKeyword:keyDirectObject]
                       stringValue];
     url = [url substringFromIndex:5];
-    NSLog(@"URL:%@",url);
     [[NSNotificationCenter defaultCenter] postNotificationName:@"AVNumberUpdate" object:url];
 }
 
