@@ -392,11 +392,44 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         [file readDataToEndOfFile];
         [file closeFile];
         NSLog(@"Comment converted to %@",OutFile);
+        
+        [self applyRegexCommentFilter:OutFile];
+        
         return OutFile;
     }else{
         return @"";
     }
 }
+
+- (void) applyRegexCommentFilter:(NSString *)filename
+{
+    [self.textTip setStringValue:@"正在应用屏蔽规则"];
+    
+    NSString *blocks = [[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"];
+    
+    if(![blocks length]){
+        return;
+    }
+    
+    NSString *blockRegex = [NSString stringWithFormat:@"Dialogue.*\\}.*[%@].*",blocks];
+    
+    NSError *error = nil;
+    NSString *str = [[NSString alloc] initWithContentsOfFile:filename encoding:NSUTF8StringEncoding error:nil];
+    
+    if(error){
+        return;
+    }
+    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:blockRegex options:NSRegularExpressionCaseInsensitive error:&error];
+    
+    if(error){
+        return;
+    }
+    
+    NSString *modifiedString = [regex stringByReplacingMatchesInString:str options:0 range:NSMakeRange(0, [str length]) withTemplate:@""];
+    [modifiedString writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:nil];
+}
+
 - (void) handleEvent:(mpv_event *)event
 {
     switch (event->event_id) {
