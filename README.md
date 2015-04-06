@@ -4,8 +4,6 @@ An unofficial bilibili client for mac
 
 [![Build Status](https://jenkins.tgod.co/job/Bilibili-for-mac/badge/icon)](http://jenkins.eqoe.cn/job/Bilibili-for-mac/)
 
-[![Coverage Status](https://coveralls.io/repos/typcn/bilibili-mac-client/badge.svg)](https://coveralls.io/r/typcn/bilibili-mac-client)
-
 # Why
 
 众所周知的原因，Flash 不支持硬解，Macbook 热的烤鸡蛋！
@@ -46,7 +44,7 @@ A: 在视频播放界面按回车出现发送框，再次按回车隐藏
 
 Q: 如何通过浏览器书签在客户端播放视频？
 
-A: 随便收藏一个页面，然后点击“编辑”，名称随意 ， URL 输入 ````javascript:window.location='bl://'+window.location ```` 保存之后，在任何一个视频页面点击该书签，客户端将自动打开并播放
+A: 随便收藏一个页面，然后点击“编辑”，名称随意 ， URL 输入 ````javascript:window.location='bl://'+window.location.hostname+window.location.pathname ```` 保存之后，在任何一个视频页面点击该书签，客户端将自动打开并播放
 
 Q: 程序为何会连接 app.eqoe.cn
 
