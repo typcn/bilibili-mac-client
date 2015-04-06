@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
 #import "PlayerView.h"
+#import "CommentFilter.h"
 
 extern NSString *vCID;
 extern NSString *vUrl;
@@ -55,5 +56,6 @@ extern BOOL isPlaying;
         
     }];
 }
+
 
 @end

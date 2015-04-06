@@ -19,6 +19,7 @@
 		FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
 		FD476C6A1AD2086900584EFE /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD476C691AD2086900584EFE /* Settings.m */; };
+		FD476C731AD22B1F00584EFE /* CommentFilter.c in Sources */ = {isa = PBXBuildFile; fileRef = FD476C711AD22B1F00584EFE /* CommentFilter.c */; };
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
 		FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */; };
 		FD5101791ACC1A6800C49430 /* libass.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5101621ACC1A6800C49430 /* libass.5.dylib */; };
@@ -69,6 +70,8 @@
 		FD5101A91ACC1AF300C49430 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101781ACC1A6800C49430 /* libz.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD51A85F1ACA7740007D8972 /* danmaku2ass.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD51A85D1ACA7736007D8972 /* danmaku2ass.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FD53BEC91ACF8E440004C366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
+		FD8CEDEF1AD2499B0092452F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */; };
+		FD8CEDF21AD24A290092452F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8CEDF11AD24A290092452F /* KeywordBlockSettings.m */; };
 		FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */; };
 		FDAF8BA11ACA4ECC00C0C55D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; };
 		FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -166,6 +169,8 @@
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FD476C681AD2086900584EFE /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		FD476C691AD2086900584EFE /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		FD476C711AD22B1F00584EFE /* CommentFilter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommentFilter.c; sourceTree = "<group>"; };
+		FD476C721AD22B1F00584EFE /* CommentFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentFilter.h; sourceTree = "<group>"; };
 		FD4D376A1ACEF3FE0022ABF3 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = loading.gif; path = bilibili/img/loading.gif; sourceTree = "<group>"; };
 		FD4D376C1ACEFD7B0022ABF3 /* PostComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostComment.h; sourceTree = "<group>"; };
 		FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostComment.m; sourceTree = "<group>"; };
@@ -195,6 +200,10 @@
 		FD5101901ACC1A7600C49430 /* client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = client.h; path = bilibili/headers/client.h; sourceTree = "<group>"; };
 		FD51A85D1ACA7736007D8972 /* danmaku2ass.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = danmaku2ass.app; path = bilibili/danmaku2ass/danmaku2ass.app; sourceTree = "<group>"; };
 		FD51A8601ACA8464007D8972 /* APIKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
+		FD8CEDED1AD2499B0092452F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentBlockSettings.h; sourceTree = "<group>"; };
+		FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentBlockSettings.m; sourceTree = "<group>"; };
+		FD8CEDF01AD24A290092452F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeywordBlockSettings.h; sourceTree = "<group>"; };
+		FD8CEDF11AD24A290092452F /* KeywordBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeywordBlockSettings.m; sourceTree = "<group>"; };
 		FDAF8B9C1ACA4BFA00C0C55D /* ISSoundAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISSoundAdditions.h; sourceTree = "<group>"; };
 		FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSoundAdditions.m; sourceTree = "<group>"; };
 		FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = bilibili/sparkle/Sparkle.framework; sourceTree = "<group>"; };
@@ -276,26 +285,19 @@
 		FD076C521AC8CBBB00C893FA /* bilibili */ = {
 			isa = PBXGroup;
 			children = (
+				FD476C701AD22AEC00584EFE /* GUI */,
+				FD51A8601ACA8464007D8972 /* APIKey.h */,
+				FD476C6B1AD22A0D00584EFE /* Main View */,
+				FD476C6E1AD22A6D00584EFE /* Player View */,
+				FD8CEDEC1AD249540092452F /* Settings View */,
+				FD476C6C1AD22A2000584EFE /* Other Views */,
 				FD076C551AC8CBBB00C893FA /* AppDelegate.h */,
 				FD076C561AC8CBBB00C893FA /* AppDelegate.m */,
-				FD076C5A1AC8CBBB00C893FA /* ViewController.h */,
-				FD076C5B1AC8CBBB00C893FA /* ViewController.m */,
-				FD076C5D1AC8CBBB00C893FA /* Images.xcassets */,
-				FD076C5F1AC8CBBB00C893FA /* Main.storyboard */,
 				FD076C531AC8CBBB00C893FA /* Supporting Files */,
-				FD471B4C1AC8FF3C00A2A727 /* PlayerView.h */,
-				FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */,
 				FDAF8B9C1ACA4BFA00C0C55D /* ISSoundAdditions.h */,
 				FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */,
-				FDAF8BA81ACA5A3100C0C55D /* AboutView.h */,
-				FDAF8BA91ACA5A3100C0C55D /* AboutView.m */,
-				FD51A8601ACA8464007D8972 /* APIKey.h */,
-				FD4D376C1ACEFD7B0022ABF3 /* PostComment.h */,
-				FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */,
-				FD2BD5611AD11319001A7E16 /* playLocalFile.h */,
-				FD2BD5621AD11319001A7E16 /* playLocalFile.m */,
-				FD476C681AD2086900584EFE /* Settings.h */,
-				FD476C691AD2086900584EFE /* Settings.m */,
+				FD476C721AD22B1F00584EFE /* CommentFilter.h */,
+				FD476C711AD22B1F00584EFE /* CommentFilter.c */,
 			);
 			path = bilibili;
 			sourceTree = "<group>";
@@ -400,12 +402,65 @@
 			name = mediainfo;
 			sourceTree = "<group>";
 		};
+		FD476C6B1AD22A0D00584EFE /* Main View */ = {
+			isa = PBXGroup;
+			children = (
+				FD076C5A1AC8CBBB00C893FA /* ViewController.h */,
+				FD076C5B1AC8CBBB00C893FA /* ViewController.m */,
+			);
+			name = "Main View";
+			sourceTree = "<group>";
+		};
+		FD476C6C1AD22A2000584EFE /* Other Views */ = {
+			isa = PBXGroup;
+			children = (
+				FDAF8BA81ACA5A3100C0C55D /* AboutView.h */,
+				FDAF8BA91ACA5A3100C0C55D /* AboutView.m */,
+				FD2BD5611AD11319001A7E16 /* playLocalFile.h */,
+				FD2BD5621AD11319001A7E16 /* playLocalFile.m */,
+			);
+			name = "Other Views";
+			sourceTree = "<group>";
+		};
+		FD476C6E1AD22A6D00584EFE /* Player View */ = {
+			isa = PBXGroup;
+			children = (
+				FD471B4C1AC8FF3C00A2A727 /* PlayerView.h */,
+				FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */,
+				FD4D376C1ACEFD7B0022ABF3 /* PostComment.h */,
+				FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */,
+			);
+			name = "Player View";
+			sourceTree = "<group>";
+		};
+		FD476C701AD22AEC00584EFE /* GUI */ = {
+			isa = PBXGroup;
+			children = (
+				FD076C5D1AC8CBBB00C893FA /* Images.xcassets */,
+				FD076C5F1AC8CBBB00C893FA /* Main.storyboard */,
+			);
+			name = GUI;
+			sourceTree = "<group>";
+		};
 		FD4D37691ACEF3F20022ABF3 /* img */ = {
 			isa = PBXGroup;
 			children = (
 				FD4D376A1ACEF3FE0022ABF3 /* loading.gif */,
 			);
 			name = img;
+			sourceTree = "<group>";
+		};
+		FD8CEDEC1AD249540092452F /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				FD476C681AD2086900584EFE /* Settings.h */,
+				FD476C691AD2086900584EFE /* Settings.m */,
+				FD8CEDED1AD2499B0092452F /* CommentBlockSettings.h */,
+				FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */,
+				FD8CEDF01AD24A290092452F /* KeywordBlockSettings.h */,
+				FD8CEDF11AD24A290092452F /* KeywordBlockSettings.m */,
+			);
+			name = "Settings View";
 			sourceTree = "<group>";
 		};
 		FDAF8B9F1ACA4D9900C0C55D /* sparkle */ = {
@@ -540,6 +595,7 @@
 			files = (
 				FD076C5C1AC8CBBB00C893FA /* ViewController.m in Sources */,
 				FD076C591AC8CBBB00C893FA /* main.m in Sources */,
+				FD8CEDF21AD24A290092452F /* KeywordBlockSettings.m in Sources */,
 				FD476C6A1AD2086900584EFE /* Settings.m in Sources */,
 				FD076C571AC8CBBB00C893FA /* AppDelegate.m in Sources */,
 				FD2BD5631AD11319001A7E16 /* playLocalFile.m in Sources */,
@@ -547,6 +603,8 @@
 				FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */,
 				FDAF8BAA1ACA5A3100C0C55D /* AboutView.m in Sources */,
 				FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */,
+				FD8CEDEF1AD2499B0092452F /* CommentBlockSettings.m in Sources */,
+				FD476C731AD22B1F00584EFE /* CommentFilter.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
