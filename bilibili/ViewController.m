@@ -184,11 +184,9 @@ BOOL isTesting;
 
 - (void)AVNumberUpdated:(NSNotification *)notification {
     NSString *url = [notification object];
-    NSLog(@"URL---%@",url);
     if ([[url substringToIndex:6] isEqual: @"http//"]) { //somehow, 传入url的Colon会被移除 暂时没有找到相关的说明，这里统一去掉，在最后添加http://
         url = [url substringFromIndex:6];
     }
-    NSLog(@"%@",url);
     webView.mainFrameURL = [NSString stringWithFormat:@"http://%@", url];
 }
 
