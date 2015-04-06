@@ -135,21 +135,6 @@ static NSString* NSStringFromQueryParameters(NSDictionary* queryParameters)
     return [parts componentsJoinedByString: @"&"];
 }
 
-/**
- Creates a new URL by adding the given query parameters.
- @param URL The input URL.
- @param queryParameters The query parameter dictionary to add.
- @return A new NSURL.
- */
-static NSURL* NSURLByAppendingQueryParameters(NSURL* URL, NSDictionary* queryParameters)
-{
-    NSString* URLString = [NSString stringWithFormat:@"%@?%@",
-                           [URL absoluteString],
-                           NSStringFromQueryParameters(queryParameters)
-                           ];
-    return [NSURL URLWithString:URLString];
-}
-
 @end
 
 @interface PostCommentWindow : NSWindow <NSWindowDelegate>
