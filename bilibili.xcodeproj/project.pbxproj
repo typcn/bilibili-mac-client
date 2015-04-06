@@ -18,6 +18,7 @@
 		FD2BD56F1AD15AF9001A7E16 /* libmediainfo.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
+		FD476C6A1AD2086900584EFE /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD476C691AD2086900584EFE /* Settings.m */; };
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
 		FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */; };
 		FD5101791ACC1A6800C49430 /* libass.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5101621ACC1A6800C49430 /* libass.5.dylib */; };
@@ -163,6 +164,8 @@
 		FD471B4C1AC8FF3C00A2A727 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerView.mm; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		FD476C681AD2086900584EFE /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		FD476C691AD2086900584EFE /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		FD4D376A1ACEF3FE0022ABF3 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = loading.gif; path = bilibili/img/loading.gif; sourceTree = "<group>"; };
 		FD4D376C1ACEFD7B0022ABF3 /* PostComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostComment.h; sourceTree = "<group>"; };
 		FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostComment.m; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 				FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */,
 				FD2BD5611AD11319001A7E16 /* playLocalFile.h */,
 				FD2BD5621AD11319001A7E16 /* playLocalFile.m */,
+				FD476C681AD2086900584EFE /* Settings.h */,
+				FD476C691AD2086900584EFE /* Settings.m */,
 			);
 			path = bilibili;
 			sourceTree = "<group>";
@@ -535,6 +540,7 @@
 			files = (
 				FD076C5C1AC8CBBB00C893FA /* ViewController.m in Sources */,
 				FD076C591AC8CBBB00C893FA /* main.m in Sources */,
+				FD476C6A1AD2086900584EFE /* Settings.m in Sources */,
 				FD076C571AC8CBBB00C893FA /* AppDelegate.m in Sources */,
 				FD2BD5631AD11319001A7E16 /* playLocalFile.m in Sources */,
 				FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */,

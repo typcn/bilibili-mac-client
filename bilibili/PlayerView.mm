@@ -138,8 +138,9 @@ static void wakeup(void *context) {
         [self.textTip setStringValue:@"正在解析视频地址"];
         
         // Get Sign
-        
-        NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=4%@",APIKey,vCID,APISecret];
+        int quality = [self getSettings:@"quality"];
+
+        NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=%d%@",APIKey,vCID,quality,APISecret];
         NSString *sign = [self md5:[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         // Parse Video URL
@@ -166,7 +167,7 @@ static void wakeup(void *context) {
         
         // Get Playback URL
         
-        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=4&sign=%@",APIKey,vCID,sign]];
+        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=%d&sign=%@",APIKey,vCID,quality,sign]];
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"GET";
         request.timeoutInterval = 5;
@@ -185,7 +186,7 @@ static void wakeup(void *context) {
         NSArray *dUrls = [videoResult objectForKey:@"durl"];
 
         if([dUrls count] == 0){
-            [self.textTip setStringValue:@"视频无法解析，切换中"];
+            [self.textTip setStringValue:@"视频无法解析"];
             return;
         }
         
@@ -375,10 +376,16 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         
         NSString *marquee = [NSString stringWithFormat:@"-dm=%f",mq];
         
+        resolution = [NSString stringWithFormat:@"-s=%@",resolution];
+        
+        NSString *alphaParam = [NSString stringWithFormat:@"-a=%.2f",[self getSettings:@"transparency"]];
+        
+        NSLog(@"Comment transparency: %.2f",[self getSettings:@"transparency"]);
+        
         NSFileHandle *file = pipe.fileHandleForReading;
         NSTask *task = [[NSTask alloc] init];
         task.launchPath = [[NSBundle mainBundle] pathForResource:@"danmaku2ass/danmaku2ass.app/Contents/MacOS/danmaku2ass" ofType:@""];
-        task.arguments = @[@"-s",resolution,@"-o",OutFile,fontSize,marquee,filePath];
+        task.arguments = @[resolution,alphaParam,fontSize,marquee,filePath];
         task.standardOutput = pipe;
         
         [task launch];
@@ -461,6 +468,38 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             [self handleEvent:event];
         }
     });
+}
+
+- (float) getSettings:(NSString *) key
+{
+    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+    if([key isEqualToString:@"quality"]){
+        
+        NSString *quality = [settingsController objectForKey:@"quality"];
+        if([quality isEqualToString:@"高清"]){
+            return 3;
+        }else if ([quality isEqualToString:@"标清"]){
+            return 2;
+        }else if([quality isEqualToString:@"低清"]){
+            return 1;
+        }else{
+            return 4;
+        }
+    }else if ([key isEqualToString:@"transparency"]){
+        float result = [settingsController floatForKey:key];
+        if(!result){
+            return 0.8;
+        }else{
+            return result;
+        }
+    }else{
+        float result = [settingsController floatForKey:key];
+        if(!result){
+            return 0;
+        }else{
+            return result;
+        }
+    }
 }
 
 @end
