@@ -184,10 +184,12 @@ BOOL isTesting;
 
 - (void)AVNumberUpdated:(NSNotification *)notification {
     NSString *url = [notification object];
-    if (![[url substringToIndex:7] isEqual: @"http://"]) {
-        url = [NSString stringWithFormat:@"http://%@", url]; //如果用户在Safari中手动加入bl://则需要添加http://
+    NSLog(@"URL---%@",url);
+    if ([[url substringToIndex:6] isEqual: @"http//"]) { //somehow, 传入url的Colon会被移除 暂时没有找到相关的说明，这里统一去掉，在最后添加http://
+        url = [url substringFromIndex:6];
     }
-    webView.mainFrameURL = url;
+    NSLog(@"%@",url);
+    webView.mainFrameURL = [NSString stringWithFormat:@"http://%@", url];
 }
 
 @end
