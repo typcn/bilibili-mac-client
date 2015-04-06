@@ -11,6 +11,7 @@
 #import "ISSoundAdditions.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "APIKey.h"
+#import "MediaInfoDLL.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -314,27 +315,17 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
 }
 
 - (NSDictionary *) getVideoInfo:(NSString *)url{
-    
-    NSPipe *pipe = [NSPipe pipe];
-    NSFileHandle *file = pipe.fileHandleForReading;
-    
-    NSTask *task = [[NSTask alloc] init];
-    task.launchPath = [[NSBundle mainBundle] pathForResource:@"ffprobe" ofType:@""];
-    if([vCID isEqualToString:@"LOCALVIDEO"]){
-        task.arguments = @[@"-print_format",@"json",@"-loglevel",@"repeat+error",@"-select_streams",@"v",@"-show_streams",@"--",url];
-    }else{
-        task.arguments = @[@"-print_format",@"json",@"-loglevel",@"repeat+error",@"-icy",@"0",@"-select_streams",@"v",@"-show_streams",@"-user-agent",@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0",@"-timeout",@"3",@"--",url];
-    }
 
-    task.standardOutput = pipe;
-    
-    [task launch];
-    
-    NSData *data = [file readDataToEndOfFile];
-    [file closeFile];
-    NSMutableDictionary *d = [NSJSONSerialization JSONObjectWithData:data options:NSJSONWritingPrettyPrinted error:nil];
-    
-    NSDictionary *info = [[d objectForKey:@"streams"] objectAtIndex:0];
+    MediaInfoDLL::MediaInfo MI;
+    MI.Open([url cStringUsingEncoding:NSUTF8StringEncoding]);
+    MI.Option(__T("Inform"), __T("Video;%Width%"));
+    NSString *width = [NSString stringWithCString:MI.Inform().c_str() encoding:NSUTF8StringEncoding];
+    MI.Option(__T("Inform"), __T("Video;%Height%"));
+    NSString *height = [NSString stringWithCString:MI.Inform().c_str() encoding:NSUTF8StringEncoding];
+    NSDictionary *info = @{
+                           @"width": width,
+                           @"height": height,
+                           };
     return info;
 }
 
