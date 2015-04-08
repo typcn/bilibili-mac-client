@@ -13,6 +13,7 @@
 #import "APIKey.h"
 #import "MediaInfoDLL.h"
 
+#include "danmaku2ass_native/danmaku2ass.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <sstream>
@@ -360,11 +361,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         
         [urlData writeToFile:filePath atomically:YES];
         
-        NSPipe *pipe = [NSPipe pipe];
-        
         NSString *OutFile = [NSString stringWithFormat:@"%@/%@.cminfo.ass", @"/tmp",vCID];
-        
-        NSString *fontSize = [NSString stringWithFormat:@"-fs=%f",(int)[height intValue]/25.1];
         
         float mq = 6.75*[width doubleValue]/[height doubleValue]-4;
         if(mq < 3.0){
@@ -374,23 +371,13 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             mq = 8.0;
         }
         
-        NSString *marquee = [NSString stringWithFormat:@"-dm=%f",mq];
+        danmaku2ass([filePath cStringUsingEncoding:NSUTF8StringEncoding],
+                    [OutFile cStringUsingEncoding:NSUTF8StringEncoding],
+                    [width intValue],[height intValue],
+                    "Heiti SC",(int)[height intValue]/25.1,
+                    [[NSString stringWithFormat:@"%.2f",[self getSettings:@"transparency"]] floatValue],
+                    mq,5);
         
-        resolution = [NSString stringWithFormat:@"-s=%@",resolution];
-        
-        NSString *alphaParam = [NSString stringWithFormat:@"-a=%.2f",[self getSettings:@"transparency"]];
-        
-        NSLog(@"Comment transparency: %.2f",[self getSettings:@"transparency"]);
-        
-        NSFileHandle *file = pipe.fileHandleForReading;
-        NSTask *task = [[NSTask alloc] init];
-        task.launchPath = [[NSBundle mainBundle] pathForResource:@"danmaku2ass/danmaku2ass.app/Contents/MacOS/danmaku2ass" ofType:@""];
-        task.arguments = @[resolution,alphaParam,fontSize,marquee,filePath];
-        task.standardOutput = pipe;
-        
-        [task launch];
-        [file readDataToEndOfFile];
-        [file closeFile];
         NSLog(@"Comment converted to %@",OutFile);
         
         [self applyRegexCommentFilter:OutFile];

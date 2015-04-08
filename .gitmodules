@@ -1,0 +1,3 @@
+[submodule "bilibili/danmaku2ass_native"]
+	path = bilibili/danmaku2ass_native
+	url = https://github.com/typcn/danmaku2ass_native.git

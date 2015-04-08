@@ -68,7 +68,6 @@
 		FD5101A71ACC1AF300C49430 /* libvo-aacenc.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101761ACC1A6800C49430 /* libvo-aacenc.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD5101A81ACC1AF300C49430 /* libx264.142.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101771ACC1A6800C49430 /* libx264.142.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD5101A91ACC1AF300C49430 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101781ACC1A6800C49430 /* libz.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		FD51A85F1ACA7740007D8972 /* danmaku2ass.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD51A85D1ACA7736007D8972 /* danmaku2ass.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FD53BEC91ACF8E440004C366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FD8CEDEF1AD2499B0092452F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */; };
 		FD8CEDF21AD24A290092452F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8CEDF11AD24A290092452F /* KeywordBlockSettings.m */; };
@@ -78,6 +77,8 @@
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDAF8BAA1ACA5A3100C0C55D /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAF8BA91ACA5A3100C0C55D /* AboutView.m */; };
 		FDD5EEF71AC944020036B829 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD5EEF61AC944020036B829 /* WebKit.framework */; };
+		FDFC8AB81AD5745B000AFDB2 /* AssClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDFC8AAF1AD5745B000AFDB2 /* AssClass.cpp */; };
+		FDFC8AB91AD5745B000AFDB2 /* danmaku2ass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDFC8AB11AD5745B000AFDB2 /* danmaku2ass.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,16 +122,6 @@
 				FD5101A71ACC1AF300C49430 /* libvo-aacenc.0.dylib in CopyFiles */,
 				FD5101A81ACC1AF300C49430 /* libx264.142.dylib in CopyFiles */,
 				FD5101A91ACC1AF300C49430 /* libz.1.dylib in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FD471F8B1AC92D1B00A2A727 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = danmaku2ass;
-			dstSubfolderSpec = 7;
-			files = (
-				FD51A85F1ACA7740007D8972 /* danmaku2ass.app in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +189,6 @@
 		FD5101771ACC1A6800C49430 /* libx264.142.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libx264.142.dylib; path = bilibili/libs/libx264.142.dylib; sourceTree = "<group>"; };
 		FD5101781ACC1A6800C49430 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = bilibili/libs/libz.1.dylib; sourceTree = "<group>"; };
 		FD5101901ACC1A7600C49430 /* client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = client.h; path = bilibili/headers/client.h; sourceTree = "<group>"; };
-		FD51A85D1ACA7736007D8972 /* danmaku2ass.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = danmaku2ass.app; path = bilibili/danmaku2ass/danmaku2ass.app; sourceTree = "<group>"; };
 		FD51A8601ACA8464007D8972 /* APIKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
 		FD8CEDED1AD2499B0092452F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentBlockSettings.h; sourceTree = "<group>"; };
 		FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentBlockSettings.m; sourceTree = "<group>"; };
@@ -211,6 +201,14 @@
 		FDAF8BA81ACA5A3100C0C55D /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutView.h; sourceTree = "<group>"; };
 		FDAF8BA91ACA5A3100C0C55D /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutView.m; sourceTree = "<group>"; };
 		FDD5EEF61AC944020036B829 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		FDFC8AAF1AD5745B000AFDB2 /* AssClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AssClass.cpp; path = bilibili/danmaku2ass_native/AssClass.cpp; sourceTree = "<group>"; };
+		FDFC8AB01AD5745B000AFDB2 /* AssClass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AssClass.hpp; path = bilibili/danmaku2ass_native/AssClass.hpp; sourceTree = "<group>"; };
+		FDFC8AB11AD5745B000AFDB2 /* danmaku2ass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = danmaku2ass.cpp; path = bilibili/danmaku2ass_native/danmaku2ass.cpp; sourceTree = "<group>"; };
+		FDFC8AB21AD5745B000AFDB2 /* danmaku2ass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = danmaku2ass.h; path = bilibili/danmaku2ass_native/danmaku2ass.h; sourceTree = "<group>"; };
+		FDFC8AB41AD5745B000AFDB2 /* rapidxml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml.hpp; sourceTree = "<group>"; };
+		FDFC8AB51AD5745B000AFDB2 /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_iterators.hpp; sourceTree = "<group>"; };
+		FDFC8AB61AD5745B000AFDB2 /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
+		FDFC8AB71AD5745B000AFDB2 /* rapidxml_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,7 +377,11 @@
 		FD471FD01AC92D6D00A2A727 /* danmaku2ass */ = {
 			isa = PBXGroup;
 			children = (
-				FD51A85D1ACA7736007D8972 /* danmaku2ass.app */,
+				FDFC8AAF1AD5745B000AFDB2 /* AssClass.cpp */,
+				FDFC8AB01AD5745B000AFDB2 /* AssClass.hpp */,
+				FDFC8AB11AD5745B000AFDB2 /* danmaku2ass.cpp */,
+				FDFC8AB21AD5745B000AFDB2 /* danmaku2ass.h */,
+				FDFC8AB31AD5745B000AFDB2 /* rapidxml */,
 			);
 			name = danmaku2ass;
 			sourceTree = "<group>";
@@ -471,6 +473,18 @@
 			name = sparkle;
 			sourceTree = "<group>";
 		};
+		FDFC8AB31AD5745B000AFDB2 /* rapidxml */ = {
+			isa = PBXGroup;
+			children = (
+				FDFC8AB41AD5745B000AFDB2 /* rapidxml.hpp */,
+				FDFC8AB51AD5745B000AFDB2 /* rapidxml_iterators.hpp */,
+				FDFC8AB61AD5745B000AFDB2 /* rapidxml_print.hpp */,
+				FDFC8AB71AD5745B000AFDB2 /* rapidxml_utils.hpp */,
+			);
+			name = rapidxml;
+			path = bilibili/danmaku2ass_native/rapidxml;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -482,7 +496,6 @@
 				FD076C4D1AC8CBBB00C893FA /* Frameworks */,
 				FDAF8BA21ACA4EF100C0C55D /* Copy Files */,
 				FD471F731AC911CD00A2A727 /* CopyFiles */,
-				FD471F8B1AC92D1B00A2A727 /* CopyFiles */,
 				FD076C4E1AC8CBBB00C893FA /* Resources */,
 				FD5101611ACBAE5800C49430 /* ShellScript */,
 			);
@@ -599,7 +612,9 @@
 				FD476C6A1AD2086900584EFE /* Settings.m in Sources */,
 				FD076C571AC8CBBB00C893FA /* AppDelegate.m in Sources */,
 				FD2BD5631AD11319001A7E16 /* playLocalFile.m in Sources */,
+				FDFC8AB91AD5745B000AFDB2 /* danmaku2ass.cpp in Sources */,
 				FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */,
+				FDFC8AB81AD5745B000AFDB2 /* AssClass.cpp in Sources */,
 				FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */,
 				FDAF8BAA1ACA5A3100C0C55D /* AboutView.m in Sources */,
 				FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */,
