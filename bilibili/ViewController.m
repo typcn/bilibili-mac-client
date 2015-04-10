@@ -54,12 +54,20 @@ BOOL isTesting;
 {
     if(sel == @selector(checkForUpdates))
         return @"checkForUpdates";
+    if(sel == @selector(showPlayGUI))
+        return @"showPlayGUI";
+    if(sel == @selector(playVideoByCID:))
+        return @"playVideoByCID";
     return nil;
 }
 
 + (BOOL)isSelectorExcludedFromWebScript:(SEL)sel
 {
     if(sel == @selector(checkForUpdates))//JS对应的本地函数
+        return NO;
+    if(sel == @selector(showPlayGUI))//JS对应的本地函数
+        return NO;
+    if(sel == @selector(playVideoByCID:))//JS对应的本地函数
         return NO;
     return YES; //返回 YES 表示函数被排除，不会在网页上注册
 }
@@ -69,14 +77,61 @@ BOOL isTesting;
     [[SUUpdater sharedUpdater] checkForUpdates:nil];
 }
 
+- (void)showPlayGUI
+{
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$('#bofqi').html('%@');$('head').append('<style>%@</style>');",WebUI,WebCSS]];
+}
+
+- (void)playVideoByCID:(NSString *)cid
+{
+    if(parsing){
+        return;
+    }
+    parsing = true;
+    vCID = cid;
+    vUrl = webView.mainFrameURL;
+    NSLog(@"Video detected ! CID: %@",vCID);
+    [self.switchButton performClick:nil];
+}
+
 - (void)awakeFromNib //当 WebContoller 加载完成后执行的动作
 {
+    NSError *err;
+    
     [webView setFrameLoadDelegate:self];
     [webView setUIDelegate:self];
-    [webView setFrameLoadDelegate:self];
+    [webView setResourceLoadDelegate:self];
+    [webView setPolicyDelegate:self];
+    
     NSLog(@"Start");
     webView.mainFrameURL = @"http://www.bilibili.com";
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AVNumberUpdated:) name:@"AVNumberUpdate" object:nil];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"webpage/inject" ofType:@"js"];
+    WebScript = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    if(err){
+        [self showError];
+    }
+    
+    path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"html"];
+    WebUI = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    if(err){
+        [self showError];
+    }
+    
+    path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"css"];
+    WebCSS = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    if(err){
+        [self showError];
+    }
+}
+
+- (void)showError
+{
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"文件读取失败，您可能无法正常使用本软件，请向开发者反馈。"];
+    [alert runModal];
 }
 
 - (WebView *)webView:(WebView *)sender createWebViewWithRequest:(NSURLRequest *)request
@@ -85,8 +140,19 @@ BOOL isTesting;
 }
 
 - (void)webView:(WebView *)sender decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id<WebPolicyDecisionListener>)listener {
-    
-    webView.mainFrameURL = [actionInformation objectForKey:WebActionOriginalURLKey];
+    /*
+        由于中国地区屏蔽了 Google 服务器
+        Google 广告在某些情况下会加载 google.com/drt/ui 撞墙，页面会无法加载完成
+        didFinishLoadForFrame 不会被继续调用，只好屏蔽掉
+     
+        Google is block by china , load google resources may cause "didFinishLoadForFrame" not being called.
+     */
+    NSString *host = [[request URL] host];
+    if ([host containsString:@"google"])
+        [listener ignore];
+    else
+        [listener use];
+    //webView.mainFrameURL = [actionInformation objectForKey:WebActionOriginalURLKey];
 }
 
 - (void)webView:(WebView *)webView decidePolicyForMIMEType:(NSString *)type request:(NSURLRequest *)request frame:(WebFrame *)frame
@@ -106,10 +172,6 @@ BOOL isTesting;
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
-    if(parsing){
-        return;
-    }
-    
     if(isTesting){
         if([webView.mainFrameURL isEqualToString:@"http://www.bilibili.com/ranking"]){
             [webView stringByEvaluatingJavaScriptFromString:@"window.location=$('#rank_list li:first-child .content > a').attr('href')"];
@@ -117,57 +179,8 @@ BOOL isTesting;
             webView.mainFrameURL = @"http://www.bilibili.com/ranking";
         }
     }
-    
-    parsing = true;
-    
-    [webView stringByEvaluatingJavaScriptFromString:@"$(\".i-link[href='http://app.bilibili.com']\").html('检查更新').attr('href','javascript:window.external.checkForUpdates()');"];
-    
-    NSString *isLogged = [webView stringByEvaluatingJavaScriptFromString:@"$('.i_face').attr('src')"];
-    
-    if([isLogged length] < 5){
-        [webView stringByEvaluatingJavaScriptFromString:@"$('.login').css('width',200).children('a').html('点击登陆客户端以便发送弹幕');"];
-    }
-    
-    NSString *flashvars =  [webView stringByEvaluatingJavaScriptFromString:@"               \
-                            $('object').attr('type','application/x-typcn-flashblock');      \
-                                                                                            \
-                            setTimeout(function(){                                          \
-                                $('#bofqi').html('<center>正在召唤本地播放器</center>')        \
-                            },3000);                                                        \
-                                                                                            \
-                            $('.close-btn-wrp').parent().remove();$('.float-pmt').remove(); \
-                            var fv = $(\"param[name='flashvars']\").val();                  \
-                            if(!fv){                                                        \
-                                fv=$('#bofqi iframe').attr('src');                          \
-                            }                                                               \
-                            if(!fv){                                                        \
-                                fv=$('embed').attr('flashvars');                            \
-                            }                                                               \
-                            fv                                                              \
-                            "];
-
+    [webView stringByEvaluatingJavaScriptFromString:WebScript];
     userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-
-    
-
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"cid=(\\d+)&" options:NSRegularExpressionCaseInsensitive error:nil];
-
-    NSTextCheckingResult *match = [regex firstMatchInString:flashvars options:0 range:NSMakeRange(0, [flashvars length])];
-    
-    NSRange cidrange = [match rangeAtIndex:1];
-    
-    if(cidrange.length > 0){
-        NSString *CID = [flashvars substringWithRange:cidrange];
-        vCID = CID;
-        vUrl = webView.mainFrameURL;
-        NSLog(@"Video detected ! CID: %@",CID);
-        [self.switchButton performClick:nil];
-        
-    }else{
-        NSLog(@"Not video url. flashvar: %@",flashvars);
-        parsing = false;
-    }
-
 }
 - (IBAction)openAv:(id)sender {
     NSString *avNumber = [sender stringValue];

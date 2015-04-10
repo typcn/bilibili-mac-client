@@ -586,9 +586,12 @@ BOOL paused = NO;
 }
 
 - (BOOL)windowShouldClose:(id)sender{
+    
     isCancelled = true;
-    [self mpv_stop];
-    [self mpv_quit];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self mpv_stop];
+        [self mpv_quit];
+    });
     parsing = false;
     return YES;
 }
