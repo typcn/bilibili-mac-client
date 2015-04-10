@@ -19,6 +19,9 @@
 @interface WebController : NSObject
 {
     IBOutlet WebView* webView;
+    NSString* WebScript;
+    NSString* WebUI;
+    NSString* WebCSS;
 }
 @property (weak) IBOutlet NSButton *switchButton;
 @end

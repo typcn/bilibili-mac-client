@@ -69,6 +69,12 @@
 		FD5101A81ACC1AF300C49430 /* libx264.142.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101771ACC1A6800C49430 /* libx264.142.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD5101A91ACC1AF300C49430 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101781ACC1A6800C49430 /* libz.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD53BEC91ACF8E440004C366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
+		FD61025C1AD7CBA20013119A /* inject.js in Resources */ = {isa = PBXBuildFile; fileRef = FD61025B1AD7CBA20013119A /* inject.js */; };
+		FD61025E1AD7CBC10013119A /* webui.html in Resources */ = {isa = PBXBuildFile; fileRef = FD61025D1AD7CBC10013119A /* webui.html */; };
+		FD6102611AD7CBF10013119A /* webui.css in Resources */ = {isa = PBXBuildFile; fileRef = FD6102601AD7CBF10013119A /* webui.css */; };
+		FD6102621AD7CC020013119A /* inject.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD61025B1AD7CBA20013119A /* inject.js */; };
+		FD6102631AD7CC020013119A /* webui.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD61025D1AD7CBC10013119A /* webui.html */; };
+		FD6102641AD7CC020013119A /* webui.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD6102601AD7CBF10013119A /* webui.css */; };
 		FD8CEDEF1AD2499B0092452F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */; };
 		FD8CEDF21AD24A290092452F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8CEDF11AD24A290092452F /* KeywordBlockSettings.m */; };
 		FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */; };
@@ -122,6 +128,18 @@
 				FD5101A71ACC1AF300C49430 /* libvo-aacenc.0.dylib in CopyFiles */,
 				FD5101A81ACC1AF300C49430 /* libx264.142.dylib in CopyFiles */,
 				FD5101A91ACC1AF300C49430 /* libz.1.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD61025F1AD7CBD80013119A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = webpage;
+			dstSubfolderSpec = 7;
+			files = (
+				FD6102621AD7CC020013119A /* inject.js in CopyFiles */,
+				FD6102631AD7CC020013119A /* webui.html in CopyFiles */,
+				FD6102641AD7CC020013119A /* webui.css in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +208,9 @@
 		FD5101781ACC1A6800C49430 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = bilibili/libs/libz.1.dylib; sourceTree = "<group>"; };
 		FD5101901ACC1A7600C49430 /* client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = client.h; path = bilibili/headers/client.h; sourceTree = "<group>"; };
 		FD51A8601ACA8464007D8972 /* APIKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
+		FD61025B1AD7CBA20013119A /* inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = inject.js; path = WebPages/inject.js; sourceTree = "<group>"; };
+		FD61025D1AD7CBC10013119A /* webui.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = webui.html; path = WebPages/webui.html; sourceTree = "<group>"; };
+		FD6102601AD7CBF10013119A /* webui.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = webui.css; path = WebPages/webui.css; sourceTree = "<group>"; };
 		FD8CEDED1AD2499B0092452F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentBlockSettings.h; sourceTree = "<group>"; };
 		FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentBlockSettings.m; sourceTree = "<group>"; };
 		FD8CEDF01AD24A290092452F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeywordBlockSettings.h; sourceTree = "<group>"; };
@@ -283,6 +304,7 @@
 		FD076C521AC8CBBB00C893FA /* bilibili */ = {
 			isa = PBXGroup;
 			children = (
+				FD61025A1AD7CB760013119A /* WebPages */,
 				FD476C701AD22AEC00584EFE /* GUI */,
 				FD51A8601ACA8464007D8972 /* APIKey.h */,
 				FD476C6B1AD22A0D00584EFE /* Main View */,
@@ -452,6 +474,16 @@
 			name = img;
 			sourceTree = "<group>";
 		};
+		FD61025A1AD7CB760013119A /* WebPages */ = {
+			isa = PBXGroup;
+			children = (
+				FD61025B1AD7CBA20013119A /* inject.js */,
+				FD61025D1AD7CBC10013119A /* webui.html */,
+				FD6102601AD7CBF10013119A /* webui.css */,
+			);
+			name = WebPages;
+			sourceTree = "<group>";
+		};
 		FD8CEDEC1AD249540092452F /* Settings View */ = {
 			isa = PBXGroup;
 			children = (
@@ -496,6 +528,7 @@
 				FD076C4D1AC8CBBB00C893FA /* Frameworks */,
 				FDAF8BA21ACA4EF100C0C55D /* Copy Files */,
 				FD471F731AC911CD00A2A727 /* CopyFiles */,
+				FD61025F1AD7CBD80013119A /* CopyFiles */,
 				FD076C4E1AC8CBBB00C893FA /* Resources */,
 				FD5101611ACBAE5800C49430 /* ShellScript */,
 			);
@@ -569,8 +602,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */,
+				FD6102611AD7CBF10013119A /* webui.css in Resources */,
+				FD61025E1AD7CBC10013119A /* webui.html in Resources */,
 				FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */,
 				FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */,
+				FD61025C1AD7CBA20013119A /* inject.js in Resources */,
 				FD076C611AC8CBBB00C893FA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
