@@ -19,7 +19,12 @@ if(!$('.i_face').attr('src')){
 }
 
 if(TYPCN_PLAYER_CID){
-    window.external.showPlayGUI();
+    if(window.location.href.indexOf("live/") > 2){
+        window.external.playVideoByCID(TYPCN_PLAYER_CID);
+    }else{
+        window.external.showPlayGUI();
+    }
+   
 }else{
     alert("视频解析错误");
 }
