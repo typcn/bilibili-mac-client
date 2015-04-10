@@ -589,6 +589,8 @@ BOOL paused = NO;
     
     isCancelled = true;
     dispatch_async(dispatch_get_main_queue(), ^{
+        mpv_set_wakeup_callback(mpv, NULL,NULL);
+        
         [self mpv_stop];
         [self mpv_quit];
     });
