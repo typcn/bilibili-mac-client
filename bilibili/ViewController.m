@@ -79,7 +79,7 @@ BOOL isTesting;
 
 - (void)showPlayGUI
 {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$('#bofqi').html('%@');$('#bofqi').html('%@');$('head').append('<style>%@</style>');",WebUI,WebCSS]];
+    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$('#bofqi').html('%@');$('head').append('<style>%@</style>');",WebUI,WebCSS]];
 }
 
 - (void)playVideoByCID:(NSString *)cid
