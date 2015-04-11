@@ -8,7 +8,7 @@ if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("live"
         fv=$('#bofqiiframe').attr('src');
     }
     if(!fv){
-        $('.player').attr('src');
+        fv=$('.player').attr('src');
     }
     if(!fv){
         fv=$('embed').attr('flashvars');
