@@ -41,8 +41,6 @@ BOOL isTesting;
     [self.view.window makeKeyWindow];
     NSRect rect = [[NSScreen mainScreen] visibleFrame];
     [self.view setFrame:rect];
-//    NSArray *cookieJar = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookiesForURL:[NSURL URLWithString:@"http://interface.bilibili.com"]];
-//    NSLog(@"%@",cookieJar);
 }
 
 @end
@@ -101,8 +99,7 @@ BOOL isTesting;
     [webView setFrameLoadDelegate:self];
     [webView setUIDelegate:self];
     [webView setResourceLoadDelegate:self];
-    [webView setPolicyDelegate:self];
-    
+
     NSLog(@"Start");
     webView.mainFrameURL = @"http://www.bilibili.com";
     
@@ -139,35 +136,9 @@ BOOL isTesting;
     return webView;
 }
 
-- (void)webView:(WebView *)sender decidePolicyForNavigationAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request frame:(WebFrame *)frame decisionListener:(id<WebPolicyDecisionListener>)listener {
-    /*
-        由于中国地区屏蔽了 Google 服务器
-        Google 广告在某些情况下会加载 google.com/drt/ui 撞墙，页面会无法加载完成
-        didFinishLoadForFrame 不会被继续调用，只好屏蔽掉
-     
-        Google is block by china , load google resources may cause "didFinishLoadForFrame" not being called.
-     */
-    NSString *host = [[request URL] host];
-    if ([host containsString:@"google"])
-        [listener ignore];
-    else
-        [listener use];
-    //webView.mainFrameURL = [actionInformation objectForKey:WebActionOriginalURLKey];
-}
-
-- (void)webView:(WebView *)webView decidePolicyForMIMEType:(NSString *)type request:(NSURLRequest *)request frame:(WebFrame *)frame
-    decisionListener:(id<WebPolicyDecisionListener>)listener {
-    if([type isEqualToString:@"application/x-shockwave-flash"]){
-        [request webPlugInDestroy];
-    }else{
-        return;
-    }
-    
-}
-
 - (void)webView:(WebView *)sender didClearWindowObject:(WebScriptObject *)windowScriptObject forFrame:(WebFrame *)frame
 {
-     [windowScriptObject setValue:self forKeyPath:@"window.external"];
+    [windowScriptObject setValue:self forKeyPath:@"window.external"];
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
@@ -182,6 +153,12 @@ BOOL isTesting;
     [webView stringByEvaluatingJavaScriptFromString:WebScript];
     userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
 }
+
+- (void)webView:(WebView *)sender didCommitLoadForFrame:(WebFrame *)frame
+{
+   
+}
+
 - (IBAction)openAv:(id)sender {
     NSString *avNumber = [sender stringValue];
     if([[sender stringValue] length] > 2 ){

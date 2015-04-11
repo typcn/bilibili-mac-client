@@ -474,6 +474,8 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     dispatch_async(queue, ^{
         while (mpv) {
             mpv_event *event = mpv_wait_event(mpv, 0);
+            if(!event)
+                break;
             if (event->event_id == MPV_EVENT_NONE)
                 break;
             [self handleEvent:event];
