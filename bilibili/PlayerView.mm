@@ -129,12 +129,6 @@ static void wakeup(void *context) {
         
         [self.textTip setStringValue:@"正在解析视频地址"];
         
-        // Get Sign
-        int quality = [self getSettings:@"quality"];
-
-        NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=%d%@",APIKey,vCID,quality,APISecret];
-        NSString *sign = [self md5:[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        
         // Parse Video URL
 
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http:/*[^/]+/video/av(\\d+)(/|/index.html|/index_(\\d+).html)?(\\?|#|$)" options:NSRegularExpressionCaseInsensitive error:nil];
@@ -156,6 +150,12 @@ static void wakeup(void *context) {
         if(![vPID length]){
             vPID = @"1";
         }
+        
+        // Get Sign
+        int quality = [self getSettings:@"quality"];
+        
+        NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=%d%@",APIKey,vCID,quality,APISecret];
+        NSString *sign = [self md5:[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         // Get Playback URL
         
