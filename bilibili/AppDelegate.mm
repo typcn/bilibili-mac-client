@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#include "aria2.hpp"
+
 @interface AppDelegate ()
 
 @end
@@ -23,6 +25,7 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    aria2::libraryInit();
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

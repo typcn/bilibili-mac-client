@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FD076C571AC8CBBB00C893FA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C561AC8CBBB00C893FA /* AppDelegate.m */; };
+		FD076C571AC8CBBB00C893FA /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD076C561AC8CBBB00C893FA /* AppDelegate.mm */; };
 		FD076C591AC8CBBB00C893FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C581AC8CBBB00C893FA /* main.m */; };
-		FD076C5C1AC8CBBB00C893FA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C5B1AC8CBBB00C893FA /* ViewController.m */; };
+		FD076C5C1AC8CBBB00C893FA /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD076C5B1AC8CBBB00C893FA /* ViewController.mm */; };
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
 		FD076C611AC8CBBB00C893FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FD076C6D1AC8CBBB00C893FA /* bilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */; };
@@ -164,10 +164,10 @@
 		FD076C501AC8CBBB00C893FA /* Bilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C541AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C551AC8CBBB00C893FA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		FD076C561AC8CBBB00C893FA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FD076C561AC8CBBB00C893FA /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		FD076C581AC8CBBB00C893FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FD076C5A1AC8CBBB00C893FA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FD076C5B1AC8CBBB00C893FA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FD076C5B1AC8CBBB00C893FA /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		FD076C5D1AC8CBBB00C893FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FD076C601AC8CBBB00C893FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD076C661AC8CBBB00C893FA /* bilibiliTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bilibiliTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,7 +220,7 @@
 		FD8CEDF01AD24A290092452F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeywordBlockSettings.h; sourceTree = "<group>"; };
 		FD8CEDF11AD24A290092452F /* KeywordBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeywordBlockSettings.m; sourceTree = "<group>"; };
 		FDA775DD1AD93D1800426483 /* libaria2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaria2.0.dylib; path = bilibili/libs/libaria2.0.dylib; sourceTree = "<group>"; };
-		FDA775E01AD93DC900426483 /* aria2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aria2.h; path = bilibili/headers/aria2.h; sourceTree = "<group>"; };
+		FDA775E01AD93DC900426483 /* aria2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = aria2.hpp; path = bilibili/headers/aria2.hpp; sourceTree = "<group>"; };
 		FDA775E31AD93ECA00426483 /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
 		FDA775E41AD93ECA00426483 /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		FDAF8B9C1ACA4BFA00C0C55D /* ISSoundAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISSoundAdditions.h; sourceTree = "<group>"; };
@@ -323,7 +323,7 @@
 				FD8CEDEC1AD249540092452F /* Settings View */,
 				FD476C6C1AD22A2000584EFE /* Other Views */,
 				FD076C551AC8CBBB00C893FA /* AppDelegate.h */,
-				FD076C561AC8CBBB00C893FA /* AppDelegate.m */,
+				FD076C561AC8CBBB00C893FA /* AppDelegate.mm */,
 				FD076C531AC8CBBB00C893FA /* Supporting Files */,
 				FDAF8B9C1ACA4BFA00C0C55D /* ISSoundAdditions.h */,
 				FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */,
@@ -441,7 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				FD076C5A1AC8CBBB00C893FA /* ViewController.h */,
-				FD076C5B1AC8CBBB00C893FA /* ViewController.m */,
+				FD076C5B1AC8CBBB00C893FA /* ViewController.mm */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -520,7 +520,7 @@
 		FDA775DF1AD93D2000426483 /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				FDA775E01AD93DC900426483 /* aria2.h */,
+				FDA775E01AD93DC900426483 /* aria2.hpp */,
 			);
 			name = headers;
 			sourceTree = "<group>";
@@ -679,11 +679,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD076C5C1AC8CBBB00C893FA /* ViewController.m in Sources */,
+				FD076C5C1AC8CBBB00C893FA /* ViewController.mm in Sources */,
 				FD076C591AC8CBBB00C893FA /* main.m in Sources */,
 				FD8CEDF21AD24A290092452F /* KeywordBlockSettings.m in Sources */,
 				FD476C6A1AD2086900584EFE /* Settings.m in Sources */,
-				FD076C571AC8CBBB00C893FA /* AppDelegate.m in Sources */,
+				FD076C571AC8CBBB00C893FA /* AppDelegate.mm in Sources */,
 				FD2BD5631AD11319001A7E16 /* playLocalFile.m in Sources */,
 				FDFC8AB91AD5745B000AFDB2 /* danmaku2ass.cpp in Sources */,
 				FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */,

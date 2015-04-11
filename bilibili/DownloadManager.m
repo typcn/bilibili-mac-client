@@ -8,7 +8,7 @@
 
 #import "DownloadManager.h"
 
-NSMutableArray *objects;
+extern NSMutableArray *downloaderObjects;
 
 @interface DownloadManager (){
     
@@ -20,18 +20,16 @@ NSMutableArray *objects;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSArray *TaskList = [[NSUserDefaults standardUserDefaults] arrayForKey:@"DownloadTaskList"];
-    objects = [TaskList copy];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView{
-    return objects.count;
+    return downloaderObjects.count;
 }
 
 - (id)tableView:(NSTableView *)aTableView
 objectValueForTableColumn:(NSTableColumn *)aTableColumn
             row:(NSInteger)rowIndex{
-    NSMutableDictionary *object = objects[rowIndex];
+    NSMutableDictionary *object = downloaderObjects[rowIndex];
     
     if([[aTableColumn identifier] isEqualToString:@"status"]){
         return [object valueForKey:@"status"];
@@ -43,12 +41,12 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
 - (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
     if([[aTableColumn identifier] isEqualToString:@"status"]){
-        [objects[rowIndex] replaceValueAtIndex:rowIndex inPropertyWithKey:@"status" withValue:anObject];
+        [downloaderObjects[rowIndex] replaceValueAtIndex:rowIndex inPropertyWithKey:@"status" withValue:anObject];
     }else{
-        [objects[rowIndex] replaceValueAtIndex:rowIndex inPropertyWithKey:@"name" withValue:anObject];
+        [downloaderObjects[rowIndex] replaceValueAtIndex:rowIndex inPropertyWithKey:@"name" withValue:anObject];
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:objects forKey:@"DownloadTaskList"];
+    [[NSUserDefaults standardUserDefaults] setObject:downloaderObjects forKey:@"DownloadTaskList"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

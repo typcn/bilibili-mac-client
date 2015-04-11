@@ -9,12 +9,13 @@
 #import "ViewController.h"
 #import <Sparkle/Sparkle.h>
 
-@import AppKit;
+#include "aria2.hpp"
 
 NSString *vUrl;
 NSString *vCID;
 NSString *userAgent;
 NSWindow *currWindow;
+NSMutableArray *downloaderObjects;
 BOOL parsing = false;
 BOOL isTesting;
 
@@ -42,12 +43,16 @@ BOOL isTesting;
     NSRect rect = [[NSScreen mainScreen] visibleFrame];
     [self.view setFrame:rect];
 
+    NSArray *TaskList = [[NSUserDefaults standardUserDefaults] arrayForKey:@"DownloadTaskList"];
+    downloaderObjects = [TaskList copy];
 }
 
 @end
 
-@implementation WebController
-
+@implementation WebController{
+    aria2::Session* session;
+    aria2::SessionConfig config;
+}
 
 +(NSString*)webScriptNameForSelector:(SEL)sel
 {
@@ -57,18 +62,22 @@ BOOL isTesting;
         return @"showPlayGUI";
     if(sel == @selector(playVideoByCID:))
         return @"playVideoByCID";
+    if(sel == @selector(downloadVideoByCID:))
+        return @"downloadVideoByCID";
     return nil;
 }
 
 + (BOOL)isSelectorExcludedFromWebScript:(SEL)sel
 {
-    if(sel == @selector(checkForUpdates))//JS对应的本地函数
+    if(sel == @selector(checkForUpdates))
         return NO;
-    if(sel == @selector(showPlayGUI))//JS对应的本地函数
+    if(sel == @selector(showPlayGUI))
         return NO;
-    if(sel == @selector(playVideoByCID:))//JS对应的本地函数
+    if(sel == @selector(playVideoByCID:))
         return NO;
-    return YES; //返回 YES 表示函数被排除，不会在网页上注册
+    if(sel == @selector(downloadVideoByCID:))
+        return NO;
+    return YES;
 }
 
 - (void)checkForUpdates
@@ -92,6 +101,37 @@ BOOL isTesting;
     NSLog(@"Video detected ! CID: %@",vCID);
     [self.switchButton performClick:nil];
 }
+
+
+int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
+                          aria2::A2Gid gid, void* userData)
+{
+    switch(event) {
+        case aria2::EVENT_ON_DOWNLOAD_COMPLETE:
+            
+            break;
+        case aria2::EVENT_ON_DOWNLOAD_ERROR:
+            
+            break;
+        default:
+            return 0;
+    }
+    return 0;
+}
+
+- (void)downloadVideoByCID:(NSString *)cid
+{
+    if(parsing){
+        return;
+    }
+    config.downloadEventCallback = downloadEventCallback;
+    parsing = true;
+    vCID = cid;
+    vUrl = webView.mainFrameURL;
+    NSLog(@"Start video download ! CID: %@",vCID);
+}
+
+
 
 - (void)awakeFromNib //当 WebContoller 加载完成后执行的动作
 {
