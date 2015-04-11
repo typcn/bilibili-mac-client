@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D127a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D87h" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
         <plugIn identifier="com.apple.WebKitIBPlugin" version="6751"/>
@@ -21,6 +21,37 @@
                 <customObject id="ogv-UC-wLe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="836" y="-228"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="hUn-r6-VyI">
+            <objects>
+                <windowController showSeguePresentationStyle="single" id="3Aw-a8-26u" sceneMemberID="viewController">
+                    <window key="window" title="转码视频" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="mhk-ZV-Y8g">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                    </window>
+                    <connections>
+                        <segue destination="S4q-0V-J2b" kind="relationship" relationship="window.shadowedContentViewController" id="PDN-o7-GnF"/>
+                    </connections>
+                </windowController>
+                <customObject id="YcE-gY-iYQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1489" y="-607"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HoB-ug-Zfq">
+            <objects>
+                <viewController id="S4q-0V-J2b" sceneMemberID="viewController">
+                    <view key="view" id="4S1-HS-qVl">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="gjT-cX-s0W" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2194" y="-614"/>
         </scene>
         <!--playLocalVideo-->
         <scene sceneID="gmX-b4-iwl">
@@ -305,14 +336,14 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="l0e-ZN-Cyz">
-                                            <rect key="frame" x="0.0" y="0.0" width="223" height="133"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="223" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="468" height="230"/>
-                                            <size key="maxSize" width="468" height="10000000"/>
+                                            <size key="maxSize" width="485" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="468" height="230"/>
-                                            <size key="maxSize" width="468" height="10000000"/>
+                                            <size key="maxSize" width="485" height="10000000"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -745,6 +776,6 @@
         <image name="loading" width="145" height="91"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Y0Z-ee-aqu"/>
+        <segue reference="D5B-9p-dnr"/>
     </inferredMetricsTieBreakers>
 </document>
