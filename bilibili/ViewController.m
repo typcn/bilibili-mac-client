@@ -41,6 +41,7 @@ BOOL isTesting;
     [self.view.window makeKeyWindow];
     NSRect rect = [[NSScreen mainScreen] visibleFrame];
     [self.view setFrame:rect];
+
 }
 
 @end
@@ -95,7 +96,7 @@ BOOL isTesting;
 - (void)awakeFromNib //当 WebContoller 加载完成后执行的动作
 {
     NSError *err;
-    
+
     [webView setFrameLoadDelegate:self];
     [webView setUIDelegate:self];
     [webView setResourceLoadDelegate:self];
