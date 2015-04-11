@@ -77,6 +77,9 @@
 		FD6102641AD7CC020013119A /* webui.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD6102601AD7CBF10013119A /* webui.css */; };
 		FD8CEDEF1AD2499B0092452F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */; };
 		FD8CEDF21AD24A290092452F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8CEDF11AD24A290092452F /* KeywordBlockSettings.m */; };
+		FDA775DE1AD93D1800426483 /* libaria2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; };
+		FDA775E61AD93ECA00426483 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA775E41AD93ECA00426483 /* DownloadManager.m */; };
+		FDA775E91AD93F6900426483 /* libaria2.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */; };
 		FDAF8BA11ACA4ECC00C0C55D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; };
 		FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -104,6 +107,7 @@
 			dstPath = lib;
 			dstSubfolderSpec = 6;
 			files = (
+				FDA775E91AD93F6900426483 /* libaria2.0.dylib in CopyFiles */,
 				FD2BD56F1AD15AF9001A7E16 /* libmediainfo.0.dylib in CopyFiles */,
 				FD5101931ACC1AF300C49430 /* libass.5.dylib in CopyFiles */,
 				FD5101941ACC1AF300C49430 /* libavcodec.56.dylib in CopyFiles */,
@@ -215,6 +219,10 @@
 		FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentBlockSettings.m; sourceTree = "<group>"; };
 		FD8CEDF01AD24A290092452F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeywordBlockSettings.h; sourceTree = "<group>"; };
 		FD8CEDF11AD24A290092452F /* KeywordBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeywordBlockSettings.m; sourceTree = "<group>"; };
+		FDA775DD1AD93D1800426483 /* libaria2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaria2.0.dylib; path = bilibili/libs/libaria2.0.dylib; sourceTree = "<group>"; };
+		FDA775E01AD93DC900426483 /* aria2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aria2.h; path = bilibili/headers/aria2.h; sourceTree = "<group>"; };
+		FDA775E31AD93ECA00426483 /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
+		FDA775E41AD93ECA00426483 /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadManager.m; sourceTree = "<group>"; };
 		FDAF8B9C1ACA4BFA00C0C55D /* ISSoundAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISSoundAdditions.h; sourceTree = "<group>"; };
 		FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSoundAdditions.m; sourceTree = "<group>"; };
 		FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = bilibili/sparkle/Sparkle.framework; sourceTree = "<group>"; };
@@ -251,6 +259,7 @@
 				FD5101841ACC1A6800C49430 /* liblcms2.2.dylib in Frameworks */,
 				FD51018A1ACC1A6800C49430 /* libpostproc.53.dylib in Frameworks */,
 				FD5101801ACC1A6800C49430 /* libfontconfig.1.dylib in Frameworks */,
+				FDA775DE1AD93D1800426483 /* libaria2.0.dylib in Frameworks */,
 				FD51017A1ACC1A6800C49430 /* libavcodec.56.dylib in Frameworks */,
 				FD5101871ACC1A6800C49430 /* libmpg123.0.dylib in Frameworks */,
 				FD51017F1ACC1A6800C49430 /* libavutil.54.dylib in Frameworks */,
@@ -282,6 +291,7 @@
 			children = (
 				FD4D37691ACEF3F20022ABF3 /* img */,
 				FDAF8B9F1ACA4D9900C0C55D /* sparkle */,
+				FDA775DC1AD93D0D00426483 /* aria2 */,
 				FD471FD21AC931F800A2A727 /* mediainfo */,
 				FD471FD11AC92D7C00A2A727 /* frameworks */,
 				FD471FD01AC92D6D00A2A727 /* danmaku2ass */,
@@ -304,6 +314,7 @@
 		FD076C521AC8CBBB00C893FA /* bilibili */ = {
 			isa = PBXGroup;
 			children = (
+				FDA775E81AD93ED600426483 /* downloadManager */,
 				FD61025A1AD7CB760013119A /* WebPages */,
 				FD476C701AD22AEC00584EFE /* GUI */,
 				FD51A8601ACA8464007D8972 /* APIKey.h */,
@@ -497,6 +508,32 @@
 			name = "Settings View";
 			sourceTree = "<group>";
 		};
+		FDA775DC1AD93D0D00426483 /* aria2 */ = {
+			isa = PBXGroup;
+			children = (
+				FDA775DF1AD93D2000426483 /* headers */,
+				FDA775DD1AD93D1800426483 /* libaria2.0.dylib */,
+			);
+			name = aria2;
+			sourceTree = "<group>";
+		};
+		FDA775DF1AD93D2000426483 /* headers */ = {
+			isa = PBXGroup;
+			children = (
+				FDA775E01AD93DC900426483 /* aria2.h */,
+			);
+			name = headers;
+			sourceTree = "<group>";
+		};
+		FDA775E81AD93ED600426483 /* downloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				FDA775E31AD93ECA00426483 /* DownloadManager.h */,
+				FDA775E41AD93ECA00426483 /* DownloadManager.m */,
+			);
+			name = downloadManager;
+			sourceTree = "<group>";
+		};
 		FDAF8B9F1ACA4D9900C0C55D /* sparkle */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,6 +687,7 @@
 				FD2BD5631AD11319001A7E16 /* playLocalFile.m in Sources */,
 				FDFC8AB91AD5745B000AFDB2 /* danmaku2ass.cpp in Sources */,
 				FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */,
+				FDA775E61AD93ECA00426483 /* DownloadManager.m in Sources */,
 				FDFC8AB81AD5745B000AFDB2 /* AssClass.cpp in Sources */,
 				FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */,
 				FDAF8BAA1ACA5A3100C0C55D /* AboutView.m in Sources */,

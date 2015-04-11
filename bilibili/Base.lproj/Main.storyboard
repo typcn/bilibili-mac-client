@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D87h" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="6751"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="7531"/>
     </dependencies>
     <scenes>
         <!--playLocalVideo Window-->
@@ -20,38 +20,105 @@
                 </windowController>
                 <customObject id="ogv-UC-wLe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="836" y="-228"/>
+            <point key="canvasLocation" x="-1147" y="-599"/>
         </scene>
-        <!--Window Controller-->
-        <scene sceneID="hUn-r6-VyI">
+        <!--Download Manager Window Controller-->
+        <scene sceneID="xSp-NC-Oet">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="3Aw-a8-26u" sceneMemberID="viewController">
-                    <window key="window" title="转码视频" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="mhk-ZV-Y8g">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                <windowController showSeguePresentationStyle="single" id="Cdi-2K-Ecb" userLabel="Download Manager Window Controller" sceneMemberID="viewController">
+                    <window key="window" title="下载管理" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="ye8-k2-vuM">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="313" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                     </window>
                     <connections>
-                        <segue destination="S4q-0V-J2b" kind="relationship" relationship="window.shadowedContentViewController" id="PDN-o7-GnF"/>
+                        <segue destination="uyE-Xu-eZU" kind="relationship" relationship="window.shadowedContentViewController" id="1NC-Uc-bv4"/>
                     </connections>
                 </windowController>
-                <customObject id="YcE-gY-iYQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="Fom-Tg-Yrl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489" y="-607"/>
+            <point key="canvasLocation" x="-577" y="-599"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="HoB-ug-Zfq">
+        <!--Download Manager View Controller-->
+        <scene sceneID="6SN-uK-EiC">
             <objects>
-                <viewController id="S4q-0V-J2b" sceneMemberID="viewController">
-                    <view key="view" id="4S1-HS-qVl">
+                <viewController id="uyE-Xu-eZU" userLabel="Download Manager View Controller" customClass="DownloadManager" sceneMemberID="viewController">
+                    <view key="view" id="eUr-Cn-lGo">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView identifier="taskname" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="HC0-CV-YQ1">
+                                <rect key="frame" x="20" y="20" width="440" height="238"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <clipView key="contentView" id="6ma-Ex-tb3">
+                                    <rect key="frame" x="1" y="17" width="438" height="220"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="GKJ-bN-UAi" id="y6z-0y-XMn">
+                                            <rect key="frame" x="0.0" y="0.0" width="438" height="19"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="118" minWidth="40" maxWidth="1000" id="f2M-MT-SfQ">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="任务名称">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="kQb-qP-BWw">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                </tableColumn>
+                                                <tableColumn identifier="status" width="314" minWidth="40" maxWidth="1000" id="hNU-oO-koQ">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="状态">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="S8S-WO-I06">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                </tableColumn>
+                                            </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="uyE-Xu-eZU" id="ZQR-1x-NoS"/>
+                                                <outlet property="delegate" destination="uyE-Xu-eZU" id="pj7-Xc-8Cd"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="9oa-ZE-PEk">
+                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="O2T-Ta-VRl">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" id="GKJ-bN-UAi">
+                                    <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
+                        </subviews>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="y6z-0y-XMn" id="Bbe-2x-XDj"/>
+                    </connections>
                 </viewController>
-                <customObject id="gjT-cX-s0W" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="MYn-CD-dsD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2194" y="-614"/>
+            <point key="canvasLocation" x="-577" y="-205"/>
         </scene>
         <!--playLocalVideo-->
         <scene sceneID="gmX-b4-iwl">
@@ -117,7 +184,7 @@
                 </viewController>
                 <customObject id="Daq-P9-kIP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1555" y="-236"/>
+            <point key="canvasLocation" x="-1147" y="-205"/>
         </scene>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
@@ -150,6 +217,12 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <segue destination="nNF-Yo-e9X" kind="show" id="kEj-1z-37L"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="打开下载管理" id="fzm-lD-qXA">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="Cdi-2K-Ecb" kind="show" id="Bg1-hb-1j5"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -278,7 +351,7 @@
                 <customObject id="vfz-mj-DKJ" customClass="SUUpdater"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="246.5" y="-200"/>
+            <point key="canvasLocation" x="239.5" y="-928"/>
         </scene>
         <!--Comment block settings window-->
         <scene sceneID="asJ-fJ-uCB">
@@ -295,7 +368,7 @@
                 </windowController>
                 <customObject id="YbJ-L9-sge" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="246" y="165"/>
+            <point key="canvasLocation" x="863" y="-611"/>
         </scene>
         <!--Comment block settings-->
         <scene sceneID="KMO-V3-Usw">
@@ -318,7 +391,7 @@
                 </tabViewController>
                 <customObject id="oha-lL-2sQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="246" y="609"/>
+            <point key="canvasLocation" x="1463" y="-626"/>
         </scene>
         <!--Keyword Block Settings-->
         <scene sceneID="3ds-d2-Tes">
@@ -374,7 +447,7 @@
                 </viewController>
                 <customObject id="BFD-hR-yg3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="961" y="178.5"/>
+            <point key="canvasLocation" x="1463" y="-85.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ano-X6-NRf">
@@ -398,7 +471,7 @@
                 </viewController>
                 <customObject id="2y9-Aw-wV9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="936" y="550"/>
+            <point key="canvasLocation" x="856" y="-76"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="SSw-0K-I7n">
@@ -416,7 +489,7 @@
                 </windowController>
                 <customObject id="vvD-P7-kFB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-466.5" y="-271"/>
+            <point key="canvasLocation" x="-1714.5" y="-648"/>
         </scene>
         <!--About View-->
         <scene sceneID="9GL-0J-ASe">
@@ -445,7 +518,7 @@
                 <customObject id="Jf9-h0-9RF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="RQe-1H-9A1"/>
             </objects>
-            <point key="canvasLocation" x="-1193" y="-267"/>
+            <point key="canvasLocation" x="-1715" y="-205"/>
         </scene>
         <!--Main Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -462,7 +535,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-840" y="199"/>
+            <point key="canvasLocation" x="-931" y="195"/>
         </scene>
         <!--Miedia Player Window Controller-->
         <scene sceneID="DUG-BS-fjC">
@@ -480,7 +553,7 @@
                 </windowController>
                 <customObject id="VRB-F4-4Y5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-297.5" y="189"/>
+            <point key="canvasLocation" x="-464.5" y="195"/>
         </scene>
         <!--Miedia Player View Controller-->
         <scene sceneID="HPp-cU-Hxk">
@@ -538,7 +611,7 @@
                 </viewController>
                 <customObject id="9mi-6H-m99" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-304" y="656.5"/>
+            <point key="canvasLocation" x="-465" y="508.5"/>
         </scene>
         <!--Post Comment Window Controller-->
         <scene sceneID="bs0-gn-v1d">
@@ -555,7 +628,7 @@
                 </windowController>
                 <customObject id="JYl-4e-l1T" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-304" y="991"/>
+            <point key="canvasLocation" x="-465" y="787"/>
         </scene>
         <!--Post Comment View Controller-->
         <scene sceneID="iBg-Rg-Hcu">
@@ -582,7 +655,7 @@
                 </viewController>
                 <customObject id="D1f-jv-4Zv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-304" y="1129"/>
+            <point key="canvasLocation" x="-465" y="961"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -656,7 +729,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="-839.5" y="685"/>
+            <point key="canvasLocation" x="-930.5" y="509"/>
         </scene>
         <!--settings window-->
         <scene sceneID="3Jf-4c-wFD">
@@ -673,7 +746,7 @@
                 </windowController>
                 <customObject id="q5C-hb-zhy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="231" y="-607"/>
+            <point key="canvasLocation" x="863" y="-1059"/>
         </scene>
         <!--settings-->
         <scene sceneID="E5m-sf-d9M">
@@ -769,13 +842,13 @@
                 </viewController>
                 <customObject id="g1X-ko-pK9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="863" y="-614"/>
+            <point key="canvasLocation" x="1463" y="-1059"/>
         </scene>
     </scenes>
     <resources>
         <image name="loading" width="145" height="91"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="D5B-9p-dnr"/>
+        <segue reference="Y0Z-ee-aqu"/>
     </inferredMetricsTieBreakers>
 </document>
