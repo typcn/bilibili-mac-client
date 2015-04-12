@@ -10,7 +10,6 @@
 #import "PlayerView.h"
 #import "ISSoundAdditions.h"
 #import <CommonCrypto/CommonDigest.h>
-#import "APIKey.h"
 #import "MediaInfoDLL.h"
 
 #include "danmaku2ass_native/danmaku2ass.h"
@@ -22,6 +21,8 @@ extern NSString *vUrl;
 extern NSString *vCID;
 extern NSString *userAgent;
 extern NSString *cmFile;
+extern NSString *APIKey;
+extern NSString *APISecret;
 NSString *vAID;
 NSString *vPID;
 

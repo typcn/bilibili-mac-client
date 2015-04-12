@@ -20,6 +20,16 @@ extern NSMutableArray *downloaderObjects;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [NSTimer scheduledTimerWithTimeInterval:3
+                                     target:self
+                                   selector:@selector(updateString)
+                                   userInfo:nil
+                                    repeats:YES];
+}
+
+-(void)updateString
+{
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView{
@@ -29,7 +39,10 @@ extern NSMutableArray *downloaderObjects;
 - (id)tableView:(NSTableView *)aTableView
 objectValueForTableColumn:(NSTableColumn *)aTableColumn
             row:(NSInteger)rowIndex{
-    NSMutableDictionary *object = downloaderObjects[rowIndex];
+    NSDictionary *object = [downloaderObjects objectAtIndex:rowIndex];
+    if(!object){
+        return @"ERROR";
+    }
     
     if([[aTableColumn identifier] isEqualToString:@"status"]){
         return [object valueForKey:@"status"];
@@ -40,14 +53,14 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
 
 - (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
-    if([[aTableColumn identifier] isEqualToString:@"status"]){
-        [downloaderObjects[rowIndex] replaceValueAtIndex:rowIndex inPropertyWithKey:@"status" withValue:anObject];
-    }else{
-        [downloaderObjects[rowIndex] replaceValueAtIndex:rowIndex inPropertyWithKey:@"name" withValue:anObject];
-    }
+//    if([[aTableColumn identifier] isEqualToString:@"status"]){
+//        [downloaderObjects[rowIndex] replaceValueAtIndex:rowIndex inPropertyWithKey:@"status" withValue:anObject];
+//    }else{
+//        [downloaderObjects[rowIndex] replaceValueAtIndex:rowIndex inPropertyWithKey:@"name" withValue:anObject];
+//    }
     
-    [[NSUserDefaults standardUserDefaults] setObject:downloaderObjects forKey:@"DownloadTaskList"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+//    [[NSUserDefaults standardUserDefaults] setObject:downloaderObjects forKey:@"DownloadTaskList"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

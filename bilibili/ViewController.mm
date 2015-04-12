@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import <Sparkle/Sparkle.h>
+#import <CommonCrypto/CommonDigest.h>
+#import "APIKey.h"
 
 #include "aria2.hpp"
 
@@ -107,28 +109,141 @@ int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
                           aria2::A2Gid gid, void* userData)
 {
     switch(event) {
-        case aria2::EVENT_ON_DOWNLOAD_COMPLETE:
-            
+        case aria2::EVENT_ON_DOWNLOAD_COMPLETE:{
+
             break;
-        case aria2::EVENT_ON_DOWNLOAD_ERROR:
-            
+        }
+        case aria2::EVENT_ON_DOWNLOAD_ERROR:{
+            NSUserNotification *notification = [[NSUserNotification alloc] init];
+            notification.title = @"Bilibili Client";
+            notification.informativeText = @"下载失败";
+            notification.soundName = NSUserNotificationDefaultSoundName;
+            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
             break;
+        }
         default:
             return 0;
     }
     return 0;
 }
 
+- (NSString *) md5:(NSString *) input
+{
+    const char *cStr = [input UTF8String];
+    unsigned char digest[16];
+    CC_MD5( cStr, (CC_LONG)strlen(cStr), digest ); // This is the md5 call
+    
+    NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+        [output appendFormat:@"%02x", digest[i]];
+    
+    return  output;
+    
+}
+
 - (void)downloadVideoByCID:(NSString *)cid
 {
-    if(parsing){
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert setMessageText:@"注意：下载功能仅供测试，可能有各种 BUG，支持分段视频，默认保存在 Movies 文件夹。"];
+    [alert runModal];
+    
+    if(!downloaderObjects){
+        downloaderObjects = [[NSMutableArray alloc] init];
+    }
+    NSArray *filename = [webView.mainFrameTitle componentsSeparatedByString:@"-"];
+    config.downloadEventCallback = downloadEventCallback;
+    session = aria2::sessionNew(aria2::KeyVals(), config);
+    NSString *path = [NSString stringWithFormat:@"%@%@%@/",NSHomeDirectory(),@"/Movies/Bilibili/",[filename objectAtIndex:0]];
+    aria2::changeGlobalOption(session, {{ "dir", [path cStringUsingEncoding:NSUTF8StringEncoding] }});
+    aria2::changeGlobalOption(session, {{ "user-agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" }});
+    aria2::KeyVals options;
+
+    NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=4%@",APIKey,vCID,APISecret];
+    NSString *sign = [self md5:[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=4&sign=%@",APIKey,cid,sign]];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+    request.HTTPMethod = @"GET";
+    request.timeoutInterval = 5;
+    [request addValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" forHTTPHeaderField:@"User-Agent"];
+    
+    NSURLResponse * response = nil;
+    NSError * error = nil;
+    NSData * videoAddressJSONData = [NSURLConnection sendSynchronousRequest:request
+                                                          returningResponse:&response
+                                                                      error:&error];
+    NSError *jsonError;
+    NSMutableDictionary *videoResult = [NSJSONSerialization JSONObjectWithData:videoAddressJSONData options:NSJSONWritingPrettyPrinted error:&jsonError];
+    
+    NSArray *dUrls = [videoResult objectForKey:@"durl"];
+    
+    if([dUrls count] == 0){
         return;
     }
-    config.downloadEventCallback = downloadEventCallback;
-    parsing = true;
-    vCID = cid;
-    vUrl = webView.mainFrameURL;
-    NSLog(@"Start video download ! CID: %@",vCID);
+    
+    [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL];
+    
+    NSString *commentUrl = [NSString stringWithFormat:@"http://comment.bilibili.com/%@.xml",cid];
+    NSURL  *url = [NSURL URLWithString:commentUrl];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    [data writeToFile:[NSString stringWithFormat:@"%@%@.xml",path,cid] atomically:YES];
+    
+    if([[[[videoResult objectForKey:@"durl"] valueForKey:@"url"] className] isEqualToString:@"__NSCFString"]){
+        NSString *tmp = [[videoResult objectForKey:@"durl"] valueForKey:@"url"];
+        std::vector<std::string> uris = {[tmp cStringUsingEncoding:NSUTF8StringEncoding]};
+        aria2::addUri(session, nullptr, uris, options);
+    }else{
+        for (NSDictionary *match in dUrls) {
+            NSString *tmp = [match valueForKey:@"url"];
+            std::vector<std::string> uris = {[tmp cStringUsingEncoding:NSUTF8StringEncoding]};
+            aria2::addUri(session, nullptr, uris, options);
+        }
+    }
+    
+    NSDictionary *taskData = @{
+                               @"name":[filename objectAtIndex:0],
+                               @"status":@"正在准备",
+                               };
+    int index = (int)[downloaderObjects count];
+    [downloaderObjects insertObject:taskData atIndex:index];
+    
+    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+    NSWindowController *myController = [storyBoard instantiateControllerWithIdentifier:@"dlman"];
+    [myController showWindow:self];
+    
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        for(;;) {
+            int rv = aria2::run(session, aria2::RUN_ONCE);
+            if(rv != 1) {
+                break;
+            }
+            aria2::GlobalStat gstat = aria2::getGlobalStat(session);
+            [downloaderObjects removeObjectAtIndex:index];
+            NSDictionary *taskData = @{
+                                       @"name":[filename objectAtIndex:0],
+                                       @"status":[NSString stringWithFormat:@"剩余分段:%d 下载速度:%dKB/s",gstat.numActive,gstat.downloadSpeed/1024],
+                                       };
+            [downloaderObjects insertObject:taskData atIndex:index];
+        }
+        int rv = aria2::sessionFinal(session);
+        NSLog(@"Download success! STATUS: %d",rv);
+        
+        if(rv == 0){
+            NSUserNotification *notification = [[NSUserNotification alloc] init];
+            notification.title = @"Bilibili Client";
+            notification.informativeText = @"视频与弹幕下载完成";
+            notification.soundName = NSUserNotificationDefaultSoundName;
+            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        }
+        
+        [downloaderObjects removeObjectAtIndex:index];
+        NSDictionary *taskData = @{
+                                   @"name":[filename objectAtIndex:0],
+                                   @"status":@"下载已完成",
+                                   };
+        [downloaderObjects insertObject:taskData atIndex:index];
+    });
 }
 
 

@@ -25,7 +25,7 @@
         <!--Download Manager Window Controller-->
         <scene sceneID="xSp-NC-Oet">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="Cdi-2K-Ecb" userLabel="Download Manager Window Controller" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="dlman" showSeguePresentationStyle="single" id="Cdi-2K-Ecb" userLabel="Download Manager Window Controller" sceneMemberID="viewController">
                     <window key="window" title="下载管理" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="ye8-k2-vuM">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
