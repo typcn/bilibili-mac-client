@@ -145,7 +145,7 @@ int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
 - (void)downloadVideoByCID:(NSString *)cid
 {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"注意：下载功能仅供测试，可能有各种 BUG，支持分段视频，默认保存在 Movies 文件夹。"];
+    [alert setMessageText:@"注意：下载功能仅供测试，可能有各种 BUG，支持分段视频，默认保存在 Movies 文件夹。\n点击 文件->下载管理 来查看任务"];
     [alert runModal];
     
     if(!downloaderObjects){
