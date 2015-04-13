@@ -208,21 +208,34 @@ int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
     int index = (int)[downloaderObjects count];
     [downloaderObjects insertObject:taskData atIndex:index];
     
-    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-    NSWindowController *myController = [storyBoard instantiateControllerWithIdentifier:@"dlman"];
-    [myController showWindow:self];
-    
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = @"Bilibili Client";
+        notification.informativeText = @"下载已开始，通过 文件->下载管理 来查看进度";
+        notification.soundName = NSUserNotificationDefaultSoundName;
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+
         for(;;) {
             int rv = aria2::run(session, aria2::RUN_ONCE);
             if(rv != 1) {
                 break;
             }
             aria2::GlobalStat gstat = aria2::getGlobalStat(session);
+            int allLength = 0;
+            int currentLength = 0;
+            std::vector<aria2::A2Gid> gids = aria2::getActiveDownload(session);
+            for(const auto& gid : gids) {
+                aria2::DownloadHandle* dh = aria2::getDownloadHandle(session, gid);
+                if(dh) {
+                    allLength = allLength + (int)dh->getTotalLength();
+                    currentLength = currentLength + (int)dh->getCompletedLength();
+                    aria2::deleteDownloadHandle(dh);
+                }
+            }
             [downloaderObjects removeObjectAtIndex:index];
             NSDictionary *taskData = @{
                                        @"name":[filename objectAtIndex:0],
-                                       @"status":[NSString stringWithFormat:@"剩余分段:%d 下载速度:%dKB/s",gstat.numActive,gstat.downloadSpeed/1024],
+                                       @"status":[NSString stringWithFormat:@"剩余分段:%d 下载速度:%dKB/s 大小:%d/%dMB",gstat.numActive,gstat.downloadSpeed/1024,currentLength/1024/1024,allLength/1024/1024],
                                        };
             [downloaderObjects insertObject:taskData atIndex:index];
         }
