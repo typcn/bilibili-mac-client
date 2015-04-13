@@ -50,17 +50,4 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
         return [object valueForKey:@"name"];
     }
 }
-
-- (void)tableView:(NSTableView *)aTableView setObjectValue:(id)anObject forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
-{
-//    if([[aTableColumn identifier] isEqualToString:@"status"]){
-//        [downloaderObjects[rowIndex] replaceValueAtIndex:rowIndex inPropertyWithKey:@"status" withValue:anObject];
-//    }else{
-//        [downloaderObjects[rowIndex] replaceValueAtIndex:rowIndex inPropertyWithKey:@"name" withValue:anObject];
-//    }
-    
-//    [[NSUserDefaults standardUserDefaults] setObject:downloaderObjects forKey:@"DownloadTaskList"];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 @end
