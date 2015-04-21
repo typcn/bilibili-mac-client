@@ -25,6 +25,7 @@
     BOOL fcache = [[NSFileManager defaultManager] fileExistsAtPath:@"/Users/Shared/.fc/" isDirectory:nil];
     NSString *path = [[NSBundle mainBundle] pathForResource:@"gencache" ofType:@"sh"];
     if(!fcache){
+        [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"FirstPlayed"];
         NSTask *task = [[NSTask alloc] init];
         task.launchPath = @"/bin/sh";
         task.arguments = @[path];

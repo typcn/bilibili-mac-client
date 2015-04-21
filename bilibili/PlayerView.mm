@@ -438,8 +438,8 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         }
         
         case MPV_EVENT_START_FILE:{
-            if([[[NSUserDefaults standardUserDefaults] objectForKey:@"FirstPlayed"] length] < 1){
-                [[NSUserDefaults standardUserDefaults]  setObject:@"yes" forKey:@"FirstPlayed"];
+            if([[[NSUserDefaults standardUserDefaults] objectForKey:@"FirstPlayed"] length] != 3){
+                [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"FirstPlayed"];
                 [self.textTip setStringValue:@"正在创建字体缓存"];
                 [self.subtip setStringValue:@"首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口"];
             }else{
