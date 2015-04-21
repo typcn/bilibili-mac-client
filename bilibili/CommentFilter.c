@@ -31,7 +31,7 @@ void ApplyFilter(char *comments,int type,char *param){
     }
     
     diff = clock() - start;
-    int msec = diff * 1000 / CLOCKS_PER_SEC;
+    int msec = (int)(diff * 1000 / CLOCKS_PER_SEC);
     printf("Time taken %d seconds %d milliseconds", msec/1000, msec%1000);
 }
 
