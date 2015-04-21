@@ -20,6 +20,7 @@
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
 		FD476C6A1AD2086900584EFE /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD476C691AD2086900584EFE /* Settings.m */; };
 		FD476C731AD22B1F00584EFE /* CommentFilter.c in Sources */ = {isa = PBXBuildFile; fileRef = FD476C711AD22B1F00584EFE /* CommentFilter.c */; };
+		FD48550A1AE67B35008F49AA /* gencache.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD4855071AE67AD8008F49AA /* gencache.sh */; };
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
 		FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */; };
 		FD5101791ACC1A6800C49430 /* libass.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5101621ACC1A6800C49430 /* libass.5.dylib */; };
@@ -135,6 +136,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FD4855091AE67B2C008F49AA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				FD48550A1AE67B35008F49AA /* gencache.sh in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FD61025F1AD7CBD80013119A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -184,6 +195,7 @@
 		FD476C691AD2086900584EFE /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		FD476C711AD22B1F00584EFE /* CommentFilter.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommentFilter.c; sourceTree = "<group>"; };
 		FD476C721AD22B1F00584EFE /* CommentFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentFilter.h; sourceTree = "<group>"; };
+		FD4855071AE67AD8008F49AA /* gencache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gencache.sh; sourceTree = "<group>"; };
 		FD4D376A1ACEF3FE0022ABF3 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = loading.gif; path = bilibili/img/loading.gif; sourceTree = "<group>"; };
 		FD4D376C1ACEFD7B0022ABF3 /* PostComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostComment.h; sourceTree = "<group>"; };
 		FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostComment.m; sourceTree = "<group>"; };
@@ -324,6 +336,7 @@
 				FD476C6C1AD22A2000584EFE /* Other Views */,
 				FD076C551AC8CBBB00C893FA /* AppDelegate.h */,
 				FD076C561AC8CBBB00C893FA /* AppDelegate.mm */,
+				FD4855071AE67AD8008F49AA /* gencache.sh */,
 				FD076C531AC8CBBB00C893FA /* Supporting Files */,
 				FDAF8B9C1ACA4BFA00C0C55D /* ISSoundAdditions.h */,
 				FDAF8B9D1ACA4C1C00C0C55D /* ISSoundAdditions.m */,
@@ -566,6 +579,7 @@
 				FDAF8BA21ACA4EF100C0C55D /* Copy Files */,
 				FD471F731AC911CD00A2A727 /* CopyFiles */,
 				FD61025F1AD7CBD80013119A /* CopyFiles */,
+				FD4855091AE67B2C008F49AA /* CopyFiles */,
 				FD076C4E1AC8CBBB00C893FA /* Resources */,
 				FD4855051AE675D7008F49AA /* ShellScript */,
 			);
