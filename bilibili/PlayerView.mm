@@ -366,7 +366,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         danmaku2ass([filePath cStringUsingEncoding:NSUTF8StringEncoding],
                     [OutFile cStringUsingEncoding:NSUTF8StringEncoding],
                     [width intValue],[height intValue],
-                    "Heiti SC",(int)[height intValue]/25.1,
+                    "STHeiti",(int)[height intValue]/25.1,
                     [[NSString stringWithFormat:@"%.2f",[self getSettings:@"transparency"]] floatValue],
                     mq,5);
         
