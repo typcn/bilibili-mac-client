@@ -14,5 +14,6 @@
 @property (weak) IBOutlet NSComboBox *qualityBox;
 @property (weak) IBOutlet NSButton *RealTimeComment;
 @property (weak) IBOutlet NSSlider *transparency;
+@property (weak) IBOutlet NSComboBox *FakeIP;
 
 @end

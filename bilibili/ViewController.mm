@@ -305,6 +305,23 @@ int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
     return webView;
 }
 
+- (NSURLRequest *)webView:(WebView *)sender
+                 resource:(id)identifier
+          willSendRequest:(NSURLRequest *)request
+         redirectResponse:(NSURLResponse *)redirectResponse
+           fromDataSource:(WebDataSource *)dataSource{
+    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+    NSString *xff = [settingsController objectForKey:@"xff"];
+    if([xff length] > 4){
+        NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
+        re = (NSMutableURLRequest *) request.mutableCopy;
+        [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
+        [re setValue:xff forHTTPHeaderField:@"Client-IP"];
+        return re;
+    }
+    return request;
+}
+
 - (void)webView:(WebView *)sender didClearWindowObject:(WebScriptObject *)windowScriptObject forFrame:(WebFrame *)frame
 {
     [windowScriptObject setValue:self forKeyPath:@"window.external"];
