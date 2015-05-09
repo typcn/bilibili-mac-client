@@ -165,6 +165,12 @@ static void wakeup(void *context) {
         request.HTTPMethod = @"GET";
         request.timeoutInterval = 5;
         
+        NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+        NSString *xff = [settingsController objectForKey:@"xff"];
+        if([xff length] > 4){
+            [request setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
+            [request setValue:xff forHTTPHeaderField:@"Client-IP"];
+        }
         
         [request addValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" forHTTPHeaderField:@"User-Agent"];
         
@@ -398,7 +404,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     if(error){
         return;
     }
-    
+
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:blockRegex options:NSRegularExpressionCaseInsensitive error:&error];
     
     if(error){
