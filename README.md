@@ -2,7 +2,7 @@
 
 An unofficial bilibili client for mac
 
-[![Build Status](https://jenkins.tgod.co/job/Bilibili-for-mac/badge/icon)](http://jenkins.eqoe.cn/job/Bilibili-for-mac/)
+[![Build Status](https://app.ship.io/jobs/LajSkdYLuE7THK7n/build_status.png)](http://jenkins.eqoe.cn/job/Bilibili-for-mac/)
 
 # Why
 
