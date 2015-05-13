@@ -310,16 +310,27 @@ int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
           willSendRequest:(NSURLRequest *)request
          redirectResponse:(NSURLResponse *)redirectResponse
            fromDataSource:(WebDataSource *)dataSource{
-    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
-    NSString *xff = [settingsController objectForKey:@"xff"];
-    if([xff length] > 4){
-        NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
-        re = (NSMutableURLRequest *) request.mutableCopy;
-        [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
-        [re setValue:xff forHTTPHeaderField:@"Client-IP"];
-        return re;
+    NSString *URL = [request.URL absoluteString];
+    NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
+    re = (NSMutableURLRequest *) request.mutableCopy;
+    if([URL containsString:@"google"]){
+        // Google ad is blocked in some (china) area, maybe take 30 seconds to wait for timeout
+        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
+    }else if([URL containsString:@"qq.com"]){
+        // QQ analytics may block more than 10 seconds in some area
+        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
+    }else if([URL containsString:@"cnzz.com"]){
+        // CNZZ is very slow in other country
+        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
+    }else{
+        NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+        NSString *xff = [settingsController objectForKey:@"xff"];
+        if([xff length] > 4){
+            [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
+            [re setValue:xff forHTTPHeaderField:@"Client-IP"];
+        }
     }
-    return request;
+    return re;
 }
 
 - (void)webView:(WebView *)sender didClearWindowObject:(WebScriptObject *)windowScriptObject forFrame:(WebFrame *)frame
