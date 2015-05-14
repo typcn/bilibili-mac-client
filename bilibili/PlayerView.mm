@@ -369,10 +369,17 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             mq = 8.0;
         }
         
+        float fontsize = [self getSettings:@"fontsize"];
+        if(!fontsize){
+            fontsize = 25.1;
+        }else{
+            fontsize = fontsize + 0.1;
+        }
+        
         danmaku2ass([filePath cStringUsingEncoding:NSUTF8StringEncoding],
                     [OutFile cStringUsingEncoding:NSUTF8StringEncoding],
                     [width intValue],[height intValue],
-                    "STHeiti",(int)[height intValue]/25.1,
+                    "STHeiti",(int)[height intValue]/fontsize,
                     [[NSString stringWithFormat:@"%.2f",[self getSettings:@"transparency"]] floatValue],
                     mq,5);
         

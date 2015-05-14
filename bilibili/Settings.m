@@ -34,10 +34,17 @@
         quality = @"原画";
     }
     [self.qualityBox setStringValue:quality];
+    
     NSString *IP = [settingsController objectForKey:@"xff"];
     if([IP length] > 4){
         [self.FakeIP setStringValue:[settingsController objectForKey:@"xff"]];
     }
+    
+    float fontsize = [settingsController floatForKey:@"fontsize"];
+    if(!fontsize){
+        fontsize = 25.1;
+    }
+    [self.fontsize setFloatValue:fontsize];
 }
 
 - (IBAction)autoPlay:(id)sender {
@@ -56,6 +63,10 @@
     [settingsController setFloat:[self.transparency floatValue] forKey:@"transparency"];
     [settingsController synchronize];
 
+}
+- (IBAction)fontsizeChanged:(id)sender {
+    [settingsController setFloat:[self.fontsize floatValue] forKey:@"fontsize"];
+    [settingsController synchronize];
 }
 - (IBAction)FakeIPChanged:(id)sender {
     NSString *rand = [NSString stringWithFormat:@"%ld", (long)[self randomNumberBetween:1 maxNumber:254]];
