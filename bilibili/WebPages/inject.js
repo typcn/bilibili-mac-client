@@ -13,7 +13,9 @@ if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("live"
     if(!fv){
         fv=$('embed').attr('flashvars');
     }
-    
+    if(!fv){
+        fv = 'cid=' + ROOMID;
+    }
     var re = /cid=(\d+)&/;
     var m = re.exec(fv);
     var TYPCN_PLAYER_CID = m[1];
@@ -23,14 +25,17 @@ if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("live"
     }
     
     if(TYPCN_PLAYER_CID){
-        if(window.location.href.indexOf("live/") > 2){
-            window.external.playVideoByCID(TYPCN_PLAYER_CID);
+        if(window.location.origin == 'http://live.bilibili.com'){
+            if(ROOMID > 0){
+                window.external.playVideoByCID(ROOMID.toString());
+            }
+            
         }else{
             $('#bofqi').html('<div class="TYPCN_PLAYER_INJECT_PAGE"><div class="player-placeholder"><div class="btn-wrapper n2"><div class="player-placeholder-head">请选择操作</div><div class="src-btn"><a href="javascript:window.external.playVideoByCID(TYPCN_PLAYER_CID)">播放</a></div><div class="src-btn"><a href="javascript:window.external.downloadVideoByCID(TYPCN_PLAYER_CID)">下载</a></div></div></div></div>');
         }
         
     }else{
-        
+
     }
     
     // 注意：仅为统计软件使用人数，保证不会记录您的 IP 地址，且没有开启 nginx 日志
