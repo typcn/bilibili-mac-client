@@ -622,6 +622,10 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             }
             break;
         }
+        case 7:{ // X key to loop
+            mpv_set_option_string(mpv, "loop", "inf");
+            break;
+        }
         default: // Unknow
             NSLog(@"Key pressed: %hu", [event keyCode]);
             break;
