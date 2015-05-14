@@ -535,6 +535,46 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
 }
 
 BOOL paused = NO;
+BOOL hide = NO;
+BOOL obServer = NO;
+BOOL isFirstCall = YES;
+
+- (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)window{
+    return [NSArray arrayWithObject: window];
+}
+
+- (void)window:(NSWindow *)window
+startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
+    
+}
+
+- (NSSize)windowWillResize:(NSWindow *)sender
+                    toSize:(NSSize)frameSize{
+    if(!obServer){
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResize:) name:NSWindowDidResizeNotification object:self];
+        obServer = YES;
+    }else{
+        if(mpv){
+            if(strcmp(mpv_get_property_string(mpv,"pause"),"yes")){
+                mpv_set_property_string(mpv,"pause","yes");
+            }
+        }
+    }
+    return frameSize;
+}
+- (void)windowDidResize:(NSNotification *)notification{
+    [self performSelector:@selector(Continue) withObject:nil afterDelay:1.0];
+}
+
+- (void)Continue{
+    if(mpv && !isFirstCall){
+        if(strcmp(mpv_get_property_string(mpv,"pause"),"no")){
+            mpv_set_property_string(mpv,"pause","no");
+        }
+    }else{
+        isFirstCall = NO;
+    }
+}
 
 -(void)keyDown:(NSEvent*)event
 {
@@ -542,25 +582,25 @@ BOOL paused = NO;
         return;
     }
     switch( [event keyCode] ) {
-        case 125:{
+        case 125:{ // ⬇️
             [NSSound decreaseSystemVolumeBy:0.05];
             break;
         }
-        case 126:{
+        case 126:{ // ⬆️
             [NSSound increaseSystemVolumeBy:0.05];
             break;
         }
-        case 124:{
+        case 124:{ // 👉
             const char *args[] = {"seek", "5" ,NULL};
             mpv_command(mpv, args);
             break;
         }
-        case 123:{
+        case 123:{ // 👈
             const char *args[] = {"seek", "-5" ,NULL};
             mpv_command(mpv, args);
             break;
         }
-        case 49:{
+        case 49:{ // Space
             if(strcmp(mpv_get_property_string(mpv,"pause"),"no")){
                 mpv_set_property_string(mpv,"pause","no");
             }else{
@@ -568,11 +608,21 @@ BOOL paused = NO;
             }
             break;
         }
-        case 36:{
+        case 36:{ // Enter
             [postCommentButton performClick:nil];
             break;
         }
-        default:
+        case 53:{ // Esc key to hide mouse
+            if(hide == YES){
+                hide = NO;
+                [NSCursor unhide];
+            }else{
+                hide = YES;
+                [NSCursor hide];
+            }
+            break;
+        }
+        default: // Unknow
             NSLog(@"Key pressed: %hu", [event keyCode]);
             break;
     }
@@ -595,8 +645,11 @@ BOOL paused = NO;
 }
 
 - (BOOL)windowShouldClose:(id)sender{
-    
     isCancelled = true;
+    if(obServer){
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self];
+        obServer = NO;
+    }
     dispatch_async(dispatch_get_main_queue(), ^{
         mpv_set_wakeup_callback(mpv, NULL,NULL);
         
