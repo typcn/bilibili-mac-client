@@ -15,5 +15,6 @@
 @property (weak) IBOutlet NSButton *RealTimeComment;
 @property (weak) IBOutlet NSSlider *transparency;
 @property (weak) IBOutlet NSComboBox *FakeIP;
+@property (weak) IBOutlet NSTextField *fontsize;
 
 @end
