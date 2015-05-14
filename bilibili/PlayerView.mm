@@ -84,7 +84,6 @@ static void wakeup(void *context) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     if([vCID isEqualToString:@"LOCALVIDEO"]){
         [[[NSApplication sharedApplication] keyWindow] performClose:self];
     }
@@ -93,7 +92,6 @@ static void wakeup(void *context) {
     [[[NSApplication sharedApplication] keyWindow] resignKeyWindow];
     [self.view.window makeKeyWindow];
     [self.view.window makeMainWindow];
-    
     NSRect rect = [[NSScreen mainScreen] visibleFrame];
     NSNumber *viewHeight = [NSNumber numberWithFloat:rect.size.height];
     NSNumber *viewWidth = [NSNumber numberWithFloat:rect.size.width];
@@ -111,6 +109,9 @@ static void wakeup(void *context) {
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
 
     dispatch_async(queue, ^{
+        
+        NSString *baseAPIUrl = @"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=%d&sign=%@";
+        
         if([vCID isEqualToString:@"LOCALVIDEO"]){
             if([vUrl length] > 5){
                 NSDictionary *VideoInfoJson = [self getVideoInfo:vUrl];
@@ -126,31 +127,33 @@ static void wakeup(void *context) {
                 [self.view.window performClose:self];
             }
             return;
+        }else if([vUrl containsString:@"live.bilibili"]){
+            baseAPIUrl = @"http://live.bilibili.com/api/playurl?appkey=%@&otype=json&cid=%@&quality=%d&sign=%@";
+            vAID = @"LIVE";
+            vPID = @"LIVE";
+        }else{
+            NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http:/*[^/]+/video/av(\\d+)(/|/index.html|/index_(\\d+).html)?(\\?|#|$)" options:NSRegularExpressionCaseInsensitive error:nil];
+            
+            NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
+            
+            NSRange aidRange = [match rangeAtIndex:1];
+            
+            if(aidRange.length > 0){
+                vAID = [vUrl substringWithRange:aidRange];
+                NSRange pidRange = [match rangeAtIndex:3];
+                if(pidRange.length > 0 ){
+                    vPID = [vUrl substringWithRange:pidRange];
+                }
+            }else{
+                vAID = @"0";
+            }
+            
+            if(![vPID length]){
+                vPID = @"1";
+            }
         }
         
         [self.textTip setStringValue:@"正在解析视频地址"];
-        
-        // Parse Video URL
-
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http:/*[^/]+/video/av(\\d+)(/|/index.html|/index_(\\d+).html)?(\\?|#|$)" options:NSRegularExpressionCaseInsensitive error:nil];
-        
-        NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
-        
-        NSRange aidRange = [match rangeAtIndex:1];
-        
-        if(aidRange.length > 0){
-            vAID = [vUrl substringWithRange:aidRange];
-            NSRange pidRange = [match rangeAtIndex:3];
-            if(pidRange.length > 0 ){
-                vPID = [vUrl substringWithRange:pidRange];
-            }
-        }else{
-            vAID = @"0";
-        }
-        
-        if(![vPID length]){
-            vPID = @"1";
-        }
         
         // Get Sign
         int quality = [self getSettings:@"quality"];
@@ -160,7 +163,7 @@ static void wakeup(void *context) {
         
         // Get Playback URL
         
-        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=%d&sign=%@",APIKey,vCID,quality,sign]];
+        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:baseAPIUrl,APIKey,vCID,quality,sign]];
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"GET";
         request.timeoutInterval = 5;
@@ -256,8 +259,13 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             // Get Comment
             NSNumber *width = [VideoInfoJson objectForKey:@"width"];
             NSNumber *height = [VideoInfoJson objectForKey:@"height"];
-            NSString *commentFile = [self getComments:width :height];
-            [self PlayVideo:commentFile :res];
+            if([vUrl containsString:@"live_"]){
+                [self PlayVideo:@"" :res];
+            }else{
+                NSString *commentFile = [self getComments:width :height];
+                [self PlayVideo:commentFile :res];
+            }
+            
         }else{
             [self.textTip setStringValue:@"视频信息读取失败"];
             parsing = false;
@@ -294,10 +302,10 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
     check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
     check_error(mpv_set_option_string(mpv, "vf", "lavfi=\"fps=fps=60:round=down\""));
-    
-    check_error(mpv_set_option_string(mpv, "sub-ass", "yes"));
-    check_error(mpv_set_option_string(mpv, "sub-file", [commentFile cStringUsingEncoding:NSUTF8StringEncoding]));
-    
+    if(![vUrl containsString:@"live_"]){
+        check_error(mpv_set_option_string(mpv, "sub-ass", "yes"));
+        check_error(mpv_set_option_string(mpv, "sub-file", [commentFile cStringUsingEncoding:NSUTF8StringEncoding]));
+    }
     // request important errors
     check_error(mpv_request_log_messages(mpv, "warn"));
     
@@ -547,7 +555,7 @@ BOOL obServer = NO;
 BOOL isFirstCall = YES;
 
 - (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)window{
-    return [NSArray arrayWithObject: window];
+    return nil;
 }
 
 - (void)window:(NSWindow *)window
@@ -662,7 +670,7 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         obServer = NO;
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-        mpv_set_wakeup_callback(mpv, NULL,NULL);
+        //mpv_set_wakeup_callback(mpv, NULL,NULL);
         
         [self mpv_stop];
         [self mpv_quit];
