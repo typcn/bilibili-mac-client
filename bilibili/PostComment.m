@@ -44,6 +44,10 @@ extern mpv_handle *mpv;
         
         
         NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/dmpost?cid=%@&aid=%@&pid=%@",vCID,vAID,vPID]];
+        if([vAID isEqualToString:@"LIVE"]){
+            URL = [NSURL URLWithString:@"http://live.bilibili.com/msg/send"];
+        }
+        
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"POST";
         request.timeoutInterval = 5;
@@ -67,6 +71,17 @@ extern mpv_handle *mpv;
                                          @"message": text,
                                          @"playTime": playTime,
                                          };
+        
+        if([vAID isEqualToString:@"LIVE"]){
+            bodyParameters = @{
+                               @"roomid": vCID,
+                               @"color": @"16777215",
+                               @"mode": @"1",
+                               @"fontsize": @"25",
+                               @"msg": text,
+                               };
+        }
+        
         request.HTTPBody = [NSStringFromQueryParameters(bodyParameters) dataUsingEncoding:NSUTF8StringEncoding];
         
         // Headers
@@ -75,8 +90,12 @@ extern mpv_handle *mpv;
         [request addValue:userAgent forHTTPHeaderField:@"User-Agent"];
         [request setValue:@"http://static.hdslb.com" forHTTPHeaderField:@"Origin"];
         [request setValue:@"http://static.hdslb.com/play.swf" forHTTPHeaderField:@"Referer"];
-        [request setValue:@"ShockwaveFlash/17.0.0.134" forHTTPHeaderField:@"X-Requested-With"];
+        [request setValue:@"ShockwaveFlash/17.0.0.188" forHTTPHeaderField:@"X-Requested-With"];
         // Cookies will add automatically
+        
+        if([vAID isEqualToString:@"LIVE"]){
+            [request setValue:@"http://static.hdslb.com/live-static/swf/LivePlayerEx_1.swf" forHTTPHeaderField:@"Referer"];
+        }
         
         // Send Request
         
@@ -89,7 +108,7 @@ extern mpv_handle *mpv;
         
         if([returnData length] > 0){
             int x = [returnData intValue];
-            if (x > 0){
+            if (x > -1){
                 [sender setStringValue:@"😁发送成功！"];
                 NSLog(@"Comment sent. ID: %d",x);
             }else{
