@@ -11,7 +11,7 @@ if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("live"
         fv=$('.player').attr('src');
     }
     if(!fv){
-        fv=$('embed').attr('flashvars');
+        fv=$('.player-wrapper embed').attr('flashvars');
     }
     if(!fv){
         fv = 'cid=' + ROOMID;
