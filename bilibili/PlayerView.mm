@@ -670,8 +670,9 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         obServer = NO;
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-        //mpv_set_wakeup_callback(mpv, NULL,NULL);
-        
+        if(mpv){
+            mpv_set_wakeup_callback(mpv, NULL,NULL);
+        }
         [self mpv_stop];
         [self mpv_quit];
     });
