@@ -22,6 +22,7 @@
     
     [self.autoPlay setState:[settingsController integerForKey:@"autoPlay"]];
     [self.RealTimeComment setState:[settingsController integerForKey:@"RealTimeComment"]];
+    [self.disablebottomComment setState:[settingsController integerForKey:@"disableBottomComment"]];
     
     float trans = [settingsController floatForKey:@"transparency"];
     if(!trans){
@@ -68,6 +69,13 @@
     [settingsController setFloat:[self.fontsize floatValue] forKey:@"fontsize"];
     [settingsController synchronize];
 }
+
+- (IBAction)disableBottomComment:(id)sender {
+    [settingsController setInteger:[self.disablebottomComment state] forKey:@"disableBottomComment"];
+    [settingsController synchronize];
+}
+
+
 - (IBAction)FakeIPChanged:(id)sender {
     NSString *rand = [NSString stringWithFormat:@"%ld", (long)[self randomNumberBetween:1 maxNumber:254]];
     NSString *str = [[self.FakeIP stringValue] stringByReplacingOccurrencesOfString:@"[RANDOM]"

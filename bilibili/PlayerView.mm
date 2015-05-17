@@ -384,12 +384,20 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             fontsize = fontsize + 0.1;
         }
         
-        danmaku2ass([filePath cStringUsingEncoding:NSUTF8StringEncoding],
+        bool disableBottom;
+        float disableSettings = [self getSettings:@"disableBottomComment"];
+        if(disableSettings > 0 ){
+            disableBottom = true;
+        }else{
+            disableBottom = false;
+        }
+        
+        ConvertBilibiliCommentWithBlockSettings([filePath cStringUsingEncoding:NSUTF8StringEncoding],
                     [OutFile cStringUsingEncoding:NSUTF8StringEncoding],
                     [width intValue],[height intValue],
                     "STHeiti",(int)[height intValue]/fontsize,
                     [[NSString stringWithFormat:@"%.2f",[self getSettings:@"transparency"]] floatValue],
-                    mq,5);
+                    mq,5,disableBottom);
         
         NSLog(@"Comment converted to %@",OutFile);
         
