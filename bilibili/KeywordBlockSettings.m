@@ -17,9 +17,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *keywords = [[[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"] stringByReplacingOccurrencesOfString:@"|" withString:@"\n"];
-    [self.textView setString:keywords];
-    
+    NSString *keywords = [[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"];
+    if([keywords length] < 1){
+        [self.textView setString:@"请输入关键词，一行一个"];
+    }else{
+        keywords = [keywords stringByReplacingOccurrencesOfString:@"|" withString:@"\n"];
+        [self.textView setString:keywords];
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.view.window];
 }
 
