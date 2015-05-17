@@ -647,14 +647,14 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="Yey-g8-OWP">
-                                            <rect key="frame" x="0.0" y="0.0" width="223" height="133"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="223" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="463" height="268"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <size key="maxSize" width="480" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="463" height="268"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <size key="maxSize" width="480" height="10000000"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -821,7 +821,7 @@
                             <button id="hj3-k4-IwT">
                                 <rect key="frame" x="25" y="273" width="137" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="自动换P（试验）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="IwE-aZ-Bxq">
+                                <buttonCell key="cell" type="check" title="自动换P（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="IwE-aZ-Bxq">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -952,12 +952,24 @@
                                     <action selector="fontsizeChanged:" target="z8a-gg-iMj" id="Ekm-XY-OWF"/>
                                 </connections>
                             </textField>
+                            <button id="5yv-E4-e3g">
+                                <rect key="frame" x="25" y="213" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="关闭底部弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6pD-zG-Fl9">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="disableBottomComment:" target="z8a-gg-iMj" id="t87-e4-R4R"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="FakeIP" destination="JLT-R0-aaz" id="Iyy-RE-YYY"/>
                         <outlet property="RealTimeComment" destination="aRT-dE-rbd" id="l2e-xo-Z43"/>
                         <outlet property="autoPlay" destination="hj3-k4-IwT" id="Da1-w3-5FH"/>
+                        <outlet property="disablebottomComment" destination="5yv-E4-e3g" id="zXF-lZ-D8g"/>
                         <outlet property="fontsize" destination="ajt-jS-Z4K" id="ouz-gu-SI4"/>
                         <outlet property="qualityBox" destination="k65-FX-xi6" id="XPQ-mh-vcg"/>
                         <outlet property="transparency" destination="dP9-DC-elz" id="k0R-eZ-8Ee"/>
