@@ -16,6 +16,8 @@
 		FD2BD5631AD11319001A7E16 /* playLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2BD5621AD11319001A7E16 /* playLocalFile.m */; };
 		FD2BD56E1AD15AE0001A7E16 /* libmediainfo.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; };
 		FD2BD56F1AD15AF9001A7E16 /* libmediainfo.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FD33F5B91B085D3100DF4C78 /* LiveChat.m in Sources */ = {isa = PBXBuildFile; fileRef = FD33F5B81B085D3100DF4C78 /* LiveChat.m */; };
+		FD33F5C61B08A5A500DF4C78 /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD33F5C41B08A5A500DF4C78 /* Socket.cpp */; };
 		FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
 		FD476C6A1AD2086900584EFE /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD476C691AD2086900584EFE /* Settings.m */; };
@@ -76,6 +78,7 @@
 		FD6102621AD7CC020013119A /* inject.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD61025B1AD7CBA20013119A /* inject.js */; };
 		FD6102631AD7CC020013119A /* webui.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD61025D1AD7CBC10013119A /* webui.html */; };
 		FD6102641AD7CC020013119A /* webui.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD6102601AD7CBF10013119A /* webui.css */; };
+		FD855FB01B07D884004A1610 /* BilibiliSocketClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD855FAF1B07D884004A1610 /* BilibiliSocketClient.mm */; };
 		FD8CEDEF1AD2499B0092452F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */; };
 		FD8CEDF21AD24A290092452F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8CEDF11AD24A290092452F /* KeywordBlockSettings.m */; };
 		FDA775DE1AD93D1800426483 /* libaria2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; };
@@ -188,6 +191,11 @@
 		FD2BD5621AD11319001A7E16 /* playLocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playLocalFile.m; sourceTree = "<group>"; };
 		FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmediainfo.0.dylib; path = bilibili/libs/libmediainfo.0.dylib; sourceTree = "<group>"; };
 		FD2BD5701AD15BCA001A7E16 /* MediaInfoDLL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaInfoDLL.h; path = bilibili/headers/MediaInfoDLL/MediaInfoDLL.h; sourceTree = "<group>"; };
+		FD33F5B31B085BEC00DF4C78 /* BilibiliSocketClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BilibiliSocketClient.h; sourceTree = "<group>"; };
+		FD33F5B71B085D3100DF4C78 /* LiveChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveChat.h; sourceTree = "<group>"; };
+		FD33F5B81B085D3100DF4C78 /* LiveChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveChat.m; sourceTree = "<group>"; };
+		FD33F5C41B08A5A500DF4C78 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
+		FD33F5C51B08A5A500DF4C78 /* Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Socket.hpp; sourceTree = "<group>"; };
 		FD471B4C1AC8FF3C00A2A727 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerView.mm; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -227,6 +235,7 @@
 		FD61025B1AD7CBA20013119A /* inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = inject.js; path = WebPages/inject.js; sourceTree = "<group>"; };
 		FD61025D1AD7CBC10013119A /* webui.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = webui.html; path = WebPages/webui.html; sourceTree = "<group>"; };
 		FD6102601AD7CBF10013119A /* webui.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = webui.css; path = WebPages/webui.css; sourceTree = "<group>"; };
+		FD855FAF1B07D884004A1610 /* BilibiliSocketClient.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BilibiliSocketClient.mm; sourceTree = "<group>"; };
 		FD8CEDED1AD2499B0092452F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentBlockSettings.h; sourceTree = "<group>"; };
 		FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentBlockSettings.m; sourceTree = "<group>"; };
 		FD8CEDF01AD24A290092452F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeywordBlockSettings.h; sourceTree = "<group>"; };
@@ -326,6 +335,7 @@
 		FD076C521AC8CBBB00C893FA /* bilibili */ = {
 			isa = PBXGroup;
 			children = (
+				FD855FAE1B07D86C004A1610 /* RealTimeComments */,
 				FDA775E81AD93ED600426483 /* downloadManager */,
 				FD61025A1AD7CB760013119A /* WebPages */,
 				FD476C701AD22AEC00584EFE /* GUI */,
@@ -477,6 +487,8 @@
 				FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */,
 				FD4D376C1ACEFD7B0022ABF3 /* PostComment.h */,
 				FD4D376D1ACEFD7B0022ABF3 /* PostComment.m */,
+				FD33F5B71B085D3100DF4C78 /* LiveChat.h */,
+				FD33F5B81B085D3100DF4C78 /* LiveChat.m */,
 			);
 			name = "Player View";
 			sourceTree = "<group>";
@@ -506,6 +518,17 @@
 				FD6102601AD7CBF10013119A /* webui.css */,
 			);
 			name = WebPages;
+			sourceTree = "<group>";
+		};
+		FD855FAE1B07D86C004A1610 /* RealTimeComments */ = {
+			isa = PBXGroup;
+			children = (
+				FD33F5B31B085BEC00DF4C78 /* BilibiliSocketClient.h */,
+				FD855FAF1B07D884004A1610 /* BilibiliSocketClient.mm */,
+				FD33F5C41B08A5A500DF4C78 /* Socket.cpp */,
+				FD33F5C51B08A5A500DF4C78 /* Socket.hpp */,
+			);
+			name = RealTimeComments;
 			sourceTree = "<group>";
 		};
 		FD8CEDEC1AD249540092452F /* Settings View */ = {
@@ -694,6 +717,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD076C5C1AC8CBBB00C893FA /* ViewController.mm in Sources */,
+				FD855FB01B07D884004A1610 /* BilibiliSocketClient.mm in Sources */,
 				FD076C591AC8CBBB00C893FA /* main.m in Sources */,
 				FD8CEDF21AD24A290092452F /* KeywordBlockSettings.m in Sources */,
 				FD476C6A1AD2086900584EFE /* Settings.m in Sources */,
@@ -701,12 +725,14 @@
 				FD2BD5631AD11319001A7E16 /* playLocalFile.m in Sources */,
 				FDFC8AB91AD5745B000AFDB2 /* danmaku2ass.cpp in Sources */,
 				FD4D376E1ACEFD7B0022ABF3 /* PostComment.m in Sources */,
+				FD33F5B91B085D3100DF4C78 /* LiveChat.m in Sources */,
 				FDA775E61AD93ECA00426483 /* DownloadManager.m in Sources */,
 				FDFC8AB81AD5745B000AFDB2 /* AssClass.cpp in Sources */,
 				FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */,
 				FDAF8BAA1ACA5A3100C0C55D /* AboutView.m in Sources */,
 				FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */,
 				FD8CEDEF1AD2499B0092452F /* CommentBlockSettings.m in Sources */,
+				FD33F5C61B08A5A500DF4C78 /* Socket.cpp in Sources */,
 				FD476C731AD22B1F00584EFE /* CommentFilter.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
