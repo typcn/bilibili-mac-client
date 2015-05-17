@@ -356,6 +356,38 @@ int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
    
 }
 
+- (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems{
+    NSMenuItem *copy = [[NSMenuItem alloc] initWithTitle:@"复制页面地址" action:@selector(CopyLink) keyEquivalent:@""];
+    [copy setTarget:self];
+    [copy setEnabled:YES];
+    NSMenuItem *play = [[NSMenuItem alloc] initWithTitle:@"强制显示播放界面" action:@selector(ShowPlayer) keyEquivalent:@""];
+    [play setTarget:self];
+    [play setEnabled:YES];
+    NSMenuItem *contact = [[NSMenuItem alloc] initWithTitle:@"呼叫程序猿" action:@selector(Contact) keyEquivalent:@""];
+    [contact setTarget:self];
+    [contact setEnabled:YES];
+    NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
+    [mutableArray addObjectsFromArray:defaultMenuItems];
+    [mutableArray addObject:copy];
+    [mutableArray addObject:play];
+    [mutableArray addObject:contact];
+    return mutableArray;
+}
+
+- (void)CopyLink{
+    [[NSPasteboard generalPasteboard] clearContents];
+    [[NSPasteboard generalPasteboard] setString:webView.mainFrameURL  forType:NSStringPboardType];
+}
+
+- (void)ShowPlayer{
+    [webView stringByEvaluatingJavaScriptFromString:WebScript];
+    userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+}
+
+- (void)Contact{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"mailto:typcncom@gmail.com"]];
+}
+
 - (IBAction)openAv:(id)sender {
     NSString *avNumber = [sender stringValue];
     if([[sender stringValue] length] > 2 ){

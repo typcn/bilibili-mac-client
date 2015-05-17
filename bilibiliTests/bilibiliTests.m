@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
 #import "PlayerView.h"
+#import "LiveChat.h"
 #import "CommentFilter.h"
 
 extern NSString *vCID;
@@ -57,5 +58,15 @@ extern BOOL isPlaying;
     }];
 }
 
+- (void)testLiveChat {
+    vCID = @"1029";
+    XCTestExpectation *videoPlayExpectation = [self expectationWithDescription:@"Video Playing"];
+    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil]; // get a reference to the storyboard
+    NSWindowController *myController = [storyBoard instantiateControllerWithIdentifier:@"LiveChatWindow"]; // instantiate your window controller
+    [myController showWindow:self]; // show the window
+    [self waitForExpectationsWithTimeout:30 handler:^(NSError *error) {
+        
+    }];
+}
 
 @end
