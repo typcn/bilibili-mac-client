@@ -305,6 +305,10 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     if(![vUrl containsString:@"live_"]){
         check_error(mpv_set_option_string(mpv, "sub-ass", "yes"));
         check_error(mpv_set_option_string(mpv, "sub-file", [commentFile cStringUsingEncoding:NSUTF8StringEncoding]));
+    }else{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.showLiveChat performClick:nil];
+        });
     }
     // request important errors
     check_error(mpv_request_log_messages(mpv, "warn"));

@@ -13,6 +13,7 @@
 @property (weak) IBOutlet NSTextField *subtip;
 @property (weak) IBOutlet NSImageView *loadingImage;
 @property (weak) IBOutlet NSButton *PostCommentButton;
+@property (weak) IBOutlet NSButton *showLiveChat;
 
 - (NSDictionary *) getVideoInfo:(NSString *)url;
 - (NSString *) getComments:(NSNumber *)width :(NSNumber *)height;

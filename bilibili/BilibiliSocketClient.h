@@ -16,6 +16,7 @@
 
 - (bool)ConnectToTheFuckingFlashSocketServer: (int)roomid;
 - (void)setDelegate:(id)del;
+- (void)Disconnect;
 
 @end
 

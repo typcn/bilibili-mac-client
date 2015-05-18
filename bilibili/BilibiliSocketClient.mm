@@ -15,6 +15,8 @@ tcp_client c;
 
 @implementation LiveSocket{
     id delegate;
+    bool disconnected;
+    NSTimer *hbTimer;
 }
 - (void)setDelegate:(id)del{
     delegate = del;
@@ -26,7 +28,7 @@ tcp_client c;
         return false;
     }
     
-    [NSTimer scheduledTimerWithTimeInterval:30.0
+    hbTimer = [NSTimer scheduledTimerWithTimeInterval:30.0
                                      target:self
                                    selector:@selector(startHB)
                                    userInfo:nil
@@ -40,10 +42,17 @@ tcp_client c;
     return true;
 }
 
+- (void)Disconnect{
+    disconnected = true;
+    [hbTimer invalidate];
+    hbTimer = nil;
+    c.disconnect😈();
+}
+
 - (void) recvMsg{
     dispatch_queue_t q = dispatch_queue_create("com.typcn.bilisocket", NULL);
     dispatch_async(q, ^(void){
-        while (true) {
+        while (!disconnected) {
             std::string str = c.receive(2048);
             if(str.length() > 4){
                 NSString *recv = [NSString stringWithUTF8String:str.c_str()];
@@ -57,6 +66,7 @@ tcp_client c;
                 
             }
         }
+        NSLog(@"Loop end");
     });
 }
 

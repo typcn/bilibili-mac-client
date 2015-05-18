@@ -25,6 +25,7 @@ public:
     bool conn(std::string, int);
     bool send_data(const void *data,int size);
     std::string receive(int);
+    void disconnect😈();
 };
 
 #endif /* defined(__bilibili__Socket__) */
