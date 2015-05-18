@@ -59,12 +59,12 @@ extern BOOL isPlaying;
 }
 
 - (void)testLiveChat {
-    vCID = @"1029";
+    vCID = @"12457";
     XCTestExpectation *videoPlayExpectation = [self expectationWithDescription:@"Video Playing"];
     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil]; // get a reference to the storyboard
     NSWindowController *myController = [storyBoard instantiateControllerWithIdentifier:@"LiveChatWindow"]; // instantiate your window controller
     [myController showWindow:self]; // show the window
-    [self waitForExpectationsWithTimeout:30 handler:^(NSError *error) {
+    [self waitForExpectationsWithTimeout:6000 handler:^(NSError *error) {
         
     }];
 }

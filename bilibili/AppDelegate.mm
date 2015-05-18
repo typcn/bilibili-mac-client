@@ -17,6 +17,7 @@
 @implementation AppDelegate
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
+    signal(SIGPIPE, SIG_IGN);
     [[NSAppleEventManager sharedAppleEventManager]
      setEventHandler:self
      andSelector:@selector(handleURLEvent:withReplyEvent:)

@@ -10,10 +10,12 @@
 #define bilibili_BilibiliSocketClient_h
 
 #import <Foundation/Foundation.h>
+#import "LiveChat.h"
 
 @interface LiveSocket : NSObject
 
 - (bool)ConnectToTheFuckingFlashSocketServer: (int)roomid;
+- (void)setDelegate:(id)del;
 
 @end
 
