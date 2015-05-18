@@ -345,6 +345,8 @@ int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
             [webView stringByEvaluatingJavaScriptFromString:@"window.location=$('#rank_list li:first-child .content > a').attr('href')"];
         }else if(![webView.mainFrameURL hasPrefix:@"http://www.bilibili.com/video/av"]){
             webView.mainFrameURL = @"http://www.bilibili.com/ranking";
+        }else{
+            [webView stringByEvaluatingJavaScriptFromString:@"setTimeout(function(){window.external.playVideoByCID(TYPCN_PLAYER_CID)},2000);"];
         }
     }
     [webView stringByEvaluatingJavaScriptFromString:WebScript];
