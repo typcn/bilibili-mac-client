@@ -133,11 +133,11 @@ string tcp_client::receive(int size=512)
         shutdown(sock, SHUT_RDWR);
         sock = -1;
         conn(rec_address, rec_port);
-        return "reconnected";
+        return "Server closed connection , reconnecting";
     }else if(code < 0){
         sock = -1;
         conn(rec_address, rec_port);
-        return "reconnected";
+        return "Server closed connection , reconnecting";
     }
     buffer[0] = ' ';
     buffer[1] = ' ';

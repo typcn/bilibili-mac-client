@@ -10,4 +10,7 @@
 
 @interface LiveChat : NSViewController
 
+- (void)onNewMessage:(NSDictionary *)data;
+- (void)onNewError:(NSString *)str;
+
 @end
