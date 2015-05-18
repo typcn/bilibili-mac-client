@@ -47,7 +47,7 @@ BOOL hasMsg;
 }
 
 - (void)AppendToTextView:(NSString *)text{
-    dispatch_async(dispatch_get_main_queue(), ^{
+    
         NSFont *font = [NSFont fontWithName:@"Helvetica" size:15.0];
         NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font
                                                                     forKey:NSFontAttributeName];
@@ -55,7 +55,6 @@ BOOL hasMsg;
         
         [[self.textView textStorage] appendAttributedString:attr];
         [self.textView scrollRangeToVisible:NSMakeRange([[self.textView string] length], 0)];
-    });
 }
 
 - (void)windowWillClose:(NSNotification *)notification
