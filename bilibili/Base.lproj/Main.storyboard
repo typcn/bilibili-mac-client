@@ -555,10 +555,10 @@
             </objects>
             <point key="canvasLocation" x="-464.5" y="195"/>
         </scene>
-        <!--Miedia Player View Controller-->
+        <!--Media Player View Controller-->
         <scene sceneID="HPp-cU-Hxk">
             <objects>
-                <viewController storyboardIdentifier="PlayerView" id="Xuz-Nv-8zc" userLabel="Miedia Player View Controller" customClass="PlayerView" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlayerView" id="Xuz-Nv-8zc" userLabel="Media Player View Controller" customClass="PlayerView" sceneMemberID="viewController">
                     <view key="view" id="nKN-Uv-bMF">
                         <rect key="frame" x="0.0" y="0.0" width="432" height="265"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
