@@ -61,6 +61,7 @@ extern BOOL hasMsg;
 
 - (void)testLiveChat {
     vCID = @"5446";
+    isTesting = false;
     XCTestExpectation *videoPlayExpectation = [self expectationWithDescription:@"Video Playing"];
     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil]; // get a reference to the storyboard
     NSWindowController *myController = [storyBoard instantiateControllerWithIdentifier:@"LiveChatWindow"]; // instantiate your window controller
