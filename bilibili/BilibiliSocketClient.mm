@@ -15,7 +15,7 @@ tcp_client c;
 
 @implementation LiveSocket{
     id delegate;
-    bool disconnected;
+    BOOL disconnected;
     NSTimer *hbTimer;
 }
 - (void)setDelegate:(id)del{
@@ -23,6 +23,7 @@ tcp_client c;
 }
 
 - (bool)ConnectToTheFuckingFlashSocketServer: (int)roomid{
+    disconnected = false;
     room = roomid;
     if(!c.conn("livecmt.bilibili.com" , 88)){
         return false;
@@ -55,6 +56,7 @@ tcp_client c;
         while (!disconnected) {
             std::string str = c.receive(2048);
             if(str.length() > 4){
+                dispatch_async(dispatch_get_main_queue(), ^{
                 NSString *recv = [NSString stringWithUTF8String:str.c_str()];
                 NSError *err;
                 NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[recv dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONWritingPrettyPrinted error:&err];
@@ -63,7 +65,7 @@ tcp_client c;
                 }else{
                     [delegate onNewError:recv];
                 }
-                
+                });
             }
         }
         NSLog(@"Loop end");
