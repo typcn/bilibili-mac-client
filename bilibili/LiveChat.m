@@ -10,6 +10,9 @@
 #import "BilibiliSocketClient.h"
 
 extern NSString *vCID;
+extern BOOL isTesting;
+
+BOOL hasMsg;
 
 @interface LiveChat ()
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
@@ -31,11 +34,12 @@ extern NSString *vCID;
         NSString *cmContent = [info objectAtIndex:1];
         NSString *userName = [[info objectAtIndex:2] objectAtIndex:1];
         [self AppendToTextView:[NSString stringWithFormat:@"%@ : %@\n",userName,cmContent]];
+        hasMsg = true;
     }
 }
 
 - (void)onNewError:(NSString *)str{
-    [self AppendToTextView:[NSString stringWithFormat:@"错误指令: %@\n",str]];
+    [self AppendToTextView:[NSString stringWithFormat:@"未知指令: %@\n",str]];
 }
 
 - (void)AppendToTextView:(NSString *)text{

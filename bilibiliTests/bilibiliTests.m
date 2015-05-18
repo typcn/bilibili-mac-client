@@ -16,6 +16,7 @@ extern NSString *vCID;
 extern NSString *vUrl;
 extern BOOL isTesting;
 extern BOOL isPlaying;
+extern BOOL hasMsg;
 
 @interface bilibiliTests : XCTestCase{
     PlayerView *pv;
@@ -59,12 +60,23 @@ extern BOOL isPlaying;
 }
 
 - (void)testLiveChat {
-    vCID = @"12457";
+    vCID = @"5446";
     XCTestExpectation *videoPlayExpectation = [self expectationWithDescription:@"Video Playing"];
     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil]; // get a reference to the storyboard
     NSWindowController *myController = [storyBoard instantiateControllerWithIdentifier:@"LiveChatWindow"]; // instantiate your window controller
     [myController showWindow:self]; // show the window
-    [self waitForExpectationsWithTimeout:6000 handler:^(NSError *error) {
+    
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        while(!hasMsg){
+            sleep(0.3);
+        }
+        
+        NSLog(@"Will exit");
+        
+        [videoPlayExpectation fulfill];
+    });
+    
+    [self waitForExpectationsWithTimeout:100 handler:^(NSError *error) {
         
     }];
 }
