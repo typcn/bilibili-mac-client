@@ -8,14 +8,16 @@
 
 #include "Socket.hpp"
 
-#include<iostream>    //cout
-#include<stdio.h> //printf
-#include<string.h>    //strlen
-#include<string>  //string
-#include<sys/socket.h>    //socket
-#include<netdb.h> //hostent
+#include <iostream>
+#include <stdio.h>
+#include <string.h>
+#include <string>
+#include <sys/socket.h>
+#include <netdb.h>
 
 using namespace std;
+
+void handShake();
 
 tcp_client::tcp_client()
 {
@@ -24,11 +26,16 @@ tcp_client::tcp_client()
     address = "";
 }
 
+string rec_address;
+int rec_port;
+
 /**
  Connect to a host on a certain port number
  */
 bool tcp_client::conn(string address , int port)
 {
+    rec_address = address;
+    rec_port = port;
     //create socket if it is not already created
     if(sock == -1)
     {
@@ -88,7 +95,7 @@ bool tcp_client::conn(string address , int port)
         perror("connect failed. Error");
         return 1;
     }
-    
+    handShake();
     cout<<"Connected\n";
     return true;
 }
@@ -98,14 +105,18 @@ bool tcp_client::conn(string address , int port)
  */
 bool tcp_client::send_data(const void *data,int size)
 {
-    //Send some data
-    if( send(sock , data, size , 0) < 0)
+    long code = send(sock , data, size , 0);
+    if(code == 0)
     {
-        perror("Send failed : ");
+        shutdown(sock, SHUT_RDWR);
+        sock = -1;
+        conn(rec_address, rec_port);
+        return false;
+    }else if(code < 0){
+        sock = -1;
+        conn(rec_address, rec_port);
         return false;
     }
-    cout<<"Data send\n";
-    
     return true;
 }
 
@@ -115,14 +126,23 @@ bool tcp_client::send_data(const void *data,int size)
 string tcp_client::receive(int size=512)
 {
     char buffer[size];
-    string reply;
-    
-    //Receive a reply from the server
-    if( recv(sock , buffer , sizeof(buffer) , 0) < 0)
+    bzero(buffer, size);
+    long code = recv(sock , buffer , size , 0);
+    if(code == 0)
     {
-        puts("recv failed");
+        shutdown(sock, SHUT_RDWR);
+        sock = -1;
+        conn(rec_address, rec_port);
+        return "reconnected";
+    }else if(code < 0){
+        sock = -1;
+        conn(rec_address, rec_port);
+        return "reconnected";
     }
-    
-    reply = buffer;
+    buffer[0] = ' ';
+    buffer[1] = ' ';
+    buffer[2] = ' ';
+    buffer[3] = ' ';
+    string reply(buffer);
     return reply;
 }
