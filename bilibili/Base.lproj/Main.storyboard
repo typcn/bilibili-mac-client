@@ -140,7 +140,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="nUV-At-1HF">
-                                <rect key="frame" x="90" y="106" width="82" height="32"/>
+                                <rect key="frame" x="67" y="105" width="82" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="选择弹幕" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wtj-ZP-diZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -151,7 +151,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LX8-zA-OlO">
-                                <rect key="frame" x="188" y="159" width="172" height="17"/>
+                                <rect key="frame" x="165" y="158" width="172" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="允许所有 ffmpeg 支持的格式" id="9eb-5r-SWr">
                                     <font key="font" metaFont="system"/>
@@ -160,16 +160,16 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EP3-TH-MpO">
-                                <rect key="frame" x="188" y="115" width="199" height="17"/>
+                                <rect key="frame" x="165" y="114" width="274" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="支持 Bilibili Acfun Niconico 格式" id="E2h-KF-1Hp">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="由于弹幕引擎重写，暂时只支持 Bilibili 格式" id="E2h-KF-1Hp">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" id="MRM-cn-yyW">
-                                <rect key="frame" x="90" y="148" width="82" height="32"/>
+                                <rect key="frame" x="67" y="147" width="82" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="选择视频" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VnN-7Y-cRN">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -577,7 +577,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="loading" id="s2c-ae-PoS"/>
                             </imageView>
-                            <button hidden="YES" verticalHuggingPriority="750" id="xVW-zA-HWk">
+                            <button hidden="YES" verticalHuggingPriority="750" id="xVW-zA-HWk" userLabel="ShowPostCommentButton">
                                 <rect key="frame" x="7" y="-314" width="14" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="259-A0-YXE">
@@ -597,6 +597,17 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button hidden="YES" verticalHuggingPriority="750" id="AOg-hv-Slo" userLabel="ShowLiveChatButton">
+                                <rect key="frame" x="423" y="116" width="15" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gP4-5d-Xlk">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="ffQ-wz-5FH" kind="show" id="U2J-aP-P9v"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <userDefinedRuntimeAttributes>
@@ -605,6 +616,7 @@
                     <connections>
                         <outlet property="PostCommentButton" destination="xVW-zA-HWk" id="Exg-Nr-pCW"/>
                         <outlet property="loadingImage" destination="d4M-72-jUI" id="fmB-92-FBV"/>
+                        <outlet property="showLiveChat" destination="AOg-hv-Slo" id="zQr-hq-29W"/>
                         <outlet property="subtip" destination="nwA-xX-SSg" id="oAy-Dk-ud7"/>
                         <outlet property="textTip" destination="q3q-RS-pq9" id="aqJ-eF-Wbt"/>
                     </connections>
@@ -616,7 +628,7 @@
         <!--Window Controller-->
         <scene sceneID="PkE-Ql-sEX">
             <objects>
-                <windowController storyboardIdentifier="LiveChatWindow" id="ffQ-wz-5FH" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="LiveChatWindow" showSeguePresentationStyle="single" id="ffQ-wz-5FH" sceneMemberID="viewController">
                     <window key="window" title="实时弹幕" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="i8z-Ck-rGI">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -646,7 +658,7 @@
                                     <rect key="frame" x="1" y="1" width="463" height="268"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" horizontallyResizable="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="Yey-g8-OWP">
+                                        <textView editable="NO" importsGraphics="NO" horizontallyResizable="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="Yey-g8-OWP">
                                             <rect key="frame" x="0.0" y="0.0" width="223" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

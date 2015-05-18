@@ -14,7 +14,9 @@ extern BOOL isTesting;
 
 BOOL hasMsg;
 
-@interface LiveChat ()
+@interface LiveChat (){
+    LiveSocket *socket;
+}
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
 
 @end
@@ -23,9 +25,11 @@ BOOL hasMsg;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    LiveSocket *socket = [[LiveSocket alloc] init];
+    socket = [[LiveSocket alloc] init];
     [socket setDelegate:self];
     [socket ConnectToTheFuckingFlashSocketServer:[vCID intValue]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.view.window];
 }
 
 - (void)onNewMessage:(NSDictionary *)data{
@@ -44,12 +48,21 @@ BOOL hasMsg;
 
 - (void)AppendToTextView:(NSString *)text{
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSAttributedString* attr = [[NSAttributedString alloc] initWithString:text];
+        NSFont *font = [NSFont fontWithName:@"Helvetica" size:15.0];
+        NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:font
+                                                                    forKey:NSFontAttributeName];
+        NSAttributedString* attr = [[NSAttributedString alloc] initWithString:text attributes:attrsDictionary];
         
         [[self.textView textStorage] appendAttributedString:attr];
         [self.textView scrollRangeToVisible:NSMakeRange([[self.textView string] length], 0)];
     });
 }
 
+- (void)windowWillClose:(NSNotification *)notification
+{
+    NSLog(@"Disconnecting");
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [socket Disconnect];
+}
 
 @end

@@ -146,3 +146,10 @@ string tcp_client::receive(int size=512)
     string reply(buffer);
     return reply;
 }
+
+void tcp_client::disconnect😈()
+{
+    shutdown(sock, SHUT_RDWR);
+    sock = NULL;
+    rec_port = NULL;
+}
