@@ -58,13 +58,19 @@ tcp_client c;
             if(str.length() > 4){
                 dispatch_async(dispatch_get_main_queue(), ^{
                 NSString *recv = [NSString stringWithUTF8String:str.c_str()];
-                NSError *err;
-                NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[recv dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONWritingPrettyPrinted error:&err];
-                if(!err){
-                    [delegate onNewMessage:dic];
-                }else{
-                    [delegate onNewError:recv];
+                if([recv length] > 5){
+                    NSError *err;
+                    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[recv dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONWritingPrettyPrinted error:&err];
+                    if(!err){
+                        if(dic){
+                            [delegate onNewMessage:dic];
+                        }
+                    }else{
+                        [delegate onNewError:recv];
+                    }
                 }
+                
+
                 });
             }
         }
