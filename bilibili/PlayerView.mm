@@ -21,6 +21,7 @@ extern NSString *vUrl;
 extern NSString *vCID;
 extern NSString *userAgent;
 extern NSString *cmFile;
+extern NSString *subFile;
 extern NSString *APIKey;
 extern NSString *APISecret;
 NSString *vAID;
@@ -120,6 +121,9 @@ static void wakeup(void *context) {
                 NSString *commentFile = @"/NotFound";
                 if([cmFile length] > 5){
                     commentFile = [self getComments:width :height];
+                }
+                if([subFile length] > 5){
+                    [self addSubtitle:subFile withCommentFile:commentFile];
                 }
                 [self PlayVideo:commentFile :res];
                 return;
@@ -411,6 +415,59 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     }else{
         return @"";
     }
+}
+
+- (void) addSubtitle:(NSString *)filename withCommentFile:(NSString *)comment
+{
+    [self.textTip setStringValue:@"正在合并弹幕字幕"];
+    
+    NSError *error = nil;
+    NSString *str = [[NSString alloc] initWithContentsOfFile:filename
+                                                    encoding:NSUTF8StringEncoding
+                                                       error:&error];
+    // 字幕全文
+    if(error){
+        return;
+    }
+    
+    NSMutableString *commentText = [[[NSString alloc] initWithContentsOfFile:comment
+                                                                   encoding:NSUTF8StringEncoding
+                                                                      error:&error] mutableCopy];
+    // 弹幕全文
+    if(error){
+        return;
+    }
+    
+    // 从字幕中匹配出 Style
+    NSRegularExpression *styleRegex = [NSRegularExpression regularExpressionWithPattern:@"(Style:.*)" options:NSRegularExpressionCaseInsensitive error:&error];
+    
+    if(error){
+        return;
+    }
+    
+    NSArray *matches = [styleRegex matchesInString:str options:0 range:NSMakeRange(0, [str length])];
+    if(matches.count < 1){
+        return;
+    }
+    NSRange matchRange = [[matches objectAtIndex:1] range];
+    NSString *style = [str substringWithRange:matchRange]; // Style 字符串 （ 暂不考虑多个 Style ）
+    
+    NSRange styleEndRange = [commentText rangeOfString:@"1, 1, 0, 7, 0, 0, 0, 0"];
+    
+    long endLocation = styleEndRange.location + styleEndRange.length; // 弹幕中找到 Style 结束的位置
+    
+    [commentText insertString:[NSString stringWithFormat:@"\n%@\n",style] atIndex:endLocation]; // 将 Style 插入弹幕
+    
+    
+    long DialogueStartLocation = [str rangeOfString:@"\nDialogue"].location; // 获取字幕中第一个 Dialogue 的位置
+    long DialogueLength = [str length] - DialogueStartLocation;
+    
+    NSString *Dialogue = [str substringWithRange:NSMakeRange(DialogueStartLocation, DialogueLength)];
+    
+    [commentText appendString:Dialogue]; // 向弹幕最后加入字幕的全部内容
+    [commentText writeToFile:comment atomically:YES encoding:NSUTF8StringEncoding error:nil]; // 将弹幕写入文件
+    
+    NSLog(@"%lu",(unsigned long)matches.count);
 }
 
 - (void) applyRegexCommentFilter:(NSString *)filename

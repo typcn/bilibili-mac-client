@@ -12,8 +12,12 @@
 extern NSString *vUrl;
 extern NSString *vCID;
 NSString *cmFile;
+NSString *subFile;
 
 @interface playLocalFile ()
+@property (weak) IBOutlet NSTextField *videoUrl;
+@property (weak) IBOutlet NSTextField *textUrl;
+@property (weak) IBOutlet NSTextField *subUrl;
 
 @end
 
@@ -34,6 +38,7 @@ NSString *cmFile;
     {
         NSString* filepath = [openDlg URL].path;
         vUrl = filepath;
+        [self.videoUrl setStringValue:filepath];
     }
 }
 - (IBAction)selectComment:(id)sender {
@@ -47,6 +52,21 @@ NSString *cmFile;
     {
         NSString* filepath = [NSString stringWithFormat:@"%@",[openDlg URL]];
         cmFile = filepath;
+        [self.textUrl setStringValue:filepath];
+    }
+}
+- (IBAction)selectSubtitle:(id)sender {
+    NSOpenPanel* openDlg = [NSOpenPanel openPanel];
+    [openDlg setCanChooseFiles:YES];
+    [openDlg setAllowsMultipleSelection:NO];
+    [openDlg setCanChooseDirectories:NO];
+    [openDlg setPrompt:@"选择字幕"];
+    
+    if ( [openDlg runModal] == NSModalResponseOK )
+    {
+        NSString* filepath = [NSString stringWithFormat:@"%@",[openDlg URL].path];
+        subFile = filepath;
+        [self.subUrl setStringValue:filepath];
     }
 }
 

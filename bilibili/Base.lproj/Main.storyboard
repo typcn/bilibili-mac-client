@@ -140,7 +140,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="nUV-At-1HF">
-                                <rect key="frame" x="67" y="105" width="82" height="32"/>
+                                <rect key="frame" x="63" y="125" width="82" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="选择弹幕" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wtj-ZP-diZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -150,8 +150,19 @@
                                     <action selector="selectComment:" target="0d3-4B-65W" id="v6q-DE-GFs"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" id="Oxc-9c-OKk">
+                                <rect key="frame" x="63" y="85" width="82" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="选择字幕" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="24g-g2-xbB">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="selectSubtitle:" target="0d3-4B-65W" id="rd6-xO-0vC"/>
+                                </connections>
+                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LX8-zA-OlO">
-                                <rect key="frame" x="165" y="158" width="172" height="17"/>
+                                <rect key="frame" x="161" y="178" width="172" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="允许所有 ffmpeg 支持的格式" id="9eb-5r-SWr">
                                     <font key="font" metaFont="system"/>
@@ -160,7 +171,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EP3-TH-MpO">
-                                <rect key="frame" x="165" y="114" width="274" height="17"/>
+                                <rect key="frame" x="161" y="134" width="274" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="由于弹幕引擎重写，暂时只支持 Bilibili 格式" id="E2h-KF-1Hp">
                                     <font key="font" metaFont="system"/>
@@ -168,8 +179,17 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="W36-Oj-e30">
+                                <rect key="frame" x="161" y="95" width="242" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="暂时只支持 ASS 格式的字幕，可以不选择" id="Dgo-Bk-4mh">
+                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <button verticalHuggingPriority="750" id="MRM-cn-yyW">
-                                <rect key="frame" x="67" y="147" width="82" height="32"/>
+                                <rect key="frame" x="63" y="167" width="82" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="选择视频" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VnN-7Y-cRN">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -181,6 +201,11 @@
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="subUrl" destination="W36-Oj-e30" id="zOn-s3-XHu"/>
+                        <outlet property="textUrl" destination="EP3-TH-MpO" id="oIj-ai-9Yp"/>
+                        <outlet property="videoUrl" destination="LX8-zA-OlO" id="jgU-WG-DQ6"/>
+                    </connections>
                 </viewController>
                 <customObject id="Daq-P9-kIP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
