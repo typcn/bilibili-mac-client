@@ -466,8 +466,6 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     
     [commentText appendString:Dialogue]; // 向弹幕最后加入字幕的全部内容
     [commentText writeToFile:comment atomically:YES encoding:NSUTF8StringEncoding error:nil]; // 将弹幕写入文件
-    
-    NSLog(@"%lu",(unsigned long)matches.count);
 }
 
 - (void) applyRegexCommentFilter:(NSString *)filename
