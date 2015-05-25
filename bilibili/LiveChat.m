@@ -59,9 +59,15 @@ BOOL hasMsg;
 
 - (void)windowWillClose:(NSNotification *)notification
 {
-    NSLog(@"Disconnecting");
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [socket Disconnect];
+    NSString *name = [notification.object className];
+    if([name isEqualToString:@"PostCommentWindow"]){
+        return;
+    }else if([name isEqualToString:@"PlayerWindow"]){
+        
+    }else{
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        [socket Disconnect];
+    }
 }
 
 @end
