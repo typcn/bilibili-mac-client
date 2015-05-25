@@ -63,7 +63,9 @@ BOOL hasMsg;
     if([name isEqualToString:@"PostCommentWindow"]){
         return;
     }else if([name isEqualToString:@"PlayerWindow"]){
-        
+        [[NSNotificationCenter defaultCenter] removeObserver:self];
+        [socket Disconnect];
+        [self.view.window close];
     }else{
         [[NSNotificationCenter defaultCenter] removeObserver:self];
         [socket Disconnect];
