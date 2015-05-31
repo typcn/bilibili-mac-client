@@ -17,6 +17,7 @@ extern mpv_handle *mpv;
 
 @interface PostComment (){
     BOOL posted;
+    __weak IBOutlet NSSegmentedControl *CommentTypeSelecter;
 }
 
 @end
@@ -61,10 +62,19 @@ extern mpv_handle *mpv;
         
         // Body
         
+        
+        NSString *mode = @"1";
+        if([CommentTypeSelecter selectedSegment] == 0){
+            mode = @"5";
+        }else if([CommentTypeSelecter selectedSegment] == 2){
+            mode = @"4";
+        }
+        NSLog(@"Comment mode %@",mode);
+        
         NSDictionary* bodyParameters = @{
                                          @"cid": vCID,
                                          @"color": @"16777215",
-                                         @"mode": @"1",
+                                         @"mode": mode,
                                          @"pool": @"0",
                                          @"fontsize": @"25",
                                          @"date": dateString,

@@ -761,8 +761,23 @@
                                     <action selector="Send:" target="cwy-KF-di8" id="b2P-mg-dll"/>
                                 </connections>
                             </textField>
+                            <segmentedControl verticalHuggingPriority="750" id="wQq-0e-rv7" userLabel="CommentTypeSelect">
+                                <rect key="frame" x="409" y="6" width="73" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="3xs-54-4qH">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="顶" width="21"/>
+                                        <segment label="飘" width="20" selected="YES" tag="1"/>
+                                        <segment label="底" width="20"/>
+                                    </segments>
+                                </segmentedCell>
+                            </segmentedControl>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="CommentTypeSelecter" destination="wQq-0e-rv7" id="gfh-k0-zDx"/>
+                    </connections>
                 </viewController>
                 <customObject id="D1f-jv-4Zv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
