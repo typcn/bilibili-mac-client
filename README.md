@@ -30,7 +30,7 @@ An unofficial bilibili client for mac
 
 [百度盘](http://pan.baidu.com/s/1eQvSx6i)
 
-[Mega](https://mega.co.nz/#F!48gXiAxa!BFrmfzq9c97cfSbR4A1v8g)
+<del>[Mega](https://mega.co.nz/#F!48gXiAxa!BFrmfzq9c97cfSbR4A1v8g)</del>
 
 # FAQ
 
