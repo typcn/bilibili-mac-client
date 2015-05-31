@@ -449,15 +449,17 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     if(matches.count < 1){
         return;
     }
-    NSRange matchRange = [[matches objectAtIndex:1] range];
-    NSString *style = [str substringWithRange:matchRange]; // Style 字符串 （ 暂不考虑多个 Style ）
+
     
     NSRange styleEndRange = [commentText rangeOfString:@"1, 1, 0, 7, 0, 0, 0, 0"];
     
     long endLocation = styleEndRange.location + styleEndRange.length; // 弹幕中找到 Style 结束的位置
     
-    [commentText insertString:[NSString stringWithFormat:@"\n%@\n",style] atIndex:endLocation]; // 将 Style 插入弹幕
-    
+    for (id object in matches) {
+        NSRange matchRange = [object range];
+        NSString *style = [str substringWithRange:matchRange]; // Style 字符串
+        [commentText insertString:[NSString stringWithFormat:@"\n%@\n",style] atIndex:endLocation]; // 将 Style 插入弹幕
+    }
     
     long DialogueStartLocation = [str rangeOfString:@"\nDialogue"].location; // 获取字幕中第一个 Dialogue 的位置
     long DialogueLength = [str length] - DialogueStartLocation;
