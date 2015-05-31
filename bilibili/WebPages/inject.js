@@ -1,3 +1,4 @@
+var TYPCN_PLAYER_CID;
 function applyUI(){
     $('object').attr('type','application/x-typcn-flashblock');
     $('.close-btn-wrp').parent().remove();$('.float-pmt').remove();
@@ -19,7 +20,7 @@ function applyUI(){
         }
         var re = /cid=(\d+)&/;
         var m = re.exec(fv);
-        var TYPCN_PLAYER_CID = m[1];
+        TYPCN_PLAYER_CID = m[1];
         
         if(!$('.i_face').attr('src')){
             $('.login').css('width',200).children('a').html('点击登陆客户端以便发送弹幕');
