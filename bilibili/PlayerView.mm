@@ -26,7 +26,7 @@ extern NSString *APIKey;
 extern NSString *APISecret;
 NSString *vAID;
 NSString *vPID;
-
+NSWindow *LastWindow;
 
 extern BOOL parsing;
 extern BOOL isTesting;
@@ -89,8 +89,9 @@ static void wakeup(void *context) {
         [[[NSApplication sharedApplication] keyWindow] performClose:self];
     }
     
-    [[[NSApplication sharedApplication] keyWindow] orderBack:nil];
-    [[[NSApplication sharedApplication] keyWindow] resignKeyWindow];
+    LastWindow = [[NSApplication sharedApplication] keyWindow];
+    [LastWindow orderOut:nil];
+    [LastWindow resignKeyWindow];
     [self.view.window makeKeyWindow];
     [self.view.window makeMainWindow];
     NSRect rect = [[NSScreen mainScreen] visibleFrame];
@@ -744,6 +745,7 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         }
         [self mpv_stop];
         [self mpv_quit];
+        [LastWindow makeKeyAndOrderFront:nil];
     });
     parsing = false;
     return YES;
