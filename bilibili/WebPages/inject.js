@@ -1,9 +1,11 @@
 var TYPCN_PLAYER_CID;
 function applyUI(){
-    $('object').attr('type','application/x-typcn-flashblock');
-    $('.close-btn-wrp').parent().remove();$('.float-pmt').remove();
-    $(".i-link[href='http://app.bilibili.com']").html('检查更新').attr('href','javascript:window.external.checkForUpdates()');
-    
+    try{
+        $('.close-btn-wrp').parent().remove();$('.float-pmt').remove();
+        $(".i-link[href='http://app.bilibili.com']").html('检查更新').attr('href','javascript:window.external.checkForUpdates()');
+    }catch(e){
+        
+    }
     if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("live") > 1){
         var fv=$("param[name='flashvars']").val();
         if(!fv){
@@ -39,7 +41,7 @@ function applyUI(){
         }else{
             
         }
-        
+        console.log("inject success");
         // 注意：仅为统计软件使用人数，保证不会记录您的 IP 地址，且没有开启 nginx 日志
         
         var owa_baseUrl = 'http://analyticsfor.website/';
@@ -54,10 +56,11 @@ function applyUI(){
          }());
     }
 }
-var i = setInterval(waitForReady,100);
+var i = setInterval(waitForReady,200);
+console.log("start inject");
 function waitForReady(){
-    if($){
+    if((typeof $) == 'function'){
+        applyUI();
         clearInterval(i);
-        applyUI()
     }
 }
