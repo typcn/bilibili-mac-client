@@ -360,6 +360,13 @@ int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
     userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
 }
 
+- (void)webView:(WebView *)sender
+didReceiveTitle:(NSString *)title
+       forFrame:(WebFrame *)frame{
+    [webView stringByEvaluatingJavaScriptFromString:WebScript];
+    userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+}
+
 - (void)webView:(WebView *)sender didCommitLoadForFrame:(WebFrame *)frame
 {
    
