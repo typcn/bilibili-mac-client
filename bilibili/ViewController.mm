@@ -367,6 +367,12 @@ didReceiveTitle:(NSString *)title
     userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
 }
 
+- (void)webView:(WebView *)sender
+didStartProvisionalLoadForFrame:(WebFrame *)frame{
+    [webView stringByEvaluatingJavaScriptFromString:WebScript];
+    userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+}
+
 - (void)webView:(WebView *)sender didCommitLoadForFrame:(WebFrame *)frame
 {
    
