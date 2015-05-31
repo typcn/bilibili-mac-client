@@ -31,7 +31,10 @@ function applyUI(){
         if(TYPCN_PLAYER_CID){
             if(window.location.origin == 'http://live.bilibili.com'){
                 if(ROOMID > 0){
-                    window.external.playVideoByCID(ROOMID.toString());
+                    if(typeof LIVEPLAY == "undefined"){
+                        window.external.playVideoByCID(ROOMID.toString());
+                        LIVEPLAY = 1;
+                    }
                 }
                 
             }else{
