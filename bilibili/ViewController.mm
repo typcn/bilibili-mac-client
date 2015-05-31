@@ -54,6 +54,7 @@ BOOL isTesting;
 @implementation WebController{
     aria2::Session* session;
     aria2::SessionConfig config;
+    bool ariainit;
 }
 
 +(NSString*)webScriptNameForSelector:(SEL)sel
@@ -144,16 +145,18 @@ int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
 
 - (void)downloadVideoByCID:(NSString *)cid
 {
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"注意：下载功能仅供测试，可能有各种 BUG，支持分段视频，默认保存在 Movies 文件夹。\n点击 文件->下载管理 来查看任务"];
-    [alert runModal];
-    
     if(!downloaderObjects){
         downloaderObjects = [[NSMutableArray alloc] init];
     }
-    NSArray *filename = [webView.mainFrameTitle componentsSeparatedByString:@"-"];
-    config.downloadEventCallback = downloadEventCallback;
-    session = aria2::sessionNew(aria2::KeyVals(), config);
+    NSArray *filename = [webView.mainFrameTitle componentsSeparatedByString:@"_"];
+    if(!ariainit){
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"注意：下载功能仅供测试，可能有各种 BUG，支持分段视频，默认保存在 Movies 文件夹。\n点击 文件->下载管理 来查看任务"];
+        [alert runModal];
+        config.downloadEventCallback = downloadEventCallback;
+        session = aria2::sessionNew(aria2::KeyVals(), config);
+        ariainit = true;
+    }
     NSString *path = [NSString stringWithFormat:@"%@%@%@/",NSHomeDirectory(),@"/Movies/Bilibili/",[filename objectAtIndex:0]];
     aria2::changeGlobalOption(session, {{ "dir", [path cStringUsingEncoding:NSUTF8StringEncoding] }});
     aria2::changeGlobalOption(session, {{ "user-agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" }});
@@ -321,6 +324,10 @@ int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
         [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
     }else if([URL containsString:@"cnzz.com"]){
         // CNZZ is very slow in other country
+        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
+    }else if([URL containsString:@".swf"]){
+        // Block Flash
+        NSLog(@"Block flash url:%@",URL);
         [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
     }else{
         NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
