@@ -711,6 +711,14 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             mpv_set_option_string(mpv, "loop", "inf");
             break;
         }
+        case 3:{ // F key to fullscreen
+            NSUInteger flags = [[NSApp currentEvent] modifierFlags];
+            if ((flags & NSCommandKeyMask)) {
+                [self toggleFullScreen:self];
+            }
+            
+            break;
+        }
         default: // Unknow
             NSLog(@"Key pressed: %hu", [event keyCode]);
             break;
