@@ -17,5 +17,7 @@
 @property (weak) IBOutlet NSComboBox *FakeIP;
 @property (weak) IBOutlet NSTextField *fontsize;
 @property (weak) IBOutlet NSButton *disablebottomComment;
+@property (weak) IBOutlet NSButton *playMP4;
+@property (weak) IBOutlet NSButton *DownloadMP4;
 
 @end
