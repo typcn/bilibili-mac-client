@@ -81,6 +81,7 @@
 		FD855FB01B07D884004A1610 /* BilibiliSocketClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD855FAF1B07D884004A1610 /* BilibiliSocketClient.mm */; };
 		FD8CEDEF1AD2499B0092452F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */; };
 		FD8CEDF21AD24A290092452F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8CEDF11AD24A290092452F /* KeywordBlockSettings.m */; };
+		FD97A3691B2282D800578B85 /* downloadWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD97A3671B2282D800578B85 /* downloadWrapper.mm */; };
 		FDA775DE1AD93D1800426483 /* libaria2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; };
 		FDA775E61AD93ECA00426483 /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA775E41AD93ECA00426483 /* DownloadManager.m */; };
 		FDA775E91AD93F6900426483 /* libaria2.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -240,6 +241,8 @@
 		FD8CEDEE1AD2499B0092452F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentBlockSettings.m; sourceTree = "<group>"; };
 		FD8CEDF01AD24A290092452F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeywordBlockSettings.h; sourceTree = "<group>"; };
 		FD8CEDF11AD24A290092452F /* KeywordBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeywordBlockSettings.m; sourceTree = "<group>"; };
+		FD97A3671B2282D800578B85 /* downloadWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = downloadWrapper.mm; sourceTree = "<group>"; };
+		FD97A3681B2282D800578B85 /* downloadWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = downloadWrapper.h; sourceTree = "<group>"; };
 		FDA775DD1AD93D1800426483 /* libaria2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaria2.0.dylib; path = bilibili/libs/libaria2.0.dylib; sourceTree = "<group>"; };
 		FDA775E01AD93DC900426483 /* aria2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = aria2.hpp; path = bilibili/headers/aria2.hpp; sourceTree = "<group>"; };
 		FDA775E31AD93ECA00426483 /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadManager.h; sourceTree = "<group>"; };
@@ -566,6 +569,8 @@
 			children = (
 				FDA775E31AD93ECA00426483 /* DownloadManager.h */,
 				FDA775E41AD93ECA00426483 /* DownloadManager.m */,
+				FD97A3681B2282D800578B85 /* downloadWrapper.h */,
+				FD97A3671B2282D800578B85 /* downloadWrapper.mm */,
 			);
 			name = downloadManager;
 			sourceTree = "<group>";
@@ -731,6 +736,7 @@
 				FD471B4F1AC8FF3C00A2A727 /* PlayerView.mm in Sources */,
 				FDAF8BAA1ACA5A3100C0C55D /* AboutView.m in Sources */,
 				FDAF8B9E1ACA4C1C00C0C55D /* ISSoundAdditions.m in Sources */,
+				FD97A3691B2282D800578B85 /* downloadWrapper.mm in Sources */,
 				FD8CEDEF1AD2499B0092452F /* CommentBlockSettings.m in Sources */,
 				FD33F5C61B08A5A500DF4C78 /* Socket.cpp in Sources */,
 				FD476C731AD22B1F00584EFE /* CommentFilter.c in Sources */,
