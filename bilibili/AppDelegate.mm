@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import <BugsnagOSX/Bugsnag.h>
 #include "aria2.hpp"
 
 @interface AppDelegate ()
@@ -36,6 +36,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     aria2::libraryInit();
+    [Bugsnag startBugsnagWithApiKey:@"499e53d79260314b19bf38989bef3007"];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
