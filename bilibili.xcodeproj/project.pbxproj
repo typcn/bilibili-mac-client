@@ -13,6 +13,9 @@
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
 		FD076C611AC8CBBB00C893FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FD076C6D1AC8CBBB00C893FA /* bilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */; };
+		FD0944471B22CC4E00AC99AF /* BugsnagOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0944461B22CC4E00AC99AF /* BugsnagOSX.framework */; };
+		FD0944481B22CC5400AC99AF /* BugsnagOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0944461B22CC4E00AC99AF /* BugsnagOSX.framework */; };
+		FD0944491B22CC5400AC99AF /* BugsnagOSX.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD0944461B22CC4E00AC99AF /* BugsnagOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD2BD5631AD11319001A7E16 /* playLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FD2BD5621AD11319001A7E16 /* playLocalFile.m */; };
 		FD2BD56E1AD15AE0001A7E16 /* libmediainfo.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; };
 		FD2BD56F1AD15AF9001A7E16 /* libmediainfo.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -169,6 +172,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in Copy Files */,
+				FD0944491B22CC5400AC99AF /* BugsnagOSX.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +192,7 @@
 		FD076C661AC8CBBB00C893FA /* bilibiliTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bilibiliTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C6B1AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bilibiliTests.m; sourceTree = "<group>"; };
+		FD0944461B22CC4E00AC99AF /* BugsnagOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BugsnagOSX.framework; path = bilibili/libs/BugsnagOSX.framework; sourceTree = "<group>"; };
 		FD2BD5611AD11319001A7E16 /* playLocalFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = playLocalFile.h; sourceTree = "<group>"; };
 		FD2BD5621AD11319001A7E16 /* playLocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = playLocalFile.m; sourceTree = "<group>"; };
 		FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmediainfo.0.dylib; path = bilibili/libs/libmediainfo.0.dylib; sourceTree = "<group>"; };
@@ -289,8 +294,10 @@
 				FD51017F1ACC1A6800C49430 /* libavutil.54.dylib in Frameworks */,
 				FD5101791ACC1A6800C49430 /* libass.5.dylib in Frameworks */,
 				FD5101831ACC1A6800C49430 /* libjpeg.8.dylib in Frameworks */,
+				FD0944471B22CC4E00AC99AF /* BugsnagOSX.framework in Frameworks */,
 				FD51018C1ACC1A6800C49430 /* libswscale.3.dylib in Frameworks */,
 				FD5101891ACC1A6800C49430 /* libpng16.16.dylib in Frameworks */,
+				FD0944481B22CC5400AC99AF /* BugsnagOSX.framework in Frameworks */,
 				FDAF8BA11ACA4ECC00C0C55D /* Sparkle.framework in Frameworks */,
 				FD2BD56E1AD15AE0001A7E16 /* libmediainfo.0.dylib in Frameworks */,
 				FD51018B1ACC1A6800C49430 /* libswresample.1.dylib in Frameworks */,
@@ -448,6 +455,7 @@
 		FD471FD11AC92D7C00A2A727 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FD0944461B22CC4E00AC99AF /* BugsnagOSX.framework */,
 				FDD5EEF61AC944020036B829 /* WebKit.framework */,
 				FD471B511AC904CB00A2A727 /* CoreAudio.framework */,
 			);
@@ -610,6 +618,7 @@
 				FD4855091AE67B2C008F49AA /* CopyFiles */,
 				FD076C4E1AC8CBBB00C893FA /* Resources */,
 				FD4855051AE675D7008F49AA /* ShellScript */,
+				FD0944451B22CC2900AC99AF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -701,6 +710,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		FD0944451B22CC2900AC99AF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /usr/bin/ruby;
+			shellScript = "fork do\nProcess.setsid\nSTDIN.reopen(\"/dev/null\")\nSTDOUT.reopen(\"/dev/null\", \"a\")\nSTDERR.reopen(\"/dev/null\", \"a\")\n\nrequire 'shellwords'\n\nDir[\"#{ENV[\"DWARF_DSYM_FOLDER_PATH\"]}/*/Contents/Resources/DWARF/*\"].each do |dsym|\nsystem(\"curl -F dsym=@#{Shellwords.escape(dsym)} -F projectRoot=#{Shellwords.escape(ENV[\"PROJECT_DIR\"])} https://upload.bugsnag.com/\")\nend\nend";
+		};
 		FD4855051AE675D7008F49AA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -865,6 +887,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/bilibili/sparkle",
+					"$(PROJECT_DIR)/bilibili/libs",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					__danmaku2ass_native__NoMainFunc__,
@@ -903,6 +926,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/bilibili/sparkle",
+					"$(PROJECT_DIR)/bilibili/libs",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = __danmaku2ass_native__NoMainFunc__;
 				INFOPLIST_FILE = bilibili/Info.plist;
