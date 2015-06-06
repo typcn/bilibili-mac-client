@@ -129,7 +129,14 @@ void Downloader::runDownload(int fileid,NSString *filename){
 }
 
 NSArray *Downloader::getUrl(int cid){
-    NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%d&quality=4%@",APIKey,cid,APISecret];
+    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+    long isMP4 = [settingsController integerForKey:@"DLMP4"];
+    NSString *type = @"flv";
+    if(isMP4 == 1){
+        type = @"mp4";
+    }
+    
+    NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%d&quality=4&type=%@%@",APIKey,cid,type,APISecret];
     const char *cStr = [[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] UTF8String];
     unsigned char digest[16];
     CC_MD5( cStr, (CC_LONG)strlen(cStr), digest ); // This is the md5 call
@@ -139,13 +146,11 @@ NSArray *Downloader::getUrl(int cid){
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
         [sign appendFormat:@"%02x", digest[i]];
     
-    
-    NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%d&quality=4&sign=%@",APIKey,cid,sign]];
+    NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%d&quality=4&type=%@&sign=%@",APIKey,cid,type,sign]];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
     request.HTTPMethod = @"GET";
     request.timeoutInterval = 5;
     [request addValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" forHTTPHeaderField:@"User-Agent"];
-    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
     NSString *xff = [settingsController objectForKey:@"xff"];
     if([xff length] > 4){
         [request setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
