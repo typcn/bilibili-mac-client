@@ -23,6 +23,8 @@
     [self.autoPlay setState:[settingsController integerForKey:@"autoPlay"]];
     [self.RealTimeComment setState:[settingsController integerForKey:@"RealTimeComment"]];
     [self.disablebottomComment setState:[settingsController integerForKey:@"disableBottomComment"]];
+    [self.playMP4 setState:[settingsController integerForKey:@"playMP4"]];
+    [self.DownloadMP4 setState:[settingsController integerForKey:@"DLMP4"]];
     
     float trans = [settingsController floatForKey:@"transparency"];
     if(!trans){
@@ -75,6 +77,14 @@
     [settingsController synchronize];
 }
 
+- (IBAction)playMP4Changed:(id)sender {
+    [settingsController setInteger:[self.playMP4 state] forKey:@"playMP4"];
+    [settingsController synchronize];
+}
+- (IBAction)DLMP4Changed:(id)sender {
+    [settingsController setInteger:[self.DownloadMP4 state] forKey:@"DLMP4"];
+    [settingsController synchronize];
+}
 
 - (IBAction)FakeIPChanged:(id)sender {
     NSString *rand = [NSString stringWithFormat:@"%ld", (long)[self randomNumberBetween:1 maxNumber:254]];
