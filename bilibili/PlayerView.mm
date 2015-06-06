@@ -112,7 +112,7 @@ static void wakeup(void *context) {
 
     dispatch_async(queue, ^{
         
-        NSString *baseAPIUrl = @"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=%d&sign=%@";
+        NSString *baseAPIUrl = @"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=%d&type=%@&sign=%@";
         
         if([vCID isEqualToString:@"LOCALVIDEO"]){
             if([vUrl length] > 5){
@@ -133,7 +133,7 @@ static void wakeup(void *context) {
             }
             return;
         }else if([vUrl containsString:@"live.bilibili"]){
-            baseAPIUrl = @"http://live.bilibili.com/api/playurl?appkey=%@&otype=json&cid=%@&quality=%d&sign=%@";
+            baseAPIUrl = @"http://live.bilibili.com/api/playurl?appkey=%@&otype=json&cid=%@&quality=%d&type=%@&sign=%@";
             vAID = @"LIVE";
             vPID = @"LIVE";
         }else{
@@ -162,13 +162,17 @@ static void wakeup(void *context) {
         
         // Get Sign
         int quality = [self getSettings:@"quality"];
-        
-        NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=%d%@",APIKey,vCID,quality,APISecret];
+        int isMP4 = [self getSettings:@"playMP4"];
+        NSString *type = @"flv";
+        if(isMP4 == 1){
+            type = @"mp4";
+        }
+        NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=%d&type=%@%@",APIKey,vCID,quality,type,APISecret];
         NSString *sign = [self md5:[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         // Get Playback URL
         
-        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:baseAPIUrl,APIKey,vCID,quality,sign]];
+        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:baseAPIUrl,APIKey,vCID,quality,type,sign]];
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"GET";
         request.timeoutInterval = 5;

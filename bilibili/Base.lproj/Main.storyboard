@@ -879,11 +879,33 @@
             <objects>
                 <viewController id="z8a-gg-iMj" userLabel="settings" customClass="Settings" sceneMemberID="viewController">
                     <view key="view" id="TEq-hT-EBz">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="384"/>
+                        <rect key="frame" x="0.0" y="0.0" width="468" height="358"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button id="hj3-k4-IwT">
+                                <rect key="frame" x="25" y="322" width="137" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="自动换P（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="IwE-aZ-Bxq">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="autoPlay:" target="z8a-gg-iMj" id="uJc-pW-LXG"/>
+                                </connections>
+                            </button>
+                            <button id="aRT-dE-rbd">
+                                <rect key="frame" x="25" y="291" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="禁用实时弹幕显示（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="sbQ-fv-ZWa">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="disableRealTimeComment:" target="z8a-gg-iMj" id="lXb-rn-bF9"/>
+                                </connections>
+                            </button>
                             <slider verticalHuggingPriority="750" id="dP9-DC-elz">
-                                <rect key="frame" x="25" y="99" width="329" height="21"/>
+                                <rect key="frame" x="25" y="73" width="329" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.80000000000000004" tickMarkPosition="above" sliderType="linear" id="NRf-l9-8Cv"/>
                                 <connections>
@@ -891,7 +913,7 @@
                                 </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wLx-ha-LJe">
-                                <rect key="frame" x="25" y="126" width="90" height="17"/>
+                                <rect key="frame" x="25" y="100" width="90" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕透明度" id="CuV-Ec-HRG">
                                     <font key="font" metaFont="system"/>
@@ -900,7 +922,7 @@
                                 </textFieldCell>
                             </textField>
                             <comboBox verticalHuggingPriority="750" id="k65-FX-xi6">
-                                <rect key="frame" x="27" y="155" width="99" height="26"/>
+                                <rect key="frame" x="27" y="129" width="99" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="UtE-Jc-IKj">
                                     <font key="font" metaFont="system"/>
@@ -918,7 +940,7 @@
                                 </connections>
                             </comboBox>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="jlv-di-fx2">
-                                <rect key="frame" x="25" y="193" width="56" height="17"/>
+                                <rect key="frame" x="25" y="167" width="56" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="优先画质" id="Sd9-OH-JrH">
                                     <font key="font" metaFont="system"/>
@@ -927,7 +949,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8GO-QK-utF">
-                                <rect key="frame" x="25" y="46" width="354" height="17"/>
+                                <rect key="frame" x="25" y="20" width="354" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="2.所有设置将在下次开始播放时生效，文本框需要按回车保存" id="43T-62-L37">
                                     <font key="font" metaFont="system"/>
@@ -936,7 +958,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="CNv-ip-Ik8">
-                                <rect key="frame" x="25" y="71" width="412" height="17"/>
+                                <rect key="frame" x="25" y="45" width="412" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1.弹幕字体计算方式为 视频高度除以字体参数 ，参数越大 弹幕越小" id="dYW-v7-aMe">
                                     <font key="font" metaFont="system"/>
@@ -945,7 +967,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LGC-Jg-Mns">
-                                <rect key="frame" x="129" y="193" width="170" height="17"/>
+                                <rect key="frame" x="129" y="167" width="170" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="IP 伪造 ( 大陆用户请勿开启 )" id="vMH-pa-ZpX">
                                     <font key="font" metaFont="system"/>
@@ -954,7 +976,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="v5E-aw-wG4">
-                                <rect key="frame" x="323" y="193" width="170" height="17"/>
+                                <rect key="frame" x="323" y="167" width="170" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕大小参数" id="dJb-2c-b1m">
                                     <font key="font" metaFont="system"/>
@@ -963,7 +985,7 @@
                                 </textFieldCell>
                             </textField>
                             <comboBox verticalHuggingPriority="750" id="JLT-R0-aaz">
-                                <rect key="frame" x="131" y="155" width="169" height="26"/>
+                                <rect key="frame" x="131" y="129" width="169" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="P8V-DP-s5N">
                                     <font key="font" metaFont="system"/>
@@ -982,7 +1004,7 @@
                                 </connections>
                             </comboBox>
                             <textField verticalHuggingPriority="750" id="ajt-jS-Z4K">
-                                <rect key="frame" x="325" y="157" width="96" height="22"/>
+                                <rect key="frame" x="325" y="131" width="96" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="默认25" drawsBackground="YES" id="pXu-zi-Y7u">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Dl4-M8-KPr"/>
@@ -994,30 +1016,8 @@
                                     <action selector="fontsizeChanged:" target="z8a-gg-iMj" id="Ekm-XY-OWF"/>
                                 </connections>
                             </textField>
-                            <button id="hj3-k4-IwT">
-                                <rect key="frame" x="25" y="348" width="137" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="自动换P（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="IwE-aZ-Bxq">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="autoPlay:" target="z8a-gg-iMj" id="uJc-pW-LXG"/>
-                                </connections>
-                            </button>
-                            <button id="aRT-dE-rbd">
-                                <rect key="frame" x="25" y="317" width="425" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="禁用实时弹幕显示（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="sbQ-fv-ZWa">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="disableRealTimeComment:" target="z8a-gg-iMj" id="lXb-rn-bF9"/>
-                                </connections>
-                            </button>
                             <button id="5yv-E4-e3g">
-                                <rect key="frame" x="25" y="288" width="425" height="18"/>
+                                <rect key="frame" x="25" y="262" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="关闭底部弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6pD-zG-Fl9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1028,7 +1028,7 @@
                                 </connections>
                             </button>
                             <button id="QLp-in-QLo">
-                                <rect key="frame" x="25" y="261" width="425" height="18"/>
+                                <rect key="frame" x="25" y="235" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6zZ-XI-ZEK">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1039,9 +1039,9 @@
                                 </connections>
                             </button>
                             <button id="wjO-cr-vaH">
-                                <rect key="frame" x="25" y="234" width="425" height="18"/>
+                                <rect key="frame" x="25" y="208" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="下载优先 MP4 格式（方便手机观看）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hFO-eX-oZN">
+                                <buttonCell key="cell" type="check" title="下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hFO-eX-oZN">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1065,7 +1065,7 @@
                 </viewController>
                 <customObject id="g1X-ko-pK9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1463" y="-1109"/>
+            <point key="canvasLocation" x="1472" y="-1122"/>
         </scene>
     </scenes>
     <resources>
