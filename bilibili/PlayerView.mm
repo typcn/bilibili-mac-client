@@ -41,7 +41,9 @@ static inline void check_error(int status)
 {
     if (status < 0) {
         NSLog(@"mpv API error: %s", mpv_error_string(status));
-        exit(1);
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"Fatal Error\nPlease open console.app and upload logs to GitHub or send email to typcncom@gmail.com"];
+        [alert runModal];
     }
 }
 
