@@ -253,9 +253,12 @@ getUrl: NSLog(@"Getting video url");
         
 GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
 
-        if([VideoInfoJson count] == 0){
+        NSNumber *width = [VideoInfoJson objectForKey:@"width"];
+        NSNumber *height = [VideoInfoJson objectForKey:@"height"];
+        
+        if([height intValue] < 100){
             if(!BackupUrls){
-                [self.textTip setStringValue:@"读取视频失败"];
+                [self.textTip setStringValue:@"读取视频失败，可能视频源已失效"];
             }else{
                 usingBackup++;
                 NSString *backupVideoUrl = [BackupUrls objectAtIndex:usingBackup];
@@ -265,7 +268,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
                     NSLog(@"Timeout! Change to backup url: %@",vUrl);
                     goto GetInfo;
                 }else{
-                    [self.textTip setStringValue:@"读取视频失败"];
+                    [self.textTip setStringValue:@"读取视频失败，视频服务器故障"];
                 }
             }
         }
@@ -277,8 +280,6 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         
         if(!jsonError){
             // Get Comment
-            NSNumber *width = [VideoInfoJson objectForKey:@"width"];
-            NSNumber *height = [VideoInfoJson objectForKey:@"height"];
             if([vUrl containsString:@"live_"]){
                 [self PlayVideo:@"" :res];
             }else{
