@@ -419,6 +419,8 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             disableBottom = false;
         }
         
+        [[NSFileManager defaultManager] removeItemAtPath:OutFile error:nil];
+        
         bilibiliParser *p = new bilibiliParser;
         
         NSString *block = [[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"];
