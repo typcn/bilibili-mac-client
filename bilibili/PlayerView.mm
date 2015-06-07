@@ -12,7 +12,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "MediaInfoDLL.h"
 
-#include "danmaku2ass_native/danmaku2ass.h"
+#include "danmaku2ass_native/danmaku2ass.hpp"
 #include <stdio.h>
 #include <stdlib.h>
 #include <sstream>
@@ -419,16 +419,28 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             disableBottom = false;
         }
         
-        ConvertBilibiliCommentWithBlockSettings([filePath cStringUsingEncoding:NSUTF8StringEncoding],
-                    [OutFile cStringUsingEncoding:NSUTF8StringEncoding],
-                    [width intValue],[height intValue],
-                    "STHeiti",(int)[height intValue]/fontsize,
-                    [[NSString stringWithFormat:@"%.2f",[self getSettings:@"transparency"]] floatValue],
-                    mq,5,disableBottom);
+        bilibiliParser *p = new bilibiliParser;
+        
+        NSString *block = [[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"];
+        if([block length] > 1){
+            NSArray *blocks = [block componentsSeparatedByString:@"|"];
+            if([block length] > 0){
+                for (NSString* string in blocks) {
+                    p->SetBlockWord([string cStringUsingEncoding:NSUTF8StringEncoding]);
+                }
+            }
+        }
+        
+        p->SetFile([filePath cStringUsingEncoding:NSUTF8StringEncoding], [OutFile cStringUsingEncoding:NSUTF8StringEncoding]);
+        p->SetRes([width intValue], [height intValue]);
+        p->SetFont("STHeiti", (int)[height intValue]/fontsize);
+        p->SetDuration(mq,5);
+        p->SetAlpha([[NSString stringWithFormat:@"%.2f",[self getSettings:@"transparency"]] floatValue]);
+        p->Convert(disableBottom);
         
         NSLog(@"Comment converted to %@",OutFile);
         
-        [self applyRegexCommentFilter:OutFile];
+        
         
         return OutFile;
     }else{
@@ -487,35 +499,6 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     
     [commentText appendString:Dialogue]; // 向弹幕最后加入字幕的全部内容
     [commentText writeToFile:comment atomically:YES encoding:NSUTF8StringEncoding error:nil]; // 将弹幕写入文件
-}
-
-- (void) applyRegexCommentFilter:(NSString *)filename
-{
-    [self.textTip setStringValue:@"正在应用屏蔽规则"];
-    
-    NSString *blocks = [[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"];
-    
-    if(![blocks length]){
-        return;
-    }
-    
-    NSString *blockRegex = [NSString stringWithFormat:@"Dialogue.*\\}.*[%@].*",blocks];
-    
-    NSError *error = nil;
-    NSString *str = [[NSString alloc] initWithContentsOfFile:filename encoding:NSUTF8StringEncoding error:nil];
-    
-    if(error){
-        return;
-    }
-
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:blockRegex options:NSRegularExpressionCaseInsensitive error:&error];
-    
-    if(error){
-        return;
-    }
-    
-    NSString *modifiedString = [regex stringByReplacingMatchesInString:str options:0 range:NSMakeRange(0, [str length]) withTemplate:@""];
-    [modifiedString writeToFile:filename atomically:YES encoding:NSUTF8StringEncoding error:nil];
 }
 
 - (void) handleEvent:(mpv_event *)event
