@@ -167,6 +167,7 @@ static void wakeup(void *context) {
         if(isMP4 == 1){
             type = @"mp4";
         }
+getUrl: NSLog(@"Getting video url");
         NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=%d&type=%@%@",APIKey,vCID,quality,type,APISecret];
         NSString *sign = [self md5:[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
@@ -197,6 +198,11 @@ static void wakeup(void *context) {
         NSArray *dUrls = [videoResult objectForKey:@"durl"];
 
         if([dUrls count] == 0){
+            if([type isEqualToString:@"mp4"]){
+                type = @"flv";
+                [self.textTip setStringValue:@"正在尝试重新解析"];
+                goto getUrl;
+            }
             [self.textTip setStringValue:@"视频无法解析"];
             return;
         }
@@ -230,6 +236,11 @@ static void wakeup(void *context) {
             }
         }
 
+        if([firstVideo isEqualToString:@"http://v.iask.com/v_play_ipad.php?vid=false"]){
+            type = @"flv";
+            goto getUrl;
+        }
+        
         if(isCancelled){
             NSLog(@"Unloading");
             return;
