@@ -202,6 +202,7 @@
 		FD33F5B81B085D3100DF4C78 /* LiveChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveChat.m; sourceTree = "<group>"; };
 		FD33F5C41B08A5A500DF4C78 /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Socket.cpp; sourceTree = "<group>"; };
 		FD33F5C51B08A5A500DF4C78 /* Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Socket.hpp; sourceTree = "<group>"; };
+		FD4095511B23C505000E4A9E /* danmaku2ass.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = danmaku2ass.hpp; path = bilibili/danmaku2ass_native/danmaku2ass.hpp; sourceTree = "<group>"; };
 		FD471B4C1AC8FF3C00A2A727 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		FD471B4D1AC8FF3C00A2A727 /* PlayerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PlayerView.mm; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -445,8 +446,9 @@
 			children = (
 				FDFC8AAF1AD5745B000AFDB2 /* AssClass.cpp */,
 				FDFC8AB01AD5745B000AFDB2 /* AssClass.hpp */,
-				FDFC8AB11AD5745B000AFDB2 /* danmaku2ass.cpp */,
 				FDFC8AB21AD5745B000AFDB2 /* danmaku2ass.h */,
+				FD4095511B23C505000E4A9E /* danmaku2ass.hpp */,
+				FDFC8AB11AD5745B000AFDB2 /* danmaku2ass.cpp */,
 				FDFC8AB31AD5745B000AFDB2 /* rapidxml */,
 			);
 			name = danmaku2ass;
@@ -881,7 +883,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -920,7 +922,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
