@@ -1,0 +1,30 @@
+language: cpp
+
+compiler:
+  - gcc
+
+before_install:
+  # g++4.8.1
+  - if [ "$CXX" == "g++" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
+  - sudo apt-get update -qq
+
+install:
+  # g++4.8.1
+  - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
+  - wget http://ftp.de.debian.org/debian/pool/main/l/lcov/lcov_1.11.orig.tar.gz
+  - tar xf lcov_1.11.orig.tar.gz
+  - sudo make -C lcov-1.11/ install
+  - gem install coveralls-lcov
+  - sudo cp -v `which gcov-4.8` `which gcov`
+
+script:
+  - rm -rf CMakeLists.txt
+  - cp ./tests/CMakeLists.txt ./CMakeLists.txt
+  - $CXX --version
+  - mkdir Build
+  - cd Build
+  - cmake ..
+  - make
+
+after_success: ../tests/test.sh
