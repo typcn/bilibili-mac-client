@@ -12,7 +12,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "MediaInfoDLL.h"
 
-#include "danmaku2ass_native/danmaku2ass.hpp"
+#include "../CommentConvert/danmaku2ass.hpp"
 #include <stdio.h>
 #include <stdlib.h>
 #include <sstream>

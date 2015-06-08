@@ -10,7 +10,6 @@
 #import <XCTest/XCTest.h>
 #import "PlayerView.h"
 #import "LiveChat.h"
-#import "CommentFilter.h"
 
 extern NSString *vCID;
 extern NSString *vUrl;
