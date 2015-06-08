@@ -69,15 +69,10 @@ bool tcp_client::conn(string address , int port)
         //Cast the h_addr_list to in_addr , since h_addr_list also has the ip address in long format only
         addr_list = (struct in_addr **) he->h_addr_list;
         
-        for(int i = 0; addr_list[i] != NULL; i++)
-        {
-            //strcpy(ip , inet_ntoa(*addr_list[i]) );
-            server.sin_addr = *addr_list[i];
+        server.sin_addr = *addr_list[0];
             
-            cout<<address<<" resolved to "<<inet_ntoa(*addr_list[i])<<endl;
-            
-            break;
-        }
+        cout<<address<<" resolved to "<<inet_ntoa(*addr_list[0])<<endl;
+        
     }
     
     //plain ip address
