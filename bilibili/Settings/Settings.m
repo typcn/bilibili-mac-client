@@ -97,6 +97,6 @@
 
 - (NSInteger)randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max
 {
-    return min + arc4random_uniform(max - min + 1);
+    return min + arc4random_uniform((u_int32_t)max - (u_int32_t)min + 1);
 }
 @end

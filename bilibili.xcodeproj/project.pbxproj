@@ -11,7 +11,6 @@
 		FD076C611AC8CBBB00C893FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FD076C6D1AC8CBBB00C893FA /* bilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */; };
 		FD0944471B22CC4E00AC99AF /* BugsnagOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0944461B22CC4E00AC99AF /* BugsnagOSX.framework */; };
-		FD0944481B22CC5400AC99AF /* BugsnagOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0944461B22CC4E00AC99AF /* BugsnagOSX.framework */; };
 		FD0944491B22CC5400AC99AF /* BugsnagOSX.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD0944461B22CC4E00AC99AF /* BugsnagOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD1954A71B25927C003A958F /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A61B25927C003A958F /* ViewController.mm */; };
 		FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A91B259318003A958F /* CommentBlockSettings.m */; };
@@ -295,7 +294,6 @@
 				FD0944471B22CC4E00AC99AF /* BugsnagOSX.framework in Frameworks */,
 				FD51018C1ACC1A6800C49430 /* libswscale.3.dylib in Frameworks */,
 				FD5101891ACC1A6800C49430 /* libpng16.16.dylib in Frameworks */,
-				FD0944481B22CC5400AC99AF /* BugsnagOSX.framework in Frameworks */,
 				FDAF8BA11ACA4ECC00C0C55D /* Sparkle.framework in Frameworks */,
 				FD2BD56E1AD15AE0001A7E16 /* libmediainfo.0.dylib in Frameworks */,
 				FD51018B1ACC1A6800C49430 /* libswresample.1.dylib in Frameworks */,
@@ -650,7 +648,7 @@
 		FD076C481AC8CBBB00C893FA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = TYPCN;
 				TargetAttributes = {
 					FD076C4F1AC8CBBB00C893FA = {
@@ -795,7 +793,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -828,8 +825,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Debug;
@@ -838,7 +835,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -867,7 +863,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx;
 				VALID_ARCHS = "i386 x86_64";
 			};
 			name = Release;
@@ -875,7 +871,6 @@
 		FD076C711AC8CBBB00C893FA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -914,7 +909,6 @@
 		FD076C721AC8CBBB00C893FA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";

@@ -820,17 +820,6 @@
                                     <action selector="goForward:" target="hgl-YZ-N9w" id="9Fm-Ux-Q4V"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" verticalHuggingPriority="750" id="8yE-wH-ldY">
-                                <rect key="frame" x="941" y="188" width="36" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BEt-iK-waU">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="3Nx-YC-zmP" kind="show" id="D5B-9p-dnr"/>
-                                </connections>
-                            </button>
                             <textField verticalHuggingPriority="750" id="Izm-eu-n08">
                                 <rect key="frame" x="20" y="20" width="182" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -843,6 +832,17 @@
                                     <action selector="openAv:" target="0dz-Mn-O6m" id="hfZ-YO-dfZ"/>
                                 </connections>
                             </textField>
+                            <button hidden="YES" verticalHuggingPriority="750" id="8yE-wH-ldY">
+                                <rect key="frame" x="794" y="-7" width="36" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BEt-iK-waU">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="3Nx-YC-zmP" kind="show" id="D5B-9p-dnr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                     </view>
@@ -1072,6 +1072,6 @@
         <image name="loading" width="145" height="91"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Y0Z-ee-aqu"/>
+        <segue reference="D5B-9p-dnr"/>
     </inferredMetricsTieBreakers>
 </document>
