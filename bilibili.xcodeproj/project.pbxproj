@@ -10,8 +10,6 @@
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
 		FD076C611AC8CBBB00C893FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FD076C6D1AC8CBBB00C893FA /* bilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */; };
-		FD0944471B22CC4E00AC99AF /* BugsnagOSX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0944461B22CC4E00AC99AF /* BugsnagOSX.framework */; };
-		FD0944491B22CC5400AC99AF /* BugsnagOSX.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD0944461B22CC4E00AC99AF /* BugsnagOSX.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD1954A71B25927C003A958F /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A61B25927C003A958F /* ViewController.mm */; };
 		FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A91B259318003A958F /* CommentBlockSettings.m */; };
 		FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AB1B259318003A958F /* KeywordBlockSettings.m */; };
@@ -81,6 +79,7 @@
 		FD5101A71ACC1AF300C49430 /* libvo-aacenc.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101761ACC1A6800C49430 /* libvo-aacenc.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD5101A81ACC1AF300C49430 /* libx264.142.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101771ACC1A6800C49430 /* libx264.142.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD5101A91ACC1AF300C49430 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101781ACC1A6800C49430 /* libz.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FD5305E41B265CF100659B32 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD53BEC91ACF8E440004C366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FD61025C1AD7CBA20013119A /* inject.js in Resources */ = {isa = PBXBuildFile; fileRef = FD61025B1AD7CBA20013119A /* inject.js */; };
 		FD61025E1AD7CBC10013119A /* webui.html in Resources */ = {isa = PBXBuildFile; fileRef = FD61025D1AD7CBC10013119A /* webui.html */; };
@@ -91,7 +90,6 @@
 		FDA775DE1AD93D1800426483 /* libaria2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; };
 		FDA775E91AD93F6900426483 /* libaria2.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FDAF8BA11ACA4ECC00C0C55D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; };
-		FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDD5EEF71AC944020036B829 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD5EEF61AC944020036B829 /* WebKit.framework */; };
 /* End PBXBuildFile section */
@@ -169,8 +167,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FDAF8BA31ACA4EF800C0C55D /* Sparkle.framework in Copy Files */,
-				FD0944491B22CC5400AC99AF /* BugsnagOSX.framework in Copy Files */,
+				FD5305E41B265CF100659B32 /* Sparkle.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,7 +182,6 @@
 		FD076C661AC8CBBB00C893FA /* bilibiliTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bilibiliTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C6B1AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bilibiliTests.m; sourceTree = "<group>"; };
-		FD0944461B22CC4E00AC99AF /* BugsnagOSX.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BugsnagOSX.framework; path = bilibili/libs/BugsnagOSX.framework; sourceTree = "<group>"; };
 		FD1954A51B25927C003A958F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = MainView/ViewController.h; sourceTree = "<group>"; };
 		FD1954A61B25927C003A958F /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewController.mm; path = MainView/ViewController.mm; sourceTree = "<group>"; };
 		FD1954A81B259318003A958F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentBlockSettings.h; path = Settings/CommentBlockSettings.h; sourceTree = "<group>"; };
@@ -226,6 +222,7 @@
 		FD1954E11B2594AC003A958F /* rapidxml_iterators.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_iterators.hpp; sourceTree = "<group>"; };
 		FD1954E21B2594AC003A958F /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
 		FD1954E31B2594AC003A958F /* rapidxml_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
+		FD1954F61B259AF6003A958F /* Analytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = Others/Analytics.h; sourceTree = "<group>"; };
 		FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmediainfo.0.dylib; path = bilibili/libs/libmediainfo.0.dylib; sourceTree = "<group>"; };
 		FD2BD5701AD15BCA001A7E16 /* MediaInfoDLL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaInfoDLL.h; path = bilibili/headers/MediaInfoDLL/MediaInfoDLL.h; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -291,7 +288,6 @@
 				FD51017F1ACC1A6800C49430 /* libavutil.54.dylib in Frameworks */,
 				FD5101791ACC1A6800C49430 /* libass.5.dylib in Frameworks */,
 				FD5101831ACC1A6800C49430 /* libjpeg.8.dylib in Frameworks */,
-				FD0944471B22CC4E00AC99AF /* BugsnagOSX.framework in Frameworks */,
 				FD51018C1ACC1A6800C49430 /* libswscale.3.dylib in Frameworks */,
 				FD5101891ACC1A6800C49430 /* libpng16.16.dylib in Frameworks */,
 				FDAF8BA11ACA4ECC00C0C55D /* Sparkle.framework in Frameworks */,
@@ -349,7 +345,7 @@
 				FD476C6B1AD22A0D00584EFE /* Main View */,
 				FD476C6E1AD22A6D00584EFE /* Player View */,
 				FD8CEDEC1AD249540092452F /* Settings View */,
-				FD476C6C1AD22A2000584EFE /* Other Views */,
+				FD476C6C1AD22A2000584EFE /* Others */,
 				FD1954CE1B259462003A958F /* AppDelegate.h */,
 				FD1954CF1B259462003A958F /* AppDelegate.mm */,
 				FD4855071AE67AD8008F49AA /* gencache.sh */,
@@ -460,7 +456,6 @@
 		FD471FD11AC92D7C00A2A727 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FD0944461B22CC4E00AC99AF /* BugsnagOSX.framework */,
 				FDD5EEF61AC944020036B829 /* WebKit.framework */,
 				FD471B511AC904CB00A2A727 /* CoreAudio.framework */,
 			);
@@ -485,15 +480,16 @@
 			name = "Main View";
 			sourceTree = "<group>";
 		};
-		FD476C6C1AD22A2000584EFE /* Other Views */ = {
+		FD476C6C1AD22A2000584EFE /* Others */ = {
 			isa = PBXGroup;
 			children = (
 				FD1954C81B259447003A958F /* AboutView.h */,
 				FD1954C91B259447003A958F /* AboutView.m */,
 				FD1954CB1B259457003A958F /* ISSoundAdditions.h */,
 				FD1954CC1B259457003A958F /* ISSoundAdditions.m */,
+				FD1954F61B259AF6003A958F /* Analytics.h */,
 			);
-			name = "Other Views";
+			name = Others;
 			sourceTree = "<group>";
 		};
 		FD476C6E1AD22A6D00584EFE /* Player View */ = {
@@ -613,7 +609,6 @@
 				FD4855091AE67B2C008F49AA /* CopyFiles */,
 				FD076C4E1AC8CBBB00C893FA /* Resources */,
 				FD4855051AE675D7008F49AA /* ShellScript */,
-				FD0944451B22CC2900AC99AF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -653,6 +648,7 @@
 				TargetAttributes = {
 					FD076C4F1AC8CBBB00C893FA = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = Y256486DRL;
 					};
 					FD076C651AC8CBBB00C893FA = {
 						CreatedOnToolsVersion = 6.2;
@@ -705,19 +701,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		FD0944451B22CC2900AC99AF /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /usr/bin/ruby;
-			shellScript = "fork do\nProcess.setsid\nSTDIN.reopen(\"/dev/null\")\nSTDOUT.reopen(\"/dev/null\", \"a\")\nSTDERR.reopen(\"/dev/null\", \"a\")\n\nrequire 'shellwords'\n\nDir[\"#{ENV[\"DWARF_DSYM_FOLDER_PATH\"]}/*/Contents/Resources/DWARF/*\"].each do |dsym|\nsystem(\"curl -F dsym=@#{Shellwords.escape(dsym)} -F projectRoot=#{Shellwords.escape(ENV[\"PROJECT_DIR\"])} https://upload.bugsnag.com/\")\nend\nend";
-		};
 		FD4855051AE675D7008F49AA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -874,6 +857,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -912,6 +896,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
