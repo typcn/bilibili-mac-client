@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <BugsnagOSX/Bugsnag.h>
 #include "aria2.hpp"
 
 @interface AppDelegate ()
@@ -36,7 +35,33 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     aria2::libraryInit();
-    [Bugsnag startBugsnagWithApiKey:@"499e53d79260314b19bf38989bef3007"];
+    NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
+    NSString *uuid = [s objectForKey:@"UUID"];
+    if(!uuid){
+        [s setObject:[[NSProcessInfo processInfo] globallyUniqueString] forKey:@"UUID"];
+    }
+    long acceptAnalytics = [s integerForKey:@"acceptAnalytics"];
+    if(!acceptAnalytics){
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"是否接受匿名统计？\n如果接受，则会上传一些基础信息（不包括 IP 地址）\n如果不接受，仅为软件用户量+1 \n如果选择完全禁止，开发者将无法了解到任何信息，软件不会与除 Bilibili 外的任何服务器通讯"];
+        
+        [alert addButtonWithTitle:@"接受"];
+        [alert addButtonWithTitle:@"不接受"];
+        [alert addButtonWithTitle:@"完全禁止"];
+        long r = [alert runModal];
+        if(r == 1000){ // 接受
+            [s setInteger:1 forKey:@"acceptAnalytics"];
+            acceptAnalytics = 1;
+        }else if(r == 1001){// 拒绝
+            [s setInteger:2 forKey:@"acceptAnalytics"];
+            acceptAnalytics = 2;
+        }else if(r == 1002){ //完全禁止
+            [s setInteger:3 forKey:@"acceptAnalytics"];
+            acceptAnalytics = 3;
+        }
+    }
+    [s synchronize];
+    NSLog(@"AcceptAnalytics=%ld",acceptAnalytics);
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

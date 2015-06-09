@@ -45,18 +45,6 @@ function applyUI(){
             
         }
         console.log("inject success");
-        // 注意：仅为统计软件使用人数，保证不会记录您的 IP 地址，且没有开启 nginx 日志
-        
-        var owa_baseUrl = 'http://analyticsfor.website/';
-        var owa_cmds = owa_cmds || [];
-        owa_cmds.push(['setSiteId', 'e5a9da1173fed2864e2de618a7ed966a']);
-        owa_cmds.push(['trackPageView']);
-        (function() {
-         var _owa = document.createElement('script'); _owa.type = 'text/javascript'; _owa.async = true;
-         owa_baseUrl = ('https:' == document.location.protocol ? window.owa_baseSecUrl || owa_baseUrl.replace(/http:/, 'https:') : owa_baseUrl );
-         _owa.src = owa_baseUrl + 'modules/base/js/owa.tracker-combined-min.js';
-         var _owa_s = document.getElementsByTagName('script')[0]; _owa_s.parentNode.insertBefore(_owa, _owa_s);
-         }());
     }
 }
 var i = setInterval(waitForReady,200);

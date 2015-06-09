@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <Sparkle/Sparkle.h>
 #import "downloadWrapper.h"
+#import "Analytics.h"
 
 NSString *vUrl;
 NSString *vCID;
@@ -51,6 +52,7 @@ BOOL isTesting;
 @implementation WebController{
     bool ariainit;
     Downloader* DL;
+    long acceptAnalytics;
 }
 
 +(NSString*)webScriptNameForSelector:(SEL)sel
@@ -82,6 +84,11 @@ BOOL isTesting;
 - (void)checkForUpdates
 {
     [[SUUpdater sharedUpdater] checkForUpdates:nil];
+    if(acceptAnalytics == 1 || acceptAnalytics == 2){
+        screenView("CheckUpdate");
+    }else{
+        NSLog(@"Analytics disabled ! won't upload.");
+    }
 }
 
 - (void)showPlayGUI
@@ -98,6 +105,14 @@ BOOL isTesting;
     vCID = cid;
     vUrl = webView.mainFrameURL;
     NSLog(@"Video detected ! CID: %@",vCID);
+    if(acceptAnalytics == 1){
+        screenView("PlayerView");
+        action("video", "play", [vCID cStringUsingEncoding:NSUTF8StringEncoding]);
+    }else if(acceptAnalytics == 2){
+        screenView("PlayerView");
+    }else{
+        NSLog(@"Analytics disabled ! won't upload.");
+    }
     [self.switchButton performClick:nil];
 }
 - (void)downloadVideoByCID:(NSString *)cid
@@ -110,6 +125,15 @@ BOOL isTesting;
     }
     if(!DL){
         DL = new Downloader();
+    }
+    
+    if(acceptAnalytics == 1){
+        screenView("PlayerView");
+        action("video", "download", [cid cStringUsingEncoding:NSUTF8StringEncoding]);
+    }else if(acceptAnalytics == 2){
+        screenView("PlayerView");
+    }else{
+        NSLog(@"Analytics disabled ! won't upload.");
     }
     
     NSArray *fn = [webView.mainFrameTitle componentsSeparatedByString:@"_"];
@@ -144,6 +168,13 @@ BOOL isTesting;
     [webView setUIDelegate:self];
     [webView setResourceLoadDelegate:self];
 
+    NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
+    acceptAnalytics = [s integerForKey:@"acceptAnalytics"];
+    
+    if(!acceptAnalytics || acceptAnalytics == 1 || acceptAnalytics == 2){
+        screenView("StartApplication");
+    }
+    
     NSLog(@"Start");
     webView.mainFrameURL = @"http://www.bilibili.com";
     
@@ -237,6 +268,11 @@ didReceiveTitle:(NSString *)title
        forFrame:(WebFrame *)frame{
     [webView stringByEvaluatingJavaScriptFromString:WebScript];
     userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    if(acceptAnalytics == 1 || acceptAnalytics == 2){
+        screenView("WebView");
+    }else{
+        NSLog(@"Analytics disabled ! won't upload.");
+    }
 }
 
 - (void)webView:(WebView *)sender
