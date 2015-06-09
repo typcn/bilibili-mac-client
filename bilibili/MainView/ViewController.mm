@@ -85,7 +85,7 @@ BOOL isTesting;
 {
     [[SUUpdater sharedUpdater] checkForUpdates:nil];
     if(acceptAnalytics == 1 || acceptAnalytics == 2){
-        screenView("CheckUpdate");
+        action("App","CheckForUpdate","CheckForUpdate");
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
     }
@@ -106,8 +106,8 @@ BOOL isTesting;
     vUrl = webView.mainFrameURL;
     NSLog(@"Video detected ! CID: %@",vCID);
     if(acceptAnalytics == 1){
-        screenView("PlayerView");
         action("video", "play", [vCID cStringUsingEncoding:NSUTF8StringEncoding]);
+        screenView("PlayerView");
     }else if(acceptAnalytics == 2){
         screenView("PlayerView");
     }else{
@@ -128,8 +128,8 @@ BOOL isTesting;
     }
     
     if(acceptAnalytics == 1){
-        screenView("PlayerView");
         action("video", "download", [cid cStringUsingEncoding:NSUTF8StringEncoding]);
+        screenView("PlayerView");
     }else if(acceptAnalytics == 2){
         screenView("PlayerView");
     }else{

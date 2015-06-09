@@ -80,6 +80,7 @@
 		FD5101A81ACC1AF300C49430 /* libx264.142.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101771ACC1A6800C49430 /* libx264.142.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD5101A91ACC1AF300C49430 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101781ACC1A6800C49430 /* libz.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD5305E41B265CF100659B32 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */; };
 		FD53BEC91ACF8E440004C366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FD61025C1AD7CBA20013119A /* inject.js in Resources */ = {isa = PBXBuildFile; fileRef = FD61025B1AD7CBA20013119A /* inject.js */; };
 		FD61025E1AD7CBC10013119A /* webui.html in Resources */ = {isa = PBXBuildFile; fileRef = FD61025D1AD7CBC10013119A /* webui.html */; };
@@ -253,6 +254,8 @@
 		FD5101781ACC1A6800C49430 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = bilibili/libs/libz.1.dylib; sourceTree = "<group>"; };
 		FD5101901ACC1A7600C49430 /* client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = client.h; path = bilibili/headers/client.h; sourceTree = "<group>"; };
 		FD51A8601ACA8464007D8972 /* APIKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
+		FD5305E91B2692CE00659B32 /* SmartBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartBlockSettings.h; path = Settings/SmartBlockSettings.h; sourceTree = "<group>"; };
+		FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmartBlockSettings.m; path = Settings/SmartBlockSettings.m; sourceTree = "<group>"; };
 		FD61025B1AD7CBA20013119A /* inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = inject.js; path = WebPages/inject.js; sourceTree = "<group>"; };
 		FD61025D1AD7CBC10013119A /* webui.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = webui.html; path = WebPages/webui.html; sourceTree = "<group>"; };
 		FD6102601AD7CBF10013119A /* webui.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = webui.css; path = WebPages/webui.css; sourceTree = "<group>"; };
@@ -554,6 +557,8 @@
 				FD1954AB1B259318003A958F /* KeywordBlockSettings.m */,
 				FD1954AC1B259318003A958F /* Settings.h */,
 				FD1954AD1B259318003A958F /* Settings.m */,
+				FD5305E91B2692CE00659B32 /* SmartBlockSettings.h */,
+				FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */,
 			);
 			name = "Settings View";
 			sourceTree = "<group>";
@@ -737,6 +742,7 @@
 				FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */,
 				FD1954C41B259368003A958F /* LiveChat.m in Sources */,
 				FD1954BB1B259342003A958F /* DownloadManager.m in Sources */,
+				FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */,
 				FD1954CA1B259447003A958F /* AboutView.m in Sources */,
 				FD1954D31B25947A003A958F /* playLocalFile.m in Sources */,
 			);

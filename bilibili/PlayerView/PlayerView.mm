@@ -424,8 +424,27 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         bilibiliParser *p = new bilibiliParser;
         
         NSString *block = [[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"];
+        int blockBadword = [self getSettings:@"blcokBadword"];
+        int blockDate = [self getSettings:@"blockDate"];
+        int blockSpoiler = [self getSettings:@"blockSpoilers"];
+        int block2B = [self getSettings:@"block2B"];
+
         if([block length] > 1){
-            NSArray *blocks = [block componentsSeparatedByString:@"|"];
+            NSLog(@"Blockword got");
+            NSMutableString *blockstr = [block mutableCopy];
+            if(blockBadword == 1){
+                [blockstr appendString:@"|脑残|傻|大脑有|大脑进|你妈"];
+            }
+            if(blockDate == 1){
+                [blockstr appendString:@"|201|200|周目"];
+            }
+            if(blockSpoiler == 1){
+                [blockstr appendString:@"|然后|后来|结果|剧透"];
+            }
+            if(block2B == 1){
+                [blockstr appendString:@"|笑看|笑摸|笑而不语|看着你们"];
+            }
+            NSArray *blocks = [blockstr componentsSeparatedByString:@"|"];
             if([block length] > 0){
                 for (NSString* string in blocks) {
                     p->SetBlockWord([string cStringUsingEncoding:NSUTF8StringEncoding]);
