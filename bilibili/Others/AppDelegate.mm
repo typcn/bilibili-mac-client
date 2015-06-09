@@ -92,5 +92,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"AVNumberUpdate" object:url];
 }
 
+- (IBAction)goForum:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://leanclub.org"]];
+}
 
 @end

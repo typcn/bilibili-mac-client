@@ -366,7 +366,13 @@
                                                 <action selector="checkForUpdates:" target="vfz-mj-DKJ" id="DVJ-0x-PXM"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="问题反馈" id="KKI-vi-xOu">
+                                        <menuItem title="论坛反馈" id="m2k-Ll-pRS" userLabel="论坛">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="goForum:" target="Voe-Tx-rLC" id="wao-vh-0Ss"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="GitHub 反馈" id="KKI-vi-xOu">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="issues:" target="Voe-Tx-rLC" id="3tk-ZJ-YU4"/>
@@ -407,10 +413,10 @@
         <!--Comment block settings-->
         <scene sceneID="KMO-V3-Usw">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" id="qwv-h3-TE4" userLabel="Comment block settings" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="1" id="qwv-h3-TE4" userLabel="Comment block settings" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="关键词屏蔽" identifier="" id="VPs-85-Tqg"/>
-                        <tabViewItem label="更多屏蔽" identifier="" id="gi0-iC-GLq"/>
+                        <tabViewItem label="智能屏蔽" identifier="" id="gi0-iC-GLq"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="0N7-dD-IpF">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -446,10 +452,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="223" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="468" height="230"/>
+                                            <size key="minSize" width="223" height="230"/>
                                             <size key="maxSize" width="485" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="468" height="230"/>
+                                            <size key="minSize" width="223" height="230"/>
                                             <size key="maxSize" width="485" height="10000000"/>
                                         </textView>
                                     </subviews>
@@ -483,29 +489,79 @@
             </objects>
             <point key="canvasLocation" x="1463" y="-85.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Smart Block Settings-->
         <scene sceneID="ano-X6-NRf">
             <objects>
-                <viewController id="062-3f-byc" sceneMemberID="viewController">
+                <viewController id="062-3f-byc" customClass="SmartBlockSettings" sceneMemberID="viewController">
                     <view key="view" id="foG-xs-fQU">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="266"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="fgL-iN-azg">
-                                <rect key="frame" x="86" y="92" width="397" height="117"/>
+                                <rect key="frame" x="80" y="36" width="360" height="66"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" title="欢迎到 GitHub 参与开发   https://github.com/typcn/bilibili-mac-client" id="BKA-mo-Ldx">
+                                <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" title="更多功能欢迎到 GitHub 参与开发   https://github.com/typcn/bilibili-mac-client" id="BKA-mo-Ldx">
                                     <font key="font" size="12" name="STHeitiSC-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button id="BNA-Ae-2MF">
+                                <rect key="frame" x="80" y="206" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="屏蔽吵架弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="8tq-Pn-HDt">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="blcokBadword:" target="062-3f-byc" id="JW0-b8-xbr"/>
+                                </connections>
+                            </button>
+                            <button id="rEv-Ih-Xb3">
+                                <rect key="frame" x="80" y="186" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="屏蔽日期弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="naf-pC-PtF">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="blockDate:" target="062-3f-byc" id="j5q-fJ-Tod"/>
+                                </connections>
+                            </button>
+                            <button id="pts-Mu-teg">
+                                <rect key="frame" x="80" y="166" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="屏蔽剧透弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="5dB-gK-hjd">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="blockSpoilers:" target="062-3f-byc" id="tAU-Pm-FrL"/>
+                                </connections>
+                            </button>
+                            <button id="3we-Xx-mYu">
+                                <rect key="frame" x="80" y="146" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="屏蔽优越感弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="dZF-c1-3Mj">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="block2B:" target="062-3f-byc" id="xot-my-XWH"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="b2b" destination="3we-Xx-mYu" id="R4C-RN-BdP"/>
+                        <outlet property="bb" destination="BNA-Ae-2MF" id="1kl-ST-OiH"/>
+                        <outlet property="bd" destination="rEv-Ih-Xb3" id="Mrf-Gc-loC"/>
+                        <outlet property="bs" destination="pts-Mu-teg" id="blc-wb-EZi"/>
+                    </connections>
                 </viewController>
                 <customObject id="2y9-Aw-wV9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="856" y="-76"/>
+            <point key="canvasLocation" x="856" y="-93"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="SSw-0K-I7n">
@@ -1069,7 +1125,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="loading" width="145" height="91"/>
+        <image name="loading" width="69" height="70"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="D5B-9p-dnr"/>
