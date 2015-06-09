@@ -2,11 +2,7 @@
 
 An unofficial bilibili client for mac
 
-[![Build Status](https://app.ship.io/jobs/LajSkdYLuE7THK7n/build_status.png)](http://jenkins.eqoe.cn/job/Bilibili-for-mac/)
-
-# Why
-
-众所周知的原因，Flash 不支持硬解，Macbook 热的烤鸡蛋！
+<img src="https://app.ship.io/jobs/LajSkdYLuE7THK7n/build_status.png" style="width:160px" alt="Build Status">
 
 # Features
 - 硬解播放
@@ -19,6 +15,7 @@ An unofficial bilibili client for mac
 - 视频清晰度切换
 - 网页书签调用播放器
 - 弹幕关键词屏蔽
+- 弹幕智能屏蔽，一键屏蔽吵架，剧透等弹幕
 
 # Screenshot
 
@@ -34,9 +31,9 @@ An unofficial bilibili client for mac
 
 # FAQ
 
-Q: 提示应用程序已损坏
+Q: 提示无法打开应用
 
-A: 请到设置 - 安全与隐私 - 通用 - 点击左下角的锁 - 允许任何应用
+A: 请到设置 - 安全与隐私 - 通用 - 点击左下角的锁 - “允许来自 Mac App Store 和受信任的开发者”，从 1.95 版本开始，不需要选择任何来源
 
 Q: 是否支持弹幕发送
 
@@ -59,11 +56,6 @@ A: 点击播放器右下角的字幕按钮关闭，再次点击开启
 - <del>在视频开始播放之前，关闭窗口会导致程序在一段时间后崩溃</del> 已修复
 - 首次播放可能创建字体缓存，大约需要两分钟，多等一会即可开始播放
 
-# 2.0 新特性进度
-
-- [ ] 直播弹幕显示
-- [ ] 弹幕高级屏蔽
-- [ ] 自动换 P
 
 # Thanks
 
