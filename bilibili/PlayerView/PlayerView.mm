@@ -194,8 +194,28 @@ getUrl: NSLog(@"Getting video url");
         NSData * videoAddressJSONData = [NSURLConnection sendSynchronousRequest:request
                                               returningResponse:&response
                                                           error:&error];
+        if(error || !videoAddressJSONData){
+            NSLog(@"API ERROR:%@",error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert setMessageText:@"视频解析出现错误，返回内容为空，可能的原因：\n1. 您的网络连接出现故障\n2. Bilibili API 服务器出现故障\n请尝试以下步骤：\n1. 更换网络连接或重启电脑\n2. 可能触发了频率限制，请更换 IP 地址\n\n如果您确信是软件问题，请点击帮助 -- 反馈"];
+                [alert runModal];
+            });
+            return;
+        }
+        
         NSError *jsonError;
         NSMutableDictionary *videoResult = [NSJSONSerialization JSONObjectWithData:videoAddressJSONData options:NSJSONWritingPrettyPrinted error:&jsonError];
+        
+        if(jsonError){
+            NSLog(@"JSON ERROR:%@",jsonError);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert setMessageText:@"视频解析出现错误，JSON 解析失败，可能的原因：\n1. 您的网络被劫持\n2. Bilibili 服务器出现故障\n请尝试以下步骤：\n1. 尝试更换网络\n2. 过一会再试\n\n如果您确信是软件问题，请点击帮助 -- 反馈"];
+                [alert runModal];
+            });
+            return;
+        }
         
         NSArray *dUrls = [videoResult objectForKey:@"durl"];
 
