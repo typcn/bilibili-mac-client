@@ -274,10 +274,13 @@ getUrl: NSLog(@"Getting video url");
         // ffprobe
         [self.textTip setStringValue:@"正在获取视频信息"];
 
+        NSLog(@"FirstVideo:%@",firstVideo);
+        
         int usingBackup = 0;
         
+        NSLog(@"Start read video info");
 GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
-
+        NSLog(@"Video info got");
         NSNumber *width = [VideoInfoJson objectForKey:@"width"];
         NSNumber *height = [VideoInfoJson objectForKey:@"height"];
         
@@ -614,6 +617,8 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             if(!event)
                 break;
             if (event->event_id == MPV_EVENT_NONE)
+                break;
+            if(isCancelled)
                 break;
             [self handleEvent:event];
         }
