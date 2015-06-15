@@ -97,14 +97,17 @@ bool bilibiliParser::Convert(bool removeBottom){
          8 - Javascript comment ( not convert )
          */
         p = strtok(NULL, separator);
+        if(!p){ continue; }
         int comment_mode = atoi(p);
         
         /* Arg3 : Font size ( not needed )*/
         p = strtok(NULL, separator);
+        if(!p){ continue; }
         //int font_size = atoi(p);
         
         /* Arg4 : Font color */
         p = strtok(NULL, separator);
+        if(!p){ continue; }
         int font_color = atoi(p);
         
         /* Arg5 : Unix timestamp ( not needed ) */
