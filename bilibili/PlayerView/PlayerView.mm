@@ -62,6 +62,9 @@ static inline void check_error(int status)
 - (BOOL)canBecomeKeyWindow { return YES; }
 
 static void wakeup(void *context) {
+    if(isCancelled){
+        return;
+    }
     if(context){
         PlayerView *a = (__bridge PlayerView *) context;
         if(a){
@@ -371,7 +374,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
 
 - (NSDictionary *) getVideoInfo:(NSString *)url{
 
-    MediaInfoDLL::MediaInfo MI;
+    MediaInfoDLL::MediaInfo MI = *new MediaInfoDLL::MediaInfo;
     MI.Open([url cStringUsingEncoding:NSUTF8StringEncoding]);
     MI.Option(__T("Inform"), __T("Video;%Width%"));
     NSString *width = [NSString stringWithCString:MI.Inform().c_str() encoding:NSUTF8StringEncoding];
@@ -453,7 +456,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             NSLog(@"Blockword got");
             NSMutableString *blockstr = [block mutableCopy];
             if(blockBadword == 1){
-                [blockstr appendString:@"|脑残|傻|大脑有|大脑进|你妈"];
+                [blockstr appendString:@"|脑残|傻|大脑有|大脑进|你妈|孙子"];
             }
             if(blockDate == 1){
                 [blockstr appendString:@"|201|200|周目"];
@@ -794,7 +797,7 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             mpv_set_wakeup_callback(mpv, NULL,NULL);
         }
         [self mpv_stop];
-        [self mpv_quit];
+        //[self mpv_quit];
         [LastWindow makeKeyAndOrderFront:nil];
     });
     parsing = false;
