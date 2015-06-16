@@ -45,6 +45,7 @@ BOOL isTesting;
 
     NSArray *TaskList = [[NSUserDefaults standardUserDefaults] arrayForKey:@"DownloadTaskList"];
     downloaderObjects = [TaskList copy];
+
 }
 
 @end
