@@ -16,6 +16,13 @@
 @implementation AppDelegate
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
+    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+    if(version.minorVersion == 11){
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"对不起，由于 OpenGL 问题，软件暂时无法兼容 10.11, 请尝试使用 Xcode7 重新编译 libmpv.dylib"];
+        [alert runModal];
+        return;
+    }
     signal(SIGPIPE, SIG_IGN);
     [[NSAppleEventManager sharedAppleEventManager]
      setEventHandler:self
@@ -31,7 +38,7 @@
         task.arguments = @[path];
         [task launch];
         [task waitUntilExit];
-        fcache = [[NSFileManager defaultManager] fileExistsAtPath:@"/Users/Shared/.fc/" isDirectory:nil];
+        fcache = [[NSFileManager defaultManager] fileExistsAtPath:@"/Users/Shared/.fc/fonts/" isDirectory:nil];
         if(!fcache){
             NSAlert *alert = [[NSAlert alloc] init];
             [alert setMessageText:@"无法创建字体缓存，您可能无法看到任何弹幕，可能的原因：\n1. 您的系统部分文件夹权限错误"

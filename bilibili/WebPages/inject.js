@@ -25,7 +25,7 @@ function applyUI(){
         TYPCN_PLAYER_CID = m[1];
         
         if(!$('.i_face').attr('src')){
-            $('.login').css('width',200).children('a').html('点击登陆客户端以便发送弹幕');
+            $('.login').css('width',200).children('a').html('点击登录客户端以便发送弹幕');
         }
         
         if(TYPCN_PLAYER_CID){
