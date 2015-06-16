@@ -754,6 +754,14 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             }else{
                 hide = YES;
                 [NSCursor hide];
+                NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+                bool shown = [settingsController objectForKey:@"ESCalert"];
+                if(!shown){
+                    NSAlert *alert = [[NSAlert alloc] init];
+                    [alert setMessageText:@"光标已隐藏，按 ESC 键可以切换光标显示状态，该提示只会出现一次\n按回车关闭该提示"];
+                    [alert runModal];
+                    [settingsController setBool:YES forKey:@"ESCalert"];
+                }
             }
             break;
         }
