@@ -105,6 +105,7 @@ BOOL isTesting;
     parsing = true;
     vCID = cid;
     vUrl = webView.mainFrameURL;
+    [[NSUserDefaults standardUserDefaults] setObject:vUrl forKey:@"LastPlay"];
     NSLog(@"Video detected ! CID: %@",vCID);
     if(acceptAnalytics == 1){
         action("video", "play", [vCID cStringUsingEncoding:NSUTF8StringEncoding]);
@@ -178,7 +179,6 @@ BOOL isTesting;
     
     NSLog(@"Start");
     webView.mainFrameURL = @"http://www.bilibili.com";
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AVNumberUpdated:) name:@"AVNumberUpdate" object:nil];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"webpage/inject" ofType:@"js"];
@@ -273,6 +273,12 @@ didReceiveTitle:(NSString *)title
         screenView("WebView");
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
+    }
+    NSString *lastPlay = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastPlay"];
+    if([lastPlay length] > 1){
+        webView.mainFrameURL = lastPlay;
+        NSLog(@"Opening last play url %@",lastPlay);
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     }
 }
 
