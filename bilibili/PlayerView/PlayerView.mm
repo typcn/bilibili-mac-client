@@ -800,6 +800,8 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
 }
 
 - (BOOL)windowShouldClose:(id)sender{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
+    NSLog(@"Removing lastplay url");
     isCancelled = true;
     if(obServer){
         [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self];
