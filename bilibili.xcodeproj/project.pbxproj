@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = C56A943C1B36E837005C274F /* WebView+SwipeNavigation.m */; };
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
 		FD076C611AC8CBBB00C893FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FD076C6D1AC8CBBB00C893FA /* bilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */; };
@@ -176,6 +177,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C56A943B1B36E837005C274F /* WebView+SwipeNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WebView+SwipeNavigation.h"; path = "MainView/WebView+SwipeNavigation.h"; sourceTree = "<group>"; };
+		C56A943C1B36E837005C274F /* WebView+SwipeNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WebView+SwipeNavigation.m"; path = "MainView/WebView+SwipeNavigation.m"; sourceTree = "<group>"; };
 		FD076C501AC8CBBB00C893FA /* Bilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C541AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C5D1AC8CBBB00C893FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -479,6 +482,8 @@
 			children = (
 				FD1954A51B25927C003A958F /* ViewController.h */,
 				FD1954A61B25927C003A958F /* ViewController.mm */,
+				C56A943B1B36E837005C274F /* WebView+SwipeNavigation.h */,
+				C56A943C1B36E837005C274F /* WebView+SwipeNavigation.m */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -742,6 +747,7 @@
 				FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */,
 				FD1954C41B259368003A958F /* LiveChat.m in Sources */,
 				FD1954BB1B259342003A958F /* DownloadManager.m in Sources */,
+				C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */,
 				FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */,
 				FD1954CA1B259447003A958F /* AboutView.m in Sources */,
 				FD1954D31B25947A003A958F /* playLocalFile.m in Sources */,
