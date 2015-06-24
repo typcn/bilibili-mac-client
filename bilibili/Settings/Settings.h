@@ -19,5 +19,7 @@
 @property (weak) IBOutlet NSButton *disablebottomComment;
 @property (weak) IBOutlet NSButton *playMP4;
 @property (weak) IBOutlet NSButton *DownloadMP4;
+@property (weak) IBOutlet NSButton *disableKeepAspect;
+@property (weak) IBOutlet NSSlider *commentMoveSpeed;
 
 @end

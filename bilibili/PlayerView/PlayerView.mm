@@ -343,7 +343,10 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     check_error(mpv_set_option_string(mpv, "input-vo-keyboard", "yes"));
     check_error(mpv_set_option_string(mpv, "input-media-keys", "yes"));
     check_error(mpv_set_option_string(mpv, "input-cursor", "yes"));
-    
+    int disableKeepAspect = [self getSettings:@"disableKeepAspect"];
+    if(disableKeepAspect == 1){
+        check_error(mpv_set_option_string(mpv, "keepaspect", "no"));
+    }
     check_error(mpv_set_option_string(mpv, "osc", "yes"));
     check_error(mpv_set_option_string(mpv, "autofit", [res cStringUsingEncoding:NSUTF8StringEncoding]));
     check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
@@ -423,18 +426,21 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         NSString *OutFile = [NSString stringWithFormat:@"%@/%@.cminfo.ass", @"/tmp",vCID];
         
         float mq = 6.75*[width doubleValue]/[height doubleValue]-4;
-        if(mq < 3.0){
-            mq = 3.0;
+        float moveSpeed = [self getSettings:@"moveSpeed"];
+        if(!moveSpeed){
+            moveSpeed = 1.0;
+        }else{
+            moveSpeed = (0-moveSpeed)+1;
         }
-        if(mq > 8.0){
-            mq = 8.0;
-        }
-        
+        mq = mq*moveSpeed;
         float fontsize = [self getSettings:@"fontsize"];
         if(!fontsize){
             fontsize = 25.1;
         }else{
             fontsize = fontsize + 0.1;
+        }
+        if(mq < 3.0){
+            mq = 3.0;
         }
         
         bool disableBottom;

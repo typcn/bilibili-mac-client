@@ -25,6 +25,7 @@
     [self.disablebottomComment setState:[settingsController integerForKey:@"disableBottomComment"]];
     [self.playMP4 setState:[settingsController integerForKey:@"playMP4"]];
     [self.DownloadMP4 setState:[settingsController integerForKey:@"DLMP4"]];
+    [self.disableKeepAspect setState:[settingsController integerForKey:@"disableKeepAspect"]];
     
     float trans = [settingsController floatForKey:@"transparency"];
     if(!trans){
@@ -48,6 +49,12 @@
         fontsize = 25.1;
     }
     [self.fontsize setFloatValue:fontsize];
+    
+    float moveSpeed = [settingsController floatForKey:@"moveSpeed"];
+    if(!moveSpeed){
+        moveSpeed = 0.0;
+    }
+    [self.commentMoveSpeed setFloatValue:moveSpeed];
 }
 
 - (IBAction)autoPlay:(id)sender {
@@ -83,6 +90,14 @@
 }
 - (IBAction)DLMP4Changed:(id)sender {
     [settingsController setInteger:[self.DownloadMP4 state] forKey:@"DLMP4"];
+    [settingsController synchronize];
+}
+- (IBAction)disableKeepAspectRatioChanged:(id)sender {
+    [settingsController setInteger:[self.disableKeepAspect state] forKey:@"disableKeepAspect"];
+    [settingsController synchronize];
+}
+- (IBAction)moveSpeedChanged:(id)sender {
+    [settingsController setFloat:[self.commentMoveSpeed floatValue] forKey:@"moveSpeed"];
     [settingsController synchronize];
 }
 
