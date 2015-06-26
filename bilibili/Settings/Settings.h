@@ -21,5 +21,6 @@
 @property (weak) IBOutlet NSButton *DownloadMP4;
 @property (weak) IBOutlet NSButton *disableKeepAspect;
 @property (weak) IBOutlet NSSlider *commentMoveSpeed;
+@property (weak) IBOutlet NSButton *disableHwDec;
 
 @end
