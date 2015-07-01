@@ -13,6 +13,7 @@
 
 NSString *vUrl;
 NSString *vCID;
+NSString *vTitle;
 NSString *userAgent;
 NSWindow *currWindow;
 NSMutableArray *downloaderObjects;
@@ -102,9 +103,17 @@ BOOL isTesting;
     if(parsing){
         return;
     }
+    NSArray *fn = [webView.mainFrameTitle componentsSeparatedByString:@"_"];
+    NSString *mediaTitle = [fn objectAtIndex:0];
     parsing = true;
     vCID = cid;
     vUrl = webView.mainFrameURL;
+    if([mediaTitle length] > 0){
+        vTitle = [fn objectAtIndex:0];
+    }else{
+        vTitle = @"未命名";
+    }
+    
     [[NSUserDefaults standardUserDefaults] setObject:vUrl forKey:@"LastPlay"];
     NSLog(@"Video detected ! CID: %@",vCID);
     if(acceptAnalytics == 1){
