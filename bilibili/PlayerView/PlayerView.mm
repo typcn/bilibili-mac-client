@@ -19,6 +19,7 @@
 
 extern NSString *vUrl;
 extern NSString *vCID;
+extern NSString *vTitle;
 extern NSString *userAgent;
 extern NSString *cmFile;
 extern NSString *subFile;
@@ -104,7 +105,6 @@ static void wakeup(void *context) {
     NSNumber *viewWidth = [NSNumber numberWithFloat:rect.size.width];
     NSString *res = [NSString stringWithFormat:@"%dx%d",[viewWidth intValue],[viewHeight intValue]];
     [self.view setFrame:rect];
-    
     postCommentButton = self.PostCommentButton;
     NSLog(@"Playerview load success");
     self->wrapper = [self view];
@@ -301,6 +301,11 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             }
         }
     
+        NSString *fvHost = [[NSURL URLWithString:firstVideo] host];
+        if([fvHost length] > 0){
+            vTitle = [NSString stringWithFormat:@"%@ - 服务器: %@",vTitle,fvHost];
+        }
+        
         if(isCancelled){
             NSLog(@"Unloading");
             return;
@@ -325,13 +330,13 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
 }
 
 - (void)PlayVideo:(NSString*) commentFile :(NSString*)res{
+    
     // Start Playing Video
     mpv = mpv_create();
     if (!mpv) {
         NSLog(@"Failed creating context");
         exit(1);
     }
-    
     [self.textTip setStringValue:@"正在载入视频"];
     
     int64_t wid = (intptr_t) self->wrapper;
@@ -343,11 +348,21 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     check_error(mpv_set_option_string(mpv, "input-vo-keyboard", "yes"));
     check_error(mpv_set_option_string(mpv, "input-media-keys", "yes"));
     check_error(mpv_set_option_string(mpv, "input-cursor", "yes"));
+    check_error(mpv_set_option_string(mpv, "osc", "yes"));
+    check_error(mpv_set_option_string(mpv, "autofit", [res cStringUsingEncoding:NSUTF8StringEncoding]));
+    check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
+    check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
+    check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
+    
+    
     int disableKeepAspect = [self getSettings:@"disableKeepAspect"];
     if(disableKeepAspect == 1){
         check_error(mpv_set_option_string(mpv, "keepaspect", "no"));
     }
-    check_error(mpv_set_option_string(mpv, "osc", "yes"));
+    if(![vCID isEqualToString:@"LOCALVIDEO"]){
+        check_error(mpv_set_option_string(mpv, "force-media-title", [vTitle cStringUsingEncoding:NSUTF8StringEncoding]));
+    }
+    
     int disableHwDec = [self getSettings:@"disableHwDec"];
     if(!disableHwDec){
         check_error(mpv_set_option_string(mpv, "vo", "opengl"));
@@ -356,12 +371,6 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         check_error(mpv_set_option_string(mpv, "sub-fps", "60"));
         check_error(mpv_set_option_string(mpv, "vf", "lavfi=\"fps=fps=60:round=down\""));
     }
-    
-    check_error(mpv_set_option_string(mpv, "autofit", [res cStringUsingEncoding:NSUTF8StringEncoding]));
-    check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
-    
-    check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
-    check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
     
     if(![vUrl containsString:@"live_"]){
         check_error(mpv_set_option_string(mpv, "sub-ass", "yes"));
@@ -826,8 +835,8 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         if(mpv){
             mpv_set_wakeup_callback(mpv, NULL,NULL);
         }
-        [self mpv_stop];
-        //[self mpv_quit];
+        //[self mpv_stop];
+        [self mpv_quit];
         [LastWindow makeKeyAndOrderFront:nil];
     });
     parsing = false;
