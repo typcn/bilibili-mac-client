@@ -368,12 +368,11 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         check_error(mpv_set_option_string(mpv, "force-media-title", [vTitle cStringUsingEncoding:NSUTF8StringEncoding]));
     }
     
-    int disableHwDec = [self getSettings:@"disableHwDec"];
-    if(!disableHwDec){
-        check_error(mpv_set_option_string(mpv, "vo", "opengl"));
+    int enableHW = [self getSettings:@"enableHW"];
+    if(enableHW){
         check_error(mpv_set_option_string(mpv, "hwdec", "vda"));
-    }else{
         check_error(mpv_set_option_string(mpv, "sub-fps", "60"));
+    }else{
         check_error(mpv_set_option_string(mpv, "vf", "lavfi=\"fps=fps=60:round=down\""));
     }
     

@@ -26,7 +26,7 @@
     [self.playMP4 setState:[settingsController integerForKey:@"playMP4"]];
     [self.DownloadMP4 setState:[settingsController integerForKey:@"DLMP4"]];
     [self.disableKeepAspect setState:[settingsController integerForKey:@"disableKeepAspect"]];
-    [self.disableHwDec setState:[settingsController integerForKey:@"disableHwDec"]];
+    [self.disableHwDec setState:[settingsController integerForKey:@"enableHW"]];
     
     float trans = [settingsController floatForKey:@"transparency"];
     if(!trans){
@@ -102,7 +102,7 @@
     [settingsController synchronize];
 }
 - (IBAction)disableHwdec:(id)sender {
-    [settingsController setInteger:[self.disableHwDec state] forKey:@"disableHwDec"];
+    [settingsController setInteger:[self.disableHwDec state] forKey:@"enableHW"];
     [settingsController synchronize];
 }
 
