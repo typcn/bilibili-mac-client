@@ -242,6 +242,8 @@ BOOL isTesting;
         // Block Flash
         NSLog(@"Block flash url:%@",URL);
         [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
+    }else if([URL containsString:@".eqoe.cn"]){
+        [re setValue:@"http://client.typcn.com" forHTTPHeaderField:@"Referer"];
     }else{
         NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
         NSString *xff = [settingsController objectForKey:@"xff"];

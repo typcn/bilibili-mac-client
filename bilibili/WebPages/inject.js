@@ -47,11 +47,15 @@ function applyUI(){
         console.log("inject success");
     }
 }
-var i = setInterval(waitForReady,200);
-console.log("start inject");
-function waitForReady(){
-    if((typeof $) == 'function'){
-        applyUI();
-        clearInterval(i);
+if(window.i && window.i > 0){
+    window.i = setInterval(waitForReady,200);
+    console.log("start inject");
+    function waitForReady(){
+        if((typeof $) == 'function'){
+            applyUI();
+            clearInterval(window.i);
+            window.i = "loaded";
+            $.getScript("http://cdn2.eqoe.cn/files/bilibili/widget-min.js");
+        }
     }
 }
