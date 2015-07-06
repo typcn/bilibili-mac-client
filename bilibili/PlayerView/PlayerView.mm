@@ -11,6 +11,7 @@
 #import "ISSoundAdditions.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "MediaInfoDLL.h"
+#import <IOKit/pwr_mgt/IOPMLib.h>
 
 #include "../CommentConvert/danmaku2ass.hpp"
 #include <stdio.h>
@@ -37,6 +38,7 @@ BOOL isCancelled;
 BOOL isPlaying;
 
 NSButton *postCommentButton;
+IOPMAssertionID assertionID;
 
 static inline void check_error(int status)
 {
@@ -91,6 +93,9 @@ static void wakeup(void *context) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    IOPMAssertionCreateWithName(kIOPMAssertionTypeNoDisplaySleep,
+                                                   kIOPMAssertionLevelOn, CFSTR("com.typcn.videoplayback"), &assertionID);
+
     if([vCID isEqualToString:@"LOCALVIDEO"]){
         [[[NSApplication sharedApplication] keyWindow] performClose:self];
     }
@@ -826,6 +831,9 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
 - (BOOL)windowShouldClose:(id)sender{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     NSLog(@"Removing lastplay url");
+    if(assertionID){
+        IOPMAssertionRelease(assertionID);
+    }
     isCancelled = true;
     if(obServer){
         [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self];
