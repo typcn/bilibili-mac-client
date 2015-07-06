@@ -1,0 +1,50 @@
+#bm_menu{
+	position: fixed;
+	right: 1em;
+	bottom: 1em;
+}
+#bm_tip{
+	position: fixed;
+	right: 1em;
+	bottom: 1em;
+	background: #00A1D6;
+	border-radius: 5px;
+	padding: 5px;
+	color: #ffffff;
+    font-family:"Helvetica Neue";
+    font-size:1.2em;
+    font-weight:bold;
+}
+.index_online{
+	height: 75px;
+}
+.round-button {
+	width:5em;
+}
+.round-button-circle {
+	width: 100%;
+	height:0;
+	padding-bottom: 100%;
+    border-radius: 50%;
+    overflow:hidden;
+    background: #00A1D6;
+}
+.round-button-circle:hover {
+	background:#30588e;
+}
+.round-button a {
+    display:block;
+	float:left;
+	width:100%;
+	padding-top:50%;
+    padding-bottom:50%;
+	line-height:1em;
+	margin-top:-0.5em;
+    
+	text-align:center;
+	color:#ffffff;
+    font-family:"Helvetica Neue";
+    font-size:1.2em;
+    font-weight:bold;
+    text-decoration:none;
+}
