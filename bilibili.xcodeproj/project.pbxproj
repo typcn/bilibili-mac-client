@@ -17,7 +17,7 @@
 		FD1954B01B259318003A958F /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AD1B259318003A958F /* Settings.m */; };
 		FD1954B51B259330003A958F /* PlayerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954B21B259330003A958F /* PlayerView.mm */; };
 		FD1954B61B259330003A958F /* PostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954B41B259330003A958F /* PostComment.m */; };
-		FD1954BB1B259342003A958F /* DownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954B81B259342003A958F /* DownloadManager.m */; };
+		FD1954BB1B259342003A958F /* DownloadManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954B81B259342003A958F /* DownloadManager.mm */; };
 		FD1954BC1B259342003A958F /* downloadWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BA1B259342003A958F /* downloadWrapper.mm */; };
 		FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BE1B259368003A958F /* BilibiliSocketClient.mm */; };
 		FD1954C41B259368003A958F /* LiveChat.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C01B259368003A958F /* LiveChat.m */; };
@@ -199,7 +199,7 @@
 		FD1954B31B259330003A958F /* PostComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostComment.h; path = PlayerView/PostComment.h; sourceTree = "<group>"; };
 		FD1954B41B259330003A958F /* PostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostComment.m; path = PlayerView/PostComment.m; sourceTree = "<group>"; };
 		FD1954B71B259342003A958F /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadManager.h; path = Downloader/DownloadManager.h; sourceTree = "<group>"; };
-		FD1954B81B259342003A958F /* DownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DownloadManager.m; path = Downloader/DownloadManager.m; sourceTree = "<group>"; };
+		FD1954B81B259342003A958F /* DownloadManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DownloadManager.mm; path = Downloader/DownloadManager.mm; sourceTree = "<group>"; };
 		FD1954B91B259342003A958F /* downloadWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = downloadWrapper.h; path = Downloader/downloadWrapper.h; sourceTree = "<group>"; };
 		FD1954BA1B259342003A958F /* downloadWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = downloadWrapper.mm; path = Downloader/downloadWrapper.mm; sourceTree = "<group>"; };
 		FD1954BD1B259368003A958F /* BilibiliSocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BilibiliSocketClient.h; path = LiveChat/BilibiliSocketClient.h; sourceTree = "<group>"; };
@@ -589,7 +589,7 @@
 			isa = PBXGroup;
 			children = (
 				FD1954B71B259342003A958F /* DownloadManager.h */,
-				FD1954B81B259342003A958F /* DownloadManager.m */,
+				FD1954B81B259342003A958F /* DownloadManager.mm */,
 				FD1954B91B259342003A958F /* downloadWrapper.h */,
 				FD1954BA1B259342003A958F /* downloadWrapper.mm */,
 			);
@@ -746,7 +746,7 @@
 				FD1954B01B259318003A958F /* Settings.m in Sources */,
 				FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */,
 				FD1954C41B259368003A958F /* LiveChat.m in Sources */,
-				FD1954BB1B259342003A958F /* DownloadManager.m in Sources */,
+				FD1954BB1B259342003A958F /* DownloadManager.mm in Sources */,
 				C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */,
 				FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */,
 				FD1954CA1B259447003A958F /* AboutView.m in Sources */,
