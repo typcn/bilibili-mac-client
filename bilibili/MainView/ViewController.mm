@@ -17,6 +17,8 @@ NSString *vTitle;
 NSString *userAgent;
 NSWindow *currWindow;
 NSMutableArray *downloaderObjects;
+Downloader* DL;
+NSLock *dList = [[NSLock alloc] init];
 BOOL parsing = false;
 BOOL isTesting;
 
@@ -45,7 +47,7 @@ BOOL isTesting;
     [self.view setFrame:rect];
 
     NSArray *TaskList = [[NSUserDefaults standardUserDefaults] arrayForKey:@"DownloadTaskList"];
-    downloaderObjects = [TaskList copy];
+    downloaderObjects = [TaskList mutableCopy];
 
 }
 
@@ -53,7 +55,6 @@ BOOL isTesting;
 
 @implementation WebController{
     bool ariainit;
-    Downloader* DL;
     long acceptAnalytics;
 }
 
@@ -154,10 +155,12 @@ BOOL isTesting;
         NSDictionary *taskData = @{
                                    @"name":filename,
                                    @"status":@"正在等待",
+                                   @"cid":cid,
                                    };
+        [dList lock];
         int index = (int)[downloaderObjects count];
         [downloaderObjects insertObject:taskData atIndex:index];
-        
+        [dList unlock];
         DL->init();
         DL->newTask([cid intValue], filename);
         
@@ -185,7 +188,6 @@ BOOL isTesting;
     if(!acceptAnalytics || acceptAnalytics == 1 || acceptAnalytics == 2){
         screenView("StartApplication");
     }
-    
     NSLog(@"Start");
     webView.mainFrameURL = @"http://www.bilibili.com";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AVNumberUpdated:) name:@"AVNumberUpdate" object:nil];

@@ -12,6 +12,7 @@
 #import <CommonCrypto/CommonDigest.h>
 
 extern NSMutableArray *downloaderObjects;
+extern NSLock *dList;
 
 int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
                           aria2::A2Gid gid, void* userData)
@@ -60,7 +61,15 @@ void Downloader::newTask(int cid,NSString *name){
     NSLog(@"[Downloader] Comment downloaded");
     
     NSArray  *urls = getUrl(cid);
-    
+    if(!urls){
+        NSLog(@"[Downloader] ERROR");
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = @"Bilibili Client";
+        notification.informativeText = @"下载失败，无法解析视频";
+        notification.soundName = NSUserNotificationDefaultSoundName;
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        mtx.unlock();
+    }
     if([[[urls valueForKey:@"url"] className] isEqualToString:@"__NSCFString"]){
         NSString *tmp = [urls valueForKey:@"url"];
         std::vector<std::string> uris = {[tmp cStringUsingEncoding:NSUTF8StringEncoding]};
@@ -81,7 +90,7 @@ void Downloader::newTask(int cid,NSString *name){
 void Downloader::runDownload(int fileid,NSString *filename){
     
     NSLog(@"[Downloader] Starting download");
-    
+    NSString *cid = [[downloaderObjects objectAtIndex:fileid] valueForKey:@"cid"];
     mtx.lock();
     for(;;) {
         int rv = aria2::run(session, aria2::RUN_ONCE);
@@ -100,12 +109,15 @@ void Downloader::runDownload(int fileid,NSString *filename){
                 aria2::deleteDownloadHandle(dh);
             }
         }
+        [dList lock];
         [downloaderObjects removeObjectAtIndex:fileid];
         NSDictionary *taskData = @{
-            @"name":filename,
-            @"status":[NSString stringWithFormat:@"剩余分段:%d 下载速度:%dKB/s 大小:%d/%dMB",gstat.numActive,gstat.downloadSpeed/1024,currentLength/1024/1024,allLength/1024/1024],
-        };
+                                    @"name":filename,
+                                    @"status":[NSString stringWithFormat:@"剩余分段:%d 下载速度:%dKB/s 大小:%d/%dMB",gstat.numActive,gstat.downloadSpeed/1024,currentLength/1024/1024,allLength/1024/1024],
+                                    @"cid":cid
+                                    };
         [downloaderObjects insertObject:taskData atIndex:fileid];
+        [dList unlock];
     }
     int rv = aria2::sessionFinal(session);
     
@@ -118,13 +130,14 @@ void Downloader::runDownload(int fileid,NSString *filename){
         notification.soundName = NSUserNotificationDefaultSoundName;
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
     }
-    
+    [dList lock];
     [downloaderObjects removeObjectAtIndex:fileid];
     NSDictionary *taskData = @{
         @"name":filename,
         @"status":@"下载已完成",
     };
     [downloaderObjects insertObject:taskData atIndex:fileid];
+    [dList unlock];
     mtx.unlock();
 }
 
@@ -161,6 +174,9 @@ NSArray *Downloader::getUrl(int cid){
     NSData * videoAddressJSONData = [NSURLConnection sendSynchronousRequest:request
                                                           returningResponse:&response
                                                                       error:&error];
+    if(!videoAddressJSONData){
+        return NULL;
+    }
     NSError *jsonError;
     NSMutableDictionary *videoResult = [NSJSONSerialization JSONObjectWithData:videoAddressJSONData options:NSJSONWritingPrettyPrinted error:&jsonError];
 
