@@ -114,7 +114,8 @@ void Downloader::runDownload(int fileid,NSString *filename){
         NSDictionary *taskData = @{
                                     @"name":filename,
                                     @"status":[NSString stringWithFormat:@"剩余分段:%d 下载速度:%dKB/s 大小:%d/%dMB",gstat.numActive,gstat.downloadSpeed/1024,currentLength/1024/1024,allLength/1024/1024],
-                                    @"cid":cid
+                                    @"cid":cid,
+                                    @"lastUpdate":[NSString stringWithFormat:@"%lu",time(0)]
                                     };
         [downloaderObjects insertObject:taskData atIndex:fileid];
         [dList unlock];

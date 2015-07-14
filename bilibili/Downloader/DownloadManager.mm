@@ -73,7 +73,16 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
 }
 - (IBAction)clearAllDL:(id)sender {
     [dList lock];
-    [downloaderObjects removeAllObjects];
+    for (id object in downloaderObjects) {
+        if([[object valueForKey:@"lastUpdate"] length] > 0){
+            float lastUpdate = [[object valueForKey:@"lastUpdate"] floatValue];
+            long currentTime = time(0);
+            if((currentTime - lastUpdate) < 20){
+                continue;
+            }
+        }
+        [downloaderObjects removeObject:object];
+    }
     [dList unlock];
 }
 - (IBAction)continueDownload:(id)sender {
@@ -84,22 +93,33 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
     for (id object in downloaderObjects) {
         NSString *cid = [object valueForKey:@"cid"];
         NSString *name = [object valueForKey:@"name"];
-        [downloaderObjects removeObject:object];
-        int index = (int)[downloaderObjects count];
+        NSString *lastUp = [object valueForKey:@"lastUpdate"];
+        
+        int index = (int)[downloaderObjects count] - 1;
         
         if(cid && [cid length] > 0){
+            if([lastUp length] > 0){
+                float lastUpdate = [lastUp floatValue];
+                long currentTime = time(0);
+                if((currentTime - lastUpdate) < 10){
+                    continue;
+                }else{
+                    [downloaderObjects removeObject:object];
+                }
+            }
             NSDictionary *taskData = @{
                                        @"name":name,
                                        @"status":@"正在等待恢复",
                                        @"cid":cid,
                                        };
+            [downloaderObjects insertObject:taskData atIndex:index];
             dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 DL->init();
                 DL->newTask([cid intValue], name);
-                [downloaderObjects insertObject:taskData atIndex:index];
                 DL->runDownload(index, name);
             });
         }else{
+            [downloaderObjects removeObject:object];
             NSDictionary *taskData = @{
                                        @"name":name,
                                        @"status":@"恢复下载失败",
