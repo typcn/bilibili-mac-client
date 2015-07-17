@@ -778,15 +778,15 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         case 53:{ // Esc key to hide mouse
             if(hide == YES){
                 hide = NO;
-                [NSCursor unhide];
+                [NSCursor setHiddenUntilMouseMoves:NO];
             }else{
                 hide = YES;
-                [NSCursor hide];
+                [NSCursor setHiddenUntilMouseMoves:YES];
                 NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
                 bool shown = [settingsController objectForKey:@"ESCalert"];
                 if(!shown){
                     NSAlert *alert = [[NSAlert alloc] init];
-                    [alert setMessageText:@"光标已隐藏，按 ESC 键可以切换光标显示状态，该提示只会出现一次\n按回车关闭该提示"];
+                    [alert setMessageText:@"光标已隐藏，按 ESC 键或移动鼠标可以切换光标显示状态，该提示只会出现一次\n按回车关闭该提示"];
                     [alert runModal];
                     [settingsController setBool:YES forKey:@"ESCalert"];
                 }
