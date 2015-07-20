@@ -54,6 +54,7 @@ static inline void check_error(int status)
     dispatch_queue_t queue;
     NSWindow *w;
     NSView *wrapper;
+    NSTimer *hideCursorTimer;
 }
 
 @end
@@ -111,6 +112,7 @@ static void wakeup(void *context) {
     NSString *res = [NSString stringWithFormat:@"%dx%d",[viewWidth intValue],[viewHeight intValue]];
     [self.view setFrame:rect];
     postCommentButton = self.PostCommentButton;
+    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
     NSLog(@"Playerview load success");
     self->wrapper = [self view];
 
@@ -631,6 +633,15 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             [self.textTip setStringValue:@"播放完成"];
             break;
         }
+        
+        case MPV_EVENT_PAUSE: {
+            isPlaying = NO;
+            break;
+        }
+        case MPV_EVENT_UNPAUSE: {
+            isPlaying = YES;
+            break;
+        }
             
         default:
             NSLog(@"Player Event: %s", mpv_event_name(event->event_id));
@@ -681,6 +692,14 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             return 0;
         }else{
             return result;
+        }
+    }
+}
+
+- (void)hideCursor:(id)sender {
+    if(isPlaying) {
+        if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved) > 3.0) {
+            [NSCursor setHiddenUntilMouseMoves:YES];
         }
     }
 }
@@ -776,28 +795,14 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             break;
         }
         case 53:{ // Esc key to hide mouse
-            if(hide == YES){
-                hide = NO;
-                [NSCursor unhide];
-            }else{
-                hide = YES;
-                [NSCursor hide];
-                NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
-                bool shown = [settingsController objectForKey:@"ESCalert"];
-                if(!shown){
-                    NSAlert *alert = [[NSAlert alloc] init];
-                    [alert setMessageText:@"光标已隐藏，按 ESC 键可以切换光标显示状态，该提示只会出现一次\n按回车关闭该提示"];
-                    [alert runModal];
-                    [settingsController setBool:YES forKey:@"ESCalert"];
-                }
-            }
+            // Nothing to do
             break;
         }
         case 7:{ // X key to loop
             mpv_set_option_string(mpv, "loop", "inf");
             break;
         }
-        case 3:{ // F key to fullscreen
+        case 3:{ // Command+F key to toggle fullscreen
             NSUInteger flags = [[NSApp currentEvent] modifierFlags];
             if ((flags & NSCommandKeyMask)) {
                 [self toggleFullScreen:self];
@@ -830,6 +835,7 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
 - (BOOL)windowShouldClose:(id)sender{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     NSLog(@"Removing lastplay url");
+    isPlaying = NO;
     if(assertionID){
         IOPMAssertionRelease(assertionID);
     }
