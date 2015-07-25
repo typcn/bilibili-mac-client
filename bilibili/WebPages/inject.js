@@ -20,6 +20,7 @@ function applyUI(){
         if(!fv){
             fv = 'cid=' + ROOMID;
         }
+        console.log(fv);
         var re = /cid=(\d+)&/;
         var m = re.exec(fv);
         TYPCN_PLAYER_CID = m[1];
@@ -29,6 +30,7 @@ function applyUI(){
         }
         
         if(TYPCN_PLAYER_CID){
+            console.log(TYPCN_PLAYER_CID);
             if(window.location.origin == 'http://live.bilibili.com'){
                 if(ROOMID > 0){
                     if(typeof LIVEPLAY == "undefined"){
@@ -47,7 +49,7 @@ function applyUI(){
         console.log("inject success");
     }
 }
-if(window.i && window.i > 0){
+if(window.i != "loaded"){
     window.i = setInterval(waitForReady,200);
     console.log("start inject");
     function waitForReady(){
