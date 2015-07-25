@@ -3,6 +3,11 @@ function applyUI(){
     try{
         $('.close-btn-wrp').parent().remove();$('.float-pmt').remove();
         $(".i-link[href='http://app.bilibili.com']").html('检查更新').attr('href','javascript:window.external.checkForUpdates()');
+        if(window.LoadTimes){
+            window.LoadTimes++;
+        }else{
+            window.LoadTimes = 1;
+        }
     }catch(e){
         
     }
@@ -18,9 +23,12 @@ function applyUI(){
             fv=$('.player-wrapper embed').attr('flashvars');
         }
         if(!fv){
+            if(!window.ROOMID){
+                clearInterval(window.i);
+                return;
+            }
             fv = 'cid=' + ROOMID;
         }
-        console.log(fv);
         var re = /cid=(\d+)&/;
         var m = re.exec(fv);
         TYPCN_PLAYER_CID = m[1];
@@ -30,9 +38,8 @@ function applyUI(){
         }
         
         if(TYPCN_PLAYER_CID){
-            console.log(TYPCN_PLAYER_CID);
             if(window.location.origin == 'http://live.bilibili.com'){
-                if(ROOMID > 0){
+                if(window.ROOMID > 0){
                     if(typeof LIVEPLAY == "undefined"){
                         window.external.playVideoByCID(ROOMID.toString());
                         LIVEPLAY = 1;
@@ -47,17 +54,24 @@ function applyUI(){
             
         }
         console.log("inject success");
+        clearInterval(window.i);
     }
 }
-if(window.i != "loaded"){
-    window.i = setInterval(waitForReady,200);
+if(!window.isFirstPlay){
+    window.isFirstPlay = true;
+    window.i = setInterval(waitForReady,500);
     console.log("start inject");
     function waitForReady(){
+        if(window.LoadTimes > 5){
+            clearInterval(window.i);
+            return;
+        }
+        if(!window.isInjected){
+            window.isInjected = true;
+            $.getScript("http://cdn2.eqoe.cn/files/bilibili/widget-min.js");
+        }
         if((typeof $) == 'function'){
             applyUI();
-            clearInterval(window.i);
-            window.i = "loaded";
-            $.getScript("http://cdn2.eqoe.cn/files/bilibili/widget-min.js");
         }
     }
 }
