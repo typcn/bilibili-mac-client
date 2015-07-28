@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = C56A943C1B36E837005C274F /* WebView+SwipeNavigation.m */; };
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
-		FD076C611AC8CBBB00C893FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FD076C6D1AC8CBBB00C893FA /* bilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */; };
+		FD0829C01B6782DC00D2B126 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD0829B91B6782DC00D2B126 /* Main.strings */; };
+		FD0829C91B67844500D2B126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0829C71B67844500D2B126 /* Main.storyboard */; };
 		FD1954A71B25927C003A958F /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A61B25927C003A958F /* ViewController.mm */; };
 		FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A91B259318003A958F /* CommentBlockSettings.m */; };
 		FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AB1B259318003A958F /* KeywordBlockSettings.m */; };
@@ -82,7 +83,6 @@
 		FD5101A91ACC1AF300C49430 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101781ACC1A6800C49430 /* libz.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD5305E41B265CF100659B32 /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */; };
-		FD53BEC91ACF8E440004C366 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5F1AC8CBBB00C893FA /* Main.storyboard */; };
 		FD61025C1AD7CBA20013119A /* inject.js in Resources */ = {isa = PBXBuildFile; fileRef = FD61025B1AD7CBA20013119A /* inject.js */; };
 		FD61025E1AD7CBC10013119A /* webui.html in Resources */ = {isa = PBXBuildFile; fileRef = FD61025D1AD7CBC10013119A /* webui.html */; };
 		FD6102611AD7CBF10013119A /* webui.css in Resources */ = {isa = PBXBuildFile; fileRef = FD6102601AD7CBF10013119A /* webui.css */; };
@@ -182,10 +182,12 @@
 		FD076C501AC8CBBB00C893FA /* Bilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C541AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C5D1AC8CBBB00C893FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		FD076C601AC8CBBB00C893FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD076C661AC8CBBB00C893FA /* bilibiliTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bilibiliTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C6B1AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bilibiliTests.m; sourceTree = "<group>"; };
+		FD0829BA1B6782DC00D2B126 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Main.strings; sourceTree = "<group>"; };
+		FD0829BF1B6782DC00D2B126 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Main.strings; sourceTree = "<group>"; };
+		FD0829C81B67844500D2B126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD1954A51B25927C003A958F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = MainView/ViewController.h; sourceTree = "<group>"; };
 		FD1954A61B25927C003A958F /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewController.mm; path = MainView/ViewController.mm; sourceTree = "<group>"; };
 		FD1954A81B259318003A958F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentBlockSettings.h; path = Settings/CommentBlockSettings.h; sourceTree = "<group>"; };
@@ -434,6 +436,22 @@
 			name = headers;
 			sourceTree = "<group>";
 		};
+		FD0829B81B6782DC00D2B126 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				FD0829B91B6782DC00D2B126 /* Main.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		FD0829BB1B6782DC00D2B126 /* zh-Hans.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				FD0829BE1B6782DC00D2B126 /* Main.strings */,
+			);
+			path = "zh-Hans.lproj";
+			sourceTree = "<group>";
+		};
 		FD1954D41B2594AC003A958F /* CommentConvert */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,8 +534,10 @@
 		FD476C701AD22AEC00584EFE /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				FD0829C71B67844500D2B126 /* Main.storyboard */,
+				FD0829B81B6782DC00D2B126 /* en.lproj */,
+				FD0829BB1B6782DC00D2B126 /* zh-Hans.lproj */,
 				FD076C5D1AC8CBBB00C893FA /* Images.xcassets */,
-				FD076C5F1AC8CBBB00C893FA /* Main.storyboard */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -672,6 +692,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 				Base,
 			);
 			mainGroup = FD076C471AC8CBBB00C893FA;
@@ -693,10 +714,11 @@
 				FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */,
 				FD6102611AD7CBF10013119A /* webui.css in Resources */,
 				FD61025E1AD7CBC10013119A /* webui.html in Resources */,
+				FD0829C91B67844500D2B126 /* Main.storyboard in Resources */,
 				FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */,
+				FD0829C01B6782DC00D2B126 /* Main.strings in Resources */,
 				FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */,
 				FD61025C1AD7CBA20013119A /* inject.js in Resources */,
-				FD076C611AC8CBBB00C893FA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,7 +726,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD53BEC91ACF8E440004C366 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,10 +794,26 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FD076C5F1AC8CBBB00C893FA /* Main.storyboard */ = {
+		FD0829B91B6782DC00D2B126 /* Main.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FD076C601AC8CBBB00C893FA /* Base */,
+				FD0829BA1B6782DC00D2B126 /* en */,
+			);
+			name = Main.strings;
+			sourceTree = "<group>";
+		};
+		FD0829BE1B6782DC00D2B126 /* Main.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD0829BF1B6782DC00D2B126 /* zh-Hans */,
+			);
+			name = Main.strings;
+			sourceTree = "<group>";
+		};
+		FD0829C71B67844500D2B126 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD0829C81B67844500D2B126 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
