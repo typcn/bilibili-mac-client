@@ -5,45 +5,10 @@
         <plugIn identifier="com.apple.WebKitIBPlugin" version="8121.17"/>
     </dependencies>
     <scenes>
-        <!--playLocalVideo Window-->
-        <scene sceneID="5yT-xO-Jog">
-            <objects>
-                <windowController showSeguePresentationStyle="single" id="nNF-Yo-e9X" userLabel="playLocalVideo Window" sceneMemberID="viewController">
-                    <window key="window" title="打开本地视频" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="XmJ-ty-8vV">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-                    </window>
-                    <connections>
-                        <segue destination="0d3-4B-65W" kind="relationship" relationship="window.shadowedContentViewController" id="uDC-KP-EaI"/>
-                    </connections>
-                </windowController>
-                <customObject id="ogv-UC-wLe" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1147" y="-599"/>
-        </scene>
-        <!--Download Manager Window Controller-->
-        <scene sceneID="xSp-NC-Oet">
-            <objects>
-                <windowController storyboardIdentifier="dlman" showSeguePresentationStyle="single" id="Cdi-2K-Ecb" userLabel="Download Manager Window Controller" sceneMemberID="viewController">
-                    <window key="window" title="下载管理" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="ye8-k2-vuM">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-                    </window>
-                    <connections>
-                        <segue destination="uyE-Xu-eZU" kind="relationship" relationship="window.shadowedContentViewController" id="1NC-Uc-bv4"/>
-                    </connections>
-                </windowController>
-                <customObject id="Fom-Tg-Yrl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-577" y="-599"/>
-        </scene>
-        <!--Download Manager View Controller-->
+        <!--Download Manager-->
         <scene sceneID="6SN-uK-EiC">
             <objects>
-                <viewController id="uyE-Xu-eZU" userLabel="Download Manager View Controller" customClass="DownloadManager" sceneMemberID="viewController">
+                <viewController title="下载管理器" id="uyE-Xu-eZU" userLabel="Download Manager" customClass="DownloadManager" sceneMemberID="viewController">
                     <view key="view" id="eUr-Cn-lGo">
                         <rect key="frame" x="0.0" y="0.0" width="547" height="285"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -100,7 +65,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <animations/>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.035606953914180374" horizontal="YES" id="9oa-ZE-PEk">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.48306194713521272" horizontal="YES" id="9oa-ZE-PEk">
                                     <rect key="frame" x="1" y="222" width="505" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
@@ -178,7 +143,7 @@
         <!--playLocalVideo-->
         <scene sceneID="gmX-b4-iwl">
             <objects>
-                <viewController id="0d3-4B-65W" userLabel="playLocalVideo" customClass="playLocalFile" sceneMemberID="viewController">
+                <viewController title="打开本地视频" id="0d3-4B-65W" userLabel="playLocalVideo" customClass="playLocalFile" sceneMemberID="viewController">
                     <view key="view" id="cmr-KX-AqT">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -294,49 +259,49 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Bilibili" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="关于 Bilibili" id="UJv-cr-uBm">
+                                        <menuItem title="关于 Bilibili" id="UJv-cr-uBm" userLabel="About Bilibili">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <segue destination="74G-eO-nZd" kind="show" id="sCc-VK-OZy"/>
+                                                <segue destination="IS2-xA-kfK" kind="show" id="WhU-fQ-Qww"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="u4L-Jn-815"/>
-                                        <menuItem title="偏好设置…" keyEquivalent="`" id="F8a-4A-ZBm">
+                                        <menuItem title="偏好设置…" keyEquivalent="`" id="F8a-4A-ZBm" userLabel="Preferences…">
                                             <connections>
                                                 <segue destination="tLe-z4-o59" kind="show" id="F02-t2-vGm"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="检查更新" id="FKE-Sm-Kum">
+                                        <menuItem title="检查更新" id="FKE-Sm-Kum" userLabel="Check for Updates…">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="checkForUpdates:" target="vfz-mj-DKJ" id="DVJ-0x-PXM"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="GMP-1x-rl0"/>
-                                        <menuItem title="服务" id="Ut7-p5-Zbx">
+                                        <menuItem title="服务" id="Ut7-p5-Zbx" userLabel="Services">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="服务" systemMenu="services" id="P0s-Pq-Zmu"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4nd-15-tl2"/>
-                                        <menuItem title="隐藏 Bilibili" keyEquivalent="h" id="UIt-CV-9tL">
+                                        <menuItem title="隐藏 Bilibili" keyEquivalent="h" id="UIt-CV-9tL" userLabel="Hide Bilibili">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="Xzh-C0-6J3"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="隐藏其他" keyEquivalent="h" id="x0W-Jp-DDQ">
+                                        <menuItem title="隐藏其他" keyEquivalent="h" id="x0W-Jp-DDQ" userLabel="Hide Other">
                                             <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                             <connections>
                                                 <action selector="hideOtherApplications:" target="Ady-hI-5gd" id="1O5-5i-a8p"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="全部显示" id="53D-yT-yWU">
+                                        <menuItem title="全部显示" id="53D-yT-yWU" userLabel="Show All">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="G21-3q-h9V"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="egE-Lm-gW7"/>
-                                        <menuItem title="退出" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="退出 Bilibili" keyEquivalent="q" id="4sb-4s-VLi" userLabel="Quit Bilibili">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -348,10 +313,10 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="文件" id="o60-gF-sgY">
                                     <items>
-                                        <menuItem title="打开本地视频" id="UaC-DW-g4c">
+                                        <menuItem title="打开本地视频" id="UaC-DW-g4c" userLabel="Open Local Video Files">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <segue destination="nNF-Yo-e9X" kind="show" id="kEj-1z-37L"/>
+                                                <segue destination="0d3-4B-65W" kind="show" id="tXF-ez-pjf"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -361,39 +326,39 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="编辑" id="Hka-k5-WFs">
                                     <items>
-                                        <menuItem title="撤销" keyEquivalent="z" id="EBS-37-po7">
+                                        <menuItem title="撤销" keyEquivalent="z" id="EBS-37-po7" userLabel="Undo">
                                             <connections>
                                                 <action selector="undo:" target="Ady-hI-5gd" id="sFm-NR-gL9"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="重做" keyEquivalent="Z" id="rO7-VB-9hv">
+                                        <menuItem title="重做" keyEquivalent="Z" id="rO7-VB-9hv" userLabel="Redo">
                                             <connections>
                                                 <action selector="redo:" target="Ady-hI-5gd" id="iI0-Qy-7L0"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="FQs-Dw-RWb"/>
-                                        <menuItem title="剪贴" keyEquivalent="x" id="VhF-wp-4cU">
+                                        <menuItem title="剪贴" keyEquivalent="x" id="VhF-wp-4cU" userLabel="Cut">
                                             <connections>
                                                 <action selector="cut:" target="Ady-hI-5gd" id="Acl-WV-hr1"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="复制" keyEquivalent="c" id="NT7-9b-U4L">
+                                        <menuItem title="复制" keyEquivalent="c" id="NT7-9b-U4L" userLabel="Copy">
                                             <connections>
                                                 <action selector="copy:" target="Ady-hI-5gd" id="BTs-Vj-7Of"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="粘贴" keyEquivalent="v" id="hCf-ds-VPo">
+                                        <menuItem title="粘贴" keyEquivalent="v" id="hCf-ds-VPo" userLabel="Paste">
                                             <connections>
                                                 <action selector="paste:" target="Ady-hI-5gd" id="JMB-rY-qUI"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="删除" id="rj8-A1-Hze">
+                                        <menuItem title="删除" id="rj8-A1-Hze" userLabel="Delete">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="delete:" target="Ady-hI-5gd" id="XJg-VJ-fTk"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="全选" keyEquivalent="a" id="QX5-BW-6hA">
+                                        <menuItem title="全选" keyEquivalent="a" id="QX5-BW-6hA" userLabel="Select All">
                                             <connections>
                                                 <action selector="selectAll:" target="Ady-hI-5gd" id="uNd-ng-01Z"/>
                                             </connections>
@@ -405,32 +370,32 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="窗口" systemMenu="window" id="SBm-2K-ZsN">
                                     <items>
-                                        <menuItem title="最小化" keyEquivalent="m" id="Bpn-st-GsL">
+                                        <menuItem title="最小化" keyEquivalent="m" id="Bpn-st-GsL" userLabel="Minimise">
                                             <connections>
                                                 <action selector="performMiniaturize:" target="Ady-hI-5gd" id="OCD-Bt-1EM"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="缩放" id="Z3a-zc-YeZ">
+                                        <menuItem title="缩放" id="Z3a-zc-YeZ" userLabel="Zoom">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="performZoom:" target="Ady-hI-5gd" id="h3M-Od-Iiu"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="进入全屏幕" keyEquivalent="f" id="XfT-Og-R8p">
+                                        <menuItem title="进入全屏幕" keyEquivalent="f" id="XfT-Og-R8p" userLabel="Enter Full Screen">
                                             <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                             <connections>
                                                 <action selector="toggleFullScreen:" target="Ady-hI-5gd" id="qbT-Hn-uMO"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="i6e-yb-7K3"/>
-                                        <menuItem title="下载管理器" id="fzm-lD-qXA">
+                                        <menuItem title="下载管理器" id="fzm-lD-qXA" userLabel="Download Manager">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <segue destination="Cdi-2K-Ecb" kind="show" id="Bg1-hb-1j5"/>
+                                                <segue destination="uyE-Xu-eZU" kind="show" id="c8A-NU-GMp"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kKX-d2-NWe"/>
-                                        <menuItem title="前置全部窗口" id="YSf-sS-evP">
+                                        <menuItem title="前置全部窗口" id="YSf-sS-evP" userLabel="Bring All to Front">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="arrangeInFront:" target="Ady-hI-5gd" id="NHV-PZ-9jq"/>
@@ -443,19 +408,19 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="帮助" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="论坛反馈" id="m2k-Ll-pRS" userLabel="论坛">
+                                        <menuItem title="论坛反馈" id="m2k-Ll-pRS" userLabel="Forum Feedback">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="goForum:" target="Voe-Tx-rLC" id="wao-vh-0Ss"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="GitHub 反馈" id="KKI-vi-xOu">
+                                        <menuItem title="GitHub 反馈" id="KKI-vi-xOu" userLabel="GitHub Feedback">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="issues:" target="Voe-Tx-rLC" id="3tk-ZJ-YU4"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Bilibili 帮助" keyEquivalent="?" id="HVk-PZ-hUX">
+                                        <menuItem title="Bilibili 帮助" keyEquivalent="?" id="HVk-PZ-hUX" userLabel="Bilibili Help">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="PIw-PW-aiq"/>
                                             </connections>
@@ -478,12 +443,12 @@
         <!--Preferences-->
         <scene sceneID="puj-og-zmN">
             <objects>
-                <tabViewController title="偏好设置" selectedTabViewItemIndex="0" tabStyle="toolbar" id="tLe-z4-o59" userLabel="Preferences" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="toolbar" id="tLe-z4-o59" userLabel="Preferences" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem label="通用" image="NSPreferencesGeneral" id="cEI-Ac-YrN"/>
-                        <tabViewItem label="弹幕屏蔽" image="NSFontPanel" id="Dt0-6y-OTc"/>
+                        <tabViewItem label="通用" image="NSPreferencesGeneral" id="cEI-Ac-YrN" userLabel="General"/>
+                        <tabViewItem label="弹幕屏蔽" image="NSFontPanel" id="Dt0-6y-OTc" userLabel="Comment Block"/>
                     </tabViewItems>
-                    <tabView key="tabView" type="noTabsNoBorder" id="a0a-NW-aFM" userLabel="Preferences">
+                    <tabView key="tabView" type="noTabsNoBorder" id="a0a-NW-aFM">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <animations/>
@@ -562,10 +527,10 @@
             </objects>
             <point key="canvasLocation" x="751" y="238.5"/>
         </scene>
-        <!--Comment block settings-->
+        <!--Comment Block Settings-->
         <scene sceneID="8we-Xb-M8G">
             <objects>
-                <tabViewController title="弹幕屏蔽" id="fZa-B8-J07" userLabel="Comment block settings" sceneMemberID="viewController">
+                <tabViewController title="弹幕屏蔽" id="fZa-B8-J07" userLabel="Comment Block Settings" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem label="关键词屏蔽" id="Vno-7c-Vm2" userLabel="Keyword Block Settings"/>
                         <tabViewItem label="智能屏蔽" id="uVa-K5-cbK" userLabel="Smart Block Settings"/>
@@ -667,26 +632,9 @@
             <point key="canvasLocation" x="35" y="214"/>
         </scene>
         <!--About Bilibili for Mac-->
-        <scene sceneID="SSw-0K-I7n">
-            <objects>
-                <windowController id="74G-eO-nZd" userLabel="About Bilibili for Mac" sceneMemberID="viewController">
-                    <window key="window" title="关于 Bilibili for Mac" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="bTz-aY-2am">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <rect key="contentRect" x="294" y="261" width="515" height="322"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-                    </window>
-                    <connections>
-                        <segue destination="IS2-xA-kfK" kind="relationship" relationship="window.shadowedContentViewController" id="DgH-Kl-3XC"/>
-                    </connections>
-                </windowController>
-                <customObject id="vvD-P7-kFB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1714.5" y="-625"/>
-        </scene>
-        <!--About View-->
         <scene sceneID="9GL-0J-ASe">
             <objects>
-                <viewController id="IS2-xA-kfK" customClass="AboutView" sceneMemberID="viewController">
+                <viewController title="关于 Bilibili for Mac" id="IS2-xA-kfK" userLabel="About Bilibili for Mac" customClass="AboutView" sceneMemberID="viewController">
                     <view key="view" id="gUu-fS-ItN">
                         <rect key="frame" x="0.0" y="0.0" width="538" height="314"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -825,11 +773,11 @@
             </objects>
             <point key="canvasLocation" x="-465" y="508.5"/>
         </scene>
-        <!--Window Controller-->
+        <!--Realtime Comment-->
         <scene sceneID="PkE-Ql-sEX">
             <objects>
-                <windowController storyboardIdentifier="LiveChatWindow" showSeguePresentationStyle="single" id="ffQ-wz-5FH" sceneMemberID="viewController">
-                    <window key="window" title="实时弹幕" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="i8z-Ck-rGI">
+                <windowController storyboardIdentifier="LiveChatWindow" showSeguePresentationStyle="single" id="ffQ-wz-5FH" userLabel="Realtime Comment" sceneMemberID="viewController">
+                    <window key="window" title="实时弹幕" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="i8z-Ck-rGI" userLabel="Realtime Comment">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="313" width="480" height="270"/>
@@ -961,7 +909,7 @@
         <!--Main View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" userLabel="Main View Controller" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="Bilibili" id="XfG-lQ-9wD" userLabel="Main View Controller" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="423" height="228"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1299,6 +1247,6 @@
         <image name="loading" width="69" height="70"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Y0Z-ee-aqu"/>
+        <segue reference="D5B-9p-dnr"/>
     </inferredMetricsTieBreakers>
 </document>
