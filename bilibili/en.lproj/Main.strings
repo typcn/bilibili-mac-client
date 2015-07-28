@@ -1,0 +1,363 @@
+
+/* Class = "NSMenuItem"; title = "Bilibili"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Bilibili";
+
+/* Class = "NSButtonCell"; title = "选择字幕"; ObjectID = "24g-g2-xbB"; */
+"24g-g2-xbB.title" = "Select Subtitle";
+
+/* Class = "NSButtonCell"; title = "Button"; ObjectID = "259-A0-YXE"; */
+"259-A0-YXE.title" = "Button";
+
+/* Class = "NSMenuItem"; title = "编辑"; ObjectID = "25g-We-mHE"; */
+"25g-We-mHE.title" = "Edit";
+
+/* Class = "NSSegmentedCell"; 3xs-54-4qH.ibShadowedLabels[0] = "顶"; ObjectID = "3xs-54-4qH"; */
+"3xs-54-4qH.ibShadowedLabels[0]" = "顶";
+
+/* Class = "NSSegmentedCell"; 3xs-54-4qH.ibShadowedLabels[1] = "飘"; ObjectID = "3xs-54-4qH"; */
+"3xs-54-4qH.ibShadowedLabels[1]" = "飘";
+
+/* Class = "NSSegmentedCell"; 3xs-54-4qH.ibShadowedLabels[2] = "底"; ObjectID = "3xs-54-4qH"; */
+"3xs-54-4qH.ibShadowedLabels[2]" = "底";
+
+/* Class = "NSTextFieldCell"; title = "2.所有设置将在下次开始播放时生效，文本框需要按回车保存"; ObjectID = "43T-62-L37"; */
+"43T-62-L37.title" = "2.所有设置将在下次开始播放时生效，文本框需要按回车保存";
+
+/* Class = "NSMenuItem"; title = "退出"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Exit";
+
+/* Class = "NSMenuItem"; title = "全部显示"; ObjectID = "53D-yT-yWU"; */
+"53D-yT-yWU.title" = "Show All";
+
+/* Class = "NSButtonCell"; title = "屏蔽剧透弹幕"; ObjectID = "5dB-gK-hjd"; */
+"5dB-gK-hjd.title" = "Block 剧透 Comments";
+
+/* Class = "NSTextFieldCell"; title = "开发者: typcn
+博客: http://blog.eqoe.cn
+源代码: https://github.com/typcn/bilibili-mac-client
+许可协议: GPLv2
+
+感谢：
+Bilidan - https://github.com/m13253/BiliDan
+
+使用以下开源项目:
+MPV - https://github.com/mpv-player/mpv
+ISSoundAdditions - https://github.com/InerziaSoft/ISSoundAdditions
+Sparkle - https://github.com/sparkle-project/Sparkle
+Danmaku2ASS - https://github.com/m13253/danmaku2ass
+FFmpeg - https://www.ffmpeg.org/
+
+Copyleft 2015 TYPCN"; ObjectID = "6Cc-jO-u6M"; */
+"6Cc-jO-u6M.title" = "开发者: typcn
+博客: http://blog.eqoe.cn
+源代码: https://github.com/typcn/bilibili-mac-client
+许可协议: GPLv2
+
+感谢：
+Bilidan - https://github.com/m13253/BiliDan
+
+使用以下开源项目:
+MPV - https://github.com/mpv-player/mpv
+ISSoundAdditions - https://github.com/InerziaSoft/ISSoundAdditions
+Sparkle - https://github.com/sparkle-project/Sparkle
+Danmaku2ASS - https://github.com/m13253/danmaku2ass
+FFmpeg - https://www.ffmpeg.org/
+
+Copyleft 2015 TYPCN";
+
+/* Class = "NSButtonCell"; title = "关闭底部弹幕"; ObjectID = "6pD-zG-Fl9"; */
+"6pD-zG-Fl9.title" = "Disable 底部 Comments";
+
+/* Class = "NSButtonCell"; title = "播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）"; ObjectID = "6zZ-XI-ZEK"; */
+"6zZ-XI-ZEK.title" = "播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）";
+
+/* Class = "NSMenuItem"; title = "窗口"; ObjectID = "8H0-VQ-yUt"; */
+"8H0-VQ-yUt.title" = "Window";
+
+/* Class = "NSButtonCell"; title = "屏蔽吵架弹幕"; ObjectID = "8tq-Pn-HDt"; */
+"8tq-Pn-HDt.title" = "Block 吵架 Comments";
+
+/* Class = "NSTextFieldCell"; title = "允许所有 ffmpeg 支持的格式"; ObjectID = "9eb-5r-SWr"; */
+"9eb-5r-SWr.title" = "允许所有 ffmpeg 支持的格式";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSButtonCell"; title = "Button"; ObjectID = "BEt-iK-waU"; */
+"BEt-iK-waU.title" = "Button";
+
+/* Class = "NSTextFieldCell"; title = "更多功能欢迎到 GitHub 参与开发
+
+
+https://github.com/typcn/bilibili-mac-client"; ObjectID = "BKA-mo-Ldx"; */
+"BKA-mo-Ldx.title" = "更多功能欢迎到 GitHub 参与开发
+
+
+https://github.com/typcn/bilibili-mac-client";
+
+/* Class = "NSMenuItem"; title = "最小化"; ObjectID = "Bpn-st-GsL"; */
+"Bpn-st-GsL.title" = "Minimize";
+
+/* Class = "NSTextFieldCell"; title = "弹幕透明度"; ObjectID = "CuV-Ec-HRG"; */
+"CuV-Ec-HRG.title" = "Comments Transparency";
+
+/* Class = "NSTextFieldCell"; title = "暂时只支持 ASS 格式的字幕，可以不选择"; ObjectID = "Dgo-Bk-4mh"; */
+"Dgo-Bk-4mh.title" = "暂时只支持 ASS 格式的字幕，可以不选择";
+
+/* Class = "NSButtonCell"; title = "启用增强硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）"; ObjectID = "Dkz-2s-yhr"; */
+"Dkz-2s-yhr.title" = "启用增强硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）";
+
+/* Class = "NSTabViewItem"; label = "弹幕屏蔽"; ObjectID = "Dt0-6y-OTc"; */
+"Dt0-6y-OTc.label" = " Block Comment";
+
+/* Class = "NSTextFieldCell"; title = "由于弹幕引擎重写，暂时只支持 Bilibili 格式"; ObjectID = "E2h-KF-1Hp"; */
+"E2h-KF-1Hp.title" = "由于弹幕引擎重写，暂时只支持 Bilibili 格式";
+
+/* Class = "NSMenuItem"; title = "撤销"; ObjectID = "EBS-37-po7"; */
+"EBS-37-po7.title" = "Undo";
+
+/* Class = "NSMenu"; title = "帮助"; ObjectID = "F2S-fz-NVQ"; */
+"F2S-fz-NVQ.title" = "Help";
+
+/* Class = "NSMenuItem"; title = "偏好设置…"; ObjectID = "F8a-4A-ZBm"; */
+"F8a-4A-ZBm.title" = "Preferences…";
+
+/* Class = "NSMenuItem"; title = "检查更新"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "Check for Updates…";
+
+/* Class = "NSButtonCell"; title = "打开下载文件夹"; ObjectID = "HEW-Wk-enN"; */
+"HEW-Wk-enN.title" = "Open Download Folder";
+
+/* Class = "NSMenuItem"; title = "Bilibili 帮助"; ObjectID = "HVk-PZ-hUX"; */
+"HVk-PZ-hUX.title" = "Bilibili Help";
+
+/* Class = "NSMenu"; title = "编辑"; ObjectID = "Hka-k5-WFs"; */
+"Hka-k5-WFs.title" = "Edit";
+
+/* Class = "NSButtonCell"; title = "<"; ObjectID = "I74-e5-I3G"; */
+"I74-e5-I3G.title" = "<";
+
+/* Class = "NSWindow"; title = "Bilibili Browser"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Bilibili Browser";
+
+/* Class = "NSButtonCell"; title = "自动换P（推迟发布）"; ObjectID = "IwE-aZ-Bxq"; */
+"IwE-aZ-Bxq.title" = "Auto Change Video Paragraph（推迟发布）";
+
+/* Class = "NSMenuItem"; title = "GitHub 反馈"; ObjectID = "KKI-vi-xOu"; */
+"KKI-vi-xOu.title" = "GitHub Feedback";
+
+/* Class = "NSTextFieldCell"; title = "一行一个，不区分大小写，请勿输入特殊符号，下次播放时生效，关闭窗口自动保存"; ObjectID = "Lfm-eh-7YA"; */
+"Lfm-eh-7YA.title" = "一行一个，不区分大小写，请勿输入特殊符号，下次播放时生效，关闭窗口自动保存";
+
+/* Class = "NSMenuItem"; title = "复制"; ObjectID = "NT7-9b-U4L"; */
+"NT7-9b-U4L.title" = "Copy";
+
+/* Class = "NSButtonCell"; title = ">"; ObjectID = "Oc5-0A-5Or"; */
+"Oc5-0A-5Or.title" = ">";
+
+/* Class = "NSMenu"; title = "服务"; ObjectID = "P0s-Pq-Zmu"; */
+"P0s-Pq-Zmu.title" = "Services";
+
+/* Class = "NSComboBoxCell"; P8V-DP-s5N.ibShadowedObjectValues[0] = "162.105.207.[RANDOM]"; ObjectID = "P8V-DP-s5N"; */
+"P8V-DP-s5N.ibShadowedObjectValues[0]" = "162.105.207.[RANDOM]";
+
+/* Class = "NSComboBoxCell"; P8V-DP-s5N.ibShadowedObjectValues[1] = "14.17.101.[RANDOM]"; ObjectID = "P8V-DP-s5N"; */
+"P8V-DP-s5N.ibShadowedObjectValues[1]" = "14.17.101.[RANDOM]";
+
+/* Class = "NSComboBoxCell"; P8V-DP-s5N.ibShadowedObjectValues[2] = "220.181.111.[RANDOM]"; ObjectID = "P8V-DP-s5N"; */
+"P8V-DP-s5N.ibShadowedObjectValues[2]" = "220.181.111.[RANDOM]";
+
+/* Class = "NSComboBoxCell"; P8V-DP-s5N.ibShadowedObjectValues[3] = "113.106.58.[RANDOM]"; ObjectID = "P8V-DP-s5N"; */
+"P8V-DP-s5N.ibShadowedObjectValues[3]" = "113.106.58.[RANDOM]";
+
+/* Class = "NSComboBoxCell"; P8V-DP-s5N.ibShadowedObjectValues[4] = "关闭"; ObjectID = "P8V-DP-s5N"; */
+"P8V-DP-s5N.ibShadowedObjectValues[4]" = "Close";
+
+/* Class = "NSTextFieldCell"; title = "请确认全部为 UTF-8 格式"; ObjectID = "PvP-kq-5oz"; */
+"PvP-kq-5oz.title" = "Please confirm All is UTF-8";
+
+/* Class = "NSMenuItem"; title = "全选"; ObjectID = "QX5-BW-6hA"; */
+"QX5-BW-6hA.title" = "Select All";
+
+/* Class = "NSButtonCell"; title = "清空已完成任务"; ObjectID = "QeM-az-3rY"; */
+"QeM-az-3rY.title" = "Remove Finished Tasks";
+
+/* Class = "NSWindow"; title = "TYPCN Media Player"; ObjectID = "Qzs-of-Uzm"; */
+"Qzs-of-Uzm.title" = "TYPCN Media Player";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "S8S-WO-I06"; */
+"S8S-WO-I06.title" = "Text Cell";
+
+/* Class = "NSMenu"; title = "窗口"; ObjectID = "SBm-2K-ZsN"; */
+"SBm-2K-ZsN.title" = "Windows";
+
+/* Class = "NSTextFieldCell"; title = "优先画质"; ObjectID = "Sd9-OH-JrH"; */
+"Sd9-OH-JrH.title" = "优先画质";
+
+/* Class = "NSMenuItem"; title = "隐藏 Bilibili"; ObjectID = "UIt-CV-9tL"; */
+"UIt-CV-9tL.title" = "Hide Bilibili";
+
+/* Class = "NSMenuItem"; title = "关于 Bilibili"; ObjectID = "UJv-cr-uBm"; */
+"UJv-cr-uBm.title" = "About Bilibili";
+
+/* Class = "NSMenuItem"; title = "打开本地视频"; ObjectID = "UaC-DW-g4c"; */
+"UaC-DW-g4c.title" = "Open Local Video Files";
+
+/* Class = "NSMenuItem"; title = "服务"; ObjectID = "Ut7-p5-Zbx"; */
+"Ut7-p5-Zbx.title" = "Services";
+
+/* Class = "NSComboBoxCell"; UtE-Jc-IKj.ibShadowedObjectValues[0] = "低清"; ObjectID = "UtE-Jc-IKj"; */
+"UtE-Jc-IKj.ibShadowedObjectValues[0]" = "低清";
+
+/* Class = "NSComboBoxCell"; UtE-Jc-IKj.ibShadowedObjectValues[1] = "标清"; ObjectID = "UtE-Jc-IKj"; */
+"UtE-Jc-IKj.ibShadowedObjectValues[1]" = "标清";
+
+/* Class = "NSComboBoxCell"; UtE-Jc-IKj.ibShadowedObjectValues[2] = "高清"; ObjectID = "UtE-Jc-IKj"; */
+"UtE-Jc-IKj.ibShadowedObjectValues[2]" = "高清";
+
+/* Class = "NSComboBoxCell"; UtE-Jc-IKj.ibShadowedObjectValues[3] = "原画"; ObjectID = "UtE-Jc-IKj"; */
+"UtE-Jc-IKj.ibShadowedObjectValues[3]" = "原画";
+
+/* Class = "NSMenuItem"; title = "剪贴"; ObjectID = "VhF-wp-4cU"; */
+"VhF-wp-4cU.title" = "Cut";
+
+/* Class = "NSButtonCell"; title = "选择视频"; ObjectID = "VnN-7Y-cRN"; */
+"VnN-7Y-cRN.title" = "Choose Videos";
+
+/* Class = "NSTabViewItem"; label = "关键词屏蔽"; ObjectID = "Vno-7c-Vm2"; */
+"Vno-7c-Vm2.label" = "Keyword Block";
+
+/* Class = "NSButtonCell"; title = "选择弹幕"; ObjectID = "Wtj-ZP-diZ"; */
+"Wtj-ZP-diZ.title" = "Select Comments";
+
+/* Class = "NSMenuItem"; title = "进入全屏幕"; ObjectID = "XfT-Og-R8p"; */
+"XfT-Og-R8p.title" = "Enter Full Screen";
+
+/* Class = "NSWindow"; title = "打开本地视频"; ObjectID = "XmJ-ty-8vV"; */
+"XmJ-ty-8vV.title" = "Open Local Video Files";
+
+/* Class = "NSTextFieldCell"; placeholderString = "输入 AV 号按回车直接观看"; ObjectID = "Xxm-1R-XoN"; */
+"Xxm-1R-XoN.placeholderString" = "Input AV code and press Enter for play directly";
+
+/* Class = "NSMenuItem"; title = "前置全部窗口"; ObjectID = "YSf-sS-evP"; */
+"YSf-sS-evP.title" = "Bring All to Front";
+
+/* Class = "NSMenuItem"; title = "缩放"; ObjectID = "Z3a-zc-YeZ"; */
+"Z3a-zc-YeZ.title" = "Zoom";
+
+/* Class = "NSWindow"; title = "关于 Bilibili for Mac"; ObjectID = "bTz-aY-2am"; */
+"bTz-aY-2am.title" = "About Bilibili for Mac";
+
+/* Class = "NSTabViewItem"; label = "通用"; ObjectID = "cEI-Ac-YrN"; */
+"cEI-Ac-YrN.label" = "General";
+
+/* Class = "NSTextFieldCell"; title = "弹幕大小参数"; ObjectID = "dJb-2c-b1m"; */
+"dJb-2c-b1m.title" = "Comments Font Size";
+
+/* Class = "NSTextFieldCell"; title = "1.弹幕字体计算方式为 视频高度除以字体参数 ，参数越大 弹幕越小"; ObjectID = "dYW-v7-aMe"; */
+"dYW-v7-aMe.title" = "1.弹幕字体计算方式为 视频高度除以字体参数 ，参数越大 弹幕越小";
+
+/* Class = "NSButtonCell"; title = "屏蔽优越感弹幕"; ObjectID = "dZF-c1-3Mj"; */
+"dZF-c1-3Mj.title" = "Block 优越感弹幕";
+
+/* Class = "NSTableColumn"; headerCell.title = "任务名称"; ObjectID = "f2M-MT-SfQ"; */
+"f2M-MT-SfQ.headerCell.title" = "Task Name";
+
+/* Class = "NSTabViewController"; title = "弹幕屏蔽"; ObjectID = "fZa-B8-J07"; */
+"fZa-B8-J07.title" = "Comment Block";
+
+/* Class = "NSMenuItem"; title = "下载管理器"; ObjectID = "fzm-lD-qXA"; */
+"fzm-lD-qXA.title" = "Download Manager";
+
+/* Class = "NSButtonCell"; title = "立即播放"; ObjectID = "g4M-p0-FkK"; */
+"g4M-p0-FkK.title" = "Play Now";
+
+/* Class = "NSButtonCell"; title = "Button"; ObjectID = "gP4-5d-Xlk"; */
+"gP4-5d-Xlk.title" = "Button";
+
+/* Class = "NSMenuItem"; title = "粘贴"; ObjectID = "hCf-ds-VPo"; */
+"hCf-ds-VPo.title" = "Paste";
+
+/* Class = "NSButtonCell"; title = "下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）"; ObjectID = "hFO-eX-oZN"; */
+"hFO-eX-oZN.title" = "下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）";
+
+/* Class = "NSTableColumn"; headerCell.title = "状态"; ObjectID = "hNU-oO-koQ"; */
+"hNU-oO-koQ.headerCell.title" = "Status";
+
+/* Class = "NSTextFieldCell"; title = "Loading"; ObjectID = "hhw-OI-vOH"; */
+"hhw-OI-vOH.title" = "Loading";
+
+/* Class = "NSWindow"; title = "实时弹幕"; ObjectID = "i8z-Ck-rGI"; */
+"i8z-Ck-rGI.title" = "Realtime Comments";
+
+/* Class = "NSButtonCell"; title = "清空全部任务"; ObjectID = "kBF-nY-Eei"; */
+"kBF-nY-Eei.title" = "Remove All Tasks";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "kQb-qP-BWw"; */
+"kQb-qP-BWw.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "禁用保持视频比例（让视频撑满窗口）"; ObjectID = "lBw-oC-I1B"; */
+"lBw-oC-I1B.title" = "Disabled 保持视频比例（让视频撑满窗口）";
+
+/* Class = "NSTextFieldCell"; title = "提示：按回车可以发送弹幕"; ObjectID = "lbG-e1-MKm"; */
+"lbG-e1-MKm.title" = "提示：按回车可以发送弹幕";
+
+/* Class = "NSMenuItem"; title = "论坛反馈"; ObjectID = "m2k-Ll-pRS"; */
+"m2k-Ll-pRS.title" = "Forum Feedback";
+
+/* Class = "NSMenuItem"; title = "文件"; ObjectID = "mOQ-3u-0ak"; */
+"mOQ-3u-0ak.title" = "Files";
+
+/* Class = "NSButtonCell"; title = "屏蔽日期弹幕"; ObjectID = "naf-pC-PtF"; */
+"naf-pC-PtF.title" = "Block Date Comments";
+
+/* Class = "NSMenu"; title = "文件"; ObjectID = "o60-gF-sgY"; */
+"o60-gF-sgY.title" = "Files";
+
+/* Class = "NSTextFieldCell"; placeholderString = "默认25"; ObjectID = "pXu-zi-Y7u"; */
+"pXu-zi-Y7u.placeholderString" = "默认25";
+
+/* Class = "NSMenuItem"; title = "重做"; ObjectID = "rO7-VB-9hv"; */
+"rO7-VB-9hv.title" = "Redo";
+
+/* Class = "NSMenuItem"; title = "删除"; ObjectID = "rj8-A1-Hze"; */
+"rj8-A1-Hze.title" = "Delete";
+
+/* Class = "NSButtonCell"; title = "禁用实时弹幕显示（推迟发布）"; ObjectID = "sbQ-fv-ZWa"; */
+"sbQ-fv-ZWa.title" = "Disable Realtime Comments Display（推迟发布）";
+
+/* Class = "NSTabViewController"; title = "偏好设置"; ObjectID = "tLe-z4-o59"; */
+"tLe-z4-o59.title" = "Prefences…";
+
+/* Class = "NSMenu"; title = "Bilibili"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Bilibili";
+
+/* Class = "NSTabViewItem"; label = "智能屏蔽"; ObjectID = "uVa-K5-cbK"; */
+"uVa-K5-cbK.label" = "Smart Block";
+
+/* Class = "NSButtonCell"; title = "继续未完成下载"; ObjectID = "ucr-3X-gC2"; */
+"ucr-3X-gC2.title" = "Continue Download";
+
+/* Class = "NSWindow"; title = "发送弹幕"; ObjectID = "uoV-BV-vze"; */
+"uoV-BV-vze.title" = "Send Comment";
+
+/* Class = "NSTextFieldCell"; title = "IP 伪造 ( 大陆用户请勿开启 )"; ObjectID = "vMH-pa-ZpX"; */
+"vMH-pa-ZpX.title" = "IP Fake ( 大陆用户请勿开启 )";
+
+/* Class = "NSMenuItem"; title = "帮助"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "Help";
+
+/* Class = "NSMenuItem"; title = "隐藏其他"; ObjectID = "x0W-Jp-DDQ"; */
+"x0W-Jp-DDQ.title" = "Hide Other";
+
+/* Class = "NSWindow"; title = "下载管理"; ObjectID = "ye8-k2-vuM"; */
+"ye8-k2-vuM.title" = "Download Manager";
+
+/* Class = "NSTextFieldCell"; placeholderString = "发送弹幕"; ObjectID = "yn2-rr-jS0"; */
+"yn2-rr-jS0.placeholderString" = "Send Comment";
+
+/* Class = "NSViewController"; title = "通用设置"; ObjectID = "z8a-gg-iMj"; */
+"z8a-gg-iMj.title" = "General";
+
+/* Class = "NSTextFieldCell"; title = "弹幕移动速度"; ObjectID = "zpf-lu-2U6"; */
+"zpf-lu-2U6.title" = "Comment Scroll Speed";
