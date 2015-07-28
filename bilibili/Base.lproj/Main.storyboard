@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A226f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8121.17"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="8121.17"/>
     </dependencies>
     <scenes>
         <!--playLocalVideo Window-->
@@ -52,12 +52,13 @@
                                 <rect key="frame" x="20" y="35" width="507" height="238"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" id="6ma-Ex-tb3">
-                                    <rect key="frame" x="1" y="17" width="505" height="220"/>
+                                    <rect key="frame" x="1" y="0.0" width="505" height="222"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="GKJ-bN-UAi" id="y6z-0y-XMn">
-                                            <rect key="frame" x="0.0" y="0.0" width="438" height="19"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="508" height="205"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -75,7 +76,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="status" editable="NO" width="381" minWidth="40" maxWidth="1000" id="hNU-oO-koQ">
+                                                <tableColumn identifier="status" editable="NO" width="383.88332845050098" minWidth="40" maxWidth="1000" id="hNU-oO-koQ">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="状态">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -95,24 +96,30 @@
                                             </connections>
                                         </tableView>
                                     </subviews>
+                                    <animations/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="9oa-ZE-PEk">
-                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                <animations/>
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.27574798270037532" horizontal="YES" id="9oa-ZE-PEk">
+                                    <rect key="frame" x="1" y="222" width="505" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="O2T-Ta-VRl">
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </scroller>
                                 <tableHeaderView key="headerView" id="GKJ-bN-UAi">
-                                    <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="508" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </tableHeaderView>
                             </scrollView>
                             <button verticalHuggingPriority="750" id="bGD-cN-HrG">
                                 <rect key="frame" x="14" y="-1" width="123" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="打开下载文件夹" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HEW-Wk-enN">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -124,6 +131,7 @@
                             <button verticalHuggingPriority="750" id="8Xg-e6-gPC">
                                 <rect key="frame" x="405" y="-1" width="123" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="清空已完成任务" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QeM-az-3rY">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -135,6 +143,7 @@
                             <button verticalHuggingPriority="750" id="Xk2-er-2wW">
                                 <rect key="frame" x="146" y="-1" width="123" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="继续未完成下载" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ucr-3X-gC2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -146,6 +155,7 @@
                             <button verticalHuggingPriority="750" id="nli-PG-Aq6">
                                 <rect key="frame" x="278" y="-1" width="118" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="清空全部任务" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kBF-nY-Eei">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -155,6 +165,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="y6z-0y-XMn" id="Bbe-2x-XDj"/>
@@ -175,6 +186,7 @@
                             <button verticalHuggingPriority="750" id="bwu-t8-jef">
                                 <rect key="frame" x="199" y="13" width="82" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="立即播放" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g4M-p0-FkK">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -186,6 +198,7 @@
                             <button verticalHuggingPriority="750" id="nUV-At-1HF">
                                 <rect key="frame" x="63" y="125" width="82" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="选择弹幕" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wtj-ZP-diZ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -197,6 +210,7 @@
                             <button verticalHuggingPriority="750" id="Oxc-9c-OKk">
                                 <rect key="frame" x="63" y="85" width="82" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="选择字幕" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="24g-g2-xbB">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="13" name="STHeitiSC-Light"/>
@@ -208,6 +222,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LX8-zA-OlO">
                                 <rect key="frame" x="161" y="178" width="172" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="允许所有 ffmpeg 支持的格式" id="9eb-5r-SWr">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -217,6 +232,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EP3-TH-MpO">
                                 <rect key="frame" x="161" y="134" width="274" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="由于弹幕引擎重写，暂时只支持 Bilibili 格式" id="E2h-KF-1Hp">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -226,6 +242,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="W36-Oj-e30">
                                 <rect key="frame" x="161" y="95" width="242" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="暂时只支持 ASS 格式的字幕，可以不选择" id="Dgo-Bk-4mh">
                                     <font key="font" size="13" name="STHeitiSC-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -235,6 +252,7 @@
                             <button verticalHuggingPriority="750" id="MRM-cn-yyW">
                                 <rect key="frame" x="63" y="167" width="82" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="选择视频" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VnN-7Y-cRN">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -246,6 +264,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="x5b-ok-GNF">
                                 <rect key="frame" x="167" y="49" width="147" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请确认全部为 UTF-8 格式" id="PvP-kq-5oz">
                                     <font key="font" size="13" name="STHeitiSC-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -253,6 +272,7 @@
                                 </textFieldCell>
                             </textField>
                         </subviews>
+                        <animations/>
                     </view>
                     <connections>
                         <outlet property="subUrl" destination="W36-Oj-e30" id="zOn-s3-XHu"/>
@@ -274,6 +294,25 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Bilibili" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
+                                        <menuItem title="关于 Bilibili" id="UJv-cr-uBm" userLabel="关于Bilibili">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="74G-eO-nZd" kind="show" id="sCc-VK-OZy"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="u4L-Jn-815"/>
+                                        <menuItem title="偏好设置…" keyEquivalent="`" id="F8a-4A-ZBm">
+                                            <connections>
+                                                <segue destination="tLe-z4-o59" kind="show" id="F02-t2-vGm"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="检查更新" id="FKE-Sm-Kum">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="checkForUpdates:" target="vfz-mj-DKJ" id="DVJ-0x-PXM"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="4nd-15-tl2"/>
                                         <menuItem title="关闭" keyEquivalent="w" id="Ae9-Lu-LFc">
                                             <connections>
                                                 <action selector="performClose:" target="Ady-hI-5gd" id="3Pl-Nn-Z2D"/>
@@ -295,12 +334,6 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <segue destination="nNF-Yo-e9X" kind="show" id="kEj-1z-37L"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="打开下载管理" id="fzm-lD-qXA">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <segue destination="Cdi-2K-Ecb" kind="show" id="Bg1-hb-1j5"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -365,30 +398,24 @@
                                                 <action selector="performZoom:" target="Ady-hI-5gd" id="h3M-Od-Iiu"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="进入全屏幕" keyEquivalent="f" id="XfT-Og-R8p">
+                                            <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="toggleFullScreen:" target="Ady-hI-5gd" id="qbT-Hn-uMO"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="i6e-yb-7K3"/>
-                                        <menuItem title="显示全部" id="YSf-sS-evP">
+                                        <menuItem title="下载管理" id="fzm-lD-qXA">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="Cdi-2K-Ecb" kind="show" id="Bg1-hb-1j5"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="kKX-d2-NWe"/>
+                                        <menuItem title="前置全部窗口" id="YSf-sS-evP">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="arrangeInFront:" target="Ady-hI-5gd" id="NHV-PZ-9jq"/>
-                                            </connections>
-                                        </menuItem>
-                                    </items>
-                                </menu>
-                            </menuItem>
-                            <menuItem title="设置" id="zIs-vB-RZr">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="设置" systemMenu="apple" id="8Ol-0b-2Oj">
-                                    <items>
-                                        <menuItem title="一般设置" id="F8a-4A-ZBm">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <segue destination="qMe-fF-qTw" kind="show" id="aV6-gI-fBd"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="弹幕屏蔽" id="1dj-uR-vgP">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <segue destination="Nzf-SC-WYt" kind="show" id="A8k-Le-vyF"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -398,18 +425,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="帮助" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="关于" id="UJv-cr-uBm">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <segue destination="74G-eO-nZd" kind="show" id="sCc-VK-OZy"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="检查更新" id="FKE-Sm-Kum">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="checkForUpdates:" target="vfz-mj-DKJ" id="DVJ-0x-PXM"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="论坛反馈" id="m2k-Ll-pRS" userLabel="论坛">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -420,6 +435,11 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="issues:" target="Voe-Tx-rLC" id="3tk-ZJ-YU4"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Application Help" keyEquivalent="?" id="HVk-PZ-hUX">
+                                            <connections>
+                                                <action selector="showHelp:" target="Ady-hI-5gd" id="PIw-PW-aiq"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -437,22 +457,29 @@
             </objects>
             <point key="canvasLocation" x="239.5" y="-928"/>
         </scene>
-        <!--Comment block settings window-->
-        <scene sceneID="asJ-fJ-uCB">
+        <!--Preferences…-->
+        <scene sceneID="puj-og-zmN">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="Nzf-SC-WYt" userLabel="Comment block settings window" sceneMemberID="viewController">
-                    <window key="window" title="弹幕屏蔽设置" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="bZL-tO-5vd">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-                    </window>
+                <tabViewController title="Preferences…" showSeguePresentationStyle="single" selectedTabViewItemIndex="0" tabStyle="toolbar" id="tLe-z4-o59" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem label="通常" image="NSPreferencesGeneral" id="xWQ-Dd-bZg"/>
+                        <tabViewItem label="弹幕屏蔽" image="NSFontPanel" id="opB-ic-sxY"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="a0a-NW-aFM" userLabel="偏好设置">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <animations/>
+                        <font key="font" metaFont="message"/>
+                        <tabViewItems/>
+                    </tabView>
                     <connections>
-                        <segue destination="qwv-h3-TE4" kind="relationship" relationship="window.shadowedContentViewController" id="At3-zg-Pq2"/>
+                        <segue destination="z8a-gg-iMj" kind="relationship" relationship="tabItems" id="8Hv-CB-Gfm"/>
+                        <segue destination="qwv-h3-TE4" kind="relationship" relationship="tabItems" id="j9d-cp-3cl"/>
                     </connections>
-                </windowController>
-                <customObject id="YbJ-L9-sge" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                </tabViewController>
+                <customObject id="Jtf-Yi-U5Z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="863" y="-611"/>
+            <point key="canvasLocation" x="591" y="-599"/>
         </scene>
         <!--Comment block settings-->
         <scene sceneID="KMO-V3-Usw">
@@ -465,8 +492,31 @@
                     <tabView key="tabView" type="noTabsNoBorder" id="0N7-dD-IpF">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                         <font key="font" metaFont="message"/>
-                        <tabViewItems/>
+                        <tabViewItems>
+                            <tabViewItem label="Item 0" identifier="" id="7yz-ab-cIq">
+                                <view key="view" id="a61-eL-HVf">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Item 1" identifier="" id="yHE-fa-EPC">
+                                <view key="view" id="CX0-M0-FTy">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Item 2" identifier="" id="q6g-hv-xGS">
+                                <view key="view" id="xwc-bS-0of">
+                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </view>
+                            </tabViewItem>
+                        </tabViewItems>
                     </tabView>
                     <connections>
                         <segue destination="nsc-wB-2EJ" kind="relationship" relationship="tabItems" id="bPR-mh-q9V"/>
@@ -475,7 +525,7 @@
                 </tabViewController>
                 <customObject id="oha-lL-2sQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1463" y="-626"/>
+            <point key="canvasLocation" x="35" y="-190"/>
         </scene>
         <!--Keyword Block Settings-->
         <scene sceneID="3ds-d2-Tes">
@@ -489,34 +539,40 @@
                                 <rect key="frame" x="8" y="38" width="485" height="232"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" id="3J2-Wo-o61">
-                                    <rect key="frame" x="1" y="1" width="223" height="133"/>
+                                    <rect key="frame" x="1" y="1" width="468" height="230"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="l0e-ZN-Cyz">
-                                            <rect key="frame" x="0.0" y="0.0" width="223" height="230"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="453" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="468" height="230"/>
+                                            <size key="minSize" width="453" height="230"/>
                                             <size key="maxSize" width="485" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="468" height="230"/>
+                                            <size key="minSize" width="453" height="230"/>
                                             <size key="maxSize" width="485" height="10000000"/>
                                         </textView>
                                     </subviews>
+                                    <animations/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </clipView>
+                                <animations/>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="3uZ-eH-05c">
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Tku-Hz-Coo">
-                                    <rect key="frame" x="224" y="1" width="15" height="133"/>
+                                    <rect key="frame" x="469" y="1" width="15" height="230"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </scroller>
                             </scrollView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZwZ-on-c9X">
                                 <rect key="frame" x="6" y="13" width="489" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="一行一个，不区分大小写，请勿输入特殊符号，下次播放时生效，关闭窗口自动保存" id="Lfm-eh-7YA">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -524,6 +580,7 @@
                                 </textFieldCell>
                             </textField>
                         </subviews>
+                        <animations/>
                     </view>
                     <connections>
                         <outlet property="textView" destination="l0e-ZN-Cyz" id="Mub-Un-qQE"/>
@@ -531,7 +588,7 @@
                 </viewController>
                 <customObject id="BFD-hR-yg3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1463" y="-85.5"/>
+            <point key="canvasLocation" x="751" y="238.5"/>
         </scene>
         <!--Smart Block Settings-->
         <scene sceneID="ano-X6-NRf">
@@ -544,6 +601,7 @@
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="fgL-iN-azg">
                                 <rect key="frame" x="80" y="36" width="360" height="66"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" title="更多功能欢迎到 GitHub 参与开发   https://github.com/typcn/bilibili-mac-client" id="BKA-mo-Ldx">
                                     <font key="font" size="12" name="STHeitiSC-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -553,6 +611,7 @@
                             <button id="BNA-Ae-2MF">
                                 <rect key="frame" x="80" y="206" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="屏蔽吵架弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="8tq-Pn-HDt">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -564,6 +623,7 @@
                             <button id="rEv-Ih-Xb3">
                                 <rect key="frame" x="80" y="186" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="屏蔽日期弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="naf-pC-PtF">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -575,6 +635,7 @@
                             <button id="pts-Mu-teg">
                                 <rect key="frame" x="80" y="166" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="屏蔽剧透弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="5dB-gK-hjd">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -586,6 +647,7 @@
                             <button id="3we-Xx-mYu">
                                 <rect key="frame" x="80" y="146" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="屏蔽优越感弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="dZF-c1-3Mj">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -595,6 +657,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                     </view>
                     <connections>
                         <outlet property="b2b" destination="3we-Xx-mYu" id="R4C-RN-BdP"/>
@@ -605,7 +668,7 @@
                 </viewController>
                 <customObject id="2y9-Aw-wV9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="856" y="-93"/>
+            <point key="canvasLocation" x="35" y="214"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="SSw-0K-I7n">
@@ -623,7 +686,7 @@
                 </windowController>
                 <customObject id="vvD-P7-kFB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1714.5" y="-648"/>
+            <point key="canvasLocation" x="-1714.5" y="-625"/>
         </scene>
         <!--About View-->
         <scene sceneID="9GL-0J-ASe">
@@ -636,6 +699,7 @@
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="4D2-BY-qFG">
                                 <rect key="frame" x="18" y="11" width="476" height="283"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" id="6Cc-jO-u6M">
                                     <font key="font" size="12" name="STHeitiSC-Light"/>
                                     <string key="title">开发者: typcn 博客: http://blog.eqoe.cn 源代码: https://github.com/typcn/bilibili-mac-client 许可协议: GPLv2  感谢： Bilidan - https://github.com/m13253/BiliDan  使用以下开源项目: MPV - https://github.com/mpv-player/mpv ISSoundAdditions - https://github.com/InerziaSoft/ISSoundAdditions Sparkle - https://github.com/sparkle-project/Sparkle Danmaku2ASS - https://github.com/m13253/danmaku2ass FFmpeg - https://www.ffmpeg.org/  Copyleft 2015 TYPCN</string>
@@ -644,6 +708,7 @@
                                 </textFieldCell>
                             </textField>
                         </subviews>
+                        <animations/>
                     </view>
                     <connections>
                         <outlet property="aboutText" destination="4D2-BY-qFG" id="J9d-d9-uBT"/>
@@ -652,7 +717,7 @@
                 <customObject id="Jf9-h0-9RF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="RQe-1H-9A1"/>
             </objects>
-            <point key="canvasLocation" x="-1715" y="-205"/>
+            <point key="canvasLocation" x="-1715" y="-183"/>
         </scene>
         <!--Main Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -669,7 +734,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-931" y="195"/>
+            <point key="canvasLocation" x="-1756" y="195"/>
         </scene>
         <!--Miedia Player Window Controller-->
         <scene sceneID="DUG-BS-fjC">
@@ -700,6 +765,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="q3q-RS-pq9">
                                 <rect key="frame" x="136" y="124" width="141" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Loading" id="hhw-OI-vOH">
                                     <font key="font" size="13" name="STHeitiSC-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -709,11 +775,13 @@
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="d4M-72-jUI">
                                 <rect key="frame" x="156" y="134" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <animations/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="loading" id="s2c-ae-PoS"/>
                             </imageView>
                             <button hidden="YES" verticalHuggingPriority="750" id="xVW-zA-HWk" userLabel="ShowPostCommentButton">
                                 <rect key="frame" x="7" y="-314" width="14" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="259-A0-YXE">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -725,6 +793,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="nwA-xX-SSg">
                                 <rect key="frame" x="8" y="82" width="416" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="提示：按回车可以发送弹幕" id="lbG-e1-MKm">
                                     <font key="font" size="13" name="STHeitiSC-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -734,6 +803,7 @@
                             <button hidden="YES" verticalHuggingPriority="750" id="AOg-hv-Slo" userLabel="ShowLiveChatButton">
                                 <rect key="frame" x="423" y="116" width="15" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gP4-5d-Xlk">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -743,6 +813,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
@@ -775,7 +846,7 @@
                 </windowController>
                 <customObject id="gpp-QG-vUa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="58" y="511"/>
+            <point key="canvasLocation" x="102" y="927"/>
         </scene>
         <!--Live Chat-->
         <scene sceneID="bxO-Km-cPj">
@@ -795,6 +866,7 @@
                                         <textView editable="NO" importsGraphics="NO" horizontallyResizable="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="Yey-g8-OWP">
                                             <rect key="frame" x="0.0" y="0.0" width="463" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="463" height="268"/>
                                             <size key="maxSize" width="480" height="10000000"/>
@@ -803,18 +875,23 @@
                                             <size key="maxSize" width="480" height="10000000"/>
                                         </textView>
                                     </subviews>
+                                    <animations/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </clipView>
+                                <animations/>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="76T-FJ-sTU">
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Ft0-cT-2BV">
-                                    <rect key="frame" x="224" y="1" width="15" height="133"/>
+                                    <rect key="frame" x="464" y="1" width="15" height="268"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </scroller>
                             </scrollView>
                         </subviews>
+                        <animations/>
                     </view>
                     <connections>
                         <outlet property="textView" destination="Yey-g8-OWP" id="cSo-wv-dJ7"/>
@@ -822,7 +899,7 @@
                 </viewController>
                 <customObject id="MvD-Kh-aNt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="58" y="969"/>
+            <point key="canvasLocation" x="102" y="1353"/>
         </scene>
         <!--Post Comment Window Controller-->
         <scene sceneID="bs0-gn-v1d">
@@ -852,6 +929,7 @@
                             <textField verticalHuggingPriority="750" id="TUk-1C-0AA">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="36"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="发送弹幕" drawsBackground="YES" id="yn2-rr-jS0">
                                     <font key="font" metaFont="system" size="22"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -864,6 +942,7 @@
                             <segmentedControl verticalHuggingPriority="750" id="wQq-0e-rv7" userLabel="CommentTypeSelect">
                                 <rect key="frame" x="409" y="6" width="73" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="3xs-54-4qH">
                                     <font key="font" metaFont="system"/>
                                     <segments>
@@ -874,6 +953,7 @@
                                 </segmentedCell>
                             </segmentedControl>
                         </subviews>
+                        <animations/>
                     </view>
                     <connections>
                         <outlet property="CommentTypeSelecter" destination="wQq-0e-rv7" id="gfh-k0-zDx"/>
@@ -894,6 +974,7 @@
                             <webView id="hgl-YZ-N9w" userLabel="wv">
                                 <rect key="frame" x="0.0" y="0.0" width="423" height="228"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <animations/>
                                 <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO">
                                     <nil key="identifier"/>
                                 </webPreferences>
@@ -901,6 +982,7 @@
                             <button id="Vg5-sM-eCf">
                                 <rect key="frame" x="11" y="192" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="bevel" title="&lt;" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I74-e5-I3G">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="19"/>
@@ -912,6 +994,7 @@
                             <button id="XgW-RT-jxD">
                                 <rect key="frame" x="45" y="192" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="bevel" title="&gt;" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Oc5-0A-5Or">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="19"/>
@@ -923,6 +1006,7 @@
                             <textField verticalHuggingPriority="750" id="Izm-eu-n08">
                                 <rect key="frame" x="20" y="20" width="182" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="输入 AV 号按回车直接观看" drawsBackground="YES" id="Xxm-1R-XoN">
                                     <font key="font" metaFont="cellTitle"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -935,6 +1019,7 @@
                             <button hidden="YES" verticalHuggingPriority="750" id="8yE-wH-ldY">
                                 <rect key="frame" x="794" y="-7" width="36" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BEt-iK-waU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -955,29 +1040,12 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="-930.5" y="509"/>
+            <point key="canvasLocation" x="-1110.5" y="195"/>
         </scene>
-        <!--settings window-->
-        <scene sceneID="3Jf-4c-wFD">
-            <objects>
-                <windowController showSeguePresentationStyle="single" id="qMe-fF-qTw" userLabel="settings window" sceneMemberID="viewController">
-                    <window key="window" title="一般设置" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="C4l-Ie-Hw1">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <rect key="contentRect" x="294" y="313" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-                    </window>
-                    <connections>
-                        <segue destination="z8a-gg-iMj" kind="relationship" relationship="window.shadowedContentViewController" id="Klj-BF-84z"/>
-                    </connections>
-                </windowController>
-                <customObject id="q5C-hb-zhy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="863" y="-1059"/>
-        </scene>
-        <!--settings-->
+        <!--General Settings-->
         <scene sceneID="E5m-sf-d9M">
             <objects>
-                <viewController id="z8a-gg-iMj" userLabel="settings" customClass="Settings" sceneMemberID="viewController">
+                <viewController id="z8a-gg-iMj" userLabel="General Settings" customClass="Settings" sceneMemberID="viewController">
                     <view key="view" id="TEq-hT-EBz">
                         <rect key="frame" x="0.0" y="0.0" width="468" height="432"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -985,6 +1053,7 @@
                             <button id="hj3-k4-IwT">
                                 <rect key="frame" x="25" y="396" width="137" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="自动换P（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="IwE-aZ-Bxq">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -996,6 +1065,7 @@
                             <button id="aRT-dE-rbd">
                                 <rect key="frame" x="25" y="376" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="禁用实时弹幕显示（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="sbQ-fv-ZWa">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1007,6 +1077,7 @@
                             <button id="AeH-XX-C7T">
                                 <rect key="frame" x="25" y="356" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="启用增强硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Dkz-2s-yhr">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1018,6 +1089,7 @@
                             <slider verticalHuggingPriority="750" id="dP9-DC-elz">
                                 <rect key="frame" x="25" y="76" width="329" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.80000000000000004" tickMarkPosition="above" sliderType="linear" id="NRf-l9-8Cv"/>
                                 <connections>
                                     <action selector="transparencyChanged:" target="z8a-gg-iMj" id="8hc-EG-3jB"/>
@@ -1026,6 +1098,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="wLx-ha-LJe">
                                 <rect key="frame" x="25" y="103" width="90" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕透明度" id="CuV-Ec-HRG">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1035,6 +1108,7 @@
                             <comboBox verticalHuggingPriority="750" id="k65-FX-xi6">
                                 <rect key="frame" x="27" y="192" width="99" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="UtE-Jc-IKj">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1053,6 +1127,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="jlv-di-fx2">
                                 <rect key="frame" x="25" y="230" width="56" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="优先画质" id="Sd9-OH-JrH">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1062,6 +1137,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LGC-Jg-Mns">
                                 <rect key="frame" x="129" y="230" width="170" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="IP 伪造 ( 大陆用户请勿开启 )" id="vMH-pa-ZpX">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1071,6 +1147,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="v5E-aw-wG4">
                                 <rect key="frame" x="311" y="230" width="170" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕大小参数" id="dJb-2c-b1m">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1080,6 +1157,7 @@
                             <textField verticalHuggingPriority="750" id="ajt-jS-Z4K">
                                 <rect key="frame" x="313" y="195" width="96" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="默认25" drawsBackground="YES" id="pXu-zi-Y7u">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Dl4-M8-KPr"/>
                                     <font key="font" metaFont="system"/>
@@ -1093,6 +1171,7 @@
                             <comboBox verticalHuggingPriority="750" id="JLT-R0-aaz">
                                 <rect key="frame" x="131" y="192" width="169" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="P8V-DP-s5N">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1112,6 +1191,7 @@
                             <slider verticalHuggingPriority="750" id="7WK-cw-6iP">
                                 <rect key="frame" x="25" y="135" width="329" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <sliderCell key="cell" state="on" alignment="left" minValue="-1" maxValue="1" tickMarkPosition="above" sliderType="linear" id="S2O-CH-AsH"/>
                                 <connections>
                                     <action selector="moveSpeedChanged:" target="z8a-gg-iMj" id="Gpg-vr-rWO"/>
@@ -1120,6 +1200,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cJc-Xd-aCd">
                                 <rect key="frame" x="25" y="162" width="90" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕移动速度" id="zpf-lu-2U6">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1129,6 +1210,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8GO-QK-utF">
                                 <rect key="frame" x="25" y="20" width="354" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="2.所有设置将在下次开始播放时生效，文本框需要按回车保存" id="43T-62-L37">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1138,6 +1220,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="CNv-ip-Ik8">
                                 <rect key="frame" x="25" y="45" width="412" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1.弹幕字体计算方式为 视频高度除以字体参数 ，参数越大 弹幕越小" id="dYW-v7-aMe">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1147,6 +1230,7 @@
                             <button id="5yv-E4-e3g">
                                 <rect key="frame" x="25" y="316" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="关闭底部弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6pD-zG-Fl9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1158,6 +1242,7 @@
                             <button id="1aB-2H-H2d">
                                 <rect key="frame" x="25" y="336" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="禁用保持视频比例（让视频撑满窗口）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="lBw-oC-I1B">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1169,6 +1254,7 @@
                             <button id="QLp-in-QLo">
                                 <rect key="frame" x="25" y="296" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6zZ-XI-ZEK">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1180,6 +1266,7 @@
                             <button id="wjO-cr-vaH">
                                 <rect key="frame" x="25" y="276" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hFO-eX-oZN">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1189,6 +1276,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                     </view>
                     <connections>
                         <outlet property="DownloadMP4" destination="wjO-cr-vaH" id="dkM-tB-Lsv"/>
@@ -1207,13 +1295,15 @@
                 </viewController>
                 <customObject id="g1X-ko-pK9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1472" y="-1085"/>
+            <point key="canvasLocation" x="1448" y="-132"/>
         </scene>
     </scenes>
     <resources>
+        <image name="NSFontPanel" width="32" height="32"/>
+        <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="loading" width="69" height="70"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="D5B-9p-dnr"/>
+        <segue reference="Y0Z-ee-aqu"/>
     </inferredMetricsTieBreakers>
 </document>
