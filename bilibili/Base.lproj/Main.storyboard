@@ -56,7 +56,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="GKJ-bN-UAi" id="y6z-0y-XMn">
-                                            <rect key="frame" x="0.0" y="0.0" width="508" height="205"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="508" height="19"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -100,7 +100,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <animations/>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.27574798270037532" horizontal="YES" id="9oa-ZE-PEk">
+                                <scroller key="horizontalScroller" verticalHuggingPriority="750" doubleValue="0.035606953914180374" horizontal="YES" id="9oa-ZE-PEk">
                                     <rect key="frame" x="1" y="222" width="505" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
@@ -294,7 +294,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Bilibili" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="关于 Bilibili" id="UJv-cr-uBm" userLabel="关于Bilibili">
+                                        <menuItem title="关于 Bilibili" id="UJv-cr-uBm">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <segue destination="74G-eO-nZd" kind="show" id="sCc-VK-OZy"/>
@@ -312,12 +312,30 @@
                                                 <action selector="checkForUpdates:" target="vfz-mj-DKJ" id="DVJ-0x-PXM"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="GMP-1x-rl0"/>
+                                        <menuItem title="服务" id="Ut7-p5-Zbx">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="服务" systemMenu="services" id="P0s-Pq-Zmu"/>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4nd-15-tl2"/>
-                                        <menuItem title="关闭" keyEquivalent="w" id="Ae9-Lu-LFc">
+                                        <menuItem title="隐藏 Bilibili" keyEquivalent="h" id="UIt-CV-9tL">
                                             <connections>
-                                                <action selector="performClose:" target="Ady-hI-5gd" id="3Pl-Nn-Z2D"/>
+                                                <action selector="hide:" target="Ady-hI-5gd" id="Xzh-C0-6J3"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="隐藏其他" keyEquivalent="h" id="x0W-Jp-DDQ">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="hideOtherApplications:" target="Ady-hI-5gd" id="1O5-5i-a8p"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="全部显示" id="53D-yT-yWU">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="unhideAllApplications:" target="Ady-hI-5gd" id="G21-3q-h9V"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="egE-Lm-gW7"/>
                                         <menuItem title="退出" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
@@ -405,7 +423,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="i6e-yb-7K3"/>
-                                        <menuItem title="下载管理" id="fzm-lD-qXA">
+                                        <menuItem title="下载管理器" id="fzm-lD-qXA">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <segue destination="Cdi-2K-Ecb" kind="show" id="Bg1-hb-1j5"/>
@@ -437,7 +455,7 @@
                                                 <action selector="issues:" target="Voe-Tx-rLC" id="3tk-ZJ-YU4"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Application Help" keyEquivalent="?" id="HVk-PZ-hUX">
+                                        <menuItem title="Bilibili 帮助" keyEquivalent="?" id="HVk-PZ-hUX">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="PIw-PW-aiq"/>
                                             </connections>
@@ -457,75 +475,29 @@
             </objects>
             <point key="canvasLocation" x="239.5" y="-928"/>
         </scene>
-        <!--Preferences…-->
+        <!--Preferences-->
         <scene sceneID="puj-og-zmN">
             <objects>
-                <tabViewController title="Preferences…" showSeguePresentationStyle="single" selectedTabViewItemIndex="0" tabStyle="toolbar" id="tLe-z4-o59" sceneMemberID="viewController">
+                <tabViewController title="偏好设置" selectedTabViewItemIndex="0" tabStyle="toolbar" id="tLe-z4-o59" userLabel="Preferences" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem label="通常" image="NSPreferencesGeneral" id="xWQ-Dd-bZg"/>
-                        <tabViewItem label="弹幕屏蔽" image="NSFontPanel" id="opB-ic-sxY"/>
+                        <tabViewItem label="通用" image="NSPreferencesGeneral" id="cEI-Ac-YrN"/>
+                        <tabViewItem label="弹幕屏蔽" image="NSFontPanel" id="Dt0-6y-OTc"/>
                     </tabViewItems>
-                    <tabView key="tabView" type="noTabsNoBorder" id="a0a-NW-aFM" userLabel="偏好设置">
+                    <tabView key="tabView" type="noTabsNoBorder" id="a0a-NW-aFM" userLabel="Preferences">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <animations/>
-                        <font key="font" metaFont="message"/>
+                        <font key="font" metaFont="system"/>
                         <tabViewItems/>
                     </tabView>
                     <connections>
-                        <segue destination="z8a-gg-iMj" kind="relationship" relationship="tabItems" id="8Hv-CB-Gfm"/>
-                        <segue destination="qwv-h3-TE4" kind="relationship" relationship="tabItems" id="j9d-cp-3cl"/>
+                        <segue destination="z8a-gg-iMj" kind="relationship" relationship="tabItems" id="pKK-P3-OMw"/>
+                        <segue destination="fZa-B8-J07" kind="relationship" relationship="tabItems" id="DAK-Op-0Mf"/>
                     </connections>
                 </tabViewController>
                 <customObject id="Jtf-Yi-U5Z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="591" y="-599"/>
-        </scene>
-        <!--Comment block settings-->
-        <scene sceneID="KMO-V3-Usw">
-            <objects>
-                <tabViewController selectedTabViewItemIndex="1" id="qwv-h3-TE4" userLabel="Comment block settings" sceneMemberID="viewController">
-                    <tabViewItems>
-                        <tabViewItem label="关键词屏蔽" identifier="" id="VPs-85-Tqg"/>
-                        <tabViewItem label="智能屏蔽" identifier="" id="gi0-iC-GLq"/>
-                    </tabViewItems>
-                    <tabView key="tabView" type="noTabsNoBorder" id="0N7-dD-IpF">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                        <font key="font" metaFont="message"/>
-                        <tabViewItems>
-                            <tabViewItem label="Item 0" identifier="" id="7yz-ab-cIq">
-                                <view key="view" id="a61-eL-HVf">
-                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </view>
-                            </tabViewItem>
-                            <tabViewItem label="Item 1" identifier="" id="yHE-fa-EPC">
-                                <view key="view" id="CX0-M0-FTy">
-                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </view>
-                            </tabViewItem>
-                            <tabViewItem label="Item 2" identifier="" id="q6g-hv-xGS">
-                                <view key="view" id="xwc-bS-0of">
-                                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </view>
-                            </tabViewItem>
-                        </tabViewItems>
-                    </tabView>
-                    <connections>
-                        <segue destination="nsc-wB-2EJ" kind="relationship" relationship="tabItems" id="bPR-mh-q9V"/>
-                        <segue destination="062-3f-byc" kind="relationship" relationship="tabItems" id="9QJ-ix-ZPx"/>
-                    </connections>
-                </tabViewController>
-                <customObject id="oha-lL-2sQ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="35" y="-190"/>
         </scene>
         <!--Keyword Block Settings-->
         <scene sceneID="3ds-d2-Tes">
@@ -547,10 +519,10 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="453" height="230"/>
+                                            <size key="minSize" width="468" height="230"/>
                                             <size key="maxSize" width="485" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="453" height="230"/>
+                                            <size key="minSize" width="468" height="230"/>
                                             <size key="maxSize" width="485" height="10000000"/>
                                         </textView>
                                     </subviews>
@@ -589,6 +561,30 @@
                 <customObject id="BFD-hR-yg3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="751" y="238.5"/>
+        </scene>
+        <!--Comment block settings-->
+        <scene sceneID="8we-Xb-M8G">
+            <objects>
+                <tabViewController title="弹幕屏蔽" id="fZa-B8-J07" userLabel="Comment block settings" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem label="关键词屏蔽" id="Vno-7c-Vm2" userLabel="Keyword Block Settings"/>
+                        <tabViewItem label="智能屏蔽" id="uVa-K5-cbK" userLabel="Smart Block Settings"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="8Ha-pk-h56" userLabel="Comment block settings">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <font key="font" metaFont="message"/>
+                        <tabViewItems/>
+                    </tabView>
+                    <connections>
+                        <segue destination="062-3f-byc" kind="relationship" relationship="tabItems" id="tz9-uH-Fe9"/>
+                        <segue destination="nsc-wB-2EJ" kind="relationship" relationship="tabItems" id="5MT-NK-uvW"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="qhk-fy-0IM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="348" y="-183"/>
         </scene>
         <!--Smart Block Settings-->
         <scene sceneID="ano-X6-NRf">
@@ -670,13 +666,12 @@
             </objects>
             <point key="canvasLocation" x="35" y="214"/>
         </scene>
-        <!--Window Controller-->
+        <!--About Bilibili for Mac-->
         <scene sceneID="SSw-0K-I7n">
             <objects>
-                <windowController id="74G-eO-nZd" sceneMemberID="viewController">
+                <windowController id="74G-eO-nZd" userLabel="About Bilibili for Mac" sceneMemberID="viewController">
                     <window key="window" title="关于 Bilibili for Mac" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="bTz-aY-2am">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="294" y="261" width="515" height="322"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                     </window>
@@ -694,7 +689,7 @@
                 <viewController id="IS2-xA-kfK" customClass="AboutView" sceneMemberID="viewController">
                     <view key="view" id="gUu-fS-ItN">
                         <rect key="frame" x="0.0" y="0.0" width="538" height="314"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="4D2-BY-qFG">
                                 <rect key="frame" x="18" y="11" width="476" height="283"/>
@@ -1045,7 +1040,7 @@
         <!--General Settings-->
         <scene sceneID="E5m-sf-d9M">
             <objects>
-                <viewController id="z8a-gg-iMj" userLabel="General Settings" customClass="Settings" sceneMemberID="viewController">
+                <viewController title="通用设置" id="z8a-gg-iMj" userLabel="General Settings" customClass="Settings" sceneMemberID="viewController">
                     <view key="view" id="TEq-hT-EBz">
                         <rect key="frame" x="0.0" y="0.0" width="468" height="432"/>
                         <autoresizingMask key="autoresizingMask"/>
