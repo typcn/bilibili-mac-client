@@ -24,13 +24,13 @@
 "43T-62-L37.title" = "2.所有设置将在下次开始播放时生效，文本框需要按回车保存";
 
 /* Class = "NSMenuItem"; title = "退出"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "Exit";
+"4sb-4s-VLi.title" = "Exit Bilibili";
 
 /* Class = "NSMenuItem"; title = "全部显示"; ObjectID = "53D-yT-yWU"; */
 "53D-yT-yWU.title" = "Show All";
 
 /* Class = "NSButtonCell"; title = "屏蔽剧透弹幕"; ObjectID = "5dB-gK-hjd"; */
-"5dB-gK-hjd.title" = "Block 剧透 Comments";
+"5dB-gK-hjd.title" = "Block Spoiler Comments";
 
 /* Class = "NSTextFieldCell"; title = "开发者: typcn
 博客: http://blog.eqoe.cn
@@ -48,10 +48,10 @@ Danmaku2ASS - https://github.com/m13253/danmaku2ass
 FFmpeg - https://www.ffmpeg.org/
 
 Copyleft 2015 TYPCN"; ObjectID = "6Cc-jO-u6M"; */
-"6Cc-jO-u6M.title" = "开发者: typcn
-博客: http://blog.eqoe.cn
-源代码: https://github.com/typcn/bilibili-mac-client
-许可协议: GPLv2
+"6Cc-jO-u6M.title" = "Developer: typcn
+Blog: http://blog.eqoe.cn
+Source Code: https://github.com/typcn/bilibili-mac-client
+Open Source License: GPLv2
 
 感谢：
 Bilidan - https://github.com/m13253/BiliDan
@@ -66,19 +66,19 @@ FFmpeg - https://www.ffmpeg.org/
 Copyleft 2015 TYPCN";
 
 /* Class = "NSButtonCell"; title = "关闭底部弹幕"; ObjectID = "6pD-zG-Fl9"; */
-"6pD-zG-Fl9.title" = "Disable 底部 Comments";
+"6pD-zG-Fl9.title" = "Disable Bottom Comments";
 
 /* Class = "NSButtonCell"; title = "播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）"; ObjectID = "6zZ-XI-ZEK"; */
-"6zZ-XI-ZEK.title" = "播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）";
+"6zZ-XI-ZEK.title" = "Prefer Play MP4 Format Video（发热更小，播放更快，可能有画质损失）";
 
 /* Class = "NSMenuItem"; title = "窗口"; ObjectID = "8H0-VQ-yUt"; */
 "8H0-VQ-yUt.title" = "Window";
 
 /* Class = "NSButtonCell"; title = "屏蔽吵架弹幕"; ObjectID = "8tq-Pn-HDt"; */
-"8tq-Pn-HDt.title" = "Block 吵架 Comments";
+"8tq-Pn-HDt.title" = "Block Quarrel Comments";
 
 /* Class = "NSTextFieldCell"; title = "允许所有 ffmpeg 支持的格式"; ObjectID = "9eb-5r-SWr"; */
-"9eb-5r-SWr.title" = "允许所有 ffmpeg 支持的格式";
+"9eb-5r-SWr.title" = "Enable All ffmpeg Format Support";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Main Menu";
@@ -105,10 +105,10 @@ https://github.com/typcn/bilibili-mac-client";
 "Dgo-Bk-4mh.title" = "暂时只支持 ASS 格式的字幕，可以不选择";
 
 /* Class = "NSButtonCell"; title = "启用增强硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）"; ObjectID = "Dkz-2s-yhr"; */
-"Dkz-2s-yhr.title" = "启用增强硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）";
+"Dkz-2s-yhr.title" = "Enable Enhanced Hardware Decoding Mode（发热太高尝试开启，可能导致弹幕 FPS 降低）";
 
 /* Class = "NSTabViewItem"; label = "弹幕屏蔽"; ObjectID = "Dt0-6y-OTc"; */
-"Dt0-6y-OTc.label" = " Block Comment";
+"Dt0-6y-OTc.label" = "Block Comment";
 
 /* Class = "NSTextFieldCell"; title = "由于弹幕引擎重写，暂时只支持 Bilibili 格式"; ObjectID = "E2h-KF-1Hp"; */
 "E2h-KF-1Hp.title" = "由于弹幕引擎重写，暂时只支持 Bilibili 格式";
@@ -192,7 +192,7 @@ https://github.com/typcn/bilibili-mac-client";
 "SBm-2K-ZsN.title" = "Windows";
 
 /* Class = "NSTextFieldCell"; title = "优先画质"; ObjectID = "Sd9-OH-JrH"; */
-"Sd9-OH-JrH.title" = "优先画质";
+"Sd9-OH-JrH.title" = "Quality Priority";
 
 /* Class = "NSMenuItem"; title = "隐藏 Bilibili"; ObjectID = "UIt-CV-9tL"; */
 "UIt-CV-9tL.title" = "Hide Bilibili";
@@ -207,16 +207,16 @@ https://github.com/typcn/bilibili-mac-client";
 "Ut7-p5-Zbx.title" = "Services";
 
 /* Class = "NSComboBoxCell"; UtE-Jc-IKj.ibShadowedObjectValues[0] = "低清"; ObjectID = "UtE-Jc-IKj"; */
-"UtE-Jc-IKj.ibShadowedObjectValues[0]" = "低清";
+"UtE-Jc-IKj.ibShadowedObjectValues[0]" = "LD";
 
 /* Class = "NSComboBoxCell"; UtE-Jc-IKj.ibShadowedObjectValues[1] = "标清"; ObjectID = "UtE-Jc-IKj"; */
-"UtE-Jc-IKj.ibShadowedObjectValues[1]" = "标清";
+"UtE-Jc-IKj.ibShadowedObjectValues[1]" = "SD";
 
 /* Class = "NSComboBoxCell"; UtE-Jc-IKj.ibShadowedObjectValues[2] = "高清"; ObjectID = "UtE-Jc-IKj"; */
-"UtE-Jc-IKj.ibShadowedObjectValues[2]" = "高清";
+"UtE-Jc-IKj.ibShadowedObjectValues[2]" = "HD";
 
 /* Class = "NSComboBoxCell"; UtE-Jc-IKj.ibShadowedObjectValues[3] = "原画"; ObjectID = "UtE-Jc-IKj"; */
-"UtE-Jc-IKj.ibShadowedObjectValues[3]" = "原画";
+"UtE-Jc-IKj.ibShadowedObjectValues[3]" = "OD";
 
 /* Class = "NSMenuItem"; title = "剪贴"; ObjectID = "VhF-wp-4cU"; */
 "VhF-wp-4cU.title" = "Cut";
@@ -258,7 +258,7 @@ https://github.com/typcn/bilibili-mac-client";
 "dYW-v7-aMe.title" = "1.弹幕字体计算方式为 视频高度除以字体参数 ，参数越大 弹幕越小";
 
 /* Class = "NSButtonCell"; title = "屏蔽优越感弹幕"; ObjectID = "dZF-c1-3Mj"; */
-"dZF-c1-3Mj.title" = "Block 优越感弹幕";
+"dZF-c1-3Mj.title" = "Block Superiority Comments";
 
 /* Class = "NSTableColumn"; headerCell.title = "任务名称"; ObjectID = "f2M-MT-SfQ"; */
 "f2M-MT-SfQ.headerCell.title" = "Task Name";
@@ -279,7 +279,7 @@ https://github.com/typcn/bilibili-mac-client";
 "hCf-ds-VPo.title" = "Paste";
 
 /* Class = "NSButtonCell"; title = "下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）"; ObjectID = "hFO-eX-oZN"; */
-"hFO-eX-oZN.title" = "下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）";
+"hFO-eX-oZN.title" = "Prefer Download MP4 Format Video（方便手机观看，且没有被官方限速，下载更快）";
 
 /* Class = "NSTableColumn"; headerCell.title = "状态"; ObjectID = "hNU-oO-koQ"; */
 "hNU-oO-koQ.headerCell.title" = "Status";
@@ -297,7 +297,7 @@ https://github.com/typcn/bilibili-mac-client";
 "kQb-qP-BWw.title" = "Text Cell";
 
 /* Class = "NSButtonCell"; title = "禁用保持视频比例（让视频撑满窗口）"; ObjectID = "lBw-oC-I1B"; */
-"lBw-oC-I1B.title" = "Disabled 保持视频比例（让视频撑满窗口）";
+"lBw-oC-I1B.title" = "Disabled Keep Video Scale（让视频撑满窗口）";
 
 /* Class = "NSTextFieldCell"; title = "提示：按回车可以发送弹幕"; ObjectID = "lbG-e1-MKm"; */
 "lbG-e1-MKm.title" = "提示：按回车可以发送弹幕";
