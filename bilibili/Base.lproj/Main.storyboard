@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="15A235d" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8121.17"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="8121.17"/>
     </dependencies>
     <scenes>
         <!--Download Manager-->
@@ -15,7 +15,7 @@
                         <subviews>
                             <scrollView identifier="taskname" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="HC0-CV-YQ1">
                                 <rect key="frame" x="20" y="35" width="507" height="238"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <clipView key="contentView" id="6ma-Ex-tb3">
                                     <rect key="frame" x="1" y="0.0" width="505" height="222"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +146,7 @@
                 <viewController title="打开本地视频" id="0d3-4B-65W" userLabel="playLocalVideo" customClass="playLocalFile" sceneMemberID="viewController">
                     <view key="view" id="cmr-KX-AqT">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button verticalHuggingPriority="750" id="bwu-t8-jef">
                                 <rect key="frame" x="199" y="13" width="82" height="32"/>
@@ -313,8 +313,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="文件" id="o60-gF-sgY">
                                     <items>
-                                        <menuItem title="打开本地视频" id="UaC-DW-g4c" userLabel="Open Local Video Files">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menuItem title="打开本地视频" keyEquivalent="o" id="UaC-DW-g4c" userLabel="Open Local Video Files">
                                             <connections>
                                                 <segue destination="0d3-4B-65W" kind="show" id="tXF-ez-pjf"/>
                                             </connections>
@@ -467,20 +466,20 @@
         <!--Keyword Block Settings-->
         <scene sceneID="3ds-d2-Tes">
             <objects>
-                <viewController id="nsc-wB-2EJ" customClass="KeywordBlockSettings" sceneMemberID="viewController">
+                <viewController title="关键词屏蔽" id="nsc-wB-2EJ" userLabel="Keyword Block Settings" customClass="KeywordBlockSettings" sceneMemberID="viewController">
                     <view key="view" id="dpM-Hw-8Pf">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="281"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="DjN-U2-hEJ">
                                 <rect key="frame" x="8" y="38" width="485" height="232"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <clipView key="contentView" id="3J2-Wo-o61">
                                     <rect key="frame" x="1" y="1" width="468" height="230"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="l0e-ZN-Cyz">
-                                            <rect key="frame" x="0.0" y="0.0" width="453" height="230"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="468" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -508,7 +507,7 @@
                             </scrollView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZwZ-on-c9X">
                                 <rect key="frame" x="6" y="13" width="489" height="17"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="一行一个，不区分大小写，请勿输入特殊符号，下次播放时生效，关闭窗口自动保存" id="Lfm-eh-7YA">
                                     <font key="font" metaFont="system"/>
@@ -530,10 +529,10 @@
         <!--Comment Block Settings-->
         <scene sceneID="8we-Xb-M8G">
             <objects>
-                <tabViewController title="弹幕屏蔽" id="fZa-B8-J07" userLabel="Comment Block Settings" sceneMemberID="viewController">
+                <tabViewController title="弹幕屏蔽" selectedTabViewItemIndex="1" id="fZa-B8-J07" userLabel="Comment Block Settings" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem label="关键词屏蔽" id="Vno-7c-Vm2" userLabel="Keyword Block Settings"/>
-                        <tabViewItem label="智能屏蔽" id="uVa-K5-cbK" userLabel="Smart Block Settings"/>
+                        <tabViewItem id="Vno-7c-Vm2" userLabel="Keyword Block Settings"/>
+                        <tabViewItem id="uVa-K5-cbK" userLabel="Smart Block Settings"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="8Ha-pk-h56" userLabel="Comment block settings">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -554,14 +553,14 @@
         <!--Smart Block Settings-->
         <scene sceneID="ano-X6-NRf">
             <objects>
-                <viewController id="062-3f-byc" customClass="SmartBlockSettings" sceneMemberID="viewController">
+                <viewController title="智能屏蔽" id="062-3f-byc" userLabel="Smart Block Settings" customClass="SmartBlockSettings" sceneMemberID="viewController">
                     <view key="view" id="foG-xs-fQU">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="266"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="fgL-iN-azg">
                                 <rect key="frame" x="80" y="36" width="360" height="66"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" title="更多功能欢迎到 GitHub 参与开发   https://github.com/typcn/bilibili-mac-client" id="BKA-mo-Ldx">
                                     <font key="font" size="12" name="STHeitiSC-Light"/>
@@ -571,7 +570,7 @@
                             </textField>
                             <button id="BNA-Ae-2MF">
                                 <rect key="frame" x="80" y="206" width="425" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="屏蔽吵架弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="8tq-Pn-HDt">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -583,7 +582,7 @@
                             </button>
                             <button id="rEv-Ih-Xb3">
                                 <rect key="frame" x="80" y="186" width="425" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="屏蔽日期弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="naf-pC-PtF">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -595,7 +594,7 @@
                             </button>
                             <button id="pts-Mu-teg">
                                 <rect key="frame" x="80" y="166" width="425" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="屏蔽剧透弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="5dB-gK-hjd">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -607,7 +606,7 @@
                             </button>
                             <button id="3we-Xx-mYu">
                                 <rect key="frame" x="80" y="146" width="425" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="屏蔽优越感弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="dZF-c1-3Mj">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -641,7 +640,7 @@
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="4D2-BY-qFG">
                                 <rect key="frame" x="18" y="11" width="476" height="283"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" id="6Cc-jO-u6M">
                                     <font key="font" size="12" name="STHeitiSC-Light"/>
@@ -991,7 +990,7 @@
                 <viewController title="通用设置" id="z8a-gg-iMj" userLabel="General Settings" customClass="Settings" sceneMemberID="viewController">
                     <view key="view" id="TEq-hT-EBz">
                         <rect key="frame" x="0.0" y="0.0" width="468" height="432"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button id="hj3-k4-IwT">
                                 <rect key="frame" x="25" y="396" width="137" height="18"/>
@@ -1247,6 +1246,6 @@
         <image name="loading" width="69" height="70"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="D5B-9p-dnr"/>
+        <segue reference="Y0Z-ee-aqu"/>
     </inferredMetricsTieBreakers>
 </document>
