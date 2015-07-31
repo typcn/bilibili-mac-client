@@ -73,7 +73,9 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
 }
 - (IBAction)clearAllDL:(id)sender {
     [dList lock];
-    for (id object in downloaderObjects) {
+    int length = (int)[downloaderObjects count];
+    for (int i = 0;i < length;i++) {
+        id object = [downloaderObjects objectAtIndex:i];
         if([[object valueForKey:@"lastUpdate"] length] > 0){
             float lastUpdate = [[object valueForKey:@"lastUpdate"] floatValue];
             long currentTime = time(0);
