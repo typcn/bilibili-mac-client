@@ -62,7 +62,7 @@ if(!window.isFirstPlay){
     window.i = setInterval(waitForReady,500);
     console.log("start inject");
     function waitForReady(){
-        if(window.LoadTimes > 5){
+        if(window.LoadTimes > 15){
             clearInterval(window.i);
             return;
         }

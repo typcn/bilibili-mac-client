@@ -280,8 +280,10 @@ BOOL isTesting;
 - (void)webView:(WebView *)sender
 didReceiveTitle:(NSString *)title
        forFrame:(WebFrame *)frame{
-    [webView stringByEvaluatingJavaScriptFromString:WebScript];
+    
     userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    [webView stringByEvaluatingJavaScriptFromString:WebScript];
+
     if(acceptAnalytics == 1 || acceptAnalytics == 2){
         screenView("WebView");
     }else{
@@ -297,8 +299,8 @@ didReceiveTitle:(NSString *)title
 
 - (void)webView:(WebView *)sender
 didStartProvisionalLoadForFrame:(WebFrame *)frame{
-    [webView stringByEvaluatingJavaScriptFromString:WebScript];
-    userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+//    [webView stringByEvaluatingJavaScriptFromString:WebScript];
+//    userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
 }
 
 - (void)webView:(WebView *)sender didCommitLoadForFrame:(WebFrame *)frame
