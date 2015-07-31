@@ -1,3 +1,4 @@
+window.bilimacVersion = 202;
 var TYPCN_PLAYER_CID;
 function applyUI(){
     try{
@@ -77,7 +78,7 @@ if(!window.isFirstPlay){
         }
         if(!window.isInjected){
             window.isInjected = true;
-            $.getScript("http://cdn2.eqoe.cn/files/bilibili/widget-min.js");
+            $.getScript("http://cdn2.eqoe.cn/files/bilibili/widget-min.js?ver=" + window.bilimacVersion);
         }
         if((typeof $) == 'function'){
             applyUI();
