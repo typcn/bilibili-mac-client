@@ -138,7 +138,7 @@
                 </viewController>
                 <customObject id="MYn-CD-dsD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-543.5" y="-197.5"/>
+            <point key="canvasLocation" x="-438.5" y="-291.5"/>
         </scene>
         <!--playLocalVideo-->
         <scene sceneID="gmX-b4-iwl">
@@ -318,6 +318,12 @@
                                                 <segue destination="0d3-4B-65W" kind="show" id="tXF-ez-pjf"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="打开下载管理器" id="cvU-jO-K6m" userLabel="Download Manager">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="uyE-Xu-eZU" kind="show" id="WH6-sv-CmL"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -392,13 +398,6 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="i6e-yb-7K3"/>
-                                        <menuItem title="下载管理器" id="fzm-lD-qXA" userLabel="Download Manager">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <segue destination="uyE-Xu-eZU" kind="show" id="c8A-NU-GMp"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="kKX-d2-NWe"/>
                                         <menuItem title="前置全部窗口" id="YSf-sS-evP" userLabel="Bring All to Front">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>

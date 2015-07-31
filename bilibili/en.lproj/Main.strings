@@ -266,8 +266,8 @@ https://github.com/typcn/bilibili-mac-client";
 /* Class = "NSTabViewController"; title = "弹幕屏蔽"; ObjectID = "fZa-B8-J07"; */
 "fZa-B8-J07.title" = "Comment Block";
 
-/* Class = "NSMenuItem"; title = "下载管理器"; ObjectID = "fzm-lD-qXA"; */
-"fzm-lD-qXA.title" = "Download Manager";
+/* Class = "NSMenuItem"; title = "打开下载管理器"; ObjectID = "fzm-lD-qXA"; */
+"cvU-jO-K6m.title" = "Download Manager";
 
 /* Class = "NSButtonCell"; title = "立即播放"; ObjectID = "g4M-p0-FkK"; */
 "g4M-p0-FkK.title" = "Play Now";
