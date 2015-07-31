@@ -11,7 +11,7 @@ function applyUI(){
     }catch(e){
         
     }
-    if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("live") > 1){
+    if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("topic") > 1 || window.location.href.indexOf("live") > 1){
         var fv=$("param[name='flashvars']").val();
         if(!fv){
             fv=$('#bofqiiframe').attr('src');
@@ -45,7 +45,8 @@ function applyUI(){
                         LIVEPLAY = 1;
                     }
                 }
-                
+            }else if(window.location.href.indexOf("topic") > 1){
+                $('embed').parent().html('<div class="TYPCN_PLAYER_INJECT_PAGE"><div class="player-placeholder"><div class="btn-wrapper n2"><div class="player-placeholder-head">请选择操作</div><div class="src-btn"><a href="javascript:window.external.playVideoByCID(TYPCN_PLAYER_CID)">播放</a></div><div class="src-btn"><a href="javascript:window.external.downloadVideoByCID(TYPCN_PLAYER_CID)">下载</a></div></div></div></div>');
             }else{
                 $('#bofqi').html('<div class="TYPCN_PLAYER_INJECT_PAGE"><div class="player-placeholder"><div class="btn-wrapper n2"><div class="player-placeholder-head">请选择操作</div><div class="src-btn"><a href="javascript:window.external.playVideoByCID(TYPCN_PLAYER_CID)">播放</a></div><div class="src-btn"><a href="javascript:window.external.downloadVideoByCID(TYPCN_PLAYER_CID)">下载</a></div></div></div></div>');
             }
