@@ -68,6 +68,8 @@ BOOL isTesting;
         return @"playVideoByCID";
     if(sel == @selector(downloadVideoByCID:))
         return @"downloadVideoByCID";
+    if(sel == @selector(showNotification:))
+        return @"showNotification";
     return nil;
 }
 
@@ -81,7 +83,17 @@ BOOL isTesting;
         return NO;
     if(sel == @selector(downloadVideoByCID:))
         return NO;
+    if(sel == @selector(showNotification:))
+        return NO;
     return YES;
+}
+
+- (void)showNotification:(NSString *)content{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[[NSApplication sharedApplication] keyWindow] contentView] animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = content;
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay:3];
 }
 
 - (void)checkForUpdates
