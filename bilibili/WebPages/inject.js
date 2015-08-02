@@ -4,6 +4,7 @@ function applyUI(){
     try{
         $('.close-btn-wrp').parent().remove();$('.float-pmt').remove();
         $(".i-link[href='http://app.bilibili.com']").html('检查更新').attr('href','javascript:window.external.checkForUpdates()');
+        $(".b-head-s").html('由于 B 站网页 BUG，标签需要点击两次才能显示内容');
         if(window.LoadTimes){
             window.LoadTimes++;
         }else{
@@ -72,7 +73,7 @@ if(!window.isFirstPlay){
     window.i = setInterval(waitForReady,500);
     console.log("start inject");
     function waitForReady(){
-        if(window.LoadTimes > 10){
+        if(window.LoadTimes > 5){
             clearInterval(window.i);
             return;
         }
