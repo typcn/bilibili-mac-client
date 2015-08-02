@@ -13,6 +13,7 @@
 
 extern NSMutableArray *downloaderObjects;
 extern NSLock *dList;
+BOOL isStopped;
 
 int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
                           aria2::A2Gid gid, void* userData)
@@ -92,7 +93,7 @@ void Downloader::runDownload(int fileid,NSString *filename){
     NSLog(@"[Downloader] Starting download");
     NSString *cid = [[downloaderObjects objectAtIndex:fileid] valueForKey:@"cid"];
     mtx.lock();
-    for(;;) {
+    while(!isStopped) {
         int rv = aria2::run(session, aria2::RUN_ONCE);
         if(rv != 1) {
             break;
@@ -132,12 +133,17 @@ void Downloader::runDownload(int fileid,NSString *filename){
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
     }
     [dList lock];
-    [downloaderObjects removeObjectAtIndex:fileid];
-    NSDictionary *taskData = @{
-        @"name":filename,
-        @"status":@"下载已完成",
-    };
-    [downloaderObjects insertObject:taskData atIndex:fileid];
+    if(!isStopped){
+        [downloaderObjects removeObjectAtIndex:fileid];
+        NSDictionary *taskData = @{
+                                   @"name":filename,
+                                   @"status":@"下载已完成",
+                                   };
+        [downloaderObjects insertObject:taskData atIndex:fileid];
+    }else{
+        
+    }
+
     [dList unlock];
     mtx.unlock();
 }

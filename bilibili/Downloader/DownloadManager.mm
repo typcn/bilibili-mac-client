@@ -12,6 +12,7 @@
 extern NSMutableArray *downloaderObjects;
 extern NSLock *dList;
 extern Downloader* DL;
+extern BOOL isStopped;
 
 @interface DownloadManager (){
     
@@ -63,6 +64,7 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
     [[NSWorkspace sharedWorkspace] openFile:folder];
 }
 - (IBAction)clearDLList:(id)sender {
+    isStopped = true;
     [dList lock];
     for (id object in downloaderObjects) {
         if([[object valueForKey:@"status"] isEqualToString:@"下载已完成"]){
