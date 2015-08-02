@@ -70,17 +70,14 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
     [[NSWorkspace sharedWorkspace] openFile:folder];
 }
 - (IBAction)clearDLList:(id)sender {
-    isStopped = true;
-    [dList lock];
     for (id object in downloaderObjects) {
         if([[object valueForKey:@"status"] isEqualToString:@"下载已完成"]){
             [downloaderObjects removeObject:object];
         }
     }
-    [dList unlock];
 }
 - (IBAction)clearAllDL:(id)sender {
-    [dList lock];
+    isStopped = true;
     int length = (int)[downloaderObjects count];
     for (int i = 0;i < length;i++) {
         id object = [downloaderObjects objectAtIndex:i];
@@ -93,7 +90,6 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
         }
         [downloaderObjects removeObject:object];
     }
-    [dList unlock];
 }
 - (IBAction)continueDownload:(id)sender {
     [dList lock];
