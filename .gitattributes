@@ -1,2 +1,1 @@
-testfile.test filter=lfs diff=lfs merge=lfs -crlf
 *.dylib filter=lfs diff=lfs merge=lfs -crlf
