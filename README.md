@@ -2,6 +2,8 @@
 
 An unofficial bilibili client for mac
 
+注意：之前 clone 过 repo 的用户，请 rebase 或者删掉重新 clone
+
 <img src="https://app.ship.io/jobs/LajSkdYLuE7THK7n/build_status.png" style="width:160px" alt="Build Status">
 
 # Features
@@ -27,13 +29,12 @@ An unofficial bilibili client for mac
 
 [百度盘](http://pan.baidu.com/s/1eQvSx6i)
 
-<del>[Mega](https://mega.co.nz/#F!48gXiAxa!BFrmfzq9c97cfSbR4A1v8g)</del>
 
 # FAQ
 
 Q: 提示无法打开应用
 
-A: 请到设置 - 安全与隐私 - 通用 - 点击左下角的锁 - “允许来自 Mac App Store 和受信任的开发者”，从 1.95 版本开始，不需要选择任何来源
+A: 请到设置 - 安全与隐私 - 通用 - 点击左下角的锁 - “允许来自 Mac App Store 和受信任的开发者”
 
 Q: 是否支持弹幕发送
 
@@ -50,6 +51,10 @@ A: 如果你选择了自动更新，系统会定时检查更新，建议您开�
 Q: 如何关闭弹幕
 
 A: 点击播放器右下角的字幕按钮关闭，再次点击开启
+
+Q: 如何自己编译？
+
+A: see [HOW TO BUILD](https://github.com/typcn/bilibili-mac-client/blob/master/HOW_TO_BUILD.md)
 
 # Known problems
 
