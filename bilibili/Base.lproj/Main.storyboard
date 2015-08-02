@@ -949,6 +949,17 @@
                                     <action selector="goForward:" target="hgl-YZ-N9w" id="9Fm-Ux-Q4V"/>
                                 </connections>
                             </button>
+                            <button id="Rut-jD-PYd">
+                                <rect key="frame" x="370" y="192" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="reload" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="irT-9U-zDX">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="19"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="reload:" target="hgl-YZ-N9w" id="OYw-IL-EZp"/>
+                                </connections>
+                            </button>
                             <textField verticalHuggingPriority="750" id="Izm-eu-n08">
                                 <rect key="frame" x="20" y="20" width="182" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -972,6 +983,17 @@
                                 </buttonCell>
                                 <connections>
                                     <segue destination="3Nx-YC-zmP" kind="show" id="D5B-9p-dnr"/>
+                                </connections>
+                            </button>
+                            <button id="MaB-eY-KC3">
+                                <rect key="frame" x="331" y="192" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="copy" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e1M-09-6jd">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="19"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="CopyLink:" target="0dz-Mn-O6m" id="yVm-bB-9kh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1247,9 +1269,11 @@
     <resources>
         <image name="NSFontPanel" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
+        <image name="copy" width="340" height="340"/>
         <image name="loading" width="69" height="70"/>
+        <image name="reload" width="340" height="340"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Y0Z-ee-aqu"/>
+        <segue reference="D5B-9p-dnr"/>
     </inferredMetricsTieBreakers>
 </document>

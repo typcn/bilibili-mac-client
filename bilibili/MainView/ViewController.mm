@@ -22,6 +22,7 @@ NSLock *dList = [[NSLock alloc] init];
 BOOL parsing = false;
 BOOL isTesting;
 
+
 @implementation ViewController
 
 - (BOOL)canBecomeMainWindow { return YES; }
@@ -50,7 +51,6 @@ BOOL isTesting;
     downloaderObjects = [TaskList mutableCopy];
 
 }
-
 @end
 
 @implementation WebController{
@@ -309,7 +309,7 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
 }
 
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems{
-    NSMenuItem *copy = [[NSMenuItem alloc] initWithTitle:@"复制页面地址" action:@selector(CopyLink) keyEquivalent:@""];
+    NSMenuItem *copy = [[NSMenuItem alloc] initWithTitle:@"复制页面地址" action:@selector(CopyLink:) keyEquivalent:@""];
     [copy setTarget:self];
     [copy setEnabled:YES];
     NSMenuItem *play = [[NSMenuItem alloc] initWithTitle:@"强制显示播放界面" action:@selector(ShowPlayer) keyEquivalent:@""];
@@ -326,9 +326,14 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
     return mutableArray;
 }
 
-- (void)CopyLink{
+- (IBAction)CopyLink:(id)sender {
     [[NSPasteboard generalPasteboard] clearContents];
     [[NSPasteboard generalPasteboard] setString:webView.mainFrameURL  forType:NSStringPboardType];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[[NSApplication sharedApplication] keyWindow] contentView] animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = @"当前页面地址已经复制到剪贴板";
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay:3];
 }
 
 - (void)ShowPlayer{

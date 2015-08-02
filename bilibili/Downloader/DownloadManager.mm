@@ -29,6 +29,12 @@ extern BOOL isStopped;
                                    selector:@selector(updateString)
                                    userInfo:nil
                                     repeats:YES];
+    [self.tableView setDoubleAction:@selector(doubleClick:)];
+}
+
+- (void)doubleClick:(id)object {
+//    NSInteger rowNumber = [self.tableView clickedRow];
+//    id obj = [downloaderObjects objectAtIndex:rowNumber];
 }
 
 -(void)updateString

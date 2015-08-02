@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
+#import "MBProgressHUD.h"
 
 @interface ViewController : NSViewController
 

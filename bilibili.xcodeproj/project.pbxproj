@@ -89,6 +89,12 @@
 		FD6102621AD7CC020013119A /* inject.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD61025B1AD7CBA20013119A /* inject.js */; };
 		FD6102631AD7CC020013119A /* webui.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD61025D1AD7CBC10013119A /* webui.html */; };
 		FD6102641AD7CC020013119A /* webui.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD6102601AD7CBF10013119A /* webui.css */; };
+		FD62CC841B6E661F000AED57 /* reload.png in Resources */ = {isa = PBXBuildFile; fileRef = FD62CC831B6E661F000AED57 /* reload.png */; };
+		FD62CC861B6E6726000AED57 /* copy.png in Resources */ = {isa = PBXBuildFile; fileRef = FD62CC851B6E6726000AED57 /* copy.png */; };
+		FD62CC891B6E6848000AED57 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FD62CC881B6E6848000AED57 /* MBProgressHUD.m */; };
+		FD62CC8B1B6E6BA5000AED57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62CC8A1B6E6BA5000AED57 /* Foundation.framework */; };
+		FD62CC8D1B6E6BAB000AED57 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62CC8C1B6E6BAB000AED57 /* AppKit.framework */; };
+		FD62CC8F1B6E6BB0000AED57 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */; };
 		FDA775DE1AD93D1800426483 /* libaria2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; };
 		FDA775E91AD93F6900426483 /* libaria2.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FDAF8BA11ACA4ECC00C0C55D /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */; };
@@ -264,6 +270,13 @@
 		FD61025B1AD7CBA20013119A /* inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = inject.js; path = WebPages/inject.js; sourceTree = "<group>"; };
 		FD61025D1AD7CBC10013119A /* webui.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = webui.html; path = WebPages/webui.html; sourceTree = "<group>"; };
 		FD6102601AD7CBF10013119A /* webui.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = webui.css; path = WebPages/webui.css; sourceTree = "<group>"; };
+		FD62CC831B6E661F000AED57 /* reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reload.png; path = bilibili/img/reload.png; sourceTree = "<group>"; };
+		FD62CC851B6E6726000AED57 /* copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = copy.png; path = bilibili/img/copy.png; sourceTree = "<group>"; };
+		FD62CC871B6E6848000AED57 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Others/MBProgressHUD.h; sourceTree = "<group>"; };
+		FD62CC881B6E6848000AED57 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = Others/MBProgressHUD.m; sourceTree = "<group>"; };
+		FD62CC8A1B6E6BA5000AED57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FD62CC8C1B6E6BAB000AED57 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FDA775DD1AD93D1800426483 /* libaria2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaria2.0.dylib; path = bilibili/libs/libaria2.0.dylib; sourceTree = "<group>"; };
 		FDA775E01AD93DC900426483 /* aria2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = aria2.hpp; path = bilibili/headers/aria2.hpp; sourceTree = "<group>"; };
 		FDAF8BA01ACA4ECC00C0C55D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = bilibili/sparkle/Sparkle.framework; sourceTree = "<group>"; };
@@ -276,6 +289,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD62CC8F1B6E6BB0000AED57 /* CoreData.framework in Frameworks */,
+				FD62CC8D1B6E6BAB000AED57 /* AppKit.framework in Frameworks */,
+				FD62CC8B1B6E6BA5000AED57 /* Foundation.framework in Frameworks */,
 				FD51018D1ACC1A6800C49430 /* libvo-aacenc.0.dylib in Frameworks */,
 				FD5101811ACC1A6800C49430 /* libfreetype.6.dylib in Frameworks */,
 				FDD5EEF71AC944020036B829 /* WebKit.framework in Frameworks */,
@@ -320,6 +336,9 @@
 		FD076C471AC8CBBB00C893FA = {
 			isa = PBXGroup;
 			children = (
+				FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */,
+				FD62CC8C1B6E6BAB000AED57 /* AppKit.framework */,
+				FD62CC8A1B6E6BA5000AED57 /* Foundation.framework */,
 				FD4D37691ACEF3F20022ABF3 /* img */,
 				FDAF8B9F1ACA4D9900C0C55D /* sparkle */,
 				FDA775DC1AD93D0D00426483 /* aria2 */,
@@ -514,6 +533,8 @@
 				FD1954CB1B259457003A958F /* ISSoundAdditions.h */,
 				FD1954CC1B259457003A958F /* ISSoundAdditions.m */,
 				FD1954F61B259AF6003A958F /* Analytics.h */,
+				FD62CC871B6E6848000AED57 /* MBProgressHUD.h */,
+				FD62CC881B6E6848000AED57 /* MBProgressHUD.m */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -546,6 +567,8 @@
 			isa = PBXGroup;
 			children = (
 				FD4D376A1ACEF3FE0022ABF3 /* loading.gif */,
+				FD62CC831B6E661F000AED57 /* reload.png */,
+				FD62CC851B6E6726000AED57 /* copy.png */,
 			);
 			name = img;
 			sourceTree = "<group>";
@@ -712,10 +735,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */,
+				FD62CC841B6E661F000AED57 /* reload.png in Resources */,
 				FD6102611AD7CBF10013119A /* webui.css in Resources */,
 				FD61025E1AD7CBC10013119A /* webui.html in Resources */,
 				FD0829C91B67844500D2B126 /* Main.storyboard in Resources */,
 				FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */,
+				FD62CC861B6E6726000AED57 /* copy.png in Resources */,
 				FD0829C01B6782DC00D2B126 /* Main.strings in Resources */,
 				FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */,
 				FD61025C1AD7CBA20013119A /* inject.js in Resources */,
@@ -765,6 +790,7 @@
 				FD1954A71B25927C003A958F /* ViewController.mm in Sources */,
 				FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */,
 				FD1954B01B259318003A958F /* Settings.m in Sources */,
+				FD62CC891B6E6848000AED57 /* MBProgressHUD.m in Sources */,
 				FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */,
 				FD1954C41B259368003A958F /* LiveChat.m in Sources */,
 				FD1954BB1B259342003A958F /* DownloadManager.mm in Sources */,
