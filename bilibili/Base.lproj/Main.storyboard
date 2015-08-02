@@ -388,7 +388,7 @@
                                         </menuItem>
                                         <menuItem title="关闭" keyEquivalent="w" id="yZ9-6y-AEF" userLabel="Zoom">
                                             <connections>
-                                                <action selector="close:" target="Ady-hI-5gd" id="Rcb-HN-Fgj"/>
+                                                <action selector="performClose:" target="Ady-hI-5gd" id="jfJ-eM-d7u"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="进入全屏幕" keyEquivalent="f" id="XfT-Og-R8p" userLabel="Enter Full Screen">
