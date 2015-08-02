@@ -147,6 +147,12 @@ BOOL isTesting;
         [alert setMessageText:@"注意：下载功能仅供测试，可能有各种 BUG，支持分段视频，默认保存在 Movies 文件夹。\n点击 文件->下载管理 来查看任务"];
         [alert runModal];
     }
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[[NSApplication sharedApplication] keyWindow] contentView] animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"正在启动下载引擎";
+    hud.removeFromSuperViewOnHide = YES;
+
     if(!DL){
         DL = new Downloader();
     }
@@ -174,13 +180,14 @@ BOOL isTesting;
         [downloaderObjects insertObject:taskData atIndex:index];
         [dList unlock];
         DL->init();
+        hud.labelText = @"正在解析视频地址";
         DL->newTask([cid intValue], filename);
+        hud.labelText = @"成功开始下载";
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            hud.mode = MBProgressHUDModeText;
+            [hud hide:YES afterDelay:3];
+        });
         
-        NSUserNotification *notification = [[NSUserNotification alloc] init];
-        notification.title = filename;
-        notification.informativeText = @"下载已开始，通过 文件->下载管理 来查看进度";
-        notification.soundName = NSUserNotificationDefaultSoundName;
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
         DL->runDownload(index, filename);
     });
 }
