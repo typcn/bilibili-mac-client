@@ -21,7 +21,7 @@
 "3xs-54-4qH.ibShadowedLabels[2]" = "底";
 
 /* Class = "NSTextFieldCell"; title = "2.所有设置将在下次开始播放时生效，文本框需要按回车保存"; ObjectID = "43T-62-L37"; */
-"43T-62-L37.title" = "2.所有设置将在下次开始播放时生效，文本框需要按回车保存";
+"43T-62-L37.title" = "2.Settings will apply on next play";
 
 /* Class = "NSMenuItem"; title = "退出"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Exit Bilibili";
@@ -69,7 +69,7 @@ Copyleft 2015 TYPCN";
 "6pD-zG-Fl9.title" = "Disable Bottom Comments";
 
 /* Class = "NSButtonCell"; title = "播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）"; ObjectID = "6zZ-XI-ZEK"; */
-"6zZ-XI-ZEK.title" = "Prefer Play MP4 Format Video（发热更小，播放更快，可能有画质损失）";
+"6zZ-XI-ZEK.title" = "Prefer Play MP4 Format Video";
 
 /* Class = "NSMenuItem"; title = "窗口"; ObjectID = "8H0-VQ-yUt"; */
 "8H0-VQ-yUt.title" = "Window";
@@ -78,7 +78,7 @@ Copyleft 2015 TYPCN";
 "8tq-Pn-HDt.title" = "Block Quarrel Comments";
 
 /* Class = "NSTextFieldCell"; title = "允许所有 ffmpeg 支持的格式"; ObjectID = "9eb-5r-SWr"; */
-"9eb-5r-SWr.title" = "Enable All ffmpeg Format Support";
+"9eb-5r-SWr.title" = "Support most of video formats";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Main Menu";
@@ -102,16 +102,16 @@ https://github.com/typcn/bilibili-mac-client";
 "CuV-Ec-HRG.title" = "Comments Transparency";
 
 /* Class = "NSTextFieldCell"; title = "暂时只支持 ASS 格式的字幕，可以不选择"; ObjectID = "Dgo-Bk-4mh"; */
-"Dgo-Bk-4mh.title" = "暂时只支持 ASS 格式的字幕，可以不选择";
+"Dgo-Bk-4mh.title" = "Only support ASS format , Optional";
 
 /* Class = "NSButtonCell"; title = "启用增强硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）"; ObjectID = "Dkz-2s-yhr"; */
-"Dkz-2s-yhr.title" = "Enable Enhanced Hardware Decoding Mode（发热太高尝试开启，可能导致弹幕 FPS 降低）";
+"Dkz-2s-yhr.title" = "Enable VDA Hardware Decoder (may cause lower comment fps)";
 
 /* Class = "NSTabViewItem"; label = "弹幕屏蔽"; ObjectID = "Dt0-6y-OTc"; */
 "Dt0-6y-OTc.label" = "Block Comment";
 
 /* Class = "NSTextFieldCell"; title = "由于弹幕引擎重写，暂时只支持 Bilibili 格式"; ObjectID = "E2h-KF-1Hp"; */
-"E2h-KF-1Hp.title" = "由于弹幕引擎重写，暂时只支持 Bilibili 格式";
+"E2h-KF-1Hp.title" = "Only support Bilibili format";
 
 /* Class = "NSMenuItem"; title = "撤销"; ObjectID = "EBS-37-po7"; */
 "EBS-37-po7.title" = "Undo";
@@ -141,13 +141,13 @@ https://github.com/typcn/bilibili-mac-client";
 "IQv-IB-iLA.title" = "Bilibili Browser";
 
 /* Class = "NSButtonCell"; title = "自动换P（推迟发布）"; ObjectID = "IwE-aZ-Bxq"; */
-"IwE-aZ-Bxq.title" = "Auto Change Video Paragraph（推迟发布）";
+"IwE-aZ-Bxq.title" = "Auto Change Video Paragraph";
 
 /* Class = "NSMenuItem"; title = "GitHub 反馈"; ObjectID = "KKI-vi-xOu"; */
 "KKI-vi-xOu.title" = "GitHub Feedback";
 
 /* Class = "NSTextFieldCell"; title = "一行一个，不区分大小写，请勿输入特殊符号，下次播放时生效，关闭窗口自动保存"; ObjectID = "Lfm-eh-7YA"; */
-"Lfm-eh-7YA.title" = "一行一个，不区分大小写，请勿输入特殊符号，下次播放时生效，关闭窗口自动保存";
+"Lfm-eh-7YA.title" = "\"Enter\" split / Apply on next play / Auto save";
 
 /* Class = "NSMenuItem"; title = "复制"; ObjectID = "NT7-9b-U4L"; */
 "NT7-9b-U4L.title" = "Copy";
@@ -192,7 +192,7 @@ https://github.com/typcn/bilibili-mac-client";
 "SBm-2K-ZsN.title" = "Windows";
 
 /* Class = "NSTextFieldCell"; title = "优先画质"; ObjectID = "Sd9-OH-JrH"; */
-"Sd9-OH-JrH.title" = "Quality Priority";
+"Sd9-OH-JrH.title" = "Quality";
 
 /* Class = "NSMenuItem"; title = "隐藏 Bilibili"; ObjectID = "UIt-CV-9tL"; */
 "UIt-CV-9tL.title" = "Hide Bilibili";
@@ -237,7 +237,7 @@ https://github.com/typcn/bilibili-mac-client";
 "XmJ-ty-8vV.title" = "Open Local Video Files";
 
 /* Class = "NSTextFieldCell"; placeholderString = "输入 AV 号按回车直接观看"; ObjectID = "Xxm-1R-XoN"; */
-"Xxm-1R-XoN.placeholderString" = "Input AV code and press Enter for play directly";
+"Xxm-1R-XoN.placeholderString" = "Enter video ID";
 
 /* Class = "NSMenuItem"; title = "前置全部窗口"; ObjectID = "YSf-sS-evP"; */
 "YSf-sS-evP.title" = "Bring All to Front";
@@ -252,10 +252,10 @@ https://github.com/typcn/bilibili-mac-client";
 "cEI-Ac-YrN.label" = "General";
 
 /* Class = "NSTextFieldCell"; title = "弹幕大小参数"; ObjectID = "dJb-2c-b1m"; */
-"dJb-2c-b1m.title" = "Comments Font Size";
+"dJb-2c-b1m.title" = "Comments Font Arg";
 
 /* Class = "NSTextFieldCell"; title = "1.弹幕字体计算方式为 视频高度除以字体参数 ，参数越大 弹幕越小"; ObjectID = "dYW-v7-aMe"; */
-"dYW-v7-aMe.title" = "1.弹幕字体计算方式为 视频高度除以字体参数 ，参数越大 弹幕越小";
+"dYW-v7-aMe.title" = "1.Comment font size = Video Height/Font Arg , Higher is smaller";
 
 /* Class = "NSButtonCell"; title = "屏蔽优越感弹幕"; ObjectID = "dZF-c1-3Mj"; */
 "dZF-c1-3Mj.title" = "Block Superiority Comments";
@@ -279,7 +279,7 @@ https://github.com/typcn/bilibili-mac-client";
 "hCf-ds-VPo.title" = "Paste";
 
 /* Class = "NSButtonCell"; title = "下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）"; ObjectID = "hFO-eX-oZN"; */
-"hFO-eX-oZN.title" = "Prefer Download MP4 Format Video（方便手机观看，且没有被官方限速，下载更快）";
+"hFO-eX-oZN.title" = "Prefer Download MP4 Format Video";
 
 /* Class = "NSTableColumn"; headerCell.title = "状态"; ObjectID = "hNU-oO-koQ"; */
 "hNU-oO-koQ.headerCell.title" = "Status";
@@ -297,10 +297,10 @@ https://github.com/typcn/bilibili-mac-client";
 "kQb-qP-BWw.title" = "Text Cell";
 
 /* Class = "NSButtonCell"; title = "禁用保持视频比例（让视频撑满窗口）"; ObjectID = "lBw-oC-I1B"; */
-"lBw-oC-I1B.title" = "Disabled Keep Video Scale（让视频撑满窗口）";
+"lBw-oC-I1B.title" = "Disabled Keep Video Scale";
 
 /* Class = "NSTextFieldCell"; title = "提示：按回车可以发送弹幕"; ObjectID = "lbG-e1-MKm"; */
-"lbG-e1-MKm.title" = "提示：按回车可以发送弹幕";
+"lbG-e1-MKm.title" = "Press Enter to send comment";
 
 /* Class = "NSMenuItem"; title = "论坛反馈"; ObjectID = "m2k-Ll-pRS"; */
 "m2k-Ll-pRS.title" = "Forum Feedback";
@@ -315,7 +315,7 @@ https://github.com/typcn/bilibili-mac-client";
 "o60-gF-sgY.title" = "Files";
 
 /* Class = "NSTextFieldCell"; placeholderString = "默认25"; ObjectID = "pXu-zi-Y7u"; */
-"pXu-zi-Y7u.placeholderString" = "默认25";
+"pXu-zi-Y7u.placeholderString" = "25";
 
 /* Class = "NSMenuItem"; title = "重做"; ObjectID = "rO7-VB-9hv"; */
 "rO7-VB-9hv.title" = "Redo";
@@ -324,7 +324,7 @@ https://github.com/typcn/bilibili-mac-client";
 "rj8-A1-Hze.title" = "Delete";
 
 /* Class = "NSButtonCell"; title = "禁用实时弹幕显示（推迟发布）"; ObjectID = "sbQ-fv-ZWa"; */
-"sbQ-fv-ZWa.title" = "Disable Realtime Comments Display（推迟发布）";
+"sbQ-fv-ZWa.title" = "Disable Realtime Comments Display";
 
 /* Class = "NSTabViewController"; title = "偏好设置"; ObjectID = "tLe-z4-o59"; */
 "tLe-z4-o59.title" = "Prefences…";
