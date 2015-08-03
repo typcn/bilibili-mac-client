@@ -161,7 +161,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="nUV-At-1HF">
-                                <rect key="frame" x="63" y="125" width="82" height="32"/>
+                                <rect key="frame" x="20" y="124" width="135" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="push" title="选择弹幕" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wtj-ZP-diZ">
@@ -173,7 +173,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="Oxc-9c-OKk">
-                                <rect key="frame" x="63" y="85" width="82" height="32"/>
+                                <rect key="frame" x="20" y="84" width="135" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="push" title="选择字幕" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="24g-g2-xbB">
@@ -185,7 +185,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LX8-zA-OlO">
-                                <rect key="frame" x="161" y="178" width="172" height="17"/>
+                                <rect key="frame" x="161" y="178" width="274" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="允许所有 ffmpeg 支持的格式" id="9eb-5r-SWr">
@@ -205,7 +205,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="W36-Oj-e30">
-                                <rect key="frame" x="161" y="95" width="242" height="17"/>
+                                <rect key="frame" x="161" y="95" width="274" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="暂时只支持 ASS 格式的字幕，可以不选择" id="Dgo-Bk-4mh">
@@ -215,7 +215,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" id="MRM-cn-yyW">
-                                <rect key="frame" x="63" y="167" width="82" height="32"/>
+                                <rect key="frame" x="20" y="167" width="135" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="push" title="选择视频" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VnN-7Y-cRN">
@@ -227,7 +227,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="x5b-ok-GNF">
-                                <rect key="frame" x="167" y="49" width="147" height="17"/>
+                                <rect key="frame" x="154" y="49" width="203" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请确认全部为 UTF-8 格式" id="PvP-kq-5oz">
@@ -1021,7 +1021,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button id="hj3-k4-IwT">
-                                <rect key="frame" x="25" y="396" width="137" height="18"/>
+                                <rect key="frame" x="25" y="396" width="412" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="自动换P（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="IwE-aZ-Bxq">
@@ -1033,7 +1033,7 @@
                                 </connections>
                             </button>
                             <button id="aRT-dE-rbd">
-                                <rect key="frame" x="25" y="376" width="425" height="18"/>
+                                <rect key="frame" x="25" y="376" width="412" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="禁用实时弹幕显示（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="sbQ-fv-ZWa">
@@ -1276,6 +1276,6 @@
         <image name="reload" width="340" height="340"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="D5B-9p-dnr"/>
+        <segue reference="Y0Z-ee-aqu"/>
     </inferredMetricsTieBreakers>
 </document>
