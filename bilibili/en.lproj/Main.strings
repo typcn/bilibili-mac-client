@@ -201,7 +201,7 @@ https://github.com/typcn/bilibili-mac-client";
 "UJv-cr-uBm.title" = "About Bilibili";
 
 /* Class = "NSMenuItem"; title = "打开本地视频"; ObjectID = "UaC-DW-g4c"; */
-"UaC-DW-g4c.title" = "Open Local Video Files";
+"UaC-DW-g4c.title" = "Open Local Video File";
 
 /* Class = "NSMenuItem"; title = "服务"; ObjectID = "Ut7-p5-Zbx"; */
 "Ut7-p5-Zbx.title" = "Services";
@@ -222,13 +222,13 @@ https://github.com/typcn/bilibili-mac-client";
 "VhF-wp-4cU.title" = "Cut";
 
 /* Class = "NSButtonCell"; title = "选择视频"; ObjectID = "VnN-7Y-cRN"; */
-"VnN-7Y-cRN.title" = "Choose Videos";
+"VnN-7Y-cRN.title" = "Choose Video";
 
 /* Class = "NSTabViewItem"; label = "关键词屏蔽"; ObjectID = "Vno-7c-Vm2"; */
 "Vno-7c-Vm2.label" = "Keyword Block";
 
 /* Class = "NSButtonCell"; title = "选择弹幕"; ObjectID = "Wtj-ZP-diZ"; */
-"Wtj-ZP-diZ.title" = "Select Comments";
+"Wtj-ZP-diZ.title" = "Select Comment";
 
 /* Class = "NSMenuItem"; title = "进入全屏幕"; ObjectID = "XfT-Og-R8p"; */
 "XfT-Og-R8p.title" = "Enter Full Screen";
