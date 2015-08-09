@@ -266,7 +266,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="u4L-Jn-815"/>
-                                        <menuItem title="偏好设置…" keyEquivalent="`" id="F8a-4A-ZBm" userLabel="Preferences…">
+                                        <menuItem title="偏好设置…" keyEquivalent="," id="F8a-4A-ZBm" userLabel="Preferences…">
                                             <connections>
                                                 <segue destination="tLe-z4-o59" kind="show" id="F02-t2-vGm"/>
                                             </connections>
