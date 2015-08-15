@@ -697,11 +697,16 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
 }
 
 - (void)hideCursor:(id)sender {
-//    if(isPlaying) {
+    if(mpv) {
         if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved) >= 1) {
             [NSCursor setHiddenUntilMouseMoves:YES];
         }
-//    }
+    }
+}
+
+- (void)viewWillDisappear {
+    [hideCursorTimer invalidate];
+    hideCursorTimer = nil;
 }
 
 @end
