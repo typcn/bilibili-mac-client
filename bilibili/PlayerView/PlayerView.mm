@@ -112,7 +112,7 @@ static void wakeup(void *context) {
     NSString *res = [NSString stringWithFormat:@"%dx%d",[viewWidth intValue],[viewHeight intValue]];
     [self.view setFrame:rect];
     postCommentButton = self.PostCommentButton;
-    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
+    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
     NSLog(@"Playerview load success");
     self->wrapper = [self view];
 
@@ -697,11 +697,11 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
 }
 
 - (void)hideCursor:(id)sender {
-    if(isPlaying) {
-        if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved) > 3.0) {
+//    if(isPlaying) {
+        if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved) >= 1) {
             [NSCursor setHiddenUntilMouseMoves:YES];
         }
-    }
+//    }
 }
 
 @end
