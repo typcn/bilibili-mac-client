@@ -1,4 +1,10 @@
 
+/* Class = "NSViewController"; title = "智能屏蔽"; ObjectID = "062-3f-byc"; */
+"062-3f-byc.title" = "Smart Block";
+
+/* Class = "NSViewController"; title = "打开本地视频"; ObjectID = "0d3-4B-65W"; */
+"0d3-4B-65W.title" = "Open Local Video File";
+
 /* Class = "NSMenuItem"; title = "Bilibili"; ObjectID = "1Xt-HY-uBw"; */
 "1Xt-HY-uBw.title" = "Bilibili";
 
@@ -140,6 +146,9 @@ https://github.com/typcn/bilibili-mac-client";
 /* Class = "NSWindow"; title = "Bilibili Browser"; ObjectID = "IQv-IB-iLA"; */
 "IQv-IB-iLA.title" = "Bilibili Browser";
 
+/* Class = "NSViewController"; title = "关于 Bilibili for Mac"; ObjectID = "IS2-xA-kfK"; */
+"IS2-xA-kfK.title" = "About Bilibili for Mac";
+
 /* Class = "NSButtonCell"; title = "自动换P（推迟发布）"; ObjectID = "IwE-aZ-Bxq"; */
 "IwE-aZ-Bxq.title" = "Auto Change Video Paragraph";
 
@@ -224,17 +233,14 @@ https://github.com/typcn/bilibili-mac-client";
 /* Class = "NSButtonCell"; title = "选择视频"; ObjectID = "VnN-7Y-cRN"; */
 "VnN-7Y-cRN.title" = "Choose Video";
 
-/* Class = "NSTabViewItem"; label = "关键词屏蔽"; ObjectID = "Vno-7c-Vm2"; */
-"Vno-7c-Vm2.label" = "Keyword Block";
-
 /* Class = "NSButtonCell"; title = "选择弹幕"; ObjectID = "Wtj-ZP-diZ"; */
 "Wtj-ZP-diZ.title" = "Select Comment";
 
+/* Class = "NSViewController"; title = "Bilibili"; ObjectID = "XfG-lQ-9wD"; */
+"XfG-lQ-9wD.title" = "Bilibili";
+
 /* Class = "NSMenuItem"; title = "进入全屏幕"; ObjectID = "XfT-Og-R8p"; */
 "XfT-Og-R8p.title" = "Enter Full Screen";
-
-/* Class = "NSWindow"; title = "打开本地视频"; ObjectID = "XmJ-ty-8vV"; */
-"XmJ-ty-8vV.title" = "Open Local Video Files";
 
 /* Class = "NSTextFieldCell"; placeholderString = "输入 AV 号按回车直接观看"; ObjectID = "Xxm-1R-XoN"; */
 "Xxm-1R-XoN.placeholderString" = "Enter video ID";
@@ -245,11 +251,11 @@ https://github.com/typcn/bilibili-mac-client";
 /* Class = "NSMenuItem"; title = "缩放"; ObjectID = "Z3a-zc-YeZ"; */
 "Z3a-zc-YeZ.title" = "Zoom";
 
-/* Class = "NSWindow"; title = "关于 Bilibili for Mac"; ObjectID = "bTz-aY-2am"; */
-"bTz-aY-2am.title" = "About Bilibili for Mac";
-
 /* Class = "NSTabViewItem"; label = "通用"; ObjectID = "cEI-Ac-YrN"; */
-"cEI-Ac-YrN.label" = "General";
+"cEI-Ac-YrN.title" = "General";
+
+/* Class = "NSMenuItem"; title = "打开下载管理器"; ObjectID = "cvU-jO-K6m"; */
+"cvU-jO-K6m.title" = "Open Download Manager";
 
 /* Class = "NSTextFieldCell"; title = "弹幕大小参数"; ObjectID = "dJb-2c-b1m"; */
 "dJb-2c-b1m.title" = "Comments Font Arg";
@@ -265,9 +271,6 @@ https://github.com/typcn/bilibili-mac-client";
 
 /* Class = "NSTabViewController"; title = "弹幕屏蔽"; ObjectID = "fZa-B8-J07"; */
 "fZa-B8-J07.title" = "Comment Block";
-
-/* Class = "NSMenuItem"; title = "打开下载管理器"; ObjectID = "fzm-lD-qXA"; */
-"cvU-jO-K6m.title" = "Download Manager";
 
 /* Class = "NSButtonCell"; title = "立即播放"; ObjectID = "g4M-p0-FkK"; */
 "g4M-p0-FkK.title" = "Play Now";
@@ -311,6 +314,9 @@ https://github.com/typcn/bilibili-mac-client";
 /* Class = "NSButtonCell"; title = "屏蔽日期弹幕"; ObjectID = "naf-pC-PtF"; */
 "naf-pC-PtF.title" = "Block Date Comments";
 
+/* Class = "NSViewController"; title = "关键词屏蔽"; ObjectID = "nsc-wB-2EJ"; */
+"nsc-wB-2EJ.title" = "Keyword Block";
+
 /* Class = "NSMenu"; title = "文件"; ObjectID = "o60-gF-sgY"; */
 "o60-gF-sgY.title" = "Files";
 
@@ -326,20 +332,17 @@ https://github.com/typcn/bilibili-mac-client";
 /* Class = "NSButtonCell"; title = "禁用实时弹幕显示（推迟发布）"; ObjectID = "sbQ-fv-ZWa"; */
 "sbQ-fv-ZWa.title" = "Disable Realtime Comments Display";
 
-/* Class = "NSTabViewController"; title = "偏好设置"; ObjectID = "tLe-z4-o59"; */
-"tLe-z4-o59.title" = "Prefences…";
-
 /* Class = "NSMenu"; title = "Bilibili"; ObjectID = "uQy-DD-JDr"; */
 "uQy-DD-JDr.title" = "Bilibili";
-
-/* Class = "NSTabViewItem"; label = "智能屏蔽"; ObjectID = "uVa-K5-cbK"; */
-"uVa-K5-cbK.label" = "Smart Block";
 
 /* Class = "NSButtonCell"; title = "继续未完成下载"; ObjectID = "ucr-3X-gC2"; */
 "ucr-3X-gC2.title" = "Continue Download";
 
 /* Class = "NSWindow"; title = "发送弹幕"; ObjectID = "uoV-BV-vze"; */
 "uoV-BV-vze.title" = "Send Comment";
+
+/* Class = "NSViewController"; title = "下载管理器"; ObjectID = "uyE-Xu-eZU"; */
+"uyE-Xu-eZU.title" = "Download Manager";
 
 /* Class = "NSTextFieldCell"; title = "IP 伪造 ( 大陆用户请勿开启 )"; ObjectID = "vMH-pa-ZpX"; */
 "vMH-pa-ZpX.title" = "IP Fake ( 大陆用户请勿开启 )";
@@ -350,8 +353,8 @@ https://github.com/typcn/bilibili-mac-client";
 /* Class = "NSMenuItem"; title = "隐藏其他"; ObjectID = "x0W-Jp-DDQ"; */
 "x0W-Jp-DDQ.title" = "Hide Other";
 
-/* Class = "NSWindow"; title = "下载管理"; ObjectID = "ye8-k2-vuM"; */
-"ye8-k2-vuM.title" = "Download Manager";
+/* Class = "NSMenuItem"; title = "关闭"; ObjectID = "yZ9-6y-AEF"; */
+"yZ9-6y-AEF.title" = "Close";
 
 /* Class = "NSTextFieldCell"; placeholderString = "发送弹幕"; ObjectID = "yn2-rr-jS0"; */
 "yn2-rr-jS0.placeholderString" = "Send Comment";
@@ -361,5 +364,3 @@ https://github.com/typcn/bilibili-mac-client";
 
 /* Class = "NSTextFieldCell"; title = "弹幕移动速度"; ObjectID = "zpf-lu-2U6"; */
 "zpf-lu-2U6.title" = "Comment Scroll Speed";
-
-"yZ9-6y-AEF.title" = "Close";

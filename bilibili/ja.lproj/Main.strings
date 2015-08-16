@@ -116,7 +116,7 @@ https://github.com/typcn/bilibili-mac-client";
 "Dkz-2s-yhr.title" = "VDAのハードウェアデコーダを有効にします（下のコメントのfpsを引き起こす可能性があります）";
 
 /* Class = "NSTabViewItem"; label = "弹幕屏蔽"; ObjectID = "Dt0-6y-OTc"; */
-"Dt0-6y-OTc.label" = "弾幕マスク";
+"Dt0-6y-OTc.title" = "弾幕マスク";
 
 /* Class = "NSTextFieldCell"; title = "由于弹幕引擎重写，暂时只支持 Bilibili 格式"; ObjectID = "E2h-KF-1Hp"; */
 "E2h-KF-1Hp.title" = "唯一の Bilibili 形式をサポート";
@@ -254,7 +254,7 @@ https://github.com/typcn/bilibili-mac-client";
 "Z3a-zc-YeZ.title" = "缩放";
 
 /* Class = "NSTabViewItem"; label = "通用"; ObjectID = "cEI-Ac-YrN"; */
-"cEI-Ac-YrN.label" = "通用";
+"cEI-Ac-YrN.title" = "通用";
 
 /* Class = "NSMenuItem"; title = "打开下载管理器"; ObjectID = "cvU-jO-K6m"; */
 "cvU-jO-K6m.title" = "打开下载管理器";

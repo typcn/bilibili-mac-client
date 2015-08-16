@@ -114,7 +114,7 @@ https://github.com/typcn/bilibili-mac-client";
 "Dkz-2s-yhr.title" = "启用增强硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）";
 
 /* Class = "NSTabViewItem"; label = "弹幕屏蔽"; ObjectID = "Dt0-6y-OTc"; */
-"Dt0-6y-OTc.label" = "弹幕屏蔽";
+"Dt0-6y-OTc.title" = "弹幕屏蔽";
 
 /* Class = "NSTextFieldCell"; title = "由于弹幕引擎重写，暂时只支持 Bilibili 格式"; ObjectID = "E2h-KF-1Hp"; */
 "E2h-KF-1Hp.title" = "由于弹幕引擎重写，暂时只支持 Bilibili 格式";
@@ -252,7 +252,10 @@ https://github.com/typcn/bilibili-mac-client";
 "Z3a-zc-YeZ.title" = "缩放";
 
 /* Class = "NSTabViewItem"; label = "通用"; ObjectID = "cEI-Ac-YrN"; */
-"cEI-Ac-YrN.label" = "通用";
+"cEI-Ac-YrN.title" = "通用";
+
+/* Class = "NSMenuItem"; title = "打开下载管理器"; ObjectID = "cvU-jO-K6m"; */
+"cvU-jO-K6m.title" = "打开下载管理器";
 
 /* Class = "NSTextFieldCell"; title = "弹幕大小参数"; ObjectID = "dJb-2c-b1m"; */
 "dJb-2c-b1m.title" = "弹幕大小参数";
@@ -268,9 +271,6 @@ https://github.com/typcn/bilibili-mac-client";
 
 /* Class = "NSTabViewController"; title = "弹幕屏蔽"; ObjectID = "fZa-B8-J07"; */
 "fZa-B8-J07.title" = "弹幕屏蔽";
-
-/* Class = "NSMenuItem"; title = "下载管理器"; ObjectID = "fzm-lD-qXA"; */
-"fzm-lD-qXA.title" = "下载管理器";
 
 /* Class = "NSButtonCell"; title = "立即播放"; ObjectID = "g4M-p0-FkK"; */
 "g4M-p0-FkK.title" = "立即播放";
@@ -352,6 +352,9 @@ https://github.com/typcn/bilibili-mac-client";
 
 /* Class = "NSMenuItem"; title = "隐藏其他"; ObjectID = "x0W-Jp-DDQ"; */
 "x0W-Jp-DDQ.title" = "隐藏其他";
+
+/* Class = "NSMenuItem"; title = "关闭"; ObjectID = "yZ9-6y-AEF"; */
+"yZ9-6y-AEF.title" = "关闭";
 
 /* Class = "NSTextFieldCell"; placeholderString = "发送弹幕"; ObjectID = "yn2-rr-jS0"; */
 "yn2-rr-jS0.placeholderString" = "发送弹幕";
