@@ -170,7 +170,7 @@ static void wakeup(void *context) {
             }
         }
         
-        [self.textTip setStringValue:@"正在解析视频地址"];
+        [self.textTip setStringValue:NSLocalizedString(@"正在解析视频地址", nil)];
         
         // Get Sign
         int quality = [self getSettings:@"quality"];
@@ -208,7 +208,7 @@ getUrl: NSLog(@"Getting video url");
             NSLog(@"API ERROR:%@",error);
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSAlert *alert = [[NSAlert alloc] init];
-                [alert setMessageText:@"视频解析出现错误，返回内容为空，可能的原因：\n1. 您的网络连接出现故障\n2. Bilibili API 服务器出现故障\n请尝试以下步骤：\n1. 更换网络连接或重启电脑\n2. 可能触发了频率限制，请更换 IP 地址\n\n如果您确信是软件问题，请点击帮助 -- 反馈"];
+                [alert setMessageText:NSLocalizedString(@"视频解析出现错误，返回内容为空，可能的原因：\n1. 您的网络连接出现故障\n2. Bilibili API 服务器出现故障\n请尝试以下步骤：\n1. 更换网络连接或重启电脑\n2. 可能触发了频率限制，请更换 IP 地址\n\n如果您确信是软件问题，请点击帮助 -- 反馈", nil)];
                 [alert runModal];
             });
             return;
@@ -221,7 +221,7 @@ getUrl: NSLog(@"Getting video url");
             NSLog(@"JSON ERROR:%@",jsonError);
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSAlert *alert = [[NSAlert alloc] init];
-                [alert setMessageText:@"视频解析出现错误，JSON 解析失败，可能的原因：\n1. 您的网络被劫持\n2. Bilibili 服务器出现故障\n请尝试以下步骤：\n1. 尝试更换网络\n2. 过一会再试\n\n如果您确信是软件问题，请点击帮助 -- 反馈"];
+                [alert setMessageText:NSLocalizedString(@"视频解析出现错误，JSON 解析失败，可能的原因：\n1. 您的网络被劫持\n2. Bilibili 服务器出现故障\n请尝试以下步骤：\n1. 尝试更换网络\n2. 过一会再试\n\n如果您确信是软件问题，请点击帮助 -- 反馈", nil)];
                 [alert runModal];
             });
             return;
@@ -232,10 +232,10 @@ getUrl: NSLog(@"Getting video url");
         if([dUrls count] == 0){
             if([type isEqualToString:@"mp4"]){
                 type = @"flv";
-                [self.textTip setStringValue:@"正在尝试重新解析"];
+                [self.textTip setStringValue:NSLocalizedString(@"正在尝试重新解析", nil)];
                 goto getUrl;
             }
-            [self.textTip setStringValue:@"视频无法解析"];
+            [self.textTip setStringValue:NSLocalizedString(@"视频无法解析", nil)];
             return;
         }
         
@@ -279,7 +279,7 @@ getUrl: NSLog(@"Getting video url");
         }
         
         // ffprobe
-        [self.textTip setStringValue:@"正在获取视频信息"];
+        [self.textTip setStringValue:NSLocalizedString(@"正在获取视频信息", nil)];
 
         NSLog(@"FirstVideo:%@",firstVideo);
         
@@ -293,7 +293,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         
         if([height intValue] < 100){
             if(!BackupUrls){
-                [self.textTip setStringValue:@"读取视频失败，可能视频源已失效"];
+                [self.textTip setStringValue:NSLocalizedString(@"读取视频失败，可能视频源已失效", nil)];
             }else{
                 usingBackup++;
                 NSString *backupVideoUrl = [BackupUrls objectAtIndex:usingBackup];
@@ -303,14 +303,14 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
                     NSLog(@"Timeout! Change to backup url: %@",vUrl);
                     goto GetInfo;
                 }else{
-                    [self.textTip setStringValue:@"读取视频失败，视频服务器故障"];
+                    [self.textTip setStringValue:NSLocalizedString(@"读取视频失败，视频服务器故障", nil)];
                 }
             }
         }
     
         NSString *fvHost = [[NSURL URLWithString:firstVideo] host];
         if([fvHost length] > 0){
-            vTitle = [NSString stringWithFormat:@"%@ - 服务器: %@",vTitle,fvHost];
+            vTitle = [NSString stringWithFormat:NSLocalizedString(@"%@ - 服务器: %@", nil),vTitle,fvHost];
         }
         
         if(isCancelled){
@@ -328,7 +328,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             }
             
         }else{
-            [self.textTip setStringValue:@"视频信息读取失败"];
+            [self.textTip setStringValue:NSLocalizedString(@"视频信息读取失败", nil)];
             parsing = false;
             return;
         }
@@ -344,7 +344,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         NSLog(@"Failed creating context");
         exit(1);
     }
-    [self.textTip setStringValue:@"正在载入视频"];
+    [self.textTip setStringValue:NSLocalizedString(@"正在载入视频", nil)];
     
     int64_t wid = (intptr_t) self->wrapper;
     check_error(mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid));
@@ -421,7 +421,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
 
     NSString *resolution = [NSString stringWithFormat:@"%@x%@",width,height];
     NSLog(@"Video resolution: %@",resolution);
-    [self.textTip setStringValue:@"正在读取弹幕"];
+    [self.textTip setStringValue:NSLocalizedString(@"正在读取弹幕", nil)];
     
     
     BOOL LC = [vCID isEqualToString:@"LOCALVIDEO"];
@@ -527,7 +527,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
 
 - (void) addSubtitle:(NSString *)filename withCommentFile:(NSString *)comment
 {
-    [self.textTip setStringValue:@"正在合并弹幕字幕"];
+    [self.textTip setStringValue:NSLocalizedString(@"正在合并弹幕字幕", nil)];
     
     NSError *error = nil;
     NSString *str = [[NSString alloc] initWithContentsOfFile:filename
@@ -609,10 +609,10 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         case MPV_EVENT_START_FILE:{
             if([[[NSUserDefaults standardUserDefaults] objectForKey:@"FirstPlayed"] length] != 3){
                 [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"FirstPlayed"];
-                [self.textTip setStringValue:@"正在创建字体缓存"];
-                [self.subtip setStringValue:@"首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口"];
+                [self.textTip setStringValue:NSLocalizedString(@"正在创建字体缓存", nil)];
+                [self.subtip setStringValue:NSLocalizedString(@"首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口", nil)];
             }else{
-                [self.textTip setStringValue:@"正在缓冲"];
+                [self.textTip setStringValue:NSLocalizedString(@"正在缓冲", nil)];
             }
             break;
         }
@@ -630,7 +630,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         }
         
         case MPV_EVENT_END_FILE:{
-            [self.textTip setStringValue:@"播放完成"];
+            [self.textTip setStringValue:NSLocalizedString(@"播放完成", nil)];
             break;
         }
         

@@ -26,7 +26,7 @@ int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
         case aria2::EVENT_ON_DOWNLOAD_ERROR:{
             NSUserNotification *notification = [[NSUserNotification alloc] init];
             notification.title = @"Bilibili Client";
-            notification.informativeText = @"下载失败";
+            notification.informativeText = NSLocalizedString(@"下载失败", nil);
             notification.soundName = NSUserNotificationDefaultSoundName;
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
             break;
@@ -66,7 +66,7 @@ void Downloader::newTask(int cid,NSString *name){
         NSLog(@"[Downloader] ERROR");
         NSUserNotification *notification = [[NSUserNotification alloc] init];
         notification.title = @"Bilibili Client";
-        notification.informativeText = @"下载失败，无法解析视频";
+        notification.informativeText = NSLocalizedString(@"下载失败，无法解析视频", nil);
         notification.soundName = NSUserNotificationDefaultSoundName;
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
         mtx.unlock();
@@ -114,7 +114,7 @@ void Downloader::runDownload(int fileid,NSString *filename){
         [downloaderObjects removeObjectAtIndex:fileid];
         NSDictionary *taskData = @{
                                     @"name":filename,
-                                    @"status":[NSString stringWithFormat:@"剩余分段:%d 下载速度:%dKB/s 大小:%d/%dMB",gstat.numActive,gstat.downloadSpeed/1024,currentLength/1024/1024,allLength/1024/1024],
+                                    @"status":[NSString stringWithFormat:NSLocalizedString(@"剩余分段:%d 下载速度:%dKB/s 大小:%d/%dMB", nil),gstat.numActive,gstat.downloadSpeed/1024,currentLength/1024/1024,allLength/1024/1024],
                                     @"cid":cid,
                                     @"lastUpdate":[NSString stringWithFormat:@"%lu",time(0)]
                                     };
@@ -128,7 +128,7 @@ void Downloader::runDownload(int fileid,NSString *filename){
     if(rv == 0){
         NSUserNotification *notification = [[NSUserNotification alloc] init];
         notification.title = filename;
-        notification.informativeText = @"视频与弹幕下载完成";
+        notification.informativeText = NSLocalizedString(@"视频与弹幕下载完成", nil);
         notification.soundName = NSUserNotificationDefaultSoundName;
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
     }
@@ -137,7 +137,7 @@ void Downloader::runDownload(int fileid,NSString *filename){
         [downloaderObjects removeObjectAtIndex:fileid];
         NSDictionary *taskData = @{
                                    @"name":filename,
-                                   @"status":@"下载已完成",
+                                   @"status":NSLocalizedString(@"下载已完成", nil),
                                    };
         [downloaderObjects insertObject:taskData atIndex:fileid];
     }else{

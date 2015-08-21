@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = C56A943C1B36E837005C274F /* WebView+SwipeNavigation.m */; };
+		E09BF99F1B84CCC6005E08CE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E09BF9A11B84CCC6005E08CE /* Localizable.strings */; };
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
 		FD076C6D1AC8CBBB00C893FA /* bilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */; };
 		FD0829C91B67844500D2B126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0829C71B67844500D2B126 /* Main.storyboard */; };
@@ -184,6 +185,10 @@
 /* Begin PBXFileReference section */
 		C56A943B1B36E837005C274F /* WebView+SwipeNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WebView+SwipeNavigation.h"; path = "MainView/WebView+SwipeNavigation.h"; sourceTree = "<group>"; };
 		C56A943C1B36E837005C274F /* WebView+SwipeNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WebView+SwipeNavigation.m"; path = "MainView/WebView+SwipeNavigation.m"; sourceTree = "<group>"; };
+		E0D6D54D1B84D6970052253E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E0DF88161B875D650051870D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E0DF88171B875D660051870D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E0DF88181B875D7C0051870D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FD076C501AC8CBBB00C893FA /* Bilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C541AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C5D1AC8CBBB00C893FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -387,6 +392,7 @@
 				FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */,
 				FD076C541AC8CBBB00C893FA /* Info.plist */,
 				FD1954C61B25942F003A958F /* main.m */,
+				E09BF9A11B84CCC6005E08CE /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -722,6 +728,7 @@
 				FD6102611AD7CBF10013119A /* webui.css in Resources */,
 				FD61025E1AD7CBC10013119A /* webui.html in Resources */,
 				FD0829C91B67844500D2B126 /* Main.storyboard in Resources */,
+				E09BF99F1B84CCC6005E08CE /* Localizable.strings in Resources */,
 				FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */,
 				FD62CC861B6E6726000AED57 /* copy.png in Resources */,
 				FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */,
@@ -802,6 +809,17 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		E09BF9A11B84CCC6005E08CE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E0D6D54D1B84D6970052253E /* Base */,
+				E0DF88161B875D650051870D /* en */,
+				E0DF88171B875D660051870D /* zh-Hans */,
+				E0DF88181B875D7C0051870D /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		FD0829C71B67844500D2B126 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -901,7 +919,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -940,7 +957,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

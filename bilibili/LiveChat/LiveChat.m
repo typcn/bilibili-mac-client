@@ -43,7 +43,7 @@ BOOL hasMsg;
 }
 
 - (void)onNewError:(NSString *)str{
-    [self AppendToTextView:[NSString stringWithFormat:@"未知指令: %@\n",str]];
+    [self AppendToTextView:[NSString stringWithFormat:NSLocalizedString(@"未知指令: %@\n", nil),str]];
 }
 
 - (void)AppendToTextView:(NSString *)text{
