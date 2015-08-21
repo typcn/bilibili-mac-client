@@ -700,7 +700,7 @@ Copyleft 2015 TYPCN</string>
         <!--Miedia Player Window Controller-->
         <scene sceneID="DUG-BS-fjC">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="3Nx-YC-zmP" userLabel="Miedia Player Window Controller" customClass="PlayerWindowController" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="3Nx-YC-zmP" userLabel="Miedia Player Window Controller" sceneMemberID="viewController">
                     <window key="window" title="TYPCN Media Player" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="utilityWindow" id="Qzs-of-Uzm" customClass="PlayerWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
