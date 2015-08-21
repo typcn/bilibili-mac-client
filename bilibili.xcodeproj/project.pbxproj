@@ -11,7 +11,7 @@
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
 		FD076C6D1AC8CBBB00C893FA /* bilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */; };
 		FD0829C91B67844500D2B126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0829C71B67844500D2B126 /* Main.storyboard */; };
-		FD1954A71B25927C003A958F /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A61B25927C003A958F /* ViewController.mm */; };
+		FD1954A71B25927C003A958F /* WebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A61B25927C003A958F /* WebView.mm */; };
 		FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A91B259318003A958F /* CommentBlockSettings.m */; };
 		FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AB1B259318003A958F /* KeywordBlockSettings.m */; };
 		FD1954B01B259318003A958F /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AD1B259318003A958F /* Settings.m */; };
@@ -191,8 +191,8 @@
 		FD076C6B1AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bilibiliTests.m; sourceTree = "<group>"; };
 		FD0829C81B67844500D2B126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		FD1954A51B25927C003A958F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = MainView/ViewController.h; sourceTree = "<group>"; };
-		FD1954A61B25927C003A958F /* ViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ViewController.mm; path = MainView/ViewController.mm; sourceTree = "<group>"; };
+		FD1954A51B25927C003A958F /* WebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebView.h; path = MainView/WebView.h; sourceTree = "<group>"; };
+		FD1954A61B25927C003A958F /* WebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WebView.mm; path = MainView/WebView.mm; sourceTree = "<group>"; };
 		FD1954A81B259318003A958F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentBlockSettings.h; path = Settings/CommentBlockSettings.h; sourceTree = "<group>"; };
 		FD1954A91B259318003A958F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentBlockSettings.m; path = Settings/CommentBlockSettings.m; sourceTree = "<group>"; };
 		FD1954AA1B259318003A958F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeywordBlockSettings.h; path = Settings/KeywordBlockSettings.h; sourceTree = "<group>"; };
@@ -501,8 +501,8 @@
 		FD476C6B1AD22A0D00584EFE /* Main View */ = {
 			isa = PBXGroup;
 			children = (
-				FD1954A51B25927C003A958F /* ViewController.h */,
-				FD1954A61B25927C003A958F /* ViewController.mm */,
+				FD1954A51B25927C003A958F /* WebView.h */,
+				FD1954A61B25927C003A958F /* WebView.mm */,
 				C56A943B1B36E837005C274F /* WebView+SwipeNavigation.h */,
 				C56A943C1B36E837005C274F /* WebView+SwipeNavigation.m */,
 			);
@@ -769,7 +769,7 @@
 				FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */,
 				FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */,
 				FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */,
-				FD1954A71B25927C003A958F /* ViewController.mm in Sources */,
+				FD1954A71B25927C003A958F /* WebView.mm in Sources */,
 				FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */,
 				FD1954B01B259318003A958F /* Settings.m in Sources */,
 				FD62CC891B6E6848000AED57 /* MBProgressHUD.m in Sources */,

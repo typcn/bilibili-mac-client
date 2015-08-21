@@ -6,7 +6,7 @@
 //  Copyleft 2015 TYPCN. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "WebView.h"
 #import <Sparkle/Sparkle.h>
 #import "downloadWrapper.h"
 #import "Analytics.h"
@@ -387,11 +387,11 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
 
 @end
 
-@interface PlayerWindowController : NSWindowController
+@interface WebViewWindow : NSWindow <NSWindowDelegate>
 
 @end
 
-@implementation PlayerWindowController{
+@implementation WebViewWindow{
     
 }
 
