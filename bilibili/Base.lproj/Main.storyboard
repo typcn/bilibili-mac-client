@@ -448,8 +448,8 @@
             <objects>
                 <tabViewController showSeguePresentationStyle="single" selectedTabViewItemIndex="0" tabStyle="toolbar" id="tLe-z4-o59" userLabel="Preferences" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem title="通用" image="NSPreferencesGeneral" id="cEI-Ac-YrN" userLabel="General"/>
-                        <tabViewItem title="弹幕屏蔽" image="NSFontPanel" id="Dt0-6y-OTc" userLabel="Comment Block"/>
+                        <tabViewItem image="NSPreferencesGeneral" id="cEI-Ac-YrN" userLabel="General"/>
+                        <tabViewItem image="NSFontPanel" id="Dt0-6y-OTc" userLabel="Comment Block"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="a0a-NW-aFM">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -566,10 +566,7 @@
                                 <rect key="frame" x="80" y="36" width="360" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" title="更多功能欢迎到 GitHub 参与开发
-
-
-https://github.com/typcn/bilibili-mac-client" id="BKA-mo-Ldx">
+                                <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" title="更多功能欢迎到 GitHub 参与开发   https://github.com/typcn/bilibili-mac-client" id="BKA-mo-Ldx">
                                     <font key="font" size="12" name="STHeitiSC-Light"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -687,7 +684,7 @@ Copyleft 2015 TYPCN</string>
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="MainWindowController" showSeguePresentationStyle="single" id="B8D-0N-5wS" userLabel="Main Window Controller" sceneMemberID="viewController">
-                    <window key="window" title="Bilibili Browser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="documentWindow" id="IQv-IB-iLA">
+                    <window key="window" title="Bilibili Browser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="documentWindow" id="IQv-IB-iLA" customClass="WebViewWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="748" y="758" width="408" height="202"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>

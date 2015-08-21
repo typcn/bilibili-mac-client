@@ -747,6 +747,10 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             }
         }
     }
+    // Save window size
+    [[NSUserDefaults standardUserDefaults] setDouble:frameSize.width forKey:@"playerwidth"];
+    [[NSUserDefaults standardUserDefaults] setDouble:frameSize.height forKey:@"plyaerheight"];
+    
     return frameSize;
 }
 - (void)windowDidResize:(NSNotification *)notification{

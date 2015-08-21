@@ -395,5 +395,12 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
     
 }
 
+- (NSSize)windowWillResize:(NSWindow *)sender
+                    toSize:(NSSize)frameSize{
+    // Save window size
+    [[NSUserDefaults standardUserDefaults] setDouble:frameSize.width forKey:@"webwidth"];
+    [[NSUserDefaults standardUserDefaults] setDouble:frameSize.height forKey:@"webheight"];
+    return frameSize;
+}
 
 @end
