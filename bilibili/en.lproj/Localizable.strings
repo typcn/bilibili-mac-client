@@ -22,7 +22,7 @@
 "视频与弹幕下载完成" = "Video and Comment download complete";
 "下载已完成" = "Download Complete";
 
-//  ViewController
+//  WebView
 "未命名" = "untitled";
 "注意：下载功能仅供测试，可能有各种 BUG，支持分段视频，默认保存在 Movies 文件夹。\n点击 文件->下载管理 来查看任务" = "Attention: Download feature is still developing. May have BUGs, Save in Movies folder. \nClick File->Open Download Manager to view tasks";
 "正在启动下载引擎" = "Starting Download Engine";
