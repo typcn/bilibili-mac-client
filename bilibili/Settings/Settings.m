@@ -35,8 +35,8 @@
     [self.transparency setFloatValue:trans];
     
     NSString *quality = [settingsController objectForKey:@"quality"];
-    if([quality length] != 2){
-        quality = @"原画";
+    if(!quality){
+        quality = NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[3]", @"Main", @"原画");
     }
     [self.qualityBox setStringValue:quality];
     

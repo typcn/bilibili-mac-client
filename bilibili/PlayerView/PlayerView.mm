@@ -685,11 +685,11 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     if([key isEqualToString:@"quality"]){
         
         NSString *quality = [settingsController objectForKey:@"quality"];
-        if([quality isEqualToString:@"高清"]){
+        if([quality isEqualToString:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[2]", @"Main", @"高清")]){
             return 3;
-        }else if ([quality isEqualToString:@"标清"]){
+        }else if ([quality isEqualToString:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[1]", @"Main", @"标清")]){
             return 2;
-        }else if([quality isEqualToString:@"低清"]){
+        }else if([quality isEqualToString:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[0]", @"Main", @"低清")]){
             return 1;
         }else{
             return 4;
