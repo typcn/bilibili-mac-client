@@ -51,7 +51,7 @@ extern BOOL isStopped;
 objectValueForTableColumn:(NSTableColumn *)aTableColumn
             row:(NSInteger)rowIndex{
     if([downloaderObjects count] <= rowIndex){
-        return @"请稍后";
+        return NSLocalizedString(@"请稍后", nil);
     }
     [dList lock];
     NSDictionary *object = [downloaderObjects objectAtIndex:rowIndex];
@@ -71,7 +71,7 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
 }
 - (IBAction)clearDLList:(id)sender {
     for (id object in downloaderObjects) {
-        if([[object valueForKey:@"status"] isEqualToString:@"下载已完成"]){
+        if([[object valueForKey:@"status"] isEqualToString:NSLocalizedString(@"下载已完成", nil)]){
             [downloaderObjects removeObject:object];
         }
     }
@@ -115,7 +115,7 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
             }
             NSDictionary *taskData = @{
                                        @"name":name,
-                                       @"status":@"正在等待恢复",
+                                       @"status":NSLocalizedString(@"正在等待恢复", nil),
                                        @"cid":cid,
                                        };
             [downloaderObjects insertObject:taskData atIndex:index];
@@ -128,7 +128,7 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
             [downloaderObjects removeObject:object];
             NSDictionary *taskData = @{
                                        @"name":name,
-                                       @"status":@"恢复下载失败",
+                                       @"status":NSLocalizedString(@"恢复下载失败", nil),
                                        };
             [downloaderObjects insertObject:taskData atIndex:index];
         }

@@ -32,7 +32,7 @@ NSString *subFile;
     [openDlg setCanChooseFiles:YES];
     [openDlg setAllowsMultipleSelection:NO];
     [openDlg setCanChooseDirectories:NO];
-    [openDlg setPrompt:@"选择视频"];
+    [openDlg setPrompt:NSLocalizedString(@"选择视频", @"Choose Video")];
     
     if ( [openDlg runModal] == NSModalResponseOK )
     {
@@ -46,7 +46,7 @@ NSString *subFile;
     [openDlg setCanChooseFiles:YES];
     [openDlg setAllowsMultipleSelection:NO];
     [openDlg setCanChooseDirectories:NO];
-    [openDlg setPrompt:@"选择弹幕"];
+    [openDlg setPrompt:NSLocalizedString(@"选择弹幕", @"Select Comment")];
     
     if ( [openDlg runModal] == NSModalResponseOK )
     {
@@ -60,7 +60,7 @@ NSString *subFile;
     [openDlg setCanChooseFiles:YES];
     [openDlg setAllowsMultipleSelection:NO];
     [openDlg setCanChooseDirectories:NO];
-    [openDlg setPrompt:@"选择字幕"];
+    [openDlg setPrompt:NSLocalizedString(@"选择字幕", @"Select Subtitle")];
     
     if ( [openDlg runModal] == NSModalResponseOK )
     {

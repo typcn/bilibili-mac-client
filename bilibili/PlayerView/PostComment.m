@@ -119,14 +119,14 @@ extern mpv_handle *mpv;
         if([returnData length] > 0){
             int x = [returnData intValue];
             if (x > -1){
-                [sender setStringValue:@"😁发送成功！"];
+                [sender setStringValue:NSLocalizedString(@"😁发送成功！", nil)];
                 NSLog(@"Comment sent. ID: %d",x);
             }else{
-                [sender setStringValue:[NSString stringWithFormat:@"😢发送失败 错误码 %d",x]];
+                [sender setStringValue:[NSString stringWithFormat:NSLocalizedString(@"😢发送失败 错误码 %d", nil),x]];
                 NSLog(@"Comment send failed. Error code: %d",x);
             }
         }else{
-            [sender setStringValue:@"😡简直日了狗了！没发出去！"];
+            [sender setStringValue:NSLocalizedString(@"😡简直日了狗了！没发出去！", nil)];
             NSLog(@"Comment send failed. Empty response");
         }
         double delayInSeconds = 3.0;

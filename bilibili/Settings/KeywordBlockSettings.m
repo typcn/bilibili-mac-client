@@ -19,7 +19,7 @@
     
     NSString *keywords = [[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"];
     if([keywords length] < 1){
-        [self.textView setString:@"请输入关键词，一行一个"];
+        [self.textView setString:NSLocalizedString(@"请输入关键词，一行一个", nil)];
     }else{
         keywords = [keywords stringByReplacingOccurrencesOfString:@"|" withString:@"\n"];
         [self.textView setString:keywords];

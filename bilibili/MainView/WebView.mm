@@ -133,7 +133,7 @@ BOOL isTesting;
     if([mediaTitle length] > 0){
         vTitle = [fn objectAtIndex:0];
     }else{
-        vTitle = @"未命名";
+        vTitle = NSLocalizedString(@"未命名", nil);
     }
     
     [[NSUserDefaults standardUserDefaults] setObject:vUrl forKey:@"LastPlay"];
@@ -153,13 +153,13 @@ BOOL isTesting;
     if(!downloaderObjects){
         downloaderObjects = [[NSMutableArray alloc] init];
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"注意：下载功能仅供测试，可能有各种 BUG，支持分段视频，默认保存在 Movies 文件夹。\n点击 文件->下载管理 来查看任务"];
+        [alert setMessageText:NSLocalizedString(@"注意：下载功能仅供测试，可能有各种 BUG，支持分段视频，默认保存在 Movies 文件夹。\n点击 文件->下载管理 来查看任务", nil)];
         [alert runModal];
     }
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[[NSApplication sharedApplication] keyWindow] contentView] animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"正在启动下载引擎";
+    hud.labelText = NSLocalizedString(@"正在启动下载引擎", nil);
     hud.removeFromSuperViewOnHide = YES;
 
     if(!DL){
@@ -181,7 +181,7 @@ BOOL isTesting;
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSDictionary *taskData = @{
                                    @"name":filename,
-                                   @"status":@"正在等待",
+                                   @"status":NSLocalizedString(@"正在等待", nil),
                                    @"cid":cid,
                                    };
         [dList lock];
@@ -189,9 +189,9 @@ BOOL isTesting;
         [downloaderObjects insertObject:taskData atIndex:index];
         [dList unlock];
         DL->init();
-        hud.labelText = @"正在解析视频地址";
+        hud.labelText = NSLocalizedString(@"正在解析视频地址", nil);
         DL->newTask([cid intValue], filename);
-        hud.labelText = @"成功开始下载";
+        hud.labelText = NSLocalizedString(@"成功开始下载", nil);
         dispatch_async(dispatch_get_main_queue(), ^(void){
             hud.mode = MBProgressHUDModeText;
             [hud hide:YES afterDelay:3];
@@ -242,7 +242,7 @@ BOOL isTesting;
 - (void)showError
 {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert setMessageText:@"文件读取失败，您可能无法正常使用本软件，请向开发者反馈。"];
+    [alert setMessageText:NSLocalizedString(@"文件读取失败，您可能无法正常使用本软件，请向开发者反馈。", nil)];
     [alert runModal];
 }
 
@@ -337,13 +337,13 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
 }
 
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems{
-    NSMenuItem *copy = [[NSMenuItem alloc] initWithTitle:@"复制页面地址" action:@selector(CopyLink:) keyEquivalent:@""];
+    NSMenuItem *copy = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"复制页面地址", nil) action:@selector(CopyLink:) keyEquivalent:@""];
     [copy setTarget:self];
     [copy setEnabled:YES];
-    NSMenuItem *play = [[NSMenuItem alloc] initWithTitle:@"强制显示播放界面" action:@selector(ShowPlayer) keyEquivalent:@""];
+    NSMenuItem *play = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"强制显示播放界面", nil) action:@selector(ShowPlayer) keyEquivalent:@""];
     [play setTarget:self];
     [play setEnabled:YES];
-    NSMenuItem *contact = [[NSMenuItem alloc] initWithTitle:@"呼叫程序猿" action:@selector(Contact) keyEquivalent:@""];
+    NSMenuItem *contact = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"呼叫程序猿", nil) action:@selector(Contact) keyEquivalent:@""];
     [contact setTarget:self];
     [contact setEnabled:YES];
     NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
@@ -359,7 +359,7 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
     [[NSPasteboard generalPasteboard] setString:webView.mainFrameURL  forType:NSStringPboardType];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[[NSApplication sharedApplication] keyWindow] contentView] animated:YES];
     hud.mode = MBProgressHUDModeText;
-    hud.labelText = @"当前页面地址已经复制到剪贴板";
+    hud.labelText = NSLocalizedString(@"当前页面地址已经复制到剪贴板", nil);
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay:3];
 }
