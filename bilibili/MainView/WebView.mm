@@ -44,8 +44,17 @@ BOOL isTesting;
     self.view.layer.backgroundColor = CGColorCreateGenericRGB(255, 255, 255, 1.0f);
     currWindow = self.view.window;
     [self.view.window makeKeyWindow];
-    NSRect rect = [[NSScreen mainScreen] visibleFrame];
-    [self.view setFrame:rect];
+    double height = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webheight"];
+    double width = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webwidth"];
+    NSLog(@"lastWidth: %f Height: %f",width,height);
+    if(width < 300 || height < 300){
+        NSRect rect = [[NSScreen mainScreen] visibleFrame];
+        [self.view setFrame:rect];
+    }else{
+        NSRect frame = [self.view.window frame];
+        frame.size = NSMakeSize(width, height);
+        [self.view setFrame:frame];
+    }
 
     NSArray *TaskList = [[NSUserDefaults standardUserDefaults] arrayForKey:@"DownloadTaskList"];
     downloaderObjects = [TaskList mutableCopy];

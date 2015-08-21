@@ -106,11 +106,26 @@ static void wakeup(void *context) {
     [LastWindow resignKeyWindow];
     [self.view.window makeKeyWindow];
     [self.view.window makeMainWindow];
-    NSRect rect = [[NSScreen mainScreen] visibleFrame];
-    NSNumber *viewHeight = [NSNumber numberWithFloat:rect.size.height];
-    NSNumber *viewWidth = [NSNumber numberWithFloat:rect.size.width];
-    NSString *res = [NSString stringWithFormat:@"%dx%d",[viewWidth intValue],[viewHeight intValue]];
-    [self.view setFrame:rect];
+    
+    
+    double Wheight = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerheight"];
+    double Wwidth = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerwidth"];
+    
+    NSString *res = [NSString stringWithFormat:@"%dx%d",(int)Wwidth,(int)Wheight];
+    
+    NSLog(@"playerWidth: %f Height: %f",Wwidth,Wheight);
+    if(Wwidth < 300 || Wheight < 300){
+        NSLog(@"Size set to fillscreen");
+        NSRect rect = [[NSScreen mainScreen] visibleFrame];
+        NSNumber *viewHeight = [NSNumber numberWithFloat:rect.size.height];
+        NSNumber *viewWidth = [NSNumber numberWithFloat:rect.size.width];
+        res = [NSString stringWithFormat:@"%dx%d",[viewWidth intValue],[viewHeight intValue]];
+        [self.view setFrame:rect];
+    }else{
+        NSRect frame = [self.view.window frame];
+        frame.size = NSMakeSize(Wwidth, Wheight);
+        [self.view setFrame:frame];
+    }
     postCommentButton = self.PostCommentButton;
     hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
     NSLog(@"Playerview load success");
@@ -749,7 +764,7 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     }
     // Save window size
     [[NSUserDefaults standardUserDefaults] setDouble:frameSize.width forKey:@"playerwidth"];
-    [[NSUserDefaults standardUserDefaults] setDouble:frameSize.height forKey:@"plyaerheight"];
+    [[NSUserDefaults standardUserDefaults] setDouble:frameSize.height forKey:@"playerheight"];
     
     return frameSize;
 }
