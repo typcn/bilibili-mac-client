@@ -341,9 +341,6 @@
 		FD076C471AC8CBBB00C893FA = {
 			isa = PBXGroup;
 			children = (
-				FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */,
-				FD62CC8C1B6E6BAB000AED57 /* AppKit.framework */,
-				FD62CC8A1B6E6BA5000AED57 /* Foundation.framework */,
 				FD4D37691ACEF3F20022ABF3 /* img */,
 				FDAF8B9F1ACA4D9900C0C55D /* sparkle */,
 				FDA775DC1AD93D0D00426483 /* aria2 */,
@@ -489,6 +486,9 @@
 		FD471FD11AC92D7C00A2A727 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */,
+				FD62CC8C1B6E6BAB000AED57 /* AppKit.framework */,
+				FD62CC8A1B6E6BA5000AED57 /* Foundation.framework */,
 				FDD5EEF61AC944020036B829 /* WebKit.framework */,
 				FD471B511AC904CB00A2A727 /* CoreAudio.framework */,
 			);
