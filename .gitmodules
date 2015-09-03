@@ -1,3 +1,6 @@
 [submodule "commentconvert"]
 	path = bilibili/CommentConvert
 	url = https://github.com/typcn/danmaku2ass_native.git
+[submodule "chromium-tabs"]
+	path = chromium-tabs
+	url = https://github.com/typcn/chromium-tabs.git
