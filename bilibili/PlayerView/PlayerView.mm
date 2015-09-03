@@ -740,6 +740,7 @@ BOOL paused = NO;
 BOOL hide = NO;
 BOOL obServer = NO;
 BOOL isFirstCall = YES;
+BOOL shiftKeyPressed = NO;
 
 - (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)window{
     return nil;
@@ -782,6 +783,10 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     }
 }
 
+- (void)flagsChanged:(NSEvent *) event {
+    shiftKeyPressed = ([event modifierFlags] & NSShiftKeyMask) != 0;
+}
+
 -(void)keyDown:(NSEvent*)event
 {
     if(!mpv){
@@ -797,12 +802,12 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             break;
         }
         case 124:{ // 👉
-            const char *args[] = {"seek", "5" ,NULL};
+            const char *args[] = {"seek", shiftKeyPressed?"1":"5" ,NULL};
             mpv_command(mpv, args);
             break;
         }
         case 123:{ // 👈
-            const char *args[] = {"seek", "-5" ,NULL};
+            const char *args[] = {"seek", shiftKeyPressed?"-1":"-5" ,NULL};
             mpv_command(mpv, args);
             break;
         }
