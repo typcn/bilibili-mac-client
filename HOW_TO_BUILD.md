@@ -19,6 +19,8 @@ Create a file at bilibili/APIKey.h
 
 Then open bilibili.xcodeproj to edit or build.
 
+( If you don't have code signing , please set signing to "None" )
+
 # About libraries
 
 If you can't download libraries from git-lfs, please run following commands.
