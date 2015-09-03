@@ -32,6 +32,7 @@
 		FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954DA1B2594AC003A958F /* danmaku2ass.cpp */; };
 		FD2BD56E1AD15AE0001A7E16 /* libmediainfo.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; };
 		FD2BD56F1AD15AF9001A7E16 /* libmediainfo.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FD36B0B01B988ECB00FB32CC /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
 		FD48550A1AE67B35008F49AA /* gencache.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD4855071AE67AD8008F49AA /* gencache.sh */; };
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
@@ -109,6 +110,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = FD076C4F1AC8CBBB00C893FA;
 			remoteInfo = bilibili;
+		};
+		FD36B0A01B988E4A00FB32CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3A3ED9831225E27E009E2908;
+			remoteInfo = ChromiumTabs;
+		};
+		FD36B0A21B988E4A00FB32CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8D1107320486CEB800E47090;
+			remoteInfo = "Chromium Tabs";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -239,6 +254,7 @@
 		FD1954F61B259AF6003A958F /* Analytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = Others/Analytics.h; sourceTree = "<group>"; };
 		FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmediainfo.0.dylib; path = bilibili/libs/libmediainfo.0.dylib; sourceTree = "<group>"; };
 		FD2BD5701AD15BCA001A7E16 /* MediaInfoDLL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaInfoDLL.h; path = bilibili/headers/MediaInfoDLL/MediaInfoDLL.h; sourceTree = "<group>"; };
+		FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "chromium-tabs.xcodeproj"; path = "chromium-tabs/chromium-tabs.xcodeproj"; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FD4855071AE67AD8008F49AA /* gencache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gencache.sh; sourceTree = "<group>"; };
 		FD4D376A1ACEF3FE0022ABF3 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = loading.gif; path = bilibili/img/loading.gif; sourceTree = "<group>"; };
@@ -294,6 +310,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD36B0B01B988ECB00FB32CC /* ChromiumTabs.framework in Frameworks */,
 				FD62CC8F1B6E6BB0000AED57 /* CoreData.framework in Frameworks */,
 				FD62CC8D1B6E6BAB000AED57 /* AppKit.framework in Frameworks */,
 				FD62CC8B1B6E6BA5000AED57 /* Foundation.framework in Frameworks */,
@@ -341,16 +358,14 @@
 		FD076C471AC8CBBB00C893FA = {
 			isa = PBXGroup;
 			children = (
-				FD4D37691ACEF3F20022ABF3 /* img */,
-				FDAF8B9F1ACA4D9900C0C55D /* sparkle */,
-				FDA775DC1AD93D0D00426483 /* aria2 */,
-				FD471FD21AC931F800A2A727 /* mediainfo */,
+				FD36B09A1B988D0100FB32CC /* Resources */,
 				FD471FD11AC92D7C00A2A727 /* frameworks */,
 				FD1954D41B2594AC003A958F /* CommentConvert */,
-				FD076C761AC8DA4100C893FA /* player */,
-				FD076C521AC8CBBB00C893FA /* bilibili */,
+				FD076C521AC8CBBB00C893FA /* Source */,
+				FD36B0991B988CB600FB32CC /* Third-party */,
 				FD076C691AC8CBBB00C893FA /* bilibiliTests */,
 				FD076C511AC8CBBB00C893FA /* Products */,
+				FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -363,7 +378,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FD076C521AC8CBBB00C893FA /* bilibili */ = {
+		FD076C521AC8CBBB00C893FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				FD855FAE1B07D86C004A1610 /* RealTimeComments */,
@@ -380,6 +395,7 @@
 				FD4855071AE67AD8008F49AA /* gencache.sh */,
 				FD076C531AC8CBBB00C893FA /* Supporting Files */,
 			);
+			name = Source;
 			path = bilibili;
 			sourceTree = "<group>";
 		};
@@ -481,6 +497,34 @@
 				FD1954E31B2594AC003A958F /* rapidxml_utils.hpp */,
 			);
 			path = rapidxml;
+			sourceTree = "<group>";
+		};
+		FD36B0991B988CB600FB32CC /* Third-party */ = {
+			isa = PBXGroup;
+			children = (
+				FD076C761AC8DA4100C893FA /* player */,
+				FDA775DC1AD93D0D00426483 /* aria2 */,
+				FD471FD21AC931F800A2A727 /* mediainfo */,
+				FDAF8B9F1ACA4D9900C0C55D /* sparkle */,
+			);
+			name = "Third-party";
+			sourceTree = "<group>";
+		};
+		FD36B09A1B988D0100FB32CC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FD4D37691ACEF3F20022ABF3 /* img */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		FD36B09C1B988E4A00FB32CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */,
+				FD36B0A31B988E4A00FB32CC /* Chromium Tabs.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		FD471FD11AC92D7C00A2A727 /* frameworks */ = {
@@ -710,6 +754,12 @@
 			mainGroup = FD076C471AC8CBBB00C893FA;
 			productRefGroup = FD076C511AC8CBBB00C893FA /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FD36B09C1B988E4A00FB32CC /* Products */;
+					ProjectRef = FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				FD076C4F1AC8CBBB00C893FA /* Bilibili */,
@@ -717,6 +767,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ChromiumTabs.framework;
+			remoteRef = FD36B0A01B988E4A00FB32CC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FD36B0A31B988E4A00FB32CC /* Chromium Tabs.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "Chromium Tabs.app";
+			remoteRef = FD36B0A21B988E4A00FB32CC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FD076C4E1AC8CBBB00C893FA /* Resources */ = {
@@ -919,6 +986,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -957,6 +1025,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

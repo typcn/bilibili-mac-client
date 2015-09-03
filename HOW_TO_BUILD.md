@@ -7,6 +7,7 @@
 # Download Sources
 
 	git clone https://github.com/typcn/bilibili-mac-client.git
+	git submodule update --init
 
 # Add key file
 
@@ -17,6 +18,8 @@ Create a file at bilibili/APIKey.h
 ( If you don't have it, please [contact me](mailto:typcncom@gmail.com) )
 
 Then open bilibili.xcodeproj to edit or build.
+
+( If you don't have code signing , please set signing to "None" )
 
 # About libraries
 
