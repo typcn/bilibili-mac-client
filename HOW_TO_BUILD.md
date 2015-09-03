@@ -7,6 +7,7 @@
 # Download Sources
 
 	git clone https://github.com/typcn/bilibili-mac-client.git
+	git submodule update --init
 
 # Add key file
 
