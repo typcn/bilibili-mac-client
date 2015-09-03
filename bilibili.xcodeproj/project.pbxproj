@@ -341,14 +341,11 @@
 		FD076C471AC8CBBB00C893FA = {
 			isa = PBXGroup;
 			children = (
-				FD4D37691ACEF3F20022ABF3 /* img */,
-				FDAF8B9F1ACA4D9900C0C55D /* sparkle */,
-				FDA775DC1AD93D0D00426483 /* aria2 */,
-				FD471FD21AC931F800A2A727 /* mediainfo */,
+				FD36B09A1B988D0100FB32CC /* Resources */,
 				FD471FD11AC92D7C00A2A727 /* frameworks */,
 				FD1954D41B2594AC003A958F /* CommentConvert */,
-				FD076C761AC8DA4100C893FA /* player */,
-				FD076C521AC8CBBB00C893FA /* bilibili */,
+				FD076C521AC8CBBB00C893FA /* Source */,
+				FD36B0991B988CB600FB32CC /* Third-party */,
 				FD076C691AC8CBBB00C893FA /* bilibiliTests */,
 				FD076C511AC8CBBB00C893FA /* Products */,
 			);
@@ -363,7 +360,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FD076C521AC8CBBB00C893FA /* bilibili */ = {
+		FD076C521AC8CBBB00C893FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				FD855FAE1B07D86C004A1610 /* RealTimeComments */,
@@ -380,6 +377,7 @@
 				FD4855071AE67AD8008F49AA /* gencache.sh */,
 				FD076C531AC8CBBB00C893FA /* Supporting Files */,
 			);
+			name = Source;
 			path = bilibili;
 			sourceTree = "<group>";
 		};
@@ -481,6 +479,25 @@
 				FD1954E31B2594AC003A958F /* rapidxml_utils.hpp */,
 			);
 			path = rapidxml;
+			sourceTree = "<group>";
+		};
+		FD36B0991B988CB600FB32CC /* Third-party */ = {
+			isa = PBXGroup;
+			children = (
+				FD076C761AC8DA4100C893FA /* player */,
+				FDA775DC1AD93D0D00426483 /* aria2 */,
+				FD471FD21AC931F800A2A727 /* mediainfo */,
+				FDAF8B9F1ACA4D9900C0C55D /* sparkle */,
+			);
+			name = "Third-party";
+			sourceTree = "<group>";
+		};
+		FD36B09A1B988D0100FB32CC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FD4D37691ACEF3F20022ABF3 /* img */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		FD471FD11AC92D7C00A2A727 /* frameworks */ = {
