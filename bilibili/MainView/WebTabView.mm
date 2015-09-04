@@ -286,7 +286,9 @@
 
 - (WebView *)webView:(WebView *)sender createWebViewWithRequest:(NSURLRequest *)request
 {
-    return webView;
+    WebTabView *tv = (WebTabView *)[browser createTabBasedOn:nil withUrl:[request.URL absoluteString]];
+    [browser addTabContents:tv inForeground:YES];
+    return [tv GetWebView];
 }
 
 - (NSURLRequest *)webView:(WebView *)sender
