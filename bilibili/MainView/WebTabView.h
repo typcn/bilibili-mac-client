@@ -9,8 +9,12 @@
 #import "Browser.h"
 #import "Common.hpp"
 
-@interface WebTabView : CTTabContents
+@interface WebTabView : CTTabContents{
+    WebView *webView;
+}
+@property (strong) NSWindowController* playerWindowController;
 
 -(id)initWithURL:(NSString *)url;
+-(WebView *)GetWebView;
 
 @end

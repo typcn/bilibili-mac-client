@@ -12,13 +12,13 @@
 #import "Analytics.h"
 
 @implementation WebTabView {
-    WebView *webView;
     NSString* WebScript;
     NSString* WebUI;
     NSString* WebCSS;
     bool ariainit;
     long acceptAnalytics;
 }
+@synthesize playerWindowController;
 
 -(id)initWithBaseTabContents:(CTTabContents*)baseContents {
     if (!(self = [super initWithBaseTabContents:baseContents])) return nil;
@@ -59,6 +59,10 @@
     [sv setHasVerticalScroller:NO];
     self.view = sv;
     return self;
+}
+
+-(WebView *)GetWebView{
+    return webView;
 }
 
 -(void)viewFrameDidChange:(NSRect)newFrame {
@@ -194,7 +198,6 @@
 {
     [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$('#bofqi').html('%@');$('head').append('<style>%@</style>');",WebUI,WebCSS]];
 }
-
 - (void)playVideoByCID:(NSString *)cid
 {
     if(parsing){
@@ -221,7 +224,11 @@
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
     }
-    //[self.switchButton performClick:nil];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+        playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
+        [playerWindowController showWindow:self];
+    });
 }
 - (void)downloadVideoByCID:(NSString *)cid
 {

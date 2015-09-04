@@ -17,5 +17,13 @@
 
 - (NSDictionary *) getVideoInfo:(NSString *)url;
 - (NSString *) getComments:(NSNumber *)width :(NSNumber *)height;
+- (void)LoadVideo;
+
+@end
+
+
+@interface PlayerWindow : NSWindow <NSWindowDelegate>
+
+-(void)keyDown:(NSEvent*)event;
 
 @end
