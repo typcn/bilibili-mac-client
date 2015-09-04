@@ -668,16 +668,12 @@ static void wakeup(void *context) {
 {
     NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
     if([key isEqualToString:@"quality"]){
-        
-        NSString *quality = [settingsController objectForKey:@"quality"];
-        if([quality isEqualToString:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[2]", @"Main", @"高清")]){
-            return 3;
-        }else if ([quality isEqualToString:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[1]", @"Main", @"标清")]){
-            return 2;
-        }else if([quality isEqualToString:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[0]", @"Main", @"低清")]){
-            return 1;
-        }else{
+        long quality = [settingsController integerForKey:@"quality"];
+        if(!quality){
+            NSLog(@"Select max quanlity");
             return 4;
+        }else{
+            return quality;
         }
     }else if ([key isEqualToString:@"transparency"]){
         float result = [settingsController floatForKey:key];
