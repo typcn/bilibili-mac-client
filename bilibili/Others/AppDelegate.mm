@@ -106,7 +106,6 @@ Browser *browser;
     }
     else
     {
-        browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
         [browser addBlankTabInForeground:YES];
         [browser.windowController showWindow:self];
         

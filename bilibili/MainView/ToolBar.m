@@ -34,12 +34,13 @@
 @implementation BLToolBarEvents
 
 - (id)init{
-    [self watchNotification];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolbarURL:) name:@"BLChangeURL" object:nil];
     return self;
 }
 
-- (void)watchNotification{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolbarURL:) name:@"BLChangeURL" object:nil];
+
+- (void)finalize {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)updateToolbarURL:(NSNotification*) aNotification{
