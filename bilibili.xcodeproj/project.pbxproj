@@ -37,6 +37,12 @@
 		FD36B0B71B98920A00FB32CC /* WebTabView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0B51B98920A00FB32CC /* WebTabView.mm */; };
 		FD36B0CD1B9959CC00FB32CC /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */; };
 		FD36B0CF1B9959D300FB32CC /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FD36B0E71B99B43200FB32CC /* Toolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0E51B99B43200FB32CC /* Toolbar.xib */; };
+		FD36B0EE1B99B48B00FB32CC /* backwards.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0E91B99B48B00FB32CC /* backwards.png */; };
+		FD36B0EF1B99B48B00FB32CC /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0EA1B99B48B00FB32CC /* forward.png */; };
+		FD36B0F01B99B48B00FB32CC /* homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0EB1B99B48B00FB32CC /* homepage.png */; };
+		FD36B0F11B99B48B00FB32CC /* menubutton.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0EC1B99B48B00FB32CC /* menubutton.png */; };
+		FD36B0F21B99B48B00FB32CC /* reloadp.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0ED1B99B48B00FB32CC /* reloadp.png */; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
 		FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files */ = {isa = PBXBuildFile; fileRef = FD4855071AE67AD8008F49AA /* gencache.sh */; };
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
@@ -264,6 +270,12 @@
 		FD36B0B51B98920A00FB32CC /* WebTabView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WebTabView.mm; path = MainView/WebTabView.mm; sourceTree = "<group>"; };
 		FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = bilibili/libs/Sparkle.framework; sourceTree = "<group>"; };
 		FD36B0D01B995A2C00FB32CC /* Common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Common.hpp; sourceTree = "<group>"; };
+		FD36B0E61B99B43200FB32CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Toolbar.xib; sourceTree = "<group>"; };
+		FD36B0E91B99B48B00FB32CC /* backwards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backwards.png; path = bilibili/img/backwards.png; sourceTree = "<group>"; };
+		FD36B0EA1B99B48B00FB32CC /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forward.png; path = bilibili/img/forward.png; sourceTree = "<group>"; };
+		FD36B0EB1B99B48B00FB32CC /* homepage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homepage.png; path = bilibili/img/homepage.png; sourceTree = "<group>"; };
+		FD36B0EC1B99B48B00FB32CC /* menubutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menubutton.png; path = bilibili/img/menubutton.png; sourceTree = "<group>"; };
+		FD36B0ED1B99B48B00FB32CC /* reloadp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reloadp.png; path = bilibili/img/reloadp.png; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FD4855071AE67AD8008F49AA /* gencache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gencache.sh; sourceTree = "<group>"; };
 		FD4D376A1ACEF3FE0022ABF3 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = loading.gif; path = bilibili/img/loading.gif; sourceTree = "<group>"; };
@@ -521,6 +533,7 @@
 		FD36B09A1B988D0100FB32CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FD36B0E81B99B47B00FB32CC /* toolbar */,
 				FD4D37691ACEF3F20022ABF3 /* img */,
 			);
 			name = Resources;
@@ -533,6 +546,18 @@
 				FD36B0A31B988E4A00FB32CC /* Chromium Tabs.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FD36B0E81B99B47B00FB32CC /* toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				FD36B0E91B99B48B00FB32CC /* backwards.png */,
+				FD36B0EA1B99B48B00FB32CC /* forward.png */,
+				FD36B0EB1B99B48B00FB32CC /* homepage.png */,
+				FD36B0EC1B99B48B00FB32CC /* menubutton.png */,
+				FD36B0ED1B99B48B00FB32CC /* reloadp.png */,
+			);
+			name = toolbar;
 			sourceTree = "<group>";
 		};
 		FD471FD11AC92D7C00A2A727 /* frameworks */ = {
@@ -602,6 +627,7 @@
 		FD476C701AD22AEC00584EFE /* GUI */ = {
 			isa = PBXGroup;
 			children = (
+				FD36B0E51B99B43200FB32CC /* Toolbar.xib */,
 				FD0829C71B67844500D2B126 /* Main.storyboard */,
 				FD076C5D1AC8CBBB00C893FA /* Images.xcassets */,
 			);
@@ -797,14 +823,20 @@
 			files = (
 				FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */,
 				FD62CC841B6E661F000AED57 /* reload.png in Resources */,
+				FD36B0EE1B99B48B00FB32CC /* backwards.png in Resources */,
 				FD6102611AD7CBF10013119A /* webui.css in Resources */,
+				FD36B0EF1B99B48B00FB32CC /* forward.png in Resources */,
+				FD36B0F21B99B48B00FB32CC /* reloadp.png in Resources */,
 				FD61025E1AD7CBC10013119A /* webui.html in Resources */,
 				FD0829C91B67844500D2B126 /* Main.storyboard in Resources */,
 				E09BF99F1B84CCC6005E08CE /* Localizable.strings in Resources */,
 				FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */,
+				FD36B0F01B99B48B00FB32CC /* homepage.png in Resources */,
 				FD62CC861B6E6726000AED57 /* copy.png in Resources */,
 				FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */,
+				FD36B0E71B99B43200FB32CC /* Toolbar.xib in Resources */,
 				FD61025C1AD7CBA20013119A /* inject.js in Resources */,
+				FD36B0F11B99B48B00FB32CC /* menubutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -904,6 +936,14 @@
 				FD62CA491B6F52F80014D45D /* en */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FD36B0E51B99B43200FB32CC /* Toolbar.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD36B0E61B99B43200FB32CC /* Base */,
+			);
+			name = Toolbar.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
