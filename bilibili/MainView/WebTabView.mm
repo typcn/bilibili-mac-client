@@ -10,6 +10,7 @@
 #import <Sparkle/Sparkle.h>
 #import "downloadWrapper.h"
 #import "Analytics.h"
+#import "ToolBar.h"
 
 @implementation WebTabView {
     NSString* WebScript;
@@ -298,14 +299,17 @@
     NSString *URL = [request.URL absoluteString];
     NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
     re = (NSMutableURLRequest *) request.mutableCopy;
-    if([URL containsString:@"google"]){
+    if([URL containsString:@"googlesyndication"] || [URL containsString:@"analytics.js"]){
         // Google ad is blocked in some (china) area, maybe take 30 seconds to wait for timeout
         [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
-    }else if([URL containsString:@"qq.com"]){
+    }else if([URL containsString:@"tajs.qq.com"]){
         // QQ analytics may block more than 10 seconds in some area
         [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
     }else if([URL containsString:@"cnzz.com"]){
         // CNZZ is very slow in other country
+        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
+    }else if([URL containsString:@"cpro.baidustatic.com"]){
+        // Baidu is very slow in other country
         [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
     }else if([URL containsString:@".swf"]){
         // Block Flash
@@ -342,6 +346,7 @@ didReceiveTitle:(NSString *)title
     [self setTitle:title];
     [self setIsWaitingForResponse:NO];
     [self setIsLoading:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:webView.mainFrameURL userInfo:nil];
     userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
     [webView stringByEvaluatingJavaScriptFromString:WebScript];
     

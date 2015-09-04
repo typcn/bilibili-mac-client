@@ -79,6 +79,9 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <action selector="OpenURL:" target="Yub-VR-qOD" id="GeJ-dz-Ulz"/>
+                    </connections>
                 </textField>
             </subviews>
         </customView>

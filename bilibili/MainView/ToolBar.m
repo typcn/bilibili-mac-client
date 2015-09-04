@@ -33,15 +33,49 @@
 
 @implementation BLToolBarEvents
 
-- (void)setToolbarURL:(NSString *)url{
-    [self.URLInputField setStringValue:url];
+- (id)init{
+    [self watchNotification];
+    return self;
 }
+
+- (void)watchNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolbarURL:) name:@"BLChangeURL" object:nil];
+}
+
+- (void)updateToolbarURL:(NSNotification*) aNotification{
+    if(aNotification.object){
+        NSString *url = aNotification.object;
+        if([url length] > 5){
+            [self.URLInputField setStringValue:url];
+        }
+    }else{
+        WebTabView *tc = (WebTabView *)[browser activeTabContents];
+        WebView *wv = [tc GetWebView];
+        [self.URLInputField setStringValue:wv.mainFrameURL];
+    }
+}
+
+- (IBAction)OpenURL:(id)sender {
+    [sender resignFirstResponder];
+    WebTabView *tc = (WebTabView *)[browser activeTabContents];
+    WebView *wv = [tc GetWebView];
+    NSString *url = [self.URLInputField stringValue];
+    if([url length] < 3){
+        return;
+    }else if([url isEqualToString:wv.mainFrameURL]){
+        return;
+    }else if([url containsString:@"http://"] || [url containsString:@"https://"]){
+        wv.mainFrameURL = url;
+    }else{
+        wv.mainFrameURL = [NSString stringWithFormat:@"http://%@",url];
+    }
+}
+
 
 - (IBAction)goHome:(id)sender {
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
     WebView *wv = [tc GetWebView];
     wv.mainFrameURL = @"http://www.bilibili.com";
-    NSLog(@"home");
 }
 - (IBAction)Refresh:(id)sender {
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
