@@ -169,7 +169,7 @@
 }
 
 - (void)showNotification:(NSString *)content{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[[NSApplication sharedApplication] keyWindow] contentView] animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = content;
     hud.removeFromSuperViewOnHide = YES;
@@ -231,7 +231,7 @@
         [alert runModal];
     }
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[[NSApplication sharedApplication] keyWindow] contentView] animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = NSLocalizedString(@"正在启动下载引擎", nil);
     hud.removeFromSuperViewOnHide = YES;
@@ -390,7 +390,7 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
 - (IBAction)CopyLink:(id)sender {
     [[NSPasteboard generalPasteboard] clearContents];
     [[NSPasteboard generalPasteboard] setString:webView.mainFrameURL  forType:NSStringPboardType];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[[NSApplication sharedApplication] keyWindow] contentView] animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = NSLocalizedString(@"当前页面地址已经复制到剪贴板", nil);
     hud.removeFromSuperViewOnHide = YES;
