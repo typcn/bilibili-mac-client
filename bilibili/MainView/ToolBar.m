@@ -58,6 +58,10 @@
 
 - (IBAction)OpenURL:(id)sender {
     [sender resignFirstResponder];
+    CTTabContents *ct = [browser activeTabContents];
+    if(ct) {
+        [[browser window] makeFirstResponder:ct.view];
+    }
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
     WebView *wv = [tc GetWebView];
     NSString *url = [self.URLInputField stringValue];
