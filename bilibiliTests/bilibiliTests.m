@@ -8,17 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
-#import "PlayerView.h"
-#import "LiveChat.h"
+//#import "PlayerView.h"
+//#import "LiveChat.h"
 
-extern NSString *vCID;
+//extern NSString *vCID;
 //extern NSString *vUrl;
 //extern BOOL isTesting;
 //extern BOOL isPlaying;
-extern BOOL hasMsg;
+//extern BOOL hasMsg;
 
 @interface bilibiliTests : XCTestCase{
-    PlayerView *pv;
+//    PlayerView *pv;
 }
 
 @end
@@ -59,25 +59,25 @@ extern BOOL hasMsg;
 }
 
 - (void)testLiveChat {
-    vCID = @"5446";
-    XCTestExpectation *videoPlayExpectation = [self expectationWithDescription:@"Video Playing"];
-    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil]; // get a reference to the storyboard
-    NSWindowController *myController = [storyBoard instantiateControllerWithIdentifier:@"LiveChatWindow"]; // instantiate your window controller
-    [myController showWindow:self]; // show the window
-    
-    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        while(!hasMsg){
-            sleep(0.3);
-        }
-        
-        NSLog(@"Will exit");
-        
-        [videoPlayExpectation fulfill];
-    });
-    
-    [self waitForExpectationsWithTimeout:100 handler:^(NSError *error) {
-        
-    }];
+//    vCID = @"5446";
+//    XCTestExpectation *videoPlayExpectation = [self expectationWithDescription:@"Video Playing"];
+//    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil]; // get a reference to the storyboard
+//    NSWindowController *myController = [storyBoard instantiateControllerWithIdentifier:@"LiveChatWindow"]; // instantiate your window controller
+//    [myController showWindow:self]; // show the window
+//    
+//    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        while(!hasMsg){
+//            sleep(0.3);
+//        }
+//        
+//        NSLog(@"Will exit");
+//        
+//        [videoPlayExpectation fulfill];
+//    });
+//    
+//    [self waitForExpectationsWithTimeout:100 handler:^(NSError *error) {
+//        
+//    }];
 }
 
 @end

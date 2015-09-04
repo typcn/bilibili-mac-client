@@ -38,7 +38,7 @@
 		FD36B0CD1B9959CC00FB32CC /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */; };
 		FD36B0CF1B9959D300FB32CC /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
-		FD48550A1AE67B35008F49AA /* gencache.sh in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD4855071AE67AD8008F49AA /* gencache.sh */; };
+		FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files */ = {isa = PBXBuildFile; fileRef = FD4855071AE67AD8008F49AA /* gencache.sh */; };
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
 		FD5101791ACC1A6800C49430 /* libass.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5101621ACC1A6800C49430 /* libass.5.dylib */; };
 		FD51017A1ACC1A6800C49430 /* libavcodec.56.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5101631ACC1A6800C49430 /* libavcodec.56.dylib */; };
@@ -164,14 +164,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FD4855091AE67B2C008F49AA /* CopyFiles */ = {
+		FD4855091AE67B2C008F49AA /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				FD48550A1AE67B35008F49AA /* gencache.sh in CopyFiles */,
+				FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FD61025F1AD7CBD80013119A /* CopyFiles */ = {
@@ -695,9 +696,9 @@
 				FDAF8BA21ACA4EF100C0C55D /* Copy Files */,
 				FD471F731AC911CD00A2A727 /* CopyFiles */,
 				FD61025F1AD7CBD80013119A /* CopyFiles */,
-				FD4855091AE67B2C008F49AA /* CopyFiles */,
+				FD4855091AE67B2C008F49AA /* Copy Files */,
 				FD076C4E1AC8CBBB00C893FA /* Resources */,
-				FD4855051AE675D7008F49AA /* ShellScript */,
+				FD4855051AE675D7008F49AA /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -817,13 +818,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		FD4855051AE675D7008F49AA /* ShellScript */ = {
+		FD4855051AE675D7008F49AA /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
