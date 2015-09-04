@@ -42,6 +42,7 @@
 		FD36B0F01B99B48B00FB32CC /* homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0EB1B99B48B00FB32CC /* homepage.png */; };
 		FD36B0F11B99B48B00FB32CC /* menubutton.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0EC1B99B48B00FB32CC /* menubutton.png */; };
 		FD36B0F21B99B48B00FB32CC /* reloadp.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0ED1B99B48B00FB32CC /* reloadp.png */; };
+		FD36B0F51B99B62600FB32CC /* ToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0F41B99B62600FB32CC /* ToolBar.m */; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
 		FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files */ = {isa = PBXBuildFile; fileRef = FD4855071AE67AD8008F49AA /* gencache.sh */; };
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
@@ -273,6 +274,8 @@
 		FD36B0EB1B99B48B00FB32CC /* homepage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homepage.png; path = bilibili/img/homepage.png; sourceTree = "<group>"; };
 		FD36B0EC1B99B48B00FB32CC /* menubutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menubutton.png; path = bilibili/img/menubutton.png; sourceTree = "<group>"; };
 		FD36B0ED1B99B48B00FB32CC /* reloadp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reloadp.png; path = bilibili/img/reloadp.png; sourceTree = "<group>"; };
+		FD36B0F31B99B62600FB32CC /* ToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToolBar.h; path = MainView/ToolBar.h; sourceTree = "<group>"; };
+		FD36B0F41B99B62600FB32CC /* ToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToolBar.m; path = MainView/ToolBar.m; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FD4855071AE67AD8008F49AA /* gencache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gencache.sh; sourceTree = "<group>"; };
 		FD4D376A1ACEF3FE0022ABF3 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = loading.gif; path = bilibili/img/loading.gif; sourceTree = "<group>"; };
@@ -588,6 +591,8 @@
 				C56A943C1B36E837005C274F /* WebView+SwipeNavigation.m */,
 				FD36B0B11B988FE200FB32CC /* Browser.h */,
 				FD36B0B21B988FE200FB32CC /* Browser.mm */,
+				FD36B0F31B99B62600FB32CC /* ToolBar.h */,
+				FD36B0F41B99B62600FB32CC /* ToolBar.m */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -882,6 +887,7 @@
 				FD62CC891B6E6848000AED57 /* MBProgressHUD.m in Sources */,
 				FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */,
 				FD1954C41B259368003A958F /* LiveChat.m in Sources */,
+				FD36B0F51B99B62600FB32CC /* ToolBar.m in Sources */,
 				FD1954BB1B259342003A958F /* DownloadManager.mm in Sources */,
 				C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */,
 				FD36B0B31B988FE200FB32CC /* Browser.mm in Sources */,
