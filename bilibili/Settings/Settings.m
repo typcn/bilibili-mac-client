@@ -34,11 +34,17 @@
     }
     [self.transparency setFloatValue:trans];
     
-    NSString *quality = [settingsController objectForKey:@"quality"];
-    if(!quality){
-        quality = NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[3]", @"Main", @"原画");
+    long quality = [settingsController integerForKey:@"quality"];
+    if(quality == 3){
+        [self.qualityBox setStringValue:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[2]", @"Main", @"高清")];
+    }else if (quality == 2){
+        [self.qualityBox setStringValue:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[1]", @"Main", @"标清")];
+    }else if(quality == 1){
+        [self.qualityBox setStringValue:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[0]", @"Main", @"低清")];
+    }else{
+        [self.qualityBox setStringValue:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[3]", @"Main", @"原画")];
     }
-    [self.qualityBox setStringValue:quality];
+
     
     NSString *IP = [settingsController objectForKey:@"xff"];
     if([IP length] > 4){
@@ -67,7 +73,18 @@
     [settingsController synchronize];
 }
 - (IBAction)qualityChanged:(id)sender {
-    [settingsController setObject:[self.qualityBox stringValue] forKey:@"quality"];
+    
+    NSString *quality = [self.qualityBox stringValue];
+    if([quality isEqualToString:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[2]", @"Main", @"高清")]){
+        [settingsController setInteger:3 forKey:@"quality"];
+    }else if ([quality isEqualToString:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[1]", @"Main", @"标清")]){
+        [settingsController setInteger:2 forKey:@"quality"];
+    }else if([quality isEqualToString:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[0]", @"Main", @"低清")]){
+        [settingsController setInteger:1 forKey:@"quality"];
+    }else{
+        NSLog(@"Select max quanlity");
+        [settingsController setInteger:4 forKey:@"quality"];
+    }
     [settingsController synchronize];
 }
 - (IBAction)transparencyChanged:(id)sender {
