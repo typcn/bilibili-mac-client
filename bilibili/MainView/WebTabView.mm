@@ -23,27 +23,17 @@
 -(id)initWithBaseTabContents:(CTTabContents*)baseContents {
     if (!(self = [super initWithBaseTabContents:baseContents])) return nil;
     
-//    // Setup our contents -- a scrolling text view
-//    
-//    // Create a simple NSTextView
-//    NSTextView* tv = [[NSTextView alloc] initWithFrame:NSZeroRect];
-//    [tv setFont:[NSFont userFixedPitchFontOfSize:13.0]];
-//    [tv setAutoresizingMask:                  NSViewMaxYMargin|
-//     NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|
-//     NSViewHeightSizable|
-//     NSViewMinYMargin];
-//    
-//    // Create a NSScrollView to which we add the NSTextView
-//
-//    // Set the NSScrollView as our view
-//    self.view = sv;
-//    
-//    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil]; // get a reference to the storyboard
-//    ViewController *vc = [storyBoard instantiateControllerWithIdentifier:@"mvc"]; // instantiate your window controller
-
-//    WebController *wc = [[WebController alloc] init];
-//
-
+    double height = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webheight"];
+    double width = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webwidth"];
+    NSLog(@"lastWidth: %f Height: %f",width,height);
+    if(width < 300 || height < 300){
+        NSRect rect = [[NSScreen mainScreen] visibleFrame];
+        [self.view setFrame:rect];
+    }else{
+        NSRect frame = [self.view.window frame];
+        frame.size = NSMakeSize(width, height);
+        [self.view setFrame:frame];
+    }
     
     return [self initWithURL:@"http://www.bilibili.com"];
 }
@@ -73,6 +63,8 @@
     NSTextView* tv = [[clipView subviews] objectAtIndex:0];
     NSRect frame = NSZeroRect;
     frame.size = [(NSScrollView*)(view_) contentSize];
+    [[NSUserDefaults standardUserDefaults] setDouble:frame.size.width forKey:@"webwidth"];
+    [[NSUserDefaults standardUserDefaults] setDouble:frame.size.height forKey:@"webheight"];
     [tv setFrame:frame];
 }
 
