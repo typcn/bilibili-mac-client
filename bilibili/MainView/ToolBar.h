@@ -11,3 +11,7 @@
 @interface BLToolBar : CTToolbarController
 
 @end
+
+@interface BLToolBarEvents : NSObject
+
+@end

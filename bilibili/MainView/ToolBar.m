@@ -9,7 +9,7 @@
 #import "ToolBar.h"
 
 @interface BLToolBar ()
-@property (weak) IBOutlet NSTextField *URLInputField;
+
 
 @end
 
@@ -18,7 +18,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
+
+
+@end
+
+
+@interface BLToolBarEvents ()
+
+@property (weak) IBOutlet NSTextField *URLInputField;
+
+@end
+
+@implementation BLToolBarEvents
+
 - (IBAction)goHome:(id)sender {
+    NSLog(@"home");
 }
 - (IBAction)Refresh:(id)sender {
 }

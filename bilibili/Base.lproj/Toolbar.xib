@@ -7,7 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="BLToolBar">
             <connections>
-                <outlet property="URLInputField" destination="Wfb-Je-aPV" id="PZ3-F8-ugB"/>
                 <outlet property="view" destination="1" id="22"/>
             </connections>
         </customObject>
@@ -25,7 +24,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
-                        <action selector="backward:" target="-2" id="vs4-2m-hCE"/>
+                        <action selector="backward:" target="Yub-VR-qOD" id="DW7-d7-StM"/>
                     </connections>
                 </button>
                 <button id="ehx-oJ-lGY" customClass="ToolbarButton">
@@ -36,7 +35,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
-                        <action selector="forward:" target="-2" id="MPb-vZ-ufl"/>
+                        <action selector="forward:" target="Yub-VR-qOD" id="HVS-Zi-8mW"/>
                     </connections>
                 </button>
                 <button id="lBR-rk-rmJ" customClass="ToolbarButton">
@@ -47,7 +46,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
-                        <action selector="Refresh:" target="-2" id="Qtp-Qf-AJ9"/>
+                        <action selector="Refresh:" target="Yub-VR-qOD" id="ZOT-fn-aPr"/>
                     </connections>
                 </button>
                 <button id="wvf-9U-we3" customClass="ToolbarButton">
@@ -58,7 +57,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
-                        <action selector="goHome:" target="-2" id="RFV-PO-ESP"/>
+                        <action selector="goHome:" target="Yub-VR-qOD" id="XDK-7U-y0K"/>
                     </connections>
                 </button>
                 <button id="Wqv-aY-Hu9" customClass="ToolbarButton">
@@ -69,7 +68,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
-                        <action selector="menu:" target="-2" id="Dcz-KA-XFZ"/>
+                        <action selector="menu:" target="Yub-VR-qOD" id="Qv7-sX-QjO"/>
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" id="Wfb-Je-aPV">
@@ -84,6 +83,11 @@
             </subviews>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="130"/>
+        <customObject id="Yub-VR-qOD" customClass="BLToolBarEvents">
+            <connections>
+                <outlet property="URLInputField" destination="Wfb-Je-aPV" id="xSR-Cz-ZG4"/>
+            </connections>
+        </customObject>
     </objects>
     <resources>
         <image name="backwards" width="75" height="75"/>
