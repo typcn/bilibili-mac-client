@@ -386,7 +386,7 @@
                                                 <action selector="performZoom:" target="Ady-hI-5gd" id="h3M-Od-Iiu"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="关闭" keyEquivalent="w" id="yZ9-6y-AEF" userLabel="Zoom">
+                                        <menuItem title="关闭" keyEquivalent="W" id="yZ9-6y-AEF" userLabel="Zoom">
                                             <connections>
                                                 <action selector="performClose:" target="Ady-hI-5gd" id="jfJ-eM-d7u"/>
                                             </connections>
@@ -402,6 +402,32 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="arrangeInFront:" target="Ady-hI-5gd" id="NHV-PZ-9jq"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="标签" id="X3c-r8-Rba" userLabel="标签">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="标签" systemMenu="window" id="6Gu-aq-F1o">
+                                    <items>
+                                        <menuItem title="新建" keyEquivalent="t" id="0Ai-R8-YEq" userLabel="New">
+                                            <connections>
+                                                <action selector="newTab:" target="Voe-Tx-rLC" id="3Vw-4j-gBg"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="关闭" keyEquivalent="w" id="wDL-0s-zT6" userLabel="Close">
+                                            <connections>
+                                                <action selector="closeTab:" target="Voe-Tx-rLC" id="jdp-pW-anJ"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="切换" id="oV1-Ec-BaQ" userLabel="Switch">
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+GQ
+</string>
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" control="YES"/>
+                                            <connections>
+                                                <action selector="switchTab:" target="Voe-Tx-rLC" id="ZYL-EK-dtY"/>
                                             </connections>
                                         </menuItem>
                                     </items>

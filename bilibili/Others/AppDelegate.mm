@@ -54,6 +54,9 @@ Browser *browser;
             [alert runModal];
         }
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchTab:) name:@"BLSelectNextView" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prevTab:) name:@"BLSelectPrevView" object:nil];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -125,5 +128,18 @@ Browser *browser;
 - (IBAction)goForum:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://leanclub.org"]];
 }
+- (IBAction)newTab:(id)sender {
+    [browser addBlankTabInForeground:YES];
+}
+- (IBAction)closeTab:(id)sender {
+    [browser closeTab];
+}
+- (IBAction)switchTab:(id)sender {
+    [browser selectNextTab];
+}
+- (IBAction)prevTab:(id)sender {
+    [browser selectPreviousTab];
+}
+
 
 @end
