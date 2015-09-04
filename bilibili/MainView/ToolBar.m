@@ -7,6 +7,8 @@
 //
 
 #import "ToolBar.h"
+#import "Common.hpp"
+#import "WebTabView.h"
 
 @interface BLToolBar ()
 
@@ -31,16 +33,38 @@
 
 @implementation BLToolBarEvents
 
+- (void)setToolbarURL:(NSString *)url{
+    [self.URLInputField setStringValue:url];
+}
+
 - (IBAction)goHome:(id)sender {
+    WebTabView *tc = (WebTabView *)[browser activeTabContents];
+    WebView *wv = [tc GetWebView];
+    wv.mainFrameURL = @"http://www.bilibili.com";
     NSLog(@"home");
 }
 - (IBAction)Refresh:(id)sender {
+    WebTabView *tc = (WebTabView *)[browser activeTabContents];
+    WebView *wv = [tc GetWebView];
+    wv.mainFrameURL = wv.mainFrameURL;
 }
 - (IBAction)forward:(id)sender {
+    WebTabView *tc = (WebTabView *)[browser activeTabContents];
+    WebView *wv = [tc GetWebView];
+    [wv goForward];
 }
 - (IBAction)backward:(id)sender {
+    WebTabView *tc = (WebTabView *)[browser activeTabContents];
+    WebView *wv = [tc GetWebView];
+    [wv goBack];
 }
 - (IBAction)menu:(id)sender {
+    WebTabView *tc = (WebTabView *)[browser activeTabContents];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:tc.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = @"暂未完成";
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay:3];
 }
 
 @end
