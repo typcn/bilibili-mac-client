@@ -18,20 +18,12 @@
 #include <stdlib.h>
 #include <sstream>
 
-extern NSString *vUrl;
-extern NSString *vCID;
-extern NSString *vTitle;
-extern NSString *userAgent;
-extern NSString *cmFile;
-extern NSString *subFile;
+#import "Common.hpp"
 extern NSString *APIKey;
 extern NSString *APISecret;
 NSString *vAID;
 NSString *vPID;
 NSWindow *LastWindow;
-
-extern BOOL parsing;
-extern BOOL isTesting;
 
 mpv_handle *mpv;
 BOOL isCancelled;
@@ -94,18 +86,21 @@ static void wakeup(void *context) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    IOPMAssertionCreateWithName(kIOPMAssertionTypeNoDisplaySleep,
-                                                   kIOPMAssertionLevelOn, CFSTR("com.typcn.videoplayback"), &assertionID);
-
-    if([vCID isEqualToString:@"LOCALVIDEO"]){
-        [[[NSApplication sharedApplication] keyWindow] performClose:self];
-    }
-    
     LastWindow = [[NSApplication sharedApplication] keyWindow];
     [LastWindow orderOut:nil];
     [LastWindow resignKeyWindow];
-    [self.view.window makeKeyWindow];
+    [self.view.window makeKeyAndOrderFront:NSApp];
     [self.view.window makeMainWindow];
+    [self LoadVideo];
+}
+
+- (void)LoadVideo{
+    IOPMAssertionCreateWithName(kIOPMAssertionTypeNoDisplaySleep,
+                                kIOPMAssertionLevelOn, CFSTR("com.typcn.videoplayback"), &assertionID);
+    
+    if([vCID isEqualToString:@"LOCALVIDEO"]){
+        [[[NSApplication sharedApplication] keyWindow] performClose:self];
+    }
     
     
     double Wheight = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerheight"];
@@ -130,13 +125,11 @@ static void wakeup(void *context) {
     hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
     NSLog(@"Playerview load success");
     self->wrapper = [self view];
-
-    //[self.view.window makeKeyWindow];
     
     isCancelled = false;
     
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
-
+    
     dispatch_async(queue, ^{
         
         NSString *baseAPIUrl = @"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=%d&type=%@&sign=%@";
@@ -154,9 +147,10 @@ static void wakeup(void *context) {
                     [self addSubtitle:subFile withCommentFile:commentFile];
                 }
                 [self PlayVideo:commentFile :res];
-                return;
             }else{
-                [self.view.window performClose:self];
+                dispatch_async(dispatch_get_main_queue(), ^(void){
+                    [self.view.window performClose:self];
+                });
             }
             return;
         }else if([vUrl containsString:@"live.bilibili"]){
@@ -194,7 +188,7 @@ static void wakeup(void *context) {
         if(isMP4 == 1){
             type = @"mp4";
         }
-getUrl: NSLog(@"Getting video url");
+    getUrl: NSLog(@"Getting video url");
         NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=%d&type=%@%@",APIKey,vCID,quality,type,APISecret];
         NSString *sign = [self md5:[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
@@ -217,8 +211,8 @@ getUrl: NSLog(@"Getting video url");
         NSURLResponse * response = nil;
         NSError * error = nil;
         NSData * videoAddressJSONData = [NSURLConnection sendSynchronousRequest:request
-                                              returningResponse:&response
-                                                          error:&error];
+                                                              returningResponse:&response
+                                                                          error:&error];
         if(error || !videoAddressJSONData){
             NSLog(@"API ERROR:%@",error);
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -243,7 +237,7 @@ getUrl: NSLog(@"Getting video url");
         }
         
         NSArray *dUrls = [videoResult objectForKey:@"durl"];
-
+        
         if([dUrls count] == 0){
             if([type isEqualToString:@"mp4"]){
                 type = @"flv";
@@ -282,7 +276,7 @@ getUrl: NSLog(@"Getting video url");
                 }
             }
         }
-
+        
         if([firstVideo isEqualToString:@"http://v.iask.com/v_play_ipad.php?vid=false"]){
             type = @"flv";
             goto getUrl;
@@ -295,13 +289,13 @@ getUrl: NSLog(@"Getting video url");
         
         // ffprobe
         [self.textTip setStringValue:NSLocalizedString(@"正在获取视频信息", nil)];
-
+        
         NSLog(@"FirstVideo:%@",firstVideo);
         
         int usingBackup = 0;
         
         NSLog(@"Start read video info");
-GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
+    GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         NSLog(@"Video info got");
         NSNumber *width = [VideoInfoJson objectForKey:@"width"];
         NSNumber *height = [VideoInfoJson objectForKey:@"height"];
@@ -322,7 +316,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
                 }
             }
         }
-    
+        
         NSString *fvHost = [[NSURL URLWithString:firstVideo] host];
         if([fvHost length] > 0){
             vTitle = [NSString stringWithFormat:NSLocalizedString(@"%@ - 服务器: %@", nil),vTitle,fvHost];
@@ -348,7 +342,6 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             return;
         }
     });
-    
 }
 
 - (void)PlayVideo:(NSString*) commentFile :(NSString*)res{
@@ -411,9 +404,6 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     mpv_set_wakeup_callback(mpv, wakeup, (__bridge void *) self);
     
     // Load the indicated file
-    if(!isTesting){
-        NSLog(@"Video url : %@",vUrl);
-    }
     const char *cmd[] = {"loadfile", [vUrl cStringUsingEncoding:NSUTF8StringEncoding], NULL};
     check_error(mpv_command(mpv, cmd));
 }
@@ -636,12 +626,6 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
         case MPV_EVENT_PLAYBACK_RESTART: {
             self.loadingImage.animates = false;
             isPlaying = YES;
-            if(isTesting){
-                const char *args[] = {"stop", NULL};
-                mpv_command(mpv, args);
-                const char *args2[] = {"quit", NULL};
-                mpv_command(mpv, args2);
-            }
             break;
         }
         
@@ -724,12 +708,6 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     [hideCursorTimer invalidate];
     hideCursorTimer = nil;
 }
-
-@end
-
-@interface PlayerWindow : NSWindow <NSWindowDelegate>
-
--(void)keyDown:(NSEvent*)event;
 
 @end
 

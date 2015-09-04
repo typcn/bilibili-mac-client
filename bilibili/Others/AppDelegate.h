@@ -7,8 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Browser.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
+
 
 
 @end

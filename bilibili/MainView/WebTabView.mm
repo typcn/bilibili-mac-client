@@ -1,49 +1,29 @@
 //
-//  ViewController.m
+//  WebTabView.m
 //  bilibili
 //
-//  Created by TYPCN on 2015/3/30.
-//  Copyleft 2015 TYPCN. All rights reserved.
+//  Created by TYPCN on 2015/9/3.
+//  Copyright (c) 2015 TYPCN. All rights reserved.
 //
 
-#import "WebView.h"
+#import "WebTabView.h"
 #import <Sparkle/Sparkle.h>
 #import "downloadWrapper.h"
 #import "Analytics.h"
+#import "ToolBar.h"
 
-NSString *vUrl;
-NSString *vCID;
-NSString *vTitle;
-NSString *userAgent;
-NSWindow *currWindow;
-NSMutableArray *downloaderObjects;
-Downloader* DL;
-NSLock *dList = [[NSLock alloc] init];
-BOOL parsing = false;
-BOOL isTesting;
-
-
-@implementation ViewController
-
-- (BOOL)canBecomeMainWindow { return YES; }
-- (BOOL)canBecomeKeyWindow { return YES; }
-
-- (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];
-
-    // Update the view, if already loaded.
+@implementation WebTabView {
+    NSString* WebScript;
+    NSString* WebUI;
+    NSString* WebCSS;
+    bool ariainit;
+    long acceptAnalytics;
 }
-- (IBAction)playClick:(id)sender {
-    vUrl = [self.urlField stringValue];
-    NSLog(@"USER INPUT: %@",vUrl);
-}
+@synthesize playerWindowController;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self.view.window setBackgroundColor:NSColor.whiteColor];
-    self.view.layer.backgroundColor = CGColorCreateGenericRGB(255, 255, 255, 1.0f);
-    currWindow = self.view.window;
-    [self.view.window makeKeyWindow];
+-(id)initWithBaseTabContents:(CTTabContents*)baseContents {
+    if (!(self = [super initWithBaseTabContents:baseContents])) return nil;
+    
     double height = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webheight"];
     double width = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webwidth"];
     NSLog(@"lastWidth: %f Height: %f",width,height);
@@ -55,16 +35,108 @@ BOOL isTesting;
         frame.size = NSMakeSize(width, height);
         [self.view setFrame:frame];
     }
-
-    NSArray *TaskList = [[NSUserDefaults standardUserDefaults] arrayForKey:@"DownloadTaskList"];
-    downloaderObjects = [TaskList mutableCopy];
-
+    
+    return [self initWithURL:@"http://www.bilibili.com"];
 }
-@end
 
-@implementation WebController{
-    bool ariainit;
-    long acceptAnalytics;
+-(id)initWithURL:(NSString *)url{
+    webView = [[WebView alloc] initWithFrame:NSZeroRect];
+    [webView setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
+    [self loadStartupScripts];
+    [self setIsWaitingForResponse:YES];
+    webView.mainFrameURL = url;
+    NSScrollView *sv = [[NSScrollView alloc] initWithFrame:NSZeroRect];
+    [sv setDocumentView:webView];
+    [sv setHasVerticalScroller:NO];
+    self.view = sv;
+    return self;
+}
+
+-(WebView *)GetWebView{
+    return webView;
+}
+
+-(void)viewFrameDidChange:(NSRect)newFrame {
+    // We need to recalculate the frame of the NSTextView when the frame changes.
+    // This happens when a tab is created and when it's moved between windows.
+    [super viewFrameDidChange:newFrame];
+    NSClipView* clipView = [[view_ subviews] objectAtIndex:0];
+    NSTextView* tv = [[clipView subviews] objectAtIndex:0];
+    NSRect frame = NSZeroRect;
+    frame.size = [(NSScrollView*)(view_) contentSize];
+    [[NSUserDefaults standardUserDefaults] setDouble:frame.size.width forKey:@"webwidth"];
+    [[NSUserDefaults standardUserDefaults] setDouble:frame.size.height forKey:@"webheight"];
+    [tv setFrame:frame];
+}
+
+- (NSString *)windowNibName {
+    // Override returning the nib file name of the document
+    // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
+    return nil;
+}
+
+- (void)windowControllerDidLoadNib:(NSWindowController *)aController {
+    [super windowControllerDidLoadNib:aController];
+    // Add any code here that needs to be executed once the windowController has loaded the document's window.
+}
+
+- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
+    // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
+    // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
+    if (outError) {
+        *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:nil];
+    }
+    return nil;
+}
+
+- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
+    // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
+    // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
+    // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
+    if (outError) {
+        *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:unimpErr userInfo:nil];
+    }
+    return NO;
+}
+
++ (BOOL)autosavesInPlace {
+    return YES;
+}
+
+- (void)loadStartupScripts
+{
+    NSError *err;
+    
+    [webView setFrameLoadDelegate:self];
+    [webView setUIDelegate:self];
+    [webView setResourceLoadDelegate:self];
+    
+    NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
+    acceptAnalytics = [s integerForKey:@"acceptAnalytics"];
+    
+    if(!acceptAnalytics || acceptAnalytics == 1 || acceptAnalytics == 2){
+        screenView("NewTab");
+    }
+    NSLog(@"Start");
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AVNumberUpdated:) name:@"AVNumberUpdate" object:nil];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"webpage/inject" ofType:@"js"];
+    WebScript = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    if(err){
+        [self showError];
+    }
+    
+    path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"html"];
+    WebUI = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    if(err){
+        [self showError];
+    }
+    
+    path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"css"];
+    WebCSS = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    if(err){
+        [self showError];
+    }
 }
 
 +(NSString*)webScriptNameForSelector:(SEL)sel
@@ -98,7 +170,7 @@ BOOL isTesting;
 }
 
 - (void)showNotification:(NSString *)content{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[[NSApplication sharedApplication] keyWindow] contentView] animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = content;
     hud.removeFromSuperViewOnHide = YES;
@@ -119,7 +191,6 @@ BOOL isTesting;
 {
     [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$('#bofqi').html('%@');$('head').append('<style>%@</style>');",WebUI,WebCSS]];
 }
-
 - (void)playVideoByCID:(NSString *)cid
 {
     if(parsing){
@@ -146,7 +217,11 @@ BOOL isTesting;
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
     }
-    [self.switchButton performClick:nil];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+        playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
+        [playerWindowController showWindow:self];
+    });
 }
 - (void)downloadVideoByCID:(NSString *)cid
 {
@@ -157,11 +232,11 @@ BOOL isTesting;
         [alert runModal];
     }
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[[NSApplication sharedApplication] keyWindow] contentView] animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = NSLocalizedString(@"正在启动下载引擎", nil);
     hud.removeFromSuperViewOnHide = YES;
-
+    
     if(!DL){
         DL = new Downloader();
     }
@@ -177,7 +252,7 @@ BOOL isTesting;
     
     NSArray *fn = [webView.mainFrameTitle componentsSeparatedByString:@"_"];
     NSString *filename = [fn objectAtIndex:0];
-
+    
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSDictionary *taskData = @{
                                    @"name":filename,
@@ -202,43 +277,6 @@ BOOL isTesting;
 }
 
 
-- (void)awakeFromNib //当 WebContoller 加载完成后执行的动作
-{
-    NSError *err;
-
-    [webView setFrameLoadDelegate:self];
-    [webView setUIDelegate:self];
-    [webView setResourceLoadDelegate:self];
-
-    NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
-    acceptAnalytics = [s integerForKey:@"acceptAnalytics"];
-    
-    if(!acceptAnalytics || acceptAnalytics == 1 || acceptAnalytics == 2){
-        screenView("StartApplication");
-    }
-    NSLog(@"Start");
-    webView.mainFrameURL = @"http://www.bilibili.com";
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AVNumberUpdated:) name:@"AVNumberUpdate" object:nil];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"webpage/inject" ofType:@"js"];
-    WebScript = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
-    if(err){
-        [self showError];
-    }
-    
-    path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"html"];
-    WebUI = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
-    if(err){
-        [self showError];
-    }
-    
-    path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"css"];
-    WebCSS = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
-    if(err){
-        [self showError];
-    }
-}
-
 - (void)showError
 {
     NSAlert *alert = [[NSAlert alloc] init];
@@ -248,7 +286,9 @@ BOOL isTesting;
 
 - (WebView *)webView:(WebView *)sender createWebViewWithRequest:(NSURLRequest *)request
 {
-    return webView;
+    WebTabView *tv = (WebTabView *)[browser createTabBasedOn:nil withUrl:[request.URL absoluteString]];
+    [browser addTabContents:tv inForeground:YES];
+    return [tv GetWebView];
 }
 
 - (NSURLRequest *)webView:(WebView *)sender
@@ -259,14 +299,17 @@ BOOL isTesting;
     NSString *URL = [request.URL absoluteString];
     NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
     re = (NSMutableURLRequest *) request.mutableCopy;
-    if([URL containsString:@"google"]){
+    if([URL containsString:@"googlesyndication"] || [URL containsString:@"analytics.js"]){
         // Google ad is blocked in some (china) area, maybe take 30 seconds to wait for timeout
         [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
-    }else if([URL containsString:@"qq.com"]){
+    }else if([URL containsString:@"tajs.qq.com"]){
         // QQ analytics may block more than 10 seconds in some area
         [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
     }else if([URL containsString:@"cnzz.com"]){
         // CNZZ is very slow in other country
+        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
+    }else if([URL containsString:@"cpro.baidustatic.com"]){
+        // Baidu is very slow in other country
         [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
     }else if([URL containsString:@".swf"]){
         // Block Flash
@@ -292,26 +335,21 @@ BOOL isTesting;
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
-    if(isTesting){
-        if([webView.mainFrameURL isEqualToString:@"http://www.bilibili.com/ranking"]){
-            [webView stringByEvaluatingJavaScriptFromString:@"window.location=$('#rank_list li:first-child .content > a').attr('href')"];
-        }else if(![webView.mainFrameURL hasPrefix:@"http://www.bilibili.com/video/av"]){
-            webView.mainFrameURL = @"http://www.bilibili.com/ranking";
-        }else{
-            [webView stringByEvaluatingJavaScriptFromString:@"setTimeout(function(){window.external.playVideoByCID(TYPCN_PLAYER_CID)},2000);"];
-        }
-    }
     [webView stringByEvaluatingJavaScriptFromString:WebScript];
     userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    [self setIsLoading:NO];
 }
 
 - (void)webView:(WebView *)sender
 didReceiveTitle:(NSString *)title
        forFrame:(WebFrame *)frame{
-    
+    [self setTitle:title];
+    [self setIsWaitingForResponse:NO];
+    [self setIsLoading:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:webView.mainFrameURL userInfo:nil];
     userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
     [webView stringByEvaluatingJavaScriptFromString:WebScript];
-
+    
     if(acceptAnalytics == 1 || acceptAnalytics == 2){
         screenView("WebView");
     }else{
@@ -327,13 +365,13 @@ didReceiveTitle:(NSString *)title
 
 - (void)webView:(WebView *)sender
 didStartProvisionalLoadForFrame:(WebFrame *)frame{
-//    [webView stringByEvaluatingJavaScriptFromString:WebScript];
-//    userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    //    [webView stringByEvaluatingJavaScriptFromString:WebScript];
+    //    userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
 }
 
 - (void)webView:(WebView *)sender didCommitLoadForFrame:(WebFrame *)frame
 {
-   
+    
 }
 
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems{
@@ -357,7 +395,7 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
 - (IBAction)CopyLink:(id)sender {
     [[NSPasteboard generalPasteboard] clearContents];
     [[NSPasteboard generalPasteboard] setString:webView.mainFrameURL  forType:NSStringPboardType];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[[NSApplication sharedApplication] keyWindow] contentView] animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = NSLocalizedString(@"当前页面地址已经复制到剪贴板", nil);
     hud.removeFromSuperViewOnHide = YES;
@@ -379,8 +417,8 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
         if ([[avNumber substringToIndex:2] isEqual: @"av"]) {
             avNumber = [avNumber substringFromIndex:2];
         }
-
-
+        
+        
         webView.mainFrameURL = [NSString stringWithFormat:@"http://www.bilibili.com/video/av%@",avNumber];
         [sender setStringValue:@""];
     }
@@ -392,24 +430,6 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
         url = [url substringFromIndex:6];
     }
     webView.mainFrameURL = [NSString stringWithFormat:@"http://%@", url];
-}
-
-@end
-
-@interface WebViewWindow : NSWindow <NSWindowDelegate>
-
-@end
-
-@implementation WebViewWindow{
-    
-}
-
-- (NSSize)windowWillResize:(NSWindow *)sender
-                    toSize:(NSSize)frameSize{
-    // Save window size
-    [[NSUserDefaults standardUserDefaults] setDouble:frameSize.width forKey:@"webwidth"];
-    [[NSUserDefaults standardUserDefaults] setDouble:frameSize.height forKey:@"webheight"];
-    return frameSize;
 }
 
 @end

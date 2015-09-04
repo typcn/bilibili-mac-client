@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #include "aria2.hpp"
 
+Browser *browser;
+
 @interface AppDelegate ()
 
 @end
@@ -52,6 +54,9 @@
             [alert runModal];
         }
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchTab:) name:@"BLSelectNextView" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(prevTab:) name:@"BLSelectPrevView" object:nil];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -83,6 +88,11 @@
     }
     [s synchronize];
     NSLog(@"AcceptAnalytics=%ld",acceptAnalytics);
+    
+    browser = (Browser *)[Browser browser];
+    browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
+    [browser addBlankTabInForeground:YES];
+    [browser.windowController showWindow:self];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -99,7 +109,9 @@
     }
     else
     {
-        NSApplicationMain(0,NULL);
+        [browser addBlankTabInForeground:YES];
+        [browser.windowController showWindow:self];
+        
         return YES;
     }
 }
@@ -116,5 +128,18 @@
 - (IBAction)goForum:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://leanclub.org"]];
 }
+- (IBAction)newTab:(id)sender {
+    [browser addBlankTabInForeground:YES];
+}
+- (IBAction)closeTab:(id)sender {
+    [browser closeTab];
+}
+- (IBAction)switchTab:(id)sender {
+    [browser selectNextTab];
+}
+- (IBAction)prevTab:(id)sender {
+    [browser selectPreviousTab];
+}
+
 
 @end

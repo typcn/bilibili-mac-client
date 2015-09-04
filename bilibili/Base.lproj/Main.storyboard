@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
         <plugIn identifier="com.apple.WebKitIBPlugin" version="7531"/>
@@ -386,7 +386,7 @@
                                                 <action selector="performZoom:" target="Ady-hI-5gd" id="h3M-Od-Iiu"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="关闭" keyEquivalent="w" id="yZ9-6y-AEF" userLabel="Zoom">
+                                        <menuItem title="关闭" keyEquivalent="W" id="yZ9-6y-AEF" userLabel="Zoom">
                                             <connections>
                                                 <action selector="performClose:" target="Ady-hI-5gd" id="jfJ-eM-d7u"/>
                                             </connections>
@@ -402,6 +402,32 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="arrangeInFront:" target="Ady-hI-5gd" id="NHV-PZ-9jq"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="标签" id="X3c-r8-Rba" userLabel="标签">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="标签" systemMenu="window" id="6Gu-aq-F1o">
+                                    <items>
+                                        <menuItem title="新建" keyEquivalent="t" id="0Ai-R8-YEq" userLabel="New">
+                                            <connections>
+                                                <action selector="newTab:" target="Voe-Tx-rLC" id="3Vw-4j-gBg"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="关闭" keyEquivalent="w" id="wDL-0s-zT6" userLabel="Close">
+                                            <connections>
+                                                <action selector="closeTab:" target="Voe-Tx-rLC" id="jdp-pW-anJ"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="切换" id="oV1-Ec-BaQ" userLabel="Switch">
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+GQ
+</string>
+                                            <modifierMask key="keyEquivalentModifierMask" shift="YES" control="YES"/>
+                                            <connections>
+                                                <action selector="switchTab:" target="Voe-Tx-rLC" id="ZYL-EK-dtY"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -680,28 +706,11 @@ Copyleft 2015 TYPCN</string>
             </objects>
             <point key="canvasLocation" x="-1715" y="-183"/>
         </scene>
-        <!--Main Window Controller-->
-        <scene sceneID="R2V-B0-nI4">
-            <objects>
-                <windowController storyboardIdentifier="MainWindowController" showSeguePresentationStyle="single" id="B8D-0N-5wS" userLabel="Main Window Controller" sceneMemberID="viewController">
-                    <window key="window" title="Bilibili Browser" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="documentWindow" id="IQv-IB-iLA" customClass="WebViewWindow">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <rect key="contentRect" x="748" y="758" width="408" height="202"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                    </window>
-                    <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
-                    </connections>
-                </windowController>
-                <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1756" y="195"/>
-        </scene>
         <!--Miedia Player Window Controller-->
         <scene sceneID="DUG-BS-fjC">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="3Nx-YC-zmP" userLabel="Miedia Player Window Controller" sceneMemberID="viewController">
-                    <window key="window" title="TYPCN Media Player" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="utilityWindow" id="Qzs-of-Uzm" customClass="PlayerWindow">
+                <windowController storyboardIdentifier="playerWindow" showSeguePresentationStyle="single" id="3Nx-YC-zmP" userLabel="Miedia Player Window Controller" sceneMemberID="viewController">
+                    <window key="window" title="TYPCN Media Player" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" animationBehavior="utilityWindow" id="Qzs-of-Uzm" customClass="PlayerWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
                         <rect key="contentRect" x="1298" y="922" width="311" height="194"/>
@@ -776,9 +785,6 @@ Copyleft 2015 TYPCN</string>
                         </subviews>
                         <animations/>
                     </view>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="PostCommentButton" destination="xVW-zA-HWk" id="Exg-Nr-pCW"/>
                         <outlet property="loadingImage" destination="d4M-72-jUI" id="fmB-92-FBV"/>
@@ -927,7 +933,7 @@ Copyleft 2015 TYPCN</string>
         <!--Main View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="Bilibili" id="XfG-lQ-9wD" userLabel="Main View Controller" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="Bilibili" storyboardIdentifier="mvc" id="XfG-lQ-9wD" userLabel="Main View Controller" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="423" height="228"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1291,6 +1297,6 @@ Copyleft 2015 TYPCN</string>
         <image name="reload" width="340" height="340"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Y0Z-ee-aqu"/>
+        <segue reference="D5B-9p-dnr"/>
     </inferredMetricsTieBreakers>
 </document>
