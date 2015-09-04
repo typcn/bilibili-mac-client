@@ -7,7 +7,6 @@
 //
 
 #import "WebTabView.h"
-#import "WebView.h"
 #import <Sparkle/Sparkle.h>
 #import "downloadWrapper.h"
 #import "Analytics.h"

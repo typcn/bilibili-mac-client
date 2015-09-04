@@ -8,6 +8,8 @@
 
 #import <ChromiumTabs/ChromiumTabs.h>
 #import "AppDelegate.h"
+#import <WebKit/WebKit.h>
+#import "MBProgressHUD.h"
 
 @interface Browser : CTBrowser
 

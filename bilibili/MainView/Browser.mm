@@ -7,7 +7,6 @@
 //
 
 #import "Browser.h"
-#import "WebView.h"
 #import "WebTabView.h"
 
 NSString *vUrl;
