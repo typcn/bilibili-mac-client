@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #include "aria2.hpp"
 
+Browser *browser;
+
 @interface AppDelegate ()
 
 @end
@@ -83,6 +85,11 @@
     }
     [s synchronize];
     NSLog(@"AcceptAnalytics=%ld",acceptAnalytics);
+    
+    browser = (Browser *)[Browser browser];
+    browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
+    [browser addBlankTabInForeground:YES];
+    [browser.windowController showWindow:self];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -99,7 +106,10 @@
     }
     else
     {
-        NSApplicationMain(0,NULL);
+        browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
+        [browser addBlankTabInForeground:YES];
+        [browser.windowController showWindow:self];
+        
         return YES;
     }
 }
