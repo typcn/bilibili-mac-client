@@ -122,7 +122,7 @@
     acceptAnalytics = [s integerForKey:@"acceptAnalytics"];
     
     if(!acceptAnalytics || acceptAnalytics == 1 || acceptAnalytics == 2){
-        screenView("StartApplication");
+        screenView("NewTab");
     }
     NSLog(@"Start");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AVNumberUpdated:) name:@"AVNumberUpdate" object:nil];
