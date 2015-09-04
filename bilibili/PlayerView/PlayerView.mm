@@ -376,6 +376,7 @@ GetInfo:NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
     check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
     check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
     check_error(mpv_set_option_string(mpv, "hr-seek", "yes"));
+    check_error(mpv_set_option_string(mpv, "keep-open", "yes"));
     
     int disableKeepAspect = [self getSettings:@"disableKeepAspect"];
     if(disableKeepAspect == 1){
