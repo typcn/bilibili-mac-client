@@ -29,7 +29,7 @@ BOOL isTesting;
 - (BOOL)canBecomeKeyWindow { return YES; }
 
 - (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];
+
 
     // Update the view, if already loaded.
 }
@@ -39,7 +39,7 @@ BOOL isTesting;
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+
     [self.view.window setBackgroundColor:NSColor.whiteColor];
     self.view.layer.backgroundColor = CGColorCreateGenericRGB(255, 255, 255, 1.0f);
     currWindow = self.view.window;
@@ -58,8 +58,48 @@ BOOL isTesting;
 
     NSArray *TaskList = [[NSUserDefaults standardUserDefaults] arrayForKey:@"DownloadTaskList"];
     downloaderObjects = [TaskList mutableCopy];
+    [self setTitle:@"TEST"];
 
 }
+
+
+//-(id)initWithBaseTabContents:(CTTabContents*)baseContents {
+//    if (!(self = [super initWithBaseTabContents:baseContents])) return nil;
+//    
+////    // Setup our contents -- a scrolling text view
+////    
+////    // Create a simple NSTextView
+////    NSTextView* tv = [[NSTextView alloc] initWithFrame:NSZeroRect];
+////    [tv setFont:[NSFont userFixedPitchFontOfSize:13.0]];
+////    [tv setAutoresizingMask:                  NSViewMaxYMargin|
+////     NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|
+////     NSViewHeightSizable|
+////     NSViewMinYMargin];
+////    
+////    // Create a NSScrollView to which we add the NSTextView
+////    NSScrollView *sv = [[NSScrollView alloc] initWithFrame:NSZeroRect];
+////    [sv setDocumentView:tv];
+////    [sv setHasVerticalScroller:YES];
+////    
+////    // Set the NSScrollView as our view
+////    self.view = sv;
+//    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil]; // get a reference to the storyboard
+//    ViewController *vc = [storyBoard instantiateControllerWithIdentifier:@"mvc"]; // instantiate your window controller
+//    self.view = vc.view;
+//    return self;
+//}
+//
+//-(void)viewFrameDidChange:(NSRect)newFrame {
+//    // We need to recalculate the frame of the NSTextView when the frame changes.
+//    // This happens when a tab is created and when it's moved between windows.
+//    [super viewFrameDidChange:newFrame];
+//    NSClipView* clipView = [[view_ subviews] objectAtIndex:0];
+//    NSTextView* tv = [[clipView subviews] objectAtIndex:0];
+//    NSRect frame = NSZeroRect;
+//    frame.size = [(NSScrollView*)(view_) contentSize];
+//    [tv setFrame:frame];
+//}
+
 @end
 
 @implementation WebController{

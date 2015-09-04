@@ -9,8 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 #import "MBProgressHUD.h"
+#import "Browser.h"
 
-@interface ViewController : NSViewController
+
+@interface ViewController : CTTabContents
 
 @property (weak) IBOutlet NSTextField *urlField;
 
