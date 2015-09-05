@@ -19,6 +19,7 @@ WKWebViewConfiguration *cfg;
 
 - (void)dealloc{
     [WKwv removeObserver:self forKeyPath:@"title"];
+    cfg = NULL;
 }
 
 - (TWebView *)initWithRequest:(NSURLRequest *)req andDelegate:(id <TWebViewDelegate>)aDelegate{
