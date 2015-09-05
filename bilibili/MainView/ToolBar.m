@@ -95,7 +95,7 @@
 }
 - (IBAction)menu:(id)sender {
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:tc.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[tc GetWebView] subviews][0] animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = @"暂未完成";
     hud.removeFromSuperViewOnHide = YES;

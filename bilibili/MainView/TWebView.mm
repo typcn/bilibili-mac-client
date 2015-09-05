@@ -23,17 +23,17 @@ WKWebViewConfiguration *cfg;
     if (self.delegate != aDelegate) {
         self.delegate = aDelegate;
     }
-    if(!cfg){
-        cfg = [[WKWebViewConfiguration  alloc] init];
-    }
+
     if (NSClassFromString(@"WKWebView")) {
+        if(!cfg){
+            cfg = [[WKWebViewConfiguration  alloc] init];
+        }
         webViewType = tWKWebView;
         WKwv = [[WKWebView alloc] initWithFrame:NSZeroRect configuration:cfg];
         [WKwv setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
         [WKwv setNavigationDelegate: self];
         [WKwv setUIDelegate: self];
         [WKwv addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
-       
     } else {
         webViewType = tWebView;
         wv = [[WebView alloc] init];

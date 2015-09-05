@@ -16,6 +16,7 @@
     NSString* WebScript;
     NSString* WebUI;
     NSString* WebCSS;
+    NSView* HudView;
     bool ariainit;
     long acceptAnalytics;
 }
@@ -58,6 +59,7 @@
     NSRect frame = NSZeroRect;
     frame.size = [(NSScrollView*)(view_) contentSize];
     [webView setFrameSize:frame];
+    HudView = [[wenView GetWebView] subviews][0];
     dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
         [[NSUserDefaults standardUserDefaults] setDouble:frame.size.width forKey:@"webwidth"];
         [[NSUserDefaults standardUserDefaults] setDouble:frame.size.height forKey:@"webheight"];
@@ -182,6 +184,7 @@
 
 - (void)onTitleChange:(NSString *)str{
     [self setTitle:str];
+    [webView runJavascript:WebScript];
 }
 
 +(NSString*)webScriptNameForSelector:(SEL)sel
@@ -215,7 +218,7 @@
 }
 
 - (void)showNotification:(NSString *)content{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:HudView animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = content;
     hud.removeFromSuperViewOnHide = YES;
@@ -277,7 +280,7 @@
         [alert runModal];
     }
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:HudView animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = NSLocalizedString(@"正在启动下载引擎", nil);
     hud.removeFromSuperViewOnHide = YES;
@@ -371,28 +374,6 @@
     [windowScriptObject setValue:self forKeyPath:@"window.external"];
 }
 
-- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
-{
-    [webView runJavascript:WebScript];
-    [self setIsLoading:NO];
-}
-
-- (void)webView:(WebView *)sender
-didReceiveTitle:(NSString *)title
-       forFrame:(WebFrame *)frame{
-}
-
-- (void)webView:(WebView *)sender
-didStartProvisionalLoadForFrame:(WebFrame *)frame{
-    //    [webView stringByEvaluatingJavaScriptFromString:WebScript];
-    //    userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-}
-
-- (void)webView:(WebView *)sender didCommitLoadForFrame:(WebFrame *)frame
-{
-    
-}
-
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems{
     NSMenuItem *copy = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"复制页面地址", nil) action:@selector(CopyLink:) keyEquivalent:@""];
     [copy setTarget:self];
@@ -414,7 +395,7 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
 - (IBAction)CopyLink:(id)sender {
     [[NSPasteboard generalPasteboard] clearContents];
     [[NSPasteboard generalPasteboard] setString:[webView getURL]  forType:NSStringPboardType];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:HudView animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = NSLocalizedString(@"当前页面地址已经复制到剪贴板", nil);
     hud.removeFromSuperViewOnHide = YES;
