@@ -11,15 +11,20 @@
 #import "TWebView.h"
 #import "WebTabView.h"
 
+WKWebViewConfiguration *cfg;
+
 @implementation TWebView
 
 - (TWebView *)initWithRequest:(NSURLRequest *)req andDelegate:(id <TWebViewDelegate>)aDelegate{
     if (self.delegate != aDelegate) {
         self.delegate = aDelegate;
     }
+    if(!cfg){
+        cfg = [[WKWebViewConfiguration  alloc] init];
+    }
     if (NSClassFromString(@"WKWebView")) {
         webViewType = tWKWebView;
-        WKwv = [[WKWebView alloc] init];
+        WKwv = [[WKWebView alloc] initWithFrame:NSZeroRect configuration:cfg];
         [WKwv setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
         [WKwv setNavigationDelegate: self];
         [WKwv setUIDelegate: self];
@@ -186,6 +191,7 @@ didReceiveTitle:(NSString *)title
 createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration
    forNavigationAction:(WKNavigationAction *)navigationAction
         windowFeatures:(WKWindowFeatures *)windowFeatures{
+    cfg = configuration;
     WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:navigationAction.request];
     [browser addTabContents:ct inForeground:YES];
     return [ct GetWebView];

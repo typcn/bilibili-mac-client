@@ -23,7 +23,6 @@
 
 -(id)initWithBaseTabContents:(CTTabContents*)baseContents {
     if (!(self = [super initWithBaseTabContents:baseContents])) return nil;
-    
     double height = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webheight"];
     double width = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webwidth"];
     NSLog(@"lastWidth: %f Height: %f",width,height);
@@ -45,7 +44,6 @@
     webView = [[TWebView alloc] initWithRequest:req andDelegate:self];
     [self loadStartupScripts];
     [self setIsWaitingForResponse:YES];
-    
     NSScrollView *sv = [[NSScrollView alloc] initWithFrame:NSZeroRect];
     [sv setHasVerticalScroller:NO];
     [webView addToView:sv];
@@ -60,8 +58,10 @@
     NSRect frame = NSZeroRect;
     frame.size = [(NSScrollView*)(view_) contentSize];
     [webView setFrameSize:frame];
-    [[NSUserDefaults standardUserDefaults] setDouble:frame.size.width forKey:@"webwidth"];
-    [[NSUserDefaults standardUserDefaults] setDouble:frame.size.height forKey:@"webheight"];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+        [[NSUserDefaults standardUserDefaults] setDouble:frame.size.width forKey:@"webwidth"];
+        [[NSUserDefaults standardUserDefaults] setDouble:frame.size.height forKey:@"webheight"];
+    });
 }
 
 -(id)GetWebView{
@@ -137,7 +137,10 @@
 
 - (BOOL) shouldStartDecidePolicy: (NSURLRequest *) request
 {
-    NSLog(@"should load , %@",request);
+    NSString *url = [request.URL absoluteString];
+    if([url containsString:@"about:blank"]){
+        return NO;
+    }
     return YES;
 }
 
