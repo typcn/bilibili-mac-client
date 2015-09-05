@@ -184,6 +184,15 @@
 
 - (void) invokeJSEvent:(NSString *)action withData:(NSString *)data{
     NSLog(@"event fire %@   %@",action,data);
+    if([action isEqualToString:@"playVideoByCID"]){
+        [self playVideoByCID:data];
+    }else if([action isEqualToString:@"downloadVideoByCID"]){
+        [self downloadVideoByCID:data];
+    }else if([action isEqualToString:@"checkforUpdate"]){
+        [self checkForUpdates];
+    }else if([action isEqualToString:@"showNotification"]){
+        [self showNotification:data];
+    }
 }
 
 - (void)onTitleChange:(NSString *)str{
