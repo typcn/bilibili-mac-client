@@ -274,6 +274,20 @@ didReceiveTitle:(NSString *)title
     }
 }
 
+//- (void)webView:(WKWebView *)webView
+//decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse
+//decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
+//    NSURLResponse *resp = navigationResponse.response;
+//    NSString *url = [resp.URL absoluteString];
+//    
+//    if([url containsString:@"https://account.bilibili.com/login/dologin"]){
+//        
+//    }else{
+//        decisionHandler(WKNavigationResponsePolicyAllow);
+//    }
+//    
+//    NSLog(@"%@",navigationResponse);
+//}
 - (void) webView: (WKWebView *) webView didStartProvisionalNavigation: (WKNavigation *) navigation
 {
     [self.delegate didStartNavigation];

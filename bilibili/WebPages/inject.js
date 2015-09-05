@@ -17,6 +17,11 @@ function applyUI(){
         $('.close-btn-wrp').parent().remove();$('.float-pmt').remove();
         $(".i-link[href='http://app.bilibili.com']").html('检查更新').attr('href','javascript:window.sendToView({action: "checkforUpdate",data:"none"});');
         $(".b-head-s").html('由于 B 站网页 BUG，标签需要点击两次才能显示内容');
+        if(!$('.i_face').attr('src')){
+            $('.login').css('width',200).children('a').html('点击登录客户端以便发送弹幕');
+        }else{
+            window.sendToView({"action":"setcookie","data":document.cookie});
+        }
         if(window.LoadTimes){
             window.LoadTimes++;
         }else{
@@ -52,9 +57,6 @@ function applyUI(){
         var m = re.exec(fv);
         TYPCN_PLAYER_CID = m[1];
         console.log("cid got");
-        if(!$('.i_face').attr('src')){
-            $('.login').css('width',200).children('a').html('点击登录客户端以便发送弹幕');
-        }
         
         if(TYPCN_PLAYER_CID){
             if(window.location.origin == 'http://live.bilibili.com'){

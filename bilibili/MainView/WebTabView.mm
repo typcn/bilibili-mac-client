@@ -36,6 +36,9 @@
         [self.view setFrame:frame];
     }
     
+    [self.view.window makeKeyAndOrderFront:NSApp];
+    [self.view.window makeMainWindow];
+    
     NSURL *u = [NSURL URLWithString:@"http://www.bilibili.com"];
     
     return [self initWithRequest:[NSURLRequest requestWithURL:u]];
@@ -182,7 +185,6 @@
 }
 
 - (void) invokeJSEvent:(NSString *)action withData:(NSString *)data{
-    NSLog(@"event fire %@   %@",action,data);
     if([action isEqualToString:@"playVideoByCID"]){
         [self playVideoByCID:data];
     }else if([action isEqualToString:@"downloadVideoByCID"]){
@@ -191,6 +193,8 @@
         [self checkForUpdates];
     }else if([action isEqualToString:@"showNotification"]){
         [self showNotification:data];
+    }else if([action isEqualToString:@"setcookie"]){
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"cookie"];
     }
 }
 

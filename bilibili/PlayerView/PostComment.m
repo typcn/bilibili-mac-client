@@ -96,6 +96,8 @@ extern mpv_handle *mpv;
         
         // Headers
         
+        NSString *cookie = [[NSUserDefaults standardUserDefaults] objectForKey:@"cookie"];
+        [request setValue:cookie forHTTPHeaderField:@"Cookie"];
         [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         [request addValue:userAgent forHTTPHeaderField:@"User-Agent"];
         [request setValue:@"http://static.hdslb.com" forHTTPHeaderField:@"Origin"];
