@@ -44,13 +44,16 @@ WKWebViewConfiguration *cfg;
         [wv setResourceLoadDelegate:self];
     
         
-   }
-    
-    [NSTimer scheduledTimerWithTimeInterval:0.3
+    }
+
+    if(req){
+        [NSTimer scheduledTimerWithTimeInterval:0.3
                                          target:self
                                        selector:@selector(loadRequest:)
                                        userInfo:req
                                         repeats:NO];
+    }
+
 
     return self;
 }
@@ -296,14 +299,21 @@ createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration
    forNavigationAction:(WKNavigationAction *)navigationAction
         windowFeatures:(WKWindowFeatures *)windowFeatures{
     cfg = configuration;
-    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:navigationAction.request];
+    WebTabView *ct;
+    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+    NSString *xff = [settingsController objectForKey:@"xff"];
+    if([xff length] > 4){
+        ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:navigationAction.request];
+    }else{
+        ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:nil];
+    }
     [browser addTabContents:ct inForeground:YES];
     return [ct GetWebView];
 }
 
 - (WebView *)webView:(id)sender createWebViewWithRequest:(NSURLRequest *)request
 {
-    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:request];
+    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:nil];
     [browser addTabContents:ct inForeground:YES];
     return [ct GetWebView];
 }

@@ -36,7 +36,16 @@ BOOL parsing = false;
 }
 
 -(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withRequest:(NSURLRequest*) req{
-    CTTabContents *tc = [[WebTabView alloc] initWithRequest:req];
+    NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
+    re = (NSMutableURLRequest *) req.mutableCopy;
+    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+    NSString *xff = [settingsController objectForKey:@"xff"];
+    if([xff length] > 4){
+        [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
+        [re setValue:xff forHTTPHeaderField:@"Client-IP"];
+    }
+    
+    CTTabContents *tc = [[WebTabView alloc] initWithRequest:re];
     [tc setTitle:@"Loading"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[req.URL absoluteString] userInfo:nil];
     return tc;
