@@ -13,7 +13,9 @@
 
 WKWebViewConfiguration *cfg;
 
-@implementation TWebView
+@implementation TWebView{
+    NSUserDefaults *settingsController;
+}
 
 - (void)dealloc{
     [WKwv removeObserver:self forKeyPath:@"title"];
@@ -22,11 +24,15 @@ WKWebViewConfiguration *cfg;
 - (TWebView *)initWithRequest:(NSURLRequest *)req andDelegate:(id <TWebViewDelegate>)aDelegate{
     if (self.delegate != aDelegate) {
         self.delegate = aDelegate;
+        settingsController =  [NSUserDefaults standardUserDefaults];
     }
 
-    if (NSClassFromString(@"WKWebView")) {
+    long disableWK = [settingsController integerForKey:@"disableWKWebkit"];
+    
+    if (NSClassFromString(@"WKWebView") && !disableWK) {
         if(!cfg){
             cfg = [[WKWebViewConfiguration  alloc] init];
+            
             [[cfg userContentController] addScriptMessageHandler:self name:@"BLClient"];
         }
         webViewType = tWKWebView;
@@ -122,7 +128,6 @@ WKWebViewConfiguration *cfg;
     if(webViewType == tWKWebView){
         NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
         [re setURL:[NSURL URLWithString:url]];
-        NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
         NSString *xff = [settingsController objectForKey:@"xff"];
         if([xff length] > 4){
             [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
@@ -248,7 +253,6 @@ didReceiveTitle:(NSString *)title
     }else if([URL containsString:@".eqoe.cn"]){
         [re setValue:@"http://client.typcn.com" forHTTPHeaderField:@"Referer"];
     }else{
-        NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
         NSString *xff = [settingsController objectForKey:@"xff"];
         if([xff length] > 4){
             [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
@@ -300,7 +304,6 @@ createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration
         windowFeatures:(WKWindowFeatures *)windowFeatures{
     cfg = configuration;
     WebTabView *ct;
-    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
     NSString *xff = [settingsController objectForKey:@"xff"];
     if([xff length] > 4){
         ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:navigationAction.request];

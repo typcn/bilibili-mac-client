@@ -27,6 +27,7 @@
     [self.DownloadMP4 setState:[settingsController integerForKey:@"DLMP4"]];
     [self.disableKeepAspect setState:[settingsController integerForKey:@"disableKeepAspect"]];
     [self.disableHwDec setState:[settingsController integerForKey:@"enableHW"]];
+    [self.disableNewRenderEngine setState:[settingsController integerForKey:@"disableWKWebkit"]];
     
     float trans = [settingsController floatForKey:@"transparency"];
     if(!trans){
@@ -120,6 +121,10 @@
 }
 - (IBAction)disableHwdec:(id)sender {
     [settingsController setInteger:[self.disableHwDec state] forKey:@"enableHW"];
+    [settingsController synchronize];
+}
+- (IBAction)disableNewRenderEngine:(id)sender {
+    [settingsController setInteger:[self.disableNewRenderEngine state] forKey:@"disableWKWebkit"];
     [settingsController synchronize];
 }
 
