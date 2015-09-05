@@ -40,19 +40,19 @@
 }
 
 -(id)initWithURL:(NSString *)url{
-    webView = [[WebView alloc] initWithFrame:NSZeroRect];
-    [webView setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
+    webView = [[TWebView alloc] initWithURL:url];
     [self loadStartupScripts];
     [self setIsWaitingForResponse:YES];
-    webView.mainFrameURL = url;
+    
     NSScrollView *sv = [[NSScrollView alloc] initWithFrame:NSZeroRect];
-    [sv setDocumentView:webView];
     [sv setHasVerticalScroller:NO];
+    [webView setURL:url];
+    [webView addToView:sv];
     self.view = sv;
     return self;
 }
 
--(WebView *)GetWebView{
+-(TWebView *)GetWebView{
     return webView;
 }
 
@@ -62,6 +62,7 @@
     [super viewFrameDidChange:newFrame];
     NSRect frame = NSZeroRect;
     frame.size = [(NSScrollView*)(view_) contentSize];
+    [webView setFrameSize:frame];
     [[NSUserDefaults standardUserDefaults] setDouble:frame.size.width forKey:@"webwidth"];
     [[NSUserDefaults standardUserDefaults] setDouble:frame.size.height forKey:@"webheight"];
 }
@@ -104,9 +105,9 @@
 {
     NSError *err;
     
-    [webView setFrameLoadDelegate:self];
-    [webView setUIDelegate:self];
-    [webView setResourceLoadDelegate:self];
+//    [webView setFrameLoadDelegate:self];
+//    [webView setUIDelegate:self];
+//    [webView setResourceLoadDelegate:self];
     
     NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
     acceptAnalytics = [s integerForKey:@"acceptAnalytics"];
@@ -186,18 +187,18 @@
 
 - (void)showPlayGUI
 {
-    [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"$('#bofqi').html('%@');$('head').append('<style>%@</style>');",WebUI,WebCSS]];
+    [webView runJavascript:[NSString stringWithFormat:@"$('#bofqi').html('%@');$('head').append('<style>%@</style>');",WebUI,WebCSS]];
 }
 - (void)playVideoByCID:(NSString *)cid
 {
     if(parsing){
         return;
     }
-    NSArray *fn = [webView.mainFrameTitle componentsSeparatedByString:@"_"];
+    NSArray *fn = [[webView getTitle] componentsSeparatedByString:@"_"];
     NSString *mediaTitle = [fn objectAtIndex:0];
     parsing = true;
     vCID = cid;
-    vUrl = webView.mainFrameURL;
+    vUrl = [webView getURL];
     if([mediaTitle length] > 0){
         vTitle = [fn objectAtIndex:0];
     }else{
@@ -247,7 +248,7 @@
         NSLog(@"Analytics disabled ! won't upload.");
     }
     
-    NSArray *fn = [webView.mainFrameTitle componentsSeparatedByString:@"_"];
+    NSArray *fn = [[webView getTitle] componentsSeparatedByString:@"_"];
     NSString *filename = [fn objectAtIndex:0];
     
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -281,7 +282,7 @@
     [alert runModal];
 }
 
-- (WebView *)webView:(WebView *)sender createWebViewWithRequest:(NSURLRequest *)request
+- (TWebView *)webView:(id)sender createWebViewWithRequest:(NSURLRequest *)request
 {
     WebTabView *tv = (WebTabView *)[browser createTabBasedOn:nil withUrl:[request.URL absoluteString]];
     [browser addTabContents:tv inForeground:YES];
@@ -332,8 +333,7 @@
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
-    [webView stringByEvaluatingJavaScriptFromString:WebScript];
-    userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    [webView runJavascript:WebScript];
     [self setIsLoading:NO];
 }
 
@@ -343,9 +343,8 @@ didReceiveTitle:(NSString *)title
     [self setTitle:title];
     [self setIsWaitingForResponse:NO];
     [self setIsLoading:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:webView.mainFrameURL userInfo:nil];
-    userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-    [webView stringByEvaluatingJavaScriptFromString:WebScript];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[webView getURL]];
+    [webView runJavascript:WebScript];
     
     if(acceptAnalytics == 1 || acceptAnalytics == 2){
         screenView("WebView");
@@ -354,7 +353,7 @@ didReceiveTitle:(NSString *)title
     }
     NSString *lastPlay = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastPlay"];
     if([lastPlay length] > 1){
-        webView.mainFrameURL = lastPlay;
+        [webView setURL:lastPlay];
         NSLog(@"Opening last play url %@",lastPlay);
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     }
@@ -391,7 +390,7 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
 
 - (IBAction)CopyLink:(id)sender {
     [[NSPasteboard generalPasteboard] clearContents];
-    [[NSPasteboard generalPasteboard] setString:webView.mainFrameURL  forType:NSStringPboardType];
+    [[NSPasteboard generalPasteboard] setString:[webView getURL]  forType:NSStringPboardType];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = NSLocalizedString(@"当前页面地址已经复制到剪贴板", nil);
@@ -400,8 +399,7 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
 }
 
 - (void)ShowPlayer{
-    [webView stringByEvaluatingJavaScriptFromString:WebScript];
-    userAgent =  [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    [webView runJavascript:WebScript];
 }
 
 - (void)Contact{
@@ -416,7 +414,7 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
         }
         
         
-        webView.mainFrameURL = [NSString stringWithFormat:@"http://www.bilibili.com/video/av%@",avNumber];
+        [webView setURL:[NSString stringWithFormat:@"http://www.bilibili.com/video/av%@",avNumber]];
         [sender setStringValue:@""];
     }
 }
@@ -426,7 +424,7 @@ didStartProvisionalLoadForFrame:(WebFrame *)frame{
     if ([[url substringToIndex:6] isEqual: @"http//"]) { //somehow, 传入url的Colon会被移除 暂时没有找到相关的说明，这里统一去掉，在最后添加http://
         url = [url substringFromIndex:6];
     }
-    webView.mainFrameURL = [NSString stringWithFormat:@"http://%@", url];
+    [webView setURL:[NSString stringWithFormat:@"http://%@", url]];
 }
 
 @end

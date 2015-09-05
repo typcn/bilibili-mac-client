@@ -8,13 +8,14 @@
 
 #import "Browser.h"
 #import "Common.hpp"
+#import "TWebView.h"
 
 @interface WebTabView : CTTabContents{
-    WebView *webView;
+    TWebView *webView;
 }
 @property (strong) NSWindowController* playerWindowController;
 
 -(id)initWithURL:(NSString *)url;
--(WebView *)GetWebView;
+-(TWebView *)GetWebView;
 
 @end
