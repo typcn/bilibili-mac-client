@@ -368,7 +368,8 @@ static void wakeup(void *context) {
     check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
     check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
     check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
-    
+    check_error(mpv_set_option_string(mpv, "hr-seek", "yes"));
+    check_error(mpv_set_option_string(mpv, "keep-open", "yes"));
     
     int disableKeepAspect = [self getSettings:@"disableKeepAspect"];
     if(disableKeepAspect == 1){
@@ -714,6 +715,7 @@ BOOL paused = NO;
 BOOL hide = NO;
 BOOL obServer = NO;
 BOOL isFirstCall = YES;
+BOOL shiftKeyPressed = NO;
 
 - (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)window{
     return nil;
@@ -756,6 +758,10 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     }
 }
 
+- (void)flagsChanged:(NSEvent *) event {
+    shiftKeyPressed = ([event modifierFlags] & NSShiftKeyMask) != 0;
+}
+
 -(void)keyDown:(NSEvent*)event
 {
     if(!mpv){
@@ -771,12 +777,12 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             break;
         }
         case 124:{ // 👉
-            const char *args[] = {"seek", "5" ,NULL};
+            const char *args[] = {"seek", shiftKeyPressed?"1":"5" ,NULL};
             mpv_command(mpv, args);
             break;
         }
         case 123:{ // 👈
-            const char *args[] = {"seek", "-5" ,NULL};
+            const char *args[] = {"seek", shiftKeyPressed?"-1":"-5" ,NULL};
             mpv_command(mpv, args);
             break;
         }
