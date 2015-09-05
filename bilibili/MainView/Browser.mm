@@ -41,9 +41,9 @@ BOOL parsing = false;
 }
 
 -(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withRequest:(NSURLRequest*) req{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[req.URL absoluteString] userInfo:nil];
     CTTabContents *tc = [[WebTabView alloc] initWithRequest:req];
     [tc setTitle:@"Loading"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[req.URL absoluteString] userInfo:nil];
     return tc;
 }
 

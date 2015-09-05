@@ -28,7 +28,8 @@ WKWebViewConfiguration *cfg;
         [WKwv setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
         [WKwv setNavigationDelegate: self];
         [WKwv setUIDelegate: self];
-        [WKwv loadRequest:req];
+        [WKwv addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
+       
     } else {
         webViewType = tWebView;
         wv = [[WebView alloc] init];
@@ -36,11 +37,39 @@ WKWebViewConfiguration *cfg;
         [wv setFrameLoadDelegate:self];
         [wv setUIDelegate:self];
         [wv setResourceLoadDelegate:self];
-        wv.mainFrameURL = [req.URL absoluteString];
+        
     }
     
+    if(cfg){
+        [NSTimer scheduledTimerWithTimeInterval:0.3
+                                         target:self
+                                       selector:@selector(loadRequest:)
+                                       userInfo:req
+                                        repeats:NO];
+    }
     
     return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"title"]){
+        if (object == WKwv) {
+            [self.delegate onTitleChange:WKwv.title];
+        } else {
+            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+        }
+    }else{
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+- (void)loadRequest:(NSTimer*)timer{
+    NSURLRequest *req = [timer userInfo];
+    if(webViewType == tWKWebView){
+        [WKwv loadRequest:req];
+    }else{
+        wv.mainFrameURL = [req.URL absoluteString];
+    }
 }
 
 - (id)GetWebView{

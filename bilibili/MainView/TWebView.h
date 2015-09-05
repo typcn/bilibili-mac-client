@@ -18,6 +18,7 @@
 - (void) didCommitNavigation;
 - (void) failLoadOrNavigation: (NSURLRequest *) request withError: (NSError *) error;
 - (void) finishLoadOrNavigation: (NSURLRequest *) request;
+- (void) onTitleChange:(NSString *)str;
 @end
 
 @interface TWebView : NSObject <WKNavigationDelegate, WKUIDelegate>{

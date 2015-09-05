@@ -180,6 +180,10 @@
     [self setTitle:[webView getTitle]];
 }
 
+- (void)onTitleChange:(NSString *)str{
+    [self setTitle:str];
+}
+
 +(NSString*)webScriptNameForSelector:(SEL)sel
 {
     if(sel == @selector(checkForUpdates))
