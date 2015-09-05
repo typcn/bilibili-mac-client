@@ -19,9 +19,10 @@
 - (void) failLoadOrNavigation: (NSURLRequest *) request withError: (NSError *) error;
 - (void) finishLoadOrNavigation: (NSURLRequest *) request;
 - (void) onTitleChange:(NSString *)str;
+- (void) invokeJSEvent:(NSString *)action withData:(NSString *)data;
 @end
 
-@interface TWebView : NSObject <WKNavigationDelegate, WKUIDelegate>{
+@interface TWebView : NSObject <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler>{
     WebView *wv;
     WKWebView *WKwv;
     int webViewType;

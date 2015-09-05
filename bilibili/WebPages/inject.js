@@ -1,9 +1,21 @@
 window.bilimacVersion = 203;
 var TYPCN_PLAYER_CID;
+window.sendToView = function(data){
+    try{
+        window.webkit.messageHandlers.BLClient.postMessage(data);
+    }catch(e){
+        
+    }
+    try{
+        window.external.sendMsg(data);
+    }catch(e){
+        
+    }
+}
 function applyUI(){
     try{
         $('.close-btn-wrp').parent().remove();$('.float-pmt').remove();
-        $(".i-link[href='http://app.bilibili.com']").html('检查更新').attr('href','javascript:window.external.checkForUpdates()');
+        $(".i-link[href='http://app.bilibili.com']").html('检查更新').attr('href','javascript:window.sendToView({action: "checkforUpdate",data:"none"});');
         $(".b-head-s").html('由于 B 站网页 BUG，标签需要点击两次才能显示内容');
         if(window.LoadTimes){
             window.LoadTimes++;
@@ -49,16 +61,17 @@ function applyUI(){
                 console.log("inject live page");
                 if(window.ROOMID > 0){
                     if(typeof LIVEPLAY == "undefined"){
-                        window.external.playVideoByCID(ROOMID.toString());
+                        $("#object").remove();
+                        window.sendToView({action: "playVideoByCID",data: ROOMID.toString()});
                         LIVEPLAY = 1;
                     }
                 }
             }else if(window.location.href.indexOf("topic") > 1){
                 console.log("inject topic page");
-                $('embed').parent().html('<div class="TYPCN_PLAYER_INJECT_PAGE"><div class="player-placeholder"><div class="btn-wrapper n2"><div class="player-placeholder-head">请选择操作</div><div class="src-btn"><a href="javascript:window.external.playVideoByCID(TYPCN_PLAYER_CID)">播放</a></div><div class="src-btn"><a href="javascript:window.external.downloadVideoByCID(TYPCN_PLAYER_CID)">下载</a></div></div></div></div>');
+                $('embed').parent().html('<div class="TYPCN_PLAYER_INJECT_PAGE"><div class="player-placeholder"><div class="btn-wrapper n2"><div class="player-placeholder-head">请选择操作</div><div class="src-btn"><a href="javascript:window.sendToView({action:\'playVideoByCID\',data: TYPCN_PLAYER_CID})">播放</a></div><div class="src-btn"><a href="javascript:window.sendToView({action: \'downloadVideoByCID\',data: TYPCN_PLAYER_CID})">下载</a></div></div></div></div>');
             }else{
                 console.log("inject player page");
-                $('#bofqi').html('<div class="TYPCN_PLAYER_INJECT_PAGE"><div class="player-placeholder"><div class="btn-wrapper n2"><div class="player-placeholder-head">请选择操作</div><div class="src-btn"><a href="javascript:window.external.playVideoByCID(TYPCN_PLAYER_CID)">播放</a></div><div class="src-btn"><a href="javascript:window.external.downloadVideoByCID(TYPCN_PLAYER_CID)">下载</a></div></div></div></div>');
+                $('#bofqi').html('<div class="TYPCN_PLAYER_INJECT_PAGE"><div class="player-placeholder"><div class="btn-wrapper n2"><div class="player-placeholder-head">请选择操作</div><div class="src-btn"><a href="javascript:window.sendToView({action:\'playVideoByCID\',data: TYPCN_PLAYER_CID})">播放</a></div><div class="src-btn"><a href="javascript:window.sendToView({action: \'downloadVideoByCID\',data: TYPCN_PLAYER_CID})">下载</a></div></div></div></div>');
             }
             clearInterval(window.i);
         }else{

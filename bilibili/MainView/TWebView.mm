@@ -27,6 +27,7 @@ WKWebViewConfiguration *cfg;
     if (NSClassFromString(@"WKWebView")) {
         if(!cfg){
             cfg = [[WKWebViewConfiguration  alloc] init];
+            [[cfg userContentController] addScriptMessageHandler:self name:@"BLClient"];
         }
         webViewType = tWKWebView;
         WKwv = [[WKWebView alloc] initWithFrame:NSZeroRect configuration:cfg];
@@ -41,20 +42,34 @@ WKWebViewConfiguration *cfg;
         [wv setFrameLoadDelegate:self];
         [wv setUIDelegate:self];
         [wv setResourceLoadDelegate:self];
-        
-    }
     
-    if(cfg){
-        [NSTimer scheduledTimerWithTimeInterval:0.3
+        
+   }
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.3
                                          target:self
                                        selector:@selector(loadRequest:)
                                        userInfo:req
                                         repeats:NO];
-    }
-    
+
     return self;
 }
 
+- (void)userContentController:(WKUserContentController *)userContentController
+                                         didReceiveScriptMessage:(WKScriptMessage *)message
+{
+    NSString *action = [message.body valueForKey:@"action"];
+    NSString *data = [message.body valueForKey:@"data"];
+    [self.delegate invokeJSEvent:action withData:data];
+}
+
+- (void)receiveJSMessage:(id)msg{
+    NSString *action = [msg valueForKey:@"action"];
+    NSString *data = [msg valueForKey:@"data"];
+    [self.delegate invokeJSEvent:action withData:data];
+}
+
+             
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"title"]){
         if (object == WKwv) {
@@ -179,9 +194,65 @@ didReceiveTitle:(NSString *)title
     [self.delegate failLoadOrNavigation: nil withError: error];
 }
 
-- (void) webViewDidFinishLoad: (WebView *) webView
+- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
     [self.delegate finishLoadOrNavigation: nil];
+}
+
++(NSString*)webScriptNameForSelector:(SEL)sel
+{
+    if(sel == @selector(receiveJSMessage:))
+        return @"sendMsg";
+    return nil;
+}
+
++ (BOOL)isSelectorExcludedFromWebScript:(SEL)sel
+{
+    if(sel == @selector(receiveJSMessage:))
+        return NO;
+    return YES;
+}
+
+- (void)webView:(WebView *)sender didClearWindowObject:(WebScriptObject *)windowScriptObject forFrame:(WebFrame *)frame
+{
+    [windowScriptObject setValue:self forKeyPath:@"window.external"];
+}
+
+- (NSURLRequest *)webView:(WebView *)sender
+                 resource:(id)identifier
+          willSendRequest:(NSURLRequest *)request
+         redirectResponse:(NSURLResponse *)redirectResponse
+           fromDataSource:(WebDataSource *)dataSource{
+    NSString *URL = [request.URL absoluteString];
+    NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
+    re = (NSMutableURLRequest *) request.mutableCopy;
+    if([URL containsString:@"googlesyndication"] || [URL containsString:@"analytics.js"]){
+        // Google ad is blocked in some (china) area, maybe take 30 seconds to wait for timeout
+        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
+    }else if([URL containsString:@"tajs.qq.com"]){
+        // QQ analytics may block more than 10 seconds in some area
+        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
+    }else if([URL containsString:@"cnzz.com"]){
+        // CNZZ is very slow in other country
+        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
+    }else if([URL containsString:@"cpro.baidustatic.com"]){
+        // Baidu is very slow in other country
+        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
+    }else if([URL containsString:@".swf"]){
+        // Block Flash
+        NSLog(@"Block flash url:%@",URL);
+        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
+    }else if([URL containsString:@".eqoe.cn"]){
+        [re setValue:@"http://client.typcn.com" forHTTPHeaderField:@"Referer"];
+    }else{
+        NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+        NSString *xff = [settingsController objectForKey:@"xff"];
+        if([xff length] > 4){
+            [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
+            [re setValue:xff forHTTPHeaderField:@"Client-IP"];
+        }
+    }
+    return re;
 }
 
 #pragma mark WKWebView delegate

@@ -59,7 +59,7 @@
     NSRect frame = NSZeroRect;
     frame.size = [(NSScrollView*)(view_) contentSize];
     [webView setFrameSize:frame];
-    HudView = [[wenView GetWebView] subviews][0];
+    HudView = [[webView GetWebView] subviews][0];
     dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
         [[NSUserDefaults standardUserDefaults] setDouble:frame.size.width forKey:@"webwidth"];
         [[NSUserDefaults standardUserDefaults] setDouble:frame.size.height forKey:@"webheight"];
@@ -182,40 +182,15 @@
     [self setTitle:[webView getTitle]];
 }
 
+- (void) invokeJSEvent:(NSString *)action withData:(NSString *)data{
+    NSLog(@"event fire %@   %@",action,data);
+}
+
 - (void)onTitleChange:(NSString *)str{
     [self setTitle:str];
     [webView runJavascript:WebScript];
 }
 
-+(NSString*)webScriptNameForSelector:(SEL)sel
-{
-    if(sel == @selector(checkForUpdates))
-        return @"checkForUpdates";
-    if(sel == @selector(showPlayGUI))
-        return @"showPlayGUI";
-    if(sel == @selector(playVideoByCID:))
-        return @"playVideoByCID";
-    if(sel == @selector(downloadVideoByCID:))
-        return @"downloadVideoByCID";
-    if(sel == @selector(showNotification:))
-        return @"showNotification";
-    return nil;
-}
-
-+ (BOOL)isSelectorExcludedFromWebScript:(SEL)sel
-{
-    if(sel == @selector(checkForUpdates))
-        return NO;
-    if(sel == @selector(showPlayGUI))
-        return NO;
-    if(sel == @selector(playVideoByCID:))
-        return NO;
-    if(sel == @selector(downloadVideoByCID:))
-        return NO;
-    if(sel == @selector(showNotification:))
-        return NO;
-    return YES;
-}
 
 - (void)showNotification:(NSString *)content{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:HudView animated:YES];
@@ -330,48 +305,6 @@
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:NSLocalizedString(@"文件读取失败，您可能无法正常使用本软件，请向开发者反馈。", nil)];
     [alert runModal];
-}
-
-- (NSURLRequest *)webView:(WebView *)sender
-                 resource:(id)identifier
-          willSendRequest:(NSURLRequest *)request
-         redirectResponse:(NSURLResponse *)redirectResponse
-           fromDataSource:(WebDataSource *)dataSource{
-    NSString *URL = [request.URL absoluteString];
-    NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
-    re = (NSMutableURLRequest *) request.mutableCopy;
-    if([URL containsString:@"googlesyndication"] || [URL containsString:@"analytics.js"]){
-        // Google ad is blocked in some (china) area, maybe take 30 seconds to wait for timeout
-        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
-    }else if([URL containsString:@"tajs.qq.com"]){
-        // QQ analytics may block more than 10 seconds in some area
-        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
-    }else if([URL containsString:@"cnzz.com"]){
-        // CNZZ is very slow in other country
-        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
-    }else if([URL containsString:@"cpro.baidustatic.com"]){
-        // Baidu is very slow in other country
-        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
-    }else if([URL containsString:@".swf"]){
-        // Block Flash
-        NSLog(@"Block flash url:%@",URL);
-        [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
-    }else if([URL containsString:@".eqoe.cn"]){
-        [re setValue:@"http://client.typcn.com" forHTTPHeaderField:@"Referer"];
-    }else{
-        NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
-        NSString *xff = [settingsController objectForKey:@"xff"];
-        if([xff length] > 4){
-            [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
-            [re setValue:xff forHTTPHeaderField:@"Client-IP"];
-        }
-    }
-    return re;
-}
-
-- (void)webView:(WebView *)sender didClearWindowObject:(WebScriptObject *)windowScriptObject forFrame:(WebFrame *)frame
-{
-    [windowScriptObject setValue:self forKeyPath:@"window.external"];
 }
 
 - (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems{
