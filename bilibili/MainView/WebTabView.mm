@@ -87,7 +87,7 @@
     if(!acceptAnalytics || acceptAnalytics == 1 || acceptAnalytics == 2){
         screenView("NewTab");
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AVNumberUpdated:) name:@"AVNumberUpdate" object:nil];
+
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"webpage/inject" ofType:@"js"];
     WebScript = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
@@ -367,14 +367,6 @@
         [webView setURL:[NSString stringWithFormat:@"http://www.bilibili.com/video/av%@",avNumber]];
         [sender setStringValue:@""];
     }
-}
-
-- (void)AVNumberUpdated:(NSNotification *)notification {
-    NSString *url = [notification object];
-    if ([[url substringToIndex:6] isEqual: @"http//"]) { //somehow, 传入url的Colon会被移除 暂时没有找到相关的说明，这里统一去掉，在最后添加http://
-        url = [url substringFromIndex:6];
-    }
-    [webView setURL:[NSString stringWithFormat:@"http://%@", url]];
 }
 
 @end

@@ -116,13 +116,28 @@ Browser *browser;
     }
 }
 
+- (void)AVNumberUpdated:(NSNotification *)notification {
+
+}
+
 - (void)handleURLEvent:(NSAppleEventDescriptor*)event
         withReplyEvent:(NSAppleEventDescriptor*)replyEvent
 {
     NSString* url = [[event paramDescriptorForKeyword:keyDirectObject]
                       stringValue];
     url = [url substringFromIndex:5];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"AVNumberUpdate" object:url];
+    if ([[url substringToIndex:6] isEqual: @"http//"]) { //somehow, 传入url的Colon会被移除 暂时没有找到相关的说明，这里统一去掉，在最后添加http://
+        url = [url substringFromIndex:6];
+    }
+    NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
+    [re setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@", url]]];
+    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+    NSString *xff = [settingsController objectForKey:@"xff"];
+    if([xff length] > 4){
+        [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
+        [re setValue:xff forHTTPHeaderField:@"Client-IP"];
+    }
+    [browser createTabBasedOn:nil withRequest:re];
 }
 
 - (IBAction)goForum:(id)sender {
