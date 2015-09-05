@@ -12,20 +12,30 @@
 #define tWKWebView 1
 #define tWebView 0
 
-@interface TWebView : NSObject{
+@protocol TWebViewDelegate <NSObject>
+@optional
+
+@end
+
+@interface TWebView : NSObject <WKNavigationDelegate, WKUIDelegate>{
     WebView *wv;
     WKWebView *WKwv;
     int webViewType;
 }
 
-- (TWebView *)initWithURL:(NSString *)URL;
+@property (nonatomic, weak) id <TWebViewDelegate> delegate;
+
+- (TWebView *)initWithURL:(NSString *)URL andDelegate:(id <TWebViewDelegate>)aDelegate;
 - (void)addToView:(NSScrollView *)view;
 - (void)setFrameSize:(NSRect)newFrame;
-
+- (id)GetWebView;
 
 - (void)setURL:(NSString *)url;
 - (NSString *)getURL;
 - (NSString *)getTitle;
 - (void)runJavascript:(NSString *)str;
+
+- (void)wgoForward;
+- (void)wgoBack;
 
 @end

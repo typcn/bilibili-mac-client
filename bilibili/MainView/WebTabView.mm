@@ -40,7 +40,7 @@
 }
 
 -(id)initWithURL:(NSString *)url{
-    webView = [[TWebView alloc] initWithURL:url];
+    webView = [[TWebView alloc] initWithURL:url andDelegate:self];
     [self loadStartupScripts];
     [self setIsWaitingForResponse:YES];
     
@@ -52,7 +52,11 @@
     return self;
 }
 
--(TWebView *)GetWebView{
+-(id)GetWebView{
+    return [webView GetWebView];
+}
+
+-(TWebView *)GetTWebView{
     return webView;
 }
 
@@ -105,9 +109,7 @@
 {
     NSError *err;
     
-//    [webView setFrameLoadDelegate:self];
-//    [webView setUIDelegate:self];
-//    [webView setResourceLoadDelegate:self];
+
     
     NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
     acceptAnalytics = [s integerForKey:@"acceptAnalytics"];
@@ -280,13 +282,6 @@
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:NSLocalizedString(@"文件读取失败，您可能无法正常使用本软件，请向开发者反馈。", nil)];
     [alert runModal];
-}
-
-- (TWebView *)webView:(id)sender createWebViewWithRequest:(NSURLRequest *)request
-{
-    WebTabView *tv = (WebTabView *)[browser createTabBasedOn:nil withUrl:[request.URL absoluteString]];
-    [browser addTabContents:tv inForeground:YES];
-    return [tv GetWebView];
 }
 
 - (NSURLRequest *)webView:(WebView *)sender

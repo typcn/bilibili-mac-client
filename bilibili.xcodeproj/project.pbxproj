@@ -93,7 +93,7 @@
 		FD5101A81ACC1AF300C49430 /* libx264.142.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101771ACC1A6800C49430 /* libx264.142.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD5101A91ACC1AF300C49430 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5101781ACC1A6800C49430 /* libz.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */; };
-		FD5B0C621B9ABAFF00045F10 /* TWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5B0C611B9ABAFF00045F10 /* TWebView.m */; };
+		FD5B0C621B9ABAFF00045F10 /* TWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD5B0C611B9ABAFF00045F10 /* TWebView.mm */; };
 		FD61025C1AD7CBA20013119A /* inject.js in Resources */ = {isa = PBXBuildFile; fileRef = FD61025B1AD7CBA20013119A /* inject.js */; };
 		FD61025E1AD7CBC10013119A /* webui.html in Resources */ = {isa = PBXBuildFile; fileRef = FD61025D1AD7CBC10013119A /* webui.html */; };
 		FD6102611AD7CBF10013119A /* webui.css in Resources */ = {isa = PBXBuildFile; fileRef = FD6102601AD7CBF10013119A /* webui.css */; };
@@ -308,7 +308,7 @@
 		FD5305E91B2692CE00659B32 /* SmartBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartBlockSettings.h; path = Settings/SmartBlockSettings.h; sourceTree = "<group>"; };
 		FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmartBlockSettings.m; path = Settings/SmartBlockSettings.m; sourceTree = "<group>"; };
 		FD5B0C601B9ABAFF00045F10 /* TWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWebView.h; path = MainView/TWebView.h; sourceTree = "<group>"; };
-		FD5B0C611B9ABAFF00045F10 /* TWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TWebView.m; path = MainView/TWebView.m; sourceTree = "<group>"; };
+		FD5B0C611B9ABAFF00045F10 /* TWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TWebView.mm; path = MainView/TWebView.mm; sourceTree = "<group>"; };
 		FD61025B1AD7CBA20013119A /* inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = inject.js; path = WebPages/inject.js; sourceTree = "<group>"; };
 		FD61025D1AD7CBC10013119A /* webui.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = webui.html; path = WebPages/webui.html; sourceTree = "<group>"; };
 		FD6102601AD7CBF10013119A /* webui.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = webui.css; path = WebPages/webui.css; sourceTree = "<group>"; };
@@ -591,7 +591,7 @@
 				FD36B0B41B98920A00FB32CC /* WebTabView.h */,
 				FD36B0B51B98920A00FB32CC /* WebTabView.mm */,
 				FD5B0C601B9ABAFF00045F10 /* TWebView.h */,
-				FD5B0C611B9ABAFF00045F10 /* TWebView.m */,
+				FD5B0C611B9ABAFF00045F10 /* TWebView.mm */,
 				C56A943B1B36E837005C274F /* WebView+SwipeNavigation.h */,
 				C56A943C1B36E837005C274F /* WebView+SwipeNavigation.m */,
 				FD36B0B11B988FE200FB32CC /* Browser.h */,
@@ -881,7 +881,7 @@
 				FD1954C51B259368003A958F /* Socket.cpp in Sources */,
 				FD1954CD1B259457003A958F /* ISSoundAdditions.m in Sources */,
 				FD1954D01B259462003A958F /* AppDelegate.mm in Sources */,
-				FD5B0C621B9ABAFF00045F10 /* TWebView.m in Sources */,
+				FD5B0C621B9ABAFF00045F10 /* TWebView.mm in Sources */,
 				FD1954BC1B259342003A958F /* downloadWrapper.mm in Sources */,
 				FD36B0B71B98920A00FB32CC /* WebTabView.mm in Sources */,
 				FD1954C71B25942F003A958F /* main.m in Sources */,

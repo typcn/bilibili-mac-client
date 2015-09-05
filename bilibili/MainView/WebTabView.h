@@ -10,12 +10,13 @@
 #import "Common.hpp"
 #import "TWebView.h"
 
-@interface WebTabView : CTTabContents{
+@interface WebTabView : CTTabContents <TWebViewDelegate> {
     TWebView *webView;
 }
 @property (strong) NSWindowController* playerWindowController;
 
 -(id)initWithURL:(NSString *)url;
--(TWebView *)GetWebView;
+-(id)GetWebView;
+-(TWebView *)GetTWebView;
 
 @end

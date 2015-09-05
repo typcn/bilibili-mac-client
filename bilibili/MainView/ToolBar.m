@@ -51,8 +51,7 @@
         }
     }else{
         WebTabView *tc = (WebTabView *)[browser activeTabContents];
-        WebView *wv = [tc GetWebView];
-        [self.URLInputField setStringValue:wv.mainFrameURL];
+        [self.URLInputField setStringValue:[[tc GetTWebView] getURL]];
     }
 }
 
@@ -63,39 +62,36 @@
         [[browser window] makeFirstResponder:ct.view];
     }
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
-    WebView *wv = [tc GetWebView];
+    id wv = [tc GetTWebView];
     NSString *url = [self.URLInputField stringValue];
     if([url length] < 3){
         return;
-    }else if([url isEqualToString:wv.mainFrameURL]){
+    }else if([url isEqualToString:[wv getURL]]){
         return;
     }else if([url containsString:@"http://"] || [url containsString:@"https://"]){
-        wv.mainFrameURL = url;
+        [wv setURL:url];
     }else{
-        wv.mainFrameURL = [NSString stringWithFormat:@"http://%@",url];
+        [wv setURL:[NSString stringWithFormat:@"http://%@",url]];
     }
 }
 
 
 - (IBAction)goHome:(id)sender {
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
-    WebView *wv = [tc GetWebView];
-    wv.mainFrameURL = @"http://www.bilibili.com";
+    [[tc GetTWebView] setURL:@"http://www.bilibili.com"];
 }
 - (IBAction)Refresh:(id)sender {
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
-    WebView *wv = [tc GetWebView];
-    wv.mainFrameURL = wv.mainFrameURL;
+    NSString *u = [[tc GetTWebView] getURL];
+    [[tc GetTWebView] setURL:u];
 }
 - (IBAction)forward:(id)sender {
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
-    WebView *wv = [tc GetWebView];
-    [wv goForward];
+    [[tc GetTWebView] wgoForward];
 }
 - (IBAction)backward:(id)sender {
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
-    WebView *wv = [tc GetWebView];
-    [wv goBack];
+    [[tc GetTWebView] wgoBack];
 }
 - (IBAction)menu:(id)sender {
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
