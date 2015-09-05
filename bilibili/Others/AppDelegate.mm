@@ -132,7 +132,12 @@ Browser *browser;
     [browser addBlankTabInForeground:YES];
 }
 - (IBAction)closeTab:(id)sender {
-    [browser closeTab];
+    NSWindow *kwin = [[NSApplication sharedApplication] keyWindow];
+    if([[kwin className] isEqualToString:@"CTBrowserWindow"]){
+        [browser closeTab];
+    }else{
+        [kwin performClose:nil];
+    }
 }
 - (IBAction)switchTab:(id)sender {
     [browser selectNextTab];

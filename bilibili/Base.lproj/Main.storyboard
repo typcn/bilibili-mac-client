@@ -386,7 +386,7 @@
                                                 <action selector="performZoom:" target="Ady-hI-5gd" id="h3M-Od-Iiu"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="关闭" keyEquivalent="W" id="yZ9-6y-AEF" userLabel="Zoom">
+                                        <menuItem title="关闭" keyEquivalent="W" id="yZ9-6y-AEF" userLabel="Close">
                                             <connections>
                                                 <action selector="performClose:" target="Ady-hI-5gd" id="jfJ-eM-d7u"/>
                                             </connections>
