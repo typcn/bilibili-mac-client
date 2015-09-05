@@ -13,8 +13,11 @@
 #define tWebView 0
 
 @protocol TWebViewDelegate <NSObject>
-@optional
-
+- (BOOL) shouldStartDecidePolicy: (NSURLRequest *) request;
+- (void) didStartNavigation;
+- (void) didCommitNavigation;
+- (void) failLoadOrNavigation: (NSURLRequest *) request withError: (NSError *) error;
+- (void) finishLoadOrNavigation: (NSURLRequest *) request;
 @end
 
 @interface TWebView : NSObject <WKNavigationDelegate, WKUIDelegate>{
@@ -25,7 +28,7 @@
 
 @property (nonatomic, weak) id <TWebViewDelegate> delegate;
 
-- (TWebView *)initWithURL:(NSString *)URL andDelegate:(id <TWebViewDelegate>)aDelegate;
+- (TWebView *)initWithRequest:(NSURLRequest *)req andDelegate:(id <TWebViewDelegate>)aDelegate;
 - (void)addToView:(NSScrollView *)view;
 - (void)setFrameSize:(NSRect)newFrame;
 - (id)GetWebView;

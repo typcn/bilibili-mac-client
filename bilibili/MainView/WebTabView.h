@@ -15,7 +15,7 @@
 }
 @property (strong) NSWindowController* playerWindowController;
 
--(id)initWithURL:(NSString *)url;
+-(id)initWithRequest:(NSURLRequest *)req;
 -(id)GetWebView;
 -(TWebView *)GetTWebView;
 

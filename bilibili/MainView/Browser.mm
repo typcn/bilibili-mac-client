@@ -36,11 +36,29 @@ BOOL parsing = false;
 }
 
 -(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withUrl:(NSString*) url{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:url userInfo:nil];
-    CTTabContents *tc = [[WebTabView alloc] initWithURL:url];
+    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    return [self createTabBasedOn:baseContents withRequest:req];
+}
+
+-(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withRequest:(NSURLRequest*) req{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[req.URL absoluteString] userInfo:nil];
+    CTTabContents *tc = [[WebTabView alloc] initWithRequest:req];
     [tc setTitle:@"Loading"];
     return tc;
 }
+
+-(void)selectNextTab{
+    [super selectNextTab];
+    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[[tv GetTWebView] getURL]];
+}
+
+-(void)selectPreviousTab{
+    [super selectPreviousTab];
+    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[[tv GetTWebView] getURL]];
+}
+
 //
 //-(CTTabContents*)createWKTabBasedOn:(CTTabContents*)baseContents withUrl:(NSString*) url{
 //    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:url userInfo:nil];

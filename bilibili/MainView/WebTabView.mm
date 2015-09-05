@@ -36,28 +36,21 @@
         [self.view setFrame:frame];
     }
     
-    return [self initWithURL:@"http://www.bilibili.com"];
+    NSURL *u = [NSURL URLWithString:@"http://www.bilibili.com"];
+    
+    return [self initWithRequest:[NSURLRequest requestWithURL:u]];
 }
 
--(id)initWithURL:(NSString *)url{
-    webView = [[TWebView alloc] initWithURL:url andDelegate:self];
+-(id)initWithRequest:(NSURLRequest *)req{
+    webView = [[TWebView alloc] initWithRequest:req andDelegate:self];
     [self loadStartupScripts];
     [self setIsWaitingForResponse:YES];
     
     NSScrollView *sv = [[NSScrollView alloc] initWithFrame:NSZeroRect];
     [sv setHasVerticalScroller:NO];
-    [webView setURL:url];
     [webView addToView:sv];
     self.view = sv;
     return self;
-}
-
--(id)GetWebView{
-    return [webView GetWebView];
-}
-
--(TWebView *)GetTWebView{
-    return webView;
 }
 
 -(void)viewFrameDidChange:(NSRect)newFrame {
@@ -71,11 +64,48 @@
     [[NSUserDefaults standardUserDefaults] setDouble:frame.size.height forKey:@"webheight"];
 }
 
-//- (NSString *)windowNibName {
-//    // Override returning the nib file name of the document
-//    // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
-//    return nil;
-//}
+-(id)GetWebView{
+    return [webView GetWebView];
+}
+
+-(TWebView *)GetTWebView{
+    return webView;
+}
+
+
+- (void)loadStartupScripts
+{
+    NSError *err;
+    
+    
+    
+    NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
+    acceptAnalytics = [s integerForKey:@"acceptAnalytics"];
+    
+    if(!acceptAnalytics || acceptAnalytics == 1 || acceptAnalytics == 2){
+        screenView("NewTab");
+    }
+    NSLog(@"Start");
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AVNumberUpdated:) name:@"AVNumberUpdate" object:nil];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"webpage/inject" ofType:@"js"];
+    WebScript = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    if(err){
+        [self showError];
+    }
+    
+    path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"html"];
+    WebUI = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    if(err){
+        [self showError];
+    }
+    
+    path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"css"];
+    WebCSS = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    if(err){
+        [self showError];
+    }
+}
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
     [super windowControllerDidLoadNib:aController];
@@ -105,38 +135,46 @@
     return YES;
 }
 
-- (void)loadStartupScripts
+- (BOOL) shouldStartDecidePolicy: (NSURLRequest *) request
 {
-    NSError *err;
-    
+    NSLog(@"should load , %@",request);
+    return YES;
+}
 
+- (void) didStartNavigation
+{
+    NSLog(@"start load");
+}
+
+- (void) didCommitNavigation{
+    [self setTitle:[webView getTitle]];
+    [self setIsWaitingForResponse:NO];
+    [self setIsLoading:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[webView getURL]];
+    [webView runJavascript:WebScript];
     
-    NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
-    acceptAnalytics = [s integerForKey:@"acceptAnalytics"];
-    
-    if(!acceptAnalytics || acceptAnalytics == 1 || acceptAnalytics == 2){
-        screenView("NewTab");
+    if(acceptAnalytics == 1 || acceptAnalytics == 2){
+        screenView("WebView");
+    }else{
+        NSLog(@"Analytics disabled ! won't upload.");
     }
-    NSLog(@"Start");
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AVNumberUpdated:) name:@"AVNumberUpdate" object:nil];
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"webpage/inject" ofType:@"js"];
-    WebScript = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
-    if(err){
-        [self showError];
+    NSString *lastPlay = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastPlay"];
+    if([lastPlay length] > 1){
+        [webView setURL:lastPlay];
+        NSLog(@"Opening last play url %@",lastPlay);
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     }
-    
-    path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"html"];
-    WebUI = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
-    if(err){
-        [self showError];
-    }
-    
-    path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"css"];
-    WebCSS = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
-    if(err){
-        [self showError];
-    }
+}
+
+- (void) failLoadOrNavigation: (NSURLRequest *) request withError: (NSError *) error
+{
+    NSLog(@"load failed");
+}
+
+- (void) finishLoadOrNavigation: (NSURLRequest *) request
+{
+    [self setIsLoading:NO];
+    [self setTitle:[webView getTitle]];
 }
 
 +(NSString*)webScriptNameForSelector:(SEL)sel
@@ -335,23 +373,6 @@
 - (void)webView:(WebView *)sender
 didReceiveTitle:(NSString *)title
        forFrame:(WebFrame *)frame{
-    [self setTitle:title];
-    [self setIsWaitingForResponse:NO];
-    [self setIsLoading:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[webView getURL]];
-    [webView runJavascript:WebScript];
-    
-    if(acceptAnalytics == 1 || acceptAnalytics == 2){
-        screenView("WebView");
-    }else{
-        NSLog(@"Analytics disabled ! won't upload.");
-    }
-    NSString *lastPlay = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastPlay"];
-    if([lastPlay length] > 1){
-        [webView setURL:lastPlay];
-        NSLog(@"Opening last play url %@",lastPlay);
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
-    }
 }
 
 - (void)webView:(WebView *)sender

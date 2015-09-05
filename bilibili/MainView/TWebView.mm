@@ -13,7 +13,7 @@
 
 @implementation TWebView
 
-- (TWebView *)initWithURL:(NSString *)URL andDelegate:(id <TWebViewDelegate>)aDelegate{
+- (TWebView *)initWithRequest:(NSURLRequest *)req andDelegate:(id <TWebViewDelegate>)aDelegate{
     if (self.delegate != aDelegate) {
         self.delegate = aDelegate;
     }
@@ -23,6 +23,7 @@
         [WKwv setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
         [WKwv setNavigationDelegate: self];
         [WKwv setUIDelegate: self];
+        [WKwv loadRequest:req];
     } else {
         webViewType = tWebView;
         wv = [[WebView alloc] init];
@@ -30,6 +31,7 @@
         [wv setFrameLoadDelegate:self];
         [wv setUIDelegate:self];
         [wv setResourceLoadDelegate:self];
+        wv.mainFrameURL = [req.URL absoluteString];
     }
     
     
@@ -116,57 +118,39 @@
     }
 }
 
-#pragma mark delegate events
-
-
-- (BOOL) shouldStartDecidePolicy: (NSURLRequest *) request
-{
-    NSLog(@"should load , %@",request);
-    return YES;
-}
-
-- (void) didStartNavigation
-{
-    NSLog(@"start load");
-}
-
-- (void) failLoadOrNavigation: (NSURLRequest *) request withError: (NSError *) error
-{
-    NSLog(@"load failed");
-}
-
-- (void) finishLoadOrNavigation: (NSURLRequest *) request
-{
-    NSLog(@"load finish");
-}
-
 #pragma mark WebView delegate
 
 - (BOOL) webView: (WebView *) webView shouldStartLoadWithRequest: (NSURLRequest *) request
 {
-    return [self shouldStartDecidePolicy: request];
+    return [self.delegate shouldStartDecidePolicy: request];
 }
 
 - (void) webViewDidStartLoad: (WebView *) webView
 {
-    [self didStartNavigation];
+    [self.delegate didStartNavigation];
+}
+
+- (void)webView:(WebView *)sender
+didReceiveTitle:(NSString *)title
+       forFrame:(WebFrame *)frame{
+    [self.delegate didCommitNavigation];
 }
 
 - (void) webView: (WebView *) webView didFailLoadWithError: (NSError *) error
 {
-    [self failLoadOrNavigation: nil withError: error];
+    [self.delegate failLoadOrNavigation: nil withError: error];
 }
 
 - (void) webViewDidFinishLoad: (WebView *) webView
 {
-    [self finishLoadOrNavigation: nil];
+    [self.delegate finishLoadOrNavigation: nil];
 }
 
 #pragma mark WKWebView delegate
 
 - (void) webView: (WKWebView *) webView decidePolicyForNavigationAction: (WKNavigationAction *) navigationAction decisionHandler: (void (^)(WKNavigationActionPolicy)) decisionHandler
 {
-    BOOL shouldload = [self shouldStartDecidePolicy: [navigationAction request]];
+    BOOL shouldload = [self.delegate shouldStartDecidePolicy: [navigationAction request]];
     if(shouldload){
         decisionHandler(WKNavigationActionPolicyAllow);
     }else{
@@ -176,37 +160,40 @@
 
 - (void) webView: (WKWebView *) webView didStartProvisionalNavigation: (WKNavigation *) navigation
 {
-    [self didStartNavigation];
+    [self.delegate didStartNavigation];
+}
+
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
+    [self.delegate didCommitNavigation];
 }
 
 - (void) webView:(WKWebView *) webView didFailProvisionalNavigation: (WKNavigation *) navigation withError: (NSError *) error
 {
-    [self failLoadOrNavigation:nil withError: error];
+    [self.delegate failLoadOrNavigation:nil withError: error];
 }
 
 - (void) webView: (WKWebView *) webView didFailNavigation: (WKNavigation *) navigation withError: (NSError *) error
 {
-    [self failLoadOrNavigation:nil withError: error];
+    [self.delegate failLoadOrNavigation:nil withError: error];
 }
 
 - (void) webView: (WKWebView *) webView didFinishNavigation: (WKNavigation *) navigation
 {
-    [self finishLoadOrNavigation:nil];
+    [self.delegate finishLoadOrNavigation:nil];
 }
 
 - (WKWebView *)webView:(WKWebView *)webView
 createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration
    forNavigationAction:(WKNavigationAction *)navigationAction
         windowFeatures:(WKWindowFeatures *)windowFeatures{
-    NSString *url = [[navigationAction.request URL] absoluteString];
-    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withUrl:url];
+    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:navigationAction.request];
     [browser addTabContents:ct inForeground:YES];
     return [ct GetWebView];
 }
 
 - (WebView *)webView:(id)sender createWebViewWithRequest:(NSURLRequest *)request
 {
-    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withUrl:[request.URL absoluteString]];
+    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:request];
     [browser addTabContents:ct inForeground:YES];
     return [ct GetWebView];
 }

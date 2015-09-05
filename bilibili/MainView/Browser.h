@@ -14,5 +14,6 @@
 @interface Browser : CTBrowser
 
 -(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withUrl:(NSString*) url;
+-(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withRequest:(NSURLRequest*) req;
 
 @end
