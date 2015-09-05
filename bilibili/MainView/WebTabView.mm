@@ -87,7 +87,6 @@
     if(!acceptAnalytics || acceptAnalytics == 1 || acceptAnalytics == 2){
         screenView("NewTab");
     }
-    NSLog(@"Start");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(AVNumberUpdated:) name:@"AVNumberUpdate" object:nil];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"webpage/inject" ofType:@"js"];
@@ -148,7 +147,7 @@
 
 - (void) didStartNavigation
 {
-    NSLog(@"start load");
+    //NSLog(@"start load");
 }
 
 - (void) didCommitNavigation{
@@ -228,11 +227,13 @@
     if(parsing){
         return;
     }
-    NSArray *fn = [[webView getTitle] componentsSeparatedByString:@"_"];
+    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+    TWebView *wv = [tv GetTWebView];
+    NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
     NSString *mediaTitle = [fn objectAtIndex:0];
     parsing = true;
     vCID = cid;
-    vUrl = [webView getURL];
+    vUrl = [wv getURL];
     if([mediaTitle length] > 0){
         vTitle = [fn objectAtIndex:0];
     }else{
@@ -282,7 +283,10 @@
         NSLog(@"Analytics disabled ! won't upload.");
     }
     
-    NSArray *fn = [[webView getTitle] componentsSeparatedByString:@"_"];
+    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+    TWebView *wv = [tv GetTWebView];
+    
+    NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
     NSString *filename = [fn objectAtIndex:0];
     
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
