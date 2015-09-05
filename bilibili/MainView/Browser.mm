@@ -25,12 +25,7 @@ BOOL parsing = false;
 // This method is called when a new tab is being created. We need to return a
 // new CTTabContents object which will represent the contents of the new tab.
 -(CTTabContents*)createBlankTabBasedOn:(CTTabContents*)baseContents {
-    CTTabContents *tc;
-//    if (NSClassFromString(@"WKWebView")) {
-//        tc = [[WKWebTabView alloc] initWithBaseTabContents:baseContents];
-//    } else {
-        tc = [[WebTabView alloc] initWithBaseTabContents:baseContents];
-    //}
+    CTTabContents *tc =  [[WebTabView alloc] initWithBaseTabContents:baseContents];
     [tc setTitle:@"about:blank"];
     return tc;
 }

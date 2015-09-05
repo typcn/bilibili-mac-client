@@ -15,6 +15,10 @@ WKWebViewConfiguration *cfg;
 
 @implementation TWebView
 
+- (void)dealloc{
+    [WKwv removeObserver:self forKeyPath:@"title"];
+}
+
 - (TWebView *)initWithRequest:(NSURLRequest *)req andDelegate:(id <TWebViewDelegate>)aDelegate{
     if (self.delegate != aDelegate) {
         self.delegate = aDelegate;
