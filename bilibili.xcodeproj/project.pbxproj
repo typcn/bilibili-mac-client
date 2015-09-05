@@ -31,7 +31,6 @@
 		FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954DA1B2594AC003A958F /* danmaku2ass.cpp */; };
 		FD2BD56E1AD15AE0001A7E16 /* libmediainfo.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; };
 		FD2BD56F1AD15AF9001A7E16 /* libmediainfo.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		FD36B0B01B988ECB00FB32CC /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; };
 		FD36B0B31B988FE200FB32CC /* Browser.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0B21B988FE200FB32CC /* Browser.mm */; };
 		FD36B0B71B98920A00FB32CC /* WebTabView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0B51B98920A00FB32CC /* WebTabView.mm */; };
 		FD36B0CD1B9959CC00FB32CC /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */; };
@@ -109,6 +108,8 @@
 		FDA775DE1AD93D1800426483 /* libaria2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; };
 		FDA775E91AD93F6900426483 /* libaria2.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
+		FDD1FDD41B9B14F9006711B0 /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; };
+		FDD1FDD51B9B14F9006711B0 /* ChromiumTabs.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FDD5EEF71AC944020036B829 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD5EEF61AC944020036B829 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +134,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 8D1107320486CEB800E47090;
 			remoteInfo = "Chromium Tabs";
+		};
+		FDD1FDD61B9B14F9006711B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A3ED9821225E27E009E2908;
+			remoteInfo = ChromiumTabs;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -200,6 +208,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FDD1FDD51B9B14F9006711B0 /* ChromiumTabs.framework in Copy Files */,
 				FD36B0CF1B9959D300FB32CC /* Sparkle.framework in Copy Files */,
 			);
 			name = "Copy Files";
@@ -333,7 +342,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD36B0B01B988ECB00FB32CC /* ChromiumTabs.framework in Frameworks */,
 				FD62CC8F1B6E6BB0000AED57 /* CoreData.framework in Frameworks */,
 				FD62CC8D1B6E6BAB000AED57 /* AppKit.framework in Frameworks */,
 				FD62CC8B1B6E6BA5000AED57 /* Foundation.framework in Frameworks */,
@@ -362,6 +370,7 @@
 				FD2BD56E1AD15AE0001A7E16 /* libmediainfo.0.dylib in Frameworks */,
 				FD51018B1ACC1A6800C49430 /* libswresample.1.dylib in Frameworks */,
 				FD51017D1ACC1A6800C49430 /* libavformat.56.dylib in Frameworks */,
+				FDD1FDD41B9B14F9006711B0 /* ChromiumTabs.framework in Frameworks */,
 				FD5101851ACC1A6800C49430 /* liblua.5.2.dylib in Frameworks */,
 				FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */,
 				FD36B0CD1B9959CC00FB32CC /* Sparkle.framework in Frameworks */,
@@ -734,6 +743,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FDD1FDD71B9B14F9006711B0 /* PBXTargetDependency */,
 			);
 			name = Bilibili;
 			productName = bilibili;
@@ -918,6 +928,11 @@
 			isa = PBXTargetDependency;
 			target = FD076C4F1AC8CBBB00C893FA /* Bilibili */;
 			targetProxy = FD076C671AC8CBBB00C893FA /* PBXContainerItemProxy */;
+		};
+		FDD1FDD71B9B14F9006711B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ChromiumTabs;
+			targetProxy = FDD1FDD61B9B14F9006711B0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
