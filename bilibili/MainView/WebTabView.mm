@@ -60,20 +60,17 @@
     // We need to recalculate the frame of the NSTextView when the frame changes.
     // This happens when a tab is created and when it's moved between windows.
     [super viewFrameDidChange:newFrame];
-    NSClipView* clipView = [[view_ subviews] objectAtIndex:0];
-    NSTextView* tv = [[clipView subviews] objectAtIndex:0];
     NSRect frame = NSZeroRect;
     frame.size = [(NSScrollView*)(view_) contentSize];
     [[NSUserDefaults standardUserDefaults] setDouble:frame.size.width forKey:@"webwidth"];
     [[NSUserDefaults standardUserDefaults] setDouble:frame.size.height forKey:@"webheight"];
-    [tv setFrame:frame];
 }
 
-- (NSString *)windowNibName {
-    // Override returning the nib file name of the document
-    // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
-    return nil;
-}
+//- (NSString *)windowNibName {
+//    // Override returning the nib file name of the document
+//    // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
+//    return nil;
+//}
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
     [super windowControllerDidLoadNib:aController];
