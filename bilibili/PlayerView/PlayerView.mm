@@ -47,6 +47,7 @@ static inline void check_error(int status)
     NSWindow *w;
     NSView *wrapper;
     NSTimer *hideCursorTimer;
+    __weak IBOutlet NSView *playerContextView;
 }
 
 @end
@@ -126,7 +127,7 @@ static void wakeup(void *context) {
     postCommentButton = self.PostCommentButton;
     hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
     NSLog(@"Playerview load success");
-    self->wrapper = [self view];
+    self->wrapper = playerContextView;
     
     isCancelled = false;
     
