@@ -682,6 +682,7 @@ static void wakeup(void *context) {
         
         case MPV_EVENT_END_FILE:{
             dispatch_async(dispatch_get_main_queue(), ^{
+                [LoadingView setHidden:NO];
                 [self.textTip setStringValue:NSLocalizedString(@"播放完成，关闭窗口继续", nil)];
             });
             break;
