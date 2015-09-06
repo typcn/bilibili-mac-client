@@ -18,13 +18,13 @@
 "25g-We-mHE.title" = "编辑";
 
 /* Class = "NSSegmentedCell"; 3xs-54-4qH.ibShadowedLabels[0] = "顶"; ObjectID = "3xs-54-4qH"; */
-"3xs-54-4qH.ibShadowedLabels[0]" = "顶";
+"3xs-54-4qH.ibShadowedLabels[0]" = "上";
 
 /* Class = "NSSegmentedCell"; 3xs-54-4qH.ibShadowedLabels[1] = "飘"; ObjectID = "3xs-54-4qH"; */
-"3xs-54-4qH.ibShadowedLabels[1]" = "飘";
+"3xs-54-4qH.ibShadowedLabels[1]" = "中";
 
 /* Class = "NSSegmentedCell"; 3xs-54-4qH.ibShadowedLabels[2] = "底"; ObjectID = "3xs-54-4qH"; */
-"3xs-54-4qH.ibShadowedLabels[2]" = "底";
+"3xs-54-4qH.ibShadowedLabels[2]" = "下";
 
 /* Class = "NSTextFieldCell"; title = "2.所有设置将在下次开始播放时生效，文本框需要按回车保存"; ObjectID = "43T-62-L37"; */
 "43T-62-L37.title" = "2.所有设置将在下次开始播放时生效，文本框需要按回车保存";
