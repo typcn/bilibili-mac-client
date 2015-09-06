@@ -736,7 +736,7 @@ Copyleft 2015 TYPCN</string>
                                 <rect key="frame" x="0.0" y="0.0" width="437" height="265"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </customView>
-                            <customView id="zPp-I3-qDp" userLabel="LoadingView">
+                            <customView canDrawConcurrently="YES" id="zPp-I3-qDp" userLabel="LoadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="432" height="265"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>

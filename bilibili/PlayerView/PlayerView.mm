@@ -98,32 +98,18 @@ static void wakeup(void *context) {
     [w makeMainWindow];
     
     // Load Player Control View
-    NSArray *tlo;
-    BOOL c = [[NSBundle mainBundle] loadNibNamed:@"PlayerControl" owner:self topLevelObjects:&tlo];
-    if(c){
-        for(int i=0;i<tlo.count;i++){
-            NSString *cname = [tlo[i] className];
-            if([cname isEqualToString:@"PlayerControlView"]){
-                PlayerControlView = tlo[i];
-            }
-        }
-    }
-    
-    NSRect rect = PlayerControlView.frame;
-    [PlayerControlView setFrame:NSMakeRect(rect.origin.x,
-                                           rect.origin.y,
-                                           self.view.frame.size.width * 0.8,
-                                           rect.size.height)];
-    [PlayerControlView setFrameOrigin:
-     NSMakePoint(
-                 (NSWidth([wrapper bounds]) - NSWidth([PlayerControlView frame])) / 2,
-                 20
-                 )];
-    
-    [self.view setWantsLayer:YES];
-    [self.view addSubview:PlayerControlView positioned:NSWindowAbove relativeTo:nil];
-    [PlayerControlView setHidden:YES];
-    
+//    NSArray *tlo;
+//    BOOL c = [[NSBundle mainBundle] loadNibNamed:@"PlayerControl" owner:self topLevelObjects:&tlo];
+//    if(c){
+//        for(int i=0;i<tlo.count;i++){
+//            NSString *cname = [tlo[i] className];
+//            if([cname isEqualToString:@"PlayerControlView"]){
+//                PlayerControlView = tlo[i];
+//            }
+//        }
+//    }
+
+    [self.loadingImage setAnimates:YES];
     [self LoadVideo];
 }
 
@@ -156,6 +142,26 @@ static void wakeup(void *context) {
         frame.size = NSMakeSize(Wwidth, Wheight);
         [self.view setFrame:frame];
     }
+    
+    /* Add Player Control view */
+    
+//    NSRect rect = PlayerControlView.frame;
+//    [PlayerControlView setFrame:NSMakeRect(rect.origin.x,
+//                                           rect.origin.y,
+//                                           self.view.frame.size.width * 0.8,
+//                                           rect.size.height)];
+//    [PlayerControlView setFrameOrigin:
+//     NSMakePoint(
+//                 (NSWidth([self.view bounds]) - NSWidth([PlayerControlView frame])) / 2,
+//                 20
+//                 )];
+//    
+//    [self.view setWantsLayer:YES];
+//    [PlayerControlView setHidden:YES];
+    //[self.view addSubview:PlayerControlView positioned:NSWindowAbove relativeTo:nil];
+    
+    /* End Adding Player Control */
+    
     postCommentButton = self.PostCommentButton;
     hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
     NSLog(@"Playerview load success");
@@ -274,10 +280,14 @@ static void wakeup(void *context) {
         if([dUrls count] == 0){
             if([type isEqualToString:@"mp4"]){
                 type = @"flv";
+                dispatch_async(dispatch_get_main_queue(), ^{
                 [self.textTip setStringValue:NSLocalizedString(@"正在尝试重新解析", nil)];
+                });
                 goto getUrl;
             }
+            dispatch_async(dispatch_get_main_queue(), ^{
             [self.textTip setStringValue:NSLocalizedString(@"视频无法解析", nil)];
+            });
             return;
         }
         
@@ -320,9 +330,10 @@ static void wakeup(void *context) {
             return;
         }
         
-        // ffprobe
-        [self.textTip setStringValue:NSLocalizedString(@"正在获取视频信息", nil)];
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.textTip setStringValue:NSLocalizedString(@"正在获取视频信息", nil)];
+        });
+            
         NSLog(@"FirstVideo:%@",firstVideo);
         
         int usingBackup = 0;
@@ -335,7 +346,9 @@ static void wakeup(void *context) {
         
         if([height intValue] < 100){
             if(!BackupUrls){
-                [self.textTip setStringValue:NSLocalizedString(@"读取视频失败，可能视频源已失效", nil)];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.textTip setStringValue:NSLocalizedString(@"读取视频失败，可能视频源已失效", nil)];
+                });
             }else{
                 usingBackup++;
                 NSString *backupVideoUrl = [BackupUrls objectAtIndex:usingBackup];
@@ -345,7 +358,9 @@ static void wakeup(void *context) {
                     NSLog(@"Timeout! Change to backup url: %@",vUrl);
                     goto GetInfo;
                 }else{
-                    [self.textTip setStringValue:NSLocalizedString(@"读取视频失败，视频服务器故障", nil)];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.textTip setStringValue:NSLocalizedString(@"读取视频失败，视频服务器故障", nil)];
+                    });
                 }
             }
         }
@@ -370,7 +385,10 @@ static void wakeup(void *context) {
             }
             
         }else{
-            [self.textTip setStringValue:NSLocalizedString(@"视频信息读取失败", nil)];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.textTip setStringValue:NSLocalizedString(@"视频信息读取失败", nil)];
+            });
+            
             parsing = false;
             return;
         }
@@ -635,33 +653,37 @@ static void wakeup(void *context) {
             
         case MPV_EVENT_VIDEO_RECONFIG: {
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.loadingImage.animates = false;
-                [LoadingView setHidden:YES];
                 [PlayerControlView setHidden:NO];
             });
             break;
         }
         
         case MPV_EVENT_START_FILE:{
-            if([[[NSUserDefaults standardUserDefaults] objectForKey:@"FirstPlayed"] length] != 3){
-                [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"FirstPlayed"];
-                [self.textTip setStringValue:NSLocalizedString(@"正在创建字体缓存", nil)];
-                [self.subtip setStringValue:NSLocalizedString(@"首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口", nil)];
-            }else{
-                [self.textTip setStringValue:NSLocalizedString(@"正在缓冲", nil)];
-            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if([[[NSUserDefaults standardUserDefaults] objectForKey:@"FirstPlayed"] length] != 3){
+                    [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"FirstPlayed"];
+                    [self.textTip setStringValue:NSLocalizedString(@"正在创建字体缓存", nil)];
+                    [self.subtip setStringValue:NSLocalizedString(@"首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口", nil)];
+                }else{
+                    [self.textTip setStringValue:NSLocalizedString(@"正在缓冲", nil)];
+                }
+            });
             break;
         }
             
         case MPV_EVENT_PLAYBACK_RESTART: {
-            self.loadingImage.animates = false;
-            [LoadingView setHidden:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.loadingImage setAnimates:NO];
+                [LoadingView setHidden:YES];
+            });
             isPlaying = YES;
             break;
         }
         
         case MPV_EVENT_END_FILE:{
-            [self.textTip setStringValue:NSLocalizedString(@"播放完成，关闭窗口继续", nil)];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.textTip setStringValue:NSLocalizedString(@"播放完成，关闭窗口继续", nil)];
+            });
             break;
         }
         
