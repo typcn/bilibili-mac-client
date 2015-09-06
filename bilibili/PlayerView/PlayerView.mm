@@ -30,6 +30,7 @@ BOOL isCancelled;
 BOOL isPlaying;
 
 NSButton *postCommentButton;
+dispatch_queue_t queue;
 //IOPMAssertionID assertionID;
 
 static inline void check_error(int status)
@@ -43,7 +44,6 @@ static inline void check_error(int status)
 }
 
 @interface PlayerView (){
-    dispatch_queue_t queue;
     NSWindow *w;
     NSView *wrapper;
     NSTimer *hideCursorTimer;
@@ -130,9 +130,7 @@ static void wakeup(void *context) {
     self->wrapper = playerContextView;
     
     isCancelled = false;
-    
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
-    
     dispatch_async(queue, ^{
         
         NSString *baseAPIUrl = @"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=%d&type=%@&sign=%@";
@@ -736,9 +734,11 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         obServer = YES;
     }else{
         if(mpv){
-            if(strcmp(mpv_get_property_string(mpv,"pause"),"yes")){
-                mpv_set_property_string(mpv,"pause","yes");
-            }
+            dispatch_async(queue, ^{
+                if(strcmp(mpv_get_property_string(mpv,"pause"),"yes")){
+                    mpv_set_property_string(mpv,"pause","yes");
+                }
+            });
         }
     }
     // Save window size
@@ -753,9 +753,11 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
 
 - (void)Continue{
     if(mpv && !isFirstCall){
-        if(strcmp(mpv_get_property_string(mpv,"pause"),"no")){
-            mpv_set_property_string(mpv,"pause","no");
-        }
+        dispatch_async(queue, ^{
+            if(strcmp(mpv_get_property_string(mpv,"pause"),"no")){
+                mpv_set_property_string(mpv,"pause","no");
+            }
+        });
     }else{
         isFirstCall = NO;
     }
@@ -790,11 +792,13 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             break;
         }
         case 49:{ // Space
-            if(strcmp(mpv_get_property_string(mpv,"pause"),"no")){
-                mpv_set_property_string(mpv,"pause","no");
-            }else{
-                mpv_set_property_string(mpv,"pause","yes");
-            }
+            dispatch_async(queue, ^{
+                if(strcmp(mpv_get_property_string(mpv,"pause"),"no")){
+                    mpv_set_property_string(mpv,"pause","no");
+                }else{
+                    mpv_set_property_string(mpv,"pause","yes");
+                 }
+            });
             break;
         }
         case 36:{ // Enter
