@@ -1,4 +1,4 @@
-window.bilimacVersion = 204;
+window.bilimacVersion = 205;
 var TYPCN_PLAYER_CID;
 window.sendToView = function(data){
     try{

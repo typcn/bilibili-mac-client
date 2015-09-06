@@ -58,6 +58,8 @@
 		FD3553C41B9C5E15000EE41E /* startaria.sh in Copy Files */ = {isa = PBXBuildFile; fileRef = FD3553C31B9C5DF4000EE41E /* startaria.sh */; };
 		FD3553C61B9C7B02000EE41E /* libx264.146.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD3553C51B9C7B02000EE41E /* libx264.146.dylib */; };
 		FD3553C71B9C7B1A000EE41E /* libx264.146.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD3553C51B9C7B02000EE41E /* libx264.146.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FD3553C81B9C82A5000EE41E /* Toolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0E51B99B43200FB32CC /* Toolbar.xib */; };
+		FD3553C91B9C82A5000EE41E /* PlayerControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD3553891B9C34F9000EE41E /* PlayerControl.xib */; };
 		FD36B0B31B988FE200FB32CC /* Browser.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0B21B988FE200FB32CC /* Browser.mm */; };
 		FD36B0B71B98920A00FB32CC /* WebTabView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0B51B98920A00FB32CC /* WebTabView.mm */; };
 		FD36B0CD1B9959CC00FB32CC /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */; };
@@ -916,6 +918,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3553C81B9C82A5000EE41E /* Toolbar.xib in Resources */,
+				FD3553C91B9C82A5000EE41E /* PlayerControl.xib in Resources */,
 				FD3553B51B9C4356000EE41E /* titlebar-corner-left.png in Resources */,
 				FD3553A81B9C4356000EE41E /* enterfullscreen.pdf in Resources */,
 				FD3553AD1B9C4356000EE41E /* fillscreen_ub.pdf in Resources */,
