@@ -913,9 +913,9 @@ Copyleft 2015 TYPCN</string>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="3xs-54-4qH">
                                     <font key="font" metaFont="system"/>
                                     <segments>
-                                        <segment label="顶" width="26"/>
-                                        <segment label="飘" width="26" selected="YES" tag="1"/>
-                                        <segment label="底" width="26"/>
+                                        <segment label="上" width="26"/>
+                                        <segment label="中" width="26" selected="YES" tag="1"/>
+                                        <segment label="下" width="26"/>
                                     </segments>
                                 </segmentedCell>
                             </segmentedControl>
