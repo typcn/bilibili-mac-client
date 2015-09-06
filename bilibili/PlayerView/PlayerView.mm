@@ -30,7 +30,7 @@ BOOL isCancelled;
 BOOL isPlaying;
 
 NSButton *postCommentButton;
-IOPMAssertionID assertionID;
+//IOPMAssertionID assertionID;
 
 static inline void check_error(int status)
 {
@@ -95,8 +95,8 @@ static void wakeup(void *context) {
 }
 
 - (void)LoadVideo{
-    IOPMAssertionCreateWithName(kIOPMAssertionTypeNoDisplaySleep,
-                                kIOPMAssertionLevelOn, CFSTR("com.typcn.videoplayback"), &assertionID);
+    //IOPMAssertionCreateWithName(kIOPMAssertionTypeNoDisplaySleep,
+    //                            kIOPMAssertionLevelOn, CFSTR("com.typcn.videoplayback"), &assertionID);
     
     if([vCID isEqualToString:@"LOCALVIDEO"]){
         [[[NSApplication sharedApplication] keyWindow] performClose:self];
@@ -842,9 +842,9 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     NSLog(@"Removing lastplay url");
     isPlaying = NO;
-    if(assertionID){
-        IOPMAssertionRelease(assertionID);
-    }
+//    if(assertionID){
+//        IOPMAssertionRelease(assertionID);
+//    }
     isCancelled = true;
     if(obServer){
         [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self];

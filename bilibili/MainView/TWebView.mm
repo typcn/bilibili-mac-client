@@ -33,14 +33,16 @@ WKWebViewConfiguration *cfg;
         if(!cfg){
             cfg = [[WKWebViewConfiguration  alloc] init];
         }
-        [[cfg userContentController] removeScriptMessageHandlerForName:@"BLClient"];
-        [[cfg userContentController] addScriptMessageHandler:self name:@"BLClient"];
+        WKWebViewConfiguration *config = [cfg copy];
+        [[config userContentController] removeScriptMessageHandlerForName:@"BLClient"];
+        [[config userContentController] addScriptMessageHandler:self name:@"BLClient"];
         webViewType = tWKWebView;
-        WKwv = [[WKWebView alloc] initWithFrame:NSZeroRect configuration:cfg];
+        WKwv = [[WKWebView alloc] initWithFrame:NSZeroRect configuration:config];
         [WKwv setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
         [WKwv setNavigationDelegate: self];
         [WKwv setUIDelegate: self];
         [WKwv addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
+        cfg = NULL;
     } else {
         webViewType = tWebView;
         wv = [[WebView alloc] init];
