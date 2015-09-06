@@ -68,7 +68,7 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
-                        <action selector="menu:" target="Yub-VR-qOD" id="Qv7-sX-QjO"/>
+                        <action selector="menu:" target="Yub-VR-qOD" id="V4U-zb-pY5"/>
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" id="Wfb-Je-aPV">

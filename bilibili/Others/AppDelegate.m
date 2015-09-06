@@ -167,6 +167,10 @@ Browser *browser;
 - (IBAction)prevTab:(id)sender {
     [browser selectPreviousTab];
 }
+- (IBAction)dlManager:(id)sender {
+    id ct = [browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/"];
+    [browser addTabContents:ct inForeground:YES];
+}
 
 
 @end

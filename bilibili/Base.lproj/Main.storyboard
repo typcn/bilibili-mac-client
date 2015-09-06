@@ -321,7 +321,7 @@
                                         <menuItem title="打开下载管理器" id="cvU-jO-K6m" userLabel="Download Manager">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <segue destination="uyE-Xu-eZU" kind="show" id="WH6-sv-CmL"/>
+                                                <action selector="dlManager:" target="Voe-Tx-rLC" id="y8q-iE-iZp"/>
                                             </connections>
                                         </menuItem>
                                     </items>
