@@ -35,7 +35,7 @@ BOOL isStopped;
 //    return 0;
 //}
 
-void Downloader::newTask(int cid,NSString *name){
+BOOL Downloader::newTask(int cid,NSString *name){
     NSLog(@"[Downloader] New Task CID: %d",cid);
     NSString *path = [NSString stringWithFormat:@"%@%@%@/",NSHomeDirectory(),@"/Movies/Bilibili/",name];
 
@@ -72,8 +72,16 @@ void Downloader::newTask(int cid,NSString *name){
                                              ]
                                      };
         request.HTTPBody = [NSJSONSerialization dataWithJSONObject:bodyObject options:kNilOptions error:NULL];
-        NSURLConnection* connection = [NSURLConnection connectionWithRequest:request delegate:nil];
-        [connection start];
+        NSURLResponse * response = nil;
+        NSError * error = nil;
+        [NSURLConnection sendSynchronousRequest:request
+                              returningResponse:&response
+                                          error:&error];
+        if(!error && [(NSHTTPURLResponse *)response statusCode] == 200){
+            NSLog(@"Download Task Added");
+        }else{
+            return false;
+        }
     }else{
         for (NSDictionary *match in urls) {
             NSString *tmp = [match valueForKey:@"url"];
@@ -91,12 +99,23 @@ void Downloader::newTask(int cid,NSString *name){
                                                  ]
                                          };
             request.HTTPBody = [NSJSONSerialization dataWithJSONObject:bodyObject options:kNilOptions error:NULL];
-            NSURLConnection* connection = [NSURLConnection connectionWithRequest:request delegate:nil];
-            [connection start];
+            NSURLResponse * response = nil;
+            NSError * error = nil;
+            [NSURLConnection sendSynchronousRequest:request
+                                                    returningResponse:&response
+                                                    error:&error];
+            if(!error && [(NSHTTPURLResponse *)response statusCode] == 200){
+                NSLog(@"Download Task Added");
+            }else{
+                return false;
+            }
+            
+            
         }
     }
     
     NSLog(@"[Downloader] Download task added");
+    return true;
 }
 
 NSArray *Downloader::getUrl(int cid){

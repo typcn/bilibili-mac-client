@@ -288,11 +288,17 @@
     
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         hud.labelText = NSLocalizedString(@"正在解析视频地址", nil);
-        DL->newTask([cid intValue], filename);
-        hud.labelText = NSLocalizedString(@"成功开始下载", nil);
+        BOOL s = DL->newTask([cid intValue], filename);
         dispatch_async(dispatch_get_main_queue(), ^(void){
+            if(s){
+                hud.labelText = NSLocalizedString(@"成功开始下载", nil);
+            }else{
+                hud.labelText = NSLocalizedString(@"下载失败，请点击帮助 - 反馈", nil);
+            }
             hud.mode = MBProgressHUDModeText;
             [hud hide:YES afterDelay:3];
+            id ct = [browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/"];
+            [browser addTabContents:ct inForeground:YES];
         });
     });
 }

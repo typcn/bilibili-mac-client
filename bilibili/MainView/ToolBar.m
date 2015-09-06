@@ -105,10 +105,9 @@
 
 - (void)copyLink{
     WebTabView *tv = (WebTabView *)[browser activeTabContents];
-    id wv = [tv GetWebView];
     [[NSPasteboard generalPasteboard] clearContents];
-    [[NSPasteboard generalPasteboard] setString:[wv getURL]  forType:NSStringPboardType];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[wv subviews][0] animated:YES];
+    [[NSPasteboard generalPasteboard] setString:[[tv GetTWebView] getURL]  forType:NSStringPboardType];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[tv GetWebView] subviews][0] animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = NSLocalizedString(@"当前页面地址已经复制到剪贴板", nil);
     hud.removeFromSuperViewOnHide = YES;

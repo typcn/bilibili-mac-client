@@ -16,7 +16,7 @@ class Downloader {
 private:
     NSArray *getUrl(int cid);
 public:
-    void newTask(int cid,NSString *name);
+    BOOL newTask(int cid,NSString *name);
 };
 
 #endif /* defined(__bilibili__downloadWrapper__) */
