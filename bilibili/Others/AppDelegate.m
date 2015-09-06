@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#include "aria2.hpp"
 
 Browser *browser;
 
@@ -60,7 +59,6 @@ Browser *browser;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    aria2::libraryInit();
     NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
     NSString *uuid = [s objectForKey:@"UUID"];
     if(!uuid){

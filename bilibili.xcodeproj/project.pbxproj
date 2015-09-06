@@ -25,7 +25,7 @@
 		FD1954C71B25942F003A958F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C61B25942F003A958F /* main.m */; };
 		FD1954CA1B259447003A958F /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C91B259447003A958F /* AboutView.m */; };
 		FD1954CD1B259457003A958F /* ISSoundAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954CC1B259457003A958F /* ISSoundAdditions.m */; };
-		FD1954D01B259462003A958F /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954CF1B259462003A958F /* AppDelegate.mm */; };
+		FD1954D01B259462003A958F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954CF1B259462003A958F /* AppDelegate.m */; };
 		FD1954D31B25947A003A958F /* playLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954D21B25947A003A958F /* playLocalFile.m */; };
 		FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954D71B2594AC003A958F /* AssClass.cpp */; };
 		FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954DA1B2594AC003A958F /* danmaku2ass.cpp */; };
@@ -281,7 +281,7 @@
 		FD1954CB1B259457003A958F /* ISSoundAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSoundAdditions.h; path = Others/ISSoundAdditions.h; sourceTree = "<group>"; };
 		FD1954CC1B259457003A958F /* ISSoundAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSoundAdditions.m; path = Others/ISSoundAdditions.m; sourceTree = "<group>"; };
 		FD1954CE1B259462003A958F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Others/AppDelegate.h; sourceTree = "<group>"; };
-		FD1954CF1B259462003A958F /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = Others/AppDelegate.mm; sourceTree = "<group>"; };
+		FD1954CF1B259462003A958F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Others/AppDelegate.m; sourceTree = "<group>"; };
 		FD1954D11B25947A003A958F /* playLocalFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = playLocalFile.h; path = PlayerView/playLocalFile.h; sourceTree = "<group>"; };
 		FD1954D21B25947A003A958F /* playLocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = playLocalFile.m; path = PlayerView/playLocalFile.m; sourceTree = "<group>"; };
 		FD1954D71B2594AC003A958F /* AssClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssClass.cpp; sourceTree = "<group>"; };
@@ -474,7 +474,7 @@
 				FD8CEDEC1AD249540092452F /* Settings View */,
 				FD476C6C1AD22A2000584EFE /* Others */,
 				FD1954CE1B259462003A958F /* AppDelegate.h */,
-				FD1954CF1B259462003A958F /* AppDelegate.mm */,
+				FD1954CF1B259462003A958F /* AppDelegate.m */,
 				FD4855071AE67AD8008F49AA /* gencache.sh */,
 				FD076C531AC8CBBB00C893FA /* Supporting Files */,
 				FD36B0D01B995A2C00FB32CC /* Common.hpp */,
@@ -999,7 +999,7 @@
 				FD1954B61B259330003A958F /* PostComment.m in Sources */,
 				FD1954C51B259368003A958F /* Socket.cpp in Sources */,
 				FD1954CD1B259457003A958F /* ISSoundAdditions.m in Sources */,
-				FD1954D01B259462003A958F /* AppDelegate.mm in Sources */,
+				FD1954D01B259462003A958F /* AppDelegate.m in Sources */,
 				FD5B0C621B9ABAFF00045F10 /* TWebView.mm in Sources */,
 				FD1954BC1B259342003A958F /* downloadWrapper.mm in Sources */,
 				FD36B0B71B98920A00FB32CC /* WebTabView.mm in Sources */,
