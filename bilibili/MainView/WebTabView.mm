@@ -262,13 +262,6 @@
 }
 - (void)downloadVideoByCID:(NSString *)cid
 {
-    if(!downloaderObjects){
-        downloaderObjects = [[NSMutableArray alloc] init];
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:NSLocalizedString(@"注意：下载功能仅供测试，可能有各种 BUG，支持分段视频，默认保存在 Movies 文件夹。\n点击 文件->下载管理 来查看任务", nil)];
-        [alert runModal];
-    }
-    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:HudView animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = NSLocalizedString(@"正在启动下载引擎", nil);
@@ -294,16 +287,6 @@
     NSString *filename = [fn objectAtIndex:0];
     
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSDictionary *taskData = @{
-                                   @"name":filename,
-                                   @"status":NSLocalizedString(@"正在等待", nil),
-                                   @"cid":cid,
-                                   };
-        [dList lock];
-        int index = (int)[downloaderObjects count];
-        [downloaderObjects insertObject:taskData atIndex:index];
-        [dList unlock];
-        DL->init();
         hud.labelText = NSLocalizedString(@"正在解析视频地址", nil);
         DL->newTask([cid intValue], filename);
         hud.labelText = NSLocalizedString(@"成功开始下载", nil);
@@ -311,8 +294,6 @@
             hud.mode = MBProgressHUDModeText;
             [hud hide:YES afterDelay:3];
         });
-        
-        DL->runDownload(index, filename);
     });
 }
 

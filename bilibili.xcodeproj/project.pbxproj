@@ -17,7 +17,6 @@
 		FD1954B01B259318003A958F /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AD1B259318003A958F /* Settings.m */; };
 		FD1954B51B259330003A958F /* PlayerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954B21B259330003A958F /* PlayerView.mm */; };
 		FD1954B61B259330003A958F /* PostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954B41B259330003A958F /* PostComment.m */; };
-		FD1954BB1B259342003A958F /* DownloadManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954B81B259342003A958F /* DownloadManager.mm */; };
 		FD1954BC1B259342003A958F /* downloadWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BA1B259342003A958F /* downloadWrapper.mm */; };
 		FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BE1B259368003A958F /* BilibiliSocketClient.mm */; };
 		FD1954C41B259368003A958F /* LiveChat.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C01B259368003A958F /* LiveChat.m */; };
@@ -31,7 +30,6 @@
 		FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954DA1B2594AC003A958F /* danmaku2ass.cpp */; };
 		FD2BD56E1AD15AE0001A7E16 /* libmediainfo.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; };
 		FD2BD56F1AD15AF9001A7E16 /* libmediainfo.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		FD35538B1B9C34F9000EE41E /* PlayerControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD3553891B9C34F9000EE41E /* PlayerControl.xib */; };
 		FD35538F1B9C423B000EE41E /* PlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD35538E1B9C423B000EE41E /* PlayerControlView.m */; };
 		FD3553A81B9C4356000EE41E /* enterfullscreen.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553911B9C4356000EE41E /* enterfullscreen.pdf */; };
 		FD3553A91B9C4356000EE41E /* exitfillscreen_lr.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553921B9C4356000EE41E /* exitfillscreen_lr.pdf */; };
@@ -56,11 +54,12 @@
 		FD3553BC1B9C4356000EE41E /* vol_low.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A51B9C4356000EE41E /* vol_low.pdf */; };
 		FD3553BD1B9C4356000EE41E /* vol_mid.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A61B9C4356000EE41E /* vol_mid.pdf */; };
 		FD3553BE1B9C4356000EE41E /* vol_no.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A71B9C4356000EE41E /* vol_no.pdf */; };
+		FD3553C21B9C5D98000EE41E /* aria2c in Copy Files */ = {isa = PBXBuildFile; fileRef = FD3553BF1B9C5CB5000EE41E /* aria2c */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FD3553C41B9C5E15000EE41E /* startaria.sh in Copy Files */ = {isa = PBXBuildFile; fileRef = FD3553C31B9C5DF4000EE41E /* startaria.sh */; };
 		FD36B0B31B988FE200FB32CC /* Browser.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0B21B988FE200FB32CC /* Browser.mm */; };
 		FD36B0B71B98920A00FB32CC /* WebTabView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0B51B98920A00FB32CC /* WebTabView.mm */; };
 		FD36B0CD1B9959CC00FB32CC /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */; };
 		FD36B0CF1B9959D300FB32CC /* Sparkle.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FD36B0E71B99B43200FB32CC /* Toolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0E51B99B43200FB32CC /* Toolbar.xib */; };
 		FD36B0EE1B99B48B00FB32CC /* backwards.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0E91B99B48B00FB32CC /* backwards.png */; };
 		FD36B0EF1B99B48B00FB32CC /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0EA1B99B48B00FB32CC /* forward.png */; };
 		FD36B0F01B99B48B00FB32CC /* homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0EB1B99B48B00FB32CC /* homepage.png */; };
@@ -130,8 +129,6 @@
 		FD62CC8B1B6E6BA5000AED57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62CC8A1B6E6BA5000AED57 /* Foundation.framework */; };
 		FD62CC8D1B6E6BAB000AED57 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62CC8C1B6E6BAB000AED57 /* AppKit.framework */; };
 		FD62CC8F1B6E6BB0000AED57 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */; };
-		FDA775DE1AD93D1800426483 /* libaria2.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; };
-		FDA775E91AD93F6900426483 /* libaria2.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDA775DD1AD93D1800426483 /* libaria2.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDD1FDD41B9B14F9006711B0 /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; };
 		FDD1FDD51B9B14F9006711B0 /* ChromiumTabs.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -176,7 +173,6 @@
 			dstPath = lib;
 			dstSubfolderSpec = 6;
 			files = (
-				FDA775E91AD93F6900426483 /* libaria2.0.dylib in CopyFiles */,
 				FD2BD56F1AD15AF9001A7E16 /* libmediainfo.0.dylib in CopyFiles */,
 				FD5101931ACC1AF300C49430 /* libass.5.dylib in CopyFiles */,
 				FD5101941ACC1AF300C49430 /* libavcodec.56.dylib in CopyFiles */,
@@ -210,6 +206,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				FD3553C41B9C5E15000EE41E /* startaria.sh in Copy Files */,
+				FD3553C21B9C5D98000EE41E /* aria2c in Copy Files */,
 				FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files */,
 			);
 			name = "Copy Files";
@@ -265,8 +263,6 @@
 		FD1954B21B259330003A958F /* PlayerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PlayerView.mm; path = PlayerView/PlayerView.mm; sourceTree = "<group>"; };
 		FD1954B31B259330003A958F /* PostComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostComment.h; path = PlayerView/PostComment.h; sourceTree = "<group>"; };
 		FD1954B41B259330003A958F /* PostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostComment.m; path = PlayerView/PostComment.m; sourceTree = "<group>"; };
-		FD1954B71B259342003A958F /* DownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadManager.h; path = Downloader/DownloadManager.h; sourceTree = "<group>"; };
-		FD1954B81B259342003A958F /* DownloadManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DownloadManager.mm; path = Downloader/DownloadManager.mm; sourceTree = "<group>"; };
 		FD1954B91B259342003A958F /* downloadWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = downloadWrapper.h; path = Downloader/downloadWrapper.h; sourceTree = "<group>"; };
 		FD1954BA1B259342003A958F /* downloadWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = downloadWrapper.mm; path = Downloader/downloadWrapper.mm; sourceTree = "<group>"; };
 		FD1954BD1B259368003A958F /* BilibiliSocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BilibiliSocketClient.h; path = LiveChat/BilibiliSocketClient.h; sourceTree = "<group>"; };
@@ -322,6 +318,8 @@
 		FD3553A51B9C4356000EE41E /* vol_low.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = vol_low.pdf; path = bilibili/img/player/vol_low.pdf; sourceTree = "<group>"; };
 		FD3553A61B9C4356000EE41E /* vol_mid.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = vol_mid.pdf; path = bilibili/img/player/vol_mid.pdf; sourceTree = "<group>"; };
 		FD3553A71B9C4356000EE41E /* vol_no.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = vol_no.pdf; path = bilibili/img/player/vol_no.pdf; sourceTree = "<group>"; };
+		FD3553BF1B9C5CB5000EE41E /* aria2c */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = aria2c; path = bilibili/libs/aria2c; sourceTree = "<group>"; };
+		FD3553C31B9C5DF4000EE41E /* startaria.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = startaria.sh; sourceTree = "<group>"; };
 		FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "chromium-tabs.xcodeproj"; path = "chromium-tabs/chromium-tabs.xcodeproj"; sourceTree = "<group>"; };
 		FD36B0B11B988FE200FB32CC /* Browser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Browser.h; path = MainView/Browser.h; sourceTree = "<group>"; };
 		FD36B0B21B988FE200FB32CC /* Browser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Browser.mm; path = MainView/Browser.mm; sourceTree = "<group>"; };
@@ -382,7 +380,6 @@
 		FD62CC8A1B6E6BA5000AED57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FD62CC8C1B6E6BAB000AED57 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		FDA775DD1AD93D1800426483 /* libaria2.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libaria2.0.dylib; path = bilibili/libs/libaria2.0.dylib; sourceTree = "<group>"; };
 		FDA775E01AD93DC900426483 /* aria2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = aria2.hpp; path = bilibili/headers/aria2.hpp; sourceTree = "<group>"; };
 		FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FDD5EEF61AC944020036B829 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -410,7 +407,6 @@
 				FD5101841ACC1A6800C49430 /* liblcms2.2.dylib in Frameworks */,
 				FD51018A1ACC1A6800C49430 /* libpostproc.53.dylib in Frameworks */,
 				FD5101801ACC1A6800C49430 /* libfontconfig.1.dylib in Frameworks */,
-				FDA775DE1AD93D1800426483 /* libaria2.0.dylib in Frameworks */,
 				FD51017A1ACC1A6800C49430 /* libavcodec.56.dylib in Frameworks */,
 				FD5101871ACC1A6800C49430 /* libmpg123.0.dylib in Frameworks */,
 				FD51017F1ACC1A6800C49430 /* libavutil.54.dylib in Frameworks */,
@@ -476,6 +472,7 @@
 				FD1954CE1B259462003A958F /* AppDelegate.h */,
 				FD1954CF1B259462003A958F /* AppDelegate.m */,
 				FD4855071AE67AD8008F49AA /* gencache.sh */,
+				FD3553C31B9C5DF4000EE41E /* startaria.sh */,
 				FD076C531AC8CBBB00C893FA /* Supporting Files */,
 				FD36B0D01B995A2C00FB32CC /* Common.hpp */,
 			);
@@ -784,8 +781,8 @@
 		FDA775DC1AD93D0D00426483 /* aria2 */ = {
 			isa = PBXGroup;
 			children = (
+				FD3553BF1B9C5CB5000EE41E /* aria2c */,
 				FDA775DF1AD93D2000426483 /* headers */,
-				FDA775DD1AD93D1800426483 /* libaria2.0.dylib */,
 			);
 			name = aria2;
 			sourceTree = "<group>";
@@ -801,8 +798,6 @@
 		FDA775E81AD93ED600426483 /* downloadManager */ = {
 			isa = PBXGroup;
 			children = (
-				FD1954B71B259342003A958F /* DownloadManager.h */,
-				FD1954B81B259342003A958F /* DownloadManager.mm */,
 				FD1954B91B259342003A958F /* downloadWrapper.h */,
 				FD1954BA1B259342003A958F /* downloadWrapper.mm */,
 			);
@@ -936,7 +931,6 @@
 				FD3553AC1B9C4356000EE41E /* fillscreen_lr.pdf in Resources */,
 				FD36B0EF1B99B48B00FB32CC /* forward.png in Resources */,
 				FD3553BA1B9C4356000EE41E /* unfold.pdf in Resources */,
-				FD35538B1B9C34F9000EE41E /* PlayerControl.xib in Resources */,
 				FD36B0F21B99B48B00FB32CC /* reloadp.png in Resources */,
 				FD3553B31B9C4356000EE41E /* prev-episode.pdf in Resources */,
 				FD61025E1AD7CBC10013119A /* webui.html in Resources */,
@@ -952,7 +946,6 @@
 				FD62CC861B6E6726000AED57 /* copy.png in Resources */,
 				FD3553B41B9C4356000EE41E /* resizeindicator.png in Resources */,
 				FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */,
-				FD36B0E71B99B43200FB32CC /* Toolbar.xib in Resources */,
 				FD3553BD1B9C4356000EE41E /* vol_mid.pdf in Resources */,
 				FD3553BB1B9C4356000EE41E /* vol_high.pdf in Resources */,
 				FD3553B11B9C4356000EE41E /* pause.pdf in Resources */,
@@ -1014,7 +1007,6 @@
 				FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */,
 				FD1954C41B259368003A958F /* LiveChat.m in Sources */,
 				FD36B0F51B99B62600FB32CC /* ToolBar.m in Sources */,
-				FD1954BB1B259342003A958F /* DownloadManager.mm in Sources */,
 				C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */,
 				FD36B0B31B988FE200FB32CC /* Browser.mm in Sources */,
 				FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */,

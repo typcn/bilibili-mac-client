@@ -43,13 +43,13 @@ Browser *browser;
         if(!fcache){
             NSAlert *alert = [[NSAlert alloc] init];
             [alert setMessageText:@"无法创建字体缓存，您可能无法看到任何弹幕，可能的原因：\n1. 您的系统部分文件夹权限错误"
-                                                                                "\n2. 您没有将 Bilibili 安装到 Application 文件夹"
-                                                                                "\n3. 防火墙等软件阻止了文件复制"
-                                                                                "\n4. 由于清理软件或误操作导致系统环境不完整\n"
-                                                                                "\n请尝试以下步骤："
-                                                                                "\n1. 打开 /Users/Shared 文件夹，新建一个叫 fc 的文件夹"
-                                                                                "\n2. 右键 Bilibili.app ，选择显示包内容，将 Contents/Resources/fontconfig 文件夹中的所有内容复制到 fc 文件夹"
-                                                                                "\n3. 将 fc 文件夹重命名为 .fc 然后重新打开软件"];
+                        "\n2. 您没有将 Bilibili 安装到 Application 文件夹"
+                        "\n3. 防火墙等软件阻止了文件复制"
+                        "\n4. 由于清理软件或误操作导致系统环境不完整\n"
+                        "\n请尝试以下步骤："
+                        "\n1. 打开 /Users/Shared 文件夹，新建一个叫 fc 的文件夹"
+                        "\n2. 右键 Bilibili.app ，选择显示包内容，将 Contents/Resources/fontconfig 文件夹中的所有内容复制到 fc 文件夹"
+                        "\n3. 将 fc 文件夹重命名为 .fc 然后重新打开软件"];
             [alert runModal];
         }
     }
@@ -91,6 +91,14 @@ Browser *browser;
     browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
     [browser addBlankTabInForeground:YES];
     [browser.windowController showWindow:self];
+    
+    // Start ARIA2
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"startaria" ofType:@"sh"];
+    NSTask *task = [[NSTask alloc] init];
+    task.launchPath = @"/bin/sh";
+    task.arguments = @[path];
+    [task launch];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
