@@ -7,14 +7,14 @@
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView alphaValue="0.25323943661971821" id="JST-bT-Zjs" userLabel="ControlUIView" customClass="PlayerControlView">
+        <customView alphaValue="0.25323943661971821" id="JST-bT-Zjs" userLabel="PlayerControlView" customClass="PlayerControlView">
             <rect key="frame" x="0.0" y="0.0" width="432" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button toolTip="Enter/Exit Fullscreen" id="BIn-rS-nkp">
                     <rect key="frame" x="370" y="31" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" title="toggleFullScreen" bezelStyle="regularSquare" image="enterfullscreen" imagePosition="only" alignment="left" alternateImage="exitfullscreen" imageScaling="axesIndependently" inset="2" id="0Q9-Lf-Hft">
+                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="enterfullscreen" imagePosition="overlaps" alignment="left" alternateImage="exitfullscreen" imageScaling="axesIndependently" inset="2" id="0Q9-Lf-Hft">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -25,7 +25,7 @@
                 <button toolTip="Toggle Fillscreen" id="XkJ-oN-pvE">
                     <rect key="frame" x="334" y="30" width="24" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" title="toggleFillScreen" bezelStyle="regularSquare" image="fillscreen_ub" imagePosition="only" alignment="center" alternateImage="exitfillscreen_ub" state="on" imageScaling="axesIndependently" inset="2" id="gZu-4V-PeM">
+                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="fillscreen_ub" imagePosition="overlaps" alignment="center" alternateImage="exitfillscreen_ub" state="on" imageScaling="axesIndependently" inset="2" id="gZu-4V-PeM">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -44,7 +44,7 @@
                 <button toolTip="toggle Mute" id="Piz-ep-gVW">
                     <rect key="frame" x="14" y="33" width="18" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="bevel" title="VolumeButton" bezelStyle="regularSquare" image="vol_mid" imagePosition="only" alignment="left" alternateImage="mute" imageScaling="axesIndependently" inset="2" id="9X7-Pf-ckj">
+                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="vol_mid" imagePosition="overlaps" alignment="left" alternateImage="mute" imageScaling="axesIndependently" inset="2" id="9X7-Pf-ckj">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -176,29 +176,35 @@
                         <button toolTip="Play/Pause" id="gb1-yG-vcO">
                             <rect key="frame" x="56" y="2" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" title="togglePlayPause" bezelStyle="regularSquare" image="play" imagePosition="only" alignment="center" alternateImage="pause" imageScaling="axesIndependently" inset="2" id="ugD-7r-FGi">
+                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="play" imagePosition="overlaps" alignment="center" alternateImage="pause" imageScaling="axesIndependently" inset="2" id="ugD-7r-FGi">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="togglePlayPause:" target="JST-bT-Zjs" id="9sD-Yr-OXD"/>
+                                <action selector="playPause:" target="JST-bT-Zjs" id="gbk-n8-8mW"/>
                             </connections>
                         </button>
                         <button id="QlD-VB-ZI6">
                             <rect key="frame" x="110" y="2" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" title="next-episode" bezelStyle="regularSquare" image="next-episode" imagePosition="only" alignment="center" imageScaling="axesIndependently" inset="2" id="4St-Zn-pcR">
+                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="next-episode" imagePosition="overlaps" alignment="center" imageScaling="axesIndependently" inset="2" id="4St-Zn-pcR">
                                 <behavior key="behavior" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="nextEP:" target="JST-bT-Zjs" id="O7V-Ww-ntG"/>
+                            </connections>
                         </button>
                         <button id="N1P-Sm-ilq">
                             <rect key="frame" x="2" y="2" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" title="prev-episode" bezelStyle="regularSquare" image="prev-episode" imagePosition="only" alignment="center" imageScaling="axesIndependently" inset="2" id="bLl-am-l34">
+                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="prev-episode" imagePosition="overlaps" alignment="center" imageScaling="axesIndependently" inset="2" id="bLl-am-l34">
                                 <behavior key="behavior" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="prevEP:" target="JST-bT-Zjs" id="ZfX-dT-GRH"/>
+                            </connections>
                         </button>
                     </subviews>
                 </customView>
@@ -220,9 +226,6 @@
                 <outlet property="fillScreenButton" destination="XkJ-oN-pvE" id="laa-W4-iab"/>
                 <outlet property="fullScreenButton" destination="BIn-rS-nkp" id="Mob-uD-lLa"/>
                 <outlet property="hintTime" destination="Jl9-L6-PuC" id="78w-qN-XTH"/>
-                <outlet property="nextEPButton" destination="QlD-VB-ZI6" id="weS-m4-Tej"/>
-                <outlet property="playPauseButton" destination="gb1-yG-vcO" id="h1P-OP-3dj"/>
-                <outlet property="prevEPButton" destination="N1P-Sm-ilq" id="Q1N-Kj-luG"/>
                 <outlet property="speedText" destination="E5Y-5G-Osr" id="P39-Sf-PVP"/>
                 <outlet property="subDelayText" destination="Scy-1m-DbU" id="jfs-UD-c07"/>
                 <outlet property="timeDispSwitch" destination="zT5-26-P8o" id="Dzl-oV-p1O"/>

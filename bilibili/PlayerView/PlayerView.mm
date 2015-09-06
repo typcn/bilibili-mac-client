@@ -26,11 +26,12 @@ NSString *vPID;
 NSWindow *LastWindow;
 
 mpv_handle *mpv;
+dispatch_queue_t queue;
 BOOL isCancelled;
 BOOL isPlaying;
 
 NSButton *postCommentButton;
-dispatch_queue_t queue;
+
 //IOPMAssertionID assertionID;
 
 static inline void check_error(int status)
@@ -47,7 +48,9 @@ static inline void check_error(int status)
     NSWindow *w;
     NSView *wrapper;
     NSView *MPV_Events_View;
-    NSView *Player_Control_View;
+    NSView *PlayerControlView;
+    __weak IBOutlet NSView *PlayerView;
+    __weak IBOutlet NSView *LoadingView;
     NSTimer *hideCursorTimer;
 }
 
@@ -102,7 +105,7 @@ static void wakeup(void *context) {
         for(int i=0;i<tlo.count;i++){
             NSString *cname = [tlo[i] className];
             if([cname isEqualToString:@"PlayerControlView"]){
-                Player_Control_View = tlo[i];
+                PlayerControlView = tlo[i];
             }
         }
     }
@@ -142,7 +145,7 @@ static void wakeup(void *context) {
     postCommentButton = self.PostCommentButton;
     hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
     NSLog(@"Playerview load success");
-    self->wrapper = [self view];
+    self->wrapper = PlayerView;
     
     isCancelled = false;
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
@@ -626,9 +629,22 @@ static void wakeup(void *context) {
                     }
                 }
                 if (MPV_Events_View) {
-                    [MPV_Events_View setWantsLayer:YES];
-                    [self->wrapper addSubview:Player_Control_View positioned:NSWindowAbove relativeTo:nil];
-                    [MPV_Events_View setWantsLayer:NO];
+                    NSRect rect = PlayerControlView.frame;
+                    [PlayerControlView setFrame:NSMakeRect(rect.origin.x,
+                                                           rect.origin.y,
+                                                           wrapper.frame.size.width * 0.8,
+                                                           rect.size.height)];
+                    [PlayerControlView setFrameOrigin:
+                     NSMakePoint(
+                            (NSWidth([wrapper bounds]) - NSWidth([PlayerControlView frame])) / 2,
+                            20
+                                                                    )];
+                    
+                    [self.view setWantsLayer:YES];
+                    [self.view addSubview:PlayerControlView positioned:NSWindowAbove relativeTo:nil];
+                    //[PlayerControlView setHidden:YES];
+                    //[MPV_Events_View setWantsLayer:NO];
+                    
                 }
             });
             break;
@@ -647,6 +663,7 @@ static void wakeup(void *context) {
             
         case MPV_EVENT_PLAYBACK_RESTART: {
             self.loadingImage.animates = false;
+            [LoadingView setHidden:YES];
             isPlaying = YES;
             break;
         }

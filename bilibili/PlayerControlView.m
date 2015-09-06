@@ -7,15 +7,37 @@
 //
 
 #import "PlayerControlView.h"
+#import "client.h"
+
+extern mpv_handle *mpv;
+extern dispatch_queue_t queue;
 
 @implementation PlayerControlView
 
 - (void)drawRect:(NSRect)dirtyRect {
-    
-    [[NSColor colorWithRed:0 green:0 blue:0 alpha:0.6] setFill];
+    [[NSColor blackColor] setFill];
     NSRectFill(dirtyRect);
     [super drawRect:dirtyRect];
-    // Drawing code here.
+}
+
+- (IBAction)nextEP:(id)sender {
+
+}
+
+- (IBAction)prevEP:(id)sender {
+    
+}
+
+- (IBAction)playPause:(id)sender {
+    if(queue && mpv){
+        dispatch_async(queue, ^{
+            if(strcmp(mpv_get_property_string(mpv,"pause"),"no")){
+                mpv_set_property_string(mpv,"pause","no");
+            }else{
+                mpv_set_property_string(mpv,"pause","yes");
+            }
+        });
+    }
 }
 
 @end
