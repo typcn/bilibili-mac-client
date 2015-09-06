@@ -31,6 +31,31 @@
 		FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954DA1B2594AC003A958F /* danmaku2ass.cpp */; };
 		FD2BD56E1AD15AE0001A7E16 /* libmediainfo.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; };
 		FD2BD56F1AD15AF9001A7E16 /* libmediainfo.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FD35538B1B9C34F9000EE41E /* PlayerControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD3553891B9C34F9000EE41E /* PlayerControl.xib */; };
+		FD35538F1B9C423B000EE41E /* PlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD35538E1B9C423B000EE41E /* PlayerControlView.m */; };
+		FD3553A81B9C4356000EE41E /* enterfullscreen.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553911B9C4356000EE41E /* enterfullscreen.pdf */; };
+		FD3553A91B9C4356000EE41E /* exitfillscreen_lr.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553921B9C4356000EE41E /* exitfillscreen_lr.pdf */; };
+		FD3553AA1B9C4356000EE41E /* exitfillscreen_ub.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553931B9C4356000EE41E /* exitfillscreen_ub.pdf */; };
+		FD3553AB1B9C4356000EE41E /* exitfullscreen.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553941B9C4356000EE41E /* exitfullscreen.pdf */; };
+		FD3553AC1B9C4356000EE41E /* fillscreen_lr.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553951B9C4356000EE41E /* fillscreen_lr.pdf */; };
+		FD3553AD1B9C4356000EE41E /* fillscreen_ub.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553961B9C4356000EE41E /* fillscreen_ub.pdf */; };
+		FD3553AE1B9C4356000EE41E /* fold.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553971B9C4356000EE41E /* fold.pdf */; };
+		FD3553AF1B9C4356000EE41E /* mute.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553981B9C4356000EE41E /* mute.pdf */; };
+		FD3553B01B9C4356000EE41E /* next-episode.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553991B9C4356000EE41E /* next-episode.pdf */; };
+		FD3553B11B9C4356000EE41E /* pause.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD35539A1B9C4356000EE41E /* pause.pdf */; };
+		FD3553B21B9C4356000EE41E /* play.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD35539B1B9C4356000EE41E /* play.pdf */; };
+		FD3553B31B9C4356000EE41E /* prev-episode.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD35539C1B9C4356000EE41E /* prev-episode.pdf */; };
+		FD3553B41B9C4356000EE41E /* resizeindicator.png in Resources */ = {isa = PBXBuildFile; fileRef = FD35539D1B9C4356000EE41E /* resizeindicator.png */; };
+		FD3553B51B9C4356000EE41E /* titlebar-corner-left.png in Resources */ = {isa = PBXBuildFile; fileRef = FD35539E1B9C4356000EE41E /* titlebar-corner-left.png */; };
+		FD3553B61B9C4356000EE41E /* titlebar-corner-right.png in Resources */ = {isa = PBXBuildFile; fileRef = FD35539F1B9C4356000EE41E /* titlebar-corner-right.png */; };
+		FD3553B71B9C4356000EE41E /* titlebar-middle.png in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A01B9C4356000EE41E /* titlebar-middle.png */; };
+		FD3553B81B9C4356000EE41E /* toolbar_audio.icns in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A11B9C4356000EE41E /* toolbar_audio.icns */; };
+		FD3553B91B9C4356000EE41E /* toolbar_video.icns in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A21B9C4356000EE41E /* toolbar_video.icns */; };
+		FD3553BA1B9C4356000EE41E /* unfold.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A31B9C4356000EE41E /* unfold.pdf */; };
+		FD3553BB1B9C4356000EE41E /* vol_high.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A41B9C4356000EE41E /* vol_high.pdf */; };
+		FD3553BC1B9C4356000EE41E /* vol_low.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A51B9C4356000EE41E /* vol_low.pdf */; };
+		FD3553BD1B9C4356000EE41E /* vol_mid.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A61B9C4356000EE41E /* vol_mid.pdf */; };
+		FD3553BE1B9C4356000EE41E /* vol_no.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A71B9C4356000EE41E /* vol_no.pdf */; };
 		FD36B0B31B988FE200FB32CC /* Browser.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0B21B988FE200FB32CC /* Browser.mm */; };
 		FD36B0B71B98920A00FB32CC /* WebTabView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0B51B98920A00FB32CC /* WebTabView.mm */; };
 		FD36B0CD1B9959CC00FB32CC /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */; };
@@ -271,6 +296,32 @@
 		FD1954F61B259AF6003A958F /* Analytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = Others/Analytics.h; sourceTree = "<group>"; };
 		FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmediainfo.0.dylib; path = bilibili/libs/libmediainfo.0.dylib; sourceTree = "<group>"; };
 		FD2BD5701AD15BCA001A7E16 /* MediaInfoDLL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaInfoDLL.h; path = bilibili/headers/MediaInfoDLL/MediaInfoDLL.h; sourceTree = "<group>"; };
+		FD35538A1B9C34F9000EE41E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PlayerControl.xib; sourceTree = "<group>"; };
+		FD35538D1B9C423B000EE41E /* PlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerControlView.h; sourceTree = "<group>"; };
+		FD35538E1B9C423B000EE41E /* PlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerControlView.m; sourceTree = "<group>"; };
+		FD3553911B9C4356000EE41E /* enterfullscreen.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = enterfullscreen.pdf; path = bilibili/img/player/enterfullscreen.pdf; sourceTree = "<group>"; };
+		FD3553921B9C4356000EE41E /* exitfillscreen_lr.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = exitfillscreen_lr.pdf; path = bilibili/img/player/exitfillscreen_lr.pdf; sourceTree = "<group>"; };
+		FD3553931B9C4356000EE41E /* exitfillscreen_ub.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = exitfillscreen_ub.pdf; path = bilibili/img/player/exitfillscreen_ub.pdf; sourceTree = "<group>"; };
+		FD3553941B9C4356000EE41E /* exitfullscreen.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = exitfullscreen.pdf; path = bilibili/img/player/exitfullscreen.pdf; sourceTree = "<group>"; };
+		FD3553951B9C4356000EE41E /* fillscreen_lr.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = fillscreen_lr.pdf; path = bilibili/img/player/fillscreen_lr.pdf; sourceTree = "<group>"; };
+		FD3553961B9C4356000EE41E /* fillscreen_ub.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = fillscreen_ub.pdf; path = bilibili/img/player/fillscreen_ub.pdf; sourceTree = "<group>"; };
+		FD3553971B9C4356000EE41E /* fold.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = fold.pdf; path = bilibili/img/player/fold.pdf; sourceTree = "<group>"; };
+		FD3553981B9C4356000EE41E /* mute.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = mute.pdf; path = bilibili/img/player/mute.pdf; sourceTree = "<group>"; };
+		FD3553991B9C4356000EE41E /* next-episode.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "next-episode.pdf"; path = "bilibili/img/player/next-episode.pdf"; sourceTree = "<group>"; };
+		FD35539A1B9C4356000EE41E /* pause.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = pause.pdf; path = bilibili/img/player/pause.pdf; sourceTree = "<group>"; };
+		FD35539B1B9C4356000EE41E /* play.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = play.pdf; path = bilibili/img/player/play.pdf; sourceTree = "<group>"; };
+		FD35539C1B9C4356000EE41E /* prev-episode.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "prev-episode.pdf"; path = "bilibili/img/player/prev-episode.pdf"; sourceTree = "<group>"; };
+		FD35539D1B9C4356000EE41E /* resizeindicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = resizeindicator.png; path = bilibili/img/player/resizeindicator.png; sourceTree = "<group>"; };
+		FD35539E1B9C4356000EE41E /* titlebar-corner-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "titlebar-corner-left.png"; path = "bilibili/img/player/titlebar-corner-left.png"; sourceTree = "<group>"; };
+		FD35539F1B9C4356000EE41E /* titlebar-corner-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "titlebar-corner-right.png"; path = "bilibili/img/player/titlebar-corner-right.png"; sourceTree = "<group>"; };
+		FD3553A01B9C4356000EE41E /* titlebar-middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "titlebar-middle.png"; path = "bilibili/img/player/titlebar-middle.png"; sourceTree = "<group>"; };
+		FD3553A11B9C4356000EE41E /* toolbar_audio.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = toolbar_audio.icns; path = bilibili/img/player/toolbar_audio.icns; sourceTree = "<group>"; };
+		FD3553A21B9C4356000EE41E /* toolbar_video.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = toolbar_video.icns; path = bilibili/img/player/toolbar_video.icns; sourceTree = "<group>"; };
+		FD3553A31B9C4356000EE41E /* unfold.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = unfold.pdf; path = bilibili/img/player/unfold.pdf; sourceTree = "<group>"; };
+		FD3553A41B9C4356000EE41E /* vol_high.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = vol_high.pdf; path = bilibili/img/player/vol_high.pdf; sourceTree = "<group>"; };
+		FD3553A51B9C4356000EE41E /* vol_low.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = vol_low.pdf; path = bilibili/img/player/vol_low.pdf; sourceTree = "<group>"; };
+		FD3553A61B9C4356000EE41E /* vol_mid.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = vol_mid.pdf; path = bilibili/img/player/vol_mid.pdf; sourceTree = "<group>"; };
+		FD3553A71B9C4356000EE41E /* vol_no.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = vol_no.pdf; path = bilibili/img/player/vol_no.pdf; sourceTree = "<group>"; };
 		FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "chromium-tabs.xcodeproj"; path = "chromium-tabs/chromium-tabs.xcodeproj"; sourceTree = "<group>"; };
 		FD36B0B11B988FE200FB32CC /* Browser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Browser.h; path = MainView/Browser.h; sourceTree = "<group>"; };
 		FD36B0B21B988FE200FB32CC /* Browser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Browser.mm; path = MainView/Browser.mm; sourceTree = "<group>"; };
@@ -532,6 +583,36 @@
 			path = rapidxml;
 			sourceTree = "<group>";
 		};
+		FD3553901B9C434C000EE41E /* player */ = {
+			isa = PBXGroup;
+			children = (
+				FD3553911B9C4356000EE41E /* enterfullscreen.pdf */,
+				FD3553921B9C4356000EE41E /* exitfillscreen_lr.pdf */,
+				FD3553931B9C4356000EE41E /* exitfillscreen_ub.pdf */,
+				FD3553941B9C4356000EE41E /* exitfullscreen.pdf */,
+				FD3553951B9C4356000EE41E /* fillscreen_lr.pdf */,
+				FD3553961B9C4356000EE41E /* fillscreen_ub.pdf */,
+				FD3553971B9C4356000EE41E /* fold.pdf */,
+				FD3553981B9C4356000EE41E /* mute.pdf */,
+				FD3553991B9C4356000EE41E /* next-episode.pdf */,
+				FD35539A1B9C4356000EE41E /* pause.pdf */,
+				FD35539B1B9C4356000EE41E /* play.pdf */,
+				FD35539C1B9C4356000EE41E /* prev-episode.pdf */,
+				FD35539D1B9C4356000EE41E /* resizeindicator.png */,
+				FD35539E1B9C4356000EE41E /* titlebar-corner-left.png */,
+				FD35539F1B9C4356000EE41E /* titlebar-corner-right.png */,
+				FD3553A01B9C4356000EE41E /* titlebar-middle.png */,
+				FD3553A11B9C4356000EE41E /* toolbar_audio.icns */,
+				FD3553A21B9C4356000EE41E /* toolbar_video.icns */,
+				FD3553A31B9C4356000EE41E /* unfold.pdf */,
+				FD3553A41B9C4356000EE41E /* vol_high.pdf */,
+				FD3553A51B9C4356000EE41E /* vol_low.pdf */,
+				FD3553A61B9C4356000EE41E /* vol_mid.pdf */,
+				FD3553A71B9C4356000EE41E /* vol_no.pdf */,
+			);
+			name = player;
+			sourceTree = "<group>";
+		};
 		FD36B0991B988CB600FB32CC /* Third-party */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,6 +626,7 @@
 		FD36B09A1B988D0100FB32CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FD3553901B9C434C000EE41E /* player */,
 				FD36B0E81B99B47B00FB32CC /* toolbar */,
 				FD4D37691ACEF3F20022ABF3 /* img */,
 			);
@@ -634,6 +716,8 @@
 				FD1954B41B259330003A958F /* PostComment.m */,
 				FD1954D11B25947A003A958F /* playLocalFile.h */,
 				FD1954D21B25947A003A958F /* playLocalFile.m */,
+				FD35538D1B9C423B000EE41E /* PlayerControlView.h */,
+				FD35538E1B9C423B000EE41E /* PlayerControlView.m */,
 			);
 			name = "Player View";
 			sourceTree = "<group>";
@@ -642,6 +726,7 @@
 			isa = PBXGroup;
 			children = (
 				FD36B0E51B99B43200FB32CC /* Toolbar.xib */,
+				FD3553891B9C34F9000EE41E /* PlayerControl.xib */,
 				FD0829C71B67844500D2B126 /* Main.storyboard */,
 				FD076C5D1AC8CBBB00C893FA /* Images.xcassets */,
 			);
@@ -836,22 +921,46 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3553B51B9C4356000EE41E /* titlebar-corner-left.png in Resources */,
+				FD3553A81B9C4356000EE41E /* enterfullscreen.pdf in Resources */,
+				FD3553AD1B9C4356000EE41E /* fillscreen_ub.pdf in Resources */,
 				FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */,
+				FD3553B61B9C4356000EE41E /* titlebar-corner-right.png in Resources */,
+				FD3553B71B9C4356000EE41E /* titlebar-middle.png in Resources */,
 				FD62CC841B6E661F000AED57 /* reload.png in Resources */,
 				FD36B0EE1B99B48B00FB32CC /* backwards.png in Resources */,
+				FD3553AE1B9C4356000EE41E /* fold.pdf in Resources */,
+				FD3553B81B9C4356000EE41E /* toolbar_audio.icns in Resources */,
 				FD6102611AD7CBF10013119A /* webui.css in Resources */,
+				FD3553B01B9C4356000EE41E /* next-episode.pdf in Resources */,
+				FD3553AC1B9C4356000EE41E /* fillscreen_lr.pdf in Resources */,
 				FD36B0EF1B99B48B00FB32CC /* forward.png in Resources */,
+				FD3553BA1B9C4356000EE41E /* unfold.pdf in Resources */,
+				FD35538B1B9C34F9000EE41E /* PlayerControl.xib in Resources */,
 				FD36B0F21B99B48B00FB32CC /* reloadp.png in Resources */,
+				FD3553B31B9C4356000EE41E /* prev-episode.pdf in Resources */,
 				FD61025E1AD7CBC10013119A /* webui.html in Resources */,
 				FD0829C91B67844500D2B126 /* Main.storyboard in Resources */,
+				FD3553AB1B9C4356000EE41E /* exitfullscreen.pdf in Resources */,
+				FD3553BC1B9C4356000EE41E /* vol_low.pdf in Resources */,
 				E09BF99F1B84CCC6005E08CE /* Localizable.strings in Resources */,
 				FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */,
+				FD3553AA1B9C4356000EE41E /* exitfillscreen_ub.pdf in Resources */,
+				FD3553B21B9C4356000EE41E /* play.pdf in Resources */,
 				FD36B0F01B99B48B00FB32CC /* homepage.png in Resources */,
+				FD3553A91B9C4356000EE41E /* exitfillscreen_lr.pdf in Resources */,
 				FD62CC861B6E6726000AED57 /* copy.png in Resources */,
+				FD3553B41B9C4356000EE41E /* resizeindicator.png in Resources */,
 				FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */,
 				FD36B0E71B99B43200FB32CC /* Toolbar.xib in Resources */,
+				FD3553BD1B9C4356000EE41E /* vol_mid.pdf in Resources */,
+				FD3553BB1B9C4356000EE41E /* vol_high.pdf in Resources */,
+				FD3553B11B9C4356000EE41E /* pause.pdf in Resources */,
 				FD61025C1AD7CBA20013119A /* inject.js in Resources */,
+				FD3553B91B9C4356000EE41E /* toolbar_video.icns in Resources */,
 				FD36B0F11B99B48B00FB32CC /* menubutton.png in Resources */,
+				FD3553AF1B9C4356000EE41E /* mute.pdf in Resources */,
+				FD3553BE1B9C4356000EE41E /* vol_no.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,6 +1006,7 @@
 				FD1954C71B25942F003A958F /* main.m in Sources */,
 				FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */,
 				FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */,
+				FD35538F1B9C423B000EE41E /* PlayerControlView.m in Sources */,
 				FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */,
 				FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */,
 				FD1954B01B259318003A958F /* Settings.m in Sources */,
@@ -957,6 +1067,14 @@
 				FD62CA491B6F52F80014D45D /* en */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FD3553891B9C34F9000EE41E /* PlayerControl.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD35538A1B9C34F9000EE41E /* Base */,
+			);
+			name = PlayerControl.xib;
 			sourceTree = "<group>";
 		};
 		FD36B0E51B99B43200FB32CC /* Toolbar.xib */ = {

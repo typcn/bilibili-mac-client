@@ -46,8 +46,9 @@ static inline void check_error(int status)
 @interface PlayerView (){
     NSWindow *w;
     NSView *wrapper;
+    NSView *MPV_Events_View;
+    NSView *Player_Control_View;
     NSTimer *hideCursorTimer;
-    __weak IBOutlet NSView *playerContextView;
 }
 
 @end
@@ -90,8 +91,22 @@ static void wakeup(void *context) {
     LastWindow = [[NSApplication sharedApplication] keyWindow];
     [LastWindow orderOut:nil];
     [LastWindow resignKeyWindow];
-    [self.view.window makeKeyAndOrderFront:NSApp];
-    [self.view.window makeMainWindow];
+    w = self.view.window;
+    [w makeKeyAndOrderFront:NSApp];
+    [w makeMainWindow];
+    
+    // Load Player Control View
+    NSArray *tlo;
+    BOOL c = [[NSBundle mainBundle] loadNibNamed:@"PlayerControl" owner:self topLevelObjects:&tlo];
+    if(c){
+        for(int i=0;i<tlo.count;i++){
+            NSString *cname = [tlo[i] className];
+            if([cname isEqualToString:@"PlayerControlView"]){
+                Player_Control_View = tlo[i];
+            }
+        }
+    }
+    
     [self LoadVideo];
 }
 
@@ -125,9 +140,9 @@ static void wakeup(void *context) {
         [self.view setFrame:frame];
     }
     postCommentButton = self.PostCommentButton;
-    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
+    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
     NSLog(@"Playerview load success");
-    self->wrapper = playerContextView;
+    self->wrapper = [self view];
     
     isCancelled = false;
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
@@ -366,7 +381,7 @@ static void wakeup(void *context) {
     check_error(mpv_set_option_string(mpv, "input-cursor", "yes"));
     check_error(mpv_set_option_string(mpv, "osc", "no"));
     check_error(mpv_set_option_string(mpv, "autofit", [res cStringUsingEncoding:NSUTF8StringEncoding]));
-    check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
+    //check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
     check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
     check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
     check_error(mpv_set_option_string(mpv, "hr-seek", "yes"));
@@ -604,10 +619,16 @@ static void wakeup(void *context) {
         case MPV_EVENT_VIDEO_RECONFIG: {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSArray *subviews = [self->wrapper subviews];
-                if ([subviews count] > 0) {
-                    // mpv's events view
-                    NSView *eview = [self->wrapper subviews][0];
-                    [self->w makeFirstResponder:eview];
+                for(int i=0;i<subviews.count;i++){
+                    NSString *cname = [subviews[i] className];
+                    if([cname isEqualToString:@"MpvEventsView"]){
+                        MPV_Events_View = subviews[i];
+                    }
+                }
+                if (MPV_Events_View) {
+                    [MPV_Events_View setWantsLayer:YES];
+                    [self->wrapper addSubview:Player_Control_View positioned:NSWindowAbove relativeTo:nil];
+                    [MPV_Events_View setWantsLayer:NO];
                 }
             });
             break;
