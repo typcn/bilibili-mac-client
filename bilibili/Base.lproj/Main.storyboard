@@ -148,18 +148,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" id="bwu-t8-jef">
-                                <rect key="frame" x="199" y="13" width="82" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="立即播放" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g4M-p0-FkK">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="3Nx-YC-zmP" kind="show" id="Y0Z-ee-aqu"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" id="nUV-At-1HF">
                                 <rect key="frame" x="20" y="124" width="135" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -236,6 +224,18 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" id="bwu-t8-jef">
+                                <rect key="frame" x="184" y="13" width="112" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="立即播放" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g4M-p0-FkK">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="3Nx-YC-zmP" kind="show" id="Y0Z-ee-aqu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                     </view>
@@ -733,7 +733,7 @@ Copyleft 2015 TYPCN</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="q3q-RS-pq9">
-                                <rect key="frame" x="136" y="124" width="141" height="17"/>
+                                <rect key="frame" x="18" y="124" width="396" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Loading" id="hhw-OI-vOH">
@@ -1309,6 +1309,6 @@ Copyleft 2015 TYPCN</string>
         <image name="reload" width="340" height="340"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="D5B-9p-dnr"/>
+        <segue reference="Y0Z-ee-aqu"/>
     </inferredMetricsTieBreakers>
 </document>
