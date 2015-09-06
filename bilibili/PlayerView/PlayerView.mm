@@ -782,13 +782,17 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             break;
         }
         case 124:{ // 👉
-            const char *args[] = {"seek", shiftKeyPressed?"1":"5" ,NULL};
-            mpv_command(mpv, args);
+            dispatch_async(queue, ^{
+                const char *args[] = {"seek", shiftKeyPressed?"1":"5" ,NULL};
+                mpv_command(mpv, args);
+            });
             break;
         }
         case 123:{ // 👈
-            const char *args[] = {"seek", shiftKeyPressed?"-1":"-5" ,NULL};
-            mpv_command(mpv, args);
+            dispatch_async(queue, ^{
+                const char *args[] = {"seek", shiftKeyPressed?"-1":"-5" ,NULL};
+                mpv_command(mpv, args);
+            });
             break;
         }
         case 49:{ // Space
@@ -810,7 +814,9 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             break;
         }
         case 7:{ // X key to loop
-            mpv_set_option_string(mpv, "loop", "inf");
+            dispatch_async(queue, ^{
+                mpv_set_option_string(mpv, "loop", "inf");
+            });
             break;
         }
         case 3:{ // Command+F key to toggle fullscreen
@@ -830,16 +836,20 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
 - (void) mpv_stop
 {
     if (mpv) {
-        const char *args[] = {"stop", NULL};
-        mpv_command(mpv, args);
+        dispatch_async(queue, ^{
+            const char *args[] = {"stop", NULL};
+            mpv_command(mpv, args);
+        });
     }
 }
 
 - (void) mpv_quit
 {
     if (mpv) {
-        const char *args[] = {"quit", NULL};
-        mpv_command(mpv, args);
+        dispatch_async(queue, ^{
+            const char *args[] = {"quit", NULL};
+            mpv_command(mpv, args);
+        });
     }
 }
 
@@ -855,10 +865,12 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self];
         obServer = NO;
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(queue, ^{
         if(mpv){
             mpv_set_wakeup_callback(mpv, NULL,NULL);
         }
+    });
+    dispatch_async(dispatch_get_main_queue(), ^{
         //[self mpv_stop];
         [self mpv_quit];
         [LastWindow makeKeyAndOrderFront:nil];
