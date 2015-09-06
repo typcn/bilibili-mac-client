@@ -5,141 +5,6 @@
         <plugIn identifier="com.apple.WebKitIBPlugin" version="7531"/>
     </dependencies>
     <scenes>
-        <!--Download Manager-->
-        <scene sceneID="6SN-uK-EiC">
-            <objects>
-                <viewController title="下载管理器" showSeguePresentationStyle="single" id="uyE-Xu-eZU" userLabel="Download Manager" customClass="DownloadManager" sceneMemberID="viewController">
-                    <view key="view" id="eUr-Cn-lGo">
-                        <rect key="frame" x="0.0" y="0.0" width="547" height="285"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <scrollView identifier="taskname" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="HC0-CV-YQ1">
-                                <rect key="frame" x="20" y="35" width="507" height="238"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <clipView key="contentView" id="6ma-Ex-tb3">
-                                    <rect key="frame" x="1" y="0.0" width="505" height="222"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="GKJ-bN-UAi" id="y6z-0y-XMn">
-                                            <rect key="frame" x="0.0" y="0.0" width="508" height="19"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                            <size key="intercellSpacing" width="3" height="2"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                            <tableColumns>
-                                                <tableColumn editable="NO" width="118" minWidth="40" maxWidth="1000" id="f2M-MT-SfQ">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="任务名称">
-                                                        <font key="font" metaFont="smallSystem"/>
-                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                                    </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="kQb-qP-BWw">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                </tableColumn>
-                                                <tableColumn identifier="status" editable="NO" width="383.88332845050098" minWidth="40" maxWidth="1000" id="hNU-oO-koQ">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="状态">
-                                                        <font key="font" metaFont="smallSystem"/>
-                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                                    </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="S8S-WO-I06">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                </tableColumn>
-                                            </tableColumns>
-                                            <connections>
-                                                <outlet property="dataSource" destination="uyE-Xu-eZU" id="ZQR-1x-NoS"/>
-                                                <outlet property="delegate" destination="uyE-Xu-eZU" id="pj7-Xc-8Cd"/>
-                                            </connections>
-                                        </tableView>
-                                    </subviews>
-                                    <animations/>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </clipView>
-                                <animations/>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="9oa-ZE-PEk">
-                                    <rect key="frame" x="1" y="222" width="505" height="15"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="O2T-Ta-VRl">
-                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </scroller>
-                                <tableHeaderView key="headerView" id="GKJ-bN-UAi">
-                                    <rect key="frame" x="0.0" y="0.0" width="508" height="17"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableHeaderView>
-                            </scrollView>
-                            <button verticalHuggingPriority="750" id="bGD-cN-HrG">
-                                <rect key="frame" x="14" y="-1" width="123" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="打开下载文件夹" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HEW-Wk-enN">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="openFolder:" target="uyE-Xu-eZU" id="uBQ-kR-RlA"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" id="8Xg-e6-gPC">
-                                <rect key="frame" x="405" y="-1" width="123" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="清空已完成任务" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QeM-az-3rY">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="clearDLList:" target="uyE-Xu-eZU" id="Juy-ld-uQB"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" id="Xk2-er-2wW">
-                                <rect key="frame" x="146" y="-1" width="123" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="继续未完成下载" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ucr-3X-gC2">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="continueDownload:" target="uyE-Xu-eZU" id="rcX-2r-Xav"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" id="nli-PG-Aq6">
-                                <rect key="frame" x="278" y="-1" width="118" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="清空全部任务" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kBF-nY-Eei">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="clearAllDL:" target="uyE-Xu-eZU" id="kBD-4w-fA7"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <animations/>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="y6z-0y-XMn" id="Bbe-2x-XDj"/>
-                    </connections>
-                </viewController>
-                <customObject id="MYn-CD-dsD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-438.5" y="-291.5"/>
-        </scene>
         <!--playLocalVideo-->
         <scene sceneID="gmX-b4-iwl">
             <objects>
@@ -322,6 +187,12 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="dlManager:" target="Voe-Tx-rLC" id="y8q-iE-iZp"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="打开下载文件夹" id="bbi-rp-tTG" userLabel="Download Folder">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="dlFolder:" target="Voe-Tx-rLC" id="sYh-Mf-rkp"/>
                                             </connections>
                                         </menuItem>
                                     </items>

@@ -257,6 +257,8 @@ https://github.com/typcn/bilibili-mac-client";
 /* Class = "NSMenuItem"; title = "打开下载管理器"; ObjectID = "cvU-jO-K6m"; */
 "cvU-jO-K6m.title" = "打开下载管理器";
 
+"bbi-rp-tTG.title" = "打开下载文件夹";
+
 /* Class = "NSTextFieldCell"; title = "弹幕大小参数"; ObjectID = "dJb-2c-b1m"; */
 "dJb-2c-b1m.title" = "弹幕大小参数";
 

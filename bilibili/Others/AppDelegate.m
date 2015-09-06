@@ -172,5 +172,9 @@ Browser *browser;
     [browser addTabContents:ct inForeground:YES];
 }
 
+- (IBAction)dlFolder:(id)sender {
+    NSString *path = [NSString stringWithFormat:@"%@%@",NSHomeDirectory(),@"/Movies/Bilibili/"];
+    [[NSWorkspace sharedWorkspace]openFile:path withApplication:@"Finder"];
+}
 
 @end
