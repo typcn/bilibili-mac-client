@@ -19,7 +19,6 @@ WKWebViewConfiguration *cfg;
 
 - (void)dealloc{
     [WKwv removeObserver:self forKeyPath:@"title"];
-    cfg = NULL;
 }
 
 - (TWebView *)initWithRequest:(NSURLRequest *)req andDelegate:(id <TWebViewDelegate>)aDelegate{
@@ -33,9 +32,9 @@ WKWebViewConfiguration *cfg;
     if (NSClassFromString(@"WKWebView") && !disableWK) {
         if(!cfg){
             cfg = [[WKWebViewConfiguration  alloc] init];
-            
-            [[cfg userContentController] addScriptMessageHandler:self name:@"BLClient"];
         }
+        [[cfg userContentController] removeScriptMessageHandlerForName:@"BLClient"];
+        [[cfg userContentController] addScriptMessageHandler:self name:@"BLClient"];
         webViewType = tWKWebView;
         WKwv = [[WKWebView alloc] initWithFrame:NSZeroRect configuration:cfg];
         [WKwv setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
