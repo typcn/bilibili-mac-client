@@ -47,7 +47,6 @@ static inline void check_error(int status)
 @interface PlayerView (){
     NSWindow *w;
     NSView *wrapper;
-    NSView *MPV_Events_View;
     NSView *PlayerControlView;
     __weak IBOutlet NSView *PlayerView;
     __weak IBOutlet NSView *LoadingView;
@@ -109,6 +108,21 @@ static void wakeup(void *context) {
             }
         }
     }
+    
+    NSRect rect = PlayerControlView.frame;
+    [PlayerControlView setFrame:NSMakeRect(rect.origin.x,
+                                           rect.origin.y,
+                                           self.view.frame.size.width * 0.8,
+                                           rect.size.height)];
+    [PlayerControlView setFrameOrigin:
+     NSMakePoint(
+                 (NSWidth([wrapper bounds]) - NSWidth([PlayerControlView frame])) / 2,
+                 20
+                 )];
+    
+    [self.view setWantsLayer:YES];
+    [self.view addSubview:PlayerControlView positioned:NSWindowAbove relativeTo:nil];
+    [PlayerControlView setHidden:YES];
     
     [self LoadVideo];
 }
@@ -621,31 +635,9 @@ static void wakeup(void *context) {
             
         case MPV_EVENT_VIDEO_RECONFIG: {
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSArray *subviews = [self->wrapper subviews];
-                for(int i=0;i<subviews.count;i++){
-                    NSString *cname = [subviews[i] className];
-                    if([cname isEqualToString:@"MpvEventsView"]){
-                        MPV_Events_View = subviews[i];
-                    }
-                }
-                if (MPV_Events_View) {
-                    NSRect rect = PlayerControlView.frame;
-                    [PlayerControlView setFrame:NSMakeRect(rect.origin.x,
-                                                           rect.origin.y,
-                                                           wrapper.frame.size.width * 0.8,
-                                                           rect.size.height)];
-                    [PlayerControlView setFrameOrigin:
-                     NSMakePoint(
-                            (NSWidth([wrapper bounds]) - NSWidth([PlayerControlView frame])) / 2,
-                            20
-                                                                    )];
-                    
-                    [self.view setWantsLayer:YES];
-                    [self.view addSubview:PlayerControlView positioned:NSWindowAbove relativeTo:nil];
-                    //[PlayerControlView setHidden:YES];
-                    //[MPV_Events_View setWantsLayer:NO];
-                    
-                }
+                self.loadingImage.animates = false;
+                [LoadingView setHidden:YES];
+                [PlayerControlView setHidden:NO];
             });
             break;
         }
