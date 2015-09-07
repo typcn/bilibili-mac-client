@@ -143,7 +143,8 @@ Browser *browser;
         [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
         [re setValue:xff forHTTPHeaderField:@"Client-IP"];
     }
-    [browser createTabBasedOn:nil withRequest:re];
+
+    [browser addTabContents:[browser createTabBasedOn:nil withRequest:re] inForeground:YES];
 }
 
 - (IBAction)goForum:(id)sender {
