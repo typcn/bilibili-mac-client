@@ -330,6 +330,8 @@ static void wakeup(void *context) {
             return;
         }
         
+        [self writeHistory];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.textTip setStringValue:NSLocalizedString(@"正在获取视频信息", nil)];
         });
@@ -483,6 +485,10 @@ static void wakeup(void *context) {
     request.timeoutInterval = 5;
     
     NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+    long isDisabled = [settingsController integerForKey:@"disableWritePlayHistory"];
+    if(isDisabled){
+        return;
+    }
     NSString *xff = [settingsController objectForKey:@"xff"];
     NSString *cookie = [settingsController objectForKey:@"cookie"];
     if([xff length] > 4){

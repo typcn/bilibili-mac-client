@@ -921,11 +921,11 @@ Copyleft 2015 TYPCN</string>
             <objects>
                 <viewController title="通用设置" id="z8a-gg-iMj" userLabel="General Settings" customClass="Settings" sceneMemberID="viewController">
                     <view key="view" id="TEq-hT-EBz">
-                        <rect key="frame" x="0.0" y="0.0" width="468" height="432"/>
+                        <rect key="frame" x="0.0" y="0.0" width="468" height="484"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button id="hj3-k4-IwT">
-                                <rect key="frame" x="25" y="396" width="412" height="18"/>
+                                <rect key="frame" x="25" y="448" width="412" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="自动换P（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="IwE-aZ-Bxq">
@@ -937,7 +937,7 @@ Copyleft 2015 TYPCN</string>
                                 </connections>
                             </button>
                             <button id="aRT-dE-rbd">
-                                <rect key="frame" x="25" y="376" width="412" height="18"/>
+                                <rect key="frame" x="25" y="428" width="412" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="禁用实时弹幕显示（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="sbQ-fv-ZWa">
@@ -949,10 +949,10 @@ Copyleft 2015 TYPCN</string>
                                 </connections>
                             </button>
                             <button id="AeH-XX-C7T">
-                                <rect key="frame" x="25" y="356" width="425" height="18"/>
+                                <rect key="frame" x="25" y="408" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
-                                <buttonCell key="cell" type="check" title="启用增强硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Dkz-2s-yhr">
+                                <buttonCell key="cell" type="check" title="启用 VT 硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Dkz-2s-yhr">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1101,20 +1101,8 @@ Copyleft 2015 TYPCN</string>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button id="5yv-E4-e3g">
-                                <rect key="frame" x="25" y="296" width="425" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="check" title="关闭底部弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6pD-zG-Fl9">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="disableBottomComment:" target="z8a-gg-iMj" id="t87-e4-R4R"/>
-                                </connections>
-                            </button>
                             <button id="1aB-2H-H2d">
-                                <rect key="frame" x="25" y="336" width="425" height="18"/>
+                                <rect key="frame" x="25" y="388" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="禁用保持视频比例（让视频撑满窗口）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="lBw-oC-I1B">
@@ -1125,8 +1113,42 @@ Copyleft 2015 TYPCN</string>
                                     <action selector="disableKeepAspectRatioChanged:" target="z8a-gg-iMj" id="ujo-xw-stY"/>
                                 </connections>
                             </button>
+                            <button id="fQc-79-Kyr">
+                                <rect key="frame" x="25" y="368" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="禁用新版网页渲染引擎" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="lQz-S1-Tzd">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="disableNewRenderEngine:" target="z8a-gg-iMj" id="kzU-hX-JVj"/>
+                                </connections>
+                            </button>
+                            <button id="iLo-qY-8yG">
+                                <rect key="frame" x="25" y="348" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="禁用写入播放历史" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cCa-ax-BU2">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="disableWritePlayHistory:" target="z8a-gg-iMj" id="4H6-uC-ord"/>
+                                </connections>
+                            </button>
+                            <button id="5yv-E4-e3g">
+                                <rect key="frame" x="25" y="328" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <buttonCell key="cell" type="check" title="关闭底部弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6pD-zG-Fl9">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="disableBottomComment:" target="z8a-gg-iMj" id="t87-e4-R4R"/>
+                                </connections>
+                            </button>
                             <button id="QLp-in-QLo">
-                                <rect key="frame" x="25" y="276" width="425" height="18"/>
+                                <rect key="frame" x="25" y="308" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6zZ-XI-ZEK">
@@ -1138,7 +1160,7 @@ Copyleft 2015 TYPCN</string>
                                 </connections>
                             </button>
                             <button id="wjO-cr-vaH">
-                                <rect key="frame" x="25" y="256" width="425" height="18"/>
+                                <rect key="frame" x="25" y="288" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hFO-eX-oZN">
@@ -1147,17 +1169,6 @@ Copyleft 2015 TYPCN</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="DLMP4Changed:" target="z8a-gg-iMj" id="aHi-du-O6o"/>
-                                </connections>
-                            </button>
-                            <button id="fQc-79-Kyr">
-                                <rect key="frame" x="25" y="316" width="425" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="禁用新版网页渲染引擎" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="lQz-S1-Tzd">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="disableNewRenderEngine:" target="z8a-gg-iMj" id="kzU-hX-JVj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1172,6 +1183,7 @@ Copyleft 2015 TYPCN</string>
                         <outlet property="disableHwDec" destination="AeH-XX-C7T" id="kqT-SQ-PdM"/>
                         <outlet property="disableKeepAspect" destination="1aB-2H-H2d" id="FjO-WG-C8v"/>
                         <outlet property="disableNewRenderEngine" destination="fQc-79-Kyr" id="1tE-Ga-SmA"/>
+                        <outlet property="disableWriteHistory" destination="iLo-qY-8yG" id="dyR-ze-V54"/>
                         <outlet property="disablebottomComment" destination="5yv-E4-e3g" id="zXF-lZ-D8g"/>
                         <outlet property="fontsize" destination="ajt-jS-Z4K" id="ouz-gu-SI4"/>
                         <outlet property="playMP4" destination="QLp-in-QLo" id="Nan-Qj-eQF"/>
@@ -1181,7 +1193,7 @@ Copyleft 2015 TYPCN</string>
                 </viewController>
                 <customObject id="g1X-ko-pK9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1448" y="-132"/>
+            <point key="canvasLocation" x="1448" y="-106"/>
         </scene>
     </scenes>
     <resources>
