@@ -111,7 +111,7 @@ https://github.com/typcn/bilibili-mac-client";
 "Dgo-Bk-4mh.title" = "Only support ASS format , Optional";
 
 /* Class = "NSButtonCell"; title = "启用增强硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）"; ObjectID = "Dkz-2s-yhr"; */
-"Dkz-2s-yhr.title" = "Enable VDA Hardware Decoder (may cause lower comment fps)";
+"Dkz-2s-yhr.title" = "Enable VT Hardware Decoder (may cause lower comment fps)";
 
 /* Class = "NSTabViewItem"; label = "弹幕屏蔽"; ObjectID = "Dt0-6y-OTc"; */
 "Dt0-6y-OTc.label" = "Block Comment";
