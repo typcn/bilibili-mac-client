@@ -46,12 +46,26 @@
 - (void)updateToolbarURL:(NSNotification*) aNotification{
     if(aNotification.object){
         NSString *url = aNotification.object;
-        if([url length] > 5){
+        if(url && [url length] > 5){
             [self.URLInputField setStringValue:url];
         }
     }else{
-        WebTabView *tc = (WebTabView *)[browser activeTabContents];
-        [self.URLInputField setStringValue:[[tc GetTWebView] getURL]];
+        [NSTimer scheduledTimerWithTimeInterval:0.5
+                                         target:self
+                                       selector:@selector(delayUpdateURL)
+                                       userInfo:nil
+                                        repeats:NO];
+        
+    }
+}
+
+- (void)delayUpdateURL{
+    WebTabView *tc = (WebTabView *)[browser activeTabContents];
+    NSString *url = [[tc GetTWebView] getURL];
+    if(url && [url length] > 5) {
+        [self.URLInputField setStringValue:url];
+    }else{
+        [self.URLInputField setStringValue:@"invalid"];
     }
 }
 
