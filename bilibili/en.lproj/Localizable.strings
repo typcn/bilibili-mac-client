@@ -51,7 +51,7 @@
 "正在创建字体缓存" = "Creating fonts cache";
 "首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口" = "First time need less than 2 minute to creating cache\nPlease don't close window";
 "正在缓冲" = "Downloading...";
-"播放完成" = "Play finished";
+"播放完成，关闭窗口继续" = "Play finished, please close window.";
 
 //  PostComment
 "😁发送成功！" = "😁Comment sent.";
@@ -67,3 +67,9 @@
 "请输入关键词，一行一个" = "Input keywords, one per line.";
 
 
+"复制链接" = "Copy Link";
+"下载管理" = "Download Manager";
+"发送邮件" = "Send Email";
+"退出"    = "Exit";
+
+"下载失败，请点击帮助 - 反馈" = "Download Failed , Please feedback";

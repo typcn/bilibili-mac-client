@@ -23,5 +23,6 @@
 @property (weak) IBOutlet NSButton *disableKeepAspect;
 @property (weak) IBOutlet NSSlider *commentMoveSpeed;
 @property (weak) IBOutlet NSButton *disableHwDec;
+@property (weak) IBOutlet NSButton *disableWriteHistory;
 
 @end

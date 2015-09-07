@@ -12,11 +12,9 @@
 NSString *vUrl;
 NSString *vCID;
 NSString *vTitle;
-NSString *userAgent;
+NSString *userAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/601.1.43 (KHTML, like Gecko) Version/9.0 Safari/601.1.43";
 NSWindow *currWindow;
-NSMutableArray *downloaderObjects;
 Downloader* DL;
-NSLock *dList = [[NSLock alloc] init];
 BOOL parsing = false;
 
 @implementation Browser
@@ -32,10 +30,10 @@ BOOL parsing = false;
 
 -(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withUrl:(NSString*) url{
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    return [self createTabBasedOn:baseContents withRequest:req];
+    return [self createTabBasedOn:baseContents withRequest:req andConfig:nil];
 }
 
--(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withRequest:(NSURLRequest*) req{
+-(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withRequest:(NSURLRequest*) req andConfig:(id)cfg{
     NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
     re = (NSMutableURLRequest *) req.mutableCopy;
     NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
@@ -45,7 +43,7 @@ BOOL parsing = false;
         [re setValue:xff forHTTPHeaderField:@"Client-IP"];
     }
     
-    CTTabContents *tc = [[WebTabView alloc] initWithRequest:re];
+    CTTabContents *tc = [[WebTabView alloc] initWithRequest:re andConfig:cfg];
     [tc setTitle:@"Loading"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[req.URL absoluteString] userInfo:nil];
     return tc;

@@ -118,8 +118,10 @@ extern "C" {
      *   (used through libass), ALSA, FFmpeg, and possibly more.
      * - The FPU precision must be set at least to double precision.
      * - On Windows, mpv will call timeBeginPeriod(1).
-     * - SIGPIPE should be blocked. Some parts rely on this signal not crashing the
-     *   process (such as ffmpeg OpenSSL support, or the mpv IPC code).
+     * - On UNIX, every mpv_initialize() call will block SIGPIPE. This is done
+     *   because FFmpeg makes unsafe use of OpenSSL and GnuTLS, which can raise
+     *   this signal under certain circumstances. Once these libraries (or FFmpeg)
+     *   are fixed, libmpv will not block the signal anymore.
      * - On memory exhaustion, mpv will kill the process.
      *
      * Encoding of filenames
@@ -196,7 +198,7 @@ extern "C" {
      * relational operators (<, >, <=, >=).
      */
 #define MPV_MAKE_VERSION(major, minor) (((major) << 16) | (minor) | 0UL)
-#define MPV_CLIENT_API_VERSION MPV_MAKE_VERSION(1, 16)
+#define MPV_CLIENT_API_VERSION MPV_MAKE_VERSION(1, 19)
     
     /**
      * Return the MPV_CLIENT_API_VERSION the mpv source has been compiled with.
@@ -369,6 +371,8 @@ extern "C" {
      *   if there are no more files to play on the internal playlist, instead of
      *   exiting. This is equivalent to the --idle option.
      * - Disable parts of input handling.
+     * - Most of the different settings can be viewed with the command line player
+     *   by running "mpv --show-profile=libmpv".
      *
      * All this assumes that API users want a mpv instance that is strictly
      * isolated from the command line player's configuration, user settings, and
@@ -1303,6 +1307,15 @@ extern "C" {
          * mpv_event_end_file.error will be set.
          */
         MPV_END_FILE_REASON_ERROR = 4,
+        /**
+         * The file was a playlist or similar. When the playlist is read, its
+         * entries will be appended to the playlist after the entry of the current
+         * file, the entry of the current file is removed, and a MPV_EVENT_END_FILE
+         * event is sent with reason set to MPV_END_FILE_REASON_REDIRECT. Then
+         * playback continues with the playlist contents.
+         * Since API version 1.18.
+         */
+        MPV_END_FILE_REASON_REDIRECT = 5,
     } mpv_end_file_reason;
     
     typedef struct mpv_event_end_file {
@@ -1405,6 +1418,9 @@ extern "C" {
      * @param min_level Minimal log level as string. Valid log levels:
      *                      no fatal error warn info status v debug trace
      *                  The value "no" disables all messages. This is the default.
+     *                  An exception is the value "terminal-default", which uses the
+     *                  log level as set by the "--msg-level" option. This works
+     *                  even if the terminal is disabled. (Since API version 1.19.)
      *                  Also see mpv_log_level.
      */
     int mpv_request_log_messages(mpv_handle *ctx, const char *min_level);

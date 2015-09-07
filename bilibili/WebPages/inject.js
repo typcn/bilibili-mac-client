@@ -1,16 +1,7 @@
-window.bilimacVersion = 204;
+window.bilimacVersion = 206;
 var TYPCN_PLAYER_CID;
 window.sendToView = function(data){
-    try{
-        window.webkit.messageHandlers.BLClient.postMessage(data);
-    }catch(e){
-        
-    }
-    try{
-        window.external.sendMsg(data);
-    }catch(e){
-        
-    }
+    $.post("http://localhost:23330/rpc",data);
 }
 function applyUI(){
     try{

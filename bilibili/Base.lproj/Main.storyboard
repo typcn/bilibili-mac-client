@@ -5,141 +5,6 @@
         <plugIn identifier="com.apple.WebKitIBPlugin" version="7531"/>
     </dependencies>
     <scenes>
-        <!--Download Manager-->
-        <scene sceneID="6SN-uK-EiC">
-            <objects>
-                <viewController title="下载管理器" showSeguePresentationStyle="single" id="uyE-Xu-eZU" userLabel="Download Manager" customClass="DownloadManager" sceneMemberID="viewController">
-                    <view key="view" id="eUr-Cn-lGo">
-                        <rect key="frame" x="0.0" y="0.0" width="547" height="285"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <scrollView identifier="taskname" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="HC0-CV-YQ1">
-                                <rect key="frame" x="20" y="35" width="507" height="238"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <clipView key="contentView" id="6ma-Ex-tb3">
-                                    <rect key="frame" x="1" y="0.0" width="505" height="222"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="GKJ-bN-UAi" id="y6z-0y-XMn">
-                                            <rect key="frame" x="0.0" y="0.0" width="508" height="19"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                            <size key="intercellSpacing" width="3" height="2"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                            <tableColumns>
-                                                <tableColumn editable="NO" width="118" minWidth="40" maxWidth="1000" id="f2M-MT-SfQ">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="任务名称">
-                                                        <font key="font" metaFont="smallSystem"/>
-                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                                    </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="kQb-qP-BWw">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                </tableColumn>
-                                                <tableColumn identifier="status" editable="NO" width="383.88332845050098" minWidth="40" maxWidth="1000" id="hNU-oO-koQ">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="状态">
-                                                        <font key="font" metaFont="smallSystem"/>
-                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                                    </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="S8S-WO-I06">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                </tableColumn>
-                                            </tableColumns>
-                                            <connections>
-                                                <outlet property="dataSource" destination="uyE-Xu-eZU" id="ZQR-1x-NoS"/>
-                                                <outlet property="delegate" destination="uyE-Xu-eZU" id="pj7-Xc-8Cd"/>
-                                            </connections>
-                                        </tableView>
-                                    </subviews>
-                                    <animations/>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </clipView>
-                                <animations/>
-                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="9oa-ZE-PEk">
-                                    <rect key="frame" x="1" y="222" width="505" height="15"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="O2T-Ta-VRl">
-                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </scroller>
-                                <tableHeaderView key="headerView" id="GKJ-bN-UAi">
-                                    <rect key="frame" x="0.0" y="0.0" width="508" height="17"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </tableHeaderView>
-                            </scrollView>
-                            <button verticalHuggingPriority="750" id="bGD-cN-HrG">
-                                <rect key="frame" x="14" y="-1" width="123" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="打开下载文件夹" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HEW-Wk-enN">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="openFolder:" target="uyE-Xu-eZU" id="uBQ-kR-RlA"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" id="8Xg-e6-gPC">
-                                <rect key="frame" x="405" y="-1" width="123" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="清空已完成任务" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QeM-az-3rY">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="clearDLList:" target="uyE-Xu-eZU" id="Juy-ld-uQB"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" id="Xk2-er-2wW">
-                                <rect key="frame" x="146" y="-1" width="123" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="继续未完成下载" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ucr-3X-gC2">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="continueDownload:" target="uyE-Xu-eZU" id="rcX-2r-Xav"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" id="nli-PG-Aq6">
-                                <rect key="frame" x="278" y="-1" width="118" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="清空全部任务" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kBF-nY-Eei">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="clearAllDL:" target="uyE-Xu-eZU" id="kBD-4w-fA7"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <animations/>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="y6z-0y-XMn" id="Bbe-2x-XDj"/>
-                    </connections>
-                </viewController>
-                <customObject id="MYn-CD-dsD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-438.5" y="-291.5"/>
-        </scene>
         <!--playLocalVideo-->
         <scene sceneID="gmX-b4-iwl">
             <objects>
@@ -148,18 +13,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" id="bwu-t8-jef">
-                                <rect key="frame" x="199" y="13" width="82" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="立即播放" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g4M-p0-FkK">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="3Nx-YC-zmP" kind="show" id="Y0Z-ee-aqu"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" id="nUV-At-1HF">
                                 <rect key="frame" x="20" y="124" width="135" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -236,6 +89,18 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" id="bwu-t8-jef">
+                                <rect key="frame" x="184" y="13" width="112" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="立即播放" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g4M-p0-FkK">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="3Nx-YC-zmP" kind="show" id="Y0Z-ee-aqu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                     </view>
@@ -321,7 +186,13 @@
                                         <menuItem title="打开下载管理器" id="cvU-jO-K6m" userLabel="Download Manager">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <segue destination="uyE-Xu-eZU" kind="show" id="WH6-sv-CmL"/>
+                                                <action selector="dlManager:" target="Voe-Tx-rLC" id="y8q-iE-iZp"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="打开下载文件夹" id="bbi-rp-tTG" userLabel="Download Folder">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="dlFolder:" target="Voe-Tx-rLC" id="sYh-Mf-rkp"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -505,11 +376,11 @@ GQ
                                 <rect key="frame" x="8" y="38" width="485" height="232"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <clipView key="contentView" id="3J2-Wo-o61">
-                                    <rect key="frame" x="1" y="1" width="468" height="230"/>
+                                    <rect key="frame" x="1" y="1" width="483" height="230"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="l0e-ZN-Cyz">
-                                            <rect key="frame" x="0.0" y="0.0" width="468" height="230"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="483" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -732,60 +603,72 @@ Copyleft 2015 TYPCN</string>
                         <rect key="frame" x="0.0" y="0.0" width="432" height="265"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="q3q-RS-pq9">
-                                <rect key="frame" x="136" y="124" width="141" height="17"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Loading" id="hhw-OI-vOH">
-                                    <font key="font" size="13" name="STHeitiSC-Light"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="d4M-72-jUI">
-                                <rect key="frame" x="156" y="134" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <animations/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="loading" id="s2c-ae-PoS"/>
-                            </imageView>
-                            <button hidden="YES" verticalHuggingPriority="750" id="xVW-zA-HWk" userLabel="ShowPostCommentButton">
-                                <rect key="frame" x="7" y="-314" width="14" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="259-A0-YXE">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="eqf-bZ-eNQ" kind="show" id="UeL-LC-7bY"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="nwA-xX-SSg">
-                                <rect key="frame" x="8" y="82" width="416" height="34"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="提示：按回车可以发送弹幕" id="lbG-e1-MKm">
-                                    <font key="font" size="13" name="STHeitiSC-Light"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button hidden="YES" verticalHuggingPriority="750" id="AOg-hv-Slo" userLabel="ShowLiveChatButton">
-                                <rect key="frame" x="423" y="116" width="15" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gP4-5d-Xlk">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="ffQ-wz-5FH" kind="show" id="U2J-aP-P9v"/>
-                                </connections>
-                            </button>
+                            <customView id="16g-QT-hVf" userLabel="PlayerView">
+                                <rect key="frame" x="0.0" y="0.0" width="437" height="265"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </customView>
+                            <customView canDrawConcurrently="YES" id="zPp-I3-qDp" userLabel="LoadingView">
+                                <rect key="frame" x="0.0" y="0.0" width="432" height="265"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button hidden="YES" verticalHuggingPriority="750" id="AOg-hv-Slo" userLabel="ShowLiveChatButton">
+                                        <rect key="frame" x="208" y="116" width="15" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gP4-5d-Xlk">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <segue destination="ffQ-wz-5FH" kind="show" id="U2J-aP-P9v"/>
+                                        </connections>
+                                    </button>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="d4M-72-jUI">
+                                        <rect key="frame" x="166" y="95" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                        <animations/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="loading" id="s2c-ae-PoS"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="nwA-xX-SSg">
+                                        <rect key="frame" x="8" y="20" width="416" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                        <animations/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="提示：按回车可以发送弹幕" id="lbG-e1-MKm">
+                                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button hidden="YES" verticalHuggingPriority="750" id="xVW-zA-HWk" userLabel="ShowPostCommentButton">
+                                        <rect key="frame" x="209" y="116" width="14" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="259-A0-YXE">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <segue destination="eqf-bZ-eNQ" kind="show" id="UeL-LC-7bY"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="q3q-RS-pq9">
+                                        <rect key="frame" x="146" y="70" width="141" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                        <animations/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Loading" id="hhw-OI-vOH">
+                                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                            </customView>
                         </subviews>
                         <animations/>
                     </view>
                     <connections>
+                        <outlet property="LoadingView" destination="zPp-I3-qDp" id="nEM-ED-xvf"/>
+                        <outlet property="PlayerView" destination="16g-QT-hVf" id="Akt-lc-s8R"/>
                         <outlet property="PostCommentButton" destination="xVW-zA-HWk" id="Exg-Nr-pCW"/>
                         <outlet property="loadingImage" destination="d4M-72-jUI" id="fmB-92-FBV"/>
                         <outlet property="showLiveChat" destination="AOg-hv-Slo" id="zQr-hq-29W"/>
@@ -827,11 +710,11 @@ Copyleft 2015 TYPCN</string>
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" id="Rhz-Ly-fC1">
-                                    <rect key="frame" x="1" y="1" width="463" height="268"/>
+                                    <rect key="frame" x="1" y="1" width="478" height="268"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" importsGraphics="NO" horizontallyResizable="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="Yey-g8-OWP">
-                                            <rect key="frame" x="0.0" y="0.0" width="463" height="268"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -907,15 +790,15 @@ Copyleft 2015 TYPCN</string>
                                 </connections>
                             </textField>
                             <segmentedControl verticalHuggingPriority="750" id="wQq-0e-rv7" userLabel="CommentTypeSelect">
-                                <rect key="frame" x="409" y="6" width="73" height="24"/>
+                                <rect key="frame" x="390" y="6" width="86" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="3xs-54-4qH">
                                     <font key="font" metaFont="system"/>
                                     <segments>
-                                        <segment label="顶" width="21"/>
-                                        <segment label="飘" width="20" selected="YES" tag="1"/>
-                                        <segment label="底" width="20"/>
+                                        <segment label="上" width="26"/>
+                                        <segment label="中" width="26" selected="YES" tag="1"/>
+                                        <segment label="下" width="26"/>
                                     </segments>
                                 </segmentedCell>
                             </segmentedControl>
@@ -1038,11 +921,11 @@ Copyleft 2015 TYPCN</string>
             <objects>
                 <viewController title="通用设置" id="z8a-gg-iMj" userLabel="General Settings" customClass="Settings" sceneMemberID="viewController">
                     <view key="view" id="TEq-hT-EBz">
-                        <rect key="frame" x="0.0" y="0.0" width="468" height="432"/>
+                        <rect key="frame" x="0.0" y="0.0" width="468" height="484"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button id="hj3-k4-IwT">
-                                <rect key="frame" x="25" y="396" width="412" height="18"/>
+                                <rect key="frame" x="25" y="448" width="412" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="自动换P（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="IwE-aZ-Bxq">
@@ -1054,7 +937,7 @@ Copyleft 2015 TYPCN</string>
                                 </connections>
                             </button>
                             <button id="aRT-dE-rbd">
-                                <rect key="frame" x="25" y="376" width="412" height="18"/>
+                                <rect key="frame" x="25" y="428" width="412" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="禁用实时弹幕显示（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="sbQ-fv-ZWa">
@@ -1066,10 +949,10 @@ Copyleft 2015 TYPCN</string>
                                 </connections>
                             </button>
                             <button id="AeH-XX-C7T">
-                                <rect key="frame" x="25" y="356" width="425" height="18"/>
+                                <rect key="frame" x="25" y="408" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
-                                <buttonCell key="cell" type="check" title="启用增强硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Dkz-2s-yhr">
+                                <buttonCell key="cell" type="check" title="启用 VT 硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Dkz-2s-yhr">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1218,20 +1101,8 @@ Copyleft 2015 TYPCN</string>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button id="5yv-E4-e3g">
-                                <rect key="frame" x="25" y="296" width="425" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="check" title="关闭底部弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6pD-zG-Fl9">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="disableBottomComment:" target="z8a-gg-iMj" id="t87-e4-R4R"/>
-                                </connections>
-                            </button>
                             <button id="1aB-2H-H2d">
-                                <rect key="frame" x="25" y="336" width="425" height="18"/>
+                                <rect key="frame" x="25" y="388" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="禁用保持视频比例（让视频撑满窗口）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="lBw-oC-I1B">
@@ -1242,8 +1113,42 @@ Copyleft 2015 TYPCN</string>
                                     <action selector="disableKeepAspectRatioChanged:" target="z8a-gg-iMj" id="ujo-xw-stY"/>
                                 </connections>
                             </button>
+                            <button id="fQc-79-Kyr">
+                                <rect key="frame" x="25" y="368" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="禁用新版网页渲染引擎" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="lQz-S1-Tzd">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="disableNewRenderEngine:" target="z8a-gg-iMj" id="kzU-hX-JVj"/>
+                                </connections>
+                            </button>
+                            <button id="iLo-qY-8yG">
+                                <rect key="frame" x="25" y="348" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="禁用写入播放历史" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cCa-ax-BU2">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="disableWritePlayHistory:" target="z8a-gg-iMj" id="4H6-uC-ord"/>
+                                </connections>
+                            </button>
+                            <button id="5yv-E4-e3g">
+                                <rect key="frame" x="25" y="328" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <buttonCell key="cell" type="check" title="关闭底部弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6pD-zG-Fl9">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="disableBottomComment:" target="z8a-gg-iMj" id="t87-e4-R4R"/>
+                                </connections>
+                            </button>
                             <button id="QLp-in-QLo">
-                                <rect key="frame" x="25" y="276" width="425" height="18"/>
+                                <rect key="frame" x="25" y="308" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6zZ-XI-ZEK">
@@ -1255,7 +1160,7 @@ Copyleft 2015 TYPCN</string>
                                 </connections>
                             </button>
                             <button id="wjO-cr-vaH">
-                                <rect key="frame" x="25" y="256" width="425" height="18"/>
+                                <rect key="frame" x="25" y="288" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="check" title="下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hFO-eX-oZN">
@@ -1264,17 +1169,6 @@ Copyleft 2015 TYPCN</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="DLMP4Changed:" target="z8a-gg-iMj" id="aHi-du-O6o"/>
-                                </connections>
-                            </button>
-                            <button id="fQc-79-Kyr">
-                                <rect key="frame" x="25" y="316" width="425" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="禁用新版网页渲染引擎" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="lQz-S1-Tzd">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="disableNewRenderEngine:" target="z8a-gg-iMj" id="kzU-hX-JVj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1289,6 +1183,7 @@ Copyleft 2015 TYPCN</string>
                         <outlet property="disableHwDec" destination="AeH-XX-C7T" id="kqT-SQ-PdM"/>
                         <outlet property="disableKeepAspect" destination="1aB-2H-H2d" id="FjO-WG-C8v"/>
                         <outlet property="disableNewRenderEngine" destination="fQc-79-Kyr" id="1tE-Ga-SmA"/>
+                        <outlet property="disableWriteHistory" destination="iLo-qY-8yG" id="dyR-ze-V54"/>
                         <outlet property="disablebottomComment" destination="5yv-E4-e3g" id="zXF-lZ-D8g"/>
                         <outlet property="fontsize" destination="ajt-jS-Z4K" id="ouz-gu-SI4"/>
                         <outlet property="playMP4" destination="QLp-in-QLo" id="Nan-Qj-eQF"/>
@@ -1298,7 +1193,7 @@ Copyleft 2015 TYPCN</string>
                 </viewController>
                 <customObject id="g1X-ko-pK9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1448" y="-132"/>
+            <point key="canvasLocation" x="1448" y="-106"/>
         </scene>
     </scenes>
     <resources>
@@ -1309,6 +1204,6 @@ Copyleft 2015 TYPCN</string>
         <image name="reload" width="340" height="340"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="D5B-9p-dnr"/>
+        <segue reference="Y0Z-ee-aqu"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -46,12 +46,26 @@
 - (void)updateToolbarURL:(NSNotification*) aNotification{
     if(aNotification.object){
         NSString *url = aNotification.object;
-        if([url length] > 5){
+        if(url && [url length] > 5){
             [self.URLInputField setStringValue:url];
         }
     }else{
-        WebTabView *tc = (WebTabView *)[browser activeTabContents];
-        [self.URLInputField setStringValue:[[tc GetTWebView] getURL]];
+        [NSTimer scheduledTimerWithTimeInterval:0.5
+                                         target:self
+                                       selector:@selector(delayUpdateURL)
+                                       userInfo:nil
+                                        repeats:NO];
+        
+    }
+}
+
+- (void)delayUpdateURL{
+    WebTabView *tc = (WebTabView *)[browser activeTabContents];
+    NSString *url = [[tc GetTWebView] getURL];
+    if(url && [url length] > 5) {
+        [self.URLInputField setStringValue:url];
+    }else{
+        [self.URLInputField setStringValue:@"invalid"];
     }
 }
 
@@ -94,12 +108,37 @@
     [[tc GetTWebView] wgoBack];
 }
 - (IBAction)menu:(id)sender {
-    WebTabView *tc = (WebTabView *)[browser activeTabContents];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[tc GetWebView] subviews][0] animated:YES];
+    NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"Contextual Menu"];
+    [theMenu setAutoenablesItems:YES];
+    [[theMenu addItemWithTitle:NSLocalizedString(@"复制链接",nil) action:@selector(copyLink) keyEquivalent:@""] setTarget:self];
+    [[theMenu addItemWithTitle:NSLocalizedString(@"下载管理",nil) action:@selector(dlMan) keyEquivalent:@""] setTarget:self];
+    [[theMenu addItemWithTitle:NSLocalizedString(@"发送邮件",nil) action:@selector(contact) keyEquivalent:@""] setTarget:self];
+    [[theMenu addItemWithTitle:NSLocalizedString(@"退出",nil) action:@selector(exit) keyEquivalent:@""] setTarget:self];
+    [theMenu popUpMenuPositioningItem:nil atLocation:[NSEvent mouseLocation] inView:nil];
+}
+
+- (void)copyLink{
+    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+    [[NSPasteboard generalPasteboard] clearContents];
+    [[NSPasteboard generalPasteboard] setString:[[tv GetTWebView] getURL]  forType:NSStringPboardType];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[[tv GetWebView] subviews][0] animated:YES];
     hud.mode = MBProgressHUDModeText;
-    hud.labelText = @"暂未完成";
+    hud.labelText = NSLocalizedString(@"当前页面地址已经复制到剪贴板", nil);
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay:3];
+}
+
+- (void)dlMan{
+    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/"];
+    [browser addTabContents:ct inForeground:YES];
+}
+
+- (void)contact{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"mailto:typcncom@gmail.com"]];
+}
+
+- (void)exit{
+    exit(0);
 }
 
 @end

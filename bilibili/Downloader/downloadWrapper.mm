@@ -11,48 +11,34 @@
 #import "APIKey.h"
 #import <CommonCrypto/CommonDigest.h>
 
-extern NSMutableArray *downloaderObjects;
-extern NSLock *dList;
 BOOL isStopped;
 
-int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
-                          aria2::A2Gid gid, void* userData)
-{
-    switch(event) {
-        case aria2::EVENT_ON_DOWNLOAD_COMPLETE:{
-            
-            break;
-        }
-        case aria2::EVENT_ON_DOWNLOAD_ERROR:{
-            NSUserNotification *notification = [[NSUserNotification alloc] init];
-            notification.title = @"Bilibili Client";
-            notification.informativeText = NSLocalizedString(@"下载失败", nil);
-            notification.soundName = NSUserNotificationDefaultSoundName;
-            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-            break;
-        }
-        default:
-            return 0;
-    }
-    return 0;
-}
+//int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
+//                          aria2::A2Gid gid, void* userData)
+//{
+//    switch(event) {
+//        case aria2::EVENT_ON_DOWNLOAD_COMPLETE:{
+//            
+//            break;
+//        }
+//        case aria2::EVENT_ON_DOWNLOAD_ERROR:{
+//            NSUserNotification *notification = [[NSUserNotification alloc] init];
+//            notification.title = @"Bilibili Client";
+//            notification.informativeText = NSLocalizedString(@"下载失败", nil);
+//            notification.soundName = NSUserNotificationDefaultSoundName;
+//            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+//            break;
+//        }
+//        default:
+//            return 0;
+//    }
+//    return 0;
+//}
 
-void Downloader::init(){
-    mtx.lock();
-    config.downloadEventCallback = downloadEventCallback;
-    session = aria2::sessionNew(aria2::KeyVals(), config);
-    aria2::changeGlobalOption(session, {{ "user-agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" }});
-    mtx.unlock();
-    NSLog(@"[Downloader] Init");
-}
-
-void Downloader::newTask(int cid,NSString *name){
+BOOL Downloader::newTask(int cid,NSString *name){
     NSLog(@"[Downloader] New Task CID: %d",cid);
-    mtx.lock();
     NSString *path = [NSString stringWithFormat:@"%@%@%@/",NSHomeDirectory(),@"/Movies/Bilibili/",name];
-    aria2::changeGlobalOption(session, {{ "dir", [path cStringUsingEncoding:NSUTF8StringEncoding] }});
-    
-    aria2::KeyVals options;
+
     [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL];
     NSString *commentUrl = [NSString stringWithFormat:@"http://comment.bilibili.com/%d.xml",cid];
     NSURL  *url = [NSURL URLWithString:commentUrl];
@@ -69,83 +55,67 @@ void Downloader::newTask(int cid,NSString *name){
         notification.informativeText = NSLocalizedString(@"下载失败，无法解析视频", nil);
         notification.soundName = NSUserNotificationDefaultSoundName;
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-        mtx.unlock();
     }
     if([[[urls valueForKey:@"url"] className] isEqualToString:@"__NSCFString"]){
         NSString *tmp = [urls valueForKey:@"url"];
-        std::vector<std::string> uris = {[tmp cStringUsingEncoding:NSUTF8StringEncoding]};
-        aria2::addUri(session, nullptr, uris, options);
+        NSString *taskid = [NSString stringWithFormat:@"%d-%ld",cid,time(0)];
+        NSURL* URL = [NSURL URLWithString:@"http://localhost:23336/jsonrpc"];
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+        request.HTTPMethod = @"POST";
+        NSDictionary* bodyObject = @{
+                                     @"jsonrpc": @"2.0",
+                                     @"id": taskid,
+                                     @"method": @"aria2.addUri",
+                                     @"params": @[
+                                             @[tmp],
+                                             @{@"dir": path}
+                                             ]
+                                     };
+        request.HTTPBody = [NSJSONSerialization dataWithJSONObject:bodyObject options:kNilOptions error:NULL];
+        NSURLResponse * response = nil;
+        NSError * error = nil;
+        [NSURLConnection sendSynchronousRequest:request
+                              returningResponse:&response
+                                          error:&error];
+        if(!error && [(NSHTTPURLResponse *)response statusCode] == 200){
+            NSLog(@"Download Task Added");
+        }else{
+            return false;
+        }
     }else{
         for (NSDictionary *match in urls) {
             NSString *tmp = [match valueForKey:@"url"];
-            std::vector<std::string> uris = {[tmp cStringUsingEncoding:NSUTF8StringEncoding]};
-            aria2::addUri(session, nullptr, uris, options);
+            NSString *taskid = [NSString stringWithFormat:@"%d-%ld",cid,time(0)];
+            NSURL* URL = [NSURL URLWithString:@"http://localhost:23336/jsonrpc"];
+            NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+            request.HTTPMethod = @"POST";
+            NSDictionary* bodyObject = @{
+                                         @"jsonrpc": @"2.0",
+                                         @"id": taskid,
+                                         @"method": @"aria2.addUri",
+                                         @"params": @[
+                                                 @[tmp],
+                                                 @{@"dir": path}
+                                                 ]
+                                         };
+            request.HTTPBody = [NSJSONSerialization dataWithJSONObject:bodyObject options:kNilOptions error:NULL];
+            NSURLResponse * response = nil;
+            NSError * error = nil;
+            [NSURLConnection sendSynchronousRequest:request
+                                                    returningResponse:&response
+                                                    error:&error];
+            if(!error && [(NSHTTPURLResponse *)response statusCode] == 200){
+                NSLog(@"Download Task Added");
+            }else{
+                return false;
+            }
+            
+            
         }
     }
     
     NSLog(@"[Downloader] Download task added");
-    
-    mtx.unlock();
-}
-
-void Downloader::runDownload(int fileid,NSString *filename){
-    
-    NSLog(@"[Downloader] Starting download");
-    NSString *cid = [[downloaderObjects objectAtIndex:fileid] valueForKey:@"cid"];
-    mtx.lock();
-    while(!isStopped) {
-        int rv = aria2::run(session, aria2::RUN_ONCE);
-        if(rv != 1) {
-            break;
-        }
-        aria2::GlobalStat gstat = aria2::getGlobalStat(session);
-        int allLength = 0;
-        int currentLength = 0;
-        std::vector<aria2::A2Gid> gids = aria2::getActiveDownload(session);
-        for(const auto& gid : gids) {
-            aria2::DownloadHandle* dh = aria2::getDownloadHandle(session, gid);
-            if(dh) {
-                allLength = allLength + (int)dh->getTotalLength();
-                currentLength = currentLength + (int)dh->getCompletedLength();
-                aria2::deleteDownloadHandle(dh);
-            }
-        }
-        [dList lock];
-        [downloaderObjects removeObjectAtIndex:fileid];
-        NSDictionary *taskData = @{
-                                    @"name":filename,
-                                    @"status":[NSString stringWithFormat:NSLocalizedString(@"剩余分段:%d 下载速度:%dKB/s 大小:%d/%dMB", nil),gstat.numActive,gstat.downloadSpeed/1024,currentLength/1024/1024,allLength/1024/1024],
-                                    @"cid":cid,
-                                    @"lastUpdate":[NSString stringWithFormat:@"%lu",time(0)]
-                                    };
-        [downloaderObjects insertObject:taskData atIndex:fileid];
-        [dList unlock];
-    }
-    int rv = aria2::sessionFinal(session);
-    
-    NSLog(@"Download success! STATUS: %d",rv);
-    
-    if(rv == 0){
-        NSUserNotification *notification = [[NSUserNotification alloc] init];
-        notification.title = filename;
-        notification.informativeText = NSLocalizedString(@"视频与弹幕下载完成", nil);
-        notification.soundName = NSUserNotificationDefaultSoundName;
-        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-    }
-    [dList lock];
-    if(!isStopped){
-        [downloaderObjects removeObjectAtIndex:fileid];
-        NSDictionary *taskData = @{
-                                   @"name":filename,
-                                   @"status":NSLocalizedString(@"下载已完成", nil),
-                                   };
-        [downloaderObjects insertObject:taskData atIndex:fileid];
-    }else{
-        
-    }
-
-    [dList unlock];
-    mtx.unlock();
+    return true;
 }
 
 NSArray *Downloader::getUrl(int cid){

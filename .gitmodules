@@ -4,3 +4,6 @@
 [submodule "chromium-tabs"]
 	path = chromium-tabs
 	url = https://github.com/typcn/chromium-tabs.git
+[submodule "GCDWebServer"]
+	path = GCDWebServer
+	url = https://github.com/typcn/GCDWebServer.git

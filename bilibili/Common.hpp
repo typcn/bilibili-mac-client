@@ -22,9 +22,7 @@ extern NSString *vCID;
 extern NSString *vTitle;
 extern NSString *userAgent;
 extern NSWindow *currWindow;
-extern NSMutableArray *downloaderObjects;
 
-extern NSLock *dList;
 extern BOOL parsing;
 
 extern NSString *cmFile;

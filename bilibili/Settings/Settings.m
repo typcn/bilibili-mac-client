@@ -28,6 +28,7 @@
     [self.disableKeepAspect setState:[settingsController integerForKey:@"disableKeepAspect"]];
     [self.disableHwDec setState:[settingsController integerForKey:@"enableHW"]];
     [self.disableNewRenderEngine setState:[settingsController integerForKey:@"disableWKWebkit"]];
+    [self.disableWriteHistory setState:[settingsController integerForKey:@"disableWritePlayHistory"]];
     
     float trans = [settingsController floatForKey:@"transparency"];
     if(!trans){
@@ -127,6 +128,12 @@
     [settingsController setInteger:[self.disableNewRenderEngine state] forKey:@"disableWKWebkit"];
     [settingsController synchronize];
 }
+
+- (IBAction)disableWritePlayHistory:(id)sender {
+    [settingsController setInteger:[self.disableWriteHistory state] forKey:@"disableWritePlayHistory"];
+    [settingsController synchronize];
+}
+
 
 - (IBAction)FakeIPChanged:(id)sender {
     NSString *rand = [NSString stringWithFormat:@"%ld", (long)[self randomNumberBetween:1 maxNumber:254]];

@@ -13,9 +13,8 @@
 @interface WebTabView : CTTabContents <TWebViewDelegate> {
     TWebView *webView;
 }
-@property (strong) NSWindowController* playerWindowController;
 
--(id)initWithRequest:(NSURLRequest *)req;
+-(id)initWithRequest:(NSURLRequest *)req andConfig:(id)cfg;
 -(id)GetWebView;
 -(TWebView *)GetTWebView;
 

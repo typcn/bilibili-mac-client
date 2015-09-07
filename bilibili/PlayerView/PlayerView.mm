@@ -26,11 +26,13 @@ NSString *vPID;
 NSWindow *LastWindow;
 
 mpv_handle *mpv;
+dispatch_queue_t queue;
 BOOL isCancelled;
 BOOL isPlaying;
 
 NSButton *postCommentButton;
-IOPMAssertionID assertionID;
+
+//IOPMAssertionID assertionID;
 
 static inline void check_error(int status)
 {
@@ -43,9 +45,11 @@ static inline void check_error(int status)
 }
 
 @interface PlayerView (){
-    dispatch_queue_t queue;
     NSWindow *w;
     NSView *wrapper;
+    NSView *PlayerControlView;
+    __weak IBOutlet NSView *PlayerView;
+    __weak IBOutlet NSView *LoadingView;
     NSTimer *hideCursorTimer;
 }
 
@@ -89,14 +93,29 @@ static void wakeup(void *context) {
     LastWindow = [[NSApplication sharedApplication] keyWindow];
     [LastWindow orderOut:nil];
     [LastWindow resignKeyWindow];
-    [self.view.window makeKeyAndOrderFront:NSApp];
-    [self.view.window makeMainWindow];
+    w = self.view.window;
+    [w makeKeyAndOrderFront:NSApp];
+    [w makeMainWindow];
+    
+    // Load Player Control View
+//    NSArray *tlo;
+//    BOOL c = [[NSBundle mainBundle] loadNibNamed:@"PlayerControl" owner:self topLevelObjects:&tlo];
+//    if(c){
+//        for(int i=0;i<tlo.count;i++){
+//            NSString *cname = [tlo[i] className];
+//            if([cname isEqualToString:@"PlayerControlView"]){
+//                PlayerControlView = tlo[i];
+//            }
+//        }
+//    }
+
+    [self.loadingImage setAnimates:YES];
     [self LoadVideo];
 }
 
 - (void)LoadVideo{
-    IOPMAssertionCreateWithName(kIOPMAssertionTypeNoDisplaySleep,
-                                kIOPMAssertionLevelOn, CFSTR("com.typcn.videoplayback"), &assertionID);
+    //IOPMAssertionCreateWithName(kIOPMAssertionTypeNoDisplaySleep,
+    //                            kIOPMAssertionLevelOn, CFSTR("com.typcn.videoplayback"), &assertionID);
     
     if([vCID isEqualToString:@"LOCALVIDEO"]){
         [[[NSApplication sharedApplication] keyWindow] performClose:self];
@@ -123,15 +142,33 @@ static void wakeup(void *context) {
         frame.size = NSMakeSize(Wwidth, Wheight);
         [self.view setFrame:frame];
     }
+    
+    /* Add Player Control view */
+    
+//    NSRect rect = PlayerControlView.frame;
+//    [PlayerControlView setFrame:NSMakeRect(rect.origin.x,
+//                                           rect.origin.y,
+//                                           self.view.frame.size.width * 0.8,
+//                                           rect.size.height)];
+//    [PlayerControlView setFrameOrigin:
+//     NSMakePoint(
+//                 (NSWidth([self.view bounds]) - NSWidth([PlayerControlView frame])) / 2,
+//                 20
+//                 )];
+//    
+//    [self.view setWantsLayer:YES];
+//    [PlayerControlView setHidden:YES];
+    //[self.view addSubview:PlayerControlView positioned:NSWindowAbove relativeTo:nil];
+    
+    /* End Adding Player Control */
+    
     postCommentButton = self.PostCommentButton;
-    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
+    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
     NSLog(@"Playerview load success");
-    self->wrapper = [self view];
+    self->wrapper = PlayerView;
     
     isCancelled = false;
-    
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
-    
     dispatch_async(queue, ^{
         
         NSString *baseAPIUrl = @"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=%d&type=%@&sign=%@";
@@ -243,10 +280,14 @@ static void wakeup(void *context) {
         if([dUrls count] == 0){
             if([type isEqualToString:@"mp4"]){
                 type = @"flv";
+                dispatch_async(dispatch_get_main_queue(), ^{
                 [self.textTip setStringValue:NSLocalizedString(@"正在尝试重新解析", nil)];
+                });
                 goto getUrl;
             }
+            dispatch_async(dispatch_get_main_queue(), ^{
             [self.textTip setStringValue:NSLocalizedString(@"视频无法解析", nil)];
+            });
             return;
         }
         
@@ -289,9 +330,12 @@ static void wakeup(void *context) {
             return;
         }
         
-        // ffprobe
-        [self.textTip setStringValue:NSLocalizedString(@"正在获取视频信息", nil)];
+        [self writeHistory];
         
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.textTip setStringValue:NSLocalizedString(@"正在获取视频信息", nil)];
+        });
+            
         NSLog(@"FirstVideo:%@",firstVideo);
         
         int usingBackup = 0;
@@ -304,7 +348,9 @@ static void wakeup(void *context) {
         
         if([height intValue] < 100){
             if(!BackupUrls){
-                [self.textTip setStringValue:NSLocalizedString(@"读取视频失败，可能视频源已失效", nil)];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.textTip setStringValue:NSLocalizedString(@"读取视频失败，可能视频源已失效", nil)];
+                });
             }else{
                 usingBackup++;
                 NSString *backupVideoUrl = [BackupUrls objectAtIndex:usingBackup];
@@ -314,7 +360,9 @@ static void wakeup(void *context) {
                     NSLog(@"Timeout! Change to backup url: %@",vUrl);
                     goto GetInfo;
                 }else{
-                    [self.textTip setStringValue:NSLocalizedString(@"读取视频失败，视频服务器故障", nil)];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.textTip setStringValue:NSLocalizedString(@"读取视频失败，视频服务器故障", nil)];
+                    });
                 }
             }
         }
@@ -339,7 +387,10 @@ static void wakeup(void *context) {
             }
             
         }else{
-            [self.textTip setStringValue:NSLocalizedString(@"视频信息读取失败", nil)];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.textTip setStringValue:NSLocalizedString(@"视频信息读取失败", nil)];
+            });
+            
             parsing = false;
             return;
         }
@@ -367,7 +418,7 @@ static void wakeup(void *context) {
     check_error(mpv_set_option_string(mpv, "input-cursor", "yes"));
     check_error(mpv_set_option_string(mpv, "osc", "yes"));
     check_error(mpv_set_option_string(mpv, "autofit", [res cStringUsingEncoding:NSUTF8StringEncoding]));
-    check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=bottombar,osc-seekbarstyle=bar"));
+    check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=box,osc-seekbarstyle=bar"));
     check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
     check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
     check_error(mpv_set_option_string(mpv, "hr-seek", "yes"));
@@ -383,8 +434,10 @@ static void wakeup(void *context) {
     
     int enableHW = [self getSettings:@"enableHW"];
     if(enableHW){
-        check_error(mpv_set_option_string(mpv, "hwdec", "vda"));
+        check_error(mpv_set_option_string(mpv, "hwdec", "videotoolbox"));
         check_error(mpv_set_option_string(mpv, "sub-fps", "60"));
+        check_error(mpv_set_option_string(mpv, "display-fps", "60"));
+        check_error(mpv_set_option_string(mpv, "demuxer-rawvideo-fps", "60"));
     }else{
         check_error(mpv_set_option_string(mpv, "vf", "lavfi=\"fps=fps=60:round=down\""));
     }
@@ -423,6 +476,29 @@ static void wakeup(void *context) {
                            @"height": height,
                            };
     return info;
+}
+
+- (void) writeHistory{
+    NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/player?id=cid:%@&aid=%@",vCID,vAID]];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+    request.HTTPMethod = @"GET";
+    request.timeoutInterval = 5;
+    
+    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+    long isDisabled = [settingsController integerForKey:@"disableWritePlayHistory"];
+    if(isDisabled){
+        return;
+    }
+    NSString *xff = [settingsController objectForKey:@"xff"];
+    NSString *cookie = [settingsController objectForKey:@"cookie"];
+    if([xff length] > 4){
+        [request setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
+        [request setValue:xff forHTTPHeaderField:@"Client-IP"];
+    }
+    [request setValue:cookie forHTTPHeaderField:@"Cookie"];
+    [request setValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" forHTTPHeaderField:@"User-Agent"];
+    NSURLConnection* connection = [NSURLConnection connectionWithRequest:request delegate:nil];
+    [connection start];
 }
 
 - (NSString *) getComments:(NSNumber *)width :(NSNumber *)height {
@@ -604,35 +680,38 @@ static void wakeup(void *context) {
             
         case MPV_EVENT_VIDEO_RECONFIG: {
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSArray *subviews = [self->wrapper subviews];
-                if ([subviews count] > 0) {
-                    // mpv's events view
-                    NSView *eview = [self->wrapper subviews][0];
-                    [self->w makeFirstResponder:eview];
-                }
+                [PlayerControlView setHidden:NO];
             });
             break;
         }
         
         case MPV_EVENT_START_FILE:{
-            if([[[NSUserDefaults standardUserDefaults] objectForKey:@"FirstPlayed"] length] != 3){
-                [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"FirstPlayed"];
-                [self.textTip setStringValue:NSLocalizedString(@"正在创建字体缓存", nil)];
-                [self.subtip setStringValue:NSLocalizedString(@"首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口", nil)];
-            }else{
-                [self.textTip setStringValue:NSLocalizedString(@"正在缓冲", nil)];
-            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if([[[NSUserDefaults standardUserDefaults] objectForKey:@"FirstPlayed"] length] != 3){
+                    [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"FirstPlayed"];
+                    [self.textTip setStringValue:NSLocalizedString(@"正在创建字体缓存", nil)];
+                    [self.subtip setStringValue:NSLocalizedString(@"首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口", nil)];
+                }else{
+                    [self.textTip setStringValue:NSLocalizedString(@"正在缓冲", nil)];
+                }
+            });
             break;
         }
             
         case MPV_EVENT_PLAYBACK_RESTART: {
-            self.loadingImage.animates = false;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.loadingImage setAnimates:NO];
+                [LoadingView setHidden:YES];
+            });
             isPlaying = YES;
             break;
         }
         
         case MPV_EVENT_END_FILE:{
-            [self.textTip setStringValue:NSLocalizedString(@"播放完成，关闭窗口继续", nil)];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [LoadingView setHidden:NO];
+                [self.textTip setStringValue:NSLocalizedString(@"播放完成，关闭窗口继续", nil)];
+            });
             break;
         }
         
@@ -735,9 +814,11 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         obServer = YES;
     }else{
         if(mpv){
-            if(strcmp(mpv_get_property_string(mpv,"pause"),"yes")){
-                mpv_set_property_string(mpv,"pause","yes");
-            }
+            dispatch_async(queue, ^{
+                if(strcmp(mpv_get_property_string(mpv,"pause"),"yes")){
+                    mpv_set_property_string(mpv,"pause","yes");
+                }
+            });
         }
     }
     // Save window size
@@ -752,9 +833,11 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
 
 - (void)Continue{
     if(mpv && !isFirstCall){
-        if(strcmp(mpv_get_property_string(mpv,"pause"),"no")){
-            mpv_set_property_string(mpv,"pause","no");
-        }
+        dispatch_async(queue, ^{
+            if(strcmp(mpv_get_property_string(mpv,"pause"),"no")){
+                mpv_set_property_string(mpv,"pause","no");
+            }
+        });
     }else{
         isFirstCall = NO;
     }
@@ -779,21 +862,27 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             break;
         }
         case 124:{ // 👉
-            const char *args[] = {"seek", shiftKeyPressed?"1":"5" ,NULL};
-            mpv_command(mpv, args);
+            dispatch_async(queue, ^{
+                const char *args[] = {"seek", shiftKeyPressed?"1":"5" ,NULL};
+                mpv_command(mpv, args);
+            });
             break;
         }
         case 123:{ // 👈
-            const char *args[] = {"seek", shiftKeyPressed?"-1":"-5" ,NULL};
-            mpv_command(mpv, args);
+            dispatch_async(queue, ^{
+                const char *args[] = {"seek", shiftKeyPressed?"-1":"-5" ,NULL};
+                mpv_command(mpv, args);
+            });
             break;
         }
         case 49:{ // Space
-            if(strcmp(mpv_get_property_string(mpv,"pause"),"no")){
-                mpv_set_property_string(mpv,"pause","no");
-            }else{
-                mpv_set_property_string(mpv,"pause","yes");
-            }
+            dispatch_async(queue, ^{
+                if(strcmp(mpv_get_property_string(mpv,"pause"),"no")){
+                    mpv_set_property_string(mpv,"pause","no");
+                }else{
+                    mpv_set_property_string(mpv,"pause","yes");
+                 }
+            });
             break;
         }
         case 36:{ // Enter
@@ -805,7 +894,9 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             break;
         }
         case 7:{ // X key to loop
-            mpv_set_option_string(mpv, "loop", "inf");
+            dispatch_async(queue, ^{
+                mpv_set_option_string(mpv, "loop", "inf");
+            });
             break;
         }
         case 3:{ // Command+F key to toggle fullscreen
@@ -825,16 +916,20 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
 - (void) mpv_stop
 {
     if (mpv) {
-        const char *args[] = {"stop", NULL};
-        mpv_command(mpv, args);
+        dispatch_async(queue, ^{
+            const char *args[] = {"stop", NULL};
+            mpv_command(mpv, args);
+        });
     }
 }
 
 - (void) mpv_quit
 {
     if (mpv) {
-        const char *args[] = {"quit", NULL};
-        mpv_command(mpv, args);
+        dispatch_async(queue, ^{
+            const char *args[] = {"quit", NULL};
+            mpv_command(mpv, args);
+        });
     }
 }
 
@@ -842,19 +937,21 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     NSLog(@"Removing lastplay url");
     isPlaying = NO;
-    if(assertionID){
-        IOPMAssertionRelease(assertionID);
-    }
+//    if(assertionID){
+//        IOPMAssertionRelease(assertionID);
+//    }
     isCancelled = true;
     if(obServer){
         [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self];
         obServer = NO;
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_async(queue, ^{
         if(mpv){
             mpv_set_wakeup_callback(mpv, NULL,NULL);
         }
-        //[self mpv_stop];
+    });
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self mpv_stop];
         [self mpv_quit];
         [LastWindow makeKeyAndOrderFront:nil];
     });
