@@ -233,7 +233,7 @@ https://github.com/typcn/bilibili-mac-client";
 "VhF-wp-4cU.title" = "切り取り";
 
 /* Class = "NSButtonCell"; title = "选择视频"; ObjectID = "VnN-7Y-cRN"; */
-"VnN-7Y-cRN.title" = "ビヂオを選択";
+"VnN-7Y-cRN.title" = "ビデオを選択";
 
 /* Class = "NSButtonCell"; title = "选择弹幕"; ObjectID = "Wtj-ZP-diZ"; */
 "Wtj-ZP-diZ.title" = "弾幕を選択";
