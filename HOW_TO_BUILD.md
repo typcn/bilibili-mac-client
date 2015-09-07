@@ -27,4 +27,5 @@ If you can't download libraries from git-lfs, please run following commands.
 
 	cd bilibili/libs/
 	rm -rf *
-	wget http://7xkd32.dl1.z0.glb.clouddn.com/bilibili/libs/1.tar.gz	tar zxvf 1.tar.gz
+	wget http://7xkd32.dl1.z0.glb.clouddn.com/bilibili/libs/1.tar.gz
+	tar zxvf 1.tar.gz
