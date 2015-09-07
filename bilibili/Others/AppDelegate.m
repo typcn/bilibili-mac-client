@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "HTTPServer.h"
 
 Browser *browser;
 
@@ -99,6 +100,9 @@ Browser *browser;
     task.launchPath = @"/bin/sh";
     task.arguments = @[path];
     [task launch];
+    
+    // Start HTTP Server
+    [[HTTPServer alloc] startHTTPServer];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

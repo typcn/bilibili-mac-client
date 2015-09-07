@@ -7,10 +7,8 @@
 //
 
 #import "WebTabView.h"
-#import <Sparkle/Sparkle.h>
-#import "downloadWrapper.h"
-#import "Analytics.h"
 #import "ToolBar.h"
+#import "Analytics.h"
 
 @implementation WebTabView {
     NSString* WebScript;
@@ -20,7 +18,6 @@
     bool ariainit;
     long acceptAnalytics;
 }
-@synthesize playerWindowController;
 
 -(id)initWithBaseTabContents:(CTTabContents*)baseContents {
     if (!(self = [super initWithBaseTabContents:baseContents])) return nil;
@@ -214,12 +211,12 @@
 
 - (void)checkForUpdates
 {
-    [[SUUpdater sharedUpdater] checkForUpdates:nil];
-    if(acceptAnalytics == 1 || acceptAnalytics == 2){
-        action("App","CheckForUpdate","CheckForUpdate");
-    }else{
-        NSLog(@"Analytics disabled ! won't upload.");
-    }
+//    [[SUUpdater sharedUpdater] checkForUpdates:nil];
+//    if(acceptAnalytics == 1 || acceptAnalytics == 2){
+//        action("App","CheckForUpdate","CheckForUpdate");
+//    }else{
+//        NSLog(@"Analytics disabled ! won't upload.");
+//    }
 }
 
 - (void)showPlayGUI
@@ -228,79 +225,79 @@
 }
 - (void)playVideoByCID:(NSString *)cid
 {
-    if(parsing){
-        return;
-    }
-    WebTabView *tv = (WebTabView *)[browser activeTabContents];
-    TWebView *wv = [tv GetTWebView];
-    NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
-    NSString *mediaTitle = [fn objectAtIndex:0];
-    parsing = true;
-    vCID = cid;
-    vUrl = [wv getURL];
-    if([mediaTitle length] > 0){
-        vTitle = [fn objectAtIndex:0];
-    }else{
-        vTitle = NSLocalizedString(@"未命名", nil);
-    }
-    
-    [[NSUserDefaults standardUserDefaults] setObject:vUrl forKey:@"LastPlay"];
-    NSLog(@"Video detected ! CID: %@",vCID);
-    if(acceptAnalytics == 1){
-        action("video", "play", [vCID cStringUsingEncoding:NSUTF8StringEncoding]);
-        screenView("PlayerView");
-    }else if(acceptAnalytics == 2){
-        screenView("PlayerView");
-    }else{
-        NSLog(@"Analytics disabled ! won't upload.");
-    }
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-        playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
-        [playerWindowController showWindow:self];
-    });
+//    if(parsing){
+//        return;
+//    }
+//    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+//    TWebView *wv = [tv GetTWebView];
+//    NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
+//    NSString *mediaTitle = [fn objectAtIndex:0];
+//    parsing = true;
+//    vCID = cid;
+//    vUrl = [wv getURL];
+//    if([mediaTitle length] > 0){
+//        vTitle = [fn objectAtIndex:0];
+//    }else{
+//        vTitle = NSLocalizedString(@"未命名", nil);
+//    }
+//    
+//    [[NSUserDefaults standardUserDefaults] setObject:vUrl forKey:@"LastPlay"];
+//    NSLog(@"Video detected ! CID: %@",vCID);
+//    if(acceptAnalytics == 1){
+//        action("video", "play", [vCID cStringUsingEncoding:NSUTF8StringEncoding]);
+//        screenView("PlayerView");
+//    }else if(acceptAnalytics == 2){
+//        screenView("PlayerView");
+//    }else{
+//        NSLog(@"Analytics disabled ! won't upload.");
+//    }
+//    dispatch_async(dispatch_get_main_queue(), ^(void){
+//        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+//        playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
+//        [playerWindowController showWindow:self];
+//    });
 }
 - (void)downloadVideoByCID:(NSString *)cid
 {
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:HudView animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = NSLocalizedString(@"正在启动下载引擎", nil);
-    hud.removeFromSuperViewOnHide = YES;
-    
-    if(!DL){
-        DL = new Downloader();
-    }
-    
-    if(acceptAnalytics == 1){
-        action("video", "download", [cid cStringUsingEncoding:NSUTF8StringEncoding]);
-        screenView("PlayerView");
-    }else if(acceptAnalytics == 2){
-        screenView("PlayerView");
-    }else{
-        NSLog(@"Analytics disabled ! won't upload.");
-    }
-    
-    WebTabView *tv = (WebTabView *)[browser activeTabContents];
-    TWebView *wv = [tv GetTWebView];
-    
-    NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
-    NSString *filename = [fn objectAtIndex:0];
-    
-    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        hud.labelText = NSLocalizedString(@"正在解析视频地址", nil);
-        BOOL s = DL->newTask([cid intValue], filename);
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            if(s){
-                hud.labelText = NSLocalizedString(@"成功开始下载", nil);
-            }else{
-                hud.labelText = NSLocalizedString(@"下载失败，请点击帮助 - 反馈", nil);
-            }
-            hud.mode = MBProgressHUDModeText;
-            [hud hide:YES afterDelay:3];
-            id ct = [browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/"];
-            [browser addTabContents:ct inForeground:YES];
-        });
-    });
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:HudView animated:YES];
+//    hud.mode = MBProgressHUDModeIndeterminate;
+//    hud.labelText = NSLocalizedString(@"正在启动下载引擎", nil);
+//    hud.removeFromSuperViewOnHide = YES;
+//    
+//    if(!DL){
+//        DL = new Downloader();
+//    }
+//    
+//    if(acceptAnalytics == 1){
+//        action("video", "download", [cid cStringUsingEncoding:NSUTF8StringEncoding]);
+//        screenView("PlayerView");
+//    }else if(acceptAnalytics == 2){
+//        screenView("PlayerView");
+//    }else{
+//        NSLog(@"Analytics disabled ! won't upload.");
+//    }
+//    
+//    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+//    TWebView *wv = [tv GetTWebView];
+//    
+//    NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
+//    NSString *filename = [fn objectAtIndex:0];
+//    
+//    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        hud.labelText = NSLocalizedString(@"正在解析视频地址", nil);
+//        BOOL s = DL->newTask([cid intValue], filename);
+//        dispatch_async(dispatch_get_main_queue(), ^(void){
+//            if(s){
+//                hud.labelText = NSLocalizedString(@"成功开始下载", nil);
+//            }else{
+//                hud.labelText = NSLocalizedString(@"下载失败，请点击帮助 - 反馈", nil);
+//            }
+//            hud.mode = MBProgressHUDModeText;
+//            [hud hide:YES afterDelay:3];
+//            id ct = [browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/"];
+//            [browser addTabContents:ct inForeground:YES];
+//        });
+//    });
 }
 
 

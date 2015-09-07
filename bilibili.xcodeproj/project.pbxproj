@@ -84,6 +84,10 @@
 		FD62CC8B1B6E6BA5000AED57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62CC8A1B6E6BA5000AED57 /* Foundation.framework */; };
 		FD62CC8D1B6E6BAB000AED57 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62CC8C1B6E6BAB000AED57 /* AppKit.framework */; };
 		FD62CC8F1B6E6BB0000AED57 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */; };
+		FD72571D1B9D534C0015B0F1 /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD72571A1B9D52FE0015B0F1 /* GCDWebServers.framework */; };
+		FD72571E1B9D534C0015B0F1 /* GCDWebServers.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD72571A1B9D52FE0015B0F1 /* GCDWebServers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FD7257231B9D53CC0015B0F1 /* HTTPServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD7257221B9D53CC0015B0F1 /* HTTPServer.mm */; };
+		FD7257261B9D5E190015B0F1 /* Analytics.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD7257251B9D5E190015B0F1 /* Analytics.mm */; };
 		FD73289B1B9CD2AA001B450C /* libmpv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7328801B9CD2AA001B450C /* libmpv.dylib */; };
 		FD73289C1B9CD2AA001B450C /* libass.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7328811B9CD2AA001B450C /* libass.5.dylib */; };
 		FD73289D1B9CD2AA001B450C /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7328821B9CD2AA001B450C /* libfreetype.6.dylib */; };
@@ -165,6 +169,27 @@
 			remoteGlobalIDString = 8D1107320486CEB800E47090;
 			remoteInfo = "Chromium Tabs";
 		};
+		FD7257151B9D52FE0015B0F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DD76FB20486AB0100D96B5E;
+			remoteInfo = "GCDWebServer (Mac)";
+		};
+		FD7257191B9D52FE0015B0F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CEE28CD11AE004D800F4023C;
+			remoteInfo = "GCDWebServers (Mac)";
+		};
+		FD72571F1B9D534C0015B0F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = CEE28CD01AE004D800F4023C;
+			remoteInfo = "GCDWebServers (Mac)";
+		};
 		FDD1FDD61B9B14F9006711B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */;
@@ -242,6 +267,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FD72571E1B9D534C0015B0F1 /* GCDWebServers.framework in Copy Files */,
 				FDD1FDD51B9B14F9006711B0 /* ChromiumTabs.framework in Copy Files */,
 				FD36B0CF1B9959D300FB32CC /* Sparkle.framework in Copy Files */,
 			);
@@ -368,6 +394,10 @@
 		FD62CC8A1B6E6BA5000AED57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FD62CC8C1B6E6BAB000AED57 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GCDWebServer.xcodeproj; path = GCDWebServer/GCDWebServer.xcodeproj; sourceTree = "<group>"; };
+		FD7257211B9D53CC0015B0F1 /* HTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPServer.h; path = HTTPServer/HTTPServer.h; sourceTree = "<group>"; };
+		FD7257221B9D53CC0015B0F1 /* HTTPServer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HTTPServer.mm; path = HTTPServer/HTTPServer.mm; sourceTree = "<group>"; };
+		FD7257251B9D5E190015B0F1 /* Analytics.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Analytics.mm; path = Others/Analytics.mm; sourceTree = "<group>"; };
 		FD7328801B9CD2AA001B450C /* libmpv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmpv.dylib; path = bilibili/libs/libmpv.dylib; sourceTree = "<group>"; };
 		FD7328811B9CD2AA001B450C /* libass.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libass.5.dylib; path = bilibili/libs/libass.5.dylib; sourceTree = "<group>"; };
 		FD7328821B9CD2AA001B450C /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = bilibili/libs/libfreetype.6.dylib; sourceTree = "<group>"; };
@@ -413,6 +443,7 @@
 				FD7328B51B9CD2AA001B450C /* libmediainfo.0.dylib in Frameworks */,
 				FD73289E1B9CD2AA001B450C /* libfribidi.0.dylib in Frameworks */,
 				FD62CC8D1B6E6BAB000AED57 /* AppKit.framework in Frameworks */,
+				FD72571D1B9D534C0015B0F1 /* GCDWebServers.framework in Frameworks */,
 				FD7328B31B9CD2AA001B450C /* libx264.146.dylib in Frameworks */,
 				FD7328AF1B9CD2AA001B450C /* libswscale.4.dylib in Frameworks */,
 				FD62CC8B1B6E6BA5000AED57 /* Foundation.framework in Frameworks */,
@@ -462,6 +493,7 @@
 				FD36B0991B988CB600FB32CC /* Third-party */,
 				FD076C691AC8CBBB00C893FA /* bilibiliTests */,
 				FD076C511AC8CBBB00C893FA /* Products */,
+				FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */,
 				FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -478,6 +510,7 @@
 		FD076C521AC8CBBB00C893FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FD7257241B9D53D30015B0F1 /* HTTPServer */,
 				FD855FAE1B07D86C004A1610 /* RealTimeComments */,
 				FDA775E81AD93ED600426483 /* downloadManager */,
 				FD61025A1AD7CB760013119A /* WebPages */,
@@ -720,6 +753,7 @@
 				FD1954CB1B259457003A958F /* ISSoundAdditions.h */,
 				FD1954CC1B259457003A958F /* ISSoundAdditions.m */,
 				FD1954F61B259AF6003A958F /* Analytics.h */,
+				FD7257251B9D5E190015B0F1 /* Analytics.mm */,
 				FD62CC871B6E6848000AED57 /* MBProgressHUD.h */,
 				FD62CC881B6E6848000AED57 /* MBProgressHUD.m */,
 			);
@@ -770,6 +804,24 @@
 				FD6102601AD7CBF10013119A /* webui.css */,
 			);
 			name = WebPages;
+			sourceTree = "<group>";
+		};
+		FD72570E1B9D52FD0015B0F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD7257161B9D52FE0015B0F1 /* GCDWebServer */,
+				FD72571A1B9D52FE0015B0F1 /* GCDWebServers.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD7257241B9D53D30015B0F1 /* HTTPServer */ = {
+			isa = PBXGroup;
+			children = (
+				FD7257211B9D53CC0015B0F1 /* HTTPServer.h */,
+				FD7257221B9D53CC0015B0F1 /* HTTPServer.mm */,
+			);
+			name = HTTPServer;
 			sourceTree = "<group>";
 		};
 		FD855FAE1B07D86C004A1610 /* RealTimeComments */ = {
@@ -846,6 +898,7 @@
 			);
 			dependencies = (
 				FDD1FDD71B9B14F9006711B0 /* PBXTargetDependency */,
+				FD7257201B9D534C0015B0F1 /* PBXTargetDependency */,
 			);
 			name = Bilibili;
 			productName = bilibili;
@@ -907,6 +960,10 @@
 					ProductGroup = FD36B09C1B988E4A00FB32CC /* Products */;
 					ProjectRef = FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */;
 				},
+				{
+					ProductGroup = FD72570E1B9D52FD0015B0F1 /* Products */;
+					ProjectRef = FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -929,6 +986,20 @@
 			fileType = wrapper.application;
 			path = "Chromium Tabs.app";
 			remoteRef = FD36B0A21B988E4A00FB32CC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FD7257161B9D52FE0015B0F1 /* GCDWebServer */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = GCDWebServer;
+			remoteRef = FD7257151B9D52FE0015B0F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FD72571A1B9D52FE0015B0F1 /* GCDWebServers.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GCDWebServers.framework;
+			remoteRef = FD7257191B9D52FE0015B0F1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1021,12 +1092,14 @@
 				FD1954BC1B259342003A958F /* downloadWrapper.mm in Sources */,
 				FD36B0B71B98920A00FB32CC /* WebTabView.mm in Sources */,
 				FD1954C71B25942F003A958F /* main.m in Sources */,
+				FD7257231B9D53CC0015B0F1 /* HTTPServer.mm in Sources */,
 				FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */,
 				FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */,
 				FD35538F1B9C423B000EE41E /* PlayerControlView.m in Sources */,
 				FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */,
 				FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */,
 				FD1954B01B259318003A958F /* Settings.m in Sources */,
+				FD7257261B9D5E190015B0F1 /* Analytics.mm in Sources */,
 				FD62CC891B6E6848000AED57 /* MBProgressHUD.m in Sources */,
 				FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */,
 				FD1954C41B259368003A958F /* LiveChat.m in Sources */,
@@ -1054,6 +1127,11 @@
 			isa = PBXTargetDependency;
 			target = FD076C4F1AC8CBBB00C893FA /* Bilibili */;
 			targetProxy = FD076C671AC8CBBB00C893FA /* PBXContainerItemProxy */;
+		};
+		FD7257201B9D534C0015B0F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "GCDWebServers (Mac)";
+			targetProxy = FD72571F1B9D534C0015B0F1 /* PBXContainerItemProxy */;
 		};
 		FDD1FDD71B9B14F9006711B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

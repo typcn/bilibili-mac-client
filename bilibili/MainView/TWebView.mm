@@ -37,8 +37,8 @@
             wvConfig = [cfg copy];
         }
         
-        [[wvConfig userContentController] removeScriptMessageHandlerForName:@"BLClient"];
-        [[wvConfig userContentController] addScriptMessageHandler:self name:@"BLClient"];
+//        [[wvConfig userContentController] removeScriptMessageHandlerForName:@"BLClient"];
+//        [[wvConfig userContentController] addScriptMessageHandler:self name:@"BLClient"];
         webViewType = tWKWebView;
         WKwv = [[WKWebView alloc] initWithFrame:NSZeroRect configuration:wvConfig];
         [WKwv setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
@@ -227,7 +227,7 @@ didReceiveTitle:(NSString *)title
 
 - (void)webView:(WebView *)sender didClearWindowObject:(WebScriptObject *)windowScriptObject forFrame:(WebFrame *)frame
 {
-    [windowScriptObject setValue:self forKeyPath:@"window.external"];
+    //[windowScriptObject setValue:self forKeyPath:@"window.external"];
 }
 
 - (NSURLRequest *)webView:(WebView *)sender
