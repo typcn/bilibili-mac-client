@@ -30,10 +30,10 @@ BOOL parsing = false;
 
 -(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withUrl:(NSString*) url{
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    return [self createTabBasedOn:baseContents withRequest:req];
+    return [self createTabBasedOn:baseContents withRequest:req andConfig:nil];
 }
 
--(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withRequest:(NSURLRequest*) req{
+-(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withRequest:(NSURLRequest*) req andConfig:(id)cfg{
     NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
     re = (NSMutableURLRequest *) req.mutableCopy;
     NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
@@ -43,7 +43,7 @@ BOOL parsing = false;
         [re setValue:xff forHTTPHeaderField:@"Client-IP"];
     }
     
-    CTTabContents *tc = [[WebTabView alloc] initWithRequest:re];
+    CTTabContents *tc = [[WebTabView alloc] initWithRequest:re andConfig:cfg];
     [tc setTitle:@"Loading"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[req.URL absoluteString] userInfo:nil];
     return tc;

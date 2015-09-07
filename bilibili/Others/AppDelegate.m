@@ -144,7 +144,7 @@ Browser *browser;
         [re setValue:xff forHTTPHeaderField:@"Client-IP"];
     }
 
-    [browser addTabContents:[browser createTabBasedOn:nil withRequest:re] inForeground:YES];
+    [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
 }
 
 - (IBAction)goForum:(id)sender {

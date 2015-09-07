@@ -41,11 +41,11 @@
     
     NSURL *u = [NSURL URLWithString:@"http://www.bilibili.com"];
     
-    return [self initWithRequest:[NSURLRequest requestWithURL:u]];
+    return [self initWithRequest:[NSURLRequest requestWithURL:u] andConfig:nil];
 }
 
--(id)initWithRequest:(NSURLRequest *)req{
-    webView = [[TWebView alloc] initWithRequest:req andDelegate:self];
+-(id)initWithRequest:(NSURLRequest *)req andConfig:(id)cfg{
+    webView = [[TWebView alloc] initWithRequest:req andConfig:cfg setDelegate:self];
     [self loadStartupScripts];
     [self setIsWaitingForResponse:YES];
     NSScrollView *sv = [[NSScrollView alloc] initWithFrame:NSZeroRect];

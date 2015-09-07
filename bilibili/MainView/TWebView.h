@@ -30,7 +30,7 @@
 
 @property (nonatomic, weak) id <TWebViewDelegate> delegate;
 
-- (TWebView *)initWithRequest:(NSURLRequest *)req andDelegate:(id <TWebViewDelegate>)aDelegate;
+- (TWebView *)initWithRequest:(NSURLRequest *)req andConfig:(id)cfg setDelegate:(id <TWebViewDelegate>)aDelegate;
 - (void)addToView:(NSScrollView *)view;
 - (void)setFrameSize:(NSRect)newFrame;
 - (id)GetWebView;

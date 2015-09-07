@@ -11,17 +11,18 @@
 #import "TWebView.h"
 #import "WebTabView.h"
 
-WKWebViewConfiguration *cfg;
+
 
 @implementation TWebView{
     NSUserDefaults *settingsController;
+    WKWebViewConfiguration *wvConfig;
 }
 
 - (void)dealloc{
     [WKwv removeObserver:self forKeyPath:@"title"];
 }
 
-- (TWebView *)initWithRequest:(NSURLRequest *)req andDelegate:(id <TWebViewDelegate>)aDelegate{
+- (TWebView *)initWithRequest:(NSURLRequest *)req andConfig:(id)cfg setDelegate:(id <TWebViewDelegate>)aDelegate{
     if (self.delegate != aDelegate) {
         self.delegate = aDelegate;
         settingsController =  [NSUserDefaults standardUserDefaults];
@@ -31,18 +32,19 @@ WKWebViewConfiguration *cfg;
     
     if (NSClassFromString(@"WKWebView") && !disableWK) {
         if(!cfg){
-            cfg = [[WKWebViewConfiguration  alloc] init];
+            wvConfig = [[WKWebViewConfiguration  alloc] init];
+        }else{
+            wvConfig = [cfg copy];
         }
-        WKWebViewConfiguration *config = [cfg copy];
-        [[config userContentController] removeScriptMessageHandlerForName:@"BLClient"];
-        [[config userContentController] addScriptMessageHandler:self name:@"BLClient"];
+        
+        [[wvConfig userContentController] removeScriptMessageHandlerForName:@"BLClient"];
+        [[wvConfig userContentController] addScriptMessageHandler:self name:@"BLClient"];
         webViewType = tWKWebView;
-        WKwv = [[WKWebView alloc] initWithFrame:NSZeroRect configuration:config];
+        WKwv = [[WKWebView alloc] initWithFrame:NSZeroRect configuration:wvConfig];
         [WKwv setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
         [WKwv setNavigationDelegate: self];
         [WKwv setUIDelegate: self];
         [WKwv addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
-        cfg = NULL;
     } else {
         webViewType = tWebView;
         wv = [[WebView alloc] init];
@@ -318,13 +320,12 @@ didReceiveTitle:(NSString *)title
 createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration
    forNavigationAction:(WKNavigationAction *)navigationAction
         windowFeatures:(WKWindowFeatures *)windowFeatures{
-    cfg = configuration;
     WebTabView *ct;
     NSString *xff = [settingsController objectForKey:@"xff"];
     if([xff length] > 4){
-        ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:navigationAction.request];
+        ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:navigationAction.request andConfig:configuration];
     }else{
-        ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:nil];
+        ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:nil andConfig:configuration];
     }
     [browser addTabContents:ct inForeground:YES];
     return [ct GetWebView];
@@ -332,7 +333,7 @@ createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration
 
 - (WebView *)webView:(id)sender createWebViewWithRequest:(NSURLRequest *)request
 {
-    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:nil];
+    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withRequest:nil andConfig:nil];
     [browser addTabContents:ct inForeground:YES];
     return [ct GetWebView];
 }
