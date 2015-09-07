@@ -10,7 +10,6 @@
 		C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = C56A943C1B36E837005C274F /* WebView+SwipeNavigation.m */; };
 		E09BF99F1B84CCC6005E08CE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E09BF9A11B84CCC6005E08CE /* Localizable.strings */; };
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
-		FD076C6D1AC8CBBB00C893FA /* bilibiliTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */; };
 		FD0829C91B67844500D2B126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0829C71B67844500D2B126 /* Main.storyboard */; };
 		FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A91B259318003A958F /* CommentBlockSettings.m */; };
 		FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AB1B259318003A958F /* KeywordBlockSettings.m */; };
@@ -148,13 +147,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FD076C671AC8CBBB00C893FA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FD076C481AC8CBBB00C893FA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FD076C4F1AC8CBBB00C893FA;
-			remoteInfo = bilibili;
-		};
 		FD36B0A01B988E4A00FB32CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */;
@@ -168,13 +160,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 8D1107320486CEB800E47090;
 			remoteInfo = "Chromium Tabs";
-		};
-		FD7257151B9D52FE0015B0F1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DD76FB20486AB0100D96B5E;
-			remoteInfo = "GCDWebServer (Mac)";
 		};
 		FD7257191B9D52FE0015B0F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -286,7 +271,6 @@
 		FD076C501AC8CBBB00C893FA /* Bilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C541AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C5D1AC8CBBB00C893FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		FD076C661AC8CBBB00C893FA /* bilibiliTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bilibiliTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C6B1AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C6C1AC8CBBB00C893FA /* bilibiliTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bilibiliTests.m; sourceTree = "<group>"; };
 		FD0829C81B67844500D2B126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -473,13 +457,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FD076C631AC8CBBB00C893FA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -502,7 +479,6 @@
 			isa = PBXGroup;
 			children = (
 				FD076C501AC8CBBB00C893FA /* Bilibili.app */,
-				FD076C661AC8CBBB00C893FA /* bilibiliTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -809,7 +785,6 @@
 		FD72570E1B9D52FD0015B0F1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FD7257161B9D52FE0015B0F1 /* GCDWebServer */,
 				FD72571A1B9D52FE0015B0F1 /* GCDWebServers.framework */,
 			);
 			name = Products;
@@ -905,24 +880,6 @@
 			productReference = FD076C501AC8CBBB00C893FA /* Bilibili.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FD076C651AC8CBBB00C893FA /* bilibiliTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FD076C731AC8CBBB00C893FA /* Build configuration list for PBXNativeTarget "bilibiliTests" */;
-			buildPhases = (
-				FD076C621AC8CBBB00C893FA /* Sources */,
-				FD076C631AC8CBBB00C893FA /* Frameworks */,
-				FD076C641AC8CBBB00C893FA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FD076C681AC8CBBB00C893FA /* PBXTargetDependency */,
-			);
-			name = bilibiliTests;
-			productName = bilibiliTests;
-			productReference = FD076C661AC8CBBB00C893FA /* bilibiliTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -935,10 +892,6 @@
 					FD076C4F1AC8CBBB00C893FA = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = Y256486DRL;
-					};
-					FD076C651AC8CBBB00C893FA = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = FD076C4F1AC8CBBB00C893FA;
 					};
 				};
 			};
@@ -968,7 +921,6 @@
 			projectRoot = "";
 			targets = (
 				FD076C4F1AC8CBBB00C893FA /* Bilibili */,
-				FD076C651AC8CBBB00C893FA /* bilibiliTests */,
 			);
 		};
 /* End PBXProject section */
@@ -986,13 +938,6 @@
 			fileType = wrapper.application;
 			path = "Chromium Tabs.app";
 			remoteRef = FD36B0A21B988E4A00FB32CC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FD7257161B9D52FE0015B0F1 /* GCDWebServer */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = GCDWebServer;
-			remoteRef = FD7257151B9D52FE0015B0F1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		FD72571A1B9D52FE0015B0F1 /* GCDWebServers.framework */ = {
@@ -1052,13 +997,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FD076C641AC8CBBB00C893FA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1112,22 +1050,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FD076C621AC8CBBB00C893FA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FD076C6D1AC8CBBB00C893FA /* bilibiliTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FD076C681AC8CBBB00C893FA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FD076C4F1AC8CBBB00C893FA /* Bilibili */;
-			targetProxy = FD076C671AC8CBBB00C893FA /* PBXContainerItemProxy */;
-		};
 		FD7257201B9D534C0015B0F1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "GCDWebServers (Mac)";
@@ -1334,42 +1259,6 @@
 			};
 			name = Release;
 		};
-		FD076C741AC8CBBB00C893FA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = bilibiliTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bilibili.app/Contents/MacOS/Bilibili";
-			};
-			name = Debug;
-		};
-		FD076C751AC8CBBB00C893FA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = bilibiliTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bilibili.app/Contents/MacOS/Bilibili";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1387,15 +1276,6 @@
 			buildConfigurations = (
 				FD076C711AC8CBBB00C893FA /* Debug */,
 				FD076C721AC8CBBB00C893FA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FD076C731AC8CBBB00C893FA /* Build configuration list for PBXNativeTarget "bilibiliTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FD076C741AC8CBBB00C893FA /* Debug */,
-				FD076C751AC8CBBB00C893FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
