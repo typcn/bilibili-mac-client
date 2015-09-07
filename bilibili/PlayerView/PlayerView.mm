@@ -476,6 +476,25 @@ static void wakeup(void *context) {
     return info;
 }
 
+- (void) writeHistory{
+    NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/player?id=cid:%@&aid=%@",vCID,vAID]];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+    request.HTTPMethod = @"GET";
+    request.timeoutInterval = 5;
+    
+    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+    NSString *xff = [settingsController objectForKey:@"xff"];
+    NSString *cookie = [settingsController objectForKey:@"cookie"];
+    if([xff length] > 4){
+        [request setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
+        [request setValue:xff forHTTPHeaderField:@"Client-IP"];
+    }
+    [request setValue:cookie forHTTPHeaderField:@"Cookie"];
+    [request setValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" forHTTPHeaderField:@"User-Agent"];
+    NSURLConnection* connection = [NSURLConnection connectionWithRequest:request delegate:nil];
+    [connection start];
+}
+
 - (NSString *) getComments:(NSNumber *)width :(NSNumber *)height {
 
     NSString *resolution = [NSString stringWithFormat:@"%@x%@",width,height];
