@@ -1,4 +1,4 @@
-window.bilimacVersion = 206;
+window.bilimacVersion = 207;
 var TYPCN_PLAYER_CID;
 window.sendToView = function(data){
     $.post("http://localhost:23330/rpc",data);
