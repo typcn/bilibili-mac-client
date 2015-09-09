@@ -26,8 +26,12 @@
 /* Class = "NSSegmentedCell"; 3xs-54-4qH.ibShadowedLabels[2] = "底"; ObjectID = "3xs-54-4qH"; */
 "3xs-54-4qH.ibShadowedLabels[2]" = "Bot";
 
-/* Class = "NSTextFieldCell"; title = "2.所有设置将在下次开始播放时生效，文本框需要按回车保存"; ObjectID = "43T-62-L37"; */
-"43T-62-L37.title" = "2.Settings will apply on next play";
+/* Class = "NSTextFieldCell"; title = "2.仅支持在 /System/Library/Fonts/ 中的弹幕字体"; ObjectID = "QaX-PH-0zE"; */
+
+"QaX-PH-0zE.title" = "2.Only support fonts at /System/Library/Fonts/";
+
+/* Class = "NSTextFieldCell"; title = "3.所有设置将在下次开始播放时生效，文本框需要按回车保存"; ObjectID = "43T-62-L37"; */
+"43T-62-L37.title" = "3.Settings will apply on next play";
 
 /* Class = "NSMenuItem"; title = "退出"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Exit Bilibili";
@@ -260,7 +264,10 @@ https://github.com/typcn/bilibili-mac-client";
 "bbi-rp-tTG.title" = "Open Download Location";
 
 /* Class = "NSTextFieldCell"; title = "弹幕大小参数"; ObjectID = "dJb-2c-b1m"; */
-"dJb-2c-b1m.title" = "Comments Font Arg";
+"dJb-2c-b1m.title" = "Font Arg";
+
+/* Class = "NSTextFieldCell"; title = "弹幕字体"; ObjectID = "6ZU-bU-OI7"; */
+"6ZU-bU-OI7.title" = "Font Name";
 
 /* Class = "NSTextFieldCell"; title = "1.弹幕字体计算方式为 视频高度除以字体参数 ，参数越大 弹幕越小"; ObjectID = "dYW-v7-aMe"; */
 "dYW-v7-aMe.title" = "1.Comment font size = Video Height/Font Arg , Higher is smaller";
@@ -347,7 +354,7 @@ https://github.com/typcn/bilibili-mac-client";
 "uyE-Xu-eZU.title" = "Download Manager";
 
 /* Class = "NSTextFieldCell"; title = "IP 伪造 ( 大陆用户请勿开启 )"; ObjectID = "vMH-pa-ZpX"; */
-"vMH-pa-ZpX.title" = "IP Fake ( 大陆用户请勿开启 )";
+"vMH-pa-ZpX.title" = "IP Fake";
 
 /* Class = "NSMenuItem"; title = "帮助"; ObjectID = "wpr-3q-Mcd"; */
 "wpr-3q-Mcd.title" = "Help";

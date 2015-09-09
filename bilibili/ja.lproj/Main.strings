@@ -28,8 +28,12 @@
 /* Class = "NSSegmentedCell"; 3xs-54-4qH.ibShadowedLabels[2] = "底"; ObjectID = "3xs-54-4qH"; */
 "3xs-54-4qH.ibShadowedLabels[2]" = "下";
 
-/* Class = "NSTextFieldCell"; title = "2.所有设置将在下次开始播放时生效，文本框需要按回车保存"; ObjectID = "43T-62-L37"; */
-"43T-62-L37.title" = "2.新しいの設定は次の再生を始まるの時に有効します。テキストボックスの保存する時には、エンターキーを押してください。";
+/* Class = "NSTextFieldCell"; title = "2.仅支持在 /System/Library/Fonts/ 中的弹幕字体"; ObjectID = "QaX-PH-0zE"; */
+
+"QaX-PH-0zE.title" = "2.Only support fonts at /System/Library/Fonts/"; // Help
+
+/* Class = "NSTextFieldCell"; title = "3.所有设置将在下次开始播放时生效，文本框需要按回车保存"; ObjectID = "43T-62-L37"; */
+"43T-62-L37.title" = "3.新しいの設定は次の再生を始まるの時に有効します。テキストボックスの保存する時には、エンターキーを押してください。";
 
 /* Class = "NSMenuItem"; title = "退出 Bilibili"; ObjectID = "4sb-4s-VLi"; */
 "4sb-4s-VLi.title" = "Bilibili を終了";
@@ -261,6 +265,9 @@ https://github.com/typcn/bilibili-mac-client";
 
 /* Class = "NSTextFieldCell"; title = "弹幕大小参数"; ObjectID = "dJb-2c-b1m"; */
 "dJb-2c-b1m.title" = "弾幕のサイズのナンバー";
+
+/* Class = "NSTextFieldCell"; title = "弹幕字体"; ObjectID = "6ZU-bU-OI7"; */
+"6ZU-bU-OI7.title" = "弾幕字体";
 
 /* Class = "NSTextFieldCell"; title = "1.弹幕字体计算方式为 视频高度除以字体参数 ，参数越大 弹幕越小"; ObjectID = "dYW-v7-aMe"; */
 "dYW-v7-aMe.title" = "1.弾幕のサイズの計算かたはビデオの高さわる弾幕のサイズのナンバー。参数越大 弹幕越小";  /*  喂！泥垢了！  */

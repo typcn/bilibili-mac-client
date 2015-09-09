@@ -522,6 +522,11 @@ static void wakeup(void *context) {
     
     if (urlData or LC)
     {
+        NSString *fontName = [[NSUserDefaults standardUserDefaults] objectForKey:@"fontName"];
+        if(!fontName || [fontName length] < 1){
+            fontName = @"STHeiti";
+        }
+        
         NSString  *filePath = [NSString stringWithFormat:@"%@/%@.cminfo.xml", @"/tmp",vCID];
         
         if(LC){
@@ -594,7 +599,7 @@ static void wakeup(void *context) {
         
         p->SetFile([filePath cStringUsingEncoding:NSUTF8StringEncoding], [OutFile cStringUsingEncoding:NSUTF8StringEncoding]);
         p->SetRes([width intValue], [height intValue]);
-        p->SetFont("STHeiti", (int)[height intValue]/fontsize);
+        p->SetFont([fontName cStringUsingEncoding:NSUTF8StringEncoding], (int)[height intValue]/fontsize);
         p->SetDuration(mq,5);
         p->SetAlpha([[NSString stringWithFormat:@"%.2f",[self getSettings:@"transparency"]] floatValue]);
         p->Convert(disableBottom);
