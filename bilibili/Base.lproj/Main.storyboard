@@ -37,16 +37,6 @@
                                     <action selector="selectSubtitle:" target="0d3-4B-65W" id="rd6-xO-0vC"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LX8-zA-OlO">
-                                <rect key="frame" x="161" y="178" width="274" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="允许所有 ffmpeg 支持的格式" id="9eb-5r-SWr">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EP3-TH-MpO">
                                 <rect key="frame" x="161" y="134" width="274" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -101,13 +91,34 @@
                                     <segue destination="3Nx-YC-zmP" kind="show" id="Y0Z-ee-aqu"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cLu-OC-0jj">
+                                <rect key="frame" x="161" y="178" width="40" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="OR" id="Dde-ch-OBa">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" id="bDH-si-sdl">
+                                <rect key="frame" x="199" y="175" width="199" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Input URL" drawsBackground="YES" id="YHz-dM-jfm">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="setURL:" target="0d3-4B-65W" id="gnk-CD-aLH"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <animations/>
                     </view>
                     <connections>
                         <outlet property="subUrl" destination="W36-Oj-e30" id="zOn-s3-XHu"/>
                         <outlet property="textUrl" destination="EP3-TH-MpO" id="oIj-ai-9Yp"/>
-                        <outlet property="videoUrl" destination="LX8-zA-OlO" id="jgU-WG-DQ6"/>
+                        <outlet property="videoUrl" destination="bDH-si-sdl" id="gCa-Sy-wza"/>
                     </connections>
                 </viewController>
                 <customObject id="Daq-P9-kIP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
