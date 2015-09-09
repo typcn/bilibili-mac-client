@@ -233,7 +233,7 @@ https://github.com/typcn/bilibili-mac-client";
 "VhF-wp-4cU.title" = "切り取り";
 
 /* Class = "NSButtonCell"; title = "选择视频"; ObjectID = "VnN-7Y-cRN"; */
-"VnN-7Y-cRN.title" = "ビヂオを選択";
+"VnN-7Y-cRN.title" = "ビデオを選択";
 
 /* Class = "NSButtonCell"; title = "选择弹幕"; ObjectID = "Wtj-ZP-diZ"; */
 "Wtj-ZP-diZ.title" = "弾幕を選択";
@@ -245,7 +245,7 @@ https://github.com/typcn/bilibili-mac-client";
 "XfT-Og-R8p.title" = "全画面表示にする";
 
 /* Class = "NSTextFieldCell"; placeholderString = "输入 AV 号按回车直接观看"; ObjectID = "Xxm-1R-XoN"; */
-"Xxm-1R-XoN.placeholderString" = "输入 AV 号按回车直接观看";
+"Xxm-1R-XoN.placeholderString" = "AV ナンバーを入力しエンターキーを押してビデオを見る。";
 
 /* Class = "NSMenuItem"; title = "前置全部窗口"; ObjectID = "YSf-sS-evP"; */
 "YSf-sS-evP.title" = "すべての手前にする";
@@ -278,7 +278,7 @@ https://github.com/typcn/bilibili-mac-client";
 "g4M-p0-FkK.title" = "すぐに再生";
 
 /* Class = "NSButtonCell"; title = "Button"; ObjectID = "gP4-5d-Xlk"; */
-"gP4-5d-Xlk.title" = "Button";
+"gP4-5d-Xlk.title" = "ボタン";
 
 /* Class = "NSMenuItem"; title = "粘贴"; ObjectID = "hCf-ds-VPo"; */
 "hCf-ds-VPo.title" = "貼り付け";
@@ -366,3 +366,15 @@ https://github.com/typcn/bilibili-mac-client";
 
 /* Class = "NSTextFieldCell"; title = "弹幕移动速度"; ObjectID = "zpf-lu-2U6"; */
 "zpf-lu-2U6.title" = "コメントスピード";
+
+"6Gu-aq-F1o.title" = "タブ";
+
+"0Ai-R8-YEq.title" = "新しいタブ";
+
+"wDL-0s-zT6.title" = "タブを閉じる";
+
+"oV1-Ec-BaQ.title" = "他のタブをスイッチ";
+
+"lQz-S1-Tzd.title" = "新しいレンダリングエンジンを使用しない";
+
+"cCa-ax-BU2.title" = "再生履歴をアップロードしない";
