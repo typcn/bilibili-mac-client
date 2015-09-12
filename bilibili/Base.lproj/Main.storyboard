@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A216g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="8191"/>
     </dependencies>
     <scenes>
         <!--playLocalVideo-->
@@ -94,6 +94,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cLu-OC-0jj">
                                 <rect key="frame" x="161" y="178" width="40" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="OR" id="Dde-ch-OBa">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -103,6 +104,7 @@
                             <textField verticalHuggingPriority="750" id="bDH-si-sdl">
                                 <rect key="frame" x="199" y="175" width="199" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Input URL" drawsBackground="YES" id="YHz-dM-jfm">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -391,7 +393,7 @@ GQ
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="l0e-ZN-Cyz">
-                                            <rect key="frame" x="0.0" y="0.0" width="483" height="230"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="468" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -617,6 +619,7 @@ Copyleft 2015 TYPCN</string>
                             <customView id="16g-QT-hVf" userLabel="PlayerView">
                                 <rect key="frame" x="0.0" y="0.0" width="437" height="265"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <animations/>
                             </customView>
                             <customView canDrawConcurrently="YES" id="zPp-I3-qDp" userLabel="LoadingView">
                                 <rect key="frame" x="0.0" y="0.0" width="432" height="265"/>
@@ -673,6 +676,7 @@ Copyleft 2015 TYPCN</string>
                                         </textFieldCell>
                                     </textField>
                                 </subviews>
+                                <animations/>
                             </customView>
                         </subviews>
                         <animations/>
@@ -867,6 +871,7 @@ Copyleft 2015 TYPCN</string>
                             <button id="Rut-jD-PYd">
                                 <rect key="frame" x="370" y="192" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="reload" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="irT-9U-zDX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="19"/>
@@ -905,6 +910,7 @@ Copyleft 2015 TYPCN</string>
                             <button id="MaB-eY-KC3">
                                 <rect key="frame" x="331" y="192" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="copy" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e1M-09-6jd">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system" size="19"/>
@@ -1096,6 +1102,7 @@ Copyleft 2015 TYPCN</string>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ubj-zp-AMU">
                                 <rect key="frame" x="30" y="46" width="481" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="2.仅支持在 /System/Library/Fonts/ 中的弹幕字体" id="QaX-PH-0zE">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1117,6 +1124,7 @@ Copyleft 2015 TYPCN</string>
                             <button id="fQc-79-Kyr">
                                 <rect key="frame" x="25" y="344" width="491" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="禁用新版网页渲染引擎" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="lQz-S1-Tzd">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1128,6 +1136,7 @@ Copyleft 2015 TYPCN</string>
                             <button id="iLo-qY-8yG">
                                 <rect key="frame" x="25" y="324" width="491" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <buttonCell key="cell" type="check" title="禁用写入播放历史" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cCa-ax-BU2">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1175,6 +1184,7 @@ Copyleft 2015 TYPCN</string>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OIq-ag-IQD">
                                 <rect key="frame" x="544" y="206" width="75" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕字体" id="6ZU-bU-OI7">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1184,6 +1194,7 @@ Copyleft 2015 TYPCN</string>
                             <textField verticalHuggingPriority="750" id="iLa-hJ-dgh">
                                 <rect key="frame" x="546" y="172" width="88" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="STHeiti" drawsBackground="YES" id="A8r-5c-QC5">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>

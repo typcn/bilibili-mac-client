@@ -22,7 +22,7 @@
 - (void) invokeJSEvent:(NSString *)action withData:(NSString *)data;
 @end
 
-@interface TWebView : NSObject <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler>{
+@interface TWebView : NSObject <WebResourceLoadDelegate ,WebFrameLoadDelegate,WebUIDelegate,WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler>{
     WebView *wv;
     WKWebView *WKwv;
     int webViewType;
