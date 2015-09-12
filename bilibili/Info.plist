@@ -45,6 +45,11 @@
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>
 	<string>http://app.eqoe.cn/updates/bilimac.xml</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 </dict>
