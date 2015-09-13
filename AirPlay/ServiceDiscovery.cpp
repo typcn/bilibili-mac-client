@@ -12,7 +12,7 @@
 
 using namespace std;
 
-map<string,string> SD_Map;      // (Brwose)Name,Domain --> (Resolv)Name,URL
+map<string,string> SD_Map;      // (Browse)Name,Domain --> (Resolve)Name,URL
 DNSServiceRef SD_Serv = NULL;   // Service Ref
 const char *lastRegType;        // Last service type
 string lastServiceName;         // Last service name
