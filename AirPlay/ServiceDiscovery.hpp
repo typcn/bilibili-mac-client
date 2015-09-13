@@ -12,6 +12,7 @@
 #include <stdio.h>
 
 bool SD_Start(const char *regType);
+void SD_Wait();
 void SD_Clear();
 
 #endif /* ServiceDiscovery_hpp */

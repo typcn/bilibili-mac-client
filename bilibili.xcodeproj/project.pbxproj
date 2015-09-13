@@ -67,6 +67,12 @@
 		FD36B0F51B99B62600FB32CC /* ToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0F41B99B62600FB32CC /* ToolBar.m */; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
 		FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files */ = {isa = PBXBuildFile; fileRef = FD4855071AE67AD8008F49AA /* gencache.sh */; };
+		FD4B84441BA5879400DD6F2F /* AirPlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84401BA5879400DD6F2F /* AirPlay.cpp */; settings = {ASSET_TAGS = (); }; };
+		FD4B84451BA5879400DD6F2F /* AirPlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84401BA5879400DD6F2F /* AirPlay.cpp */; settings = {ASSET_TAGS = (); }; };
+		FD4B84461BA5879400DD6F2F /* ServiceDiscovery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84421BA5879400DD6F2F /* ServiceDiscovery.cpp */; settings = {ASSET_TAGS = (); }; };
+		FD4B84471BA5879400DD6F2F /* ServiceDiscovery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84421BA5879400DD6F2F /* ServiceDiscovery.cpp */; settings = {ASSET_TAGS = (); }; };
+		FD4B844A1BA587F600DD6F2F /* AirPlayTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84481BA587F600DD6F2F /* AirPlayTests.mm */; settings = {ASSET_TAGS = (); }; };
+		FD4B844B1BA587F600DD6F2F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD4B84491BA587F600DD6F2F /* Info.plist */; settings = {ASSET_TAGS = (); }; };
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
 		FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */; };
 		FD5B0C621B9ABAFF00045F10 /* TWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD5B0C611B9ABAFF00045F10 /* TWebView.mm */; };
@@ -88,8 +94,6 @@
 		FD7257261B9D5E190015B0F1 /* Analytics.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD7257251B9D5E190015B0F1 /* Analytics.mm */; };
 		FD7328B41B9CD2AA001B450C /* libfontconfig.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7328991B9CD2AA001B450C /* libfontconfig.1.dylib */; };
 		FD7328B51B9CD2AA001B450C /* libmediainfo.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD73289A1B9CD2AA001B450C /* libmediainfo.0.dylib */; };
-		FD9061A91BA5823D0041EF81 /* AirPlay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD9061A51BA5823D0041EF81 /* AirPlay.cpp */; settings = {ASSET_TAGS = (); }; };
-		FD9061AA1BA5823D0041EF81 /* ServiceDiscovery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD9061A71BA5823D0041EF81 /* ServiceDiscovery.cpp */; settings = {ASSET_TAGS = (); }; };
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDD1FDD41B9B14F9006711B0 /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; };
 		FDD1FDD51B9B14F9006711B0 /* ChromiumTabs.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -358,6 +362,13 @@
 		FD36B0F41B99B62600FB32CC /* ToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToolBar.m; path = MainView/ToolBar.m; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FD4855071AE67AD8008F49AA /* gencache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gencache.sh; sourceTree = "<group>"; };
+		FD4B84341BA5874700DD6F2F /* AirPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD4B84401BA5879400DD6F2F /* AirPlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AirPlay.cpp; path = AirPlay/AirPlay.cpp; sourceTree = "<group>"; };
+		FD4B84411BA5879400DD6F2F /* AirPlay.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AirPlay.hpp; path = AirPlay/AirPlay.hpp; sourceTree = "<group>"; };
+		FD4B84421BA5879400DD6F2F /* ServiceDiscovery.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServiceDiscovery.cpp; path = AirPlay/ServiceDiscovery.cpp; sourceTree = "<group>"; };
+		FD4B84431BA5879400DD6F2F /* ServiceDiscovery.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ServiceDiscovery.hpp; path = AirPlay/ServiceDiscovery.hpp; sourceTree = "<group>"; };
+		FD4B84481BA587F600DD6F2F /* AirPlayTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AirPlayTests.mm; path = AirPlay/Tests/AirPlayTests.mm; sourceTree = SOURCE_ROOT; };
+		FD4B84491BA587F600DD6F2F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AirPlay/Tests/Info.plist; sourceTree = SOURCE_ROOT; };
 		FD4D376A1ACEF3FE0022ABF3 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = loading.gif; path = bilibili/img/loading.gif; sourceTree = "<group>"; };
 		FD5101901ACC1A7600C49430 /* client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = client.h; path = bilibili/headers/client.h; sourceTree = "<group>"; };
 		FD51A8601ACA8464007D8972 /* APIKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
@@ -384,10 +395,6 @@
 		FD7257251B9D5E190015B0F1 /* Analytics.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Analytics.mm; path = Others/Analytics.mm; sourceTree = "<group>"; };
 		FD7328991B9CD2AA001B450C /* libfontconfig.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfontconfig.1.dylib; path = bilibili/libs/libfontconfig.1.dylib; sourceTree = "<group>"; };
 		FD73289A1B9CD2AA001B450C /* libmediainfo.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmediainfo.0.dylib; path = bilibili/libs/libmediainfo.0.dylib; sourceTree = "<group>"; };
-		FD9061A51BA5823D0041EF81 /* AirPlay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AirPlay.cpp; path = AirPlay/AirPlay.cpp; sourceTree = "<group>"; };
-		FD9061A61BA5823D0041EF81 /* AirPlay.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = AirPlay.hpp; path = AirPlay/AirPlay.hpp; sourceTree = "<group>"; };
-		FD9061A71BA5823D0041EF81 /* ServiceDiscovery.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ServiceDiscovery.cpp; path = AirPlay/ServiceDiscovery.cpp; sourceTree = "<group>"; };
-		FD9061A81BA5823D0041EF81 /* ServiceDiscovery.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ServiceDiscovery.hpp; path = AirPlay/ServiceDiscovery.hpp; sourceTree = "<group>"; };
 		FDA775E01AD93DC900426483 /* aria2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = aria2.hpp; path = bilibili/headers/aria2.hpp; sourceTree = "<group>"; };
 		FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FDD5EEF61AC944020036B829 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -461,6 +468,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FD4B84311BA5874700DD6F2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -483,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				FD076C501AC8CBBB00C893FA /* Bilibili.app */,
+				FD4B84341BA5874700DD6F2F /* AirPlayTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -749,6 +764,16 @@
 			name = GUI;
 			sourceTree = "<group>";
 		};
+		FD4B84351BA5874700DD6F2F /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				FD4B84481BA587F600DD6F2F /* AirPlayTests.mm */,
+				FD4B84491BA587F600DD6F2F /* Info.plist */,
+			);
+			name = Tests;
+			path = AirPlayTests;
+			sourceTree = "<group>";
+		};
 		FD4D37691ACEF3F20022ABF3 /* img */ = {
 			isa = PBXGroup;
 			children = (
@@ -817,10 +842,11 @@
 		FD90617B1BA563080041EF81 /* AirPlay */ = {
 			isa = PBXGroup;
 			children = (
-				FD9061A51BA5823D0041EF81 /* AirPlay.cpp */,
-				FD9061A61BA5823D0041EF81 /* AirPlay.hpp */,
-				FD9061A71BA5823D0041EF81 /* ServiceDiscovery.cpp */,
-				FD9061A81BA5823D0041EF81 /* ServiceDiscovery.hpp */,
+				FD4B84401BA5879400DD6F2F /* AirPlay.cpp */,
+				FD4B84411BA5879400DD6F2F /* AirPlay.hpp */,
+				FD4B84421BA5879400DD6F2F /* ServiceDiscovery.cpp */,
+				FD4B84431BA5879400DD6F2F /* ServiceDiscovery.hpp */,
+				FD4B84351BA5874700DD6F2F /* Tests */,
 			);
 			name = AirPlay;
 			sourceTree = "<group>";
@@ -878,6 +904,23 @@
 			productReference = FD076C501AC8CBBB00C893FA /* Bilibili.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FD4B84331BA5874700DD6F2F /* AirPlayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD4B84391BA5874700DD6F2F /* Build configuration list for PBXNativeTarget "AirPlayTests" */;
+			buildPhases = (
+				FD4B84301BA5874700DD6F2F /* Sources */,
+				FD4B84311BA5874700DD6F2F /* Frameworks */,
+				FD4B84321BA5874700DD6F2F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AirPlayTests;
+			productName = AirPlayTests;
+			productReference = FD4B84341BA5874700DD6F2F /* AirPlayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -890,6 +933,9 @@
 					FD076C4F1AC8CBBB00C893FA = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = Y256486DRL;
+					};
+					FD4B84331BA5874700DD6F2F = {
+						CreatedOnToolsVersion = 7.0;
 					};
 				};
 			};
@@ -919,6 +965,7 @@
 			projectRoot = "";
 			targets = (
 				FD076C4F1AC8CBBB00C893FA /* Bilibili */,
+				FD4B84331BA5874700DD6F2F /* AirPlayTests */,
 			);
 		};
 /* End PBXProject section */
@@ -995,6 +1042,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FD4B84321BA5874700DD6F2F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD4B844B1BA587F600DD6F2F /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1037,9 +1092,9 @@
 				FD1954B01B259318003A958F /* Settings.m in Sources */,
 				FD7257261B9D5E190015B0F1 /* Analytics.mm in Sources */,
 				FD62CC891B6E6848000AED57 /* MBProgressHUD.m in Sources */,
-				FD9061AA1BA5823D0041EF81 /* ServiceDiscovery.cpp in Sources */,
+				FD4B84461BA5879400DD6F2F /* ServiceDiscovery.cpp in Sources */,
 				FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */,
-				FD9061A91BA5823D0041EF81 /* AirPlay.cpp in Sources */,
+				FD4B84441BA5879400DD6F2F /* AirPlay.cpp in Sources */,
 				FD1954C41B259368003A958F /* LiveChat.m in Sources */,
 				FD36B0F51B99B62600FB32CC /* ToolBar.m in Sources */,
 				C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */,
@@ -1047,6 +1102,16 @@
 				FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */,
 				FD1954CA1B259447003A958F /* AboutView.m in Sources */,
 				FD1954D31B25947A003A958F /* playLocalFile.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FD4B84301BA5874700DD6F2F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD4B84471BA5879400DD6F2F /* ServiceDiscovery.cpp in Sources */,
+				FD4B84451BA5879400DD6F2F /* AirPlay.cpp in Sources */,
+				FD4B844A1BA587F600DD6F2F /* AirPlayTests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1262,6 +1327,38 @@
 			};
 			name = Release;
 		};
+		FD4B843A1BA5874700DD6F2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"SD_LL=1",
+					"DEBUG=1",
+				);
+				INFOPLIST_FILE = AirPlay/Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.typcn.AirPlayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FD4B843B1BA5874700DD6F2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "SD_LL=1";
+				INFOPLIST_FILE = AirPlay/Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.typcn.AirPlayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1282,6 +1379,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		FD4B84391BA5874700DD6F2F /* Build configuration list for PBXNativeTarget "AirPlayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD4B843A1BA5874700DD6F2F /* Debug */,
+				FD4B843B1BA5874700DD6F2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
