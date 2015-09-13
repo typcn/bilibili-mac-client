@@ -32,10 +32,28 @@
     dispatch_async(dispatch_get_global_queue(0, NULL),^(void){
         SD_Start("_airplay._tcp");
         SD_Wait();
+        const char* serviceName = nullptr;
+        const char* domain = nullptr;
+        for ( const auto &pair : SD_Map) {
+            serviceName = pair.first.c_str();
+            domain      = pair.second.c_str();
+        }
+        printf("[AirPlayTest] using %s\n",serviceName);
+        
+        SD_Resolve(serviceName,domain);
+        SD_Wait();
+        
+        const char* address = nullptr;
+        for ( const auto &pair : SD_Map) {
+            serviceName = pair.first.c_str();
+            address      = pair.second.c_str();
+        }
+        printf("[AirPlayTest] Result: %s , %s\n",serviceName, address);
+        
         [expectation fulfill];
     });
     
-    [self waitForExpectationsWithTimeout:15.0 handler:^(NSError *error) {
+    [self waitForExpectationsWithTimeout:30.0 handler:^(NSError *error) {
         
         if(error)
         {

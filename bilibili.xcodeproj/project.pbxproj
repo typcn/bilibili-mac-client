@@ -842,10 +842,10 @@
 		FD90617B1BA563080041EF81 /* AirPlay */ = {
 			isa = PBXGroup;
 			children = (
-				FD4B84401BA5879400DD6F2F /* AirPlay.cpp */,
 				FD4B84411BA5879400DD6F2F /* AirPlay.hpp */,
-				FD4B84421BA5879400DD6F2F /* ServiceDiscovery.cpp */,
+				FD4B84401BA5879400DD6F2F /* AirPlay.cpp */,
 				FD4B84431BA5879400DD6F2F /* ServiceDiscovery.hpp */,
+				FD4B84421BA5879400DD6F2F /* ServiceDiscovery.cpp */,
 				FD4B84351BA5874700DD6F2F /* Tests */,
 			);
 			name = AirPlay;
