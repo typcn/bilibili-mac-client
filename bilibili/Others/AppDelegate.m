@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HTTPServer.h"
+#include "ServiceDiscovery.hpp"
 
 Browser *browser;
 
@@ -103,6 +104,8 @@ Browser *browser;
     
     // Start HTTP Server
     [[HTTPServer alloc] startHTTPServer];
+    
+    //SD_Start("_airplay._tcp");
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
