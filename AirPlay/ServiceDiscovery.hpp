@@ -17,7 +17,7 @@ extern std::map<std::string,std::string> SD_Map;
 
 bool SD_Start(const char *regType);
 bool SD_Resolve(const char* name,const char *domain);
-void SD_Wait();
+void SD_Wait(int waitTime);
 void SD_Clear();
 
 #endif /* ServiceDiscovery_hpp */

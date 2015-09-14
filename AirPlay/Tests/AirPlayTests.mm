@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #include "ServiceDiscovery.hpp"
+#include "AirPlay.hpp"
 
 @interface AirPlayTests : XCTestCase
 
@@ -31,7 +32,7 @@
 
     dispatch_async(dispatch_get_global_queue(0, NULL),^(void){
         SD_Start("_airplay._tcp");
-        SD_Wait();
+        SD_Wait(5);
         const char* serviceName = nullptr;
         const char* domain = nullptr;
         for ( const auto &pair : SD_Map) {
@@ -41,7 +42,7 @@
         printf("[AirPlayTest] using %s\n",serviceName);
         
         SD_Resolve(serviceName,domain);
-        SD_Wait();
+        SD_Wait(5);
         
         const char* address = nullptr;
         for ( const auto &pair : SD_Map) {
@@ -63,11 +64,24 @@
     }];
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testAirPlay{
+    AirPlay *ap = new AirPlay();
+    NSDictionary *dlist = ap->getDeviceList();
+    NSLog(@"Got device list: %@",dlist);
+    const char *device = nullptr;
+    const char *domain = nullptr;
+    for(id devName in dlist){
+        device = [devName cStringUsingEncoding:NSUTF8StringEncoding];
+        domain = [dlist[devName] cStringUsingEncoding:NSUTF8StringEncoding];
+    }
+    bool suc = ap->selectDevice(device,domain);
+    if(!suc){
+        NSLog(@"Failed to resolve device %s",device);
+    }
+    ap->reverse();
+    sleep(2);
+    ap->playVideo("http://video1.tycdn.net/55c35a0b33099cbb448f6bb7%2F1439274348294?e=1442263658&token=haVOvb9zqAgnR6siMuYAchh19FHwQZku30cgv6lg:cJOpWR0GN9NtfcuBmzTOpNbIXlY=", 0);
+    sleep(60);
 }
 
 @end

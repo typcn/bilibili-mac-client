@@ -81,7 +81,7 @@ bool SD_Resolve(const char* name,const char *domain){
     return true;
 }
 
-void SD_Wait(){
+void SD_Wait(int waitTime){
     int dns_sd_fd  = SD_Serv ? DNSServiceRefSockFD(SD_Serv) : -1;
     int nfds = dns_sd_fd + 1;
     fd_set readfds;
@@ -90,7 +90,7 @@ void SD_Wait(){
     
     //if (dns_sd_fd2 > dns_sd_fd) nfds = dns_sd_fd2 + 1;
     
-    while (time(0) - SD_StartTime < 6)
+    while (time(0) - SD_StartTime < waitTime)
     {
         FD_ZERO(&readfds);
         if (SD_Serv) FD_SET(dns_sd_fd , &readfds);
@@ -108,7 +108,7 @@ void SD_Wait(){
                 SD_StartTime = 0;
             }
         }else if(result == 0){
-            sleep(1);
+            sleep(0.5);
             continue;
         }else{
             fprintf(stderr, "[ServiceDiscovery] select() returned %d\n", result);
