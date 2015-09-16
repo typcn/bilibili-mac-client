@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <string>
 #include <map>
+#include <arpa/inet.h>
 
 #import <Foundation/Foundation.h>
 
@@ -20,8 +21,12 @@
 
 class AirPlay{
 private:
+    int sock;
+    int port;
+    std::string address;
     std::string uuid;
     std::string connStr;
+    struct sockaddr_in sockaddr;
     NSString *userAgent = @"TYPCNAirPlay/1.00 (like iTunes/12.2.2)";
 public:
     NSDictionary *getDeviceList();

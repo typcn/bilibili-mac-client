@@ -5,19 +5,28 @@
 //  Created by TYPCN on 2015/9/13.
 //  2015 TYPCN. MIT License
 //
+//  WARNING: This is very experimental code , for testing only
+//
 
 #include "ServiceDiscovery.hpp"
 #include <dns_sd.h>
 #include <sys/types.h>
+#include <unistd.h>			// For getopt() and optind
+#include <netdb.h>			// For getaddrinfo()
+#include <sys/time.h>		// For struct timeval
+#include <sys/socket.h>		// For AF_INET
+#include <netinet/in.h>		// For struct sockaddr_in()
+#include <arpa/inet.h>		// For inet_addr()
+#include <net/if.h>
 
 using namespace std;
 
-map<string,string> SD_Map;      // (Browse)Name,Domain --> (Resolve)Name,URL
-DNSServiceRef SD_Serv = NULL;   // Service Ref
-const char *lastRegType;        // Last service type
-string lastServiceName;         // Last service name
-
-time_t SD_StartTime = 0;
+map<string,string>  SD_Map;             // (Browse)Name,Domain --> (Resolve)Name,URL
+DNSServiceRef       SD_Serv = NULL;     // Service Ref
+struct in_addr      SD_inAddr;          // Last resolved addr
+const char *        SD_RegType;         // Last service type
+string              SD_ServiceName;     // Last service name
+time_t              SD_StartTime = 0;
 
 #if SD_LL == 1
 #define SD_Log(...) \
@@ -46,15 +55,29 @@ void SD_ResolveReply(DNSServiceRef sdRef     , DNSServiceFlags flags   , uint32_
         union { uint16_t s; u_char b[2]; } port = { opaqueport };
         uint16_t portNumber = ((uint16_t)port.b[0]) << 8 | port.b[1];
         string connect_str = string(hostTarget) + ":" + to_string(portNumber);
-        SD_Map[lastServiceName] = connect_str;
-        SD_Log("[ServiceDiscovery] %s be reached at %s\n",lastServiceName.c_str() , connect_str.c_str());
+        SD_Map[SD_ServiceName] = connect_str;
+        SD_Log("[ServiceDiscovery] %s be reached at %s\n",SD_ServiceName.c_str() , connect_str.c_str());
     }else{
         fprintf(stderr, "[ServiceDiscovery] Cannot find device host , errorCode: %d\n", errorCode);
     }
 };
 
+void SD_AddrReply(DNSServiceRef sdref, DNSServiceFlags flags, uint32_t interfaceIndex, DNSServiceErrorType errorCode, const char *hostname, const struct sockaddr *address, uint32_t ttl, void *context)
+{
+    if (errorCode)
+    {
+        if (errorCode == kDNSServiceErr_NoSuchRecord){
+            printf("[ServiceDiscovery] GetAddrInfo failed , No Such Record");
+        }else{
+            printf("[ServiceDiscovery] GetAddrInfo failed ,  Error code %d", errorCode);
+        }
+    }else{
+        SD_inAddr = ((struct sockaddr_in *)address)->sin_addr;
+    }
+}
+
 bool SD_Start(const char *regType){
-    lastRegType = regType;
+    SD_RegType = regType;
     SD_Log("[ServiceDiscovery] Starting find %s\n",regType);
     DNSServiceErrorType err = DNSServiceBrowse(&SD_Serv, 0, 0, regType, NULL, SD_BrowseReply, NULL);
     if(err == kDNSServiceErr_NoError){
@@ -68,9 +91,9 @@ bool SD_Start(const char *regType){
 
 bool SD_Resolve(const char* name,const char *domain){
     SD_Serv = NULL;
-    lastServiceName = string(name);
+    SD_ServiceName = string(name);
     SD_Log("[ServiceDiscovery] Starting resolve %s\n",name);
-    DNSServiceErrorType err = DNSServiceResolve(&SD_Serv,0,0, name, lastRegType, domain, SD_ResolveReply, NULL);
+    DNSServiceErrorType err = DNSServiceResolve(&SD_Serv,0,0, name, SD_RegType, domain, SD_ResolveReply, NULL);
     if(err == kDNSServiceErr_NoError){
         SD_StartTime = time(0);
         SD_Log("[ServiceDiscovery] Recolve started \n");
@@ -78,7 +101,20 @@ bool SD_Resolve(const char* name,const char *domain){
     }else{
         return false;
     }
-    return true;
+}
+
+bool SD_Addr(const char* hostname){
+    SD_Serv = NULL;
+    SD_Log("[ServiceDiscovery] Starting Getaddrinfo %s\n",hostname);
+    DNSServiceErrorType err = DNSServiceGetAddrInfo(&SD_Serv, kDNSServiceFlagsReturnIntermediates, 0, kDNSServiceProtocol_IPv4, hostname, SD_AddrReply, NULL);
+    // TODO: IPv6 Support
+    if(err == kDNSServiceErr_NoError){
+        SD_StartTime = time(0);
+        SD_Log("[ServiceDiscovery] GetAddrInfo Started \n");
+        return true;
+    }else{
+        return false;
+    }
 }
 
 void SD_Wait(int waitTime){
@@ -121,6 +157,6 @@ void SD_Clear(){
     SD_Map.clear();
     SD_Serv = NULL;
     SD_StartTime = 0;
-    lastServiceName.clear();
-    delete lastRegType;
+    SD_ServiceName.clear();
+    delete SD_RegType;
 }

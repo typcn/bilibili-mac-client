@@ -14,9 +14,11 @@
 #include <string>
 
 extern std::map<std::string,std::string> SD_Map;
+extern struct in_addr SD_inAddr;
 
 bool SD_Start(const char *regType);
 bool SD_Resolve(const char* name,const char *domain);
+bool SD_Addr(const char* hostname);
 void SD_Wait(int waitTime);
 void SD_Clear();
 

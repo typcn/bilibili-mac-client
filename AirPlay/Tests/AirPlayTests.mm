@@ -80,7 +80,7 @@
     }
     ap->reverse();
     sleep(2);
-    ap->playVideo("http://video1.tycdn.net/55c35a0b33099cbb448f6bb7%2F1439274348294?e=1442263658&token=haVOvb9zqAgnR6siMuYAchh19FHwQZku30cgv6lg:cJOpWR0GN9NtfcuBmzTOpNbIXlY=", 0);
+    ap->playVideo("http://video1.tycdn.net/55c35a0b33099cbb448f6bb7%2F1439274348294?e=1442394671&token=haVOvb9zqAgnR6siMuYAchh19FHwQZku30cgv6lg:3sd5cLoESQA6LqmHmkwESyHhgvE=", 0);
     sleep(60);
 }
 

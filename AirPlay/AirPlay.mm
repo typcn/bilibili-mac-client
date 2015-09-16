@@ -5,11 +5,17 @@
 //  Created by TYPCN on 2015/9/13.
 //  2015 TYPCN. MIT License
 //
-//  WARNING: This is very experimental testing code
+//  WARNING: This is very experimental code , for testing only
 //
 
 #include "AirPlay.hpp"
 #include "ServiceDiscovery.hpp"
+#include "reverseHTTP.hpp"
+#include <sstream>
+#include <sys/socket.h>
+#include <netdb.h>
+
+using namespace std;
 
 NSDictionary *AirPlay::getDeviceList(){
     SD_Start("_airplay._tcp");
@@ -27,7 +33,7 @@ bool AirPlay::selectDevice(const char* deviceName,const char* domain){
     SD_Resolve(deviceName,domain);
     SD_Wait(2);
     for ( const auto &pair : SD_Map) {
-        if(pair.first == std::string(deviceName)){
+        if(pair.first == string(deviceName)){
             connStr = pair.second;
         }
     }
@@ -53,46 +59,31 @@ void AirPlay::reverse(){
             rand() % 0x3fff + 0x8000,       // Generates a 32-bit Hex number in the range [0x8000, 0xbfff]
             rand(), rand(), rand());        // Generates a 96-bit Hex number
     
-    uuid = std::string(tmp_uuid);
+    uuid = string(tmp_uuid);
     
-    NSString* ConnStr = [NSString stringWithCString:connStr.c_str() encoding:NSUTF8StringEncoding];
-    NSString* URLStr = [NSString stringWithFormat:@"http://%@/reverse",ConnStr];
-    NSURL* URL = [NSURL URLWithString:URLStr];
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
-    request.HTTPMethod = @"POST";
+    PTTH *rhttp = new PTTH();
+    rhttp->conn(connStr.c_str());
+  
+    stringstream ss;
+    ss << "POST /reverse HTTP/1.1" << "\r\n";
+    ss << "Upgrade: PTTH/1.0" << "\r\n";
+    ss << "Connection: Upgrade" << "\r\n";
+    ss << "X-Apple-Purpose: event" << "\r\n";
+    ss << "Content-Length: 0" << "\r\n";
+    ss << "User-Agent: " << [userAgent cStringUsingEncoding:NSUTF8StringEncoding] << "\r\n";
+    ss << "X-Apple-Session-ID: " << uuid << "\r\n";
+    ss << "\r\n";
     
-    // Headers
-    
-    NSString *nsuuid = [NSString stringWithCString:uuid.c_str() encoding:NSUTF8StringEncoding];
-    
-    [request addValue:@"PTTH/1.0"   forHTTPHeaderField:@"Upgrade"];
-    [request addValue:@"Upgrade"    forHTTPHeaderField:@"Connection"];
-    [request addValue:@"event"      forHTTPHeaderField:@"X-Apple-Purpose"];
-    [request addValue:@"0"          forHTTPHeaderField:@"Content-Length"];
-    [request addValue:userAgent     forHTTPHeaderField:@"User-Agent"];
-    [request addValue:nsuuid        forHTTPHeaderField:@"X-Apple-Session-ID"];
-    
-    // Connection
-    
-    NSURLSessionConfiguration* sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession* session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:nil delegateQueue:nil];
-    
-    NSURLSessionDataTask* task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error == nil) {
-            // Success
-            NSLog(@"Airplay UUID reverse succeeded: HTTP %ld", ((NSHTTPURLResponse*)response).statusCode);
-        }
-        else {
-            // Failure
-            NSLog(@"Airplay UUID reverse failed %@", [error localizedDescription]);
-        }
-    }];
-    [task resume];
+    string sendStr = ss.str();
+    rhttp->send_data(sendStr.c_str(), (int)sendStr.size());
+    string result = rhttp->receive(2048);
+    printf("Reverse result: %s",result.c_str());
 }
 
 void AirPlay::playVideo(const char* url,float startpos){
     NSString* ConnStr = [NSString stringWithCString:connStr.c_str() encoding:NSUTF8StringEncoding];
     NSString* URLStr = [NSString stringWithFormat:@"http://%@/play",ConnStr];
+
     
     NSURL* URL = [NSURL URLWithString:URLStr];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
