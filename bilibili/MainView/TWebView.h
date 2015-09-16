@@ -19,7 +19,6 @@
 - (void) failLoadOrNavigation: (NSURLRequest *) request withError: (NSError *) error;
 - (void) finishLoadOrNavigation: (NSURLRequest *) request;
 - (void) onTitleChange:(NSString *)str;
-- (void) invokeJSEvent:(NSString *)action withData:(NSString *)data;
 @end
 
 #if MAC_OS_X_VERSION < MAC_OS_X_VERSION_10_11

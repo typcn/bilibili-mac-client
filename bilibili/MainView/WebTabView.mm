@@ -181,89 +181,16 @@
     [self setTitle:[webView getTitle]];
 }
 
-- (void) invokeJSEvent:(NSString *)action withData:(NSString *)data{
-    if([action isEqualToString:@"playVideoByCID"]){
-        [self playVideoByCID:data];
-    }else if([action isEqualToString:@"downloadVideoByCID"]){
-        [self downloadVideoByCID:data];
-    }else if([action isEqualToString:@"checkforUpdate"]){
-        [self checkForUpdates];
-    }else if([action isEqualToString:@"showNotification"]){
-        [self showNotification:data];
-    }else if([action isEqualToString:@"setcookie"]){
-        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"cookie"];
-    }
-}
-
 - (void)onTitleChange:(NSString *)str{
     [self setTitle:str];
     [webView runJavascript:WebScript];
 }
-
-
-- (void)showNotification:(NSString *)content{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:HudView animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = content;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:3];
-}
-
 
 - (void)showError
 {
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:NSLocalizedString(@"文件读取失败，您可能无法正常使用本软件，请向开发者反馈。", nil)];
     [alert runModal];
-}
-
-- (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems{
-    NSMenuItem *copy = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"复制页面地址", nil) action:@selector(CopyLink:) keyEquivalent:@""];
-    [copy setTarget:self];
-    [copy setEnabled:YES];
-    NSMenuItem *play = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"强制显示播放界面", nil) action:@selector(ShowPlayer) keyEquivalent:@""];
-    [play setTarget:self];
-    [play setEnabled:YES];
-    NSMenuItem *contact = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"呼叫程序猿", nil) action:@selector(Contact) keyEquivalent:@""];
-    [contact setTarget:self];
-    [contact setEnabled:YES];
-    NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
-    [mutableArray addObjectsFromArray:defaultMenuItems];
-    [mutableArray addObject:copy];
-    [mutableArray addObject:play];
-    [mutableArray addObject:contact];
-    return mutableArray;
-}
-
-- (IBAction)CopyLink:(id)sender {
-    [[NSPasteboard generalPasteboard] clearContents];
-    [[NSPasteboard generalPasteboard] setString:[webView getURL]  forType:NSStringPboardType];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:HudView animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = NSLocalizedString(@"当前页面地址已经复制到剪贴板", nil);
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:3];
-}
-
-- (void)ShowPlayer{
-    [webView runJavascript:WebScript];
-}
-
-- (void)Contact{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"mailto:typcncom@gmail.com"]];
-}
-
-- (IBAction)openAv:(id)sender {
-    NSString *avNumber = [sender stringValue];
-    if([[sender stringValue] length] > 2 ){
-        if ([[avNumber substringToIndex:2] isEqual: @"av"]) {
-            avNumber = [avNumber substringFromIndex:2];
-        }
-        
-        
-        [webView setURL:[NSString stringWithFormat:@"http://www.bilibili.com/video/av%@",avNumber]];
-        [sender setStringValue:@""];
-    }
 }
 
 @end
