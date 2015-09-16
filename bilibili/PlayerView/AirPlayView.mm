@@ -117,7 +117,6 @@
         dispatch_async(dispatch_get_main_queue(), ^(void){
             isPlaying = true;
             [disconnBtn setEnabled:YES];
-            [tableView reloadData];
         });
     });
 }
