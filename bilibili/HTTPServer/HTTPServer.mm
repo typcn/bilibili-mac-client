@@ -33,12 +33,19 @@
     }
     [GCDWebServer setLogLevel:2];
     GCDWebServer* webServer = [[GCDWebServer alloc] init];
+    
+    
     [webServer addDefaultHandlerForMethod:@"GET"
                              requestClass:[GCDWebServerRequest class]
                              processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
-        return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>Bilibili for mac http service</p></body></html>"];
+        
+        GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>Bilibili for mac http service</p></body></html>"];
+        [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
+        return rep;
                                  
     }];
+    
+    
     [webServer addHandlerForMethod:@"POST" path:@"/rpc" requestClass:[GCDWebServerURLEncodedFormRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
         NSDictionary *dic = [(GCDWebServerURLEncodedFormRequest*) request arguments];
         
@@ -58,8 +65,9 @@
                 cookie = data;
             }
         });
-        
-        return [GCDWebServerDataResponse responseWithText:@"OK"];
+        GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithText:@"ok"];
+        [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
+        return rep;
     }];
     [NSTimer scheduledTimerWithTimeInterval:20
                                      target:self
