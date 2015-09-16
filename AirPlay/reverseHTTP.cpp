@@ -94,10 +94,10 @@ string PTTH::receive(int size=512)
     {
         shutdown(sock, SHUT_RDWR);
         sock = -1;
-        return NULL;
+        return "";
     }else if(code < 0){
         sock = -1;
-        return NULL;
+        return "";
     }
     string reply(buffer);
     return reply;

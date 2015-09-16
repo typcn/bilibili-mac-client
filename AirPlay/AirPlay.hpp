@@ -9,6 +9,7 @@
 #ifndef AirPlay_hpp
 #define AirPlay_hpp
 
+#include "reverseHTTP.hpp"
 #include <stdio.h>
 #include <string>
 #include <map>
@@ -18,11 +19,9 @@
 
 // To use on other platforms , Just change the NSURLSession to libcURL , NSArray to std::map
 
-
 class AirPlay{
 private:
-    int sock;
-    int port;
+    PTTH *rhttp;
     std::string address;
     std::string uuid;
     std::string connStr;
@@ -31,7 +30,7 @@ private:
 public:
     NSDictionary *getDeviceList();
     bool selectDevice(const char* deviceName,const char* domain);
-    void reverse();
+    bool reverse();
     void playVideo(const char* url,float startpos);
 };
 

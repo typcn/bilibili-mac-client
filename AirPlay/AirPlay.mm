@@ -10,7 +10,8 @@
 
 #include "AirPlay.hpp"
 #include "ServiceDiscovery.hpp"
-#include "reverseHTTP.hpp"
+
+#include <thread>
 #include <sstream>
 #include <sys/socket.h>
 #include <netdb.h>
@@ -44,9 +45,23 @@ bool AirPlay::selectDevice(const char* deviceName,const char* domain){
     }
 }
 
-void AirPlay::reverse(){
+void revReply(PTTH *rhttp){
+    // TODO: Processing result
+    const char* response = "HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n";
+    int length = (int)strlen(response);
+    while(rhttp){
+        string res = rhttp->receive(2048);
+        if(res.length() < 1){
+            sleep(1);
+        }else{
+            rhttp->send_data(response, length);
+        }
+    }
+}
+
+bool AirPlay::reverse(){
     if(connStr.empty()){
-        return;
+        return false;
     }
     
     srand((int)time(0));
@@ -61,9 +76,12 @@ void AirPlay::reverse(){
     
     uuid = string(tmp_uuid);
     
-    PTTH *rhttp = new PTTH();
-    rhttp->conn(connStr.c_str());
-  
+    rhttp = new PTTH();
+    bool suc = rhttp->conn(connStr.c_str());
+    if(!suc){
+        return false;
+    }
+    
     stringstream ss;
     ss << "POST /reverse HTTP/1.1" << "\r\n";
     ss << "Upgrade: PTTH/1.0" << "\r\n";
@@ -75,9 +93,19 @@ void AirPlay::reverse(){
     ss << "\r\n";
     
     string sendStr = ss.str();
-    rhttp->send_data(sendStr.c_str(), (int)sendStr.size());
+    suc = rhttp->send_data(sendStr.c_str(), (int)sendStr.size());
+    if(!suc){
+        return false;
+    }
+    
     string result = rhttp->receive(2048);
-    printf("Reverse result: %s",result.c_str());
+    if(result.find("101") != string::npos){
+        std::thread t1(revReply,rhttp);
+        t1.detach();
+        return true;
+    }else{
+        return false;
+    }
 }
 
 void AirPlay::playVideo(const char* url,float startpos){
