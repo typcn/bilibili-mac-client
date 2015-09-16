@@ -22,16 +22,16 @@
 class AirPlay{
 private:
     PTTH *rhttp;
-    std::string address;
     std::string uuid;
     std::string connStr;
-    struct sockaddr_in sockaddr;
     NSString *userAgent = @"TYPCNAirPlay/1.00 (like iTunes/12.2.2)";
 public:
     NSDictionary *getDeviceList();
     bool selectDevice(const char* deviceName,const char* domain);
     bool reverse();
     void playVideo(const char* url,float startpos);
+    void stop();
+    void disconnect();
 };
 
 #endif /* AirPlay_hpp */

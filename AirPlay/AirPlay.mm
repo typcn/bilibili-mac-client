@@ -18,6 +18,8 @@
 
 using namespace std;
 
+bool disconnected;
+
 NSDictionary *AirPlay::getDeviceList(){
     SD_Start("_airplay._tcp");
     SD_Wait(3);
@@ -49,7 +51,7 @@ void revReply(PTTH *rhttp){
     // TODO: Processing result
     const char* response = "HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n";
     int length = (int)strlen(response);
-    while(rhttp){
+    while(!disconnected){
         string res = rhttp->receive(2048);
         if(res.length() < 1){
             sleep(1);
@@ -57,6 +59,8 @@ void revReply(PTTH *rhttp){
             rhttp->send_data(response, length);
         }
     }
+    rhttp->disconnect();
+    rhttp = nullptr;
 }
 
 bool AirPlay::reverse(){
@@ -144,4 +148,43 @@ void AirPlay::playVideo(const char* url,float startpos){
         }
     }];
     [task resume];
+}
+
+void AirPlay::stop(){
+    NSString* ConnStr = [NSString stringWithCString:connStr.c_str() encoding:NSUTF8StringEncoding];
+    NSString* URLStr = [NSString stringWithFormat:@"http://%@/stop",ConnStr];
+    
+    
+    NSURL* URL = [NSURL URLWithString:URLStr];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+    request.HTTPMethod = @"POST";
+    
+    // Headers
+    
+    NSString *nsuuid = [NSString stringWithCString:uuid.c_str() encoding:NSUTF8StringEncoding];
+    
+    [request addValue:userAgent     forHTTPHeaderField:@"User-Agent"];
+    [request addValue:@"0" forHTTPHeaderField:@"Content-Length"];
+    [request addValue:nsuuid        forHTTPHeaderField:@"X-Apple-Session-ID"];
+    
+    // Connection
+    
+    NSURLSessionConfiguration* sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:nil delegateQueue:nil];
+    
+    NSURLSessionDataTask* task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error == nil) {
+            NSLog(@"Airplay stop : HTTP %ld", ((NSHTTPURLResponse*)response).statusCode);
+        }
+        else {
+            NSLog(@"Airplay stop failed %@", [error localizedDescription]);
+        }
+    }];
+    [task resume];
+}
+
+void AirPlay::disconnect(){
+    disconnected = true;
+    uuid.clear();
+    connStr.clear();
 }

@@ -70,7 +70,7 @@
     NSLog(@"Got device list: %@",dlist);
     const char *device = nullptr;
     const char *domain = nullptr;
-    for(id devName in dlist){ 
+    for(id devName in dlist){
         device = [devName cStringUsingEncoding:NSUTF8StringEncoding];
         domain = [dlist[devName] cStringUsingEncoding:NSUTF8StringEncoding];
     }
@@ -83,8 +83,11 @@
         NSLog(@"Failed to establish reverse connection");
     }
     sleep(2);
-    ap->playVideo("http://video1.tycdn.net/55c35a0b33099cbb448f6bb7%2F1439274348294?e=1442394671&token=haVOvb9zqAgnR6siMuYAchh19FHwQZku30cgv6lg:3sd5cLoESQA6LqmHmkwESyHhgvE=", 0);
+    ap->playVideo("http://mac.lan:20003/2.mp4", 0);
     sleep(60);
+    ap->stop();
+    sleep(1);
+    ap->disconnect();
 }
 
 @end
