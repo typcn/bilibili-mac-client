@@ -1,21 +1,33 @@
 
-/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "1fU-d0-Bj2"; */
-"1fU-d0-Bj2.title" = "Table View Cell";
+/* Class = "NSTextFieldCell"; title = "读取中"; ObjectID = "1fU-d0-Bj2"; */
+"1fU-d0-Bj2.title" = "Refreshing";
 
-/* Class = "NSTableColumn"; headerCell.title = "Address"; ObjectID = "3wQ-ES-pHP"; */
+/* Class = "NSTableColumn"; headerCell.title = "地址"; ObjectID = "3wQ-ES-pHP"; */
 "3wQ-ES-pHP.headerCell.title" = "Address";
 
-/* Class = "NSWindow"; title = "AirPlay Control ( TEST )"; ObjectID = "QvC-M9-y7g"; */
+/* Class = "NSButtonCell"; title = "结束播放"; ObjectID = "7Xw-IJ-rQj"; */
+"7Xw-IJ-rQj.title" = "End playback";
+
+/* Class = "NSTextFieldCell"; title = "日志"; ObjectID = "IAx-Ml-kBu"; */
+"IAx-Ml-kBu.title" = "Log";
+
+/* Class = "NSWindow"; title = "AirPlay Control ( 测试 )"; ObjectID = "QvC-M9-y7g"; */
 "QvC-M9-y7g.title" = "AirPlay Control ( TEST )";
 
-/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "Tx8-YH-w6e"; */
-"Tx8-YH-w6e.title" = "Table View Cell";
+/* Class = "NSTextFieldCell"; title = "读取中"; ObjectID = "Tx8-YH-w6e"; */
+"Tx8-YH-w6e.title" = "Refreshing";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "aFL-Pm-uJD"; */
 "aFL-Pm-uJD.title" = "Text Cell";
 
-/* Class = "NSTableColumn"; headerCell.title = "Device Name"; ObjectID = "cgF-CO-0sw"; */
-"cgF-CO-0sw.headerCell.title" = "Device Name";
+/* Class = "NSTableColumn"; headerCell.title = "设备名称"; ObjectID = "cgF-CO-0sw"; */
+"cgF-CO-0sw.headerCell.title" = "Device";
 
 /* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "k8a-yi-nUd"; */
 "k8a-yi-nUd.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "刷新"; ObjectID = "nle-RQ-e8f"; */
+"nle-RQ-e8f.title" = "Refresh";
+
+/* Class = "NSButtonCell"; title = "连接"; ObjectID = "p0U-2v-EsG"; */
+"p0U-2v-EsG.title" = "Connect";

@@ -407,7 +407,7 @@
 		FDDE11681BA9955400230184 /* AirPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AirPlayView.h; path = PlayerView/AirPlayView.h; sourceTree = "<group>"; };
 		FDDE11691BA9955400230184 /* AirPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AirPlayView.m; path = PlayerView/AirPlayView.m; sourceTree = "<group>"; };
 		FDDE116E1BA997EB00230184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AirPlay.xib; sourceTree = "<group>"; };
-		FDDE11721BA999A300230184 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AirPlay.strings; sourceTree = "<group>"; };
+		FDDE11741BA99B0F00230184 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AirPlay.strings; sourceTree = "<group>"; };
 		FDEC3B1C1BA02E5C002DA0EE /* libass.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libass.5.dylib; path = bilibili/libs/libass.5.dylib; sourceTree = "<group>"; };
 		FDEC3B1D1BA02E5C002DA0EE /* libavcodec.57.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavcodec.57.dylib; path = bilibili/libs/libavcodec.57.dylib; sourceTree = "<group>"; };
 		FDEC3B1E1BA02E5C002DA0EE /* libavdevice.57.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavdevice.57.dylib; path = bilibili/libs/libavdevice.57.dylib; sourceTree = "<group>"; };
@@ -1192,7 +1192,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FDDE116E1BA997EB00230184 /* Base */,
-				FDDE11721BA999A300230184 /* en */,
+				FDDE11741BA99B0F00230184 /* en */,
 			);
 			name = AirPlay.xib;
 			sourceTree = "<group>";
