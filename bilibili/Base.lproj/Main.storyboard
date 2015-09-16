@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A216g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="8191"/>
     </dependencies>
     <scenes>
         <!--playLocalVideo-->
@@ -125,7 +124,7 @@
                 </viewController>
                 <customObject id="Daq-P9-kIP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1147" y="-205"/>
+            <point key="canvasLocation" x="-28" y="-599"/>
         </scene>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
@@ -375,7 +374,7 @@ GQ
                 </tabViewController>
                 <customObject id="Jtf-Yi-U5Z" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="591" y="-599"/>
+            <point key="canvasLocation" x="803" y="-928"/>
         </scene>
         <!--Keyword Block Settings-->
         <scene sceneID="3ds-d2-Tes">
@@ -438,7 +437,7 @@ GQ
                 </viewController>
                 <customObject id="BFD-hR-yg3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="751" y="238.5"/>
+            <point key="canvasLocation" x="1471" y="-481.5"/>
         </scene>
         <!--Comment Block Settings-->
         <scene sceneID="8we-Xb-M8G">
@@ -462,7 +461,7 @@ GQ
                 </tabViewController>
                 <customObject id="qhk-fy-0IM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="348" y="-183"/>
+            <point key="canvasLocation" x="803" y="-481"/>
         </scene>
         <!--Smart Block Settings-->
         <scene sceneID="ano-X6-NRf">
@@ -542,7 +541,7 @@ GQ
                 </viewController>
                 <customObject id="2y9-Aw-wV9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="35" y="214"/>
+            <point key="canvasLocation" x="1446" y="-90"/>
         </scene>
         <!--About Bilibili for Mac-->
         <scene sceneID="9GL-0J-ASe">
@@ -588,7 +587,7 @@ Copyleft 2015 TYPCN</string>
                 <customObject id="Jf9-h0-9RF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="RQe-1H-9A1"/>
             </objects>
-            <point key="canvasLocation" x="-1715" y="-183"/>
+            <point key="canvasLocation" x="-680" y="-577"/>
         </scene>
         <!--Miedia Player Window Controller-->
         <scene sceneID="DUG-BS-fjC">
@@ -606,7 +605,7 @@ Copyleft 2015 TYPCN</string>
                 </windowController>
                 <customObject id="VRB-F4-4Y5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-464.5" y="195"/>
+            <point key="canvasLocation" x="-704.5" y="-152"/>
         </scene>
         <!--Media Player View Controller-->
         <scene sceneID="HPp-cU-Hxk">
@@ -693,7 +692,7 @@ Copyleft 2015 TYPCN</string>
                 </viewController>
                 <customObject id="9mi-6H-m99" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-465" y="508.5"/>
+            <point key="canvasLocation" x="-19" y="-173.5"/>
         </scene>
         <!--Realtime Comment-->
         <scene sceneID="PkE-Ql-sEX">
@@ -711,7 +710,7 @@ Copyleft 2015 TYPCN</string>
                 </windowController>
                 <customObject id="gpp-QG-vUa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="102" y="927"/>
+            <point key="canvasLocation" x="-28" y="290"/>
         </scene>
         <!--Live Chat-->
         <scene sceneID="bxO-Km-cPj">
@@ -764,7 +763,7 @@ Copyleft 2015 TYPCN</string>
                 </viewController>
                 <customObject id="MvD-Kh-aNt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="102" y="1353"/>
+            <point key="canvasLocation" x="588" y="284"/>
         </scene>
         <!--Post Comment Window Controller-->
         <scene sceneID="bs0-gn-v1d">
@@ -781,7 +780,7 @@ Copyleft 2015 TYPCN</string>
                 </windowController>
                 <customObject id="JYl-4e-l1T" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-465" y="787"/>
+            <point key="canvasLocation" x="588" y="-177"/>
         </scene>
         <!--Post Comment View Controller-->
         <scene sceneID="iBg-Rg-Hcu">
@@ -826,112 +825,7 @@ Copyleft 2015 TYPCN</string>
                 </viewController>
                 <customObject id="D1f-jv-4Zv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-465" y="961"/>
-        </scene>
-        <!--Main View Controller-->
-        <scene sceneID="hIz-AP-VOD">
-            <objects>
-                <viewController title="Bilibili" storyboardIdentifier="mvc" id="XfG-lQ-9wD" userLabel="Main View Controller" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="423" height="228"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView id="hgl-YZ-N9w" userLabel="wv">
-                                <rect key="frame" x="0.0" y="0.0" width="423" height="228"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <animations/>
-                                <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12" plugInsEnabled="NO" javaEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO">
-                                    <nil key="identifier"/>
-                                </webPreferences>
-                            </webView>
-                            <button id="Vg5-sM-eCf">
-                                <rect key="frame" x="11" y="192" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="bevel" title="&lt;" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I74-e5-I3G">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="19"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="goBack:" target="hgl-YZ-N9w" id="Uu4-2a-G3R"/>
-                                </connections>
-                            </button>
-                            <button id="XgW-RT-jxD">
-                                <rect key="frame" x="45" y="192" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="bevel" title="&gt;" bezelStyle="regularSquare" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Oc5-0A-5Or">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="19"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="goForward:" target="hgl-YZ-N9w" id="9Fm-Ux-Q4V"/>
-                                </connections>
-                            </button>
-                            <button id="Rut-jD-PYd">
-                                <rect key="frame" x="370" y="192" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="reload" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="irT-9U-zDX">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="19"/>
-                                    <string key="keyEquivalent">r</string>
-                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="reload:" target="hgl-YZ-N9w" id="OYw-IL-EZp"/>
-                                </connections>
-                            </button>
-                            <textField verticalHuggingPriority="750" id="Izm-eu-n08">
-                                <rect key="frame" x="20" y="20" width="182" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="输入 AV 号按回车直接观看" drawsBackground="YES" id="Xxm-1R-XoN">
-                                    <font key="font" metaFont="cellTitle"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <action selector="openAv:" target="0dz-Mn-O6m" id="hfZ-YO-dfZ"/>
-                                </connections>
-                            </textField>
-                            <button hidden="YES" verticalHuggingPriority="750" id="8yE-wH-ldY">
-                                <rect key="frame" x="794" y="-7" width="36" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BEt-iK-waU">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="3Nx-YC-zmP" kind="show" id="D5B-9p-dnr"/>
-                                </connections>
-                            </button>
-                            <button id="MaB-eY-KC3">
-                                <rect key="frame" x="331" y="192" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="copy" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e1M-09-6jd">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system" size="19"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="CopyLink:" target="0dz-Mn-O6m" id="yVm-bB-9kh"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <animations/>
-                    </view>
-                </viewController>
-                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="0dz-Mn-O6m" customClass="WebController">
-                    <connections>
-                        <outlet property="switchButton" destination="8yE-wH-ldY" id="8bl-4p-Kcg"/>
-                        <outlet property="webView" destination="hgl-YZ-N9w" id="FaM-Vz-nYX"/>
-                    </connections>
-                </customObject>
-            </objects>
-            <point key="canvasLocation" x="-1110.5" y="195"/>
+            <point key="canvasLocation" x="588" y="-3"/>
         </scene>
         <!--General Settings-->
         <scene sceneID="E5m-sf-d9M">
@@ -1246,17 +1140,12 @@ Copyleft 2015 TYPCN</string>
                 </viewController>
                 <customObject id="g1X-ko-pK9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1541" y="-118"/>
+            <point key="canvasLocation" x="1613" y="-933"/>
         </scene>
     </scenes>
     <resources>
         <image name="NSFontPanel" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
-        <image name="copy" width="340" height="340"/>
         <image name="loading" width="69" height="70"/>
-        <image name="reload" width="340" height="340"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Y0Z-ee-aqu"/>
-    </inferredMetricsTieBreakers>
 </document>

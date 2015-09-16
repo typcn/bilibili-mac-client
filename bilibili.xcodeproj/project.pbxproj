@@ -99,8 +99,8 @@
 		FDD5EEF71AC944020036B829 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD5EEF61AC944020036B829 /* WebKit.framework */; };
 		FDDE11601BA9459E00230184 /* reverseHTTP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */; settings = {ASSET_TAGS = (); }; };
 		FDDE11611BA9497000230184 /* reverseHTTP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */; settings = {ASSET_TAGS = (); }; };
-		FDDE11641BA994C500230184 /* AirPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDE11631BA994C500230184 /* AirPlayView.m */; settings = {ASSET_TAGS = (); }; };
 		FDDE11671BA994DC00230184 /* PlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDE11661BA994DC00230184 /* PlayerControlView.m */; settings = {ASSET_TAGS = (); }; };
+		FDDE116B1BA9955400230184 /* AirPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDE11691BA9955400230184 /* AirPlayView.m */; settings = {ASSET_TAGS = (); }; };
 		FDEC3B351BA02E5C002DA0EE /* libass.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDEC3B1C1BA02E5C002DA0EE /* libass.5.dylib */; };
 		FDEC3B361BA02E5C002DA0EE /* libavcodec.57.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDEC3B1D1BA02E5C002DA0EE /* libavcodec.57.dylib */; };
 		FDEC3B371BA02E5C002DA0EE /* libavdevice.57.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDEC3B1E1BA02E5C002DA0EE /* libavdevice.57.dylib */; };
@@ -401,10 +401,10 @@
 		FDD5EEF61AC944020036B829 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = reverseHTTP.cpp; path = AirPlay/reverseHTTP.cpp; sourceTree = "<group>"; };
 		FDDE115F1BA9459E00230184 /* reverseHTTP.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = reverseHTTP.hpp; path = AirPlay/reverseHTTP.hpp; sourceTree = "<group>"; };
-		FDDE11621BA994C500230184 /* AirPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AirPlayView.h; path = PlayerView/AirPlayView.h; sourceTree = "<group>"; };
-		FDDE11631BA994C500230184 /* AirPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AirPlayView.m; path = PlayerView/AirPlayView.m; sourceTree = "<group>"; };
 		FDDE11651BA994DC00230184 /* PlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerControlView.h; path = PlayerView/PlayerControlView.h; sourceTree = "<group>"; };
 		FDDE11661BA994DC00230184 /* PlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerControlView.m; path = PlayerView/PlayerControlView.m; sourceTree = "<group>"; };
+		FDDE11681BA9955400230184 /* AirPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AirPlayView.h; path = PlayerView/AirPlayView.h; sourceTree = "<group>"; };
+		FDDE11691BA9955400230184 /* AirPlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AirPlayView.m; path = PlayerView/AirPlayView.m; sourceTree = "<group>"; };
 		FDEC3B1C1BA02E5C002DA0EE /* libass.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libass.5.dylib; path = bilibili/libs/libass.5.dylib; sourceTree = "<group>"; };
 		FDEC3B1D1BA02E5C002DA0EE /* libavcodec.57.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavcodec.57.dylib; path = bilibili/libs/libavcodec.57.dylib; sourceTree = "<group>"; };
 		FDEC3B1E1BA02E5C002DA0EE /* libavdevice.57.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavdevice.57.dylib; path = bilibili/libs/libavdevice.57.dylib; sourceTree = "<group>"; };
@@ -756,8 +756,8 @@
 				FD1954D21B25947A003A958F /* PlayLocalFile.m */,
 				FDDE11651BA994DC00230184 /* PlayerControlView.h */,
 				FDDE11661BA994DC00230184 /* PlayerControlView.m */,
-				FDDE11621BA994C500230184 /* AirPlayView.h */,
-				FDDE11631BA994C500230184 /* AirPlayView.m */,
+				FDDE11681BA9955400230184 /* AirPlayView.h */,
+				FDDE11691BA9955400230184 /* AirPlayView.m */,
 			);
 			name = "Player View";
 			sourceTree = "<group>";
@@ -1114,7 +1114,7 @@
 				FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */,
 				FD1954CA1B259447003A958F /* AboutView.m in Sources */,
 				FD1954D31B25947A003A958F /* PlayLocalFile.m in Sources */,
-				FDDE11641BA994C500230184 /* AirPlayView.m in Sources */,
+				FDDE116B1BA9955400230184 /* AirPlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
