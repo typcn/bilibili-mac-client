@@ -437,7 +437,7 @@ GQ
                 </viewController>
                 <customObject id="BFD-hR-yg3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1471" y="-481.5"/>
+            <point key="canvasLocation" x="1140" y="-407.5"/>
         </scene>
         <!--Comment Block Settings-->
         <scene sceneID="8we-Xb-M8G">
@@ -541,7 +541,7 @@ GQ
                 </viewController>
                 <customObject id="2y9-Aw-wV9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446" y="-90"/>
+            <point key="canvasLocation" x="612" y="-400"/>
         </scene>
         <!--About Bilibili for Mac-->
         <scene sceneID="9GL-0J-ASe">
@@ -605,7 +605,7 @@ Copyleft 2015 TYPCN</string>
                 </windowController>
                 <customObject id="VRB-F4-4Y5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-704.5" y="-152"/>
+            <point key="canvasLocation" x="-595.5" y="-152"/>
         </scene>
         <!--Media Player View Controller-->
         <scene sceneID="HPp-cU-Hxk">
@@ -692,7 +692,7 @@ Copyleft 2015 TYPCN</string>
                 </viewController>
                 <customObject id="9mi-6H-m99" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-19" y="-173.5"/>
+            <point key="canvasLocation" x="-596" y="261.5"/>
         </scene>
         <!--Realtime Comment-->
         <scene sceneID="PkE-Ql-sEX">
@@ -710,7 +710,7 @@ Copyleft 2015 TYPCN</string>
                 </windowController>
                 <customObject id="gpp-QG-vUa" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28" y="290"/>
+            <point key="canvasLocation" x="-14" y="264"/>
         </scene>
         <!--Live Chat-->
         <scene sceneID="bxO-Km-cPj">
@@ -763,7 +763,7 @@ Copyleft 2015 TYPCN</string>
                 </viewController>
                 <customObject id="MvD-Kh-aNt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="588" y="284"/>
+            <point key="canvasLocation" x="68" y="316"/>
         </scene>
         <!--Post Comment Window Controller-->
         <scene sceneID="bs0-gn-v1d">
@@ -780,7 +780,7 @@ Copyleft 2015 TYPCN</string>
                 </windowController>
                 <customObject id="JYl-4e-l1T" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="588" y="-177"/>
+            <point key="canvasLocation" x="-26" y="-248"/>
         </scene>
         <!--Post Comment View Controller-->
         <scene sceneID="iBg-Rg-Hcu">
@@ -825,7 +825,7 @@ Copyleft 2015 TYPCN</string>
                 </viewController>
                 <customObject id="D1f-jv-4Zv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="588" y="-3"/>
+            <point key="canvasLocation" x="-21" y="-83"/>
         </scene>
         <!--General Settings-->
         <scene sceneID="E5m-sf-d9M">

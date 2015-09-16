@@ -1,0 +1,21 @@
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "1fU-d0-Bj2"; */
+"1fU-d0-Bj2.title" = "Table View Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "Address"; ObjectID = "3wQ-ES-pHP"; */
+"3wQ-ES-pHP.headerCell.title" = "Address";
+
+/* Class = "NSWindow"; title = "AirPlay Control ( TEST )"; ObjectID = "QvC-M9-y7g"; */
+"QvC-M9-y7g.title" = "AirPlay Control ( TEST )";
+
+/* Class = "NSTextFieldCell"; title = "Table View Cell"; ObjectID = "Tx8-YH-w6e"; */
+"Tx8-YH-w6e.title" = "Table View Cell";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "aFL-Pm-uJD"; */
+"aFL-Pm-uJD.title" = "Text Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "Device Name"; ObjectID = "cgF-CO-0sw"; */
+"cgF-CO-0sw.headerCell.title" = "Device Name";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "k8a-yi-nUd"; */
+"k8a-yi-nUd.title" = "Text Cell";
