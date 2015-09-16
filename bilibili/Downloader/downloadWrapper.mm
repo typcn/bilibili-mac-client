@@ -9,6 +9,7 @@
 #include "downloadWrapper.h"
 
 #import "APIKey.h"
+#import "vp_bilibili.h"
 #import <CommonCrypto/CommonDigest.h>
 
 BOOL isStopped;
@@ -47,7 +48,14 @@ BOOL Downloader::newTask(int cid,NSString *name){
     
     NSLog(@"[Downloader] Comment downloaded");
     
-    NSArray  *urls = getUrl(cid);
+    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+    long isMP4 = [settingsController integerForKey:@"playMP4"];
+    int vtype = k_biliVideoType_flv;
+    if(isMP4 == 1){
+        vtype = k_biliVideoType_mp4;
+    }
+    
+    NSArray  *urls = vp_bili_get_url(cid, vtype);
     if(!urls){
         NSLog(@"[Downloader] ERROR");
         NSUserNotification *notification = [[NSUserNotification alloc] init];
@@ -116,46 +124,4 @@ BOOL Downloader::newTask(int cid,NSString *name){
     
     NSLog(@"[Downloader] Download task added");
     return true;
-}
-
-NSArray *Downloader::getUrl(int cid){
-    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
-    long isMP4 = [settingsController integerForKey:@"DLMP4"];
-    NSString *type = @"flv";
-    if(isMP4 == 1){
-        type = @"mp4";
-    }
-    
-    NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%d&quality=4&type=%@%@",APIKey,cid,type,APISecret];
-    const char *cStr = [[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] UTF8String];
-    unsigned char digest[16];
-    CC_MD5( cStr, (CC_LONG)strlen(cStr), digest ); // This is the md5 call
-    
-    NSMutableString *sign= [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    
-    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-        [sign appendFormat:@"%02x", digest[i]];
-    
-    NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%d&quality=4&type=%@&sign=%@",APIKey,cid,type,sign]];
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
-    request.HTTPMethod = @"GET";
-    request.timeoutInterval = 5;
-    [request addValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" forHTTPHeaderField:@"User-Agent"];
-    NSString *xff = [settingsController objectForKey:@"xff"];
-    if([xff length] > 4){
-        [request setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
-        [request setValue:xff forHTTPHeaderField:@"Client-IP"];
-    }
-    NSURLResponse * response = nil;
-    NSError * error = nil;
-    NSData * videoAddressJSONData = [NSURLConnection sendSynchronousRequest:request
-                                                          returningResponse:&response
-                                                                      error:&error];
-    if(!videoAddressJSONData){
-        return NULL;
-    }
-    NSError *jsonError;
-    NSMutableDictionary *videoResult = [NSJSONSerialization JSONObjectWithData:videoAddressJSONData options:NSJSONWritingPrettyPrinted error:&jsonError];
-
-    return [videoResult objectForKey:@"durl"];
 }
