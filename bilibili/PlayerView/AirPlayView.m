@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do view setup here.
+    NSLog(@"airplay view loaded");
 }
 
 @end

@@ -23,6 +23,7 @@
 }
 
 @synthesize playerWindowController;
+@synthesize airplayWindowController;
 
 - (void)startHTTPServer{
     NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
@@ -55,6 +56,8 @@
         dispatch_async(dispatch_get_main_queue(), ^(void){
             if([action isEqualToString:@"playVideoByCID"]){
                 [self playVideoByCID:data];
+            }else if([action isEqualToString:@"showAirPlayByCID"]){
+                [self showAirPlayByCID:data];
             }else if([action isEqualToString:@"downloadVideoByCID"]){
                 [self downloadVideoByCID:data];
             }else if([action isEqualToString:@"checkforUpdate"]){
@@ -85,6 +88,46 @@
     if(cookie && [cookie length] > 5){
         [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:@"cookie"];
     }
+}
+
+- (void)showAirPlayByCID:(NSString *)cid
+{
+    if(parsing){
+        return;
+    }
+    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+    if(!tv){
+        return;
+    }
+    TWebView *wv = [tv GetTWebView];
+    if(!wv){
+        return;
+    }
+    NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
+    NSString *mediaTitle = [fn objectAtIndex:0];
+    parsing = true;
+    vCID = cid;
+    vUrl = [wv getURL];
+    if([mediaTitle length] > 0){
+        vTitle = [fn objectAtIndex:0];
+    }else{
+        vTitle = NSLocalizedString(@"未命名", nil);
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:vUrl forKey:@"LastPlay"];
+    NSLog(@"Video detected ! CID: %@",vCID);
+    if(acceptAnalytics == 1){
+        action("video", "play", [vCID cStringUsingEncoding:NSUTF8StringEncoding]);
+        screenView("PlayerView");
+    }else if(acceptAnalytics == 2){
+        screenView("PlayerView");
+    }else{
+        NSLog(@"Analytics disabled ! won't upload.");
+    }
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        airplayWindowController =[[NSWindowController alloc] initWithWindowNibName:@"AirPlay"];
+        [airplayWindowController showWindow:self];
+    });
 }
 
 - (void)playVideoByCID:(NSString *)cid
