@@ -51,7 +51,7 @@
         
         NSString *action = [dic valueForKey:@"action"];
         NSString *data = [dic valueForKey:@"data"];
-        NSLog(@"action %@ ",action);
+
         dispatch_async(dispatch_get_main_queue(), ^(void){
             if([action isEqualToString:@"playVideoByCID"]){
                 [self playVideoByCID:data];
@@ -83,7 +83,6 @@
 
 - (void)saveCookie{
     if(cookie && [cookie length] > 5){
-        NSLog(@"Saving Cookie");
         [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:@"cookie"];
     }
 }
