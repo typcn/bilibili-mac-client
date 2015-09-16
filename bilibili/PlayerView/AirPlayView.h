@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AirPlayView : NSViewController
+@interface AirPlayView : NSViewController < NSTableViewDataSource >
 
 @end

@@ -188,3 +188,7 @@ void AirPlay::disconnect(){
     uuid.clear();
     connStr.clear();
 }
+
+void AirPlay::clear(){
+    SD_Clear();
+}

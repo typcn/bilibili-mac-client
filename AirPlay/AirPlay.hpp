@@ -32,6 +32,7 @@ public:
     void playVideo(const char* url,float startpos);
     void stop();
     void disconnect();
+    void clear();
 };
 
 #endif /* AirPlay_hpp */
