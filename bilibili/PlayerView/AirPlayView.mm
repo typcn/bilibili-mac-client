@@ -36,7 +36,7 @@
     deviceList = [[NSMutableArray alloc] init];
     queue = dispatch_queue_create("com.typcn.airplay", DISPATCH_QUEUE_SERIAL);
     [tableView setFocusRingType:NSFocusRingTypeNone];
-    [self writeLog:@"注意：该功能仅供测试，可能有很多 BUG ，如果出现问题，请邮件联系 typcncom@gmail.com，或者加群 467687309 进行反馈"];
+    [self writeLog:@"注意：该功能仅供测试，可能有很多 BUG ，如果出现问题，请点击帮助 -- 反馈，或者加群 467687309"];
     [self refreshDeviceList];
 }
 
@@ -44,7 +44,7 @@
     [self writeLog:@"正在刷新设备列表"];
     [connectBtn setEnabled:NO];
     [refreshBtn setEnabled:NO];
-    [refreshBtn setTitle:@"读取中"];
+    [refreshBtn setTitle:NSLocalizedString(@"读取中", NULL)];
     dispatch_async(queue, ^(void){
         NSDictionary *ddlist = ap->getDeviceList();
         for(id key in ddlist){
@@ -55,7 +55,7 @@
         dispatch_async(dispatch_get_main_queue(), ^(void){
             NSLog(@"Ready to reload");
             [tableView reloadData];
-            [refreshBtn setTitle:@"刷新"];
+            [refreshBtn setTitle:NSLocalizedString(@"刷新",NULL)];
             [refreshBtn setEnabled:YES];
             [self writeLog:@"设备列表刷新成功，请在左边选择一个服务器进行连接"];
         });
