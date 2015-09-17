@@ -17,6 +17,8 @@ Browser *browser;
 
 @implementation AppDelegate
 
+@synthesize donatew;
+
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
     NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
     if(version.minorVersion == 11){
@@ -60,6 +62,7 @@ Browser *browser;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    bool showdonate = false;
     NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
     NSString *uuid = [s objectForKey:@"UUID"];
     if(!uuid){
@@ -84,6 +87,8 @@ Browser *browser;
             [s setInteger:3 forKey:@"acceptAnalytics"];
             acceptAnalytics = 3;
         }
+    }else{
+        showdonate = true; // Prevent multi alerts on software start
     }
     [s synchronize];
     NSLog(@"AcceptAnalytics=%ld",acceptAnalytics);
@@ -91,7 +96,8 @@ Browser *browser;
     browser = (Browser *)[Browser browser];
     browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
     [browser addBlankTabInForeground:YES];
-    [browser.windowController showWindow:self];
+    [browser.windowController showWindow:NSApp];
+    [browser.window makeKeyAndOrderFront:NSApp];
     
     // Start ARIA2
     
@@ -103,6 +109,25 @@ Browser *browser;
     
     // Start HTTP Server
     [[HTTPServer alloc] startHTTPServer];
+    
+    if([s objectForKey:@"donate"]){
+        showdonate = false;
+    }
+    
+    if(showdonate){
+        [NSTimer scheduledTimerWithTimeInterval:2
+                                         target:self
+                                       selector: @selector(showDonate)
+                                       userInfo:nil
+                                        repeats:NO]; // Prevent browser window order back
+    }
+}
+
+- (void)showDonate {
+    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+    donatew = [storyBoard instantiateControllerWithIdentifier:@"donatewindow"];
+    [donatew showWindow:self];
+    [donatew.window makeKeyAndOrderFront:NSApp];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -150,6 +175,9 @@ Browser *browser;
 
     [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
 }
+
+
+// Main Menu Events
 
 - (IBAction)goForum:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://leanclub.org"]];

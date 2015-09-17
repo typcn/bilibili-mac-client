@@ -11,7 +11,7 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-
+@property (strong) NSWindowController* donatew;
 
 @end
 

@@ -126,6 +126,145 @@
             </objects>
             <point key="canvasLocation" x="-28" y="-599"/>
         </scene>
+        <!--Donate Window Controller-->
+        <scene sceneID="Oal-kj-Hpq">
+            <objects>
+                <windowController storyboardIdentifier="donatewindow" showSeguePresentationStyle="single" id="xcH-VD-rhE" userLabel="Donate Window Controller" sceneMemberID="viewController">
+                    <window key="window" title="Donate" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ttS-aB-exK">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="425" y="313" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1057"/>
+                    </window>
+                    <connections>
+                        <segue destination="ZMa-4Y-BrB" kind="relationship" relationship="window.shadowedContentViewController" id="7c8-bm-XK3"/>
+                    </connections>
+                </windowController>
+                <customObject id="R55-Cl-C3P" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="265" y="-1228"/>
+        </scene>
+        <!--Donate View Controller-->
+        <scene sceneID="kBJ-dj-FbG">
+            <objects>
+                <viewController id="ZMa-4Y-BrB" userLabel="Donate View Controller" customClass="DonateView" sceneMemberID="viewController">
+                    <view key="view" id="W8p-aw-EGH">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="277"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" id="fq5-L4-yhF">
+                                <rect key="frame" x="307" y="73" width="140" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="使用 Paypal" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EUW-5g-blR">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="PPdonateBtn:" target="ZMa-4Y-BrB" id="dWt-rB-i6T"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" id="5a8-CJ-7ro">
+                                <rect key="frame" x="307" y="41" width="140" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="复制 Bitcoin 地址" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J94-O9-0ZN">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="copyBitcoinAddr:" target="ZMa-4Y-BrB" id="N88-zC-CJZ"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" id="Dzc-bX-UPW">
+                                <rect key="frame" x="203" y="80" width="96" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="数量（USD）" drawsBackground="YES" id="S2S-AU-gff">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="8WM-OS-PNp"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" id="TPG-h1-5hG">
+                                <rect key="frame" x="307" y="105" width="140" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="使用 支付宝" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="pJG-Sa-9mp">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="alipayDonateBtn:" target="ZMa-4Y-BrB" id="Fbo-rb-Gqz"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" id="vWr-yv-mst">
+                                <rect key="frame" x="203" y="111" width="96" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="数量（CNY）" drawsBackground="YES" id="J4i-gl-mnb">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="NJb-wm-I8Q"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" id="YD4-6C-juN">
+                                <rect key="frame" x="203" y="48" width="96" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="1EprnUzBwcF52SZAnPZKRrj4rRaS6yhtQW" drawsBackground="YES" id="il4-dn-dZd">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="xVW-2o-0xH">
+                                <rect key="frame" x="30" y="14" width="439" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="（由于服务器不稳定，如果支付宝跳转页面 SSL 连接错误，请刷新几次）" id="JGr-Ox-SQp">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="Mxv-1f-7ht">
+                                <rect key="frame" x="18" y="161" width="444" height="104"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="Sxb-IU-YrN">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Hello , 我是开发者 TYPCN :     从 3 月开发完成以来，Bilibili for mac 已经拥有上万的下载量和 3000+ 的活跃用户，且一直在持续增长。     软件的开发与维护需要耗费大量的时间和精力，加上更新的 CDN 和服务器，每月还需要额外花费上百元钱。我还不到 18 岁没法工作，所以没有太多资本，这类软件收费也不合适，如果您有条件，可以通过下方的按钮捐助。</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" id="myK-vd-tgz">
+                                <rect key="frame" x="26" y="42" width="123" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <buttonCell key="cell" type="push" title="不再提示" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J1h-Wf-olR">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="hideBtn:" target="ZMa-4Y-BrB" id="cn8-c4-OwY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                    </view>
+                    <connections>
+                        <outlet property="PPdonateCount" destination="Dzc-bX-UPW" id="mdB-OW-aby"/>
+                        <outlet property="alipayDonateCount" destination="vWr-yv-mst" id="kcV-3I-bQa"/>
+                    </connections>
+                </viewController>
+                <customObject id="0QZ-TG-4LN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="213" y="-1181.5"/>
+        </scene>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
             <objects>
@@ -320,6 +459,13 @@ GQ
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="帮助" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
+                                        <menuItem title="捐助" id="a5E-Qh-hJy" userLabel="Donate">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="xcH-VD-rhE" kind="show" id="7UF-YP-596"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="j5T-Aj-GCA"/>
                                         <menuItem title="论坛反馈" id="m2k-Ll-pRS" userLabel="Forum Feedback">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
