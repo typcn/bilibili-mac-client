@@ -23,7 +23,7 @@
 
 #if MAC_OS_X_VERSION < MAC_OS_X_VERSION_10_11
 
-@interface TWebView : NSObject <WebResourceLoadDelegate ,WebFrameLoadDelegate,WebUIDelegate,WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler>{
+@interface TWebView : NSObject <WebResourceLoadDelegate ,WebFrameLoadDelegate,WebUIDelegate,WKNavigationDelegate, WKUIDelegate>{
     WebView *wv;
     WKWebView *WKwv;
     int webViewType;

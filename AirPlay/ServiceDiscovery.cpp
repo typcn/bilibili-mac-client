@@ -158,7 +158,4 @@ void SD_Clear(){
     SD_Serv = NULL;
     SD_StartTime = 0;
     SD_ServiceName.clear();
-    if(SD_RegType){
-        delete SD_RegType;
-    }
 }
