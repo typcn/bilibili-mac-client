@@ -242,7 +242,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" id="myK-vd-tgz">
-                                <rect key="frame" x="26" y="42" width="123" height="32"/>
+                                <rect key="frame" x="26" y="42" width="153" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="push" title="不再提示" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J1h-Wf-olR">
