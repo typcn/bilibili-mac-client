@@ -12,8 +12,6 @@
 
 @implementation WebTabView {
     NSString* WebScript;
-    NSString* WebUI;
-    NSString* WebCSS;
     NSView* HudView;
     bool ariainit;
     long acceptAnalytics;
@@ -53,8 +51,6 @@
 }
 
 -(void)viewFrameDidChange:(NSRect)newFrame {
-    // We need to recalculate the frame of the NSTextView when the frame changes.
-    // This happens when a tab is created and when it's moved between windows.
     [super viewFrameDidChange:newFrame];
     NSRect frame = NSZeroRect;
     frame.size = [(NSScrollView*)(view_) contentSize];
@@ -96,16 +92,13 @@
     }
     
     path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"html"];
-    WebUI = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    NSString* WebUI = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
     if(err){
         [self showError];
     }
-    
-    path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"css"];
-    WebCSS = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
-    if(err){
-        [self showError];
-    }
+    WebUI = [WebUI stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
+    WebUI = [WebUI stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+    WebScript = [WebScript stringByReplacingOccurrencesOfString:@"INJ_HTML" withString:WebUI];
 }
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {

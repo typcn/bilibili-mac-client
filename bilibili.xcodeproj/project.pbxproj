@@ -77,10 +77,8 @@
 		FD5B0C621B9ABAFF00045F10 /* TWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD5B0C611B9ABAFF00045F10 /* TWebView.mm */; };
 		FD61025C1AD7CBA20013119A /* inject.js in Resources */ = {isa = PBXBuildFile; fileRef = FD61025B1AD7CBA20013119A /* inject.js */; };
 		FD61025E1AD7CBC10013119A /* webui.html in Resources */ = {isa = PBXBuildFile; fileRef = FD61025D1AD7CBC10013119A /* webui.html */; };
-		FD6102611AD7CBF10013119A /* webui.css in Resources */ = {isa = PBXBuildFile; fileRef = FD6102601AD7CBF10013119A /* webui.css */; };
 		FD6102621AD7CC020013119A /* inject.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD61025B1AD7CBA20013119A /* inject.js */; };
 		FD6102631AD7CC020013119A /* webui.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD61025D1AD7CBC10013119A /* webui.html */; };
-		FD6102641AD7CC020013119A /* webui.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD6102601AD7CBF10013119A /* webui.css */; };
 		FD62CC841B6E661F000AED57 /* reload.png in Resources */ = {isa = PBXBuildFile; fileRef = FD62CC831B6E661F000AED57 /* reload.png */; };
 		FD62CC861B6E6726000AED57 /* copy.png in Resources */ = {isa = PBXBuildFile; fileRef = FD62CC851B6E6726000AED57 /* copy.png */; };
 		FD62CC891B6E6848000AED57 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FD62CC881B6E6848000AED57 /* MBProgressHUD.m */; };
@@ -253,7 +251,6 @@
 			files = (
 				FD6102621AD7CC020013119A /* inject.js in CopyFiles */,
 				FD6102631AD7CC020013119A /* webui.html in CopyFiles */,
-				FD6102641AD7CC020013119A /* webui.css in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,7 +378,6 @@
 		FD5B0C611B9ABAFF00045F10 /* TWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TWebView.mm; path = MainView/TWebView.mm; sourceTree = "<group>"; };
 		FD61025B1AD7CBA20013119A /* inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = inject.js; path = WebPages/inject.js; sourceTree = "<group>"; };
 		FD61025D1AD7CBC10013119A /* webui.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = webui.html; path = WebPages/webui.html; sourceTree = "<group>"; };
-		FD6102601AD7CBF10013119A /* webui.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = webui.css; path = WebPages/webui.css; sourceTree = "<group>"; };
 		FD62CA431B6F4BFB0014D45D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		FD62CA481B6F52F40014D45D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		FD62CA491B6F52F80014D45D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -806,7 +802,6 @@
 			children = (
 				FD61025B1AD7CBA20013119A /* inject.js */,
 				FD61025D1AD7CBC10013119A /* webui.html */,
-				FD6102601AD7CBF10013119A /* webui.css */,
 			);
 			name = WebPages;
 			sourceTree = "<group>";
@@ -1040,7 +1035,6 @@
 				FDDE116F1BA997EB00230184 /* AirPlay.xib in Resources */,
 				FD3553AE1B9C4356000EE41E /* fold.pdf in Resources */,
 				FD3553B81B9C4356000EE41E /* toolbar_audio.icns in Resources */,
-				FD6102611AD7CBF10013119A /* webui.css in Resources */,
 				FD3553B01B9C4356000EE41E /* next-episode.pdf in Resources */,
 				FD3553AC1B9C4356000EE41E /* fillscreen_lr.pdf in Resources */,
 				FD36B0EF1B99B48B00FB32CC /* forward.png in Resources */,
