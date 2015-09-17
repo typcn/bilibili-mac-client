@@ -493,7 +493,6 @@
 		FD076C471AC8CBBB00C893FA = {
 			isa = PBXGroup;
 			children = (
-				FD4DEAE21BAAFB4D00F4DBD3 /* CoreImage.framework */,
 				FD36B09A1B988D0100FB32CC /* Resources */,
 				FD471FD11AC92D7C00A2A727 /* frameworks */,
 				FD1954D41B2594AC003A958F /* CommentConvert */,
@@ -701,6 +700,7 @@
 		FD471FD11AC92D7C00A2A727 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FD4DEAE21BAAFB4D00F4DBD3 /* CoreImage.framework */,
 				FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */,
 				FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */,
 				FD62CC8C1B6E6BAB000AED57 /* AppKit.framework */,
