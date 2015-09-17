@@ -527,7 +527,7 @@ static void wakeup(void *context) {
             fontName = @"STHeiti";
         }
         
-        NSString  *filePath = [NSString stringWithFormat:@"%@/%@.cminfo.xml", @"/tmp",vCID];
+        NSString  *filePath = [NSString stringWithFormat:@"%@%@.cminfo.xml", NSTemporaryDirectory(),vCID];
         
         if(LC){
             NSString *correctString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
@@ -536,7 +536,7 @@ static void wakeup(void *context) {
         
         [urlData writeToFile:filePath atomically:YES];
         
-        NSString *OutFile = [NSString stringWithFormat:@"%@/%@.cminfo.ass", @"/tmp",vCID];
+        NSString *OutFile = [NSString stringWithFormat:@"%@%@.cminfo.ass", NSTemporaryDirectory(),vCID];
         
         float mq = 6.75*[width doubleValue]/[height doubleValue]-4;
         float moveSpeed = [self getSettings:@"moveSpeed"];

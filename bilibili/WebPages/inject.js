@@ -65,6 +65,14 @@ function applyUI(){
             }else{
                 console.log("inject player page");
                 $('#bofqi').html(window.injectHTML);
+                var ci = document.querySelector(".cover_image");
+                if(ci && ci.src){
+                    var ph = document.querySelector(".TYPCN_PLAYER_INJECT_PAGE .player-placeholder");
+                    if(ph){
+                        ph.style.backgroundImage = "url(http://localhost:23330/blur/" + ci.src + ")"
+                        ph.style.backgroundAttachment = "initial";
+                    }
+                }
             }
             clearInterval(window.i);
         }else{

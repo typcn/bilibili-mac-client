@@ -17,6 +17,8 @@
 #import <GCDWebServers/GCDWebServerMultiPartFormRequest.h>
 #import <GCDWebServers/GCDWebServerDataResponse.h>
 
+#import <CoreImage/CoreImage.h>
+
 @implementation HTTPServer{
     long acceptAnalytics;
     NSString *cookie;
@@ -35,19 +37,55 @@
     [GCDWebServer setLogLevel:2];
     GCDWebServer* webServer = [[GCDWebServer alloc] init];
     
+    // Default handler
     
     [webServer addDefaultHandlerForMethod:@"GET"
                              requestClass:[GCDWebServerRequest class]
-                             processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
-        
+                             processBlock:^
+     GCDWebServerResponse *(GCDWebServerRequest* request) {
         GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>Bilibili for mac http service</p></body></html>"];
         [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
         return rep;
-                                 
     }];
     
+    // Blur image
     
-    [webServer addHandlerForMethod:@"POST" path:@"/rpc" requestClass:[GCDWebServerURLEncodedFormRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
+    [webServer addHandlerForMethod:@"GET" pathRegex:@"/blur/.*"
+                             requestClass:[GCDWebServerRequest class]
+                        asyncProcessBlock:^
+     (GCDWebServerRequest* request, GCDWebServerCompletionBlock completionBlock) {
+         NSString *imgurl = [[request.URL path] stringByReplacingOccurrencesOfString:@"/blur/" withString:@""];
+         NSLog(@"blur : %@",imgurl);
+         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+             NSData *img = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:imgurl]];
+             if(!img){
+                 completionBlock([GCDWebServerDataResponse responseWithStatusCode:500]);
+                 return;
+             }
+             CIImage *imageToBlur = [CIImage imageWithData:img];
+             if(!imageToBlur){
+                 completionBlock([GCDWebServerDataResponse responseWithStatusCode:500]);
+                 return;
+             }
+             CIFilter *filter = [CIFilter filterWithName: @"CIGaussianBlur"];
+             [filter setValue:imageToBlur forKey:kCIInputImageKey];
+             [filter setValue:[NSNumber numberWithFloat: 10] forKey: @"inputRadius"];
+             CIImage *output = [filter valueForKey:kCIOutputImageKey];
+             NSBitmapImageRep* rep = [[NSBitmapImageRep alloc] initWithCIImage:output];
+             NSData* PNGData = [rep representationUsingType:NSPNGFileType properties:@{}];
+             GCDWebServerDataResponse* response = [GCDWebServerDataResponse responseWithData:PNGData contentType:@"image/png"];
+             [response setCacheControlMaxAge:3600];
+             completionBlock(response);
+         });
+    }];
+    
+    // Action calling from web page
+    
+    [webServer addHandlerForMethod:@"POST" path:@"/rpc"
+                      requestClass:[GCDWebServerURLEncodedFormRequest class]
+                      processBlock:^
+     GCDWebServerResponse *(GCDWebServerRequest* request) {
+         
         NSDictionary *dic = [(GCDWebServerURLEncodedFormRequest*) request arguments];
         
         NSString *action = [dic valueForKey:@"action"];
@@ -72,6 +110,7 @@
         [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
         return rep;
     }];
+    
     [NSTimer scheduledTimerWithTimeInterval:20
                                      target:self
                                    selector:@selector(saveCookie)
