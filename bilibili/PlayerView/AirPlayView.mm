@@ -122,13 +122,15 @@
 }
 
 - (IBAction)stopAction:(id)sender {
-    dispatch_sync(queue, ^(void){
+    dispatch_async(queue, ^(void){
         ap->stop();
         ap->disconnect();
         sleep(0.1);
         ap->clear();
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+           [self.view.window close];
+        });
     });
-    [self.view.window close];
 }
 
 - (void)connStop {
