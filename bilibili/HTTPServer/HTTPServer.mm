@@ -17,7 +17,7 @@
 #import <GCDWebServers/GCDWebServerMultiPartFormRequest.h>
 #import <GCDWebServers/GCDWebServerDataResponse.h>
 
-#import <CoreImage/CoreImage.h>
+#import <QuartzCore/CoreImage.h>
 
 @implementation HTTPServer{
     long acceptAnalytics;
