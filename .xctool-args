@@ -1,4 +1,4 @@
 [
   "-scheme","bilibili",
-  "-project","bilibili.xcodeproj"
+  "-workspace","VideoPolymer.xcworkspace"
 ]
