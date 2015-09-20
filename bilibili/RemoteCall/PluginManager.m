@@ -114,7 +114,7 @@
         if(!plgInstance){
             plgInstance = [self loadPlugin:plgName];
             if(!plgInstance){
-                NSLog(@"Invalid plugin: %@",plgName);
+                NSLog(@"Native plugin load failed: %@",plgName);
                 return nil;
             }
             loadedPlugins[plgName] = plgInstance;

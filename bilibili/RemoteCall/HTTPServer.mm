@@ -138,7 +138,6 @@
      GCDWebServerResponse *(GCDWebServerRequest* request) {
          
          NSDictionary *dic = [(GCDWebServerDataRequest*) request jsonObject];
-         
          NSString *action = [dic valueForKey:@"action"];
          NSString *data = [dic valueForKey:@"data"];
          NSLog(@"Plugin call %@",action);
