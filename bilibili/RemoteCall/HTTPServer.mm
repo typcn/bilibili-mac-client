@@ -111,6 +111,23 @@
         return rep;
     }];
     
+    [webServer addHandlerForMethod:@"POST" path:@"/pluginCall"
+                      requestClass:[GCDWebServerDataRequest class]
+                      processBlock:^
+     GCDWebServerResponse *(GCDWebServerRequest* request) {
+         
+         NSDictionary *dic = [(GCDWebServerDataRequest*) request jsonObject];
+         
+         NSString *action = [dic valueForKey:@"action"];
+         NSString *data = [dic valueForKey:@"data"];
+         
+         
+         
+         GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithText:@"ok"];
+         [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
+         return rep;
+     }];
+    
     [NSTimer scheduledTimerWithTimeInterval:20
                                      target:self
                                    selector:@selector(saveCookie)
