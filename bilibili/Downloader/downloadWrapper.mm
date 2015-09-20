@@ -15,7 +15,9 @@
 
 BOOL Downloader::newTask(int cid,NSString *name){
     NSLog(@"[Downloader] New Task CID: %d",cid);
-    NSString *path = [NSString stringWithFormat:@"%@%@%@/",NSHomeDirectory(),@"/Movies/Bilibili/",name];
+    
+    NSString *filteredName = [name stringByReplacingOccurrencesOfString:@"/" withString:@""];
+    NSString *path = [NSString stringWithFormat:@"%@%@%@/",NSHomeDirectory(),@"/Movies/Bilibili/",filteredName];
 
     [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL];
     NSString *commentUrl = [NSString stringWithFormat:@"http://comment.bilibili.com/%d.xml",cid];
