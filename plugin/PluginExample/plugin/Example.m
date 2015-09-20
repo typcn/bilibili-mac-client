@@ -46,7 +46,10 @@
     
     if([eventName isEqualToString:@"Example-ShowExamplePanel"]){
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            examplePanel =[[NSWindowController alloc] initWithWindowNibName:@"ExamplePanel"];
+            
+            NSString *path = [[NSBundle bundleForClass:[self class]]
+                              pathForResource:@"ExamplePanel" ofType:@"nib"];
+            examplePanel =[[NSWindowController alloc] initWithWindowNibPath:path owner:self];
             [examplePanel showWindow:self];
         });
     }
