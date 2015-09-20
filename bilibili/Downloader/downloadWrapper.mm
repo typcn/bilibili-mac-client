@@ -12,29 +12,6 @@
 #import "vp_bilibili.h"
 #import <CommonCrypto/CommonDigest.h>
 
-BOOL isStopped;
-
-//int downloadEventCallback(aria2::Session* session, aria2::DownloadEvent event,
-//                          aria2::A2Gid gid, void* userData)
-//{
-//    switch(event) {
-//        case aria2::EVENT_ON_DOWNLOAD_COMPLETE:{
-//            
-//            break;
-//        }
-//        case aria2::EVENT_ON_DOWNLOAD_ERROR:{
-//            NSUserNotification *notification = [[NSUserNotification alloc] init];
-//            notification.title = @"Bilibili Client";
-//            notification.informativeText = NSLocalizedString(@"下载失败", nil);
-//            notification.soundName = NSUserNotificationDefaultSoundName;
-//            [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-//            break;
-//        }
-//        default:
-//            return 0;
-//    }
-//    return 0;
-//}
 
 BOOL Downloader::newTask(int cid,NSString *name){
     NSLog(@"[Downloader] New Task CID: %d",cid);
