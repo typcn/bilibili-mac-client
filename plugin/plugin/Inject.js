@@ -12,5 +12,6 @@ document.body.innerHTML = '<a id="test" href="#">Click to test</a>';
 document.getElementById('test').addEventListener('click',testclick);
 
 function testclick(){
+    // action ( event name ) format is pluginName-str
     sendToPlugin({ action:'Example-ShowExamplePanel', data:'123' });
 }
