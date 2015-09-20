@@ -48,6 +48,25 @@
         return rep;
     }];
     
+    [webServer addDefaultHandlerForMethod:@"OPTIONS"
+                             requestClass:[GCDWebServerRequest class]
+                             processBlock:^
+     GCDWebServerResponse *(GCDWebServerRequest* request) {
+         GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithStatusCode:200];
+         
+         NSString *origin = [request headers][@"origin"];
+         if(!origin){
+             origin = @"*";
+         }
+         NSString *corh = [request headers][@"access-control-request-headers"];
+         if(corh){
+             [rep setValue:corh forAdditionalHeader:@"Access-Control-Allow-Headers"];
+         }
+         [rep setValue:@"GET, POST" forAdditionalHeader:@"Access-Control-Allow-Methods"];
+         [rep setValue:origin forAdditionalHeader:@"Access-Control-Allow-Origin"];
+         return rep;
+     }];
+    
     // Blur image
     
     [webServer addHandlerForMethod:@"GET" pathRegex:@"/blur/.*"
@@ -111,6 +130,8 @@
         return rep;
     }];
     
+    // Plugin Call
+    
     [webServer addHandlerForMethod:@"POST" path:@"/pluginCall"
                       requestClass:[GCDWebServerDataRequest class]
                       processBlock:^
@@ -120,7 +141,7 @@
          
          NSString *action = [dic valueForKey:@"action"];
          NSString *data = [dic valueForKey:@"data"];
-         
+         NSLog(@"Plugin call %@",action);
          VP_Plugin *plugin = [[PluginManager sharedInstance] Get:action];
          bool canHandle = [plugin canHandleEvent:action];
          

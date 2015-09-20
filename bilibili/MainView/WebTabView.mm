@@ -11,6 +11,7 @@
 #import "Analytics.h"
 
 @implementation WebTabView {
+    PluginManager *pm;
     NSString* WebScript;
     NSView* HudView;
     bool ariainit;
@@ -19,6 +20,7 @@
 
 -(id)initWithBaseTabContents:(CTTabContents*)baseContents {
     if (!(self = [super initWithBaseTabContents:baseContents])) return nil;
+    pm = [PluginManager sharedInstance];
     double height = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webheight"];
     double width = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webwidth"];
     NSLog(@"lastWidth: %f Height: %f",width,height);
@@ -143,12 +145,26 @@
     //NSLog(@"start load");
 }
 
+- (NSString *)decideScriptInject{
+    NSURL *url = [NSURL URLWithString:[webView getURL]];
+    NSString *host = [url host];
+    if(!host){
+        return NULL;
+    }
+    if([host containsString:@".bilibili.com"]){
+        return WebScript;
+    }else{
+        return [pm javascriptForDomain:host];
+    }
+    return NULL;
+}
+
 - (void) didCommitNavigation{
     [self setTitle:[webView getTitle]];
     [self setIsWaitingForResponse:NO];
     [self setIsLoading:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[webView getURL]];
-    [webView runJavascript:WebScript];
+    [webView runJavascript:[self decideScriptInject]];
     
     if(acceptAnalytics == 1 || acceptAnalytics == 2){
         screenView("WebView");
@@ -176,7 +192,7 @@
 
 - (void)onTitleChange:(NSString *)str{
     [self setTitle:str];
-    [webView runJavascript:WebScript];
+    [webView runJavascript:[self decideScriptInject]];
 }
 
 - (void)showError

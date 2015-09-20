@@ -22,8 +22,8 @@
 	<string>1</string>
 	<key>Inject Javascript on domain</key>
 	<string>example.com</string>
-	<key>Inject Javascript file name</key>
-	<string>Inject.js</string>
+	<key>Inject Javascript file prefix</key>
+	<string>Inject</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2015 TYPCN. All rights reserved.</string>
 	<key>NSPrincipalClass</key>

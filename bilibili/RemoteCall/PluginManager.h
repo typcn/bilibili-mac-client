@@ -18,4 +18,7 @@
 - (void)enable:(NSString *)name;
 - (void)disable:(NSString *)name;
 
+
+- (NSString *)javascriptForDomain:(NSString *)domain;
+
 @end
