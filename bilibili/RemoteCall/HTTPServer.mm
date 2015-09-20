@@ -121,9 +121,16 @@
          NSString *action = [dic valueForKey:@"action"];
          NSString *data = [dic valueForKey:@"data"];
          
+         VP_Plugin *plugin = [[PluginManager sharedInstance] Get:action];
+         bool canHandle = [plugin canHandleEvent:action];
          
+         GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithText:@"done"];
+         if(!canHandle){
+             [rep setStatusCode:500];
+         }else{
+             [plugin processEvent:action :data];
+         }
          
-         GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithText:@"ok"];
          [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
          return rep;
      }];
