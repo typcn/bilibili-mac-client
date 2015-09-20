@@ -13,7 +13,8 @@
 		FD0829C91B67844500D2B126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0829C71B67844500D2B126 /* Main.storyboard */; };
 		FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */; settings = {ASSET_TAGS = (); }; };
 		FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC651BAEF269008FD9BF /* PluginManager.m */; settings = {ASSET_TAGS = (); }; };
-		FD0CCC791BAEF93D008FD9BF /* VP-Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC781BAEF93D008FD9BF /* VP-Plugin.m */; settings = {ASSET_TAGS = (); }; };
+		FD0CCC941BAF2121008FD9BF /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0CCC931BAF2121008FD9BF /* VPPlugin.framework */; };
+		FD0CCC951BAF2121008FD9BF /* VPPlugin.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD0CCC931BAF2121008FD9BF /* VPPlugin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A91B259318003A958F /* CommentBlockSettings.m */; };
 		FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AB1B259318003A958F /* KeywordBlockSettings.m */; };
 		FD1954B01B259318003A958F /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AD1B259318003A958F /* Settings.m */; };
@@ -260,6 +261,7 @@
 				FD72571E1B9D534C0015B0F1 /* GCDWebServers.framework in Copy Files */,
 				FDD1FDD51B9B14F9006711B0 /* ChromiumTabs.framework in Copy Files */,
 				FD36B0CF1B9959D300FB32CC /* Sparkle.framework in Copy Files */,
+				FD0CCC951BAF2121008FD9BF /* VPPlugin.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,8 +283,7 @@
 		FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HTTPServer.mm; path = RemoteCall/HTTPServer.mm; sourceTree = "<group>"; };
 		FD0CCC641BAEF269008FD9BF /* PluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginManager.h; path = RemoteCall/PluginManager.h; sourceTree = "<group>"; };
 		FD0CCC651BAEF269008FD9BF /* PluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PluginManager.m; path = RemoteCall/PluginManager.m; sourceTree = "<group>"; };
-		FD0CCC771BAEF93D008FD9BF /* VP-Plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "VP-Plugin.h"; path = "plugin/CommonAPI/VP-Plugin.h"; sourceTree = SOURCE_ROOT; };
-		FD0CCC781BAEF93D008FD9BF /* VP-Plugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "VP-Plugin.m"; path = "plugin/CommonAPI/VP-Plugin.m"; sourceTree = SOURCE_ROOT; };
+		FD0CCC931BAF2121008FD9BF /* VPPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = VPPlugin.framework; path = /Users/typcn/Github/bilibili/Build/Products/Debug/VPPlugin.framework; sourceTree = "<absolute>"; };
 		FD1954A81B259318003A958F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentBlockSettings.h; path = Settings/CommentBlockSettings.h; sourceTree = "<group>"; };
 		FD1954A91B259318003A958F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentBlockSettings.m; path = Settings/CommentBlockSettings.m; sourceTree = "<group>"; };
 		FD1954AA1B259318003A958F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeywordBlockSettings.h; path = Settings/KeywordBlockSettings.h; sourceTree = "<group>"; };
@@ -471,6 +472,7 @@
 				FDEC3B4C1BA02E5C002DA0EE /* libz.1.dylib in Frameworks */,
 				FDEC3B491BA02E5C002DA0EE /* libvo-aacenc.0.dylib in Frameworks */,
 				FDEC3B4D1BA02E5C002DA0EE /* liblua.5.2.dylib in Frameworks */,
+				FD0CCC941BAF2121008FD9BF /* VPPlugin.framework in Frameworks */,
 				FDEC3B371BA02E5C002DA0EE /* libavdevice.57.dylib in Frameworks */,
 				FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */,
 				FD36B0CD1B9959CC00FB32CC /* Sparkle.framework in Frameworks */,
@@ -701,6 +703,7 @@
 		FD471FD11AC92D7C00A2A727 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FD0CCC931BAF2121008FD9BF /* VPPlugin.framework */,
 				FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */,
 				FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */,
 				FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */,
@@ -824,8 +827,6 @@
 		FD7257241B9D53D30015B0F1 /* RemoteCall */ = {
 			isa = PBXGroup;
 			children = (
-				FD0CCC771BAEF93D008FD9BF /* VP-Plugin.h */,
-				FD0CCC781BAEF93D008FD9BF /* VP-Plugin.m */,
 				FD0CCC611BAEF25B008FD9BF /* HTTPServer.h */,
 				FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */,
 				FD0CCC641BAEF269008FD9BF /* PluginManager.h */,
@@ -1111,7 +1112,6 @@
 				FD5B0C621B9ABAFF00045F10 /* TWebView.mm in Sources */,
 				FD1954BC1B259342003A958F /* downloadWrapper.mm in Sources */,
 				FD36B0B71B98920A00FB32CC /* WebTabView.mm in Sources */,
-				FD0CCC791BAEF93D008FD9BF /* VP-Plugin.m in Sources */,
 				FD1954C71B25942F003A958F /* main.m in Sources */,
 				FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */,
 				FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */,
@@ -1306,6 +1306,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/bilibili/libs",
+					"$(PROJECT_DIR)/Build/Products/Debug",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					__danmaku2ass_native__NoMainFunc__,
@@ -1345,6 +1346,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/bilibili/libs",
+					"$(PROJECT_DIR)/Build/Products/Debug",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = __danmaku2ass_native__NoMainFunc__;
 				INFOPLIST_FILE = bilibili/Info.plist;

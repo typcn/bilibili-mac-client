@@ -1,16 +1,18 @@
 //
-//  Plugin common API
+//  Example.h
+//  PluginExample
 //
 //  Created by TYPCN on 2015/9/20.
 //  Copyright © 2015 TYPCN. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#ifndef vp_plg_api
-#define vp_plg_api 0.1
-#endif
+#ifndef Example_h
+#define Example_h
 
-@interface VP_Plugin : NSObject
+#import <Cocoa/Cocoa.h>
+#import <VPPlugin/VPPlugin.h>
+
+@interface Example : VP_Plugin
 
 // trigger on load , version is program build number ( eg: 206 )
 - (bool)load:(int)version;
@@ -25,3 +27,6 @@
 - (NSString *)processEvent:(NSString *)eventName :(NSString *)eventData;
 
 @end
+
+
+#endif /* Example_h */

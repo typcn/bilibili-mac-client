@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VP-Plugin.h"
+#import <VPPlugin/VPPlugin.h>
 
 @interface PluginManager : NSObject
 

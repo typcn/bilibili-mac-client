@@ -5,6 +5,9 @@
       location = "group:bilibili.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:plugin/PluginExample.xcodeproj">
+      location = "group:plugin/VPPluginAPI/VPPlugin.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:plugin/PluginExample/PluginExample.xcodeproj">
    </FileRef>
 </Workspace>

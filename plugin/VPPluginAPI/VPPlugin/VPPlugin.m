@@ -1,11 +1,11 @@
 //
 //  Plugin common API
 //
-//  Created by TYPCN on 2015/9/20.
+//  Created by TYPCN on 2015/9/21.
 //  Copyright © 2015 TYPCN. All rights reserved.
 //
 
-#import "VP-Plugin.h"
+#import "VPPlugin.h"
 
 @implementation VP_Plugin
 
