@@ -1,0 +1,265 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FD0CCC5A1BAEE47D008FD9BF /* Example.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC591BAEE47D008FD9BF /* Example.m */; settings = {ASSET_TAGS = (); }; };
+		FD0CCC5D1BAEE73D008FD9BF /* ExamplePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD0CCC5C1BAEE73D008FD9BF /* ExamplePanel.xib */; settings = {ASSET_TAGS = (); }; };
+		FD0CCC5F1BAEE8F0008FD9BF /* Inject.js in Resources */ = {isa = PBXBuildFile; fileRef = FD0CCC5E1BAEE8F0008FD9BF /* Inject.js */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FD0CCC591BAEE47D008FD9BF /* Example.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Example.m; sourceTree = "<group>"; };
+		FD0CCC5B1BAEE488008FD9BF /* Example.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Example.h; sourceTree = "<group>"; };
+		FD0CCC5C1BAEE73D008FD9BF /* ExamplePanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamplePanel.xib; sourceTree = "<group>"; };
+		FD0CCC5E1BAEE8F0008FD9BF /* Inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Inject.js; sourceTree = "<group>"; };
+		FD47B9E51BAECBDE00BAF397 /* PluginExample.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PluginExample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD47B9E81BAECBDE00BAF397 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FD47B9E21BAECBDE00BAF397 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FD47B9DC1BAECBDE00BAF397 = {
+			isa = PBXGroup;
+			children = (
+				FD47B9E71BAECBDE00BAF397 /* plugin */,
+				FD47B9E61BAECBDE00BAF397 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FD47B9E61BAECBDE00BAF397 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD47B9E51BAECBDE00BAF397 /* PluginExample.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FD47B9E71BAECBDE00BAF397 /* plugin */ = {
+			isa = PBXGroup;
+			children = (
+				FD47B9E81BAECBDE00BAF397 /* Info.plist */,
+				FD0CCC5B1BAEE488008FD9BF /* Example.h */,
+				FD0CCC591BAEE47D008FD9BF /* Example.m */,
+				FD0CCC5C1BAEE73D008FD9BF /* ExamplePanel.xib */,
+				FD0CCC5E1BAEE8F0008FD9BF /* Inject.js */,
+			);
+			path = plugin;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FD47B9E41BAECBDE00BAF397 /* PluginExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FD47B9EB1BAECBDE00BAF397 /* Build configuration list for PBXNativeTarget "PluginExample" */;
+			buildPhases = (
+				FD47B9E11BAECBDE00BAF397 /* Sources */,
+				FD47B9E21BAECBDE00BAF397 /* Frameworks */,
+				FD47B9E31BAECBDE00BAF397 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PluginExample;
+			productName = plugin;
+			productReference = FD47B9E51BAECBDE00BAF397 /* PluginExample.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FD47B9DD1BAECBDE00BAF397 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = TYPCN;
+				TargetAttributes = {
+					FD47B9E41BAECBDE00BAF397 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = FD47B9E01BAECBDE00BAF397 /* Build configuration list for PBXProject "PluginExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FD47B9DC1BAECBDE00BAF397;
+			productRefGroup = FD47B9E61BAECBDE00BAF397 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FD47B9E41BAECBDE00BAF397 /* PluginExample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FD47B9E31BAECBDE00BAF397 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD0CCC5D1BAEE73D008FD9BF /* ExamplePanel.xib in Resources */,
+				FD0CCC5F1BAEE8F0008FD9BF /* Inject.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FD47B9E11BAECBDE00BAF397 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD0CCC5A1BAEE47D008FD9BF /* Example.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FD47B9E91BAECBDE00BAF397 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FD47B9EA1BAECBDE00BAF397 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FD47B9EC1BAECBDE00BAF397 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = plugin/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = com.typcn.vp.plugin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		FD47B9ED1BAECBDE00BAF397 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = plugin/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_BUNDLE_IDENTIFIER = com.typcn.vp.plugin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FD47B9E01BAECBDE00BAF397 /* Build configuration list for PBXProject "PluginExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD47B9E91BAECBDE00BAF397 /* Debug */,
+				FD47B9EA1BAECBDE00BAF397 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FD47B9EB1BAECBDE00BAF397 /* Build configuration list for PBXNativeTarget "PluginExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FD47B9EC1BAECBDE00BAF397 /* Debug */,
+				FD47B9ED1BAECBDE00BAF397 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FD47B9DD1BAECBDE00BAF397 /* Project object */;
+}

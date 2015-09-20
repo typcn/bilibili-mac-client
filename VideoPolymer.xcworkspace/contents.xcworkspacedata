@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:bilibili.xcodeproj">
+      location = "group:bilibili.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:plugin/PluginExample.xcodeproj">
    </FileRef>
 </Workspace>

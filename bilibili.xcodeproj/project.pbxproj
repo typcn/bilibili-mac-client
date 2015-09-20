@@ -11,6 +11,8 @@
 		E09BF99F1B84CCC6005E08CE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E09BF9A11B84CCC6005E08CE /* Localizable.strings */; };
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
 		FD0829C91B67844500D2B126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0829C71B67844500D2B126 /* Main.storyboard */; };
+		FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */; settings = {ASSET_TAGS = (); }; };
+		FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC651BAEF269008FD9BF /* PluginManager.m */; settings = {ASSET_TAGS = (); }; };
 		FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A91B259318003A958F /* CommentBlockSettings.m */; };
 		FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AB1B259318003A958F /* KeywordBlockSettings.m */; };
 		FD1954B01B259318003A958F /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AD1B259318003A958F /* Settings.m */; };
@@ -87,7 +89,6 @@
 		FD62CC8F1B6E6BB0000AED57 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */; };
 		FD72571D1B9D534C0015B0F1 /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD72571A1B9D52FE0015B0F1 /* GCDWebServers.framework */; };
 		FD72571E1B9D534C0015B0F1 /* GCDWebServers.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD72571A1B9D52FE0015B0F1 /* GCDWebServers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FD7257231B9D53CC0015B0F1 /* HTTPServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD7257221B9D53CC0015B0F1 /* HTTPServer.mm */; };
 		FD7257261B9D5E190015B0F1 /* Analytics.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD7257251B9D5E190015B0F1 /* Analytics.mm */; };
 		FD7328B41B9CD2AA001B450C /* libfontconfig.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7328991B9CD2AA001B450C /* libfontconfig.1.dylib */; };
 		FD7328B51B9CD2AA001B450C /* libmediainfo.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD73289A1B9CD2AA001B450C /* libmediainfo.0.dylib */; };
@@ -164,13 +165,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 3A3ED9831225E27E009E2908;
 			remoteInfo = ChromiumTabs;
-		};
-		FD36B0A21B988E4A00FB32CC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8D1107320486CEB800E47090;
-			remoteInfo = "Chromium Tabs";
 		};
 		FD7257191B9D52FE0015B0F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -282,6 +276,10 @@
 		FD076C541AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C5D1AC8CBBB00C893FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FD0829C81B67844500D2B126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FD0CCC611BAEF25B008FD9BF /* HTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPServer.h; path = RemoteCall/HTTPServer.h; sourceTree = "<group>"; };
+		FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HTTPServer.mm; path = RemoteCall/HTTPServer.mm; sourceTree = "<group>"; };
+		FD0CCC641BAEF269008FD9BF /* PluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginManager.h; path = RemoteCall/PluginManager.h; sourceTree = "<group>"; };
+		FD0CCC651BAEF269008FD9BF /* PluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PluginManager.m; path = RemoteCall/PluginManager.m; sourceTree = "<group>"; };
 		FD1954A81B259318003A958F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentBlockSettings.h; path = Settings/CommentBlockSettings.h; sourceTree = "<group>"; };
 		FD1954A91B259318003A958F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentBlockSettings.m; path = Settings/CommentBlockSettings.m; sourceTree = "<group>"; };
 		FD1954AA1B259318003A958F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeywordBlockSettings.h; path = Settings/KeywordBlockSettings.h; sourceTree = "<group>"; };
@@ -389,8 +387,6 @@
 		FD62CC8C1B6E6BAB000AED57 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GCDWebServer.xcodeproj; path = GCDWebServer/GCDWebServer.xcodeproj; sourceTree = "<group>"; };
-		FD7257211B9D53CC0015B0F1 /* HTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPServer.h; path = HTTPServer/HTTPServer.h; sourceTree = "<group>"; };
-		FD7257221B9D53CC0015B0F1 /* HTTPServer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HTTPServer.mm; path = HTTPServer/HTTPServer.mm; sourceTree = "<group>"; };
 		FD7257251B9D5E190015B0F1 /* Analytics.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Analytics.mm; path = Others/Analytics.mm; sourceTree = "<group>"; };
 		FD7328991B9CD2AA001B450C /* libfontconfig.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfontconfig.1.dylib; path = bilibili/libs/libfontconfig.1.dylib; sourceTree = "<group>"; };
 		FD73289A1B9CD2AA001B450C /* libmediainfo.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmediainfo.0.dylib; path = bilibili/libs/libmediainfo.0.dylib; sourceTree = "<group>"; };
@@ -521,7 +517,7 @@
 			isa = PBXGroup;
 			children = (
 				FDDE11791BA9E25100230184 /* VideoProvider */,
-				FD7257241B9D53D30015B0F1 /* HTTPServer */,
+				FD7257241B9D53D30015B0F1 /* RemoteCall */,
 				FD855FAE1B07D86C004A1610 /* RealTimeComments */,
 				FDA775E81AD93ED600426483 /* downloadManager */,
 				FD61025A1AD7CB760013119A /* WebPages */,
@@ -683,7 +679,6 @@
 			isa = PBXGroup;
 			children = (
 				FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */,
-				FD36B0A31B988E4A00FB32CC /* Chromium Tabs.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -823,13 +818,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FD7257241B9D53D30015B0F1 /* HTTPServer */ = {
+		FD7257241B9D53D30015B0F1 /* RemoteCall */ = {
 			isa = PBXGroup;
 			children = (
-				FD7257211B9D53CC0015B0F1 /* HTTPServer.h */,
-				FD7257221B9D53CC0015B0F1 /* HTTPServer.mm */,
+				FD0CCC611BAEF25B008FD9BF /* HTTPServer.h */,
+				FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */,
+				FD0CCC641BAEF269008FD9BF /* PluginManager.h */,
+				FD0CCC651BAEF269008FD9BF /* PluginManager.m */,
 			);
-			name = HTTPServer;
+			name = RemoteCall;
 			sourceTree = "<group>";
 		};
 		FD855FAE1B07D86C004A1610 /* RealTimeComments */ = {
@@ -1010,13 +1007,6 @@
 			remoteRef = FD36B0A01B988E4A00FB32CC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FD36B0A31B988E4A00FB32CC /* Chromium Tabs.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "Chromium Tabs.app";
-			remoteRef = FD36B0A21B988E4A00FB32CC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		FD72571A1B9D52FE0015B0F1 /* GCDWebServers.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -1110,15 +1100,16 @@
 				FD1954B61B259330003A958F /* PostComment.m in Sources */,
 				FDDE11671BA994DC00230184 /* PlayerControlView.m in Sources */,
 				FD1954C51B259368003A958F /* Socket.cpp in Sources */,
+				FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */,
 				FD1954CD1B259457003A958F /* ISSoundAdditions.m in Sources */,
 				FD1954D01B259462003A958F /* AppDelegate.m in Sources */,
 				FD5B0C621B9ABAFF00045F10 /* TWebView.mm in Sources */,
 				FD1954BC1B259342003A958F /* downloadWrapper.mm in Sources */,
 				FD36B0B71B98920A00FB32CC /* WebTabView.mm in Sources */,
 				FD1954C71B25942F003A958F /* main.m in Sources */,
-				FD7257231B9D53CC0015B0F1 /* HTTPServer.mm in Sources */,
 				FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */,
 				FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */,
+				FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */,
 				FDDE11601BA9459E00230184 /* reverseHTTP.cpp in Sources */,
 				FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */,
 				FDDE11801BA9E91400230184 /* vp_bilibili.mm in Sources */,
