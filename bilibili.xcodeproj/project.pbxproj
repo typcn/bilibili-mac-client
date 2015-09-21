@@ -390,7 +390,6 @@
 		FD5B0C611B9ABAFF00045F10 /* TWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TWebView.mm; path = MainView/TWebView.mm; sourceTree = "<group>"; };
 		FD61025B1AD7CBA20013119A /* inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = inject.js; path = WebPages/inject.js; sourceTree = "<group>"; };
 		FD61025D1AD7CBC10013119A /* webui.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = webui.html; path = WebPages/webui.html; sourceTree = "<group>"; };
-		FD62CA431B6F4BFB0014D45D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		FD62CC831B6E661F000AED57 /* reload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reload.png; path = bilibili/img/reload.png; sourceTree = "<group>"; };
 		FD62CC851B6E6726000AED57 /* copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = copy.png; path = bilibili/img/copy.png; sourceTree = "<group>"; };
 		FD62CC871B6E6848000AED57 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = Others/MBProgressHUD.h; sourceTree = "<group>"; };
@@ -445,6 +444,7 @@
 		FDEC3B321BA02E5C002DA0EE /* libx264.146.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libx264.146.dylib; path = bilibili/libs/libx264.146.dylib; sourceTree = "<group>"; };
 		FDEC3B331BA02E5C002DA0EE /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = bilibili/libs/libz.1.dylib; sourceTree = "<group>"; };
 		FDEC3B341BA02E5C002DA0EE /* liblua.5.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblua.5.2.dylib; path = bilibili/libs/liblua.5.2.dylib; sourceTree = "<group>"; };
+		FDFDAE171BB05A2F00AD99AE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1208,9 +1208,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				FD0829C81B67844500D2B126 /* Base */,
-				FD62CA431B6F4BFB0014D45D /* ja */,
 				FDCA48771BAB4F92001ACB8D /* zh-Hans */,
 				FDCA487A1BAB5256001ACB8D /* en */,
+				FDFDAE171BB05A2F00AD99AE /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
