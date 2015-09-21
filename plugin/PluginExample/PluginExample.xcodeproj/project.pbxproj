@@ -10,7 +10,7 @@
 		FD0CCC5A1BAEE47D008FD9BF /* Example.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC591BAEE47D008FD9BF /* Example.m */; settings = {ASSET_TAGS = (); }; };
 		FD0CCC5D1BAEE73D008FD9BF /* ExamplePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD0CCC5C1BAEE73D008FD9BF /* ExamplePanel.xib */; settings = {ASSET_TAGS = (); }; };
 		FD0CCC5F1BAEE8F0008FD9BF /* Inject.js in Resources */ = {isa = PBXBuildFile; fileRef = FD0CCC5E1BAEE8F0008FD9BF /* Inject.js */; settings = {ASSET_TAGS = (); }; };
-		FD0CCC921BAF2112008FD9BF /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0CCC911BAF2112008FD9BF /* VPPlugin.framework */; };
+		FD29EC671BAF9ADB00B8724B /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD29EC661BAF9ADB00B8724B /* VPPlugin.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,7 +18,7 @@
 		FD0CCC5B1BAEE488008FD9BF /* Example.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Example.h; sourceTree = "<group>"; };
 		FD0CCC5C1BAEE73D008FD9BF /* ExamplePanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamplePanel.xib; sourceTree = "<group>"; };
 		FD0CCC5E1BAEE8F0008FD9BF /* Inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = Inject.js; sourceTree = "<group>"; };
-		FD0CCC911BAF2112008FD9BF /* VPPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VPPlugin.framework; path = ../../Build/Products/Debug/VPPlugin.framework; sourceTree = "<group>"; };
+		FD29EC661BAF9ADB00B8724B /* VPPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VPPlugin.framework; path = ../../Build/Products/Debug/VPPlugin.framework; sourceTree = "<group>"; };
 		FD47B9E51BAECBDE00BAF397 /* PluginExample.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PluginExample.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD47B9E81BAECBDE00BAF397 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -28,7 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD0CCC921BAF2112008FD9BF /* VPPlugin.framework in Frameworks */,
+				FD29EC671BAF9ADB00B8724B /* VPPlugin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,7 +38,7 @@
 		FD47B9DC1BAECBDE00BAF397 = {
 			isa = PBXGroup;
 			children = (
-				FD0CCC911BAF2112008FD9BF /* VPPlugin.framework */,
+				FD29EC661BAF9ADB00B8724B /* VPPlugin.framework */,
 				FD47B9E71BAECBDE00BAF397 /* plugin */,
 				FD47B9E61BAECBDE00BAF397 /* Products */,
 			);

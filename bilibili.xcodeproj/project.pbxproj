@@ -13,8 +13,6 @@
 		FD0829C91B67844500D2B126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0829C71B67844500D2B126 /* Main.storyboard */; };
 		FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */; settings = {ASSET_TAGS = (); }; };
 		FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC651BAEF269008FD9BF /* PluginManager.m */; settings = {ASSET_TAGS = (); }; };
-		FD0CCC941BAF2121008FD9BF /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0CCC931BAF2121008FD9BF /* VPPlugin.framework */; };
-		FD0CCC951BAF2121008FD9BF /* VPPlugin.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD0CCC931BAF2121008FD9BF /* VPPlugin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A91B259318003A958F /* CommentBlockSettings.m */; };
 		FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AB1B259318003A958F /* KeywordBlockSettings.m */; };
 		FD1954B01B259318003A958F /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AD1B259318003A958F /* Settings.m */; };
@@ -31,6 +29,8 @@
 		FD1954D31B25947A003A958F /* PlayLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954D21B25947A003A958F /* PlayLocalFile.m */; };
 		FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954D71B2594AC003A958F /* AssClass.cpp */; };
 		FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954DA1B2594AC003A958F /* danmaku2ass.cpp */; };
+		FD29EC691BAF9AF200B8724B /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD29EC681BAF9AF200B8724B /* VPPlugin.framework */; };
+		FD29EC701BAF9C0100B8724B /* VPPlugin.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD29EC6F1BAF9BE300B8724B /* VPPlugin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD3553A81B9C4356000EE41E /* enterfullscreen.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553911B9C4356000EE41E /* enterfullscreen.pdf */; };
 		FD3553A91B9C4356000EE41E /* exitfillscreen_lr.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553921B9C4356000EE41E /* exitfillscreen_lr.pdf */; };
 		FD3553AA1B9C4356000EE41E /* exitfillscreen_ub.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553931B9C4356000EE41E /* exitfillscreen_ub.pdf */; };
@@ -161,6 +161,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		FD29EC6E1BAF9BE300B8724B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD29EC6A1BAF9BE300B8724B /* VPPlugin.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FD0CCC841BAF1FCC008FD9BF;
+			remoteInfo = VPPlugin;
+		};
 		FD36B0A01B988E4A00FB32CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */;
@@ -258,10 +265,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				FD29EC701BAF9C0100B8724B /* VPPlugin.framework in Copy Files */,
 				FD72571E1B9D534C0015B0F1 /* GCDWebServers.framework in Copy Files */,
 				FDD1FDD51B9B14F9006711B0 /* ChromiumTabs.framework in Copy Files */,
 				FD36B0CF1B9959D300FB32CC /* Sparkle.framework in Copy Files */,
-				FD0CCC951BAF2121008FD9BF /* VPPlugin.framework in Copy Files */,
 			);
 			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,7 +290,6 @@
 		FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HTTPServer.mm; path = RemoteCall/HTTPServer.mm; sourceTree = "<group>"; };
 		FD0CCC641BAEF269008FD9BF /* PluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginManager.h; path = RemoteCall/PluginManager.h; sourceTree = "<group>"; };
 		FD0CCC651BAEF269008FD9BF /* PluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PluginManager.m; path = RemoteCall/PluginManager.m; sourceTree = "<group>"; };
-		FD0CCC931BAF2121008FD9BF /* VPPlugin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = VPPlugin.framework; path = /Users/typcn/Github/bilibili/Build/Products/Debug/VPPlugin.framework; sourceTree = "<absolute>"; };
 		FD1954A81B259318003A958F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentBlockSettings.h; path = Settings/CommentBlockSettings.h; sourceTree = "<group>"; };
 		FD1954A91B259318003A958F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentBlockSettings.m; path = Settings/CommentBlockSettings.m; sourceTree = "<group>"; };
 		FD1954AA1B259318003A958F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeywordBlockSettings.h; path = Settings/KeywordBlockSettings.h; sourceTree = "<group>"; };
@@ -321,6 +327,8 @@
 		FD1954E21B2594AC003A958F /* rapidxml_print.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_print.hpp; sourceTree = "<group>"; };
 		FD1954E31B2594AC003A958F /* rapidxml_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = rapidxml_utils.hpp; sourceTree = "<group>"; };
 		FD1954F61B259AF6003A958F /* Analytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Analytics.h; path = Others/Analytics.h; sourceTree = "<group>"; };
+		FD29EC681BAF9AF200B8724B /* VPPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VPPlugin.framework; path = Build/Products/Debug/VPPlugin.framework; sourceTree = "<group>"; };
+		FD29EC6A1BAF9BE300B8724B /* VPPlugin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VPPlugin.xcodeproj; path = plugin/VPPluginAPI/VPPlugin.xcodeproj; sourceTree = "<group>"; };
 		FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmediainfo.0.dylib; path = bilibili/libs/libmediainfo.0.dylib; sourceTree = "<group>"; };
 		FD2BD5701AD15BCA001A7E16 /* MediaInfoDLL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaInfoDLL.h; path = bilibili/headers/MediaInfoDLL/MediaInfoDLL.h; sourceTree = "<group>"; };
 		FD35538A1B9C34F9000EE41E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PlayerControl.xib; sourceTree = "<group>"; };
@@ -444,6 +452,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD29EC691BAF9AF200B8724B /* VPPlugin.framework in Frameworks */,
 				FDCA487C1BAB59A0001ACB8D /* QuartzCore.framework in Frameworks */,
 				FD62CC8F1B6E6BB0000AED57 /* CoreData.framework in Frameworks */,
 				FDEC3B3D1BA02E5C002DA0EE /* libpostproc.54.dylib in Frameworks */,
@@ -472,7 +481,6 @@
 				FDEC3B4C1BA02E5C002DA0EE /* libz.1.dylib in Frameworks */,
 				FDEC3B491BA02E5C002DA0EE /* libvo-aacenc.0.dylib in Frameworks */,
 				FDEC3B4D1BA02E5C002DA0EE /* liblua.5.2.dylib in Frameworks */,
-				FD0CCC941BAF2121008FD9BF /* VPPlugin.framework in Frameworks */,
 				FDEC3B371BA02E5C002DA0EE /* libavdevice.57.dylib in Frameworks */,
 				FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */,
 				FD36B0CD1B9959CC00FB32CC /* Sparkle.framework in Frameworks */,
@@ -504,6 +512,7 @@
 				FD076C521AC8CBBB00C893FA /* Source */,
 				FD36B0991B988CB600FB32CC /* Third-party */,
 				FD076C511AC8CBBB00C893FA /* Products */,
+				FD29EC6A1BAF9BE300B8724B /* VPPlugin.xcodeproj */,
 				FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */,
 				FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */,
 			);
@@ -630,6 +639,14 @@
 			path = rapidxml;
 			sourceTree = "<group>";
 		};
+		FD29EC6B1BAF9BE300B8724B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FD29EC6F1BAF9BE300B8724B /* VPPlugin.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		FD3553901B9C434C000EE41E /* player */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,7 +720,7 @@
 		FD471FD11AC92D7C00A2A727 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FD0CCC931BAF2121008FD9BF /* VPPlugin.framework */,
+				FD29EC681BAF9AF200B8724B /* VPPlugin.framework */,
 				FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */,
 				FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */,
 				FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */,
@@ -996,6 +1013,10 @@
 					ProductGroup = FD72570E1B9D52FD0015B0F1 /* Products */;
 					ProjectRef = FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */;
 				},
+				{
+					ProductGroup = FD29EC6B1BAF9BE300B8724B /* Products */;
+					ProjectRef = FD29EC6A1BAF9BE300B8724B /* VPPlugin.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1006,6 +1027,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		FD29EC6F1BAF9BE300B8724B /* VPPlugin.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VPPlugin.framework;
+			remoteRef = FD29EC6E1BAF9BE300B8724B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
