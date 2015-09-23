@@ -20,13 +20,13 @@ Browser *browser;
 @synthesize donatew;
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
-    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
-    if(version.minorVersion == 11){
+//    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+//    if(version.minorVersion == 11){
 //        NSAlert *alert = [[NSAlert alloc] init];
 //        [alert setMessageText:@"对不起，由于 OpenGL 问题，软件暂时无法兼容 10.11, 请尝试使用 Xcode7 重新编译 libmpv.dylib"];
 //        [alert runModal];
 //        return;
-    }
+//    }
     signal(SIGPIPE, SIG_IGN);
     [[NSAppleEventManager sharedAppleEventManager]
      setEventHandler:self

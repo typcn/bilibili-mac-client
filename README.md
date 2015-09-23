@@ -2,7 +2,7 @@
 
 An unofficial bilibili client for mac
 
-<img src="https://app.ship.io/jobs/LajSkdYLuE7THK7n/build_status.png" style="width:160px" alt="Build Status">
+<img src="https://app.ship.io/jobs/LajSkdYLuE7THK7n/build_status.png" height="30" alt="Build Status">
 
 # Features
 - 硬解播放
