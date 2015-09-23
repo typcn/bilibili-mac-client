@@ -41,6 +41,11 @@ NSString *subFile;
         [self.videoUrl setStringValue:filepath];
     }
 }
+- (IBAction)setURL:(id)sender {
+    if([self.videoUrl stringValue] && [[self.videoUrl stringValue] length] > 5){
+        vUrl = [self.videoUrl stringValue];
+    }
+}
 - (IBAction)selectComment:(id)sender {
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];
     [openDlg setCanChooseFiles:YES];

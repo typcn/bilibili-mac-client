@@ -37,8 +37,6 @@
             wvConfig = [cfg copy];
         }
         
-//        [[wvConfig userContentController] removeScriptMessageHandlerForName:@"BLClient"];
-//        [[wvConfig userContentController] addScriptMessageHandler:self name:@"BLClient"];
         webViewType = tWKWebView;
         WKwv = [[WKWebView alloc] initWithFrame:NSZeroRect configuration:wvConfig];
         [WKwv setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
@@ -67,21 +65,6 @@
 
     return self;
 }
-
-- (void)userContentController:(WKUserContentController *)userContentController
-                                         didReceiveScriptMessage:(WKScriptMessage *)message
-{
-    NSString *action = [message.body valueForKey:@"action"];
-    NSString *data = [message.body valueForKey:@"data"];
-    [self.delegate invokeJSEvent:action withData:data];
-}
-
-- (void)receiveJSMessage:(id)msg{
-    NSString *action = [msg valueForKey:@"action"];
-    NSString *data = [msg valueForKey:@"data"];
-    [self.delegate invokeJSEvent:action withData:data];
-}
-
              
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"title"]){
@@ -209,25 +192,6 @@ didReceiveTitle:(NSString *)title
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
 {
     [self.delegate finishLoadOrNavigation: nil];
-}
-
-+(NSString*)webScriptNameForSelector:(SEL)sel
-{
-    if(sel == @selector(receiveJSMessage:))
-        return @"sendMsg";
-    return nil;
-}
-
-+ (BOOL)isSelectorExcludedFromWebScript:(SEL)sel
-{
-    if(sel == @selector(receiveJSMessage:))
-        return NO;
-    return YES;
-}
-
-- (void)webView:(WebView *)sender didClearWindowObject:(WebScriptObject *)windowScriptObject forFrame:(WebFrame *)frame
-{
-    //[windowScriptObject setValue:self forKeyPath:@"window.external"];
 }
 
 - (NSURLRequest *)webView:(WebView *)sender

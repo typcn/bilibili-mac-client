@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "PlayerControlView.h"
+#import "AirPlayView.h"
+#import "PluginManager.h"
 
 @interface HTTPServer : NSObject
 @property (strong) NSWindowController* playerWindowController;
+@property (strong) NSWindowController* airplayWindowController;
 - (void)startHTTPServer;
 
 @end

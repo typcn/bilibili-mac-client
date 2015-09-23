@@ -1,5 +1,5 @@
-window.bilimacVersion = 206;
-var TYPCN_PLAYER_CID;
+window.bilimacVersion = 208;
+window.injectHTML = 'INJ_HTML';
 window.sendToView = function(data){
     $.post("http://localhost:23330/rpc",data);
 }
@@ -46,10 +46,10 @@ function applyUI(){
         console.log("fv:" + fv);
         var re = /cid=(\d+)&/;
         var m = re.exec(fv);
-        TYPCN_PLAYER_CID = m[1];
+        window.TYPCN_PLAYER_CID = m[1];
         console.log("cid got");
         
-        if(TYPCN_PLAYER_CID){
+        if(window.TYPCN_PLAYER_CID){
             if(window.location.origin == 'http://live.bilibili.com'){
                 console.log("inject live page");
                 if(window.ROOMID > 0){
@@ -61,10 +61,18 @@ function applyUI(){
                 }
             }else if(window.location.href.indexOf("topic") > 1){
                 console.log("inject topic page");
-                $('embed').parent().html('<div class="TYPCN_PLAYER_INJECT_PAGE"><div class="player-placeholder"><div class="btn-wrapper n2"><div class="player-placeholder-head">请选择操作</div><div class="src-btn"><a href="javascript:window.sendToView({action:\'playVideoByCID\',data: TYPCN_PLAYER_CID})">播放</a></div><div class="src-btn"><a href="javascript:window.sendToView({action: \'downloadVideoByCID\',data: TYPCN_PLAYER_CID})">下载</a></div></div></div></div>');
+                $('embed').parent().html(window.injectHTML);
             }else{
                 console.log("inject player page");
-                $('#bofqi').html('<div class="TYPCN_PLAYER_INJECT_PAGE"><div class="player-placeholder"><div class="btn-wrapper n2"><div class="player-placeholder-head">请选择操作</div><div class="src-btn"><a href="javascript:window.sendToView({action:\'playVideoByCID\',data: TYPCN_PLAYER_CID})">播放</a></div><div class="src-btn"><a href="javascript:window.sendToView({action: \'downloadVideoByCID\',data: TYPCN_PLAYER_CID})">下载</a></div></div></div></div>');
+                $('#bofqi').html(window.injectHTML);
+                var ci = document.querySelector(".cover_image");
+                if(ci && ci.src){
+                    var ph = document.querySelector(".TYPCN_PLAYER_INJECT_PAGE .player-placeholder");
+                    if(ph){
+                        ph.style.backgroundImage = "url(http://localhost:23330/blur/" + ci.src + ")"
+                        ph.style.backgroundAttachment = "initial";
+                    }
+                }
             }
             clearInterval(window.i);
         }else{
@@ -79,13 +87,13 @@ if(!window.isFirstPlay){
     window.i = setInterval(waitForReady,500);
     console.log("start inject");
     function waitForReady(){
-        if(window.LoadTimes > 5){
+        if(window.LoadTimes > 8){
             clearInterval(window.i);
             return;
         }
         if(!window.isInjected){
             window.isInjected = true;
-            $.getScript("http://cdn2.eqoe.cn/files/bilibili/widget-min.js?ver=" + window.bilimacVersion);
+            $.getScript("http://cdn.eqoe.cn/files/bilibili/widget-min.js?ver=" + window.bilimacVersion);
         }
         if((typeof $) == 'function'){
             applyUI();

@@ -19,14 +19,25 @@
 - (void) failLoadOrNavigation: (NSURLRequest *) request withError: (NSError *) error;
 - (void) finishLoadOrNavigation: (NSURLRequest *) request;
 - (void) onTitleChange:(NSString *)str;
-- (void) invokeJSEvent:(NSString *)action withData:(NSString *)data;
 @end
+
+#if MAC_OS_X_VERSION < MAC_OS_X_VERSION_10_11
+
+@interface TWebView : NSObject <WebResourceLoadDelegate ,WebFrameLoadDelegate,WebUIDelegate,WKNavigationDelegate, WKUIDelegate>{
+    WebView *wv;
+    WKWebView *WKwv;
+    int webViewType;
+}
+
+#else
 
 @interface TWebView : NSObject <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler>{
     WebView *wv;
     WKWebView *WKwv;
     int webViewType;
 }
+
+#endif
 
 @property (nonatomic, weak) id <TWebViewDelegate> delegate;
 

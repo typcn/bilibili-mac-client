@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:bilibili.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:plugin/VPPluginAPI/VPPlugin.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:plugin/PluginExample/PluginExample.xcodeproj">
+   </FileRef>
+</Workspace>

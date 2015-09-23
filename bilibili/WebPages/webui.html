@@ -1,0 +1,74 @@
+<div class="TYPCN_PLAYER_INJECT_PAGE">
+    <div class="player-placeholder" onclick="window.sendToView({action:'playVideoByCID',data:  TYPCN_PLAYER_CID})">
+        <span class="play">
+            <span></span>
+        </span>
+    </div>
+    <div class="right-buttons">
+        <a href="javascript:window.sendToView({action:'showAirPlayByCID',data:  TYPCN_PLAYER_CID})"
+            class="airplay tmbtn">连接 AirPlay 设备</a>
+        <a href="javascript:window.sendToView({action:'downloadVideoByCID',data:  TYPCN_PLAYER_CID})"
+            class="download tmbtn">下载视频</a>
+    </div>
+</div>
+<style>
+.TYPCN_PLAYER_INJECT_PAGE {
+    background-color: #000;
+}
+.TYPCN_PLAYER_INJECT_PAGE .player-placeholder{
+    background: url(data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    cursor: pointer;
+}
+.TYPCN_PLAYER_INJECT_PAGE .right-buttons{
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    color: #fff;
+    font-size: 120%;
+    z-index: 999;
+}
+.TYPCN_PLAYER_INJECT_PAGE .airplay{
+    margin-right: 1em;
+}
+.TYPCN_PLAYER_INJECT_PAGE .download{
+    margin-right: 1em;
+}
+.player-placeholder .play {
+    position:absolute;
+    width:50px;
+    height:50px;
+    border:3px solid #fff;
+    top:50%;
+    right:50%;
+    margin:-28px;
+    border-radius:30px;
+    box-shadow:1px 1px 2px rgba(0,0,0,.2);
+}
+.player-placeholder .play span {
+    position:absolute;
+    width:0;
+    height:0;
+    border-top:12px solid transparent;
+    border-bottom:12px solid transparent;
+    border-left:20px solid #fff;
+    top:15px;
+    left:18px;
+}
+.tmbtn{
+    background-color: #00a1d6;
+    border-radius: 2px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 13px 26px;
+}
+.tmbtn:hover {
+    color: #eeeeee;
+}
+.scontent.float{
+    display: none;
+}
+</style>

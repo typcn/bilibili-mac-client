@@ -64,6 +64,12 @@
         moveSpeed = 0.0;
     }
     [self.commentMoveSpeed setFloatValue:moveSpeed];
+    
+    NSString *fontName = [settingsController objectForKey:@"fontName"];
+    if(!fontName || [fontName length] < 1){
+        fontName = @"STHeiti";
+    }
+    [self.fontName setStringValue:fontName];
 }
 
 - (IBAction)autoPlay:(id)sender {
@@ -134,6 +140,10 @@
     [settingsController synchronize];
 }
 
+- (IBAction)fontNameChanged:(id)sender {
+    [settingsController setObject:[self.fontName stringValue] forKey:@"fontName"];
+    [settingsController synchronize];
+}
 
 - (IBAction)FakeIPChanged:(id)sender {
     NSString *rand = [NSString stringWithFormat:@"%ld", (long)[self randomNumberBetween:1 maxNumber:254]];

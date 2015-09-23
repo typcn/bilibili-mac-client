@@ -17,12 +17,15 @@
 #import <GCDWebServers/GCDWebServerMultiPartFormRequest.h>
 #import <GCDWebServers/GCDWebServerDataResponse.h>
 
+#import <QuartzCore/CoreImage.h>
+
 @implementation HTTPServer{
     long acceptAnalytics;
     NSString *cookie;
 }
 
 @synthesize playerWindowController;
+@synthesize airplayWindowController;
 
 - (void)startHTTPServer{
     NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
@@ -33,21 +36,85 @@
     }
     [GCDWebServer setLogLevel:2];
     GCDWebServer* webServer = [[GCDWebServer alloc] init];
+    
+    // Default handler
+    
     [webServer addDefaultHandlerForMethod:@"GET"
                              requestClass:[GCDWebServerRequest class]
-                             processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
-        return [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>Bilibili for mac http service</p></body></html>"];
-                                 
+                             processBlock:^
+     GCDWebServerResponse *(GCDWebServerRequest* request) {
+        GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>Bilibili for mac http service</p></body></html>"];
+        [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
+        return rep;
     }];
-    [webServer addHandlerForMethod:@"POST" path:@"/rpc" requestClass:[GCDWebServerURLEncodedFormRequest class] processBlock:^GCDWebServerResponse *(GCDWebServerRequest* request) {
+    
+    [webServer addDefaultHandlerForMethod:@"OPTIONS"
+                             requestClass:[GCDWebServerRequest class]
+                             processBlock:^
+     GCDWebServerResponse *(GCDWebServerRequest* request) {
+         GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithStatusCode:200];
+         
+         NSString *origin = [request headers][@"origin"];
+         if(!origin){
+             origin = @"*";
+         }
+         NSString *corh = [request headers][@"access-control-request-headers"];
+         if(corh){
+             [rep setValue:corh forAdditionalHeader:@"Access-Control-Allow-Headers"];
+         }
+         [rep setValue:@"GET, POST" forAdditionalHeader:@"Access-Control-Allow-Methods"];
+         [rep setValue:origin forAdditionalHeader:@"Access-Control-Allow-Origin"];
+         return rep;
+     }];
+    
+    // Blur image
+    
+    [webServer addHandlerForMethod:@"GET" pathRegex:@"/blur/.*"
+                             requestClass:[GCDWebServerRequest class]
+                        asyncProcessBlock:^
+     (GCDWebServerRequest* request, GCDWebServerCompletionBlock completionBlock) {
+         NSString *imgurl = [[request.URL path] stringByReplacingOccurrencesOfString:@"/blur/" withString:@""];
+         NSLog(@"blur : %@",imgurl);
+         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+             NSData *img = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:imgurl]];
+             if(!img){
+                 completionBlock([GCDWebServerDataResponse responseWithStatusCode:500]);
+                 return;
+             }
+             CIImage *imageToBlur = [CIImage imageWithData:img];
+             if(!imageToBlur){
+                 completionBlock([GCDWebServerDataResponse responseWithStatusCode:500]);
+                 return;
+             }
+             CIFilter *filter = [CIFilter filterWithName: @"CIGaussianBlur"];
+             [filter setValue:imageToBlur forKey:kCIInputImageKey];
+             [filter setValue:[NSNumber numberWithFloat: 10] forKey: @"inputRadius"];
+             CIImage *output = [filter valueForKey:kCIOutputImageKey];
+             NSBitmapImageRep* rep = [[NSBitmapImageRep alloc] initWithCIImage:output];
+             NSData* PNGData = [rep representationUsingType:NSPNGFileType properties:@{}];
+             GCDWebServerDataResponse* response = [GCDWebServerDataResponse responseWithData:PNGData contentType:@"image/png"];
+             [response setCacheControlMaxAge:3600];
+             completionBlock(response);
+         });
+    }];
+    
+    // Action calling from web page
+    
+    [webServer addHandlerForMethod:@"POST" path:@"/rpc"
+                      requestClass:[GCDWebServerURLEncodedFormRequest class]
+                      processBlock:^
+     GCDWebServerResponse *(GCDWebServerRequest* request) {
+         
         NSDictionary *dic = [(GCDWebServerURLEncodedFormRequest*) request arguments];
         
         NSString *action = [dic valueForKey:@"action"];
         NSString *data = [dic valueForKey:@"data"];
-        NSLog(@"action %@ ",action);
+
         dispatch_async(dispatch_get_main_queue(), ^(void){
             if([action isEqualToString:@"playVideoByCID"]){
                 [self playVideoByCID:data];
+            }else if([action isEqualToString:@"showAirPlayByCID"]){
+                [self showAirPlayByCID:data];
             }else if([action isEqualToString:@"downloadVideoByCID"]){
                 [self downloadVideoByCID:data];
             }else if([action isEqualToString:@"checkforUpdate"]){
@@ -58,9 +125,36 @@
                 cookie = data;
             }
         });
-        
-        return [GCDWebServerDataResponse responseWithText:@"OK"];
+        GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithText:@"ok"];
+        [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
+        return rep;
     }];
+    
+    // Plugin Call
+    
+    [webServer addHandlerForMethod:@"POST" path:@"/pluginCall"
+                      requestClass:[GCDWebServerDataRequest class]
+                      processBlock:^
+     GCDWebServerResponse *(GCDWebServerRequest* request) {
+         
+         NSDictionary *dic = [(GCDWebServerDataRequest*) request jsonObject];
+         NSString *action = [dic valueForKey:@"action"];
+         NSString *data = [dic valueForKey:@"data"];
+         NSLog(@"Plugin call %@",action);
+         VP_Plugin *plugin = [[PluginManager sharedInstance] Get:action];
+         bool canHandle = [plugin canHandleEvent:action];
+         
+         GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithText:@"done"];
+         if(!canHandle){
+             [rep setStatusCode:500];
+         }else{
+             [plugin processEvent:action :data];
+         }
+         
+         [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
+         return rep;
+     }];
+    
     [NSTimer scheduledTimerWithTimeInterval:20
                                      target:self
                                    selector:@selector(saveCookie)
@@ -75,9 +169,23 @@
 
 - (void)saveCookie{
     if(cookie && [cookie length] > 5){
-        NSLog(@"Saving Cookie");
         [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:@"cookie"];
     }
+}
+
+- (void)showAirPlayByCID:(NSString *)cid
+{
+    vCID = cid;
+    if(acceptAnalytics == 1){
+        action("video", "play", [vCID cStringUsingEncoding:NSUTF8StringEncoding]);
+        screenView("AirPlayView");
+    }else if(acceptAnalytics == 2){
+        screenView("AirPlayView");
+    }else{
+        NSLog(@"Analytics disabled ! won't upload.");
+    }
+    airplayWindowController =[[NSWindowController alloc] initWithWindowNibName:@"AirPlay"];
+    [airplayWindowController showWindow:self];
 }
 
 - (void)playVideoByCID:(NSString *)cid

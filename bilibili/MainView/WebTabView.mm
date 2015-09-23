@@ -11,9 +11,8 @@
 #import "Analytics.h"
 
 @implementation WebTabView {
+    PluginManager *pm;
     NSString* WebScript;
-    NSString* WebUI;
-    NSString* WebCSS;
     NSView* HudView;
     bool ariainit;
     long acceptAnalytics;
@@ -21,6 +20,7 @@
 
 -(id)initWithBaseTabContents:(CTTabContents*)baseContents {
     if (!(self = [super initWithBaseTabContents:baseContents])) return nil;
+    pm = [PluginManager sharedInstance];
     double height = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webheight"];
     double width = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webwidth"];
     NSLog(@"lastWidth: %f Height: %f",width,height);
@@ -53,8 +53,6 @@
 }
 
 -(void)viewFrameDidChange:(NSRect)newFrame {
-    // We need to recalculate the frame of the NSTextView when the frame changes.
-    // This happens when a tab is created and when it's moved between windows.
     [super viewFrameDidChange:newFrame];
     NSRect frame = NSZeroRect;
     frame.size = [(NSScrollView*)(view_) contentSize];
@@ -96,16 +94,13 @@
     }
     
     path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"html"];
-    WebUI = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+    NSString* WebUI = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
     if(err){
         [self showError];
     }
-    
-    path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"css"];
-    WebCSS = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
-    if(err){
-        [self showError];
-    }
+    WebUI = [WebUI stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
+    WebUI = [WebUI stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+    WebScript = [WebScript stringByReplacingOccurrencesOfString:@"INJ_HTML" withString:WebUI];
 }
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
@@ -150,12 +145,26 @@
     //NSLog(@"start load");
 }
 
+- (NSString *)decideScriptInject{
+    NSURL *url = [NSURL URLWithString:[webView getURL]];
+    NSString *host = [url host];
+    if(!host){
+        return NULL;
+    }
+    if([host containsString:@".bilibili.com"]){
+        return WebScript;
+    }else{
+        return [pm javascriptForDomain:host];
+    }
+    return NULL;
+}
+
 - (void) didCommitNavigation{
     [self setTitle:[webView getTitle]];
     [self setIsWaitingForResponse:NO];
     [self setIsLoading:YES];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[webView getURL]];
-    [webView runJavascript:WebScript];
+    [webView runJavascript:[self decideScriptInject]];
     
     if(acceptAnalytics == 1 || acceptAnalytics == 2){
         screenView("WebView");
@@ -181,180 +190,16 @@
     [self setTitle:[webView getTitle]];
 }
 
-- (void) invokeJSEvent:(NSString *)action withData:(NSString *)data{
-    if([action isEqualToString:@"playVideoByCID"]){
-        [self playVideoByCID:data];
-    }else if([action isEqualToString:@"downloadVideoByCID"]){
-        [self downloadVideoByCID:data];
-    }else if([action isEqualToString:@"checkforUpdate"]){
-        [self checkForUpdates];
-    }else if([action isEqualToString:@"showNotification"]){
-        [self showNotification:data];
-    }else if([action isEqualToString:@"setcookie"]){
-        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"cookie"];
-    }
-}
-
 - (void)onTitleChange:(NSString *)str{
     [self setTitle:str];
-    [webView runJavascript:WebScript];
+    [webView runJavascript:[self decideScriptInject]];
 }
-
-
-- (void)showNotification:(NSString *)content{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:HudView animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = content;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:3];
-}
-
-- (void)checkForUpdates
-{
-//    [[SUUpdater sharedUpdater] checkForUpdates:nil];
-//    if(acceptAnalytics == 1 || acceptAnalytics == 2){
-//        action("App","CheckForUpdate","CheckForUpdate");
-//    }else{
-//        NSLog(@"Analytics disabled ! won't upload.");
-//    }
-}
-
-- (void)showPlayGUI
-{
-    [webView runJavascript:[NSString stringWithFormat:@"$('#bofqi').html('%@');$('head').append('<style>%@</style>');",WebUI,WebCSS]];
-}
-- (void)playVideoByCID:(NSString *)cid
-{
-//    if(parsing){
-//        return;
-//    }
-//    WebTabView *tv = (WebTabView *)[browser activeTabContents];
-//    TWebView *wv = [tv GetTWebView];
-//    NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
-//    NSString *mediaTitle = [fn objectAtIndex:0];
-//    parsing = true;
-//    vCID = cid;
-//    vUrl = [wv getURL];
-//    if([mediaTitle length] > 0){
-//        vTitle = [fn objectAtIndex:0];
-//    }else{
-//        vTitle = NSLocalizedString(@"未命名", nil);
-//    }
-//    
-//    [[NSUserDefaults standardUserDefaults] setObject:vUrl forKey:@"LastPlay"];
-//    NSLog(@"Video detected ! CID: %@",vCID);
-//    if(acceptAnalytics == 1){
-//        action("video", "play", [vCID cStringUsingEncoding:NSUTF8StringEncoding]);
-//        screenView("PlayerView");
-//    }else if(acceptAnalytics == 2){
-//        screenView("PlayerView");
-//    }else{
-//        NSLog(@"Analytics disabled ! won't upload.");
-//    }
-//    dispatch_async(dispatch_get_main_queue(), ^(void){
-//        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-//        playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
-//        [playerWindowController showWindow:self];
-//    });
-}
-- (void)downloadVideoByCID:(NSString *)cid
-{
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:HudView animated:YES];
-//    hud.mode = MBProgressHUDModeIndeterminate;
-//    hud.labelText = NSLocalizedString(@"正在启动下载引擎", nil);
-//    hud.removeFromSuperViewOnHide = YES;
-//    
-//    if(!DL){
-//        DL = new Downloader();
-//    }
-//    
-//    if(acceptAnalytics == 1){
-//        action("video", "download", [cid cStringUsingEncoding:NSUTF8StringEncoding]);
-//        screenView("PlayerView");
-//    }else if(acceptAnalytics == 2){
-//        screenView("PlayerView");
-//    }else{
-//        NSLog(@"Analytics disabled ! won't upload.");
-//    }
-//    
-//    WebTabView *tv = (WebTabView *)[browser activeTabContents];
-//    TWebView *wv = [tv GetTWebView];
-//    
-//    NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
-//    NSString *filename = [fn objectAtIndex:0];
-//    
-//    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        hud.labelText = NSLocalizedString(@"正在解析视频地址", nil);
-//        BOOL s = DL->newTask([cid intValue], filename);
-//        dispatch_async(dispatch_get_main_queue(), ^(void){
-//            if(s){
-//                hud.labelText = NSLocalizedString(@"成功开始下载", nil);
-//            }else{
-//                hud.labelText = NSLocalizedString(@"下载失败，请点击帮助 - 反馈", nil);
-//            }
-//            hud.mode = MBProgressHUDModeText;
-//            [hud hide:YES afterDelay:3];
-//            id ct = [browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/"];
-//            [browser addTabContents:ct inForeground:YES];
-//        });
-//    });
-}
-
 
 - (void)showError
 {
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:NSLocalizedString(@"文件读取失败，您可能无法正常使用本软件，请向开发者反馈。", nil)];
     [alert runModal];
-}
-
-- (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems{
-    NSMenuItem *copy = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"复制页面地址", nil) action:@selector(CopyLink:) keyEquivalent:@""];
-    [copy setTarget:self];
-    [copy setEnabled:YES];
-    NSMenuItem *play = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"强制显示播放界面", nil) action:@selector(ShowPlayer) keyEquivalent:@""];
-    [play setTarget:self];
-    [play setEnabled:YES];
-    NSMenuItem *contact = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"呼叫程序猿", nil) action:@selector(Contact) keyEquivalent:@""];
-    [contact setTarget:self];
-    [contact setEnabled:YES];
-    NSMutableArray *mutableArray = [[NSMutableArray alloc] init];
-    [mutableArray addObjectsFromArray:defaultMenuItems];
-    [mutableArray addObject:copy];
-    [mutableArray addObject:play];
-    [mutableArray addObject:contact];
-    return mutableArray;
-}
-
-- (IBAction)CopyLink:(id)sender {
-    [[NSPasteboard generalPasteboard] clearContents];
-    [[NSPasteboard generalPasteboard] setString:[webView getURL]  forType:NSStringPboardType];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:HudView animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.labelText = NSLocalizedString(@"当前页面地址已经复制到剪贴板", nil);
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:3];
-}
-
-- (void)ShowPlayer{
-    [webView runJavascript:WebScript];
-}
-
-- (void)Contact{
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"mailto:typcncom@gmail.com"]];
-}
-
-- (IBAction)openAv:(id)sender {
-    NSString *avNumber = [sender stringValue];
-    if([[sender stringValue] length] > 2 ){
-        if ([[avNumber substringToIndex:2] isEqual: @"av"]) {
-            avNumber = [avNumber substringFromIndex:2];
-        }
-        
-        
-        [webView setURL:[NSString stringWithFormat:@"http://www.bilibili.com/video/av%@",avNumber]];
-        [sender setStringValue:@""];
-    }
 }
 
 @end

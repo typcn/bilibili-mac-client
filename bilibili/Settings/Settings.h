@@ -16,6 +16,7 @@
 @property (weak) IBOutlet NSSlider *transparency;
 @property (weak) IBOutlet NSComboBox *FakeIP;
 @property (weak) IBOutlet NSTextField *fontsize;
+@property (weak) IBOutlet NSTextField *fontName;
 @property (weak) IBOutlet NSButton *disablebottomComment;
 @property (weak) IBOutlet NSButton *disableNewRenderEngine;
 @property (weak) IBOutlet NSButton *playMP4;

@@ -26,6 +26,6 @@ Then open bilibili.xcodeproj to edit or build.
 If you can't download libraries from git-lfs, please run following commands.
 
 	cd bilibili/libs/
-	rm -rf *
+	rm -rf *.dylib
 	wget http://7xkd32.dl1.z0.glb.clouddn.com/bilibili/libs/1.tar.gz
 	tar zxvf 1.tar.gz

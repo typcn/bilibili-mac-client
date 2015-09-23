@@ -522,7 +522,12 @@ static void wakeup(void *context) {
     
     if (urlData or LC)
     {
-        NSString  *filePath = [NSString stringWithFormat:@"%@/%@.cminfo.xml", @"/tmp",vCID];
+        NSString *fontName = [[NSUserDefaults standardUserDefaults] objectForKey:@"fontName"];
+        if(!fontName || [fontName length] < 1){
+            fontName = @"STHeiti";
+        }
+        
+        NSString  *filePath = [NSString stringWithFormat:@"%@%@.cminfo.xml", NSTemporaryDirectory(),vCID];
         
         if(LC){
             NSString *correctString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
@@ -531,7 +536,7 @@ static void wakeup(void *context) {
         
         [urlData writeToFile:filePath atomically:YES];
         
-        NSString *OutFile = [NSString stringWithFormat:@"%@/%@.cminfo.ass", @"/tmp",vCID];
+        NSString *OutFile = [NSString stringWithFormat:@"%@%@.cminfo.ass", NSTemporaryDirectory(),vCID];
         
         float mq = 6.75*[width doubleValue]/[height doubleValue]-4;
         float moveSpeed = [self getSettings:@"moveSpeed"];
@@ -594,7 +599,7 @@ static void wakeup(void *context) {
         
         p->SetFile([filePath cStringUsingEncoding:NSUTF8StringEncoding], [OutFile cStringUsingEncoding:NSUTF8StringEncoding]);
         p->SetRes([width intValue], [height intValue]);
-        p->SetFont("STHeiti", (int)[height intValue]/fontsize);
+        p->SetFont([fontName cStringUsingEncoding:NSUTF8StringEncoding], (int)[height intValue]/fontsize);
         p->SetDuration(mq,5);
         p->SetAlpha([[NSString stringWithFormat:@"%.2f",[self getSettings:@"transparency"]] floatValue]);
         p->Convert(disableBottom);

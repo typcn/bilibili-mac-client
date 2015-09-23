@@ -65,3 +65,24 @@
 
 //  KeywordBlockSettings
 "请输入关键词，一行一个" = "キーワードを入力してください。エンターキーて切ってください。";
+
+
+"复制链接" = "Copy Link";
+"下载管理" = "Download Manager";
+"发送邮件" = "Send Email";
+"退出"    = "Exit";
+
+"下载失败，请点击帮助 - 反馈" = "Download Failed , Please feedback";
+
+
+// AirPlay
+
+"读取中"   = "Loading";
+"刷新"     = "Refresh";
+"正在刷新设备列表" = "Loading device list";
+"设备列表刷新成功，请在左边选择一个服务器进行连接" = "Device list got , Select a server in left table";
+"正在尝试连接设备"  = "Connecting to device";
+"无法连接到指定设备" = "Unable to connect";
+"连接成功，正在尝试解析视频" = "Connected , Resolving video play address";
+"视频解析成功，正在尝试开始播放" = "Trying to start playback";
+"已发起播放，请查看电视" = "Request sent";

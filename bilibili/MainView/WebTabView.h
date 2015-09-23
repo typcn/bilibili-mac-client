@@ -9,6 +9,7 @@
 #import "Browser.h"
 #import "Common.hpp"
 #import "TWebView.h"
+#import "PluginManager.h"
 
 @interface WebTabView : CTTabContents <TWebViewDelegate> {
     TWebView *webView;
