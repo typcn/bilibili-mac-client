@@ -67,6 +67,11 @@
          return rep;
      }];
     
+    // Static files
+
+    NSString *webPath = [NSString stringWithFormat:@"%@/webpage/",[[NSBundle mainBundle] resourcePath]];
+    [webServer addGETHandlerForBasePath:@"/static/" directoryPath:webPath indexFilename:nil cacheAge:3600 allowRangeRequests:false];
+    
     // Blur image
     
     [webServer addHandlerForMethod:@"GET" pathRegex:@"/blur/.*"

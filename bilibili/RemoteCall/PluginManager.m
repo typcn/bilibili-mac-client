@@ -73,7 +73,7 @@
                 NSLog(@"Plugin doesn't have a valid code signature: %@",name);
                 continue;
             }else{
-                NSLog(@"Plugin %@ have valid codesign",name);
+                NSLog(@"Plugin %@ has valid codesign",name);
             }
         }
         NSDictionary *dir = [pluginBundle infoDictionary];
