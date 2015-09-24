@@ -7,6 +7,7 @@
 //
 
 #import "PluginManager.h"
+#import "NSBundle+OBCodeSigningInfo.h"
 
 @implementation PluginManager{
     NSString *sprtdir;
@@ -59,16 +60,21 @@
         if(!pluginBundle){
             continue;
         }
+        OBCodeSignState signState = [pluginBundle ob_codeSignState];
+        if(signState != OBCodeSignStateSignatureValid){
+            NSLog(@"Plugin doesn't have a valid code signature: %@",name);
+            continue;
+        }
         NSDictionary *dir = [pluginBundle infoDictionary];
         if(!dir){
-            NSLog(@"Invalid plugin:%@",name);
+            NSLog(@"Invalid plugin: %@",name);
             continue;
         }
         NSString *dm = [dir objectForKey:@"Inject Javascript on domain"];
         NSString *js = [dir objectForKey:@"Inject Javascript file prefix"];
         
         if(!dm || !js){
-            NSLog(@"Invalid VP-Plugin:%@",name);
+            NSLog(@"Invalid VP-Plugin: %@",name);
             continue;
         }
         
