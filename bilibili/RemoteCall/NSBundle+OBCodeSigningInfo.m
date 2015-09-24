@@ -55,13 +55,22 @@
     if (resultStateNumber) {
         return (int)[resultStateNumber integerValue];
     }
+    NSString *crt = [[NSBundle mainBundle] pathForResource:@"TYPCN_Root_G3" ofType:@"crt"];
+    NSString *requirement = [NSString stringWithFormat:@"anchor apple generic or anchor = \"%@\"",crt];
+    CFStringRef str = (__bridge CFStringRef)requirement;
     
+    SecRequirementRef AncorReq  = NULL;
+    OSStatus status = SecRequirementCreateWithString(  str , kSecCSDefaultFlags,&AncorReq);
+    if(status) {
+        return OBCodeSignStateError;
+    }
     // Determine code sign status
     OBCodeSignState resultState = OBCodeSignStateError;
     SecStaticCodeRef staticCode = [self ob_createStaticCode];
     if (staticCode)
     {
-        OSStatus signatureCheckResult = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSBasicValidateOnly, NULL, NULL);
+        OSStatus signatureCheckResult = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSDefaultFlags | kSecCSCheckAllArchitectures, AncorReq, NULL);
+        NSLog(@"rv: %d",signatureCheckResult);
         switch (signatureCheckResult) {
             case errSecSuccess: resultState = OBCodeSignStateSignatureValid; break;
             case errSecCSUnsigned: resultState = OBCodeSignStateUnsigned; break;

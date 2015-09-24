@@ -79,6 +79,7 @@
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
 		FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */; };
 		FD59846C1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD59846B1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m */; settings = {ASSET_TAGS = (); }; };
+		FD5984701BB40338001E0B17 /* TYPCN_Root_G3.crt in Resources */ = {isa = PBXBuildFile; fileRef = FD59846F1BB40338001E0B17 /* TYPCN_Root_G3.crt */; settings = {ASSET_TAGS = (); }; };
 		FD5B0C621B9ABAFF00045F10 /* TWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD5B0C611B9ABAFF00045F10 /* TWebView.mm */; };
 		FD61025C1AD7CBA20013119A /* inject.js in Resources */ = {isa = PBXBuildFile; fileRef = FD61025B1AD7CBA20013119A /* inject.js */; };
 		FD61025E1AD7CBC10013119A /* webui.html in Resources */ = {isa = PBXBuildFile; fileRef = FD61025D1AD7CBC10013119A /* webui.html */; };
@@ -389,6 +390,7 @@
 		FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmartBlockSettings.m; path = Settings/SmartBlockSettings.m; sourceTree = "<group>"; };
 		FD59846A1BB3F57C001E0B17 /* NSBundle+OBCodeSigningInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+OBCodeSigningInfo.h"; path = "RemoteCall/NSBundle+OBCodeSigningInfo.h"; sourceTree = "<group>"; };
 		FD59846B1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+OBCodeSigningInfo.m"; path = "RemoteCall/NSBundle+OBCodeSigningInfo.m"; sourceTree = "<group>"; };
+		FD59846F1BB40338001E0B17 /* TYPCN_Root_G3.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TYPCN_Root_G3.crt; path = plugin/TYPCN_Root_G3.crt; sourceTree = "<group>"; };
 		FD5B0C601B9ABAFF00045F10 /* TWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TWebView.h; path = MainView/TWebView.h; sourceTree = "<group>"; };
 		FD5B0C611B9ABAFF00045F10 /* TWebView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TWebView.mm; path = MainView/TWebView.mm; sourceTree = "<group>"; };
 		FD61025B1AD7CBA20013119A /* inject.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = inject.js; path = WebPages/inject.js; sourceTree = "<group>"; };
@@ -693,6 +695,7 @@
 		FD36B09A1B988D0100FB32CC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FD59846F1BB40338001E0B17 /* TYPCN_Root_G3.crt */,
 				FD3553901B9C434C000EE41E /* player */,
 				FD36B0E81B99B47B00FB32CC /* toolbar */,
 				FD4D37691ACEF3F20022ABF3 /* img */,
@@ -1091,6 +1094,7 @@
 				FD3553A91B9C4356000EE41E /* exitfillscreen_lr.pdf in Resources */,
 				FD62CC861B6E6726000AED57 /* copy.png in Resources */,
 				FD3553B41B9C4356000EE41E /* resizeindicator.png in Resources */,
+				FD5984701BB40338001E0B17 /* TYPCN_Root_G3.crt in Resources */,
 				FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */,
 				FD3553BD1B9C4356000EE41E /* vol_mid.pdf in Resources */,
 				FD3553BB1B9C4356000EE41E /* vol_high.pdf in Resources */,

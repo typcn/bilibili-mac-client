@@ -8,6 +8,7 @@
 
 #import "PluginManager.h"
 #import "NSBundle+OBCodeSigningInfo.h"
+#import <sys/sysctl.h>
 
 @implementation PluginManager{
     NSString *sprtdir;
@@ -50,6 +51,12 @@
 }
 
 - (void)reloadList{
+    BOOL isDebugger = [self isDebugger];
+    if(isDebugger){
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:@"注意：您正在调试器中运行，将允许加载没有数字签名的插件。"];
+        [alert runModal];
+    }
     
     NSArray *dirFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sprtdir error:nil];
     availablePlugins = dirFiles;
@@ -60,10 +67,14 @@
         if(!pluginBundle){
             continue;
         }
-        OBCodeSignState signState = [pluginBundle ob_codeSignState];
-        if(signState != OBCodeSignStateSignatureValid){
-            NSLog(@"Plugin doesn't have a valid code signature: %@",name);
-            continue;
+        if(!isDebugger){
+            OBCodeSignState signState = [pluginBundle ob_codeSignState];
+            if(signState != OBCodeSignStateSignatureValid){
+                NSLog(@"Plugin doesn't have a valid code signature: %@",name);
+                continue;
+            }else{
+                NSLog(@"Plugin %@ have valid codesign",name);
+            }
         }
         NSDictionary *dir = [pluginBundle infoDictionary];
         if(!dir){
@@ -140,6 +151,31 @@
 
 - (void)disable:(NSString *)name{
     // TODO
+}
+
+- (BOOL)isDebugger{
+    // Only allow to load invalid plugin if in debugger
+    static BOOL debuggerIsAttached = NO;
+    
+    static dispatch_once_t debuggerPredicate;
+    dispatch_once(&debuggerPredicate, ^{
+        
+        struct kinfo_proc info;
+        size_t info_size = sizeof(info);
+        int name[4];
+        
+        name[0] = CTL_KERN;
+        name[1] = KERN_PROC;
+        name[2] = KERN_PROC_PID;
+        name[3] = getpid();
+        if (sysctl(name, 4, &info, &info_size, NULL, 0) == -1) {
+            debuggerIsAttached = false;
+        }
+        
+        if (!debuggerIsAttached && (info.kp_proc.p_flag & P_TRACED) != 0)
+            debuggerIsAttached = true;
+    });
+    return debuggerIsAttached;
 }
 
 @end

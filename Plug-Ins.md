@@ -26,3 +26,7 @@ Main class of plugin , must inherit "VP_Plugin"
 ## Code
 
 See ExamplePlugin in workspace
+
+## Code Signing
+
+Plugin need valid codesign from Apple or me (plugin/TYPCN\_Root\_G3.crt) , you can submit plugin to Plugin Store( coming soon ) , the server will sign it automaticly.
