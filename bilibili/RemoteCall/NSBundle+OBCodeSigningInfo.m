@@ -66,7 +66,6 @@
     if (staticCode)
     {
         OSStatus signatureCheckResult = SecStaticCodeCheckValidityWithErrors(staticCode, kSecCSDefaultFlags | kSecCSCheckAllArchitectures, AncorReq, NULL);
-        NSLog(@"rv: %d",signatureCheckResult);
         switch (signatureCheckResult) {
             case errSecSuccess: resultState = OBCodeSignStateSignatureValid; break;
             case errSecCSUnsigned: resultState = OBCodeSignStateUnsigned; break;
