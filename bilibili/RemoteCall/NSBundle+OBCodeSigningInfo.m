@@ -55,12 +55,8 @@
     if (resultStateNumber) {
         return (int)[resultStateNumber integerValue];
     }
-    NSString *crt = [[NSBundle mainBundle] pathForResource:@"TYPCN_Root_G3" ofType:@"crt"];
-    NSString *requirement = [NSString stringWithFormat:@"anchor apple generic or anchor = \"%@\"",crt];
-    CFStringRef str = (__bridge CFStringRef)requirement;
-    
     SecRequirementRef AncorReq  = NULL;
-    OSStatus status = SecRequirementCreateWithString(  str , kSecCSDefaultFlags,&AncorReq);
+    OSStatus status = SecRequirementCreateWithString(CFSTR("anchor apple generic or certificate root = H\"3429a99d6259d3d7270b1435d18634680dc2867c\""), kSecCSDefaultFlags,&AncorReq);
     if(status) {
         return OBCodeSignStateError;
     }
