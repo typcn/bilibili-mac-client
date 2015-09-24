@@ -14,6 +14,7 @@
 @interface HTTPServer : NSObject
 @property (strong) NSWindowController* playerWindowController;
 @property (strong) NSWindowController* airplayWindowController;
+@property (strong) NSWindowController* settingsWindowController;
 - (void)startHTTPServer;
 
 @end

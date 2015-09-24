@@ -26,6 +26,7 @@
 
 @synthesize playerWindowController;
 @synthesize airplayWindowController;
+@synthesize settingsWindowController;
 
 - (void)startHTTPServer{
     NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
@@ -126,6 +127,10 @@
                 [self checkForUpdates];
             }else if([action isEqualToString:@"showNotification"]){
                 [self showNotification:data];
+            }else if([action isEqualToString:@"showSettings"]){
+                NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+                settingsWindowController = [storyBoard instantiateControllerWithIdentifier:@"prefWindow"];
+                [settingsWindowController showWindow:self];
             }else if([action isEqualToString:@"setcookie"]){
                 cookie = data;
             }
