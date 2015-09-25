@@ -9,10 +9,13 @@
 #import "PluginManager.h"
 #import "NSBundle+OBCodeSigningInfo.h"
 #import <sys/sysctl.h>
+#import "MBProgressHUD.h"
 
 @implementation PluginManager{
     NSString *sprtdir;
     NSArray *availablePlugins;
+    NSURLSession* bgsession;
+    MBProgressHUD *hud;
     NSMutableDictionary *loadedPlugins;
     NSMutableDictionary *pluginScripts;
     int ver;
@@ -46,8 +49,15 @@
 - (NSString *)javascriptForDomain:(NSString *)domain{
     NSArray *ary = [domain componentsSeparatedByString:@"."];
     int last = (int)[ary count];
+    if(last < 2){
+        return nil;
+    }
     NSString *key = [NSString stringWithFormat:@"%@.%@",[ary objectAtIndex:last-2],[ary objectAtIndex:last-1]];
     return pluginScripts[key];
+}
+
+- (NSArray *)getList{
+    return availablePlugins;
 }
 
 - (void)reloadList{
@@ -145,8 +155,75 @@
     }
 }
 
-- (void)install:(NSString *)URL{
-    // TODO
+- (void)install:(NSString *)name :(id)view{
+    hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = NSLocalizedString(@"正在载入插件信息", nil);
+    hud.removeFromSuperViewOnHide = YES;
+    NSString *pluginHubUrl  = @"http://vp-hub.eqoe.cn";
+    if([self isDebugger]){
+        pluginHubUrl  = @"http://mac.lan:5757";
+    }
+    NSString *pluginManifest = [NSString stringWithFormat:@"%@/api/manifest/%@.json",pluginHubUrl,name];
+    NSLog(@"Get manifest from %@",pluginManifest);
+    
+    NSURLSessionConfiguration* sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    bgsession = [NSURLSession sessionWithConfiguration:sessionConfig delegate:nil delegateQueue:nil];
+    
+    NSURL* URL = [NSURL URLWithString:pluginManifest];
+
+    /* Start a new Task */
+    NSURLSessionDataTask* task = [bgsession dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error == nil) {
+            // Success
+            NSLog(@"URL Session Task Succeeded: HTTP %ld", ((NSHTTPURLResponse*)response).statusCode);
+            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+            if(!object){
+                hud.labelText = NSLocalizedString(@"插件信息解析失败，连接可能被劫持", nil);
+                [self hidehud];
+                return;
+            }
+            NSInteger minver = [object integerForKey:@"minver"];
+            if(ver < minver){
+                hud.labelText = NSLocalizedString(@"您的客户端版本过旧，无法安装该插件", nil);
+                [self hidehud];
+                return;
+            }
+            NSInteger maxver = [object integerForKey:@"maxver"];
+            if(ver > maxver){
+                hud.labelText = NSLocalizedString(@"该插件无法兼容，请等待作者更新", nil);
+                [self hidehud];
+                return;
+            }
+
+            NSString *downloadAddr = [object objectForKey:@"download"];
+            if(!downloadAddr){
+                hud.labelText = NSLocalizedString(@"没有找到下载地址", nil);
+                [self hidehud];
+                return;
+            }
+            hud.mode =  MBProgressHUDModeAnnularDeterminate;
+            hud.labelText = NSLocalizedString(@"正在下载插件", nil);
+            
+            bgsession = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+            NSURLSessionDownloadTask *downloadTask = [bgsession downloadTaskWithURL:[NSURL URLWithString:downloadAddr]];
+            [downloadTask resume];
+        } else {
+            hud.labelText = NSLocalizedString(@"插件安装失败，无法连接到服务器", nil);
+            [self hidehud];
+            NSLog(@"URL Session Task Failed: %@", [error localizedDescription]);
+        }
+    }];
+    [task resume];
+    
+    
+}
+
+- (void)hidehud{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        hud.mode = MBProgressHUDModeText;
+        [hud hide:YES afterDelay:3];
+    });
 }
 
 - (void)enable:(NSString *)name{
@@ -180,6 +257,48 @@
             debuggerIsAttached = true;
     });
     return debuggerIsAttached;
+}
+
+
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
+{
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = NSLocalizedString(@"正在安装", nil);
+    
+    NSFileManager* fm = [NSFileManager defaultManager];
+    NSString* zipPath = [location path];
+    
+    NSString* targetFolder = sprtdir;
+    
+    [fm createDirectoryAtPath:targetFolder withIntermediateDirectories:NO
+                   attributes:nil error:NULL];
+    
+    NSArray *arguments = [NSArray arrayWithObjects:@"-o",zipPath,nil];
+    NSTask *unzipTask = [[NSTask alloc] init];
+    [unzipTask setLaunchPath:@"/usr/bin/unzip"];
+    [unzipTask setCurrentDirectoryPath:targetFolder];
+    [unzipTask setArguments:arguments];
+    [unzipTask launch];
+    [unzipTask waitUntilExit];
+    
+    hud.labelText = NSLocalizedString(@"安装成功", nil);
+    loadedPlugins = [[NSMutableDictionary alloc] init];
+    [self hidehud];
+    [self reloadList];
+}
+
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite
+{
+    double process = (double)totalBytesWritten / totalBytesExpectedToWrite;
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        hud.progress = process;
+    });
+}
+
+-(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didResumeAtOffset:(int64_t)fileOffset expectedTotalBytes:(int64_t)expectedTotalBytes
+{
+    NSLog(@"Session %@ download task %@ resumed at offset %lld bytes out of an expected %lld bytes.\n",
+          session, downloadTask, fileOffset, expectedTotalBytes);
 }
 
 @end

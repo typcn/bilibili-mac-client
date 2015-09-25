@@ -9,12 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <VPPlugin/VPPlugin.h>
 
-@interface PluginManager : NSObject
+@interface PluginManager : NSObject < NSURLSessionDownloadDelegate >
 
 + (instancetype)sharedInstance;
 - (void)reloadList;
+- (NSArray *)getList;
+
 - (id)Get:(NSString *)action;
-- (void)install:(NSString *)URL;
+- (void)install:(NSString *)name :(id)view;
 - (void)enable:(NSString *)name;
 - (void)disable:(NSString *)name;
 

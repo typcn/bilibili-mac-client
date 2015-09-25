@@ -133,6 +133,8 @@
                 [settingsWindowController showWindow:self];
             }else if([action isEqualToString:@"installPlugIn"]){
                 [self installPlugIn:data];
+            }else if([action isEqualToString:@"updatePlugIn"]){
+                [self installPlugIn:data];
             }else if([action isEqualToString:@"setcookie"]){
                 cookie = data;
             }
@@ -157,6 +159,10 @@
          if(!plugin){
              return nil;
          }
+         if([data isEqualToString:@"showSettings"]){
+             [plugin openSettings];
+             return nil;
+         }
          bool canHandle = [plugin canHandleEvent:action];
          
          GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithText:@"done"];
@@ -164,6 +170,28 @@
              [rep setStatusCode:500];
          }else{
              [plugin processEvent:action :data];
+         }
+         
+         [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
+         return rep;
+     }];
+    
+    // Interactive interface
+    
+    [webServer addHandlerForMethod:@"POST" path:@"/interactive"
+                      requestClass:[GCDWebServerURLEncodedFormRequest class]
+                      processBlock:^
+     GCDWebServerResponse *(GCDWebServerRequest* request) {
+         
+         NSDictionary *dic = [(GCDWebServerURLEncodedFormRequest*) request arguments];
+         
+         NSString *action = [dic valueForKey:@"action"];
+         NSString *data = [dic valueForKey:@"data"];
+         GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithText:@"ok"];
+         
+         if([action isEqualToString:@"pluginList"]){
+             NSArray *arr = [[PluginManager sharedInstance] getList];
+             rep = [GCDWebServerDataResponse responseWithJSONObject:arr];
          }
          
          [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
