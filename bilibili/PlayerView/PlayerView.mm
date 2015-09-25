@@ -442,14 +442,24 @@ static void wakeup(void *context) {
         check_error(mpv_set_option_string(mpv, "vf", "lavfi=\"fps=fps=60:round=down\""));
     }
     
+    bool loadComment = true;
     if(![vUrl containsString:@"live_"]){
-        check_error(mpv_set_option_string(mpv, "sub-ass", "yes"));
-        check_error(mpv_set_option_string(mpv, "sub-file", [commentFile cStringUsingEncoding:NSUTF8StringEncoding]));
+        loadComment = false;
     }else{
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.showLiveChat performClick:nil];
         });
     }
+    
+    if([commentFile isEqualToString:@"/NotFound"]){
+        loadComment = false;
+    }
+    
+    if(loadComment){
+        check_error(mpv_set_option_string(mpv, "sub-ass", "yes"));
+        check_error(mpv_set_option_string(mpv, "sub-file", [commentFile cStringUsingEncoding:NSUTF8StringEncoding]));
+    }
+    
     // request important errors
     check_error(mpv_request_log_messages(mpv, "warn"));
     
