@@ -44,7 +44,13 @@
                              requestClass:[GCDWebServerRequest class]
                              processBlock:^
      GCDWebServerResponse *(GCDWebServerRequest* request) {
-        GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithHTML:@"<html><body><p>Bilibili for mac http service</p></body></html>"];
+        id plistinfo = [[NSBundle mainBundle] infoDictionary];
+        NSDictionary *dic = @{
+                               @"name":@"bilibili for mac http service",
+                               @"version":[plistinfo objectForKey:@"CFBundleShortVersionString"],
+                               @"build":[plistinfo objectForKey:@"CFBundleVersion"]
+                               };
+        GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithJSONObject:dic];
         [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
         return rep;
     }];
@@ -169,7 +175,10 @@
          if(!canHandle){
              [rep setStatusCode:500];
          }else{
-             [plugin processEvent:action :data];
+             NSString *url = [plugin processEvent:action :data];
+             if(url && [url length] > 5){
+                 [self playVideoByUrl:url];
+             }
          }
          
          [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
@@ -285,6 +294,39 @@
         [playerWindowController showWindow:self];
     });
 }
+
+- (void)playVideoByUrl:(NSString *)Url
+{
+    if(parsing){
+        return;
+    }
+    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+    if(!tv){
+        return;
+    }
+    TWebView *wv = [tv GetTWebView];
+    if(!wv){
+        return;
+    }
+    parsing = true;
+    vCID = @"LOCALVIDEO";
+    vUrl = Url;
+    
+    if(acceptAnalytics == 1){
+        action("video", "play", "pluginVideo");
+        screenView("PlayerView");
+    }else if(acceptAnalytics == 2){
+        screenView("PlayerView");
+    }else{
+        NSLog(@"Analytics disabled ! won't upload.");
+    }
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+        playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
+        [playerWindowController showWindow:self];
+    });
+}
+
 
 - (void)downloadVideoByCID:(NSString *)cid{
     WebTabView *tv = (WebTabView *)[browser activeTabContents];
