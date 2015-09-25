@@ -13,12 +13,13 @@
 
 @implementation PluginManager{
     NSString *sprtdir;
-    NSArray *availablePlugins;
     NSURLSession* bgsession;
     MBProgressHUD *hud;
+    NSMutableArray *availablePlugins;
     NSMutableDictionary *loadedPlugins;
     NSMutableDictionary *pluginScripts;
     int ver;
+    bool isRunning;
 }
 
 + (instancetype)sharedInstance {
@@ -73,9 +74,9 @@
     }
     
     NSArray *dirFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sprtdir error:nil];
-    availablePlugins = dirFiles;
+    availablePlugins = [[NSMutableArray alloc] init];
     
-    for(id name in availablePlugins){
+    for(id name in dirFiles){
         NSString *path = [NSString stringWithFormat:@"%@%@",sprtdir,name];
         NSBundle *pluginBundle = [NSBundle bundleWithPath:path];
         if(!pluginBundle){
@@ -115,6 +116,7 @@
         
         pluginScripts[dm] = str;
         NSLog(@"Loading plugin javascript %@ forDomain %@",name,dm);
+        [availablePlugins addObject:@{@"file":name,@"ver":[dir objectForKey:@"CFBundleVersion"]}];
     }
 }
 
@@ -156,14 +158,15 @@
 }
 
 - (void)install:(NSString *)name :(id)view{
+    if(isRunning){
+        return;
+    }
+    isRunning = true;
     hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = NSLocalizedString(@"正在载入插件信息", nil);
     hud.removeFromSuperViewOnHide = YES;
     NSString *pluginHubUrl  = @"http://vp-hub.eqoe.cn";
-    if([self isDebugger]){
-        pluginHubUrl  = @"http://mac.lan:5757";
-    }
     NSString *pluginManifest = [NSString stringWithFormat:@"%@/api/manifest/%@.json",pluginHubUrl,name];
     NSLog(@"Get manifest from %@",pluginManifest);
     
@@ -222,7 +225,8 @@
 - (void)hidehud{
     dispatch_async(dispatch_get_main_queue(), ^(void){
         hud.mode = MBProgressHUDModeText;
-        [hud hide:YES afterDelay:3];
+        [hud hide:YES afterDelay:1.5];
+        isRunning = false;
     });
 }
 
@@ -281,10 +285,16 @@
     [unzipTask launch];
     [unzipTask waitUntilExit];
     
-    hud.labelText = NSLocalizedString(@"安装成功", nil);
-    loadedPlugins = [[NSMutableDictionary alloc] init];
-    [self hidehud];
-    [self reloadList];
+    if ([unzipTask terminationStatus] == 0){
+        hud.labelText = NSLocalizedString(@"安装成功", nil);
+        loadedPlugins = [[NSMutableDictionary alloc] init];
+        [self hidehud];
+        [self reloadList];
+    }else{
+        hud.labelText = NSLocalizedString(@"插件下载失败，网络被劫持或服务器错误", nil);
+        [self hidehud];
+        return;
+    }
 }
 
 -(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didWriteData:(int64_t)bytesWritten totalBytesWritten:(int64_t)totalBytesWritten totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite

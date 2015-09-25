@@ -20,23 +20,7 @@
 
 -(id)initWithBaseTabContents:(CTTabContents*)baseContents {
     if (!(self = [super initWithBaseTabContents:baseContents])) return nil;
-    pm = [PluginManager sharedInstance];
-    double height = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webheight"];
-    double width = [[NSUserDefaults standardUserDefaults] doubleForKey:@"webwidth"];
-    NSLog(@"lastWidth: %f Height: %f",width,height);
-    if(width < 300 || height < 300){
-        NSRect rect = [[NSScreen mainScreen] visibleFrame];
-        [self.view setFrame:rect];
-    }else{
-        NSRect frame = [self.view.window frame];
-        frame.size = NSMakeSize(width, height);
-        [self.view setFrame:frame];
-    }
-    
-    [self.view.window makeKeyAndOrderFront:NSApp];
-    [self.view.window makeMainWindow];
-    
-    NSURL *u = [NSURL URLWithString:@"http://www.bilibili.com"];
+    NSURL *u = [NSURL URLWithString:@"http://vp-hub.eqoe.cn"];
     
     return [self initWithRequest:[NSURLRequest requestWithURL:u] andConfig:nil];
 }
@@ -49,6 +33,7 @@
     [sv setHasVerticalScroller:NO];
     [webView addToView:sv];
     self.view = sv;
+    pm = [PluginManager sharedInstance];
     return self;
 }
 
@@ -61,6 +46,7 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
         [[NSUserDefaults standardUserDefaults] setDouble:frame.size.width forKey:@"webwidth"];
         [[NSUserDefaults standardUserDefaults] setDouble:frame.size.height forKey:@"webheight"];
+        pm = [PluginManager sharedInstance];
     });
 }
 
