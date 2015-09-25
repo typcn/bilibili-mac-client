@@ -91,8 +91,8 @@ static void wakeup(void *context) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     LastWindow = [[NSApplication sharedApplication] keyWindow];
-    [LastWindow orderOut:nil];
     [LastWindow resignKeyWindow];
+    [LastWindow miniaturize:self];
     w = self.view.window;
     [w makeKeyAndOrderFront:NSApp];
     [w makeMainWindow];
