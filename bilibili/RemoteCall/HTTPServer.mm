@@ -131,6 +131,8 @@
                 NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
                 settingsWindowController = [storyBoard instantiateControllerWithIdentifier:@"prefWindow"];
                 [settingsWindowController showWindow:self];
+            }else if([action isEqualToString:@"installPlugIn"]){
+                [self installPlugIn:data];
             }else if([action isEqualToString:@"setcookie"]){
                 cookie = data;
             }
@@ -180,8 +182,18 @@
                     } error:nil];
 }
 
-- (void)checkVersion{
-    [SUAppcast]
+- (void)installPlugIn:(NSString *)name{
+    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+    if(!tv){
+        return;
+    }
+    id wv = [tv GetWebView];
+    if(!wv){
+        return;
+    }
+    if([wv subviews] && [wv subviews][0]){
+        [[PluginManager sharedInstance] install:name :[wv subviews][0]];
+    }
 }
 
 - (void)saveCookie{
