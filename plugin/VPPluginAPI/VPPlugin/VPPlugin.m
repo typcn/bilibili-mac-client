@@ -21,4 +21,7 @@
 - (NSString *)processEvent:(NSString *)eventName :(NSString *)eventData{
     return NULL;
 }
+- (void)openSettings{
+    return;
+}
 @end

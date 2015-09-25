@@ -35,4 +35,7 @@ FOUNDATION_EXPORT const unsigned char VPPluginVersionString[];
 // trigger when event from javascript , return video url to play , reutrn NULL won't do anything
 - (NSString *)processEvent:(NSString *)eventName :(NSString *)eventData;
 
+// trigger when user click "settings"
+- (void)openSettings;
+
 @end

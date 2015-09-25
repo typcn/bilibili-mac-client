@@ -57,4 +57,7 @@
     return NULL; // return video url to play
 }
 
+- (void)openSettings{
+    return;
+}
 @end
