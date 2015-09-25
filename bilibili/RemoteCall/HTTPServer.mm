@@ -152,6 +152,9 @@
          NSString *data = [dic valueForKey:@"data"];
          NSLog(@"Plugin call %@",action);
          VP_Plugin *plugin = [[PluginManager sharedInstance] Get:action];
+         if(!plugin){
+             return nil;
+         }
          bool canHandle = [plugin canHandleEvent:action];
          
          GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithText:@"done"];
@@ -175,6 +178,10 @@
                                   @"Port":@23330,
                                   @"BindToLocalhost":@true,
                     } error:nil];
+}
+
+- (void)checkVersion{
+    [SUAppcast]
 }
 
 - (void)saveCookie{

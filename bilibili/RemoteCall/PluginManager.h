@@ -14,7 +14,7 @@
 + (instancetype)sharedInstance;
 - (void)reloadList;
 - (id)Get:(NSString *)action;
-- (void)install:(NSString *)URL hash:(NSString *)hash;
+- (void)install:(NSString *)URL;
 - (void)enable:(NSString *)name;
 - (void)disable:(NSString *)name;
 

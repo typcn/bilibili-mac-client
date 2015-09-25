@@ -95,9 +95,19 @@ Browser *browser;
     
     browser = (Browser *)[Browser browser];
     browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
-    [browser addBlankTabInForeground:YES];
+    NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
+    [re setURL:[NSURL URLWithString:@"http://www.bilibili.com"]];
+    NSString *xff = [s objectForKey:@"xff"];
+    if([xff length] > 4){
+        [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
+        [re setValue:xff forHTTPHeaderField:@"Client-IP"];
+    }
+    
+    [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
     [browser.windowController showWindow:NSApp];
+    sleep(0.2);
     [browser.window makeKeyAndOrderFront:NSApp];
+    [browser.window makeMainWindow];
     
     // Start ARIA2
     
@@ -144,7 +154,16 @@ Browser *browser;
     }
     else
     {
-        [browser addBlankTabInForeground:YES];
+        NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
+        [re setURL:[NSURL URLWithString:@"http://www.bilibili.com"]];
+        NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
+        NSString *xff = [settingsController objectForKey:@"xff"];
+        if([xff length] > 4){
+            [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
+            [re setValue:xff forHTTPHeaderField:@"Client-IP"];
+        }
+        
+        [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
         [browser.windowController showWindow:self];
         
         return YES;

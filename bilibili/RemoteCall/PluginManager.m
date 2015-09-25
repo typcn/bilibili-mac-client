@@ -53,9 +53,13 @@
 - (void)reloadList{
     BOOL isDebugger = [self isDebugger];
     if(isDebugger){
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"注意：您正在调试器中运行，将允许加载没有数字签名的插件。"];
-        [alert runModal];
+        static dispatch_once_t once;
+        dispatch_once(&once, ^{
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:@"注意：您正在调试器中运行，将允许加载没有数字签名的插件。"];
+            [alert runModal];
+        });
+
     }
     
     NSArray *dirFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:sprtdir error:nil];
@@ -141,7 +145,7 @@
     }
 }
 
-- (void)install:(NSString *)URL hash:(NSString *)hash{
+- (void)install:(NSString *)URL{
     // TODO
 }
 
