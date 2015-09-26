@@ -444,8 +444,9 @@ static void wakeup(void *context) {
     
     bool loadComment = true;
     if(![vUrl containsString:@"live_"]){
-        loadComment = false;
+        
     }else{
+        loadComment = false;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.showLiveChat performClick:nil];
         });
