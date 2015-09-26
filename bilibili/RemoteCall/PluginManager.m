@@ -167,7 +167,8 @@
     hud.labelText = NSLocalizedString(@"正在载入插件信息", nil);
     hud.removeFromSuperViewOnHide = YES;
     NSString *pluginHubUrl  = @"http://vp-hub.eqoe.cn";
-    NSString *pluginManifest = [NSString stringWithFormat:@"%@/api/manifest/%@.json",pluginHubUrl,name];
+    NSString *pluginManifest = [NSString stringWithFormat:@"%@/api/manifest/%@.json?t=%ld",
+                                                                    pluginHubUrl,name,time(0)];
     NSLog(@"Get manifest from %@",pluginManifest);
     
     NSURLSessionConfiguration* sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -209,6 +210,7 @@
             hud.labelText = NSLocalizedString(@"正在下载插件", nil);
             
             bgsession = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+            NSLog(@"Plugin download address: %@",downloadAddr);
             NSURLSessionDownloadTask *downloadTask = [bgsession downloadTaskWithURL:[NSURL URLWithString:downloadAddr]];
             [downloadTask resume];
         } else {
