@@ -276,7 +276,7 @@
     
     NSString* targetFolder = sprtdir;
     
-    [fm createDirectoryAtPath:targetFolder withIntermediateDirectories:NO
+    [fm createDirectoryAtPath:targetFolder withIntermediateDirectories:YES
                    attributes:nil error:NULL];
     
     NSArray *arguments = [NSArray arrayWithObjects:@"-o",zipPath,nil];
