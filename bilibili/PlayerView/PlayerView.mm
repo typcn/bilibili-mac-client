@@ -969,7 +969,9 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     dispatch_async(dispatch_get_main_queue(), ^{
         [self mpv_stop];
         [self mpv_quit];
-        [LastWindow makeKeyAndOrderFront:nil];
+        if([browser tabCount] > 0){
+            [LastWindow makeKeyAndOrderFront:nil];
+        }
     });
     parsing = false;
     return YES;
