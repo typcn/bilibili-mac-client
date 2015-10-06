@@ -280,7 +280,7 @@
 "lQz-S1-Tzd.title" = "Disable new webpage render engine";
 
 /* Class = "NSTextFieldCell"; title = "提示：按回车可以发送弹幕"; ObjectID = "lbG-e1-MKm"; */
-"lbG-e1-MKm.title" = "Press Enter to send comment";
+"lbG-e1-MKm.title" = "Press Enter to send comment ( after loaded )";
 
 /* Class = "NSMenuItem"; title = "论坛反馈"; ObjectID = "m2k-Ll-pRS"; */
 "m2k-Ll-pRS.title" = "Forum Feedback";
