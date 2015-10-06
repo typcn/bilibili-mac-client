@@ -30,7 +30,6 @@ dispatch_queue_t queue;
 BOOL isCancelled;
 BOOL isPlaying;
 
-NSButton *postCommentButton;
 
 //IOPMAssertionID assertionID;
 
@@ -162,7 +161,6 @@ static void wakeup(void *context) {
     
     /* End Adding Player Control */
     
-    postCommentButton = self.PostCommentButton;
     hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
     NSLog(@"Playerview load success");
     self->wrapper = PlayerView;
@@ -808,6 +806,8 @@ static void wakeup(void *context) {
     
 }
 
+@synthesize postCommentWindowC;
+
 BOOL paused = NO;
 BOOL hide = NO;
 BOOL obServer = NO;
@@ -903,7 +903,11 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         }
         case 36:{ // Enter
             if(isPlaying){
-                [postCommentButton performClick:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+                postCommentWindowC = [storyBoard instantiateControllerWithIdentifier:@"PostCommentWindow"];
+                [postCommentWindowC showWindow:self];
+                });
             }
             break;
         }

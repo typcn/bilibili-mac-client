@@ -12,7 +12,6 @@
 @property (weak) IBOutlet NSTextField *textTip;
 @property (weak) IBOutlet NSTextField *subtip;
 @property (weak) IBOutlet NSImageView *loadingImage;
-@property (weak) IBOutlet NSButton *PostCommentButton;
 @property (weak) IBOutlet NSButton *showLiveChat;
 
 - (NSDictionary *) getVideoInfo:(NSString *)url;
@@ -23,6 +22,8 @@
 
 
 @interface PlayerWindow : NSWindow <NSWindowDelegate>
+
+@property (strong) NSWindowController* postCommentWindowC;
 
 -(void)keyDown:(NSEvent*)event;
 

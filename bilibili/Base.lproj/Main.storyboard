@@ -815,18 +815,6 @@ Copyleft 2015 TYPCN</string>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <button hidden="YES" verticalHuggingPriority="750" id="xVW-zA-HWk" userLabel="ShowPostCommentButton">
-                                        <rect key="frame" x="209" y="116" width="14" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <animations/>
-                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="259-A0-YXE">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <segue destination="eqf-bZ-eNQ" kind="show" id="UeL-LC-7bY"/>
-                                        </connections>
-                                    </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="q3q-RS-pq9">
                                         <rect key="frame" x="146" y="70" width="141" height="17"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
@@ -846,7 +834,6 @@ Copyleft 2015 TYPCN</string>
                     <connections>
                         <outlet property="LoadingView" destination="zPp-I3-qDp" id="nEM-ED-xvf"/>
                         <outlet property="PlayerView" destination="16g-QT-hVf" id="Akt-lc-s8R"/>
-                        <outlet property="PostCommentButton" destination="xVW-zA-HWk" id="Exg-Nr-pCW"/>
                         <outlet property="loadingImage" destination="d4M-72-jUI" id="fmB-92-FBV"/>
                         <outlet property="showLiveChat" destination="AOg-hv-Slo" id="zQr-hq-29W"/>
                         <outlet property="subtip" destination="nwA-xX-SSg" id="oAy-Dk-ud7"/>
@@ -931,7 +918,7 @@ Copyleft 2015 TYPCN</string>
         <!--Post Comment Window Controller-->
         <scene sceneID="bs0-gn-v1d">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="eqf-bZ-eNQ" userLabel="Post Comment Window Controller" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="PostCommentWindow" showSeguePresentationStyle="single" id="eqf-bZ-eNQ" userLabel="Post Comment Window Controller" sceneMemberID="viewController">
                     <window key="window" title="发送弹幕" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" id="uoV-BV-vze" customClass="PostCommentWindow">
                         <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
                         <rect key="contentRect" x="640" y="200" width="480" height="36"/>
