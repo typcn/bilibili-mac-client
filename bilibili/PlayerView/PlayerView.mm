@@ -724,6 +724,7 @@ static void wakeup(void *context) {
         }
         
         case MPV_EVENT_END_FILE:{
+            isPlaying = NO;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [LoadingView setHidden:NO];
                 [self.textTip setStringValue:NSLocalizedString(@"播放完成，关闭窗口继续", nil)];
@@ -732,7 +733,6 @@ static void wakeup(void *context) {
         }
         
         case MPV_EVENT_PAUSE: {
-            isPlaying = NO;
             break;
         }
         case MPV_EVENT_UNPAUSE: {
@@ -902,7 +902,9 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             break;
         }
         case 36:{ // Enter
-            [postCommentButton performClick:nil];
+            if(isPlaying){
+                [postCommentButton performClick:nil];
+            }
             break;
         }
         case 53:{ // Esc key to hide mouse
