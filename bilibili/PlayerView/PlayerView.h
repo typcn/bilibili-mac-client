@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "WebTabView.h"
 
 @interface PlayerView : NSViewController
 @property (weak) IBOutlet NSTextField *textTip;

@@ -727,6 +727,7 @@ static void wakeup(void *context) {
                 [LoadingView setHidden:NO];
                 [self.textTip setStringValue:NSLocalizedString(@"播放完成，关闭窗口继续", nil)];
                 [self.view.window close];
+                [self runAutoSwitch];
             });
             break;
         }
@@ -758,6 +759,28 @@ static void wakeup(void *context) {
             [self handleEvent:event];
         }
     });
+}
+
+- (void)runAutoSwitch
+{
+    int autoplay = [self getSettings:@"autoPlay"];
+    if(!autoplay){
+        return;
+    }
+    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+    if(!tv){
+        return;
+    }
+    TWebView *twv = [tv GetTWebView];
+    if(!twv){
+        return;
+    }
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"webpage/autoswitch" ofType:@"js"];
+    NSString *script = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    if(!script){
+        [twv runJavascript:script];
+    }
 }
 
 - (float) getSettings:(NSString *) key

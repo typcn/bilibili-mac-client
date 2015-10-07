@@ -68,6 +68,8 @@
 		FD36B0F11B99B48B00FB32CC /* menubutton.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0EC1B99B48B00FB32CC /* menubutton.png */; };
 		FD36B0F21B99B48B00FB32CC /* reloadp.png in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0ED1B99B48B00FB32CC /* reloadp.png */; };
 		FD36B0F51B99B62600FB32CC /* ToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0F41B99B62600FB32CC /* ToolBar.m */; };
+		FD3C7B6E1BC5201A00E347EF /* autoswitch.js in Resources */ = {isa = PBXBuildFile; fileRef = FD3C7B6D1BC5201A00E347EF /* autoswitch.js */; settings = {ASSET_TAGS = (); }; };
+		FD3C7B731BC5204300E347EF /* autoswitch.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD3C7B6D1BC5201A00E347EF /* autoswitch.js */; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
 		FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files */ = {isa = PBXBuildFile; fileRef = FD4855071AE67AD8008F49AA /* gencache.sh */; };
 		FD4B84441BA5879400DD6F2F /* AirPlay.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84401BA5879400DD6F2F /* AirPlay.mm */; settings = {ASSET_TAGS = (); }; };
@@ -257,6 +259,7 @@
 			dstPath = webpage;
 			dstSubfolderSpec = 7;
 			files = (
+				FD3C7B731BC5204300E347EF /* autoswitch.js in CopyFiles */,
 				FD5984751BB45A77001E0B17 /* jquery.min.js in CopyFiles */,
 				FD5984761BB45A77001E0B17 /* masonry.pkgd.min.js in CopyFiles */,
 				FD5984771BB45A77001E0B17 /* material.min.css in CopyFiles */,
@@ -379,6 +382,7 @@
 		FD36B0ED1B99B48B00FB32CC /* reloadp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = reloadp.png; path = bilibili/img/reloadp.png; sourceTree = "<group>"; };
 		FD36B0F31B99B62600FB32CC /* ToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToolBar.h; path = MainView/ToolBar.h; sourceTree = "<group>"; };
 		FD36B0F41B99B62600FB32CC /* ToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToolBar.m; path = MainView/ToolBar.m; sourceTree = "<group>"; };
+		FD3C7B6D1BC5201A00E347EF /* autoswitch.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = autoswitch.js; path = WebPages/autoswitch.js; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FD4855071AE67AD8008F49AA /* gencache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gencache.sh; sourceTree = "<group>"; };
 		FD4B84341BA5874700DD6F2F /* AirPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -854,6 +858,7 @@
 			children = (
 				FD61025B1AD7CBA20013119A /* inject.js */,
 				FD61025D1AD7CBC10013119A /* webui.html */,
+				FD3C7B6D1BC5201A00E347EF /* autoswitch.js */,
 			);
 			name = WebPages;
 			path = bilibili;
@@ -1100,6 +1105,7 @@
 				FD3553AC1B9C4356000EE41E /* fillscreen_lr.pdf in Resources */,
 				FD36B0EF1B99B48B00FB32CC /* forward.png in Resources */,
 				FD3553BA1B9C4356000EE41E /* unfold.pdf in Resources */,
+				FD3C7B6E1BC5201A00E347EF /* autoswitch.js in Resources */,
 				FD36B0F21B99B48B00FB32CC /* reloadp.png in Resources */,
 				FD3553B31B9C4356000EE41E /* prev-episode.pdf in Resources */,
 				FD0829C91B67844500D2B126 /* Main.storyboard in Resources */,
