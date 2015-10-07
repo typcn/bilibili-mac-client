@@ -726,6 +726,7 @@ static void wakeup(void *context) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [LoadingView setHidden:NO];
                 [self.textTip setStringValue:NSLocalizedString(@"播放完成，关闭窗口继续", nil)];
+                [self.view.window close];
             });
             break;
         }
