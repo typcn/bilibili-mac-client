@@ -143,6 +143,17 @@
                 [self installPlugIn:data];
             }else if([action isEqualToString:@"setcookie"]){
                 cookie = data;
+            }else if([action isEqualToString:@"goURL"]){
+                WebTabView *tv = (WebTabView *)[browser activeTabContents];
+                if(!tv){
+                    return;
+                }
+                TWebView *twv = [tv GetTWebView];
+                if(!twv){
+                    return;
+                }
+                NSLog(@"GoURL: %@",data);
+                [twv setURL:data];
             }
         });
         GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithText:@"ok"];
