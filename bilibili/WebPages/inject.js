@@ -73,6 +73,12 @@ function applyUI(){
                         ph.style.backgroundAttachment = "initial";
                     }
                 }
+                
+                if(window.location.href.indexOf('autoplay') > -1){
+                    setTimeout(function(){
+                       window.sendToView({action:'playVideoByCID',data:TYPCN_PLAYER_CID})
+                    },200);
+                }
             }
             clearInterval(window.i);
         }else{
