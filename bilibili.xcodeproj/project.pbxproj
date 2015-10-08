@@ -70,6 +70,9 @@
 		FD36B0F51B99B62600FB32CC /* ToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FD36B0F41B99B62600FB32CC /* ToolBar.m */; };
 		FD3C7B6E1BC5201A00E347EF /* autoswitch.js in Resources */ = {isa = PBXBuildFile; fileRef = FD3C7B6D1BC5201A00E347EF /* autoswitch.js */; settings = {ASSET_TAGS = (); }; };
 		FD3C7B731BC5204300E347EF /* autoswitch.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD3C7B6D1BC5201A00E347EF /* autoswitch.js */; };
+		FD3CED8E1BC64B5000BE9A8B /* DynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3CED8C1BC64B5000BE9A8B /* DynamicView.m */; settings = {ASSET_TAGS = (); }; };
+		FD3CED8F1BC64B5000BE9A8B /* DynamicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD3CED8D1BC64B5000BE9A8B /* DynamicView.xib */; settings = {ASSET_TAGS = (); }; };
+		FD3CED921BC64B8900BE9A8B /* Popover.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3CED911BC64B8900BE9A8B /* Popover.m */; settings = {ASSET_TAGS = (); }; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
 		FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files */ = {isa = PBXBuildFile; fileRef = FD4855071AE67AD8008F49AA /* gencache.sh */; };
 		FD4B84441BA5879400DD6F2F /* AirPlay.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84401BA5879400DD6F2F /* AirPlay.mm */; settings = {ASSET_TAGS = (); }; };
@@ -383,6 +386,11 @@
 		FD36B0F31B99B62600FB32CC /* ToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ToolBar.h; path = MainView/ToolBar.h; sourceTree = "<group>"; };
 		FD36B0F41B99B62600FB32CC /* ToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ToolBar.m; path = MainView/ToolBar.m; sourceTree = "<group>"; };
 		FD3C7B6D1BC5201A00E347EF /* autoswitch.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = autoswitch.js; path = WebPages/autoswitch.js; sourceTree = "<group>"; };
+		FD3CED8B1BC64B5000BE9A8B /* DynamicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynamicView.h; path = Notifications/DynamicView.h; sourceTree = "<group>"; };
+		FD3CED8C1BC64B5000BE9A8B /* DynamicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DynamicView.m; path = Notifications/DynamicView.m; sourceTree = "<group>"; };
+		FD3CED8D1BC64B5000BE9A8B /* DynamicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DynamicView.xib; path = Notifications/DynamicView.xib; sourceTree = "<group>"; };
+		FD3CED901BC64B8900BE9A8B /* Popover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Popover.h; path = Notifications/Popover.h; sourceTree = "<group>"; };
+		FD3CED911BC64B8900BE9A8B /* Popover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Popover.m; path = Notifications/Popover.m; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FD4855071AE67AD8008F49AA /* gencache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gencache.sh; sourceTree = "<group>"; };
 		FD4B84341BA5874700DD6F2F /* AirPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -547,6 +555,7 @@
 		FD076C521AC8CBBB00C893FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FD3CED891BC64B1100BE9A8B /* Notifications */,
 				FDDE11791BA9E25100230184 /* VideoProvider */,
 				FD7257241B9D53D30015B0F1 /* RemoteCall */,
 				FD855FAE1B07D86C004A1610 /* RealTimeComments */,
@@ -733,6 +742,18 @@
 				FD36B0ED1B99B48B00FB32CC /* reloadp.png */,
 			);
 			name = toolbar;
+			sourceTree = "<group>";
+		};
+		FD3CED891BC64B1100BE9A8B /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				FD3CED8B1BC64B5000BE9A8B /* DynamicView.h */,
+				FD3CED8C1BC64B5000BE9A8B /* DynamicView.m */,
+				FD3CED8D1BC64B5000BE9A8B /* DynamicView.xib */,
+				FD3CED901BC64B8900BE9A8B /* Popover.h */,
+				FD3CED911BC64B8900BE9A8B /* Popover.m */,
+			);
+			name = Notifications;
 			sourceTree = "<group>";
 		};
 		FD471FD11AC92D7C00A2A727 /* frameworks */ = {
@@ -1088,6 +1109,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD3CED8F1BC64B5000BE9A8B /* DynamicView.xib in Resources */,
 				FD3553C81B9C82A5000EE41E /* Toolbar.xib in Resources */,
 				FD3553C91B9C82A5000EE41E /* PlayerControl.xib in Resources */,
 				FD3553B51B9C4356000EE41E /* titlebar-corner-left.png in Resources */,
@@ -1173,10 +1195,12 @@
 				FD1954BC1B259342003A958F /* downloadWrapper.mm in Sources */,
 				FD36B0B71B98920A00FB32CC /* WebTabView.mm in Sources */,
 				FD1954C71B25942F003A958F /* main.m in Sources */,
+				FD3CED921BC64B8900BE9A8B /* Popover.m in Sources */,
 				FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */,
 				FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */,
 				FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */,
 				FDDE11601BA9459E00230184 /* reverseHTTP.cpp in Sources */,
+				FD3CED8E1BC64B5000BE9A8B /* DynamicView.m in Sources */,
 				FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */,
 				FDDE11801BA9E91400230184 /* vp_bilibili.mm in Sources */,
 				FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */,

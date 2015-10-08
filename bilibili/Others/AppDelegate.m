@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HTTPServer.h"
+#import "Popover.h"
 
 Browser *browser;
 
@@ -123,6 +124,12 @@ Browser *browser;
     if([s objectForKey:@"donate"]){
         showdonate = false;
     }
+    
+    // Add taskbar item
+    
+//    Popover *p = [[Popover alloc] init];
+//    [p addToStatusBar];
+//    [p startMonitor];
     
     if(showdonate){
         [NSTimer scheduledTimerWithTimeInterval:2
