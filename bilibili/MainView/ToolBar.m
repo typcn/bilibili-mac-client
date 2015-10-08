@@ -44,6 +44,11 @@
 }
 
 - (void)updateToolbarURL:(NSNotification*) aNotification{
+    [self.URLInputField resignFirstResponder];
+    CTTabContents *ct = [browser activeTabContents];
+    if(ct) {
+        [[browser window] makeFirstResponder:ct.view];
+    }
     if(aNotification.object){
         NSString *url = aNotification.object;
         if(url && [url length] > 5){
