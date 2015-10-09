@@ -169,7 +169,7 @@ static void wakeup(void *context) {
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
     dispatch_async(queue, ^{
         
-        NSString *baseAPIUrl = @"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=%d&type=%@&sign=%@";
+        NSString *baseAPIUrl = @"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=%d&type=%@&ts=%d&sign=%@";
         
         if([vCID isEqualToString:@"LOCALVIDEO"]){
             if([vUrl length] > 5){
@@ -191,7 +191,7 @@ static void wakeup(void *context) {
             }
             return;
         }else if([vUrl containsString:@"live.bilibili"]){
-            baseAPIUrl = @"http://live.bilibili.com/api/playurl?appkey=%@&otype=json&cid=%@&quality=%d&type=%@&sign=%@";
+            baseAPIUrl = @"http://live.bilibili.com/api/playurl?appkey=%@&otype=json&cid=%@&quality=%d&type=%@&ts=%d&sign=%@";
             vAID = @"LIVE";
             vPID = @"LIVE";
         }else{
@@ -219,6 +219,9 @@ static void wakeup(void *context) {
         [self.textTip setStringValue:NSLocalizedString(@"正在解析视频地址", nil)];
         
         // Get Sign
+        
+        int ts = (int)time(0);
+        
         int quality = [self getSettings:@"quality"];
         int isMP4 = [self getSettings:@"playMP4"];
         NSString *type = @"flv";
@@ -226,12 +229,13 @@ static void wakeup(void *context) {
             type = @"mp4";
         }
     getUrl: NSLog(@"Getting video url");
-        NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=%d&type=%@%@",APIKey,vCID,quality,type,APISecret];
+        NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=%d&type=%@&ts=%d%@",APIKey,vCID,quality,type,ts,APISecret];
         NSString *sign = [self md5:[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         // Get Playback URL
         
-        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:baseAPIUrl,APIKey,vCID,quality,type,sign]];
+        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:baseAPIUrl,APIKey,vCID,quality,type,ts,sign]];
+        NSLog(@"APIURL %@",[URL absoluteString]);
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"GET";
         request.timeoutInterval = 5;
@@ -243,7 +247,7 @@ static void wakeup(void *context) {
             [request setValue:xff forHTTPHeaderField:@"Client-IP"];
         }
         [request setValue:cookie forHTTPHeaderField:@"Cookie"];
-        [request setValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" forHTTPHeaderField:@"User-Agent"];
+        [request setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36" forHTTPHeaderField:@"User-Agent"];
         
         NSURLResponse * response = nil;
         NSError * error = nil;

@@ -24,7 +24,9 @@ NSArray *vp_bili_get_url(int cid,int vType){
         type = @"mp4";
     }
     
-    NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%d&quality=4&type=%@%@",APIKey,cid,type,APISecret];
+    int ts = (int)time(0);
+    
+    NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%d&quality=4&type=%@&ts=%d%@",APIKey,cid,type,ts,APISecret];
     const char *cStr = [[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] UTF8String];
     unsigned char digest[16];
     CC_MD5( cStr, (CC_LONG)strlen(cStr), digest ); // This is the md5 call
@@ -34,7 +36,7 @@ NSArray *vp_bili_get_url(int cid,int vType){
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
         [sign appendFormat:@"%02x", digest[i]];
     
-    NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%d&quality=4&type=%@&sign=%@",APIKey,cid,type,sign]];
+    NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%d&quality=4&type=%@&ts=%d&sign=%@",APIKey,cid,type,ts,sign]];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
     request.HTTPMethod = @"GET";
     request.timeoutInterval = 5;
