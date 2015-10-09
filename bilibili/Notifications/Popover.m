@@ -57,7 +57,7 @@
 - (void)showPopover:(id)sender{
     id button = SBItem.button;
     if(button){
-        [popover showRelativeToRect:[button bounds] ofView:button preferredEdge:NSRectEdgeMinY];
+        [popover showRelativeToRect:[button bounds] ofView:button preferredEdge:NSMinYEdge];
     }
     [self startMonitor];
 }
