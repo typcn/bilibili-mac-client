@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A282b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
@@ -278,7 +278,7 @@
                                         <menuItem title="关于 Bilibili" id="UJv-cr-uBm" userLabel="About Bilibili">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <segue destination="IS2-xA-kfK" kind="show" id="WhU-fQ-Qww"/>
+                                                <action selector="aboutView:" target="Voe-Tx-rLC" id="fcK-vU-aUI"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="u4L-Jn-815"/>
@@ -705,52 +705,6 @@ GQ
                 <customObject id="2y9-Aw-wV9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="612" y="-400"/>
-        </scene>
-        <!--About Bilibili for Mac-->
-        <scene sceneID="9GL-0J-ASe">
-            <objects>
-                <viewController title="关于 Bilibili for Mac" showSeguePresentationStyle="single" id="IS2-xA-kfK" userLabel="About Bilibili for Mac" customClass="AboutView" sceneMemberID="viewController">
-                    <view key="view" id="gUu-fS-ItN">
-                        <rect key="frame" x="0.0" y="0.0" width="538" height="314"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="4D2-BY-qFG">
-                                <rect key="frame" x="18" y="11" width="476" height="283"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <animations/>
-                                <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" id="6Cc-jO-u6M">
-                                    <font key="font" size="12" name="STHeitiSC-Light"/>
-                                    <string key="title">开发者: typcn
-博客: http://blog.eqoe.cn
-源代码: https://github.com/typcn/bilibili-mac-client
-许可协议: GPLv2
-
-感谢：
-Bilidan - https://github.com/m13253/BiliDan
-
-使用以下开源项目:
-MPV - https://github.com/mpv-player/mpv
-ISSoundAdditions - https://github.com/InerziaSoft/ISSoundAdditions
-Sparkle - https://github.com/sparkle-project/Sparkle
-Danmaku2ASS - https://github.com/m13253/danmaku2ass
-FFmpeg - https://www.ffmpeg.org/
-
-Copyleft 2015 TYPCN</string>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                        <animations/>
-                    </view>
-                    <connections>
-                        <outlet property="aboutText" destination="4D2-BY-qFG" id="J9d-d9-uBT"/>
-                    </connections>
-                </viewController>
-                <customObject id="Jf9-h0-9RF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <userDefaultsController representsSharedInstance="YES" id="RQe-1H-9A1"/>
-            </objects>
-            <point key="canvasLocation" x="-680" y="-577"/>
         </scene>
         <!--Miedia Player Window Controller-->
         <scene sceneID="DUG-BS-fjC">
