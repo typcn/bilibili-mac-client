@@ -480,7 +480,7 @@ GQ
                                         </menuItem>
                                         <menuItem title="Bilibili 帮助" keyEquivalent="?" id="HVk-PZ-hUX" userLabel="Bilibili Help">
                                             <connections>
-                                                <action selector="showHelp:" target="Ady-hI-5gd" id="PIw-PW-aiq"/>
+                                                <action selector="showHelp:" target="Voe-Tx-rLC" id="dAz-0b-Ghz"/>
                                             </connections>
                                         </menuItem>
                                     </items>

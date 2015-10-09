@@ -233,6 +233,10 @@ Browser *browser;
     id ct = [browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/"];
     [browser addTabContents:ct inForeground:YES];
 }
+- (IBAction)showHelp:(id)sender {
+    id ct = [browser createTabBasedOn:nil withUrl:@"http://cdn.eqoe.cn/files/bilibili/faq.html"];
+    [browser addTabContents:ct inForeground:YES];
+}
 
 - (IBAction)dlFolder:(id)sender {
     NSString *path = [NSString stringWithFormat:@"%@%@",NSHomeDirectory(),@"/Movies/Bilibili/"];
