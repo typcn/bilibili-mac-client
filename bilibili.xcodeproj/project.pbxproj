@@ -23,7 +23,6 @@
 		FD1954C41B259368003A958F /* LiveChat.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C01B259368003A958F /* LiveChat.m */; };
 		FD1954C51B259368003A958F /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C11B259368003A958F /* Socket.cpp */; };
 		FD1954C71B25942F003A958F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C61B25942F003A958F /* main.m */; };
-		FD1954CA1B259447003A958F /* AboutView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C91B259447003A958F /* AboutView.m */; };
 		FD1954CD1B259457003A958F /* ISSoundAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954CC1B259457003A958F /* ISSoundAdditions.m */; };
 		FD1954D01B259462003A958F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954CF1B259462003A958F /* AppDelegate.m */; };
 		FD1954D31B25947A003A958F /* PlayLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954D21B25947A003A958F /* PlayLocalFile.m */; };
@@ -73,6 +72,9 @@
 		FD3CED8E1BC64B5000BE9A8B /* DynamicView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3CED8C1BC64B5000BE9A8B /* DynamicView.m */; settings = {ASSET_TAGS = (); }; };
 		FD3CED8F1BC64B5000BE9A8B /* DynamicView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD3CED8D1BC64B5000BE9A8B /* DynamicView.xib */; settings = {ASSET_TAGS = (); }; };
 		FD3CED921BC64B8900BE9A8B /* Popover.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3CED911BC64B8900BE9A8B /* Popover.m */; settings = {ASSET_TAGS = (); }; };
+		FD3CED951BC6A65F00BE9A8B /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD3CED931BC6A65F00BE9A8B /* PFAboutWindow.xib */; settings = {ASSET_TAGS = (); }; };
+		FD3CED981BC6A7E100BE9A8B /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3CED971BC6A7E100BE9A8B /* PFAboutWindowController.m */; settings = {ASSET_TAGS = (); }; };
+		FD3CED9A1BC6AC2C00BE9A8B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FD3CED991BC6AC2C00BE9A8B /* Credits.rtf */; settings = {ASSET_TAGS = (); }; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
 		FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files */ = {isa = PBXBuildFile; fileRef = FD4855071AE67AD8008F49AA /* gencache.sh */; };
 		FD4B84441BA5879400DD6F2F /* AirPlay.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84401BA5879400DD6F2F /* AirPlay.mm */; settings = {ASSET_TAGS = (); }; };
@@ -103,6 +105,7 @@
 		FD7328B41B9CD2AA001B450C /* libfontconfig.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7328991B9CD2AA001B450C /* libfontconfig.1.dylib */; };
 		FD7328B51B9CD2AA001B450C /* libmediainfo.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD73289A1B9CD2AA001B450C /* libmediainfo.0.dylib */; };
 		FD83027D1BAB303C00FF68DB /* DonateView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD83027C1BAB303C00FF68DB /* DonateView.mm */; settings = {ASSET_TAGS = (); }; };
+		FD8F72811BC74F6F0076B015 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FD8F72801BC74F6F0076B015 /* EULA.rtf */; settings = {ASSET_TAGS = (); }; };
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDCA487C1BAB59A0001ACB8D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */; };
 		FDD1FDD41B9B14F9006711B0 /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; };
@@ -322,8 +325,6 @@
 		FD1954C11B259368003A958F /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Socket.cpp; path = LiveChat/Socket.cpp; sourceTree = "<group>"; };
 		FD1954C21B259368003A958F /* Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Socket.hpp; path = LiveChat/Socket.hpp; sourceTree = "<group>"; };
 		FD1954C61B25942F003A958F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Others/main.m; sourceTree = "<group>"; };
-		FD1954C81B259447003A958F /* AboutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutView.h; path = Others/AboutView.h; sourceTree = "<group>"; };
-		FD1954C91B259447003A958F /* AboutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutView.m; path = Others/AboutView.m; sourceTree = "<group>"; };
 		FD1954CB1B259457003A958F /* ISSoundAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSoundAdditions.h; path = Others/ISSoundAdditions.h; sourceTree = "<group>"; };
 		FD1954CC1B259457003A958F /* ISSoundAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSoundAdditions.m; path = Others/ISSoundAdditions.m; sourceTree = "<group>"; };
 		FD1954CE1B259462003A958F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Others/AppDelegate.h; sourceTree = "<group>"; };
@@ -391,6 +392,10 @@
 		FD3CED8D1BC64B5000BE9A8B /* DynamicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DynamicView.xib; path = Notifications/DynamicView.xib; sourceTree = "<group>"; };
 		FD3CED901BC64B8900BE9A8B /* Popover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Popover.h; path = Notifications/Popover.h; sourceTree = "<group>"; };
 		FD3CED911BC64B8900BE9A8B /* Popover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Popover.m; path = Notifications/Popover.m; sourceTree = "<group>"; };
+		FD3CED941BC6A65F00BE9A8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PFAboutWindow.xib; sourceTree = "<group>"; };
+		FD3CED961BC6A7E100BE9A8B /* PFAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PFAboutWindowController.h; path = Others/PFAboutWindowController.h; sourceTree = "<group>"; };
+		FD3CED971BC6A7E100BE9A8B /* PFAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PFAboutWindowController.m; path = Others/PFAboutWindowController.m; sourceTree = "<group>"; };
+		FD3CED991BC6AC2C00BE9A8B /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = Others/Credits.rtf; sourceTree = "<group>"; };
 		FD471B511AC904CB00A2A727 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		FD4855071AE67AD8008F49AA /* gencache.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = gencache.sh; sourceTree = "<group>"; };
 		FD4B84341BA5874700DD6F2F /* AirPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -429,6 +434,7 @@
 		FD8302771BAB1C0900FF68DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AirPlay.xib; sourceTree = "<group>"; };
 		FD83027B1BAB303C00FF68DB /* DonateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DonateView.h; path = Others/DonateView.h; sourceTree = "<group>"; };
 		FD83027C1BAB303C00FF68DB /* DonateView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DonateView.mm; path = Others/DonateView.mm; sourceTree = "<group>"; };
+		FD8F72801BC74F6F0076B015 /* EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = EULA.rtf; path = Others/EULA.rtf; sourceTree = "<group>"; };
 		FDA775E01AD93DC900426483 /* aria2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = aria2.hpp; path = bilibili/headers/aria2.hpp; sourceTree = "<group>"; };
 		FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FDCA48771BAB4F92001ACB8D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -584,6 +590,8 @@
 				FD076C541AC8CBBB00C893FA /* Info.plist */,
 				FD1954C61B25942F003A958F /* main.m */,
 				E09BF9A11B84CCC6005E08CE /* Localizable.strings */,
+				FD3CED991BC6AC2C00BE9A8B /* Credits.rtf */,
+				FD8F72801BC74F6F0076B015 /* EULA.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -800,8 +808,8 @@
 		FD476C6C1AD22A2000584EFE /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				FD1954C81B259447003A958F /* AboutView.h */,
-				FD1954C91B259447003A958F /* AboutView.m */,
+				FD3CED961BC6A7E100BE9A8B /* PFAboutWindowController.h */,
+				FD3CED971BC6A7E100BE9A8B /* PFAboutWindowController.m */,
 				FD1954CB1B259457003A958F /* ISSoundAdditions.h */,
 				FD1954CC1B259457003A958F /* ISSoundAdditions.m */,
 				FD1954F61B259AF6003A958F /* Analytics.h */,
@@ -835,6 +843,7 @@
 			isa = PBXGroup;
 			children = (
 				FD36B0E51B99B43200FB32CC /* Toolbar.xib */,
+				FD3CED931BC6A65F00BE9A8B /* PFAboutWindow.xib */,
 				FD3553891B9C34F9000EE41E /* PlayerControl.xib */,
 				FD0829C71B67844500D2B126 /* Main.storyboard */,
 				FD076C5D1AC8CBBB00C893FA /* Images.xcassets */,
@@ -998,6 +1007,7 @@
 				FD4855091AE67B2C008F49AA /* Copy Files */,
 				FD076C4E1AC8CBBB00C893FA /* Resources */,
 				FD4855051AE675D7008F49AA /* Run Script */,
+				FD8F72831BC755E70076B015 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1128,6 +1138,7 @@
 				FD36B0EF1B99B48B00FB32CC /* forward.png in Resources */,
 				FD3553BA1B9C4356000EE41E /* unfold.pdf in Resources */,
 				FD3C7B6E1BC5201A00E347EF /* autoswitch.js in Resources */,
+				FD3CED9A1BC6AC2C00BE9A8B /* Credits.rtf in Resources */,
 				FD36B0F21B99B48B00FB32CC /* reloadp.png in Resources */,
 				FD3553B31B9C4356000EE41E /* prev-episode.pdf in Resources */,
 				FD0829C91B67844500D2B126 /* Main.storyboard in Resources */,
@@ -1137,6 +1148,7 @@
 				FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */,
 				FD3553AA1B9C4356000EE41E /* exitfillscreen_ub.pdf in Resources */,
 				FD3553B21B9C4356000EE41E /* play.pdf in Resources */,
+				FD8F72811BC74F6F0076B015 /* EULA.rtf in Resources */,
 				FD36B0F01B99B48B00FB32CC /* homepage.png in Resources */,
 				FD3553A91B9C4356000EE41E /* exitfillscreen_lr.pdf in Resources */,
 				FD62CC861B6E6726000AED57 /* copy.png in Resources */,
@@ -1149,6 +1161,7 @@
 				FD36B0F11B99B48B00FB32CC /* menubutton.png in Resources */,
 				FD3553AF1B9C4356000EE41E /* mute.pdf in Resources */,
 				FD3553BE1B9C4356000EE41E /* vol_no.pdf in Resources */,
+				FD3CED951BC6A65F00BE9A8B /* PFAboutWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1177,6 +1190,19 @@
 			shellPath = /bin/sh;
 			shellScript = "cp -r \"${SRCROOT}/bilibili/fontconfig\" \"${CONFIGURATION_BUILD_DIR}/Bilibili.app/Contents/Resources/\"";
 		};
+		FD8F72831BC755E70076B015 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1189,6 +1215,7 @@
 				FDDE11671BA994DC00230184 /* PlayerControlView.m in Sources */,
 				FD1954C51B259368003A958F /* Socket.cpp in Sources */,
 				FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */,
+				FD3CED981BC6A7E100BE9A8B /* PFAboutWindowController.m in Sources */,
 				FD1954CD1B259457003A958F /* ISSoundAdditions.m in Sources */,
 				FD1954D01B259462003A958F /* AppDelegate.m in Sources */,
 				FD5B0C621B9ABAFF00045F10 /* TWebView.mm in Sources */,
@@ -1215,7 +1242,6 @@
 				C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */,
 				FD36B0B31B988FE200FB32CC /* Browser.mm in Sources */,
 				FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */,
-				FD1954CA1B259447003A958F /* AboutView.m in Sources */,
 				FD83027D1BAB303C00FF68DB /* DonateView.mm in Sources */,
 				FD1954D31B25947A003A958F /* PlayLocalFile.m in Sources */,
 				FD59846C1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m in Sources */,
@@ -1286,6 +1312,14 @@
 				FD36B0E61B99B43200FB32CC /* Base */,
 			);
 			name = Toolbar.xib;
+			sourceTree = "<group>";
+		};
+		FD3CED931BC6A65F00BE9A8B /* PFAboutWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD3CED941BC6A65F00BE9A8B /* Base */,
+			);
+			name = PFAboutWindow.xib;
 			sourceTree = "<group>";
 		};
 		FDDE116D1BA997EB00230184 /* AirPlay.xib */ = {

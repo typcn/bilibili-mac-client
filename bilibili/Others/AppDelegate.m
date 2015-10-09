@@ -9,10 +9,13 @@
 #import "AppDelegate.h"
 #import "HTTPServer.h"
 #import "Popover.h"
+#import "PFAboutWindowController.h"
 
 Browser *browser;
 
 @interface AppDelegate ()
+
+@property PFAboutWindowController *aboutWindowController;
 
 @end
 
@@ -234,6 +237,12 @@ Browser *browser;
 - (IBAction)dlFolder:(id)sender {
     NSString *path = [NSString stringWithFormat:@"%@%@",NSHomeDirectory(),@"/Movies/Bilibili/"];
     [[NSWorkspace sharedWorkspace]openFile:path withApplication:@"Finder"];
+}
+- (IBAction)aboutView:(id)sender {
+    if(!self.aboutWindowController){
+        self.aboutWindowController = [[PFAboutWindowController alloc] init];
+    }
+    [self.aboutWindowController showWindow:nil];
 }
 
 @end
