@@ -348,8 +348,13 @@
     if(!wv){
         return;
     }
+    TWebView *twv = [tv GetTWebView];
+    if(!twv){
+        return;
+    }
+    
     vCID = cid;
-    vUrl = [wv getURL];
+    vUrl = [twv getURL];
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http:/*[^/]+/video/av(\\d+)(/|/index.html|/index_(\\d+).html)?(\\?|#|$)" options:NSRegularExpressionCaseInsensitive error:nil];
     
     NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
@@ -386,11 +391,6 @@
         screenView("PlayerView");
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
-    }
-    
-    TWebView *twv = [tv GetTWebView];
-    if(!twv){
-        return;
     }
     
     NSLog(@"[Downloader] video name %@",[twv getTitle]);
