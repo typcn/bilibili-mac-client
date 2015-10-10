@@ -20,7 +20,7 @@ enum
     
 };
 
-NSArray *vp_bili_get_url(int cid,int vType);
+NSArray *vp_bili_get_url(int cid,NSString *aid,NSString *pid,int vType);
 NSArray *vp_bili_get_live_url(int cid,int vType);
 
 

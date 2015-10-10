@@ -11,6 +11,8 @@
 
 NSString *vUrl;
 NSString *vCID;
+NSString *vAID;
+NSString *vPID;
 NSString *vTitle;
 NSString *userAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/601.1.43 (KHTML, like Gecko) Version/9.0 Safari/601.1.43";
 NSWindow *currWindow;

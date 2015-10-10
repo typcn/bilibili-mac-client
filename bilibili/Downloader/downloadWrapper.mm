@@ -13,7 +13,7 @@
 #import <CommonCrypto/CommonDigest.h>
 
 
-BOOL Downloader::newTask(int cid,NSString *name){
+BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
     NSLog(@"[Downloader] New Task CID: %d",cid);
     
     NSString *filteredName = [name stringByReplacingOccurrencesOfString:@"/" withString:@""];
@@ -34,7 +34,7 @@ BOOL Downloader::newTask(int cid,NSString *name){
         vtype = k_biliVideoType_mp4;
     }
     
-    NSArray  *urls = vp_bili_get_url(cid, vtype);
+    NSArray  *urls = vp_bili_get_url(cid,aid,pid,vtype);
     if(!urls){
         NSLog(@"[Downloader] ERROR");
         NSUserNotification *notification = [[NSUserNotification alloc] init];

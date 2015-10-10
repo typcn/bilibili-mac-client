@@ -348,6 +348,28 @@
     if(!wv){
         return;
     }
+    vCID = cid;
+    vUrl = [wv getURL];
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http:/*[^/]+/video/av(\\d+)(/|/index.html|/index_(\\d+).html)?(\\?|#|$)" options:NSRegularExpressionCaseInsensitive error:nil];
+    
+    NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
+    
+    NSRange aidRange = [match rangeAtIndex:1];
+    
+    if(aidRange.length > 0){
+        vAID = [vUrl substringWithRange:aidRange];
+        NSRange pidRange = [match rangeAtIndex:3];
+        if(pidRange.length > 0 ){
+            vPID = [vUrl substringWithRange:pidRange];
+        }
+    }else{
+        vAID = @"0";
+    }
+    
+    if(![vPID length]){
+        vPID = @"1";
+    }
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[wv subviews][0] animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = NSLocalizedString(@"正在启动下载引擎", nil);
@@ -377,7 +399,7 @@
     
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         hud.labelText = NSLocalizedString(@"正在解析视频地址", nil);
-        BOOL s = DL->newTask([cid intValue], filename);
+        BOOL s = DL->newTask([cid intValue],vAID,vPID, filename);
         dispatch_async(dispatch_get_main_queue(), ^(void){
             if(s){
                 hud.labelText = NSLocalizedString(@"成功开始下载", nil);

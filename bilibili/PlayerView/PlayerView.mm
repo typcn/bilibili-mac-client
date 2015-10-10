@@ -21,8 +21,6 @@
 #import "Common.hpp"
 extern NSString *APIKey;
 extern NSString *APISecret;
-NSString *vAID;
-NSString *vPID;
 NSWindow *LastWindow;
 
 mpv_handle *mpv;
@@ -85,6 +83,18 @@ static void wakeup(void *context) {
     
     return  output;
     
+}
+
+
+- (NSString *) randomStringWithLength: (int) len {
+    NSString *letters = @"abcdefghijklmnopqrstuvwxyz0123456789";
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    
+    for (int i=0; i<len; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform([letters length])]];
+    }
+    
+    return randomString;
 }
 
 - (void)viewDidLoad {
@@ -169,7 +179,13 @@ static void wakeup(void *context) {
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
     dispatch_async(queue, ^{
         
-        NSString *baseAPIUrl = @"http://interface.bilibili.com/playurl?appkey=%@&otype=json&cid=%@&quality=%d&type=%@&ts=%d&sign=%@";
+        NSString *hwid = [[NSUserDefaults standardUserDefaults] objectForKey:@"hwid"];
+        if([hwid length] < 4){
+            hwid  = [self randomStringWithLength:16];
+            [[NSUserDefaults standardUserDefaults] setObject:hwid forKey:@"hwid"];
+        }
+        
+        NSString *baseAPIUrl = @"http://interface.bilibili.com/playurl?platform=android&_device=android&_hwid=%@&_aid=%@&_tid=0&_p=%@&_down=0&cid=%@&quality=%d&otype=json&appkey=%@&type=%@&sign=%@";
         
         if([vCID isEqualToString:@"LOCALVIDEO"]){
             if([vUrl length] > 5){
@@ -191,7 +207,7 @@ static void wakeup(void *context) {
             }
             return;
         }else if([vUrl containsString:@"live.bilibili"]){
-            baseAPIUrl = @"http://live.bilibili.com/api/playurl?appkey=%@&otype=json&cid=%@&quality=%d&type=%@&ts=%d&sign=%@";
+            baseAPIUrl = @"http://live.bilibili.com/api/playurl?platform=android&_device=android&_hwid=%@&_aid=%@&_tid=0&_p=%@&_down=0&cid=%@&quality=%d&otype=json&appkey=%@&type=%@&sign=%@";
             vAID = @"LIVE";
             vPID = @"LIVE";
         }else{
@@ -220,7 +236,6 @@ static void wakeup(void *context) {
         
         // Get Sign
         
-        int ts = (int)time(0);
         
         int quality = [self getSettings:@"quality"];
         int isMP4 = [self getSettings:@"playMP4"];
@@ -229,12 +244,13 @@ static void wakeup(void *context) {
             type = @"mp4";
         }
     getUrl: NSLog(@"Getting video url");
-        NSString *param = [NSString stringWithFormat:@"appkey=%@&otype=json&cid=%@&quality=%d&type=%@&ts=%d%@",APIKey,vCID,quality,type,ts,APISecret];
+        NSString *param = [NSString stringWithFormat:@"platform=android&_device=android&_hwid=%@&_aid=%@&_tid=0&_p=%@&_down=0&cid=%@&quality=%d&otype=json&appkey=%@&type=%@%@",hwid,vAID,vPID,vCID,quality,APIKey,type,APISecret];
+        
         NSString *sign = [self md5:[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         // Get Playback URL
         
-        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:baseAPIUrl,APIKey,vCID,quality,type,ts,sign]];
+        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:baseAPIUrl,hwid,vAID,vPID,vCID,quality,APIKey,type,sign]];
         NSLog(@"APIURL %@",[URL absoluteString]);
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"GET";
@@ -247,7 +263,7 @@ static void wakeup(void *context) {
             [request setValue:xff forHTTPHeaderField:@"Client-IP"];
         }
         [request setValue:cookie forHTTPHeaderField:@"Cookie"];
-        [request setValue:@"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+        [request setValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36" forHTTPHeaderField:@"User-Agent"];
         
         NSURLResponse * response = nil;
         NSError * error = nil;

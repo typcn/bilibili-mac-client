@@ -14,7 +14,7 @@
 
 class Downloader {
 public:
-    BOOL newTask(int cid,NSString *name);
+    BOOL newTask(int cid,NSString* aid,NSString *pid,NSString *name);
 };
 
 #endif /* defined(__bilibili__downloadWrapper__) */

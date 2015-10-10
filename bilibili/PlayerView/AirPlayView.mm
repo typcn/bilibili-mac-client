@@ -91,7 +91,27 @@
         [self writeLog:@"连接成功，正在尝试解析视频"];
         
 
-        NSArray  *urls = vp_bili_get_url([vCID intValue], k_biliVideoType_mp4);
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"http:/*[^/]+/video/av(\\d+)(/|/index.html|/index_(\\d+).html)?(\\?|#|$)" options:NSRegularExpressionCaseInsensitive error:nil];
+        
+        NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
+        
+        NSRange aidRange = [match rangeAtIndex:1];
+        
+        if(aidRange.length > 0){
+            vAID = [vUrl substringWithRange:aidRange];
+            NSRange pidRange = [match rangeAtIndex:3];
+            if(pidRange.length > 0 ){
+                vPID = [vUrl substringWithRange:pidRange];
+            }
+        }else{
+            vAID = @"0";
+        }
+        
+        if(![vPID length]){
+            vPID = @"1";
+        }
+        
+        NSArray  *urls = vp_bili_get_url([vCID intValue],vAID,vPID, k_biliVideoType_mp4);
         if(!urls){
             [self writeLog:@"Bilibili API 暂时不可用，请稍后再试"];
             [self connStop];
