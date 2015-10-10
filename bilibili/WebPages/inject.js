@@ -1,4 +1,4 @@
-window.bilimacVersion = 212;
+window.bilimacVersion = 213;
 window.injectHTML = 'INJ_HTML';
 window.sendToView = function(data){
     $.post("http://localhost:23330/rpc",data);
