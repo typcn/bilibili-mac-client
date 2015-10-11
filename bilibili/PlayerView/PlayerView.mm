@@ -209,7 +209,7 @@ static void wakeup(void *context) {
             }
             return;
         }else if([vUrl containsString:@"live.bilibili"]){
-            baseAPIUrl = @"http://live.bilibili.com/api/playurl?platform=android&_device=android&_hwid=%@&_aid=%@&_tid=0&_p=%@&_down=0&cid=%@&quality=%d&otype=json&appkey=%@&type=%@&sign=%@";
+            baseAPIUrl = @"http://live.bilibili.com/api/playurl?platform=android&_appver=406001&_buvid=%@infoc&_device=android&_hwid=%@&_aid=0&_tid=0&_p=%@&_down=0&cid=%@&quality=1&otype=json&appkey=%@&type=mp4&sign=%@";
             vAID = @"LIVE";
             vPID = @"LIVE";
         }else{
@@ -246,13 +246,30 @@ static void wakeup(void *context) {
             type = @"mp4";
         }
     getUrl: NSLog(@"Getting video url");
+        
         NSString *param = [NSString stringWithFormat:@"platform=android&_device=android&_hwid=%@&_aid=%@&_tid=0&_p=%@&_down=0&cid=%@&quality=%d&otype=json&appkey=%@&type=%@%@",hwid,vAID,vPID,vCID,quality,APIKey,type,APISecret];
+        NSString *uuid = [[NSUUID UUID] UUIDString];
+        NSString *rndhwid = [self randomStringWithLength:16];
+        
+        if([vPID isEqualToString:@"LIVE"]){
+            NSLog(@"Generate LIVE Params");
+            param = [NSString stringWithFormat:@"platform=android&_appver=406001&_buvid=%@infoc&_device=android&_hwid=%@&_aid=0&_tid=0&_p=%@&_down=0&cid=%@&quality=1&otype=json&appkey=%@&type=mp4&sign=%@",uuid,rndhwid,vCID,vCID,APIKey,APISecret];
+        }
         
         NSString *sign = [self md5:[param stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         
         // Get Playback URL
         
-        NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:baseAPIUrl,hwid,vAID,vPID,vCID,quality,APIKey,type,sign]];
+        NSString *pbUrl;
+        
+        if([vPID isEqualToString:@"LIVE"]){
+            NSLog(@"Generate LIVE APIUrl");
+            pbUrl = [NSString stringWithFormat:baseAPIUrl,uuid,rndhwid,vCID,vCID,APIKey,sign];
+        }else{
+            pbUrl = [NSString stringWithFormat:baseAPIUrl,hwid,vAID,vPID,vCID,quality,APIKey,type,sign];
+        }
+        
+        NSURL* URL = [NSURL URLWithString:pbUrl];
         NSLog(@"APIURL %@",[URL absoluteString]);
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"GET";
