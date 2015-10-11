@@ -179,6 +179,8 @@ static void wakeup(void *context) {
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
     dispatch_async(queue, ^{
         
+        int usePluginParser = 0;
+        
         NSString *hwid = [[NSUserDefaults standardUserDefaults] objectForKey:@"hwid"];
         if([hwid length] < 4){
             hwid  = [self randomStringWithLength:16];
@@ -280,6 +282,41 @@ static void wakeup(void *context) {
             });
             return;
         }
+
+    parseJSON:
+        if(usePluginParser){
+            NSLog(@"Use plugin parser");
+            VP_Plugin *plugin = [[PluginManager sharedInstance] Get:@"bilibili-resolveAddr"];
+            if(plugin){
+                int intcid = [vCID intValue];
+                NSDictionary *o = @{
+                                    @"cid": [NSNumber numberWithInt:intcid] ,
+                                    @"quality": [NSNumber numberWithInt:quality],
+                                    @"isMP4": [NSNumber numberWithInt:isMP4],
+                                    @"url": vUrl
+                                    };
+                NSData * d= [NSJSONSerialization dataWithJSONObject:o options:NSJSONWritingPrettyPrinted error:nil];
+                NSString *jsonString = [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding];
+                NSString *vjson = [plugin processEvent:@"bilibili-resolveAddr" :jsonString];
+                if(vjson && [vjson length] > 5){
+                    videoAddressJSONData = [vjson dataUsingEncoding:NSUTF8StringEncoding];
+                    NSLog(@"pluginParse OK");
+                }else{
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSAlert *alert = [[NSAlert alloc] init];
+                        [alert setMessageText:NSLocalizedString(@"视频解析出现错误，且云端动态解析模块也无法解析，可能该版本已失效，请升级到最新版，或重新启动软件再试。", nil)];
+                        [alert runModal];
+                    });
+                }
+            }else{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSAlert *alert = [[NSAlert alloc] init];
+                    [alert setMessageText:NSLocalizedString(@"视频解析出现错误，且云端动态解析模块未安装，请升级到最新版，或重新启动软件再试。", nil)];
+                    [alert runModal];
+                });
+                return;
+            }
+        }
         
         NSError *jsonError;
         NSMutableDictionary *videoResult = [NSJSONSerialization JSONObjectWithData:videoAddressJSONData options:NSJSONWritingPrettyPrinted error:&jsonError];
@@ -342,6 +379,11 @@ static void wakeup(void *context) {
         if([firstVideo isEqualToString:@"http://v.iask.com/v_play_ipad.php?vid=false"]){
             type = @"flv";
             goto getUrl;
+        }
+        
+        if([firstVideo containsString:@"static.hdslb"]){
+            usePluginParser = 1;
+            goto parseJSON;
         }
         
         if(isCancelled){

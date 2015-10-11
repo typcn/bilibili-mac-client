@@ -19,6 +19,7 @@
     NSMutableDictionary *loadedPlugins;
     NSMutableDictionary *pluginScripts;
     int ver;
+    int lastInstType;
     bool isRunning;
 }
 
@@ -157,14 +158,20 @@
     }
 }
 
-- (void)install:(NSString *)name :(id)view{
+- (void)install:(NSString *)name :(id)view :(int)instType{
     if(isRunning){
         return;
     }
+    lastInstType = instType;
     isRunning = true;
     hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = NSLocalizedString(@"正在载入插件信息", nil);
+    if(instType == 1){
+        hud.labelText = NSLocalizedString(@"正在连接服务器", nil);
+    }else{
+        hud.labelText = NSLocalizedString(@"正在载入插件信息", nil);
+    }
+    
     hud.removeFromSuperViewOnHide = YES;
     NSString *pluginHubUrl  = @"http://vp-hub.eqoe.cn";
     NSString *pluginManifest = [NSString stringWithFormat:@"%@/api/manifest/%@.json?t=%ld",
@@ -206,15 +213,25 @@
                 [self hidehud];
                 return;
             }
+            
+            if(instType == 1){
+                hud.labelText = NSLocalizedString(@"正在更新解析模块", nil);
+            }else{
+                hud.labelText = NSLocalizedString(@"正在下载插件", nil);
+            }
             hud.mode =  MBProgressHUDModeAnnularDeterminate;
-            hud.labelText = NSLocalizedString(@"正在下载插件", nil);
             
             bgsession = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
             NSLog(@"Plugin download address: %@",downloadAddr);
             NSURLSessionDownloadTask *downloadTask = [bgsession downloadTaskWithURL:[NSURL URLWithString:downloadAddr]];
             [downloadTask resume];
         } else {
-            hud.labelText = NSLocalizedString(@"插件安装失败，无法连接到服务器", nil);
+            if(instType == 1){
+                hud.labelText = NSLocalizedString(@"解析模块更新失败", nil);
+            }else{
+                hud.labelText = NSLocalizedString(@"插件安装失败，无法连接到服务器", nil);
+            }
+            
             [self hidehud];
             NSLog(@"URL Session Task Failed: %@", [error localizedDescription]);
         }
@@ -226,8 +243,12 @@
 
 - (void)hidehud{
     dispatch_async(dispatch_get_main_queue(), ^(void){
+        if(lastInstType == 1){
+            [hud hide:YES afterDelay:0.5];
+        }else{
+            [hud hide:YES afterDelay:1.5];
+        }
         hud.mode = MBProgressHUDModeText;
-        [hud hide:YES afterDelay:1.5];
         isRunning = false;
     });
 }
@@ -288,7 +309,12 @@
     [unzipTask waitUntilExit];
     
     if ([unzipTask terminationStatus] == 0){
-        hud.labelText = NSLocalizedString(@"安装成功", nil);
+        if(lastInstType == 1){
+            hud.labelText = NSLocalizedString(@"解析模块更新成功", nil);
+        }else{
+            hud.labelText = NSLocalizedString(@"安装成功", nil);
+        }
+        
         loadedPlugins = [[NSMutableDictionary alloc] init];
         [self hidehud];
         [self reloadList];

@@ -16,7 +16,7 @@
 - (NSArray *)getList;
 
 - (id)Get:(NSString *)action;
-- (void)install:(NSString *)name :(id)view;
+- (void)install:(NSString *)name :(id)view :(int)instType;
 - (void)enable:(NSString *)name;
 - (void)disable:(NSString *)name;
 

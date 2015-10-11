@@ -224,10 +224,30 @@
                                    userInfo:nil
                                     repeats:YES];
 
+    [NSTimer scheduledTimerWithTimeInterval:2.5
+                                     target:self
+                                   selector:@selector(updateParser)
+                                   userInfo:nil
+                                    repeats:NO];
+    
     [webServer startWithOptions:@{
                                   @"Port":@23330,
                                   @"BindToLocalhost":@true,
                     } error:nil];
+}
+
+- (void)updateParser{
+    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+    if(!tv){
+        return;
+    }
+    id wv = [tv GetWebView];
+    if(!wv){
+        return;
+    }
+    if([wv subviews] && [wv subviews][0]){
+        [[PluginManager sharedInstance] install:@"com.typcn.vp.bilibili" :[wv subviews][0] :1];
+    }
 }
 
 - (void)installPlugIn:(NSString *)name{
@@ -240,7 +260,7 @@
         return;
     }
     if([wv subviews] && [wv subviews][0]){
-        [[PluginManager sharedInstance] install:name :[wv subviews][0]];
+        [[PluginManager sharedInstance] install:name :[wv subviews][0] :0];
     }
 }
 
