@@ -62,6 +62,10 @@
     return availablePlugins;
 }
 
+- (NSDictionary *)getScript{
+    return pluginScripts;
+}
+
 - (void)reloadList{
     BOOL isDebugger = [self isDebugger];
     if(isDebugger){

@@ -14,6 +14,8 @@
 + (instancetype)sharedInstance;
 - (void)reloadList;
 - (NSArray *)getList;
+- (NSDictionary *)getScript;
+
 
 - (id)Get:(NSString *)action;
 - (void)install:(NSString *)name :(id)view :(int)instType;

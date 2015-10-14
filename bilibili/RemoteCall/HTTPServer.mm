@@ -22,6 +22,7 @@
 @implementation HTTPServer{
     long acceptAnalytics;
     NSString *cookie;
+    BrowserExtInterface *browserEIF;
 }
 
 @synthesize playerWindowController;
@@ -35,6 +36,9 @@
     if(!acceptAnalytics || acceptAnalytics == 1 || acceptAnalytics == 2){
         screenView("StartApplication");
     }
+    
+    browserEIF = [[BrowserExtInterface alloc] init];
+    
     [GCDWebServer setLogLevel:2];
     GCDWebServer* webServer = [[GCDWebServer alloc] init];
     
@@ -212,6 +216,11 @@
          if([action isEqualToString:@"pluginList"]){
              NSArray *arr = [[PluginManager sharedInstance] getList];
              rep = [GCDWebServerDataResponse responseWithJSONObject:arr];
+         }else if([action isEqualToString:@"scriptList"]){
+             NSArray *scList = [browserEIF GetScriptList];
+             
+             //NSString *str = [[PluginManager sharedInstance] javascriptForDomain:data];
+             rep = [GCDWebServerDataResponse responseWithJSONObject:scList];
          }
          
          [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];

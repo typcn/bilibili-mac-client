@@ -10,6 +10,7 @@
 #import "PlayerControlView.h"
 #import "AirPlayView.h"
 #import "PluginManager.h"
+#import "BrowserExtInterface.h"
 
 @interface HTTPServer : NSObject
 @property (strong) NSWindowController* playerWindowController;
