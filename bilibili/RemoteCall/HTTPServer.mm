@@ -137,7 +137,12 @@
             }else if([action isEqualToString:@"showAirPlayByCID"]){
                 [self showAirPlayByCID:data];
             }else if([action isEqualToString:@"downloadVideoByCID"]){
-                [self downloadVideoByCID:data];
+                NSArray *arr = [data componentsSeparatedByString:@"|"];
+                if([arr count] == 1){
+                    [self downloadVideoByCID:data withPage:nil title:nil];
+                }else if([arr count] > 2){
+                    [self downloadVideoByCID:arr[0] withPage:arr[1] title:arr[2]];
+                }
             }else if([action isEqualToString:@"checkforUpdate"]){
                 [self checkForUpdates];
             }else if([action isEqualToString:@"showNotification"]){
@@ -383,22 +388,35 @@
 }
 
 
-- (void)downloadVideoByCID:(NSString *)cid{
-    WebTabView *tv = (WebTabView *)[browser activeTabContents];
-    if(!tv){
-        return;
+- (void)downloadVideoByCID:(NSString *)cid withPage:(NSString *)pgUrl title:(NSString *)title
+{
+    NSString *fulltitle;
+    id wvContentView;
+    if(!pgUrl || !title){
+        WebTabView *tv = (WebTabView *)[browser activeTabContents];
+        if(!tv){
+            return;
+        }
+        id wv = [tv GetWebView];
+        if(!wv){
+            return;
+        }
+        TWebView *twv = [tv GetTWebView];
+        if(!twv){
+            return;
+        }
+        vUrl = [twv getURL];
+        wvContentView = [wv subviews][0];
+        fulltitle = [twv getTitle];
+    }else{
+        vUrl = pgUrl;
+        wvContentView = [[NSView alloc] init];
+        fulltitle = title;
     }
-    id wv = [tv GetWebView];
-    if(!wv){
-        return;
-    }
-    TWebView *twv = [tv GetTWebView];
-    if(!twv){
-        return;
-    }
-    
+
     vCID = cid;
-    vUrl = [twv getURL];
+    vPID = @"1";
+    
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\/video\\/av(\\d+)(\\/index.html|\\/index_(\\d+).html)?" options:NSRegularExpressionCaseInsensitive error:nil];
     
     NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
@@ -415,11 +433,7 @@
         vAID = @"0";
     }
     
-    if(![vPID length]){
-        vPID = @"1";
-    }
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[wv subviews][0] animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:wvContentView animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = NSLocalizedString(@"正在启动下载引擎", nil);
     hud.removeFromSuperViewOnHide = YES;
@@ -437,8 +451,8 @@
         NSLog(@"Analytics disabled ! won't upload.");
     }
     
-    NSLog(@"[Downloader] video name %@",[twv getTitle]);
-    NSArray *fn = [[twv getTitle] componentsSeparatedByString:@"_"];
+    NSLog(@"[Downloader] video name %@",fulltitle);
+    NSArray *fn = [fulltitle componentsSeparatedByString:@"_"];
     NSString *filename = [fn objectAtIndex:0];
     
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
