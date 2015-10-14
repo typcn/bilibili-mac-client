@@ -213,6 +213,7 @@ static void wakeup(void *context) {
             vAID = @"LIVE";
             vPID = @"LIVE";
         }else{
+            vPID = @"1";
             NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\/video\\/av(\\d+)(\\/index.html|\\/index_(\\d+).html)?" options:NSRegularExpressionCaseInsensitive error:nil];
             
             NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
@@ -227,10 +228,6 @@ static void wakeup(void *context) {
                 }
             }else{
                 vAID = @"0";
-            }
-            
-            if(![vPID length]){
-                vPID = @"1";
             }
             NSLog(@"AV: %@, CID: %@, PID: %@",vAID,vCID,vPID);
         }
