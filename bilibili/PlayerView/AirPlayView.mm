@@ -91,6 +91,8 @@
         [self writeLog:@"连接成功，正在尝试解析视频"];
         
 
+        vPID = @"1";
+        
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\/video\\/av(\\d+)(\\/index.html|\\/index_(\\d+).html)?" options:NSRegularExpressionCaseInsensitive error:nil];
         
         NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
@@ -106,11 +108,7 @@
         }else{
             vAID = @"0";
         }
-        
-        if(![vPID length]){
-            vPID = @"1";
-        }
-        
+
         NSArray  *urls = vp_bili_get_url([vCID intValue],vAID,vPID, k_biliVideoType_mp4);
         if(!urls){
             [self writeLog:@"Bilibili API 暂时不可用，请稍后再试"];

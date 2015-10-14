@@ -163,6 +163,8 @@
                 }
                 NSLog(@"GoURL: %@",data);
                 [twv setURL:data];
+            }else if([action isEqualToString:@"setVUrl"]){
+                vUrl = data;
             }
         });
         GCDWebServerDataResponse *rep = [GCDWebServerDataResponse responseWithText:@"ok"];
