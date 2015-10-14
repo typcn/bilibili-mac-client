@@ -412,6 +412,13 @@
         vUrl = pgUrl;
         wvContentView = [[NSView alloc] init];
         fulltitle = title;
+        WebTabView *tv = (WebTabView *)[browser activeTabContents];
+        if(tv){
+            id wv = [tv GetWebView];
+            if(wv){
+                wvContentView = [wv subviews][0];
+            }
+        }
     }
 
     vCID = cid;
@@ -461,13 +468,17 @@
         dispatch_async(dispatch_get_main_queue(), ^(void){
             if(s){
                 hud.labelText = NSLocalizedString(@"成功开始下载", nil);
+                NSDictionary *activeApp = [[NSWorkspace sharedWorkspace] activeApplication];
+                NSString *activeName = (NSString *)[activeApp objectForKey:@"NSApplicationName"];
+                if([activeName isEqualToString:@"Bilibili"]){
+                    id ct = [browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/"];
+                    [browser addTabContents:ct inForeground:YES];
+                }
             }else{
                 hud.labelText = NSLocalizedString(@"下载失败，请点击帮助 - 反馈", nil);
             }
             hud.mode = MBProgressHUDModeText;
             [hud hide:YES afterDelay:3];
-            id ct = [browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/"];
-            [browser addTabContents:ct inForeground:YES];
         });
     });
 }

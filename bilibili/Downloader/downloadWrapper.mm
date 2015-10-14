@@ -42,6 +42,7 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
         notification.informativeText = NSLocalizedString(@"下载失败，无法解析视频", nil);
         notification.soundName = NSUserNotificationDefaultSoundName;
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+        return false;
     }
     if([[[urls valueForKey:@"url"] className] isEqualToString:@"__NSCFString"]){
         NSString *tmp = [urls valueForKey:@"url"];
