@@ -121,7 +121,11 @@
         
         pluginScripts[dm] = str;
         NSLog(@"Loading plugin javascript %@ forDomain %@",name,dm);
-        [availablePlugins addObject:@{@"file":name,@"ver":[dir objectForKey:@"CFBundleVersion"]}];
+        [availablePlugins addObject:@{
+                                      @"file":name,
+                                      @"ver":[dir objectForKey:@"CFBundleVersion"],
+                                      @"domain":dm
+                                      }];
     }
 }
 
