@@ -128,7 +128,12 @@
 
         dispatch_async(dispatch_get_main_queue(), ^(void){
             if([action isEqualToString:@"playVideoByCID"]){
-                [self playVideoByCID:data];
+                NSArray *arr = [data componentsSeparatedByString:@"|"];
+                if([arr count] == 1){
+                    [self playVideoByCID:data withPage:nil title:nil];
+                }else if([arr count] > 2){
+                    [self playVideoByCID:arr[0] withPage:arr[1] title:arr[2]];
+                }
             }else if([action isEqualToString:@"showAirPlayByCID"]){
                 [self showAirPlayByCID:data];
             }else if([action isEqualToString:@"downloadVideoByCID"]){
@@ -292,30 +297,37 @@
     }
     airplayWindowController =[[NSWindowController alloc] initWithWindowNibName:@"AirPlay"];
     [airplayWindowController showWindow:self];
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 }
 
-- (void)playVideoByCID:(NSString *)cid
+- (void)playVideoByCID:(NSString *)cid withPage:(NSString *)pgUrl title:(NSString *)title
 {
     if(parsing){
         return;
     }
-    WebTabView *tv = (WebTabView *)[browser activeTabContents];
-    if(!tv){
-        return;
-    }
-    TWebView *wv = [tv GetTWebView];
-    if(!wv){
-        return;
-    }
-    NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
-    NSString *mediaTitle = [fn objectAtIndex:0];
     parsing = true;
     vCID = cid;
-    vUrl = [wv getURL];
-    if([mediaTitle length] > 0){
-        vTitle = [fn objectAtIndex:0];
+
+    if(!pgUrl || !title){
+        WebTabView *tv = (WebTabView *)[browser activeTabContents];
+        if(!tv){
+            return;
+        }
+        TWebView *wv = [tv GetTWebView];
+        if(!wv){
+            return;
+        }
+        NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
+        NSString *mediaTitle = [fn objectAtIndex:0];
+        vUrl = [wv getURL];
+        if([mediaTitle length] > 0){
+            vTitle = [fn objectAtIndex:0];
+        }else{
+            vTitle = NSLocalizedString(@"未命名", nil);
+        }
     }else{
-        vTitle = NSLocalizedString(@"未命名", nil);
+        vTitle = [[title componentsSeparatedByString:@"_"] objectAtIndex:0];
+        vUrl = pgUrl;
     }
     
     [[NSUserDefaults standardUserDefaults] setObject:vUrl forKey:@"LastPlay"];
@@ -332,6 +344,7 @@
         NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
         playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
         [playerWindowController showWindow:self];
+        [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
     });
 }
 

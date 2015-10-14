@@ -63,6 +63,7 @@ function applyUI(){
                 console.log("inject topic page");
                 $('embed').parent().html(window.injectHTML);
             }else{
+                window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + window.location.href + '|' + document.title;
                 console.log("inject player page");
                 $('#bofqi').html(window.injectHTML);
                 var ci = document.querySelector(".cover_image");
