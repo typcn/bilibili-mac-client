@@ -146,10 +146,6 @@ static void wakeup(void *context) {
         NSNumber *viewWidth = [NSNumber numberWithFloat:rect.size.width];
         res = [NSString stringWithFormat:@"%dx%d",[viewWidth intValue],[viewHeight intValue]];
         [self.view setFrame:rect];
-    }else{
-        NSRect frame = [self.view.window frame];
-        frame.size = NSMakeSize(Wwidth, Wheight);
-        [self.view setFrame:frame];
     }
     
     /* Add Player Control view */
