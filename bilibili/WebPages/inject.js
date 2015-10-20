@@ -55,7 +55,7 @@ function applyUI(){
                 if(window.ROOMID > 0){
                     if(typeof LIVEPLAY == "undefined"){
                         $("#object").remove();
-                        window.sendToView({action: "playVideoByCID",data: ROOMID.toString()});
+                        window.sendToView({action: "playVideoByCID",data: ROOMID.toString() + '|' + window.location.href + '|' + document.title});
                         LIVEPLAY = 1;
                     }
                 }
