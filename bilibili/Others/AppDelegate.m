@@ -210,6 +210,7 @@ Browser *browser;
     }
 
     [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
+    [browser.windowController showWindow:self];
 }
 
 

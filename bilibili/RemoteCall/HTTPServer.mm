@@ -145,6 +145,7 @@
                 }
             }else if([action isEqualToString:@"checkforUpdate"]){
                 [self checkForUpdates];
+                [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
             }else if([action isEqualToString:@"showNotification"]){
                 [self showNotification:data];
             }else if([action isEqualToString:@"showSettings"]){
@@ -205,6 +206,8 @@
              NSString *url = [plugin processEvent:action :data];
              if(url && [url length] > 5){
                  [self playVideoByUrl:url];
+             }else{
+                 [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
              }
          }
          
@@ -360,14 +363,14 @@
     if(parsing){
         return;
     }
-    WebTabView *tv = (WebTabView *)[browser activeTabContents];
-    if(!tv){
-        return;
-    }
-    TWebView *wv = [tv GetTWebView];
-    if(!wv){
-        return;
-    }
+//    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+//    if(!tv){
+//        return;
+//    }
+//    TWebView *wv = [tv GetTWebView];
+//    if(!wv){
+//        return;
+//    }
     parsing = true;
     vCID = @"LOCALVIDEO";
     vUrl = Url;
@@ -384,6 +387,7 @@
         NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
         playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
         [playerWindowController showWindow:self];
+        [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
     });
 }
 
