@@ -502,6 +502,9 @@ static void wakeup(void *context) {
     }
     if(![vCID isEqualToString:@"LOCALVIDEO"]){
         check_error(mpv_set_option_string(mpv, "force-media-title", [vTitle cStringUsingEncoding:NSUTF8StringEncoding]));
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+           [self.view.window setTitle:vTitle];
+        });
     }
     
     int enableHW = [self getSettings:@"enableHW"];
