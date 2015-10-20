@@ -34,6 +34,9 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
         vtype = k_biliVideoType_mp4;
     }
     
+    int sucCount = 0 ;
+    int failCount = 0;
+    
     NSArray  *urls = vp_bili_get_url(cid,aid,pid,vtype);
     if(!urls){
         NSLog(@"[Downloader] ERROR");
@@ -67,7 +70,9 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
                                           error:&error];
         if(!error && [(NSHTTPURLResponse *)response statusCode] == 200){
             NSLog(@"Download Task Added");
+            sucCount++;
         }else{
+            failCount++;
             return false;
         }
     }else{
@@ -94,14 +99,28 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
                                                     error:&error];
             if(!error && [(NSHTTPURLResponse *)response statusCode] == 200){
                 NSLog(@"Download Task Added");
+                sucCount++;
             }else{
+                failCount++;
                 return false;
             }
             
             
         }
     }
-    
+    NSDictionary *activeApp = [[NSWorkspace sharedWorkspace] activeApplication];
+    NSString *activeName = (NSString *)[activeApp objectForKey:@"NSApplicationName"];
+    if(![activeName isEqualToString:@"Bilibili"]){
+        NSString *vtypeStr = @"FLV";
+        if(isMP4){
+            vtypeStr = @"MP4";
+        }
+        NSUserNotification *notification = [[NSUserNotification alloc] init];
+        notification.title = [NSString stringWithFormat:@"下载任务已开始 - %@",name];
+        notification.informativeText = [NSString stringWithFormat:@"视频格式：%@ 成功分段：%d 失败分段：%d",vtypeStr,sucCount,failCount];
+        notification.soundName = NSUserNotificationDefaultSoundName;
+        [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+    }
     NSLog(@"[Downloader] Download task added");
     return true;
 }
