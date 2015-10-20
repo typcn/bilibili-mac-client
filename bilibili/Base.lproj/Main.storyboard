@@ -710,10 +710,10 @@ GQ
         <scene sceneID="DUG-BS-fjC">
             <objects>
                 <windowController storyboardIdentifier="playerWindow" showSeguePresentationStyle="single" id="3Nx-YC-zmP" userLabel="Miedia Player Window Controller" sceneMemberID="viewController">
-                    <window key="window" title="TYPCN Media Player" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" animationBehavior="utilityWindow" id="Qzs-of-Uzm" customClass="PlayerWindow">
+                    <window key="window" title="TYPCN Media Player" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="utilityWindow" frameAutosaveName="" id="Qzs-of-Uzm" customClass="PlayerWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
-                        <rect key="contentRect" x="1298" y="922" width="311" height="194"/>
+                        <rect key="contentRect" x="0.0" y="863" width="300" height="200"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                     </window>
                     <connections>
@@ -976,7 +976,7 @@ GQ
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" id="k65-FX-xi6">
-                                <rect key="frame" x="27" y="168" width="99" height="26"/>
+                                <rect key="frame" x="27" y="176" width="99" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="UtE-Jc-IKj">
@@ -995,7 +995,7 @@ GQ
                                 </connections>
                             </comboBox>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="jlv-di-fx2">
-                                <rect key="frame" x="25" y="206" width="56" height="17"/>
+                                <rect key="frame" x="25" y="214" width="56" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="优先画质" id="Sd9-OH-JrH">
@@ -1005,7 +1005,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LGC-Jg-Mns">
-                                <rect key="frame" x="174" y="206" width="170" height="17"/>
+                                <rect key="frame" x="129" y="214" width="170" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="IP 伪造 ( 大陆用户请勿开启 )" id="vMH-pa-ZpX">
@@ -1015,7 +1015,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="v5E-aw-wG4">
-                                <rect key="frame" x="399" y="206" width="100" height="17"/>
+                                <rect key="frame" x="312" y="214" width="100" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕大小参数" id="dJb-2c-b1m">
@@ -1025,7 +1025,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" id="ajt-jS-Z4K">
-                                <rect key="frame" x="401" y="172" width="89" height="22"/>
+                                <rect key="frame" x="314" y="180" width="89" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="默认25" drawsBackground="YES" id="pXu-zi-Y7u">
@@ -1039,7 +1039,7 @@ GQ
                                 </connections>
                             </textField>
                             <comboBox verticalHuggingPriority="750" id="JLT-R0-aaz">
-                                <rect key="frame" x="176" y="168" width="169" height="26"/>
+                                <rect key="frame" x="131" y="176" width="169" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="P8V-DP-s5N">
@@ -1180,7 +1180,7 @@ GQ
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OIq-ag-IQD">
-                                <rect key="frame" x="544" y="206" width="75" height="17"/>
+                                <rect key="frame" x="419" y="214" width="75" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕字体" id="6ZU-bU-OI7">
@@ -1190,7 +1190,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" id="iLa-hJ-dgh">
-                                <rect key="frame" x="546" y="172" width="88" height="22"/>
+                                <rect key="frame" x="421" y="180" width="88" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="STHeiti" drawsBackground="YES" id="A8r-5c-QC5">
@@ -1221,6 +1221,30 @@ GQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Pn0-p5-eUE">
+                                <rect key="frame" x="524" y="214" width="112" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="最大缓冲( KB )" id="GCK-CB-vEX">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" id="nHb-Pd-fXL">
+                                <rect key="frame" x="526" y="180" width="88" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="QiJ-fu-Jcf">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="OGs-UT-bmo"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="maxBufferChanged:" target="z8a-gg-iMj" id="Vtm-a5-l6a"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <animations/>
                     </view>
@@ -1237,6 +1261,7 @@ GQ
                         <outlet property="disablebottomComment" destination="5yv-E4-e3g" id="zXF-lZ-D8g"/>
                         <outlet property="fontName" destination="iLa-hJ-dgh" id="jDT-c4-qHR"/>
                         <outlet property="fontsize" destination="ajt-jS-Z4K" id="ouz-gu-SI4"/>
+                        <outlet property="maxBufferSize" destination="nHb-Pd-fXL" id="0io-Gk-bxi"/>
                         <outlet property="playMP4" destination="QLp-in-QLo" id="Nan-Qj-eQF"/>
                         <outlet property="qualityBox" destination="k65-FX-xi6" id="XPQ-mh-vcg"/>
                         <outlet property="transparency" destination="dP9-DC-elz" id="k0R-eZ-8Ee"/>

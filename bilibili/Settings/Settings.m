@@ -59,6 +59,12 @@
     }
     [self.fontsize setFloatValue:fontsize];
     
+    long maxBuffer = [settingsController integerForKey:@"maxBufferSize"];
+    if(!maxBuffer){
+        maxBuffer = 75000;
+    }
+    [self.maxBufferSize setIntegerValue:maxBuffer];
+    
     float moveSpeed = [settingsController floatForKey:@"moveSpeed"];
     if(!moveSpeed){
         moveSpeed = 0.0;
@@ -142,6 +148,11 @@
 
 - (IBAction)fontNameChanged:(id)sender {
     [settingsController setObject:[self.fontName stringValue] forKey:@"fontName"];
+    [settingsController synchronize];
+}
+
+- (IBAction)maxBufferChanged:(id)sender {
+    [settingsController setInteger:[self.maxBufferSize integerValue] forKey:@"maxBufferSize"];
     [settingsController synchronize];
 }
 

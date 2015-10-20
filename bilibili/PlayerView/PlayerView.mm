@@ -494,8 +494,13 @@ static void wakeup(void *context) {
     check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
     check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
     check_error(mpv_set_option_string(mpv, "hr-seek", "yes"));
-    //check_error(mpv_set_option_string(mpv, "keep-open", "yes"));
     
+    int maxBuffer = [self getSettings:@"maxBufferSize"];
+    NSString *maxBufStr = [NSString stringWithFormat:@"%d",maxBuffer];
+    if(maxBufStr && [maxBufStr length] > 3){
+        check_error(mpv_set_option_string(mpv, "cache-default", [maxBufStr cStringUsingEncoding:NSUTF8StringEncoding]));
+    }
+
     int disableKeepAspect = [self getSettings:@"disableKeepAspect"];
     if(disableKeepAspect == 1){
         check_error(mpv_set_option_string(mpv, "keepaspect", "no"));

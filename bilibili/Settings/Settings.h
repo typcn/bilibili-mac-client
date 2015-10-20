@@ -25,5 +25,6 @@
 @property (weak) IBOutlet NSSlider *commentMoveSpeed;
 @property (weak) IBOutlet NSButton *disableHwDec;
 @property (weak) IBOutlet NSButton *disableWriteHistory;
+@property (weak) IBOutlet NSTextField *maxBufferSize;
 
 @end
