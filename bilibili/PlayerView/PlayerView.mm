@@ -102,9 +102,6 @@ static void wakeup(void *context) {
     LastWindow = [[NSApplication sharedApplication] keyWindow];
     [LastWindow resignKeyWindow];
     [LastWindow miniaturize:self];
-    w = self.view.window;
-    [w makeKeyAndOrderFront:NSApp];
-    [w makeMainWindow];
     
     // Load Player Control View
 //    NSArray *tlo;
@@ -122,6 +119,17 @@ static void wakeup(void *context) {
     [self LoadVideo];
 }
 
+- (void)viewDidAppear{
+    w = self.view.window;
+    [w makeKeyAndOrderFront:NSApp];
+    [w makeMainWindow];
+    double WX = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerX"];
+    double WY = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerY"];
+    NSPoint pos = NSMakePoint(WX, WY);
+    NSLog(@"playerX: %f Y: %f",WX,WY);
+    [w setFrameOrigin:pos];
+}
+
 - (void)LoadVideo{
     //IOPMAssertionCreateWithName(kIOPMAssertionTypeNoDisplaySleep,
     //                            kIOPMAssertionLevelOn, CFSTR("com.typcn.videoplayback"), &assertionID);
@@ -133,7 +141,6 @@ static void wakeup(void *context) {
     
     double Wheight = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerheight"];
     double Wwidth = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerwidth"];
-    
     NSString *cookie = [[NSUserDefaults standardUserDefaults] objectForKey:@"cookie"];
     
     NSString *res = [NSString stringWithFormat:@"%dx%d",(int)Wwidth,(int)Wheight];
@@ -145,6 +152,10 @@ static void wakeup(void *context) {
         NSNumber *viewHeight = [NSNumber numberWithFloat:rect.size.height];
         NSNumber *viewWidth = [NSNumber numberWithFloat:rect.size.width];
         res = [NSString stringWithFormat:@"%dx%d",[viewWidth intValue],[viewHeight intValue]];
+        [self.view setFrame:rect];
+    }else{
+        NSRect rect = self.view.frame;
+        rect.size = NSMakeSize(Wwidth, Wheight);
         [self.view setFrame:rect];
     }
     
@@ -946,7 +957,6 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     // Save window size
     [[NSUserDefaults standardUserDefaults] setDouble:frameSize.width forKey:@"playerwidth"];
     [[NSUserDefaults standardUserDefaults] setDouble:frameSize.height forKey:@"playerheight"];
-    
     return frameSize;
 }
 - (void)windowDidResize:(NSNotification *)notification{
@@ -1079,6 +1089,8 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         }
     });
     dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.x forKey:@"playerX"];
+        [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.y forKey:@"playerY"];
         [self mpv_stop];
         [self mpv_quit];
         [postCommentWindowC close];
