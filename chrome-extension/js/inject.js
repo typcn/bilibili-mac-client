@@ -5,9 +5,23 @@ chrome.runtime.sendMessage({blGetScript: window.location.host}, function(respons
 		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 		var urle = 'action=setVUrl&data=' + encodeURIComponent(window.location.href);
 		request.send(urle);
-		var script = document.createElement('script');
-		script.textContent = response;
-		(document.head||document.documentElement).appendChild(script);
-		script.parentNode.removeChild(script);
+		if(window.location.host == "www.bilibili.com"){
+			localStorage['bilimac_player_type'] = 'force';
+			var injectStr = "localStorage.bilimac_original_player=document.getElementById('bofqi').innerHTML;" + response.script;
+			if(response.replaceType == 'bilibili_helper'){
+				console.log('use bilibili helper mode');
+				localStorage['bilimac_player_type'] = 'available';
+				injectStr = "localStorage.bilimac_original_player=document.getElementById('bofqi').innerHTML";
+			}
+			var script = document.createElement('script');
+			script.textContent = injectStr;
+			(document.head||document.documentElement).appendChild(script);
+			script.parentNode.removeChild(script);	
+		}else{
+			var script = document.createElement('script');
+			script.textContent = response.script;
+			(document.head||document.documentElement).appendChild(script);
+			script.parentNode.removeChild(script);
+		}	
 	}
 });

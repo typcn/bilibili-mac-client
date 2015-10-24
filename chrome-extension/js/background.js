@@ -28,7 +28,23 @@ chrome.extension.onMessage.addListener(
         var is_disable = localStorage['disable_' + item_key];
         if(!is_disable){
           var script = localStorage['script_' + item_key];
-          sendResponse(script);
+          if(!script || script.length < 5){
+            sendResponse('!');
+          }else{
+            if(localStorage['no_close_replace'] == 'true'){
+                var request = new XMLHttpRequest();
+                request.open('GET', 'http://localhost:23330/ver', false);  // `false` makes the request synchronous
+                request.send(null);
+
+                if (request.status === 200) {
+                  sendResponse({script:script,replaceType:localStorage['replace_in']});
+                }else{
+                  sendResponse('!');
+                }
+            }else{
+                sendResponse({script:script,replaceType:localStorage['replace_in']});
+            }
+          }
         }else{
           sendResponse('!');
         }

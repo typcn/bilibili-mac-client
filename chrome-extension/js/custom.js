@@ -165,3 +165,27 @@ function setChecked(e){
     localStorage['disable_' + site] = 'true';
   }
 }
+
+$("#bili_helper").addEventListener("click",function(e){
+  if(e.target.checked){
+    localStorage['replace_in'] = 'bilibili_helper';
+  }else{
+    localStorage['replace_in'] = 'self';
+  }
+});
+
+if(localStorage['replace_in'] == 'bilibili_helper'){
+  $("#bili_helper").checked = true;
+}
+
+$("#no_close_replace").addEventListener("click",function(e){
+  if(e.target.checked){
+    localStorage['no_close_replace'] = 'true';
+  }else{
+    delete localStorage['no_close_replace'];
+  }
+});
+
+if(localStorage['no_close_replace'] == 'true'){
+  $("#no_close_replace").checked = true;
+}

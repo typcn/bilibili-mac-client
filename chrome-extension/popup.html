@@ -66,7 +66,43 @@
                 </section>
                 <section class="mdl-layout__tab-panel" id="fixed-tab-3">
                   <div class="page-content">
-                    暂未完成~
+                      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--12-col">
+                          <thead>
+                            <tr>
+                              <th class="mdl-data-table__cell--non-numeric">说明</th>
+                              <th>开关</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="mdl-data-table__cell--non-numeric">装有 Bilibili 助手时，不强制替换播放器</td>
+                              <td>
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="bili_helper" style="width: auto;">
+                                  <input type="checkbox" id="bili_helper" class="mdl-switch__input plugin-select" />
+                                  <span class="mdl-switch__label"></span>
+                                </label>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="mdl-data-table__cell--non-numeric">客户端未启动时自动打开 (需要 2.16)</td>
+                              <td>
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="auto_open" style="width: auto;">
+                                  <input type="checkbox" id="auto_open" class="mdl-switch__input plugin-select" disabled />
+                                  <span class="mdl-switch__label"></span>
+                                </label>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="mdl-data-table__cell--non-numeric">客户端未启动时不替换播放器</td>
+                              <td>
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="no_close_replace" style="width: auto;">
+                                  <input type="checkbox" id="no_close_replace" class="mdl-switch__input plugin-select" />
+                                  <span class="mdl-switch__label"></span>
+                                </label>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                   </div>
                 </section>
               </main>
