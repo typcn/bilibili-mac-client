@@ -19,6 +19,8 @@
 
 #import <QuartzCore/CoreImage.h>
 
+int forceIPFake;
+
 @implementation HTTPServer{
     long acceptAnalytics;
     NSString *cookie;
@@ -134,6 +136,10 @@
                 }else if([arr count] > 2){
                     [self playVideoByCID:arr[0] withPage:arr[1] title:arr[2]];
                 }
+                if([arr count] == 4){
+                    forceIPFake = [arr[3] intValue];
+                }
+                
             }else if([action isEqualToString:@"showAirPlayByCID"]){
                 [self showAirPlayByCID:data];
             }else if([action isEqualToString:@"downloadVideoByCID"]){

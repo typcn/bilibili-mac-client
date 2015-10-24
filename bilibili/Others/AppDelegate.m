@@ -196,6 +196,7 @@ Browser *browser;
 {
     NSString* url = [[event paramDescriptorForKeyword:keyDirectObject]
                       stringValue];
+    NSLog(@"url: %@",url);
     url = [url substringFromIndex:5];
     if ([[url substringToIndex:6] isEqual: @"http//"]) { //somehow, 传入url的Colon会被移除 暂时没有找到相关的说明，这里统一去掉，在最后添加http://
         url = [url substringFromIndex:6];

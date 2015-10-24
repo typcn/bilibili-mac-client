@@ -21,6 +21,7 @@
 #import "Common.hpp"
 extern NSString *APIKey;
 extern NSString *APISecret;
+extern int forceIPFake;
 NSWindow *LastWindow;
 
 mpv_handle *mpv;
@@ -282,10 +283,25 @@ static void wakeup(void *context) {
         
         NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
         NSString *xff = [settingsController objectForKey:@"xff"];
+
+        if(vTitle && [vTitle containsString:@"MIMI"]){
+            forceIPFake = 2;
+        }
+        
+        if(forceIPFake == 2){
+            xff = [settingsController objectForKey:@"xff_HK"];
+            if(!xff){
+                xff = [NSString stringWithFormat:@"36.52.%d.%d",arc4random_uniform(255),arc4random_uniform(255)];
+                [settingsController setObject:xff forKey:@"xff_HK"];
+            }
+            NSLog(@"Force set fake ip to: %@",xff);
+            forceIPFake = 0;
+        }
         if([xff length] > 4){
             [request setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
             [request setValue:xff forHTTPHeaderField:@"Client-IP"];
         }
+
         [request setValue:cookie forHTTPHeaderField:@"Cookie"];
         [request setValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36" forHTTPHeaderField:@"User-Agent"];
         [request setValue:@"trailers" forHTTPHeaderField:@"TE"];
