@@ -1007,6 +1007,16 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             mpv_command(mpv, args);
             break;
         }
+        case 9:{ // v
+            const char *args[] = {"keypress", "v", NULL};
+            mpv_command(mpv, args);
+            break;
+        }
+        case 31:{ // o
+            const char *args[] = {"keypress", shiftKeyPressed?"O":"o", NULL};
+            mpv_command(mpv, args);
+            break;
+        }
         case 125:{ // ⬇️
             [NSSound decreaseSystemVolumeBy:0.05];
             break;
