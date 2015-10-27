@@ -521,6 +521,7 @@ static void wakeup(void *context) {
     check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
     check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
     check_error(mpv_set_option_string(mpv, "hr-seek", "yes"));
+    check_error(mpv_set_option_string(mpv, "screenshot-directory", "~/Desktop"));
     
     int maxBuffer = [self getSettings:@"maxBufferSize"];
     NSString *maxBufStr = [NSString stringWithFormat:@"%d",maxBuffer];
@@ -1001,6 +1002,21 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         return;
     }
     switch( [event keyCode] ) {
+        case 1:{ // s
+            const char *args[] = {"screenshot", NULL};
+            mpv_command(mpv, args);
+            break;
+        }
+        case 9:{ // v
+            const char *args[] = {"keypress", "v", NULL};
+            mpv_command(mpv, args);
+            break;
+        }
+        case 31:{ // o
+            const char *args[] = {"keypress", shiftKeyPressed?"O":"o", NULL};
+            mpv_command(mpv, args);
+            break;
+        }
         case 125:{ // ⬇️
             [NSSound decreaseSystemVolumeBy:0.05];
             break;
