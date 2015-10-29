@@ -19,7 +19,9 @@ Browser *browser;
 
 @end
 
-@implementation AppDelegate
+@implementation AppDelegate{
+    int without_gui;
+}
 
 @synthesize donatew;
 
@@ -96,22 +98,23 @@ Browser *browser;
     }
     [s synchronize];
     NSLog(@"AcceptAnalytics=%ld",acceptAnalytics);
-    
-    browser = (Browser *)[Browser browser];
-    browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
-    NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
-    [re setURL:[NSURL URLWithString:@"http://www.bilibili.com"]];
-    NSString *xff = [s objectForKey:@"xff"];
-    if([xff length] > 4){
-        [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
-        [re setValue:xff forHTTPHeaderField:@"Client-IP"];
+    if(!without_gui){
+        browser = (Browser *)[Browser browser];
+        browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
+        NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
+        [re setURL:[NSURL URLWithString:@"http://www.bilibili.com"]];
+        NSString *xff = [s objectForKey:@"xff"];
+        if([xff length] > 4){
+            [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
+            [re setValue:xff forHTTPHeaderField:@"Client-IP"];
+        }
+        
+        [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
+        [browser.windowController showWindow:NSApp];
+        sleep(0.2);
+        [browser.window makeKeyAndOrderFront:NSApp];
+        [browser.window makeMainWindow];
     }
-    
-    [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
-    [browser.windowController showWindow:NSApp];
-    sleep(0.2);
-    [browser.window makeKeyAndOrderFront:NSApp];
-    [browser.window makeMainWindow];
     
     // Start ARIA2
     
@@ -200,6 +203,13 @@ Browser *browser;
     url = [url substringFromIndex:5];
     if ([[url substringToIndex:6] isEqual: @"http//"]) { //somehow, 传入url的Colon会被移除 暂时没有找到相关的说明，这里统一去掉，在最后添加http://
         url = [url substringFromIndex:6];
+    }
+    if([url isEqualToString:@"open_without_gui"]){
+        if(browser){
+            [browser closeWindow];
+        }
+        without_gui = 1;
+        return;
     }
     NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
     [re setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@", url]]];
