@@ -289,10 +289,10 @@ static void wakeup(void *context) {
         }
         
         if(forceIPFake == 2){
-            xff = [settingsController objectForKey:@"xff_HK"];
+            xff = [settingsController objectForKey:@"xff_HK2"];
             if(!xff){
-                xff = [NSString stringWithFormat:@"36.52.%d.%d",arc4random_uniform(255),arc4random_uniform(255)];
-                [settingsController setObject:xff forKey:@"xff_HK"];
+                xff = [NSString stringWithFormat:@"59.152.193.%d",arc4random_uniform(255)];
+                [settingsController setObject:xff forKey:@"xff_HK2"];
             }
             NSLog(@"Force set fake ip to: %@",xff);
             forceIPFake = 0;

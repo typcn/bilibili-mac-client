@@ -128,7 +128,7 @@ function replaceMimi(){
 
     if(window.TYPCN_PLAYER_CID){
         var loc = window.location.href.replace('mm','av').replace('https://mimi.tgod.co/v/','http://www.bilibili.com/video/');
-        window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + loc + '|' + document.title;
+        window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + loc + '|' + document.title + '|2';
         console.log("inject player page");
         $('#bofqi').html(window.injectHTML);
         var ph = document.querySelector(".TYPCN_PLAYER_INJECT_PAGE .player-placeholder");
