@@ -1,3 +1,25 @@
+chrome.runtime.onInstalled.addListener(function(details) {
+ if (details.reason == "update") {
+    var opt={
+      type: "basic",
+      title: "Bilibili Mac Client Helper 更新 1.3",
+      message: "与 Bilibili 助手兼容，同时安装以支持 html5 与 mac 客户端播放器一键切换\n支持自动静默打开客户端等功能，可到扩展设置中开启",
+      iconUrl: "img/icon48.png"
+    }
+    if(localStorage.lastNotification != 1.3){
+      localStorage.lastNotification = 1.3;
+      showNotification(opt);
+    }
+ };
+});
+
+function showNotification(opt){
+    var notification = chrome.notifications.create(status.toString(),opt,function(notifyId){return notifyId});
+    setTimeout(function(){
+        chrome.notifications.clear(status.toString(),function(){});
+    },6000);
+}
+
 function updateScriptList(){
   var request = new XMLHttpRequest();
   request.open('POST', 'http://localhost:23330/interactive', true);
@@ -37,12 +59,12 @@ chrome.extension.onMessage.addListener(
                 request.send(null);
 
                 if (request.status === 200) {
-                  sendResponse({script:script,replaceType:localStorage['replace_in']});
+                  sendResponse({script:script,replaceType:localStorage['replace_in'],hidefaq:localStorage['hide_faq'],autoopen:localStorage['auto_open']});
                 }else{
                   sendResponse('!');
                 }
             }else{
-                sendResponse({script:script,replaceType:localStorage['replace_in']});
+                sendResponse({script:script,replaceType:localStorage['replace_in'],hidefaq:localStorage['hide_faq'],autoopen:localStorage['auto_open']});
             }
           }
         }else{

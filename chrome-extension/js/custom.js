@@ -112,26 +112,20 @@ $("#downloadManager").addEventListener("click",function(){
 });
 
 $("#pluginCenter").addEventListener("click",function(){
-  chrome.tabs.getAllInWindow(function(a){
-    for(var i = 0;i < a.length;i++){
-      if(a[i].url.indexOf('http://') > -1){
-        chrome.tabs.executeScript(a[i].id, {code: "window.location.assign('bl://vp-hub.eqoe.cn/');"}, function(response) {
-          
-        });
-        return;
-      }
-    }
-  });
+  call_uri("bl://vp-hub.eqoe.cn/");
 });
 
 $("#getUserByComment").addEventListener("click",function(){
-  chrome.tabs.create({ url: "http://biliquery.typcn.com/" });
+  chrome.tabs.create({ url: "http://biliquery.typcn.com/?noredir" });
 });
 
 $("#softwareSettings").addEventListener("click",function(){
   var request = new XMLHttpRequest();
   request.open('POST', 'http://localhost:23330/pluginCall', true);
   request.setRequestHeader('Content-Type', 'application/json');
+  request.onerror = function() {
+    call_uri("bl://open_without_gui");
+  };
   request.send(JSON.stringify({action:'bilibili-setActive',data:'none'}));
   API('rpc','showSettings',null,function(){});
 });
@@ -166,6 +160,19 @@ function setChecked(e){
   }
 }
 
+function call_uri(uri){
+  chrome.tabs.getAllInWindow(function(a){
+    for(var i = 0;i < a.length;i++){
+      if(a[i].url.indexOf('http://') > -1){
+        chrome.tabs.executeScript(a[i].id, {code: "window.location.assign('" + uri + "');"}, function(response) {
+          
+        });
+        return;
+      }
+    }
+  });
+}
+
 $("#bili_helper").addEventListener("click",function(e){
   if(e.target.checked){
     localStorage['replace_in'] = 'bilibili_helper';
@@ -188,4 +195,28 @@ $("#no_close_replace").addEventListener("click",function(e){
 
 if(localStorage['no_close_replace'] == 'true'){
   $("#no_close_replace").checked = true;
+}
+
+$("#hide_faq").addEventListener("click",function(e){
+  if(e.target.checked){
+    localStorage['hide_faq'] = 'true';
+  }else{
+    delete localStorage['hide_faq'];
+  }
+});
+
+if(localStorage['hide_faq'] == 'true'){
+  $("#hide_faq").checked = true;
+}
+
+$("#auto_open").addEventListener("click",function(e){
+  if(e.target.checked){
+    localStorage['auto_open'] = 'true';
+  }else{
+    delete localStorage['auto_open'];
+  }
+});
+
+if(localStorage['auto_open'] == 'true'){
+  $("#auto_open").checked = true;
 }

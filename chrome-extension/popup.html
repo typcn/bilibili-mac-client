@@ -84,19 +84,28 @@
                               </td>
                             </tr>
                             <tr>
-                              <td class="mdl-data-table__cell--non-numeric">客户端未启动时自动打开 (需要 2.16)</td>
+                              <td class="mdl-data-table__cell--non-numeric">客户端未启动时自动静默打开 (需要 2.16)</td>
                               <td>
                                 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="auto_open" style="width: auto;">
-                                  <input type="checkbox" id="auto_open" class="mdl-switch__input plugin-select" disabled />
+                                  <input type="checkbox" id="auto_open" class="mdl-switch__input plugin-select" />
                                   <span class="mdl-switch__label"></span>
                                 </label>
                               </td>
                             </tr>
                             <tr>
-                              <td class="mdl-data-table__cell--non-numeric">客户端未启动时不替换播放器</td>
+                              <td class="mdl-data-table__cell--non-numeric">客户端未启动时不替换播放器 (与上条冲突)</td>
                               <td>
                                 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="no_close_replace" style="width: auto;">
                                   <input type="checkbox" id="no_close_replace" class="mdl-switch__input plugin-select" />
+                                  <span class="mdl-switch__label"></span>
+                                </label>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="mdl-data-table__cell--non-numeric">隐藏右下角 FAQ 链接</td>
+                              <td>
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="hide_faq" style="width: auto;">
+                                  <input type="checkbox" id="hide_faq" class="mdl-switch__input plugin-select" />
                                   <span class="mdl-switch__label"></span>
                                 </label>
                               </td>
