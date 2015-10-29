@@ -34,6 +34,11 @@
                         @"script":WebScript
                         }];
     
+    [scList addObject:@{
+                        @"site":@"mimi.gg",
+                        @"script":WebScript
+                        }];
+    
     return scList;
 }
 

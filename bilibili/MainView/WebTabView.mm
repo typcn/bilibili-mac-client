@@ -137,7 +137,7 @@
     if(!host){
         return NULL;
     }
-    if([host containsString:@".bilibili.com"]){
+    if([host containsString:@".bilibili.com"] || [host containsString:@"mimi"]){
         return WebScript;
     }else{
         return [pm javascriptForDomain:host];
