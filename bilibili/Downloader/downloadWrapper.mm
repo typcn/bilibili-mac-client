@@ -12,6 +12,20 @@
 #import "vp_bilibili.h"
 #import <CommonCrypto/CommonDigest.h>
 
+BOOL Downloader::downloadComment(int cid,NSString *name){
+    NSString *filteredName = [name stringByReplacingOccurrencesOfString:@"/" withString:@""];
+    NSString *path = [NSString stringWithFormat:@"%@%@%@/",NSHomeDirectory(),@"/Movies/Bilibili/",filteredName];
+    [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:NULL];
+    NSString *commentUrl = [NSString stringWithFormat:@"http://comment.bilibili.com/%d.xml",cid];
+    NSURL  *url = [NSURL URLWithString:commentUrl];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    if(!data){
+        return false;
+    }
+    [data writeToFile:[NSString stringWithFormat:@"%@%d.xml",path,cid] atomically:YES];
+    [[NSWorkspace sharedWorkspace]openFile:path withApplication:@"Finder"];
+    return true;
+}
 
 BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
     NSLog(@"[Downloader] New Task CID: %d",cid);
@@ -23,6 +37,9 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
     NSString *commentUrl = [NSString stringWithFormat:@"http://comment.bilibili.com/%d.xml",cid];
     NSURL  *url = [NSURL URLWithString:commentUrl];
     NSData *data = [NSData dataWithContentsOfURL:url];
+    if(!data){
+        return false;
+    }
     [data writeToFile:[NSString stringWithFormat:@"%@%d.xml",path,cid] atomically:YES];
     
     NSLog(@"[Downloader] Comment downloaded");

@@ -7,6 +7,8 @@
     <div class="right-buttons">
         <a href="javascript:window.sendToView({action:'showAirPlayByCID',data:  TYPCN_PLAYER_CID})"
             class="airplay tmbtn">连接 AirPlay 设备</a>
+        <a href="javascript:window.sendToView({action:'downloadComment',data:  TYPCN_PLAYER_CID})"
+            class="cmdownload tmbtn">下载弹幕</a>
         <a href="javascript:window.sendToView({action:'downloadVideoByCID',data:  TYPCN_PLAYER_CID})"
             class="download tmbtn">下载视频</a>
     </div>
@@ -28,10 +30,7 @@
     font-size: 120%;
     z-index: 999;
 }
-.TYPCN_PLAYER_INJECT_PAGE .airplay{
-    margin-right: 1em;
-}
-.TYPCN_PLAYER_INJECT_PAGE .download{
+.TYPCN_PLAYER_INJECT_PAGE .airplay, .TYPCN_PLAYER_INJECT_PAGE .download, .TYPCN_PLAYER_INJECT_PAGE .cmdownload{
     margin-right: 1em;
 }
 .player-placeholder .play {

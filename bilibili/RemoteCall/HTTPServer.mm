@@ -155,6 +155,11 @@ int forceIPFake;
                 }else if([arr count] > 2){
                     [self downloadVideoByCID:arr[0] withPage:arr[1] title:arr[2]];
                 }
+            }else if([action isEqualToString:@"downloadComment"]){
+                NSArray *arr = [data componentsSeparatedByString:@"|"];
+                if([arr count] == 3){
+                    [self downloadComment:arr[0] title:arr[2]];
+                }
             }else if([action isEqualToString:@"checkforUpdate"]){
                 [self checkForUpdates];
                 [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
@@ -490,9 +495,9 @@ int forceIPFake;
     
     if(acceptAnalytics == 1){
         action("video", "download", [cid cStringUsingEncoding:NSUTF8StringEncoding]);
-        screenView("PlayerView");
+        screenView("DownloadView");
     }else if(acceptAnalytics == 2){
-        screenView("PlayerView");
+        screenView("DownloadView");
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
     }
@@ -515,6 +520,56 @@ int forceIPFake;
                 }
             }else{
                 hud.labelText = NSLocalizedString(@"下载失败，请点击帮助 - 反馈", nil);
+            }
+            hud.mode = MBProgressHUDModeText;
+            [hud hide:YES afterDelay:3];
+        });
+    });
+}
+
+- (void)downloadComment:(NSString *)cid title:(NSString *)title
+{
+    id wvContentView;
+    wvContentView = [[NSView alloc] init];
+    
+    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+    if(tv){
+        id wv = [tv GetWebView];
+        if(wv){
+            wvContentView = [wv subviews][0];
+        }
+    }
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:wvContentView animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = NSLocalizedString(@"正在启动下载引擎", nil);
+    hud.removeFromSuperViewOnHide = YES;
+    NSLog(@"[Downloader] init");
+    if(!DL){
+        DL = new Downloader();
+    }
+    
+    if(acceptAnalytics == 1){
+        action("video", "cmdownload", [cid cStringUsingEncoding:NSUTF8StringEncoding]);
+        screenView("DownloadView");
+    }else if(acceptAnalytics == 2){
+        screenView("DownloadView");
+    }else{
+        NSLog(@"Analytics disabled ! won't upload.");
+    }
+    
+    NSLog(@"[Downloader] video name %@",title);
+    NSArray *fn = [title componentsSeparatedByString:@"_"];
+    NSString *filename = [fn objectAtIndex:0];
+    
+    dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        hud.labelText = NSLocalizedString(@"正在解析视频地址", nil);
+        BOOL s = DL->downloadComment([cid intValue], filename);
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            if(s){
+                hud.labelText = NSLocalizedString(@"弹幕下载完成", nil);
+            }else{
+                hud.labelText = NSLocalizedString(@"弹幕下载失败", nil);
             }
             hud.mode = MBProgressHUDModeText;
             [hud hide:YES afterDelay:3];
