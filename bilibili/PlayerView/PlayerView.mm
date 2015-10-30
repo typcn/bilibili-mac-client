@@ -523,6 +523,8 @@ static void wakeup(void *context) {
     check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
     check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
     check_error(mpv_set_option_string(mpv, "hr-seek", "yes"));
+    check_error(mpv_set_option_string(mpv, "fs-black-out-screens", "yes"));
+    check_error(mpv_set_option_string(mpv, "vo", "opengl:pbo:dither=no:alpha=no"));
     check_error(mpv_set_option_string(mpv, "screenshot-directory", "~/Desktop"));
     
     int maxBuffer = [self getSettings:@"maxBufferSize"];
