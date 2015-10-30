@@ -187,10 +187,20 @@ Browser *browser;
             [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
             [re setValue:xff forHTTPHeaderField:@"Client-IP"];
         }
-        
-        [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
-        [browser.windowController showWindow:self];
-        
+
+        if(without_gui){
+            browser = (Browser *)[Browser browser];
+            browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
+            [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
+            [browser.windowController showWindow:NSApp];
+            sleep(0.2);
+            [browser.window makeKeyAndOrderFront:NSApp];
+            [browser.window makeMainWindow];
+            without_gui = false;
+        }else{
+            [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
+            [browser.windowController showWindow:self];
+        }
         return YES;
     }
 }
