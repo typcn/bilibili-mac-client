@@ -14,7 +14,7 @@ void screenView(const char *view){
     NSString *uuid = [s objectForKey:@"UUID"];
     NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
     NSString *ver = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    NSString *UA = [NSString stringWithFormat:@"VideoPolymer/1.0.0 (Macintosh; Intel Mac OS X %ld_%ld_%ld)",(long)version.majorVersion,(long)version.minorVersion,(long)version.minorVersion];
+    NSString *UA = [NSString stringWithFormat:@"Mozilla/5.0 (Macintosh; Intel Mac OS X %ld_%ld_%ld) AppleWebKit/601.1.43 (KHTML, like Gecko) Version/9.0 Safari/601.1.43 ",(long)version.majorVersion,(long)version.minorVersion,(long)version.minorVersion];
     NSString *POSTDATA = [NSString stringWithFormat:
                           @"v=1&tid=UA-53371941-5&cid=%@"
                           "&t=screenview&an=BilibiliMac"
@@ -33,7 +33,7 @@ void action(const char *type,const char *action,const char *label){
     NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
     NSString *uuid = [s objectForKey:@"UUID"];
     NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
-    NSString *UA = [NSString stringWithFormat:@"VideoPolymer/1.0.0 (Macintosh; Intel Mac OS X %ld_%ld_%ld)",(long)version.majorVersion,(long)version.minorVersion,(long)version.minorVersion];
+    NSString *UA = [NSString stringWithFormat:@"Mozilla/5.0 (Macintosh; Intel Mac OS X %ld_%ld_%ld) AppleWebKit/601.1.43 (KHTML, like Gecko) Version/9.0 Safari/601.1.43",(long)version.majorVersion,(long)version.minorVersion,(long)version.minorVersion];
     NSString *ver = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     NSRect e = [[NSScreen mainScreen] frame];
     NSString *res = [NSString stringWithFormat:@"%fx%f",e.size.width,e.size.height];
