@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     NSString *settings = [[NSUserDefaults standardUserDefaults] objectForKey:@"mpvSettings"];
-    if([settings length] > 1){
+    if(settings && [settings length] > 1){
         [self.textView setString:settings];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.view.window];

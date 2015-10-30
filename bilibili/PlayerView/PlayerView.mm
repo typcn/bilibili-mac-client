@@ -573,6 +573,8 @@ static void wakeup(void *context) {
         check_error(mpv_set_option_string(mpv, "sub-file", [commentFile cStringUsingEncoding:NSUTF8StringEncoding]));
     }
     
+    [self loadMPVSettings];
+    
     // request important errors
     check_error(mpv_request_log_messages(mpv, "warn"));
     
@@ -584,6 +586,33 @@ static void wakeup(void *context) {
     // Load the indicated file
     const char *cmd[] = {"loadfile", [vUrl cStringUsingEncoding:NSUTF8StringEncoding], NULL};
     check_error(mpv_command(mpv, cmd));
+}
+
+- (void) loadMPVSettings{
+    NSString *settings = [[NSUserDefaults standardUserDefaults] objectForKey:@"mpvSettings"];
+    if(settings && [settings length] > 1){
+        NSArray *lines = [settings componentsSeparatedByString:@"\n"];
+        for(NSString *line in lines){
+            if([line hasPrefix:@"#"]){
+                continue;
+            }
+            NSArray *pair = [line componentsSeparatedByString:@"="];
+            if(!pair || [pair count] < 2){
+                continue;
+            }
+            NSString *key = [pair[0] stringByReplacingOccurrencesOfString:@" " withString:@""];
+            NSString *value = [pair[1] stringByReplacingOccurrencesOfString:@" " withString:@""];
+            int status = mpv_set_option_string(mpv, [key cStringUsingEncoding:NSUTF8StringEncoding], [value cStringUsingEncoding:NSUTF8StringEncoding]);
+            if (status < 0) {
+                NSLog(@"mpv API error: %s", mpv_error_string(status));
+                NSString *errStr = [NSString stringWithFormat:@"配置行：%@\n解析结果：参数 %@ 值 %@\n错误消息：%s",line,key,value,mpv_error_string(status)];
+                NSAlert *alert = [[NSAlert alloc] init];
+                [alert setMessageText:@"您的自定义 MPV 配置文件有误"];
+                [alert setInformativeText:errStr];
+                [alert runModal];
+            }
+        }
+    }
 }
 
 - (NSDictionary *) getVideoInfo:(NSString *)url{

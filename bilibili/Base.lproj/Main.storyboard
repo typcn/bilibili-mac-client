@@ -236,7 +236,9 @@
                                 <animations/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="Sxb-IU-YrN">
                                     <font key="font" metaFont="system"/>
-                                    <string key="title">Hello , 我是开发者 TYPCN :     从 3 月开发完成以来，Bilibili for mac 已经拥有上万的下载量和 3000+ 的活跃用户，且一直在持续增长。     软件的开发与维护需要耗费大量的时间和精力，加上更新的 CDN 和服务器，每月还需要额外花费上百元钱。我还不到 18 岁没法工作，所以没有太多资本，这类软件收费也不合适，如果您有条件，可以通过下方的按钮捐助。</string>
+                                    <string key="title">Hello , 我是开发者 TYPCN :
+    从 3 月开发完成以来，Bilibili for mac 已经拥有上万的下载量和 3000+ 的活跃用户，且一直在持续增长。
+    软件的开发与维护需要耗费大量的时间和精力，加上更新的 CDN 和服务器，每月还需要额外花费上百元钱。我还不到 18 岁没法工作，所以没有太多资本，这类软件收费也不合适，如果您有条件，可以通过下方的按钮捐助。</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1302,7 +1304,7 @@ GQ
                                             <size key="minSize" width="597" height="335"/>
                                             <size key="maxSize" width="667" height="10000000"/>
                                             <attributedString key="textStorage">
-                                                <fragment content="# 这是自定义的 MPV 配置文件 请注意：这里的优先级比内置的高 错误的配置可能导致无法使用 # Custom MPV Config File , Only for advanced users .">
+                                                <fragment content="# 这是自定义的 MPV 配置文件 请注意：这里的优先级比内置的高 错误的配置可能导致无法使用 # Custom MPV Config File , Only for advanced users .  # 格式: A = B ，注释行以 # 开头">
                                                     <attributes>
                                                         <font key="NSFont" size="12" name="PingFangSC-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
