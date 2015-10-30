@@ -194,10 +194,16 @@
     /* Start a new Task */
     NSURLSessionDataTask* task = [bgsession dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error == nil) {
+            if(!data){
+                hud.labelText = NSLocalizedString(@"插件信息解析失败，返回内容为空", nil);
+                [self hidehud];
+                return;
+            }
             // Success
             NSLog(@"URL Session Task Succeeded: HTTP %ld", ((NSHTTPURLResponse*)response).statusCode);
-            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            if(!object){
+            NSError *err;
+            id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
+            if(!object || err){
                 hud.labelText = NSLocalizedString(@"插件信息解析失败，连接可能被劫持", nil);
                 [self hidehud];
                 return;
