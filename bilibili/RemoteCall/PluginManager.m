@@ -202,6 +202,13 @@
                 [self hidehud];
                 return;
             }
+            
+            if (![object respondsToSelector:@selector(integerForKey:)]) {
+                hud.labelText = NSLocalizedString(@"插件信息解析失败，返回内容错误", nil);
+                [self hidehud];
+                return;
+            }
+            
             NSInteger minver = [object integerForKey:@"minver"];
             if(ver < minver){
                 hud.labelText = NSLocalizedString(@"您的客户端版本过旧，无法安装该插件", nil);
