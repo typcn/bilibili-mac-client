@@ -124,11 +124,13 @@ static void wakeup(void *context) {
     w = self.view.window;
     [w makeKeyAndOrderFront:NSApp];
     [w makeMainWindow];
-    double WX = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerX"];
-    double WY = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerY"];
-    NSPoint pos = NSMakePoint(WX, WY);
-    NSLog(@"playerX: %f Y: %f",WX,WY);
-    [w setFrameOrigin:pos];
+    if(!mpv){
+        double WX = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerX"];
+        double WY = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerY"];
+        NSPoint pos = NSMakePoint(WX, WY);
+        NSLog(@"playerX: %f Y: %f",WX,WY);
+        [w setFrameOrigin:pos];
+    }
 }
 
 - (void)LoadVideo{
