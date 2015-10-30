@@ -141,7 +141,13 @@ int forceIPFake;
                 }
                 
             }else if([action isEqualToString:@"showAirPlayByCID"]){
-                [self showAirPlayByCID:data];
+                NSArray *arr = [data componentsSeparatedByString:@"|"];
+                if([arr count] == 1){
+                    [self showAirPlayByCID:data withPage:nil title:nil];
+                }else if([arr count] > 2){
+                    [self showAirPlayByCID:arr[0] withPage:arr[1] title:arr[2]];
+                }
+                
             }else if([action isEqualToString:@"downloadVideoByCID"]){
                 NSArray *arr = [data componentsSeparatedByString:@"|"];
                 if([arr count] == 1){
@@ -300,9 +306,32 @@ int forceIPFake;
     }
 }
 
-- (void)showAirPlayByCID:(NSString *)cid
+- (void)showAirPlayByCID:(NSString *)cid withPage:(NSString *)pgUrl title:(NSString *)title
 {
     vCID = cid;
+    
+    if(!pgUrl || !title){
+        WebTabView *tv = (WebTabView *)[browser activeTabContents];
+        if(!tv){
+            return;
+        }
+        TWebView *wv = [tv GetTWebView];
+        if(!wv){
+            return;
+        }
+        NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
+        NSString *mediaTitle = [fn objectAtIndex:0];
+        vUrl = [wv getURL];
+        if([mediaTitle length] > 0){
+            vTitle = [fn objectAtIndex:0];
+        }else{
+            vTitle = NSLocalizedString(@"未命名", nil);
+        }
+    }else{
+        vTitle = [[title componentsSeparatedByString:@"_"] objectAtIndex:0];
+        vUrl = pgUrl;
+    }
+    
     if(acceptAnalytics == 1){
         action("video", "play", [vCID cStringUsingEncoding:NSUTF8StringEncoding]);
         screenView("AirPlayView");
