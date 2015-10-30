@@ -171,6 +171,10 @@ Browser *browser;
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
 {
     if (flag) {
+        if(browser && browser.window){
+            [browser.window makeKeyAndOrderFront:nil];
+            return YES;
+        }
         return NO;
     }
     else
