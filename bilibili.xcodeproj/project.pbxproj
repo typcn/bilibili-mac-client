@@ -82,7 +82,6 @@
 		FD4B84461BA5879400DD6F2F /* ServiceDiscovery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84421BA5879400DD6F2F /* ServiceDiscovery.cpp */; };
 		FD4B84471BA5879400DD6F2F /* ServiceDiscovery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84421BA5879400DD6F2F /* ServiceDiscovery.cpp */; };
 		FD4B844A1BA587F600DD6F2F /* AirPlayTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84481BA587F600DD6F2F /* AirPlayTests.mm */; };
-		FD4B844B1BA587F600DD6F2F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD4B84491BA587F600DD6F2F /* Info.plist */; };
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
 		FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */; };
 		FD59846C1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD59846B1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m */; };
@@ -1048,7 +1047,7 @@
 		FD076C481AC8CBBB00C893FA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = TYPCN;
 				TargetAttributes = {
 					FD076C4F1AC8CBBB00C893FA = {
@@ -1174,7 +1173,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD4B844B1BA587F600DD6F2F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
