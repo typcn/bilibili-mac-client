@@ -1129,54 +1129,6 @@ GQ
                                     <action selector="disableKeepAspectRatioChanged:" target="z8a-gg-iMj" id="ujo-xw-stY"/>
                                 </connections>
                             </button>
-                            <button id="iLo-qY-8yG">
-                                <rect key="frame" x="25" y="324" width="491" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="check" title="禁用写入播放历史" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cCa-ax-BU2">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="disableWritePlayHistory:" target="z8a-gg-iMj" id="4H6-uC-ord"/>
-                                </connections>
-                            </button>
-                            <button id="5yv-E4-e3g">
-                                <rect key="frame" x="25" y="304" width="491" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="check" title="关闭底部弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6pD-zG-Fl9">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="disableBottomComment:" target="z8a-gg-iMj" id="t87-e4-R4R"/>
-                                </connections>
-                            </button>
-                            <button id="QLp-in-QLo">
-                                <rect key="frame" x="25" y="284" width="611" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="check" title="播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6zZ-XI-ZEK">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="playMP4Changed:" target="z8a-gg-iMj" id="V2U-6u-f7a"/>
-                                </connections>
-                            </button>
-                            <button id="wjO-cr-vaH">
-                                <rect key="frame" x="25" y="264" width="611" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="check" title="下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hFO-eX-oZN">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="DLMP4Changed:" target="z8a-gg-iMj" id="aHi-du-O6o"/>
-                                </connections>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OIq-ag-IQD">
                                 <rect key="frame" x="419" y="214" width="75" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1243,6 +1195,54 @@ GQ
                                     <action selector="maxBufferChanged:" target="z8a-gg-iMj" id="Vtm-a5-l6a"/>
                                 </connections>
                             </textField>
+                            <button id="iLo-qY-8yG">
+                                <rect key="frame" x="25" y="344" width="491" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <buttonCell key="cell" type="check" title="禁用写入播放历史" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="cCa-ax-BU2">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="disableWritePlayHistory:" target="z8a-gg-iMj" id="4H6-uC-ord"/>
+                                </connections>
+                            </button>
+                            <button id="5yv-E4-e3g">
+                                <rect key="frame" x="25" y="324" width="491" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <buttonCell key="cell" type="check" title="关闭底部弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6pD-zG-Fl9">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="disableBottomComment:" target="z8a-gg-iMj" id="t87-e4-R4R"/>
+                                </connections>
+                            </button>
+                            <button id="QLp-in-QLo">
+                                <rect key="frame" x="25" y="304" width="611" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <buttonCell key="cell" type="check" title="播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6zZ-XI-ZEK">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="playMP4Changed:" target="z8a-gg-iMj" id="V2U-6u-f7a"/>
+                                </connections>
+                            </button>
+                            <button id="wjO-cr-vaH">
+                                <rect key="frame" x="25" y="284" width="611" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <buttonCell key="cell" type="check" title="下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hFO-eX-oZN">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="DLMP4Changed:" target="z8a-gg-iMj" id="aHi-du-O6o"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                     </view>
