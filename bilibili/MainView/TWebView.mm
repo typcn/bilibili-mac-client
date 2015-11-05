@@ -27,10 +27,8 @@
         self.delegate = aDelegate;
         settingsController =  [NSUserDefaults standardUserDefaults];
     }
-
-    long disableWK = [settingsController integerForKey:@"disableWKWebkit"];
     
-    if (NSClassFromString(@"WKWebView") && !disableWK) {
+    if (NSClassFromString(@"WKWebView")) {
         if(!cfg){
             wvConfig = [[WKWebViewConfiguration  alloc] init];
         }else{

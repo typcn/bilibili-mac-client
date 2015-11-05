@@ -1129,18 +1129,6 @@ GQ
                                     <action selector="disableKeepAspectRatioChanged:" target="z8a-gg-iMj" id="ujo-xw-stY"/>
                                 </connections>
                             </button>
-                            <button id="fQc-79-Kyr">
-                                <rect key="frame" x="25" y="344" width="491" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <buttonCell key="cell" type="check" title="禁用新版网页渲染引擎" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="lQz-S1-Tzd">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="disableNewRenderEngine:" target="z8a-gg-iMj" id="kzU-hX-JVj"/>
-                                </connections>
-                            </button>
                             <button id="iLo-qY-8yG">
                                 <rect key="frame" x="25" y="324" width="491" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1266,7 +1254,6 @@ GQ
                         <outlet property="commentMoveSpeed" destination="7WK-cw-6iP" id="6O1-he-JPW"/>
                         <outlet property="disableHwDec" destination="AeH-XX-C7T" id="kqT-SQ-PdM"/>
                         <outlet property="disableKeepAspect" destination="1aB-2H-H2d" id="FjO-WG-C8v"/>
-                        <outlet property="disableNewRenderEngine" destination="fQc-79-Kyr" id="1tE-Ga-SmA"/>
                         <outlet property="disableWriteHistory" destination="iLo-qY-8yG" id="dyR-ze-V54"/>
                         <outlet property="disablebottomComment" destination="5yv-E4-e3g" id="zXF-lZ-D8g"/>
                         <outlet property="fontName" destination="iLa-hJ-dgh" id="jDT-c4-qHR"/>

@@ -18,7 +18,6 @@
 @property (weak) IBOutlet NSTextField *fontsize;
 @property (weak) IBOutlet NSTextField *fontName;
 @property (weak) IBOutlet NSButton *disablebottomComment;
-@property (weak) IBOutlet NSButton *disableNewRenderEngine;
 @property (weak) IBOutlet NSButton *playMP4;
 @property (weak) IBOutlet NSButton *DownloadMP4;
 @property (weak) IBOutlet NSButton *disableKeepAspect;
