@@ -48,6 +48,8 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSSupportsAutomaticGraphicsSwitching</key>
+	<true/>
 	<key>SUFeedURL</key>
 	<string>http://app.eqoe.cn/updates/bilimac.xml</string>
 	<key>SUPublicDSAKeyFile</key>
