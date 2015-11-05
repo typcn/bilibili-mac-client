@@ -32,7 +32,21 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1258</string>
+	<string>1261</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>80a85594fc534ae8273cf2d66134c6b0aec203b9</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.video</string>
 	<key>LSMinimumSystemVersion</key>

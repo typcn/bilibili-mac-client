@@ -106,6 +106,8 @@
 		FD7328B41B9CD2AA001B450C /* libfontconfig.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD7328991B9CD2AA001B450C /* libfontconfig.1.dylib */; };
 		FD7328B51B9CD2AA001B450C /* libmediainfo.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD73289A1B9CD2AA001B450C /* libmediainfo.0.dylib */; };
 		FD83027D1BAB303C00FF68DB /* DonateView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD83027C1BAB303C00FF68DB /* DonateView.mm */; };
+		FD8BBC881BEB81A20018AA18 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8BBC861BEB81A20018AA18 /* Fabric.framework */; };
+		FD8BBC891BEB81A20018AA18 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8BBC871BEB81A20018AA18 /* Crashlytics.framework */; };
 		FD8F72811BC74F6F0076B015 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FD8F72801BC74F6F0076B015 /* EULA.rtf */; };
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB54D601BCB6B68007A1615 /* BrowserExtInterface.m */; };
@@ -439,6 +441,8 @@
 		FD8302771BAB1C0900FF68DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AirPlay.xib; sourceTree = "<group>"; };
 		FD83027B1BAB303C00FF68DB /* DonateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DonateView.h; path = Others/DonateView.h; sourceTree = "<group>"; };
 		FD83027C1BAB303C00FF68DB /* DonateView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DonateView.mm; path = Others/DonateView.mm; sourceTree = "<group>"; };
+		FD8BBC861BEB81A20018AA18 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		FD8BBC871BEB81A20018AA18 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FD8F72801BC74F6F0076B015 /* EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = EULA.rtf; path = Others/EULA.rtf; sourceTree = "<group>"; };
 		FDA775E01AD93DC900426483 /* aria2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = aria2.hpp; path = bilibili/headers/aria2.hpp; sourceTree = "<group>"; };
 		FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
@@ -493,6 +497,7 @@
 				FD29EC691BAF9AF200B8724B /* VPPlugin.framework in Frameworks */,
 				FDCA487C1BAB59A0001ACB8D /* QuartzCore.framework in Frameworks */,
 				FD62CC8F1B6E6BB0000AED57 /* CoreData.framework in Frameworks */,
+				FD8BBC881BEB81A20018AA18 /* Fabric.framework in Frameworks */,
 				FDEC3B3D1BA02E5C002DA0EE /* libpostproc.54.dylib in Frameworks */,
 				FDEC3B381BA02E5C002DA0EE /* libavfilter.6.dylib in Frameworks */,
 				FDEC3B351BA02E5C002DA0EE /* libass.5.dylib in Frameworks */,
@@ -517,6 +522,7 @@
 				FDEC3B4B1BA02E5C002DA0EE /* libx264.146.dylib in Frameworks */,
 				FDEC3B3F1BA02E5C002DA0EE /* libswscale.4.dylib in Frameworks */,
 				FDEC3B4C1BA02E5C002DA0EE /* libz.1.dylib in Frameworks */,
+				FD8BBC891BEB81A20018AA18 /* Crashlytics.framework in Frameworks */,
 				FDEC3B491BA02E5C002DA0EE /* libvo-aacenc.0.dylib in Frameworks */,
 				FDEC3B4D1BA02E5C002DA0EE /* liblua.5.2.dylib in Frameworks */,
 				FDEC3B371BA02E5C002DA0EE /* libavdevice.57.dylib in Frameworks */,
@@ -774,6 +780,8 @@
 		FD471FD11AC92D7C00A2A727 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FD8BBC861BEB81A20018AA18 /* Fabric.framework */,
+				FD8BBC871BEB81A20018AA18 /* Crashlytics.framework */,
 				FD29EC681BAF9AF200B8724B /* VPPlugin.framework */,
 				FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */,
 				FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */,
@@ -1018,8 +1026,9 @@
 				FD61025F1AD7CBD80013119A /* CopyFiles */,
 				FD4855091AE67B2C008F49AA /* Copy Files */,
 				FD076C4E1AC8CBBB00C893FA /* Resources */,
-				FD4855051AE675D7008F49AA /* Run Script */,
-				FD8F72831BC755E70076B015 /* ShellScript */,
+				FD8BBC841BEB813A0018AA18 /* Run Script ( Fabic ) */,
+				FD4855051AE675D7008F49AA /* Run Script ( Copy FontConfig ) */,
+				FD8F72831BC755E70076B015 /* Run Script ( Build Number +1 ) */,
 			);
 			buildRules = (
 			);
@@ -1188,27 +1197,42 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		FD4855051AE675D7008F49AA /* Run Script */ = {
+		FD4855051AE675D7008F49AA /* Run Script ( Copy FontConfig ) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script";
+			name = "Run Script ( Copy FontConfig )";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cp -r \"${SRCROOT}/bilibili/fontconfig\" \"${CONFIGURATION_BUILD_DIR}/Bilibili.app/Contents/Resources/\"";
 		};
-		FD8F72831BC755E70076B015 /* ShellScript */ = {
+		FD8BBC841BEB813A0018AA18 /* Run Script ( Fabic ) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script ( Fabic )";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 80a85594fc534ae8273cf2d66134c6b0aec203b9 e21ee25fade16ba358e1042b6582483717944dfdaf046e6cab6bf96c17aa7669";
+		};
+		FD8F72831BC755E70076B015 /* Run Script ( Build Number +1 ) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script ( Build Number +1 )";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1440,6 +1464,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/bilibili/libs",
 					"$(PROJECT_DIR)/Build/Products/Debug",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					__danmaku2ass_native__NoMainFunc__,
@@ -1480,6 +1505,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/bilibili/libs",
 					"$(PROJECT_DIR)/Build/Products/Debug",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = __danmaku2ass_native__NoMainFunc__;
 				INFOPLIST_FILE = bilibili/Info.plist;

@@ -11,6 +11,8 @@
 #import "Popover.h"
 #import "PFAboutWindowController.h"
 #import "WebTabView.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 Browser *browser;
 
@@ -152,6 +154,9 @@ Browser *browser;
                                        userInfo:nil
                                         repeats:NO]; // Prevent browser window order back
     }
+    
+    [Fabric with:@[[Crashlytics class]]];
+
 }
 
 - (void)showDonate {
