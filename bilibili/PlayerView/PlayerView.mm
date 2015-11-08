@@ -1029,27 +1029,14 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     shiftKeyPressed = ([event modifierFlags] & NSShiftKeyMask) != 0;
 }
 
--(void)keyDown:(NSEvent*)event
-{
+-(void)keyDown:(NSEvent*)event {
+    
+    [self flagsChanged:event];
+    
     if(!mpv){
         return;
     }
     switch( [event keyCode] ) {
-        case 1:{ // s
-            const char *args[] = {"screenshot", NULL};
-            mpv_command(mpv, args);
-            break;
-        }
-        case 9:{ // v
-            const char *args[] = {"keypress", "v", NULL};
-            mpv_command(mpv, args);
-            break;
-        }
-        case 31:{ // o
-            const char *args[] = {"keypress", shiftKeyPressed?"O":"o", NULL};
-            mpv_command(mpv, args);
-            break;
-        }
         case 125:{ // ⬇️
             [NSSound decreaseSystemVolumeBy:0.05];
             break;
@@ -1096,18 +1083,104 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             // Nothing to do
             break;
         }
-        case 7:{ // X key to loop
-            dispatch_async(queue, ^{
-                mpv_set_option_string(mpv, "loop", "inf");
-            });
-            break;
-        }
         case 3:{ // Command+F key to toggle fullscreen
             NSUInteger flags = [[NSApp currentEvent] modifierFlags];
             if ((flags & NSCommandKeyMask)) {
                 [self toggleFullScreen:self];
             }
-            
+            break;
+        }
+        case 51:{ // BACKSPACE
+            dispatch_async(queue, ^{
+                mpv_set_property_string(mpv,"speed","1");
+            });
+            break;
+        }
+        default:
+            [self handleKeyboardEvnet:event keyDown:YES];
+            break;
+    }
+}
+
+-(void)keyUp:(NSEvent*)event {
+    
+    [self flagsChanged:event];
+    
+    if(!mpv){
+        return;
+    }
+    
+    [self handleKeyboardEvnet:event keyDown:NO];
+    
+}
+
+- (void)handleKeyboardEvnet:(NSEvent *)event keyDown:(BOOL)keyDown {
+    
+    MediaInfoDLL::String keyState = keyDown?"keydown":"keyup";
+    
+    switch ( [event keyCode] ) {
+        case 1:{ // s
+            const char *args[] = {keyState.c_str(), shiftKeyPressed?"S":"s", NULL};
+            mpv_command(mpv, args);
+            break;
+        }
+        case 9:{ // v
+            const char *args[] = {keyState.c_str(), shiftKeyPressed?"V":"v", NULL};
+            mpv_command(mpv, args);
+            break;
+        }
+        case 31:{ // o
+            const char *args[] = {keyState.c_str(), shiftKeyPressed?"O":"o", NULL};
+            mpv_command(mpv, args);
+            break;
+        }
+        case 43:{ // ,
+            dispatch_async(queue, ^{
+                const char *args[] = {keyState.c_str(), shiftKeyPressed?"<":"," ,NULL};
+                mpv_command(mpv, args);
+            });
+            break;
+        }
+        case 47:{ // .
+            dispatch_async(queue, ^{
+                const char *args[] = {keyState.c_str(), shiftKeyPressed?">":"." ,NULL};
+                mpv_command(mpv, args);
+            });
+            break;
+        }
+        case 33:{ // [{
+            dispatch_async(queue, ^{
+                const char *args[] = {keyState.c_str(), shiftKeyPressed?"{":"[" ,NULL};
+                mpv_command(mpv, args);
+            });
+            break;
+        }
+        case 30:{ // ]}
+            dispatch_async(queue, ^{
+                const char *args[] = {keyState.c_str(), shiftKeyPressed?"}":"]" ,NULL};
+                mpv_command(mpv, args);
+            });
+            break;
+        }
+        case 6:{ // z
+            dispatch_async(queue, ^{
+                const char *args[] = {keyState.c_str(), "z" ,NULL};
+                mpv_command(mpv, args);
+            });
+            break;
+        }
+        case 7:{ // x
+            dispatch_async(queue, ^{
+                const char *args[] = {keyState.c_str(), "x" ,NULL};
+                mpv_command(mpv, args);
+            });
+            break;
+        }
+        case 37:{ // l
+            dispatch_sync(queue, ^{
+                const char *args[] = {keyState.c_str(), shiftKeyPressed?"L":"l" ,NULL};
+                mpv_command(mpv, args);
+            });
             break;
         }
         default: // Unknow
