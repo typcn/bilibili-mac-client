@@ -155,8 +155,9 @@ Browser *browser;
                                         repeats:NO]; // Prevent browser window order back
     }
     
-    [Fabric with:@[[Crashlytics class]]];
-
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+        [Fabric with:@[[Crashlytics class]]];
+    });
 }
 
 - (void)showDonate {
