@@ -523,7 +523,7 @@ GQ
             <objects>
                 <windowController storyboardIdentifier="prefWindow" showSeguePresentationStyle="single" id="5ae-Oq-jkw" userLabel="Preferences Window Controller" sceneMemberID="viewController">
                     <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="GwV-iX-vw0" userLabel="Preferences Window">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <rect key="contentRect" x="863" y="432" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1057"/>
                     </window>
