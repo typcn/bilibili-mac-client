@@ -447,18 +447,18 @@ static void wakeup(void *context) {
         NSNumber *width = [VideoInfoJson objectForKey:@"width"];
         NSNumber *height = [VideoInfoJson objectForKey:@"height"];
         
-        if([height intValue] < 100){
+        if([height intValue] < 100 || [width intValue] < 100){
             if(!BackupUrls){
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.textTip setStringValue:NSLocalizedString(@"读取视频失败，可能视频源已失效", nil)];
                 });
-                return;
             }else{
                 usingBackup++;
                 if([BackupUrls count] <= usingBackup){
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [self.textTip setStringValue:NSLocalizedString(@"所有视频源连接失败", nil)];
                     });
+                    parsing = false;
                     return;
                 }
                 NSString *backupVideoUrl = [BackupUrls objectAtIndex:usingBackup];
@@ -473,6 +473,8 @@ static void wakeup(void *context) {
                     });
                 }
             }
+            parsing = false;
+            return;
         }
         
         NSString *fvHost = [[NSURL URLWithString:firstVideo] host];
@@ -664,6 +666,11 @@ static void wakeup(void *context) {
 
     NSString *resolution = [NSString stringWithFormat:@"%@x%@",width,height];
     NSLog(@"Video resolution: %@",resolution);
+    
+    if([height intValue] < 100 || [width intValue] < 100){
+        return @"";
+    }
+    
     [self.textTip setStringValue:NSLocalizedString(@"正在读取弹幕", nil)];
     
     
