@@ -452,8 +452,15 @@ static void wakeup(void *context) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.textTip setStringValue:NSLocalizedString(@"读取视频失败，可能视频源已失效", nil)];
                 });
+                return;
             }else{
                 usingBackup++;
+                if([BackupUrls count] <= usingBackup){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.textTip setStringValue:NSLocalizedString(@"所有视频源连接失败", nil)];
+                    });
+                    return;
+                }
                 NSString *backupVideoUrl = [BackupUrls objectAtIndex:usingBackup];
                 if([backupVideoUrl length] > 0){
                     firstVideo = backupVideoUrl;
