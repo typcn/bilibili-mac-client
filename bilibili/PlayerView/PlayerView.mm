@@ -577,7 +577,7 @@ static void wakeup(void *context) {
         dispatch_async(dispatch_get_main_queue(), ^{
             _renderer = [[BarrageRenderer alloc] init];
             [self.view setWantsLayer:YES];
-            [_renderer.view setFrame:NSMakeRect(0,0,self.view.frame.size.width,self.view.frame.size.width)];
+            [_renderer.view setFrame:NSMakeRect(0,0,self.view.frame.size.width,self.view.frame.size.height)];
             [_renderer.view setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
             [self.view addSubview:_renderer.view positioned:NSWindowAbove relativeTo:nil];
             [_renderer start];
