@@ -881,7 +881,7 @@ GQ
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" id="It1-R3-fuK">
-                                <rect key="frame" x="357" y="-7" width="109" height="32"/>
+                                <rect key="frame" x="357" y="0.0" width="109" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <buttonCell key="cell" type="push" title="关闭弹幕渲染" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lmm-uc-wFy">
@@ -889,7 +889,7 @@ GQ
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="disableRender:" target="rag-YS-WW4" id="LI2-eT-tdE"/>
+                                    <action selector="disableRender:" target="rag-YS-WW4" id="EFM-b3-SeW"/>
                                 </connections>
                             </button>
                         </subviews>

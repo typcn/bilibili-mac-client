@@ -87,11 +87,11 @@ BOOL hasMsg;
 - (IBAction)disableRender:(id)sender {
     if(renderDisabled){
         renderDisabled = false;
-        [sender setText:@"关闭弹幕渲染"];
+        [sender setTitle:@"关闭弹幕渲染"];
         [_renderer start];
     }else{
         renderDisabled = true;
-        [sender setText:@"开启弹幕渲染"];
+        [sender setTitle:@"开启弹幕渲染"];
         [_renderer stop];
     }
 }
