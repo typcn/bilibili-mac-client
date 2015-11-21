@@ -270,9 +270,9 @@ static const CGFloat kDetailsLabelFontSize = 12.0f;
         self.color = nil;
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
         self.labelFont = [UIFont boldSystemFontOfSize:kLabelFontSize];
-        self.labelColor = [UIColor whiteColor];
+        self.labelColor = [NSColor whiteColor];
         self.detailsLabelFont = [UIFont boldSystemFontOfSize:kDetailsLabelFontSize];
-        self.detailsLabelColor = [UIColor whiteColor];
+        self.detailsLabelColor = [NSColor whiteColor];
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
         self.labelFont = [NSFont boldSystemFontOfSize:kLabelFontSize];
         self.labelColor = [NSColor whiteColor];
@@ -335,7 +335,7 @@ static const CGFloat kDetailsLabelFontSize = 12.0f;
         // Transparent background
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
         self.opaque = NO;
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [NSColor clearColor];
         // Make it invisible for now
         self.alpha = 0.0f;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
@@ -748,7 +748,7 @@ static const CGFloat kDetailsLabelFontSize = 12.0f;
     label.adjustsFontSizeToFitWidth = NO;
     label.textAlignment = MBLabelAlignmentCenter;
     label.opaque = NO;
-    label.backgroundColor = [UIColor clearColor];
+    label.backgroundColor = [NSColor clearColor];
     label.textColor = self.labelColor;
     label.font = self.labelFont;
     label.text = self.labelText;
@@ -773,7 +773,7 @@ static const CGFloat kDetailsLabelFontSize = 12.0f;
     detailsLabel.adjustsFontSizeToFitWidth = NO;
     detailsLabel.textAlignment = MBLabelAlignmentCenter;
     detailsLabel.opaque = NO;
-    detailsLabel.backgroundColor = [UIColor clearColor];
+    detailsLabel.backgroundColor = [NSColor clearColor];
     detailsLabel.textColor = self.detailsLabelColor;
     detailsLabel.numberOfLines = 0;
     detailsLabel.font = self.detailsLabelFont;
@@ -1216,12 +1216,12 @@ static const CGFloat kDetailsLabelFontSize = 12.0f;
     self = [super initWithFrame:frame];
     if (self) {
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [NSColor clearColor];
         self.opaque = NO;
         _progress = 0.0f;
         _annular = NO;
-        _progressTintColor = [[UIColor alloc] initWithWhite:1.0f alpha:1.0f];
-        _backgroundTintColor = [[UIColor alloc] initWithWhite:1.0f alpha:0.1f];
+        _progressTintColor = [[NSColor alloc] initWithWhite:1.0f alpha:1.0f];
+        _backgroundTintColor = [[NSColor alloc] initWithWhite:1.0f alpha:0.1f];
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
         self.layer.backgroundColor = [self NSColorToCGColor:[NSColor clearColor]];
         CGColorRelease(_cgColorFromNSColor), _cgColorFromNSColor = nil;
@@ -1397,10 +1397,10 @@ static const CGFloat kDetailsLabelFontSize = 12.0f;
     if (self) {
         _progress = 0.0f;
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
-        _lineColor = [UIColor whiteColor];
-        _progressColor = [UIColor whiteColor];
-        _progressRemainingColor = [UIColor clearColor];
-        self.backgroundColor = [UIColor clearColor];
+        _lineColor = [NSColor whiteColor];
+        _progressColor = [NSColor whiteColor];
+        _progressRemainingColor = [NSColor clearColor];
+        self.backgroundColor = [NSColor clearColor];
         self.opaque = NO;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
         _lineColor = [NSColor whiteColor];

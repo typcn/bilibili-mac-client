@@ -12,6 +12,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "MediaInfoDLL.h"
 #import <IOKit/pwr_mgt/IOPMLib.h>
+#import "BarrageHeader.h"
 
 #include "../CommentConvert/danmaku2ass.hpp"
 #include <stdio.h>
@@ -23,6 +24,7 @@ extern NSString *APIKey;
 extern NSString *APISecret;
 extern int forceIPFake;
 NSWindow *LastWindow;
+BarrageRenderer * _renderer;
 
 mpv_handle *mpv;
 dispatch_queue_t queue;
@@ -58,6 +60,8 @@ static inline void check_error(int status)
 
 - (BOOL)canBecomeMainWindow { return YES; }
 - (BOOL)canBecomeKeyWindow { return YES; }
+
+@synthesize liveChatWindowC;
 
 static void wakeup(void *context) {
     if(isCancelled){
@@ -186,6 +190,8 @@ static void wakeup(void *context) {
     self->wrapper = PlayerView;
     
     isCancelled = false;
+    
+
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
     dispatch_async(queue, ^{
         
@@ -569,7 +575,15 @@ static void wakeup(void *context) {
     }else{
         loadComment = false;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.showLiveChat performClick:nil];
+            _renderer = [[BarrageRenderer alloc] init];
+            [self.view setWantsLayer:YES];
+            [_renderer.view setFrame:NSMakeRect(0,0,self.view.frame.size.width,self.view.frame.size.width)];
+            [_renderer.view setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
+            [self.view addSubview:_renderer.view positioned:NSWindowAbove relativeTo:nil];
+            [_renderer start];
+            NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+            liveChatWindowC = [storyBoard instantiateControllerWithIdentifier:@"LiveChatWindow"];
+            [liveChatWindowC showWindow:self];
         });
     }
     
@@ -832,7 +846,6 @@ static void wakeup(void *context) {
     [commentText appendString:Dialogue]; // 向弹幕最后加入字幕的全部内容
     [commentText writeToFile:comment atomically:YES encoding:NSUTF8StringEncoding error:nil]; // 将弹幕写入文件
 }
-
 - (void) handleEvent:(mpv_event *)event
 {
     switch (event->event_id) {

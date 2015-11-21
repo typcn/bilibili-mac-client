@@ -8,9 +8,11 @@
 
 #import "LiveChat.h"
 #import "BilibiliSocketClient.h"
+#import "BarrageHeader.h"
 
 extern NSString *vCID;
 extern BOOL isTesting;
+extern BarrageRenderer * _renderer;
 
 BOOL hasMsg;
 
@@ -37,6 +39,15 @@ BOOL hasMsg;
         NSArray *info = [data objectForKey:@"info"];
         NSString *cmContent = [info objectAtIndex:1];
         NSString *userName = [[info objectAtIndex:2] objectAtIndex:1];
+        int ftype = [[[info objectAtIndex:0] objectAtIndex:1] intValue];
+        int fsize = [[[info objectAtIndex:0] objectAtIndex:2] intValue];
+        unsigned int intColor = [[[info objectAtIndex:0] objectAtIndex:3] intValue];
+        NSColor  *Color  = [NSColor colorWithRed:((float)((intColor & 0xFF0000) >> 16))/255.0 \
+                                           green:((float)((intColor & 0x00FF00) >>  8))/255.0 \
+                                            blue:((float)((intColor & 0x0000FF) >>  0))/255.0 \
+                                           alpha:1.0];
+        
+        [self addSpritToVideo:ftype content:cmContent size:fsize color:Color];
         [self AppendToTextView:[NSString stringWithFormat:@"%@ : %@\n",userName,cmContent]];
         hasMsg = true;
     }
@@ -56,6 +67,21 @@ BOOL hasMsg;
         [[self.textView textStorage] appendAttributedString:attr];
         [self.textView scrollRangeToVisible:NSMakeRange([[self.textView string] length], 0)];
 }
+
+- (void)addSpritToVideo:(int)type content:(NSString*)content size:(int)size color:(NSColor *)color
+{
+    BarrageDescriptor * descriptor = [[BarrageDescriptor alloc]init];
+    descriptor.spriteName = NSStringFromClass([BarrageWalkTextSprite class]);
+    descriptor.params[@"text"] = content;
+    descriptor.params[@"textColor"] = color;
+    descriptor.params[@"fontSize"] = @(size);
+    //descriptor.params[@"speed"] = @(100 * (double)random()/RAND_MAX+50);
+    
+    // type is not supported right
+    descriptor.params[@"direction"] = @(BarrageWalkDirectionR2L);
+    [_renderer receive:descriptor];
+}
+
 
 - (void)windowWillClose:(NSNotification *)notification
 {

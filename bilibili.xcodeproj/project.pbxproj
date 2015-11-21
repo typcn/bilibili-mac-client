@@ -173,6 +173,25 @@
 		FDEC3B661BA02E9D002DA0EE /* liblua.5.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDEC3B341BA02E5C002DA0EE /* liblua.5.2.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FDEC3B671BA02E9D002DA0EE /* libfontconfig.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD7328991B9CD2AA001B450C /* libfontconfig.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FDEC3B681BA02E9D002DA0EE /* libmediainfo.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD73289A1B9CD2AA001B450C /* libmediainfo.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FDFAD67B1C0078CD00BA06C7 /* NSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFAD67A1C0078CD00BA06C7 /* NSLabel.m */; };
+		FDFAD67E1C007B4E00BA06C7 /* NSView+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFAD67D1C007B4E00BA06C7 /* NSView+UIView.m */; };
+		FDFAD6811C007BA700BA06C7 /* NSValue+iOS.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFAD6801C007BA700BA06C7 /* NSValue+iOS.m */; };
+		FDFAD6841C007DCF00BA06C7 /* NHDisplayLink.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFAD6831C007DCF00BA06C7 /* NHDisplayLink.m */; };
+		FDFE451F1C0073150006856E /* BarrageCanvas.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE44FE1C0073150006856E /* BarrageCanvas.m */; };
+		FDFE45201C0073150006856E /* BarrageClock.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE45001C0073150006856E /* BarrageClock.m */; };
+		FDFE45211C0073150006856E /* BarrageDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE45021C0073150006856E /* BarrageDescriptor.m */; };
+		FDFE45221C0073150006856E /* BarrageDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE45041C0073150006856E /* BarrageDispatcher.m */; };
+		FDFE45231C0073150006856E /* BarrageRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE45061C0073150006856E /* BarrageRenderer.m */; };
+		FDFE45241C0073150006856E /* BarrageSpriteFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE45081C0073150006856E /* BarrageSpriteFactory.m */; };
+		FDFE45251C0073150006856E /* BarrageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE450C1C0073150006856E /* BarrageLoader.m */; };
+		FDFE45261C0073150006856E /* BarrageFloatImageSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE450F1C0073150006856E /* BarrageFloatImageSprite.m */; };
+		FDFE45271C0073150006856E /* BarrageFloatSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE45111C0073150006856E /* BarrageFloatSprite.m */; };
+		FDFE45281C0073150006856E /* BarrageFloatTextSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE45131C0073150006856E /* BarrageFloatTextSprite.m */; };
+		FDFE45291C0073150006856E /* BarrageSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE45151C0073150006856E /* BarrageSprite.m */; };
+		FDFE452A1C0073150006856E /* BarrageSpriteUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE45181C0073150006856E /* BarrageSpriteUtility.m */; };
+		FDFE452B1C0073150006856E /* BarrageWalkImageSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE451A1C0073150006856E /* BarrageWalkImageSprite.m */; };
+		FDFE452C1C0073150006856E /* BarrageWalkSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE451C1C0073150006856E /* BarrageWalkSprite.m */; };
+		FDFE452D1C0073150006856E /* BarrageWalkTextSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFE451E1C0073150006856E /* BarrageWalkTextSprite.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -486,7 +505,47 @@
 		FDEC3B321BA02E5C002DA0EE /* libx264.146.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libx264.146.dylib; path = bilibili/libs/libx264.146.dylib; sourceTree = "<group>"; };
 		FDEC3B331BA02E5C002DA0EE /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = bilibili/libs/libz.1.dylib; sourceTree = "<group>"; };
 		FDEC3B341BA02E5C002DA0EE /* liblua.5.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblua.5.2.dylib; path = bilibili/libs/liblua.5.2.dylib; sourceTree = "<group>"; };
+		FDFAD6791C0078CD00BA06C7 /* NSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSLabel.h; path = BarrageRenderer/NSLabel.h; sourceTree = SOURCE_ROOT; };
+		FDFAD67A1C0078CD00BA06C7 /* NSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSLabel.m; path = BarrageRenderer/NSLabel.m; sourceTree = SOURCE_ROOT; };
+		FDFAD67C1C007B2700BA06C7 /* NSView+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSView+UIView.h"; path = "BarrageRenderer/NSView+UIView.h"; sourceTree = SOURCE_ROOT; };
+		FDFAD67D1C007B4E00BA06C7 /* NSView+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSView+UIView.m"; path = "BarrageRenderer/NSView+UIView.m"; sourceTree = SOURCE_ROOT; };
+		FDFAD67F1C007BA700BA06C7 /* NSValue+iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSValue+iOS.h"; path = "BarrageRenderer/NSValue+iOS.h"; sourceTree = SOURCE_ROOT; };
+		FDFAD6801C007BA700BA06C7 /* NSValue+iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSValue+iOS.m"; path = "BarrageRenderer/NSValue+iOS.m"; sourceTree = SOURCE_ROOT; };
+		FDFAD6821C007DCF00BA06C7 /* NHDisplayLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NHDisplayLink.h; path = BarrageRenderer/NHDisplayLink.h; sourceTree = SOURCE_ROOT; };
+		FDFAD6831C007DCF00BA06C7 /* NHDisplayLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NHDisplayLink.m; path = BarrageRenderer/NHDisplayLink.m; sourceTree = SOURCE_ROOT; };
 		FDFDAE171BB05A2F00AD99AE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		FDFE44FD1C0073150006856E /* BarrageCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageCanvas.h; sourceTree = "<group>"; };
+		FDFE44FE1C0073150006856E /* BarrageCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageCanvas.m; sourceTree = "<group>"; };
+		FDFE44FF1C0073150006856E /* BarrageClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageClock.h; sourceTree = "<group>"; };
+		FDFE45001C0073150006856E /* BarrageClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageClock.m; sourceTree = "<group>"; };
+		FDFE45011C0073150006856E /* BarrageDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageDescriptor.h; sourceTree = "<group>"; };
+		FDFE45021C0073150006856E /* BarrageDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageDescriptor.m; sourceTree = "<group>"; };
+		FDFE45031C0073150006856E /* BarrageDispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageDispatcher.h; sourceTree = "<group>"; };
+		FDFE45041C0073150006856E /* BarrageDispatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageDispatcher.m; sourceTree = "<group>"; };
+		FDFE45051C0073150006856E /* BarrageRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageRenderer.h; sourceTree = "<group>"; };
+		FDFE45061C0073150006856E /* BarrageRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageRenderer.m; sourceTree = "<group>"; };
+		FDFE45071C0073150006856E /* BarrageSpriteFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageSpriteFactory.h; sourceTree = "<group>"; };
+		FDFE45081C0073150006856E /* BarrageSpriteFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageSpriteFactory.m; sourceTree = "<group>"; };
+		FDFE45091C0073150006856E /* BarrageHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BarrageHeader.h; path = BarrageRenderer/BarrageHeader.h; sourceTree = SOURCE_ROOT; };
+		FDFE450B1C0073150006856E /* BarrageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageLoader.h; sourceTree = "<group>"; };
+		FDFE450C1C0073150006856E /* BarrageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageLoader.m; sourceTree = "<group>"; };
+		FDFE450E1C0073150006856E /* BarrageFloatImageSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageFloatImageSprite.h; sourceTree = "<group>"; };
+		FDFE450F1C0073150006856E /* BarrageFloatImageSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageFloatImageSprite.m; sourceTree = "<group>"; };
+		FDFE45101C0073150006856E /* BarrageFloatSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageFloatSprite.h; sourceTree = "<group>"; };
+		FDFE45111C0073150006856E /* BarrageFloatSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageFloatSprite.m; sourceTree = "<group>"; };
+		FDFE45121C0073150006856E /* BarrageFloatTextSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageFloatTextSprite.h; sourceTree = "<group>"; };
+		FDFE45131C0073150006856E /* BarrageFloatTextSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageFloatTextSprite.m; sourceTree = "<group>"; };
+		FDFE45141C0073150006856E /* BarrageSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageSprite.h; sourceTree = "<group>"; };
+		FDFE45151C0073150006856E /* BarrageSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageSprite.m; sourceTree = "<group>"; };
+		FDFE45161C0073150006856E /* BarrageSpriteProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageSpriteProtocol.h; sourceTree = "<group>"; };
+		FDFE45171C0073150006856E /* BarrageSpriteUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageSpriteUtility.h; sourceTree = "<group>"; };
+		FDFE45181C0073150006856E /* BarrageSpriteUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageSpriteUtility.m; sourceTree = "<group>"; };
+		FDFE45191C0073150006856E /* BarrageWalkImageSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageWalkImageSprite.h; sourceTree = "<group>"; };
+		FDFE451A1C0073150006856E /* BarrageWalkImageSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageWalkImageSprite.m; sourceTree = "<group>"; };
+		FDFE451B1C0073150006856E /* BarrageWalkSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageWalkSprite.h; sourceTree = "<group>"; };
+		FDFE451C1C0073150006856E /* BarrageWalkSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageWalkSprite.m; sourceTree = "<group>"; };
+		FDFE451D1C0073150006856E /* BarrageWalkTextSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageWalkTextSprite.h; sourceTree = "<group>"; };
+		FDFE451E1C0073150006856E /* BarrageWalkTextSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageWalkTextSprite.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -552,6 +611,7 @@
 				FD36B09A1B988D0100FB32CC /* Resources */,
 				FD471FD11AC92D7C00A2A727 /* frameworks */,
 				FD1954D41B2594AC003A958F /* CommentConvert */,
+				FDFE44FA1C0073020006856E /* BarrageRenderer */,
 				FD90617B1BA563080041EF81 /* AirPlay */,
 				FD076C521AC8CBBB00C893FA /* Source */,
 				FD36B0991B988CB600FB32CC /* Third-party */,
@@ -1012,6 +1072,81 @@
 			name = VideoProvider;
 			sourceTree = "<group>";
 		};
+		FDFE44FA1C0073020006856E /* BarrageRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				FDFE44FC1C0073150006856E /* BarrageEngine */,
+				FDFE45091C0073150006856E /* BarrageHeader.h */,
+				FDFE450A1C0073150006856E /* BarrageLoader */,
+				FDFE450D1C0073150006856E /* BarrageSpirit */,
+				FDFAD6791C0078CD00BA06C7 /* NSLabel.h */,
+				FDFAD67A1C0078CD00BA06C7 /* NSLabel.m */,
+				FDFAD67C1C007B2700BA06C7 /* NSView+UIView.h */,
+				FDFAD67D1C007B4E00BA06C7 /* NSView+UIView.m */,
+				FDFAD67F1C007BA700BA06C7 /* NSValue+iOS.h */,
+				FDFAD6801C007BA700BA06C7 /* NSValue+iOS.m */,
+				FDFAD6821C007DCF00BA06C7 /* NHDisplayLink.h */,
+				FDFAD6831C007DCF00BA06C7 /* NHDisplayLink.m */,
+			);
+			name = BarrageRenderer;
+			path = bilibili;
+			sourceTree = "<group>";
+		};
+		FDFE44FC1C0073150006856E /* BarrageEngine */ = {
+			isa = PBXGroup;
+			children = (
+				FDFE44FD1C0073150006856E /* BarrageCanvas.h */,
+				FDFE44FE1C0073150006856E /* BarrageCanvas.m */,
+				FDFE44FF1C0073150006856E /* BarrageClock.h */,
+				FDFE45001C0073150006856E /* BarrageClock.m */,
+				FDFE45011C0073150006856E /* BarrageDescriptor.h */,
+				FDFE45021C0073150006856E /* BarrageDescriptor.m */,
+				FDFE45031C0073150006856E /* BarrageDispatcher.h */,
+				FDFE45041C0073150006856E /* BarrageDispatcher.m */,
+				FDFE45051C0073150006856E /* BarrageRenderer.h */,
+				FDFE45061C0073150006856E /* BarrageRenderer.m */,
+				FDFE45071C0073150006856E /* BarrageSpriteFactory.h */,
+				FDFE45081C0073150006856E /* BarrageSpriteFactory.m */,
+			);
+			name = BarrageEngine;
+			path = BarrageRenderer/BarrageEngine;
+			sourceTree = SOURCE_ROOT;
+		};
+		FDFE450A1C0073150006856E /* BarrageLoader */ = {
+			isa = PBXGroup;
+			children = (
+				FDFE450B1C0073150006856E /* BarrageLoader.h */,
+				FDFE450C1C0073150006856E /* BarrageLoader.m */,
+			);
+			name = BarrageLoader;
+			path = BarrageRenderer/BarrageLoader;
+			sourceTree = SOURCE_ROOT;
+		};
+		FDFE450D1C0073150006856E /* BarrageSpirit */ = {
+			isa = PBXGroup;
+			children = (
+				FDFE450E1C0073150006856E /* BarrageFloatImageSprite.h */,
+				FDFE450F1C0073150006856E /* BarrageFloatImageSprite.m */,
+				FDFE45101C0073150006856E /* BarrageFloatSprite.h */,
+				FDFE45111C0073150006856E /* BarrageFloatSprite.m */,
+				FDFE45121C0073150006856E /* BarrageFloatTextSprite.h */,
+				FDFE45131C0073150006856E /* BarrageFloatTextSprite.m */,
+				FDFE45141C0073150006856E /* BarrageSprite.h */,
+				FDFE45151C0073150006856E /* BarrageSprite.m */,
+				FDFE45161C0073150006856E /* BarrageSpriteProtocol.h */,
+				FDFE45171C0073150006856E /* BarrageSpriteUtility.h */,
+				FDFE45181C0073150006856E /* BarrageSpriteUtility.m */,
+				FDFE45191C0073150006856E /* BarrageWalkImageSprite.h */,
+				FDFE451A1C0073150006856E /* BarrageWalkImageSprite.m */,
+				FDFE451B1C0073150006856E /* BarrageWalkSprite.h */,
+				FDFE451C1C0073150006856E /* BarrageWalkSprite.m */,
+				FDFE451D1C0073150006856E /* BarrageWalkTextSprite.h */,
+				FDFE451E1C0073150006856E /* BarrageWalkTextSprite.m */,
+			);
+			name = BarrageSpirit;
+			path = BarrageRenderer/BarrageSpirit;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1248,33 +1383,52 @@
 			files = (
 				FD1954B51B259330003A958F /* PlayerView.mm in Sources */,
 				FD1954B61B259330003A958F /* PostComment.m in Sources */,
+				FDFE452B1C0073150006856E /* BarrageWalkImageSprite.m in Sources */,
 				FDDE11671BA994DC00230184 /* PlayerControlView.m in Sources */,
+				FDFAD67E1C007B4E00BA06C7 /* NSView+UIView.m in Sources */,
 				FD1954C51B259368003A958F /* Socket.cpp in Sources */,
+				FDFAD67B1C0078CD00BA06C7 /* NSLabel.m in Sources */,
 				FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */,
 				FD3CED981BC6A7E100BE9A8B /* PFAboutWindowController.m in Sources */,
+				FDFAD6841C007DCF00BA06C7 /* NHDisplayLink.m in Sources */,
 				FD1954CD1B259457003A958F /* ISSoundAdditions.m in Sources */,
 				FD1954D01B259462003A958F /* AppDelegate.m in Sources */,
 				FD5B0C621B9ABAFF00045F10 /* TWebView.mm in Sources */,
+				FDFAD6811C007BA700BA06C7 /* NSValue+iOS.m in Sources */,
+				FDFE45281C0073150006856E /* BarrageFloatTextSprite.m in Sources */,
 				FD1954BC1B259342003A958F /* downloadWrapper.mm in Sources */,
 				FD36B0B71B98920A00FB32CC /* WebTabView.mm in Sources */,
 				FD1954C71B25942F003A958F /* main.m in Sources */,
+				FDFE45261C0073150006856E /* BarrageFloatImageSprite.m in Sources */,
+				FDFE45251C0073150006856E /* BarrageLoader.m in Sources */,
 				FD3CED921BC64B8900BE9A8B /* Popover.m in Sources */,
 				FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */,
+				FDFE45211C0073150006856E /* BarrageDescriptor.m in Sources */,
 				FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */,
+				FDFE452C1C0073150006856E /* BarrageWalkSprite.m in Sources */,
+				FDFE45271C0073150006856E /* BarrageFloatSprite.m in Sources */,
 				FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */,
 				FDDE11601BA9459E00230184 /* reverseHTTP.cpp in Sources */,
 				FD3CED8E1BC64B5000BE9A8B /* DynamicView.m in Sources */,
 				FD4EDBB61BE42D9B009309EC /* MPVSettings.m in Sources */,
+				FDFE45231C0073150006856E /* BarrageRenderer.m in Sources */,
+				FDFE45291C0073150006856E /* BarrageSprite.m in Sources */,
 				FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */,
 				FDDE11801BA9E91400230184 /* vp_bilibili.mm in Sources */,
 				FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */,
+				FDFE45241C0073150006856E /* BarrageSpriteFactory.m in Sources */,
+				FDFE452A1C0073150006856E /* BarrageSpriteUtility.m in Sources */,
 				FD1954B01B259318003A958F /* Settings.m in Sources */,
 				FD7257261B9D5E190015B0F1 /* Analytics.mm in Sources */,
 				FD62CC891B6E6848000AED57 /* MBProgressHUD.m in Sources */,
+				FDFE45201C0073150006856E /* BarrageClock.m in Sources */,
+				FDFE452D1C0073150006856E /* BarrageWalkTextSprite.m in Sources */,
 				FD4B84461BA5879400DD6F2F /* ServiceDiscovery.cpp in Sources */,
 				FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */,
 				FD4B84441BA5879400DD6F2F /* AirPlay.mm in Sources */,
 				FD1954C41B259368003A958F /* LiveChat.m in Sources */,
+				FDFE45221C0073150006856E /* BarrageDispatcher.m in Sources */,
+				FDFE451F1C0073150006856E /* BarrageCanvas.m in Sources */,
 				FD36B0F51B99B62600FB32CC /* ToolBar.m in Sources */,
 				C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */,
 				FD36B0B31B988FE200FB32CC /* Browser.mm in Sources */,
