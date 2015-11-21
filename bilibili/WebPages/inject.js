@@ -21,7 +21,7 @@ function applyUI(){
     }catch(e){
         
     }
-    if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("topic") > 1 || window.location.href.indexOf("live") > 1){
+    if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("topic") > 1 || window.location.href.indexOf("live") > 1 || window.location.href.indexOf("html") > 1){
         console.log("getting cid");
         try{
             var fv=$("param[name='flashvars']").val();
@@ -66,6 +66,7 @@ function applyUI(){
                 window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + window.location.href + '|' + document.title;
                 console.log("inject player page");
                 $('#bofqi').html(window.injectHTML);
+                $('.player-box').html(window.injectHTML);
                 var ci = document.querySelector(".cover_image");
                 if(ci && ci.src){
                     var ph = document.querySelector(".TYPCN_PLAYER_INJECT_PAGE .player-placeholder");
