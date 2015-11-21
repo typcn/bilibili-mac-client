@@ -124,7 +124,12 @@
         CGFloat stripTo = stripFrom + (oritation?stripHeight:stripWidth);
         CGFloat lastDistanceAllOut = YES;
         for (BarrageWalkSprite * sprite in synclasticSprites) {
-            CGFloat spriteFrom = oritation?sprite.origin.y:sprite.origin.x;
+            CGFloat Sy = sprite.origin.y;
+            if(oritation){
+                // Cocoa 的上下坐标是反的
+                Sy = rect.size.height - sprite.size.height - Sy;
+            }
+            CGFloat spriteFrom = oritation?Sy:sprite.origin.x;
             CGFloat spriteTo = spriteFrom + (oritation?sprite.size.height:sprite.size.width);
             if ((spriteTo-spriteFrom)+(stripTo-stripFrom)>MAX(stripTo-spriteFrom, spriteTo-stripFrom)) { // 在条条里
                 stripSpriteNumbers[i]++;
@@ -157,7 +162,7 @@
     
     CGPoint origin = CGPointZero;
     if (oritation) { // 水平
-        _destination.y = origin.y = stripHeight * availableFrom+rect.origin.y;
+        _destination.y = origin.y = rect.size.height - (stripHeight * availableFrom + rect.origin.y) - self.size.height; // Cocoa 的上下坐标是反的
         origin.x = (self.direction == BarrageWalkDirectionL2R)?rect.origin.x - self.size.width:rect.origin.x + rect.size.width;
         _destination.x = (self.direction == BarrageWalkDirectionL2R)?rect.origin.x + rect.size.width:rect.origin.x - self.size.width;
     }
