@@ -156,7 +156,9 @@ Browser *browser;
     }
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+#ifndef DEBUG
         [Fabric with:@[[Crashlytics class]]];
+#endif
     });
 }
 
