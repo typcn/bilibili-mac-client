@@ -214,8 +214,6 @@
     _attributedText = nil;
     [self invalidateIntrinsicContentSize];
     [self setNeedsDisplay:YES];
-    
-    super.frame = [self drawingRect];
 }
 
 - (void)setAttributedText:(NSAttributedString*)attributedText {
@@ -229,6 +227,8 @@
     _font = font ? font : self.defaultFont;
     [self invalidateIntrinsicContentSize];
     [self setNeedsDisplay:YES];
+    
+    super.frame = [self drawingRect];
 }
 
 - (void)setTextColor:(NSColor*)textColor {

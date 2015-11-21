@@ -75,7 +75,7 @@ BOOL hasMsg;
     descriptor.params[@"text"] = content;
     descriptor.params[@"textColor"] = color;
     descriptor.params[@"fontSize"] = @(size);
-    //descriptor.params[@"speed"] = @(100 * (double)random()/RAND_MAX+50);
+    descriptor.params[@"speed"] = @(100);
     
     // type is not supported right
     descriptor.params[@"direction"] = @(BarrageWalkDirectionR2L);
