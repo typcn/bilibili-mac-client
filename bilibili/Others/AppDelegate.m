@@ -179,7 +179,10 @@ Browser *browser;
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
 {
     if (flag) {
-        if(browser && browser.window){
+        if(theApplication.mainWindow){
+            [theApplication.mainWindow makeKeyAndOrderFront:nil];
+            return YES;
+        }else if(browser && browser.window && browser.tabCount > 0){
             [browser.window makeKeyAndOrderFront:nil];
             return YES;
         }

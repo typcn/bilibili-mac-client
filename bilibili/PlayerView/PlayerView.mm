@@ -995,6 +995,9 @@ BOOL obServer = NO;
 BOOL isFirstCall = YES;
 BOOL shiftKeyPressed = NO;
 
+- (BOOL)canBecomeMainWindow { return YES; }
+- (BOOL)canBecomeKeyWindow { return YES; }
+
 - (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)window{
     return nil;
 }
