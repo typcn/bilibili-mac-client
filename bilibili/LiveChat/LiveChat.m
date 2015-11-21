@@ -18,6 +18,7 @@ BOOL hasMsg;
 
 @interface LiveChat (){
     LiveSocket *socket;
+    BOOL renderDisabled;
 }
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
 
@@ -27,6 +28,7 @@ BOOL hasMsg;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    renderDisabled = false;
     socket = [[LiveSocket alloc] init];
     [socket setDelegate:self];
     [socket ConnectToTheFuckingFlashSocketServer:[vCID intValue]];
@@ -82,6 +84,17 @@ BOOL hasMsg;
     [_renderer receive:descriptor];
 }
 
+- (IBAction)disableRender:(id)sender {
+    if(renderDisabled){
+        renderDisabled = false;
+        [sender setText:@"关闭弹幕渲染"];
+        [_renderer start];
+    }else{
+        renderDisabled = true;
+        [sender setText:@"开启弹幕渲染"];
+        [_renderer stop];
+    }
+}
 
 - (void)windowWillClose:(NSNotification *)notification
 {
