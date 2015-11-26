@@ -41,12 +41,18 @@ see [HOW TO BUILD](https://github.com/typcn/bilibili-mac-client/blob/master/HOW_
 
 # Thanks
 
-- mpv
-- ChromiumTabs
-- GCDWebServers
-- ISSoundAdditions
-- Sparkle
-- FFmpeg
+- [mpv](https://github.com/mpv-player/mpv)
+- [ChromiumTabs](https://github.com/typcn/chromium-tabs)
+- [GCDWebServers](https://github.com/swisspol/GCDWebServer)
+- [Sparkle](http://sparkle-project.org/)
+- [FFmpeg](https://www.ffmpeg.org/)
+- [BarrageRenderer](https://github.com/unash/BarrageRenderer)
+
+### Some files from
+- https://github.com/lhecker/NSLabel
+- https://github.com/nickhutchinson/Cocoa-Toolkit
+- https://github.com/dbainbridge/mapbox-osx
+- https://github.com/InerziaSoft/ISSoundAdditions
 
 # License
 
