@@ -13,6 +13,7 @@
 @implementation WebTabView {
     PluginManager *pm;
     NSString* WebScript;
+    NSString* errHTML;
     NSView* HudView;
     bool ariainit;
     long acceptAnalytics;
@@ -87,6 +88,9 @@
     WebUI = [WebUI stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
     WebUI = [WebUI stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
     WebScript = [WebScript stringByReplacingOccurrencesOfString:@"INJ_HTML" withString:WebUI];
+    
+    path = [[NSBundle mainBundle] pathForResource:@"webpage/error" ofType:@"html"];
+    errHTML = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
 }
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
@@ -167,7 +171,26 @@
 
 - (void) failLoadOrNavigation: (NSURLRequest *) request withError: (NSError *) error
 {
-    NSLog(@"load failed");
+    NSLog(@"Request load failed: %@ Error: %@", request, error);
+    
+    if(error.code > -1000){
+        return;
+    }
+    
+    [self setIsCrashed:YES];
+    
+    NSString *errDetail = [errHTML stringByReplacingOccurrencesOfString:@"{{errCode}}" withString:[@(error.code) stringValue]];
+    
+    errDetail = [errDetail stringByReplacingOccurrencesOfString:@"{{debugInfo}}" withString:error.description];
+    
+    NSString *key = [NSString stringWithFormat:@"Err%ld",(long)error.code];
+    NSString *desc = NSLocalizedStringFromTableInBundle(key,@"NetErr",[NSBundle mainBundle], nil);
+    errDetail = [errDetail stringByReplacingOccurrencesOfString:@"{{errDetail}}" withString:desc];
+
+    errDetail = [errDetail stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
+    errDetail = [errDetail stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+    
+    [webView runJavascript:[NSString stringWithFormat:@"document.getElementsByTagName('html')[0].innerHTML='%@'",errDetail]];
 }
 
 - (void) finishLoadOrNavigation: (NSURLRequest *) request

@@ -240,6 +240,7 @@ didReceiveTitle:(NSString *)title
     }
 }
 
+// 原本想拦截登录事件来获取 Cookie ，结果发现 B 站 Cookie 没有 HttpOnly ，JS 就可以读取了
 //- (void)webView:(WKWebView *)webView
 //decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse
 //decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
@@ -254,6 +255,7 @@ didReceiveTitle:(NSString *)title
 //    
 //    NSLog(@"%@",navigationResponse);
 //}
+
 - (void) webView: (WKWebView *) webView didStartProvisionalNavigation: (WKNavigation *) navigation
 {
     [self.delegate didStartNavigation];
