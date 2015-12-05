@@ -593,7 +593,14 @@ static void wakeup(void *context) {
     
     if(loadComment){
         check_error(mpv_set_option_string(mpv, "sub-ass", "yes"));
-        check_error(mpv_set_option_string(mpv, "sub-file", [commentFile cStringUsingEncoding:NSUTF8StringEncoding]));
+        
+        int substatus = mpv_set_option_string(mpv, "sub-file", [commentFile cStringUsingEncoding:NSUTF8StringEncoding]);
+        if(substatus < 0){
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                NSString *t2 = [NSString stringWithFormat:@"%@ - 弹幕载入失败",self.view.window.title];
+                [self.view.window setTitle:t2];
+            });
+        }
     }
     
     [self loadMPVSettings];
