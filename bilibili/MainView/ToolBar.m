@@ -31,7 +31,9 @@
 
 @end
 
-@implementation BLToolBarEvents
+@implementation BLToolBarEvents{
+    time_t lastTabSwitch;
+}
 
 - (id)init{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateToolbarURL:) name:@"BLChangeURL" object:nil];
@@ -44,6 +46,7 @@
 }
 
 - (void)updateToolbarURL:(NSNotification*) aNotification{
+    lastTabSwitch = time(0);
     [self.URLInputField resignFirstResponder];
     CTTabContents *ct = [browser activeTabContents];
     if(ct) {
@@ -55,7 +58,7 @@
             [self.URLInputField setStringValue:url];
         }
     }else{
-        [NSTimer scheduledTimerWithTimeInterval:0.5
+        [NSTimer scheduledTimerWithTimeInterval:0.1
                                          target:self
                                        selector:@selector(delayUpdateURL)
                                        userInfo:nil
@@ -76,6 +79,17 @@
 
 - (IBAction)OpenURL:(id)sender {
     [sender resignFirstResponder];
+    [NSTimer scheduledTimerWithTimeInterval:0.2
+                                     target:self
+                                   selector:@selector(delayOpenURL)
+                                   userInfo:nil
+                                    repeats:NO];
+}
+
+- (void)delayOpenURL{
+    if(time(0) - lastTabSwitch < 2){
+        return;
+    }
     CTTabContents *ct = [browser activeTabContents];
     if(ct) {
         [[browser window] makeFirstResponder:ct.view];
