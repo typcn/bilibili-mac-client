@@ -64,8 +64,6 @@
 {
     NSError *err;
     
-    
-    
     NSUserDefaults *s = [NSUserDefaults standardUserDefaults];
     acceptAnalytics = [s integerForKey:@"acceptAnalytics"];
     
@@ -149,6 +147,35 @@
     return NULL;
 }
 
+- (void)loadFavicon{
+    NSURLSessionConfiguration* sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    /* Create session, and optionally set a NSURLSessionDelegate. */
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:sessionConfig delegate:nil delegateQueue:nil];
+    
+    
+    NSURL* URL = [NSURL URLWithString:[webView getURL]];
+    URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@://%@/favicon.ico",URL.scheme,URL.host]];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+    request.HTTPMethod = @"GET";
+    
+    /* Start a new Task */
+    NSURLSessionDataTask* task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error == nil) {
+            if(((NSHTTPURLResponse*)response).statusCode == 200){
+                NSImage *favicon = [[NSImage alloc] initWithData:data];
+                if(favicon){
+                    [self setIcon:favicon];
+                }
+            }
+        }
+        else {
+            NSLog(@"Favicon Download Failed: %@", [error localizedDescription]);
+        }
+    }];
+    [task resume];
+}
+
 - (void) didCommitNavigation{
     [self setTitle:[webView getTitle]];
     [self setIsWaitingForResponse:NO];
@@ -166,6 +193,8 @@
         [webView setURL:lastPlay];
         NSLog(@"Opening last play url %@",lastPlay);
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
+    }else{
+        [self loadFavicon];
     }
 }
 
