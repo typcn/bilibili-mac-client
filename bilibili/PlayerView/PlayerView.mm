@@ -1066,7 +1066,7 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     shiftKeyPressed = ([event modifierFlags] & NSShiftKeyMask) != 0;
 }
 
--(void)keyDown:(NSEvent*)event {
+- (void)keyDown:(NSEvent*)event {
     
     [self flagsChanged:event];
     
@@ -1075,11 +1075,29 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     }
     switch( [event keyCode] ) {
         case 125:{ // ⬇️
-            [NSSound decreaseSystemVolumeBy:0.05];
+            dispatch_async(queue, ^{
+                int volume = atoi(mpv_get_property_string(mpv,"volume"));
+                if(volume < 5){
+                    return;
+                }
+                char volstr[4];
+                snprintf(volstr , 4, "%d", volume - 5);
+                NSLog(@"Volume: %s",volstr);
+                mpv_set_property_string(mpv,"volume",volstr);
+            });
             break;
         }
         case 126:{ // ⬆️
-            [NSSound increaseSystemVolumeBy:0.05];
+            dispatch_async(queue, ^{
+                int volume = atoi(mpv_get_property_string(mpv,"volume"));
+                if(volume > 94){
+                    return;
+                }
+                char volstr[3];
+                snprintf(volstr , 4, "%d", volume + 5);
+                NSLog(@"Volume: %s",volstr);
+                mpv_set_property_string(mpv,"volume",volstr);
+            });
             break;
         }
         case 124:{ // 👉
