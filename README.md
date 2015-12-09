@@ -2,6 +2,7 @@
 
 An unofficial bilibili client for mac
 
+注意：原有百度网盘地址被系统取消掉了，请大家在页面下方使用新的地址下载。
 
 # Features
 - 硬解播放
@@ -23,7 +24,7 @@ An unofficial bilibili client for mac
 
 [GitHub](https://github.com/typcn/bilibili-mac-client/releases)
 
-[百度盘](http://pan.baidu.com/s/1eQvSx6i)
+[百度盘](http://pan.baidu.com/s/1o7iFDjk)
 
 
 # FAQ
