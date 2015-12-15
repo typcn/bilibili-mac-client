@@ -535,7 +535,7 @@ static void wakeup(void *context) {
     check_error(mpv_set_option_string(mpv, "osc", "yes"));
     check_error(mpv_set_option_string(mpv, "autofit", [res cStringUsingEncoding:NSUTF8StringEncoding]));
     check_error(mpv_set_option_string(mpv, "script-opts", "osc-layout=box,osc-seekbarstyle=bar"));
-    check_error(mpv_set_option_string(mpv, "user-agent", [@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" cStringUsingEncoding:NSUTF8StringEncoding]));
+    check_error(mpv_set_option_string(mpv, "user-agent", [userAgent cStringUsingEncoding:NSUTF8StringEncoding]));
     check_error(mpv_set_option_string(mpv, "framedrop", "vo"));
     check_error(mpv_set_option_string(mpv, "hr-seek", "yes"));
     check_error(mpv_set_option_string(mpv, "fs-black-out-screens", "yes"));
@@ -678,7 +678,7 @@ static void wakeup(void *context) {
         [request setValue:xff forHTTPHeaderField:@"Client-IP"];
     }
     [request setValue:cookie forHTTPHeaderField:@"Cookie"];
-    [request setValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0.2) Gecko/20100101 Firefox/6.0.2 Fengfan/1.0" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:userAgent forHTTPHeaderField:@"User-Agent"];
     NSURLConnection* connection = [NSURLConnection connectionWithRequest:request delegate:nil];
     [connection start];
 }
