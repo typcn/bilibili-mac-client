@@ -30,15 +30,26 @@ NSString *subFile;
 - (IBAction)selectVideo:(id)sender {
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];
     [openDlg setCanChooseFiles:YES];
-    [openDlg setAllowsMultipleSelection:NO];
+    [openDlg setAllowsMultipleSelection:YES];
     [openDlg setCanChooseDirectories:NO];
-    [openDlg setPrompt:NSLocalizedString(@"选择视频", @"Choose Video")];
+    [openDlg setPrompt:NSLocalizedString(@"选择视频（多选自动合并）", @"Choose Video ( Auto Concat )")];
     
     if ( [openDlg runModal] == NSModalResponseOK )
     {
-        NSString* filepath = [openDlg URL].path;
-        vUrl = filepath;
-        [self.videoUrl setStringValue:filepath];
+        NSArray* urls = [openDlg URLs];
+        for(int i = 0; i < [urls count]; i++ )
+        {
+            NSString *path = [[urls objectAtIndex:i] path];
+            unsigned long realLength = strlen([path UTF8String]);
+            
+            if(i == 0){
+                vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",realLength, @"%" , path ,@";"];
+            }else{
+                vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@",   vUrl   , @"%",realLength, @"%" , path ,@";"];
+            }
+        }
+        
+        [self.videoUrl setStringValue:vUrl];
     }
 }
 - (IBAction)setURL:(id)sender {
