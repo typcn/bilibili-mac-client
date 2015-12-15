@@ -23,7 +23,6 @@
 		FD1954C41B259368003A958F /* LiveChat.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C01B259368003A958F /* LiveChat.m */; };
 		FD1954C51B259368003A958F /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C11B259368003A958F /* Socket.cpp */; };
 		FD1954C71B25942F003A958F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C61B25942F003A958F /* main.m */; };
-		FD1954CD1B259457003A958F /* ISSoundAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954CC1B259457003A958F /* ISSoundAdditions.m */; };
 		FD1954D01B259462003A958F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954CF1B259462003A958F /* AppDelegate.m */; };
 		FD1954D31B25947A003A958F /* PlayLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954D21B25947A003A958F /* PlayLocalFile.m */; };
 		FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954D71B2594AC003A958F /* AssClass.cpp */; };
@@ -117,6 +116,7 @@
 		FDCF6E3B1C1068DF00A8A860 /* error.html in Resources */ = {isa = PBXBuildFile; fileRef = FDCF6E3A1C1068DF00A8A860 /* error.html */; };
 		FDD1FDD41B9B14F9006711B0 /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; };
 		FDD1FDD51B9B14F9006711B0 /* ChromiumTabs.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FDD43E851C2049D300293223 /* SimpleVideoFormatParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD43E841C2049D300293223 /* SimpleVideoFormatParser.m */; };
 		FDD5EEF71AC944020036B829 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD5EEF61AC944020036B829 /* WebKit.framework */; };
 		FDDE11601BA9459E00230184 /* reverseHTTP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */; };
 		FDDE11611BA9497000230184 /* reverseHTTP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */; };
@@ -352,8 +352,6 @@
 		FD1954C11B259368003A958F /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Socket.cpp; path = LiveChat/Socket.cpp; sourceTree = "<group>"; };
 		FD1954C21B259368003A958F /* Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Socket.hpp; path = LiveChat/Socket.hpp; sourceTree = "<group>"; };
 		FD1954C61B25942F003A958F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Others/main.m; sourceTree = "<group>"; };
-		FD1954CB1B259457003A958F /* ISSoundAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSoundAdditions.h; path = Others/ISSoundAdditions.h; sourceTree = "<group>"; };
-		FD1954CC1B259457003A958F /* ISSoundAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSoundAdditions.m; path = Others/ISSoundAdditions.m; sourceTree = "<group>"; };
 		FD1954CE1B259462003A958F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Others/AppDelegate.h; sourceTree = "<group>"; };
 		FD1954CF1B259462003A958F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Others/AppDelegate.m; sourceTree = "<group>"; };
 		FD1954D11B25947A003A958F /* PlayLocalFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayLocalFile.h; path = PlayerView/PlayLocalFile.h; sourceTree = "<group>"; };
@@ -476,6 +474,8 @@
 		FDCA487A1BAB5256001ACB8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FDCF6E3A1C1068DF00A8A860 /* error.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = error.html; path = WebPages/error.html; sourceTree = "<group>"; };
+		FDD43E831C2049D300293223 /* SimpleVideoFormatParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleVideoFormatParser.h; path = Others/SimpleVideoFormatParser.h; sourceTree = "<group>"; };
+		FDD43E841C2049D300293223 /* SimpleVideoFormatParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleVideoFormatParser.m; path = Others/SimpleVideoFormatParser.m; sourceTree = "<group>"; };
 		FDD5EEF61AC944020036B829 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = reverseHTTP.cpp; path = AirPlay/reverseHTTP.cpp; sourceTree = "<group>"; };
 		FDDE115F1BA9459E00230184 /* reverseHTTP.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = reverseHTTP.hpp; path = AirPlay/reverseHTTP.hpp; sourceTree = "<group>"; };
@@ -892,14 +892,14 @@
 			children = (
 				FD3CED961BC6A7E100BE9A8B /* PFAboutWindowController.h */,
 				FD3CED971BC6A7E100BE9A8B /* PFAboutWindowController.m */,
-				FD1954CB1B259457003A958F /* ISSoundAdditions.h */,
-				FD1954CC1B259457003A958F /* ISSoundAdditions.m */,
 				FD1954F61B259AF6003A958F /* Analytics.h */,
 				FD7257251B9D5E190015B0F1 /* Analytics.mm */,
 				FD62CC871B6E6848000AED57 /* MBProgressHUD.h */,
 				FD62CC881B6E6848000AED57 /* MBProgressHUD.m */,
 				FD83027B1BAB303C00FF68DB /* DonateView.h */,
 				FD83027C1BAB303C00FF68DB /* DonateView.mm */,
+				FDD43E831C2049D300293223 /* SimpleVideoFormatParser.h */,
+				FDD43E841C2049D300293223 /* SimpleVideoFormatParser.m */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -1401,7 +1401,6 @@
 				FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */,
 				FD3CED981BC6A7E100BE9A8B /* PFAboutWindowController.m in Sources */,
 				FDFAD6841C007DCF00BA06C7 /* NHDisplayLink.m in Sources */,
-				FD1954CD1B259457003A958F /* ISSoundAdditions.m in Sources */,
 				FD1954D01B259462003A958F /* AppDelegate.m in Sources */,
 				FD5B0C621B9ABAFF00045F10 /* TWebView.mm in Sources */,
 				FDFAD6811C007BA700BA06C7 /* NSValue+iOS.m in Sources */,
@@ -1440,6 +1439,7 @@
 				FDFE45221C0073150006856E /* BarrageDispatcher.m in Sources */,
 				FDFE451F1C0073150006856E /* BarrageCanvas.m in Sources */,
 				FD36B0F51B99B62600FB32CC /* ToolBar.m in Sources */,
+				FDD43E851C2049D300293223 /* SimpleVideoFormatParser.m in Sources */,
 				C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */,
 				FD36B0B31B988FE200FB32CC /* Browser.mm in Sources */,
 				FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */,
