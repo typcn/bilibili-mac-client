@@ -9,7 +9,6 @@ function applyUI(){
         if(!$('.z_top_nav ul .update')[0]){
             $('.z_top_nav ul').append('<li class="update"><a class="i-link" href="javascript:window.sendToView({action: \'checkforUpdate\',data:\'none\'});">检查更新</a></li>');
         }
-        $(".b-head-s").html('由于 B 站网页 BUG，标签需要点击两次才能显示内容');
         if(!$('.i_face').attr('src')){
             $('.login').css('width',200).children('span').html('点击登录客户端以便发送弹幕');
         }else{
@@ -65,6 +64,7 @@ function applyUI(){
                 console.log("inject topic page");
                 $('embed').parent().html(window.injectHTML);
             }else{
+                window.sendToView({action:'preloadComment',data:TYPCN_PLAYER_CID});
                 window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + window.location.href + '|' + document.title;
                 console.log("inject player page");
                 $('#bofqi').html(window.injectHTML);
@@ -77,7 +77,6 @@ function applyUI(){
                         ph.style.backgroundAttachment = "initial";
                     }
                 }
-                
                 if(window.location.href.indexOf('autoplay') > -1){
                     setTimeout(function(){
                        window.sendToView({action:'playVideoByCID',data:TYPCN_PLAYER_CID})

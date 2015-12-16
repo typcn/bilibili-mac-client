@@ -13,6 +13,7 @@
 #import <IOKit/pwr_mgt/IOPMLib.h>
 #import "BarrageHeader.h"
 #import "SimpleVideoFormatParser.h"
+#import "PreloadManager.h"
 
 #include "../CommentConvert/danmaku2ass.hpp"
 #include <stdio.h>
@@ -702,15 +703,18 @@ static void wakeup(void *context) {
     
     BOOL LC = [vCID isEqualToString:@"LOCALVIDEO"];
     
-    NSString *stringURL = [NSString stringWithFormat:@"http://comment.bilibili.com/%@.xml",vCID];
-    if(LC){
-        stringURL = cmFile;
+    NSData *urlData = [[PreloadManager sharedInstance] GetComment:vCID];
+    
+    if(!urlData){
+        NSString *stringURL = [NSString stringWithFormat:@"http://comment.bilibili.com/%@.xml",vCID];
+        if(LC){
+            stringURL = cmFile;
+        }
+        NSLog(@"Getting Comments from %@",stringURL);
+        urlData = [NSData dataWithContentsOfURL:[NSURL URLWithString:stringURL]];
+    }else{
+        NSLog(@"Comment cache hit from PreloadManager");
     }
-    
-    NSLog(@"Getting Comments from %@",stringURL);
-    
-    NSURL  *url = [NSURL URLWithString:stringURL];
-    NSData *urlData = [NSData dataWithContentsOfURL:url];
     
     if (urlData or LC)
     {

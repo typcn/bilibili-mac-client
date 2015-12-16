@@ -10,6 +10,8 @@
 #import "Analytics.h"
 #import "WebTabView.h"
 #import "downloadWrapper.h"
+#import "PreloadManager.h"
+
 #import <Sparkle/Sparkle.h>
 #import <GCDWebServers/GCDWebServer.h>
 #import <GCDWebServers/GCDWebServerDataRequest.h>
@@ -139,7 +141,8 @@ int forceIPFake;
                 if([arr count] == 4){
                     forceIPFake = [arr[3] intValue];
                 }
-                
+            }else if([action isEqualToString:@"preloadComment"]){
+                [[PreloadManager sharedInstance] preloadComment:data];
             }else if([action isEqualToString:@"showAirPlayByCID"]){
                 NSArray *arr = [data componentsSeparatedByString:@"|"];
                 if([arr count] == 1){

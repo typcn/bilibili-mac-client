@@ -112,6 +112,7 @@
 		FD98B2281C119243001A0382 /* NetErr.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD98B2261C119243001A0382 /* NetErr.strings */; };
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB54D601BCB6B68007A1615 /* BrowserExtInterface.m */; };
+		FDC5C4EC1C213EE400B29890 /* PreloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C4EB1C213EE400B29890 /* PreloadManager.m */; };
 		FDCA487C1BAB59A0001ACB8D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */; };
 		FDCF6E3B1C1068DF00A8A860 /* error.html in Resources */ = {isa = PBXBuildFile; fileRef = FDCF6E3A1C1068DF00A8A860 /* error.html */; };
 		FDD1FDD41B9B14F9006711B0 /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; };
@@ -470,6 +471,8 @@
 		FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FDB54D5F1BCB6B68007A1615 /* BrowserExtInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrowserExtInterface.h; path = RemoteCall/BrowserExtInterface.h; sourceTree = "<group>"; };
 		FDB54D601BCB6B68007A1615 /* BrowserExtInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrowserExtInterface.m; path = RemoteCall/BrowserExtInterface.m; sourceTree = "<group>"; };
+		FDC5C4EA1C213EE400B29890 /* PreloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreloadManager.h; path = RemoteCall/PreloadManager.h; sourceTree = "<group>"; };
+		FDC5C4EB1C213EE400B29890 /* PreloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreloadManager.m; path = RemoteCall/PreloadManager.m; sourceTree = "<group>"; };
 		FDCA48771BAB4F92001ACB8D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		FDCA487A1BAB5256001ACB8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -997,6 +1000,8 @@
 				FD59846B1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m */,
 				FDB54D5F1BCB6B68007A1615 /* BrowserExtInterface.h */,
 				FDB54D601BCB6B68007A1615 /* BrowserExtInterface.m */,
+				FDC5C4EA1C213EE400B29890 /* PreloadManager.h */,
+				FDC5C4EB1C213EE400B29890 /* PreloadManager.m */,
 			);
 			name = RemoteCall;
 			sourceTree = "<group>";
@@ -1400,6 +1405,7 @@
 				FDFAD67B1C0078CD00BA06C7 /* NSLabel.m in Sources */,
 				FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */,
 				FD3CED981BC6A7E100BE9A8B /* PFAboutWindowController.m in Sources */,
+				FDC5C4EC1C213EE400B29890 /* PreloadManager.m in Sources */,
 				FDFAD6841C007DCF00BA06C7 /* NHDisplayLink.m in Sources */,
 				FD1954D01B259462003A958F /* AppDelegate.m in Sources */,
 				FD5B0C621B9ABAFF00045F10 /* TWebView.mm in Sources */,
