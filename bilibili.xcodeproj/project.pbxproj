@@ -116,7 +116,7 @@
 		FDCF6E3B1C1068DF00A8A860 /* error.html in Resources */ = {isa = PBXBuildFile; fileRef = FDCF6E3A1C1068DF00A8A860 /* error.html */; };
 		FDD1FDD41B9B14F9006711B0 /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; };
 		FDD1FDD51B9B14F9006711B0 /* ChromiumTabs.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FDD43E851C2049D300293223 /* SimpleVideoFormatParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD43E841C2049D300293223 /* SimpleVideoFormatParser.m */; };
+		FDD43E851C2049D300293223 /* SimpleVideoFormatParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = FDD43E841C2049D300293223 /* SimpleVideoFormatParser.mm */; };
 		FDD5EEF71AC944020036B829 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDD5EEF61AC944020036B829 /* WebKit.framework */; };
 		FDDE11601BA9459E00230184 /* reverseHTTP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */; };
 		FDDE11611BA9497000230184 /* reverseHTTP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */; };
@@ -475,7 +475,7 @@
 		FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FDCF6E3A1C1068DF00A8A860 /* error.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = error.html; path = WebPages/error.html; sourceTree = "<group>"; };
 		FDD43E831C2049D300293223 /* SimpleVideoFormatParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpleVideoFormatParser.h; path = Others/SimpleVideoFormatParser.h; sourceTree = "<group>"; };
-		FDD43E841C2049D300293223 /* SimpleVideoFormatParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpleVideoFormatParser.m; path = Others/SimpleVideoFormatParser.m; sourceTree = "<group>"; };
+		FDD43E841C2049D300293223 /* SimpleVideoFormatParser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = SimpleVideoFormatParser.mm; path = Others/SimpleVideoFormatParser.mm; sourceTree = "<group>"; };
 		FDD5EEF61AC944020036B829 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = reverseHTTP.cpp; path = AirPlay/reverseHTTP.cpp; sourceTree = "<group>"; };
 		FDDE115F1BA9459E00230184 /* reverseHTTP.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = reverseHTTP.hpp; path = AirPlay/reverseHTTP.hpp; sourceTree = "<group>"; };
@@ -899,7 +899,7 @@
 				FD83027B1BAB303C00FF68DB /* DonateView.h */,
 				FD83027C1BAB303C00FF68DB /* DonateView.mm */,
 				FDD43E831C2049D300293223 /* SimpleVideoFormatParser.h */,
-				FDD43E841C2049D300293223 /* SimpleVideoFormatParser.m */,
+				FDD43E841C2049D300293223 /* SimpleVideoFormatParser.mm */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -1439,7 +1439,7 @@
 				FDFE45221C0073150006856E /* BarrageDispatcher.m in Sources */,
 				FDFE451F1C0073150006856E /* BarrageCanvas.m in Sources */,
 				FD36B0F51B99B62600FB32CC /* ToolBar.m in Sources */,
-				FDD43E851C2049D300293223 /* SimpleVideoFormatParser.m in Sources */,
+				FDD43E851C2049D300293223 /* SimpleVideoFormatParser.mm in Sources */,
 				C56A943D1B36E837005C274F /* WebView+SwipeNavigation.m in Sources */,
 				FD36B0B31B988FE200FB32CC /* Browser.mm in Sources */,
 				FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */,

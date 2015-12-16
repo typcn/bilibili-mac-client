@@ -8,11 +8,11 @@
 
 #import "client.h"
 #import "PlayerView.h"
-#import "ISSoundAdditions.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "MediaInfoDLL.h"
 #import <IOKit/pwr_mgt/IOPMLib.h>
 #import "BarrageHeader.h"
+#import "SimpleVideoFormatParser.h"
 
 #include "../CommentConvert/danmaku2ass.hpp"
 #include <stdio.h>
@@ -646,7 +646,12 @@ static void wakeup(void *context) {
 }
 
 - (NSDictionary *) getVideoInfo:(NSString *)url{
-
+    if([url containsString:@"acgvideo.com"]){
+        NSDictionary *dic =  readVideoInfoFromURL(url);
+        if(dic){
+            return dic;
+        }
+    }
     MediaInfoDLL::MediaInfo MI = *new MediaInfoDLL::MediaInfo;
     MI.Open([url cStringUsingEncoding:NSUTF8StringEncoding]);
     MI.Option(__T("Inform"), __T("Video;%Width%"));
