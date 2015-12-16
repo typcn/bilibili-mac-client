@@ -29,7 +29,7 @@ NSData *SendRangeHTTPRequest(NSString *URL,int length){
     }
 }
 
-int magicFind_Loop(uint8_t *bytes,unsigned long length,const uint8_t *magic){
+inline int magicFind_Loop(uint8_t *bytes,unsigned long length,const uint8_t *magic){
     int qQuickFindLength = ((int)(length/4)) + 1;
     for(int i = 0;i < qQuickFindLength;i++){
         int ix = i*4;
@@ -71,8 +71,52 @@ NSDictionary *findMP4Resolution(NSData *videoData){
     }
 }
 
+inline int FLVCharFind_Loop(uint8_t *bytes,unsigned long length,const uint8_t *magic){
+    for(int i = 0;i < length;i++){
+        if(bytes[i] == magic[0]   && bytes[i+1] == magic[1] &&
+           bytes[i+2] == magic[2] && bytes[i+3] == magic[3] && bytes[i+4] == magic[4]){
+            return i;
+        }
+    }
+    return -1;
+}
+
+inline double get_double_from_BE_binary(uint64_t *be_bin){
+    uint64_t output = *be_bin;
+    output = (output & 0x00000000FFFFFFFF) << 32 | (output & 0xFFFFFFFF00000000) >> 32;
+    output = (output & 0x0000FFFF0000FFFF) << 16 | (output & 0xFFFF0000FFFF0000) >> 16;
+    output = (output & 0x00FF00FF00FF00FF) << 8  | (output & 0xFF00FF00FF00FF00) >> 8;
+    return *((double*)&output);
+}
+
 NSDictionary *findFLVResolution(NSData *videoData){
-    // TODO
+    // For any flv file
+    uint8_t *videoBytes = (uint8_t *)[videoData bytes];
+    static const uint8_t height[] = { 0x68, 0x65, 0x69, 0x67, 0x68};
+    static const uint8_t width[] = { 0x77, 0x69, 0x64, 0x74, 0x68 };
+    int heightLoc = FLVCharFind_Loop(videoBytes,[videoData length],height);
+    int widthLoc  = FLVCharFind_Loop(videoBytes,[videoData length],width);
+    if(heightLoc > -1 && widthLoc > -1){
+        uint64_t h_BE_Binary;
+        uint64_t w_BE_Binary;
+        memcpy(&h_BE_Binary, videoBytes + heightLoc + 7, 8);
+        memcpy(&w_BE_Binary, videoBytes + widthLoc  + 6, 8);
+        double height = get_double_from_BE_binary(&h_BE_Binary);
+        double width = get_double_from_BE_binary(&w_BE_Binary);
+        
+        if(width > 100 & height > 100 && width < 5000 && height < 3000){
+            return @{
+                     @"width": [NSNumber numberWithInt:(int)width],
+                     @"height": [NSNumber numberWithInt:(int)height],
+                     };
+        }else{
+            NSLog(@"[SimpleParser][FLV] Invalid data: %f %f",width,height);
+            return NULL;
+        }
+    }else{
+        NSLog(@"[SimpleParser][FLV] Size pattern not found");
+        return NULL;
+    }
 }
 
 NSDictionary *readVideoInfoFromURL(NSString *URL) {
