@@ -11,6 +11,7 @@
 #import "Popover.h"
 #import "PFAboutWindowController.h"
 #import "WebTabView.h"
+#import "PJTernarySearchTree.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 
@@ -159,6 +160,7 @@ Browser *browser;
 #ifndef DEBUG
         [Fabric with:@[[Crashlytics class]]];
 #endif
+        [PJTernarySearchTree sharedTree]; // Preload Shared Tree
     });
 }
 

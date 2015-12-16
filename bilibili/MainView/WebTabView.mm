@@ -9,6 +9,7 @@
 #import "WebTabView.h"
 #import "ToolBar.h"
 #import "Analytics.h"
+#import "PJTernarySearchTree.h"
 
 @implementation WebTabView {
     PluginManager *pm;
@@ -226,6 +227,7 @@
 {
     [self setIsLoading:NO];
     [self setTitle:[webView getTitle]];
+    [[PJTernarySearchTree sharedTree] insertString:[webView getURL]];
 }
 
 - (void)onTitleChange:(NSString *)str{

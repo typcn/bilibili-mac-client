@@ -113,6 +113,12 @@
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB54D601BCB6B68007A1615 /* BrowserExtInterface.m */; };
 		FDC5C4EC1C213EE400B29890 /* PreloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C4EB1C213EE400B29890 /* PreloadManager.m */; };
+		FDC5C4F31C21941E00B29890 /* AutoSuggestTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDC5C4F11C21941E00B29890 /* AutoSuggestTable.xib */; };
+		FDC5C4F61C21947A00B29890 /* AutoSuggestTable.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C4F51C21947A00B29890 /* AutoSuggestTable.m */; };
+		FDC5C4F91C2194FE00B29890 /* AddressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C4F81C2194FE00B29890 /* AddressBar.m */; };
+		FDC5C4FB1C219D1300B29890 /* webpage.png in Resources */ = {isa = PBXBuildFile; fileRef = FDC5C4FA1C219D1300B29890 /* webpage.png */; };
+		FDC5C4FD1C21A0E800B29890 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = FDC5C4FC1C21A0E800B29890 /* search.png */; };
+		FDC5C5001C21A21800B29890 /* PJTernarySearchTree.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C4FF1C21A21800B29890 /* PJTernarySearchTree.m */; };
 		FDCA487C1BAB59A0001ACB8D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */; };
 		FDCF6E3B1C1068DF00A8A860 /* error.html in Resources */ = {isa = PBXBuildFile; fileRef = FDCF6E3A1C1068DF00A8A860 /* error.html */; };
 		FDD1FDD41B9B14F9006711B0 /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; };
@@ -473,6 +479,15 @@
 		FDB54D601BCB6B68007A1615 /* BrowserExtInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrowserExtInterface.m; path = RemoteCall/BrowserExtInterface.m; sourceTree = "<group>"; };
 		FDC5C4EA1C213EE400B29890 /* PreloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreloadManager.h; path = RemoteCall/PreloadManager.h; sourceTree = "<group>"; };
 		FDC5C4EB1C213EE400B29890 /* PreloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreloadManager.m; path = RemoteCall/PreloadManager.m; sourceTree = "<group>"; };
+		FDC5C4F21C21941E00B29890 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AutoSuggestTable.xib; sourceTree = "<group>"; };
+		FDC5C4F41C21947A00B29890 /* AutoSuggestTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutoSuggestTable.h; path = MainView/AutoSuggestTable.h; sourceTree = "<group>"; };
+		FDC5C4F51C21947A00B29890 /* AutoSuggestTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AutoSuggestTable.m; path = MainView/AutoSuggestTable.m; sourceTree = "<group>"; };
+		FDC5C4F71C2194FE00B29890 /* AddressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressBar.h; path = MainView/AddressBar.h; sourceTree = "<group>"; };
+		FDC5C4F81C2194FE00B29890 /* AddressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressBar.m; path = MainView/AddressBar.m; sourceTree = "<group>"; };
+		FDC5C4FA1C219D1300B29890 /* webpage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = webpage.png; path = bilibili/img/webpage.png; sourceTree = "<group>"; };
+		FDC5C4FC1C21A0E800B29890 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = bilibili/img/search.png; sourceTree = "<group>"; };
+		FDC5C4FE1C21A21800B29890 /* PJTernarySearchTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJTernarySearchTree.h; path = Others/PJTernarySearchTree.h; sourceTree = "<group>"; };
+		FDC5C4FF1C21A21800B29890 /* PJTernarySearchTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJTernarySearchTree.m; path = Others/PJTernarySearchTree.m; sourceTree = "<group>"; };
 		FDCA48771BAB4F92001ACB8D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		FDCA487A1BAB5256001ACB8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -886,6 +901,10 @@
 				FD36B0B21B988FE200FB32CC /* Browser.mm */,
 				FD36B0F31B99B62600FB32CC /* ToolBar.h */,
 				FD36B0F41B99B62600FB32CC /* ToolBar.m */,
+				FDC5C4F41C21947A00B29890 /* AutoSuggestTable.h */,
+				FDC5C4F51C21947A00B29890 /* AutoSuggestTable.m */,
+				FDC5C4F71C2194FE00B29890 /* AddressBar.h */,
+				FDC5C4F81C2194FE00B29890 /* AddressBar.m */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -903,6 +922,8 @@
 				FD83027C1BAB303C00FF68DB /* DonateView.mm */,
 				FDD43E831C2049D300293223 /* SimpleVideoFormatParser.h */,
 				FDD43E841C2049D300293223 /* SimpleVideoFormatParser.mm */,
+				FDC5C4FE1C21A21800B29890 /* PJTernarySearchTree.h */,
+				FDC5C4FF1C21A21800B29890 /* PJTernarySearchTree.m */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -933,6 +954,7 @@
 				FD0829C71B67844500D2B126 /* Main.storyboard */,
 				FD076C5D1AC8CBBB00C893FA /* Images.xcassets */,
 				FDDE116D1BA997EB00230184 /* AirPlay.xib */,
+				FDC5C4F11C21941E00B29890 /* AutoSuggestTable.xib */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -950,6 +972,8 @@
 		FD4D37691ACEF3F20022ABF3 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				FDC5C4FC1C21A0E800B29890 /* search.png */,
+				FDC5C4FA1C219D1300B29890 /* webpage.png */,
 				FD4EDBB21BE42C66009309EC /* mpv.icns */,
 				FD4D376A1ACEF3FE0022ABF3 /* loading.gif */,
 				FD62CC831B6E661F000AED57 /* reload.png */,
@@ -1300,6 +1324,7 @@
 				FD3553B71B9C4356000EE41E /* titlebar-middle.png in Resources */,
 				FD62CC841B6E661F000AED57 /* reload.png in Resources */,
 				FD36B0EE1B99B48B00FB32CC /* backwards.png in Resources */,
+				FDC5C4F31C21941E00B29890 /* AutoSuggestTable.xib in Resources */,
 				FDDE116F1BA997EB00230184 /* AirPlay.xib in Resources */,
 				FD3553AE1B9C4356000EE41E /* fold.pdf in Resources */,
 				FD3553B81B9C4356000EE41E /* toolbar_audio.icns in Resources */,
@@ -1328,9 +1353,11 @@
 				FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */,
 				FD3553BD1B9C4356000EE41E /* vol_mid.pdf in Resources */,
 				FD3553BB1B9C4356000EE41E /* vol_high.pdf in Resources */,
+				FDC5C4FB1C219D1300B29890 /* webpage.png in Resources */,
 				FD3553B11B9C4356000EE41E /* pause.pdf in Resources */,
 				FD3553B91B9C4356000EE41E /* toolbar_video.icns in Resources */,
 				FD36B0F11B99B48B00FB32CC /* menubutton.png in Resources */,
+				FDC5C4FD1C21A0E800B29890 /* search.png in Resources */,
 				FD3553AF1B9C4356000EE41E /* mute.pdf in Resources */,
 				FD3553BE1B9C4356000EE41E /* vol_no.pdf in Resources */,
 				FD3CED951BC6A65F00BE9A8B /* PFAboutWindow.xib in Resources */,
@@ -1404,6 +1431,7 @@
 				FD1954C51B259368003A958F /* Socket.cpp in Sources */,
 				FDFAD67B1C0078CD00BA06C7 /* NSLabel.m in Sources */,
 				FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */,
+				FDC5C4F61C21947A00B29890 /* AutoSuggestTable.m in Sources */,
 				FD3CED981BC6A7E100BE9A8B /* PFAboutWindowController.m in Sources */,
 				FDC5C4EC1C213EE400B29890 /* PreloadManager.m in Sources */,
 				FDFAD6841C007DCF00BA06C7 /* NHDisplayLink.m in Sources */,
@@ -1420,6 +1448,7 @@
 				FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */,
 				FDFE45211C0073150006856E /* BarrageDescriptor.m in Sources */,
 				FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */,
+				FDC5C5001C21A21800B29890 /* PJTernarySearchTree.m in Sources */,
 				FDFE452C1C0073150006856E /* BarrageWalkSprite.m in Sources */,
 				FDFE45271C0073150006856E /* BarrageFloatSprite.m in Sources */,
 				FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */,
@@ -1441,6 +1470,7 @@
 				FD4B84461BA5879400DD6F2F /* ServiceDiscovery.cpp in Sources */,
 				FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */,
 				FD4B84441BA5879400DD6F2F /* AirPlay.mm in Sources */,
+				FDC5C4F91C2194FE00B29890 /* AddressBar.m in Sources */,
 				FD1954C41B259368003A958F /* LiveChat.m in Sources */,
 				FDFE45221C0073150006856E /* BarrageDispatcher.m in Sources */,
 				FDFE451F1C0073150006856E /* BarrageCanvas.m in Sources */,
@@ -1536,6 +1566,14 @@
 				FD98B2271C119243001A0382 /* Base */,
 			);
 			name = NetErr.strings;
+			sourceTree = "<group>";
+		};
+		FDC5C4F11C21941E00B29890 /* AutoSuggestTable.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDC5C4F21C21941E00B29890 /* Base */,
+			);
+			name = AutoSuggestTable.xib;
 			sourceTree = "<group>";
 		};
 		FDDE116D1BA997EB00230184 /* AirPlay.xib */ = {
