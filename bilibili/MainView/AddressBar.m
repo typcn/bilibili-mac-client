@@ -65,14 +65,16 @@ NSString *sharedURLFieldString;
         id contentView = [wv subviews][0];
         [ASTable setFrameSize:NSMakeSize([contentView frame].size.width, 200)];
         [contentView addSubview:ASTable];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             isEditing = false;
         });
     }
 }
 
 - (BOOL)textShouldEndEditing:(NSText *)textObject{
-    [ASTable removeFromSuperview];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [ASTable removeFromSuperview];
+    });
     isEditing = false;
     return YES;
 }

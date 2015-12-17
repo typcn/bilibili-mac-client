@@ -8,6 +8,7 @@
 
 #import "AutoSuggestTable.h"
 #import "PJTernarySearchTree.h"
+#import "WebTabView.h"
 
 extern NSString *sharedURLFieldString;
 
@@ -28,13 +29,28 @@ extern NSString *sharedURLFieldString;
 
 - (BOOL)tableView:(NSTableView *)aTableView shouldSelectTableColumn:(NSTableColumn *)aTableColumn{
     
-    return NO;
+    return YES;
 }
 
 
 - (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)rowIndex {
-
-    return YES;
+    if([item_cache count] > rowIndex){
+        NSString *url = [item_cache objectAtIndex:rowIndex];
+        WebTabView *tc = (WebTabView *)[browser activeTabContents];
+        [[tc GetTWebView] setURL:url];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:url userInfo:nil];
+    }else if(rowIndex == 4){
+        NSString *URL = [NSString stringWithFormat:@"http://search.bilibili.com/all?keyword=%@",sharedURLFieldString];
+        WebTabView *tc = (WebTabView *)[browser activeTabContents];
+        [[tc GetTWebView] setURL:URL];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:URL userInfo:nil];
+    }else if(rowIndex == 5){
+        NSString *URL = [NSString stringWithFormat:@"https://www.google.com/search?q=%@",sharedURLFieldString];
+        WebTabView *tc = (WebTabView *)[browser activeTabContents];
+        [[tc GetTWebView] setURL:URL];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:URL userInfo:nil];
+    }
+    return NO;
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView{
