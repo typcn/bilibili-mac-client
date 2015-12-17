@@ -302,6 +302,34 @@ Browser *browser;
     [[tc GetTWebView] setURL:u];
 }
 
+- (IBAction)addressBar:(id)sender {
+    if([browser window] && [browser window].contentView && [browser window].contentView.subviews){
+        NSArray *sv = [browser window].contentView.subviews;
+        for(int i = 0;i < sv.count; i++){
+            id obj = [sv objectAtIndex:i];
+            if(obj && [[obj className] isEqual: @"CTToolbarView"]){ // Find Toolbar
+                
+                NSArray *tbsv = [obj subviews];
+                for(int i = 0;i < tbsv.count; i++){
+                    NSTextField *tb_obj = [tbsv objectAtIndex:i];
+                    if(tb_obj && [[tb_obj className] isEqual: @"AddressBar"]){ // Find Address Bar
+
+                        [[browser window]
+                         performSelector: @selector(makeFirstResponder:) 
+                         withObject: tb_obj
+                         afterDelay:0.0];
+                        
+                        [[tb_obj currentEditor] setSelectedRange:NSMakeRange([[tb_obj stringValue] length], 0)];
+                        break;
+                    }
+                }
+                
+                break;
+            }
+        }
+    }
+    
+}
 
 - (NSString *) randomStringWithLength: (int) len {
     

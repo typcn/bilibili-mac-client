@@ -18,6 +18,9 @@ NSString *sharedURLFieldString;
     NSTableView *ASTable;
 }
 
+- (BOOL)acceptsFirstResponder{
+    return TRUE;
+}
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
