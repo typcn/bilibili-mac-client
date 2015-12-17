@@ -60,6 +60,6 @@ typedef void(^PJTernarySearchResultBlock)(NSArray * retrieved);
 
 - (void)saveTreeToFile:(NSString *)path;
 + (PJTernarySearchTree *)treeWithFile:(NSString *)path;
-
+- (dispatch_queue_t)sharedIndexQueue;
 + (instancetype)sharedTree;
 @end

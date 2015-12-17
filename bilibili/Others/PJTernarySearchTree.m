@@ -128,7 +128,9 @@
 @end
 
 
-@implementation PJTernarySearchTree
+@implementation PJTernarySearchTree{
+        int autoSaveCount;
+}
 
 @synthesize rootNode;
 
@@ -182,6 +184,24 @@
     
     NSString * stringValue = [item stringValue];
     
+    NSArray *foundStr = [self retrievePrefix:stringValue countLimit:1];
+    
+    if(foundStr && [foundStr count] > 0){
+        // Never insert same URL
+        return;
+    }
+    
+    if(!autoSaveCount){
+        autoSaveCount = 1;
+    }else if(autoSaveCount > 10){
+        dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+            [self saveTreeToFile: @"/Users/Shared/.fc/bm_index.db"];
+        });
+    }else{
+        autoSaveCount++;
+    }
+    
+    
     PJTernarySearchTreeNode * __strong * found = &(self->rootNode),* node = self->rootNode,* parent = nil;
     
     int index = 0;
@@ -212,7 +232,7 @@
     } else {
         if ([parent.item isKindOfClass:[NSMutableArray class]]) {
             [(NSMutableArray *)parent.item addObject:item];
-        } else {
+        } else {    
             parent.item = [NSMutableArray arrayWithObjects:parent.item,item, nil];
         }
     }
@@ -515,6 +535,15 @@
         __autoreleasing PJTernarySearchTree * tree = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
         return tree;
     }
+}
+
+- (dispatch_queue_t)sharedIndexQueue {
+    static dispatch_queue_t sharedQueue;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedQueue = dispatch_queue_create("com.typcn.bilibili.URLIndexThread", DISPATCH_QUEUE_SERIAL);
+    });
+    return sharedQueue;
 }
 
 + (instancetype)sharedTree {

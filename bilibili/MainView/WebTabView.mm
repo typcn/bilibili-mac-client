@@ -227,7 +227,11 @@
 {
     [self setIsLoading:NO];
     [self setTitle:[webView getTitle]];
-    [[PJTernarySearchTree sharedTree] insertString:[webView getURL]];
+    PJTernarySearchTree *tree = [PJTernarySearchTree sharedTree];
+    NSString *url = [webView getURL];
+    dispatch_async([tree sharedIndexQueue], ^(void){
+        [tree insertString:url];
+    });
 }
 
 - (void)onTitleChange:(NSString *)str{
