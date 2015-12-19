@@ -11,6 +11,7 @@
 
 extern NSString *vUrl;
 extern NSString *vCID;
+extern NSString *vAID;
 NSString *cmFile;
 NSString *subFile;
 
@@ -44,6 +45,7 @@ NSString *subFile;
             
             if(i == 0){
                 vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",realLength, @"%" , path ,@";"];
+                vAID = path; // Store first video to vAID
             }else{
                 vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@",   vUrl   , @"%",realLength, @"%" , path ,@";"];
             }

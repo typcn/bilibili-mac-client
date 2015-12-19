@@ -208,7 +208,7 @@ static void wakeup(void *context) {
         
         if([vCID isEqualToString:@"LOCALVIDEO"]){
             if([vUrl length] > 5){
-                NSDictionary *VideoInfoJson = [self getVideoInfo:vUrl];
+                NSDictionary *VideoInfoJson = [self getVideoInfo:vAID];
                 NSNumber *width = [VideoInfoJson objectForKey:@"width"];
                 NSNumber *height = [VideoInfoJson objectForKey:@"height"];
                 NSString *commentFile = @"/NotFound";
