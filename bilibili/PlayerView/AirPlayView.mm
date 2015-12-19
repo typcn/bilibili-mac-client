@@ -138,6 +138,49 @@
         });
     });
 }
+- (IBAction)playWithQT:(id)sender {
+    [self writeLog:@"正在尝试解析视频"];
+    vPID = @"1";
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\/video\\/av(\\d+)(\\/index.html|\\/index_(\\d+).html)?" options:NSRegularExpressionCaseInsensitive error:nil];
+    
+    NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
+    
+    NSRange aidRange = [match rangeAtIndex:1];
+    
+    if(aidRange.length > 0){
+        vAID = [vUrl substringWithRange:aidRange];
+        NSRange pidRange = [match rangeAtIndex:3];
+        if(pidRange.length > 0 ){
+            vPID = [vUrl substringWithRange:pidRange];
+        }
+    }else{
+        vAID = @"0";
+    }
+    
+    NSArray  *urls = vp_bili_get_url([vCID intValue],vAID,vPID, k_biliVideoType_mp4);
+    if(!urls){
+        [self writeLog:@"Bilibili API 暂时不可用，请稍后再试"];
+        return;
+    }
+    
+    NSString *playurl;
+    if([[[urls valueForKey:@"url"] className] isEqualToString:@"__NSCFString"]){
+        playurl = [urls valueForKey:@"url"];
+    }else{
+        for (NSDictionary *match in urls) {
+            playurl = [match valueForKey:@"url"];
+        }
+    }
+    if(!playurl){
+        [self writeLog:@"视频解析失败，可能是视频源已失效，或者无 MP4 格式的视频（Apple 不支持 FLV）"];
+        return;
+    }
+    
+    NSTask *task = [[NSTask alloc] init];
+    task.launchPath = @"/usr/bin/open";
+    task.arguments = @[@"-a",@"QuickTime Player",playurl];
+    [task launch];
+}
 
 - (IBAction)stopAction:(id)sender {
     dispatch_async(queue, ^(void){
