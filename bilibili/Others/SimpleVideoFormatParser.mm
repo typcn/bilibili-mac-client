@@ -29,13 +29,14 @@ NSData *SendRangeHTTPRequest(NSString *URL,int length){
     }
 }
 
-inline int magicFind_Loop(uint8_t *bytes,unsigned long length,const uint8_t *magic){
-    int qQuickFindLength = ((int)(length/4)) + 1;
-    for(int i = 0;i < qQuickFindLength;i++){
-        int ix = i*4;
-        if(bytes[ix] == magic[0]   && bytes[ix+1] == magic[1] &&
-           bytes[ix+2] == magic[2] && bytes[ix+3] == magic[3]){
-            return ix;
+inline int MP4CharFind_Loop(uint8_t *bytes,unsigned long length,const uint8_t *magic){
+    for(int i = 0;i < length;i++){
+        if(i > length - 4){ // Ignore last char
+            return -1;
+        }
+        if(bytes[i] == magic[0]   && bytes[i+1] == magic[1] &&
+           bytes[i+2] == magic[2] && bytes[i+3] == magic[3]){
+            return i;
         }
     }
     return -1;
@@ -45,7 +46,7 @@ NSDictionary *findMP4Resolution(NSData *videoData){
     // For FFMpeg only !
     static const uint8_t magic[] = { 0x65, 0x64, 0x74, 0x73 };
     uint8_t *videoBytes = (uint8_t *)[videoData bytes];
-    int loc = magicFind_Loop(videoBytes, [videoData length], magic);
+    int loc = MP4CharFind_Loop(videoBytes, [videoData length], magic);
     if (loc != -1) {
         uint8_t hBytes[2];
         uint8_t wBytes[2];
@@ -73,6 +74,9 @@ NSDictionary *findMP4Resolution(NSData *videoData){
 
 inline int FLVCharFind_Loop(uint8_t *bytes,unsigned long length,const uint8_t *magic){
     for(int i = 0;i < length;i++){
+        if(i > length - 5){ // Ignore last char
+            return -1;
+        }
         if(bytes[i] == magic[0]   && bytes[i+1] == magic[1] &&
            bytes[i+2] == magic[2] && bytes[i+3] == magic[3] && bytes[i+4] == magic[4]){
             return i;
