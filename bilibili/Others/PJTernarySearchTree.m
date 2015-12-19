@@ -195,7 +195,7 @@
         autoSaveCount = 1;
     }else if(autoSaveCount > 10){
         dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
-            [self saveTreeToFile: @"/Users/Shared/.fc/bm_index.db"];
+            //[self saveTreeToFile: @"/Users/Shared/.fc/bm_index.db"];
         });
     }else{
         autoSaveCount++;
@@ -550,13 +550,13 @@
     static id sharedInstance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        NSString *savePath = @"/Users/Shared/.fc/bm_index.db";
-        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:savePath];
-        if(fileExists){
-            sharedInstance = [self treeWithFile:savePath];
-        }else{
+        //NSString *savePath = @"/Users/Shared/.fc/bm_index.db";
+        //BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:savePath];
+        //if(fileExists){
+            //sharedInstance = [self treeWithFile:savePath];
+        //}else{
             sharedInstance = [[self alloc] init];
-        }
+        //}
     });
     return sharedInstance;
 }
