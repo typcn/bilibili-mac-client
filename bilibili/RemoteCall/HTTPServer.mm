@@ -416,6 +416,7 @@ int forceIPFake;
 //    }
     parsing = true;
     vCID = @"LOCALVIDEO";
+    vAID = Url;
     vUrl = Url;
     
     if(acceptAnalytics == 1){
