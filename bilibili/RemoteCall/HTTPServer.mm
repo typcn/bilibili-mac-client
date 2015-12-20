@@ -87,6 +87,15 @@ int forceIPFake;
     NSString *webPath = [NSString stringWithFormat:@"%@/webpage/",[[NSBundle mainBundle] resourcePath]];
     [webServer addGETHandlerForBasePath:@"/static/" directoryPath:webPath indexFilename:nil cacheAge:3600 allowRangeRequests:false];
     
+    
+    NSString *tmpPath = [NSString stringWithFormat:@"%@/bilimac_http_serv/",NSTemporaryDirectory()];
+    [webServer addGETHandlerForBasePath:@"/temp_content/" directoryPath:tmpPath indexFilename:nil cacheAge:3600 allowRangeRequests:true];
+    
+    [[NSFileManager defaultManager] createDirectoryAtPath:tmpPath
+                              withIntermediateDirectories:YES
+                                               attributes:nil
+                                                    error:nil];
+    
     // Blur image
     
     [webServer addHandlerForMethod:@"GET" pathRegex:@"/blur/.*"
