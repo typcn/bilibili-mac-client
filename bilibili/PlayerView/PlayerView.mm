@@ -647,7 +647,7 @@ static void wakeup(void *context) {
 }
 
 - (NSDictionary *) getVideoInfo:(NSString *)url{
-    if([url containsString:@"acgvideo.com"]){
+    if([url containsString:@"acgvideo.com"] && ![url containsString:@"live"]){
         NSDictionary *dic =  readVideoInfoFromURL(url);
         if(dic){
             return dic;
