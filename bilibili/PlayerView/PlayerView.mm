@@ -1029,6 +1029,7 @@ BOOL hide = NO;
 BOOL obServer = NO;
 BOOL isFirstCall = YES;
 BOOL shiftKeyPressed = NO;
+BOOL frontMost = NO;
 
 - (BOOL)canBecomeMainWindow { return YES; }
 - (BOOL)canBecomeKeyWindow { return YES; }
@@ -1153,10 +1154,17 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             // Nothing to do
             break;
         }
-        case 3:{ // Command+F key to toggle fullscreen
+        case 3:{
             NSUInteger flags = [[NSApp currentEvent] modifierFlags];
             if ((flags & NSCommandKeyMask)) {
-                [self toggleFullScreen:self];
+                [self toggleFullScreen:self]; // Command+F key to toggle fullscreen
+            }else if(frontMost){
+                [self setLevel:NSNormalWindowLevel];
+                frontMost = NO;
+            }else{
+                [self setLevel:NSScreenSaverWindowLevel + 1]; // F key to front most
+                [self orderFront:nil];
+                frontMost = YES;
             }
             break;
         }
@@ -1166,6 +1174,7 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             });
             break;
         }
+
         default:
             [self handleKeyboardEvnet:event keyDown:YES];
             break;
