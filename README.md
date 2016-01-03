@@ -2,10 +2,6 @@
 
 An unofficial bilibili client for mac
 
-注意：原有百度网盘地址被系统取消掉了，请大家在页面下方使用新的地址下载。
-
-PS: 有点事，下周恢复更新
-
 # Features
 - 硬解播放
 - libass 显示弹幕，超低 CPU 占用
