@@ -76,7 +76,12 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
                                      @"method": @"aria2.addUri",
                                      @"params": @[
                                              @[tmp],
-                                             @{@"dir": path}
+                                             @{
+                                                 @"dir": path,
+                                                 @"split": @"10",
+                                                 @"max-connection-per-server" : @"10",
+                                                 @"min-split-size": @"1M"
+                                                 },
                                              ]
                                      };
         request.HTTPBody = [NSJSONSerialization dataWithJSONObject:bodyObject options:kNilOptions error:NULL];
@@ -105,7 +110,12 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
                                          @"method": @"aria2.addUri",
                                          @"params": @[
                                                  @[tmp],
-                                                 @{@"dir": path}
+                                                 @{
+                                                     @"dir": path,
+                                                     @"split": @"10",
+                                                     @"max-connection-per-server" : @"10",
+                                                     @"min-split-size": @"1M"
+                                                     },
                                                  ]
                                          };
             request.HTTPBody = [NSJSONSerialization dataWithJSONObject:bodyObject options:kNilOptions error:NULL];
