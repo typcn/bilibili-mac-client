@@ -32,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1613</string>
+	<string>1614</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -57,7 +57,7 @@
 		<true/>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyleft © 2015 TYPCN.</string>
+	<string>Copyleft © 2016 TYPCN.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>

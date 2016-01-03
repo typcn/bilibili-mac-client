@@ -3,7 +3,7 @@
 //  bilibili
 //
 //  Created by TYPCN on 2015/3/30.
-//  Copyleft 2015 TYPCN. All rights reserved.
+//  Copyleft 2016 TYPCN. All rights reserved.
 //
 
 #import "AppDelegate.h"

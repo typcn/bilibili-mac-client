@@ -41,8 +41,8 @@
 /* Class = "NSButtonCell"; title = "屏蔽剧透弹幕"; ObjectID = "5dB-gK-hjd"; */
 "5dB-gK-hjd.title" = "屏蔽剧透弹幕";
 
-/* Class = "NSTextFieldCell"; title = "开发者: typcn\n博客: http://blog.eqoe.cn\n源代码: https://github.com/typcn/bilibili-mac-client\n许可协议: GPLv2\n\n感谢：\nBilidan - https://github.com/m13253/BiliDan\n\n使用以下开源项目:\nMPV - https://github.com/mpv-player/mpv\nISSoundAdditions - https://github.com/InerziaSoft/ISSoundAdditions\nSparkle - https://github.com/sparkle-project/Sparkle\nDanmaku2ASS - https://github.com/m13253/danmaku2ass\nFFmpeg - https://www.ffmpeg.org/\n\nCopyleft 2015 TYPCN"; ObjectID = "6Cc-jO-u6M"; */
-"6Cc-jO-u6M.title" = "开发者: typcn\n博客: http://blog.eqoe.cn\n源代码: https://github.com/typcn/bilibili-mac-client\n许可协议: GPLv2\n\n感谢：\nBilidan - https://github.com/m13253/BiliDan\n\n使用以下开源项目:\nMPV - https://github.com/mpv-player/mpv\nISSoundAdditions - https://github.com/InerziaSoft/ISSoundAdditions\nSparkle - https://github.com/sparkle-project/Sparkle\nDanmaku2ASS - https://github.com/m13253/danmaku2ass\nFFmpeg - https://www.ffmpeg.org/\n\nCopyleft 2015 TYPCN";
+/* Class = "NSTextFieldCell"; title = "开发者: typcn\n博客: http://blog.eqoe.cn\n源代码: https://github.com/typcn/bilibili-mac-client\n许可协议: GPLv2\n\n感谢：\nBilidan - https://github.com/m13253/BiliDan\n\n使用以下开源项目:\nMPV - https://github.com/mpv-player/mpv\nISSoundAdditions - https://github.com/InerziaSoft/ISSoundAdditions\nSparkle - https://github.com/sparkle-project/Sparkle\nDanmaku2ASS - https://github.com/m13253/danmaku2ass\nFFmpeg - https://www.ffmpeg.org/\n\nCopyleft 2016 TYPCN"; ObjectID = "6Cc-jO-u6M"; */
+"6Cc-jO-u6M.title" = "开发者: typcn\n博客: http://blog.eqoe.cn\n源代码: https://github.com/typcn/bilibili-mac-client\n许可协议: GPLv2\n\n感谢：\nBilidan - https://github.com/m13253/BiliDan\n\n使用以下开源项目:\nMPV - https://github.com/mpv-player/mpv\nISSoundAdditions - https://github.com/InerziaSoft/ISSoundAdditions\nSparkle - https://github.com/sparkle-project/Sparkle\nDanmaku2ASS - https://github.com/m13253/danmaku2ass\nFFmpeg - https://www.ffmpeg.org/\n\nCopyleft 2016 TYPCN";
 
 /* Class = "NSMenu"; title = "标签"; ObjectID = "6Gu-aq-F1o"; */
 "6Gu-aq-F1o.title" = "标签";

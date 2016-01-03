@@ -2,7 +2,7 @@
 //  Plugin common API
 //
 //  Created by TYPCN on 2015/9/21.
-//  Copyright © 2015 TYPCN. All rights reserved.
+//  Copyright © 2016 TYPCN. All rights reserved.
 //
 
 #import "VPPlugin.h"

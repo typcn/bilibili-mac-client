@@ -3,7 +3,7 @@
 //  bilibili
 //
 //  Created by TYPCN on 2015/9/5.
-//  Copyright (c) 2015 TYPCN. All rights reserved.
+//  Copyright (c) 2016 TYPCN. All rights reserved.
 //
 
 // 为啥要这样而不是做 provider 类然后继承呢？其实主要是懒。。。加到原来的类就太乱了，不过先 make it works ， Clean 之后再说

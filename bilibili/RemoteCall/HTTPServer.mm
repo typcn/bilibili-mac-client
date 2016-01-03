@@ -3,7 +3,7 @@
 //  bilibili
 //
 //  Created by TYPCN on 2015/9/7.
-//  Copyright (c) 2015 TYPCN. All rights reserved.
+//  Copyright (c) 2016 TYPCN. All rights reserved.
 //
 
 #import "HTTPServer.h"
