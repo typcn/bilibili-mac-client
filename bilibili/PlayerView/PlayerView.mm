@@ -531,7 +531,6 @@ static void wakeup(void *context) {
     // NOTE: Interaction with the window seems to be broken for now.
     check_error(mpv_set_option_string(mpv, "input-default-bindings", "yes"));
     check_error(mpv_set_option_string(mpv, "input-vo-keyboard", "yes"));
-    check_error(mpv_set_option_string(mpv, "input-media-keys", "yes"));
     check_error(mpv_set_option_string(mpv, "input-cursor", "yes"));
     check_error(mpv_set_option_string(mpv, "osc", "yes"));
     check_error(mpv_set_option_string(mpv, "autofit", [res cStringUsingEncoding:NSUTF8StringEncoding]));
@@ -542,6 +541,13 @@ static void wakeup(void *context) {
     check_error(mpv_set_option_string(mpv, "fs-black-out-screens", "yes"));
     check_error(mpv_set_option_string(mpv, "vo", "opengl:pbo:dither=no:alpha=no"));
     check_error(mpv_set_option_string(mpv, "screenshot-directory", "~/Desktop"));
+    
+    int disableMediaKey = [self getSettings:@"disableiTunesMediaKey"];
+    if(!disableMediaKey){
+        check_error(mpv_set_option_string(mpv, "input-media-keys", "yes"));
+    }else{
+        check_error(mpv_set_option_string(mpv, "input-media-keys", "no"));
+    }
     
     int maxBuffer = [self getSettings:@"maxBufferSize"];
     NSString *maxBufStr = [NSString stringWithFormat:@"%d",maxBuffer];

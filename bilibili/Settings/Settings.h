@@ -25,5 +25,6 @@
 @property (weak) IBOutlet NSButton *disableHwDec;
 @property (weak) IBOutlet NSButton *disableWriteHistory;
 @property (weak) IBOutlet NSTextField *maxBufferSize;
+@property (weak) IBOutlet NSButton *disableiTunesMediaKey;
 
 @end

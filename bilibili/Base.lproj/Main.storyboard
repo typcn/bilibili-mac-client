@@ -1176,7 +1176,7 @@ GQ
                                 </connections>
                             </button>
                             <button id="QLp-in-QLo">
-                                <rect key="frame" x="25" y="304" width="611" height="18"/>
+                                <rect key="frame" x="25" y="285" width="611" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6zZ-XI-ZEK">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1187,7 +1187,7 @@ GQ
                                 </connections>
                             </button>
                             <button id="wjO-cr-vaH">
-                                <rect key="frame" x="25" y="284" width="611" height="18"/>
+                                <rect key="frame" x="25" y="265" width="611" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hFO-eX-oZN">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1195,6 +1195,17 @@ GQ
                                 </buttonCell>
                                 <connections>
                                     <action selector="DLMP4Changed:" target="z8a-gg-iMj" id="aHi-du-O6o"/>
+                                </connections>
+                            </button>
+                            <button id="djV-1w-XE2">
+                                <rect key="frame" x="25" y="304" width="491" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="不占用 iTunes 媒体键" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Qmf-Aa-Lqo">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="disableiTunesMediaKey:" target="z8a-gg-iMj" id="82c-lC-yLj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1209,6 +1220,7 @@ GQ
                         <outlet property="disableKeepAspect" destination="1aB-2H-H2d" id="FjO-WG-C8v"/>
                         <outlet property="disableWriteHistory" destination="iLo-qY-8yG" id="dyR-ze-V54"/>
                         <outlet property="disablebottomComment" destination="5yv-E4-e3g" id="zXF-lZ-D8g"/>
+                        <outlet property="disableiTunesMediaKey" destination="djV-1w-XE2" id="PGQ-Zf-z1H"/>
                         <outlet property="fontName" destination="iLa-hJ-dgh" id="jDT-c4-qHR"/>
                         <outlet property="fontsize" destination="ajt-jS-Z4K" id="ouz-gu-SI4"/>
                         <outlet property="maxBufferSize" destination="nHb-Pd-fXL" id="0io-Gk-bxi"/>
