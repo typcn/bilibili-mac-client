@@ -214,10 +214,13 @@ static void wakeup(void *context) {
                 NSString *commentFile = @"/NotFound";
                 if([cmFile length] > 5){
                     commentFile = [self getComments:width :height];
+                    if([subFile length] > 5){
+                        [self addSubtitle:subFile withCommentFile:commentFile];
+                    }
+                }else if([subFile length] > 5){
+                    commentFile = subFile;
                 }
-                if([subFile length] > 5){
-                    [self addSubtitle:subFile withCommentFile:commentFile];
-                }
+                
                 [self PlayVideo:commentFile :res];
             }else{
                 dispatch_async(dispatch_get_main_queue(), ^(void){
