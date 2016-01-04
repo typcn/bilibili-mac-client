@@ -27,6 +27,10 @@ NSString *subFile;
 - (void)viewDidLoad {
     [super viewDidLoad];
     vCID = @"LOCALVIDEO";
+    vUrl = @"";
+    vAID = @"";
+    cmFile = @"";
+    subFile = @"";
 }
 - (IBAction)selectVideo:(id)sender {
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];
