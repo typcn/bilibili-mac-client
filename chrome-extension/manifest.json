@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Bilibili Mac Client Helper",
     "description": "Chrome Helper for Bilibili Mac Client",
-    "version": "1.3",
+    "version": "1.4",
     "permissions": [
         "storage",
         "tabs",

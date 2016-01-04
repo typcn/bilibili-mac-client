@@ -102,6 +102,23 @@ function showPluginList(){
   $('#mainList').style.display = '';
 }
 
+$("#youget-resolve").addEventListener("click",function(){
+  var request = new XMLHttpRequest();
+  request.open('POST', 'http://localhost:23330/pluginCall', true);
+  request.setRequestHeader('Content-Type', 'application/json');
+  request.onerror = function() {
+    call_uri("bl://open_without_gui");
+  };
+  request.send(JSON.stringify({action:'bilibili-setActive',data:'none'}));
+  chrome.tabs.query({
+      active: true,
+      lastFocusedWindow: true
+  }, function(tabs) {
+      var tab = tabs[0];
+      API('rpc','uniplay',tab.url,function(err,data){});
+  });
+});
+
 $("#reloadPlugin").addEventListener("click",function(){
   getScriptList();
   showPluginList();
