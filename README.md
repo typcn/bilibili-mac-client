@@ -5,6 +5,7 @@ An unofficial bilibili client for mac
 # Features
 - 硬解播放
 - libass 显示弹幕，超低 CPU 占用
+- 通过 [You-Get](https://github.com/soimort/you-get) 支持近百家视频网站的解析与播放
 - 自动拼接分段视频
 - 支持发送弹幕
 - 弹幕透明度调整
@@ -46,6 +47,7 @@ see [HOW TO BUILD](https://github.com/typcn/bilibili-mac-client/blob/master/HOW_
 - [Sparkle](http://sparkle-project.org/)
 - [FFmpeg](https://www.ffmpeg.org/)
 - [BarrageRenderer](https://github.com/unash/BarrageRenderer)
+- [You-Get](https://github.com/soimort/you-get)
 
 ### Some files from
 - https://github.com/lhecker/NSLabel
