@@ -136,6 +136,25 @@
     [theMenu popUpMenuPositioningItem:nil atLocation:[NSEvent mouseLocation] inView:nil];
 }
 
+- (IBAction)universalVideoParse:(id)sender {
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        NSURL* URL = [NSURL URLWithString:@"http://localhost:23330/rpc"];
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+        request.HTTPMethod = @"POST";
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        
+        WebTabView *tv = (WebTabView *)[browser activeTabContents];
+        NSString *pageURL = [[tv GetTWebView] getURL];
+        NSString *escapedURL = [pageURL stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+        NSString *postdata = [NSString stringWithFormat:@"action=uniplay&data=%@",escapedURL];
+        request.HTTPBody = [postdata dataUsingEncoding:NSUTF8StringEncoding];
+        NSURLConnection* connection = [NSURLConnection connectionWithRequest:request delegate:nil];
+        [connection scheduleInRunLoop:[NSRunLoop mainRunLoop]
+                              forMode:NSDefaultRunLoopMode];
+        [connection start];
+    });
+}
+
 - (void)copyLink{
     WebTabView *tv = (WebTabView *)[browser activeTabContents];
     [[NSPasteboard generalPasteboard] clearContents];

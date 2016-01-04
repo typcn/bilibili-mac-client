@@ -131,6 +131,7 @@
 		FDDE116B1BA9955400230184 /* AirPlayView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FDDE11691BA9955400230184 /* AirPlayView.mm */; };
 		FDDE116F1BA997EB00230184 /* AirPlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDE116D1BA997EB00230184 /* AirPlay.xib */; };
 		FDDE11801BA9E91400230184 /* vp_bilibili.mm in Sources */ = {isa = PBXBuildFile; fileRef = FDDE117D1BA9E28B00230184 /* vp_bilibili.mm */; };
+		FDE74C171C39B01300EF2993 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = FDE74C161C39B01300EF2993 /* play.png */; };
 		FDEC3B351BA02E5C002DA0EE /* libass.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDEC3B1C1BA02E5C002DA0EE /* libass.5.dylib */; };
 		FDEC3B361BA02E5C002DA0EE /* libavcodec.57.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDEC3B1D1BA02E5C002DA0EE /* libavcodec.57.dylib */; };
 		FDEC3B371BA02E5C002DA0EE /* libavdevice.57.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FDEC3B1E1BA02E5C002DA0EE /* libavdevice.57.dylib */; };
@@ -504,6 +505,7 @@
 		FDDE116E1BA997EB00230184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AirPlay.xib; sourceTree = "<group>"; };
 		FDDE117D1BA9E28B00230184 /* vp_bilibili.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = vp_bilibili.mm; path = VideoProvider/vp_bilibili.mm; sourceTree = "<group>"; };
 		FDDE117E1BA9E28B00230184 /* vp_bilibili.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vp_bilibili.h; path = VideoProvider/vp_bilibili.h; sourceTree = "<group>"; };
+		FDE74C161C39B01300EF2993 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = bilibili/img/play.png; sourceTree = "<group>"; };
 		FDEC3B1C1BA02E5C002DA0EE /* libass.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libass.5.dylib; path = bilibili/libs/libass.5.dylib; sourceTree = "<group>"; };
 		FDEC3B1D1BA02E5C002DA0EE /* libavcodec.57.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavcodec.57.dylib; path = bilibili/libs/libavcodec.57.dylib; sourceTree = "<group>"; };
 		FDEC3B1E1BA02E5C002DA0EE /* libavdevice.57.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libavdevice.57.dylib; path = bilibili/libs/libavdevice.57.dylib; sourceTree = "<group>"; };
@@ -846,6 +848,7 @@
 				FD36B0EB1B99B48B00FB32CC /* homepage.png */,
 				FD36B0EC1B99B48B00FB32CC /* menubutton.png */,
 				FD36B0ED1B99B48B00FB32CC /* reloadp.png */,
+				FDE74C161C39B01300EF2993 /* play.png */,
 			);
 			name = toolbar;
 			sourceTree = "<group>";
@@ -1346,6 +1349,7 @@
 				FD8F72811BC74F6F0076B015 /* EULA.rtf in Resources */,
 				FDCF6E3B1C1068DF00A8A860 /* error.html in Resources */,
 				FD4EDBB31BE42C66009309EC /* mpv.icns in Resources */,
+				FDE74C171C39B01300EF2993 /* play.png in Resources */,
 				FD36B0F01B99B48B00FB32CC /* homepage.png in Resources */,
 				FD3553A91B9C4356000EE41E /* exitfillscreen_lr.pdf in Resources */,
 				FD62CC861B6E6726000AED57 /* copy.png in Resources */,
