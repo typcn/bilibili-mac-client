@@ -19,6 +19,7 @@ NSString *subFile;
 @property (weak) IBOutlet NSTextField *videoUrl;
 @property (weak) IBOutlet NSTextField *textUrl;
 @property (weak) IBOutlet NSTextField *subUrl;
+@property (weak) IBOutlet NSButton *playerTrigger;
 
 @end
 
@@ -90,6 +91,12 @@ NSString *subFile;
         subFile = filepath;
         [self.subUrl setStringValue:filepath];
     }
+}
+- (IBAction)playClick:(id)sender {
+    [self.playerTrigger performClick:sender];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.view.window close];
+    });
 }
 
 @end
