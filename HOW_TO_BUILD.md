@@ -21,6 +21,11 @@ Then open bilibili.xcodeproj to edit or build.
 
 ( If you don't have code signing , please set signing to "None" )
 
+# Add Crashlytics Key
+Project Navigator -> Bilibili -> Build Phases -> Run Script( Fabric )
+
+Get project key from fabric , or delete this build script
+
 # About libraries
 
 If you can't download libraries from git-lfs, please run following commands.
