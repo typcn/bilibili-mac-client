@@ -187,6 +187,8 @@
     [self setTitle:[webView getTitle]];
     [self setIsWaitingForResponse:NO];
     [self setIsLoading:YES];
+    [self setIsCrashed:NO];
+    [self setIcon:NULL];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:[webView getURL]];
     [webView runJavascript:[self decideScriptInject]];
     
