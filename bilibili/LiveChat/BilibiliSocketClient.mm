@@ -25,7 +25,7 @@ tcp_client c;
 - (bool)ConnectToTheFuckingFlashSocketServer: (int)roomid{
     disconnected = false;
     room = roomid;
-    if(!c.conn("livecmt.bilibili.com" , 88)){
+    if(!c.conn("livecmt-1.bilibili.com" , 88)){
         return false;
     }
     
