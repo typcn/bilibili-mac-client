@@ -119,6 +119,8 @@
 		FDC5C4FB1C219D1300B29890 /* webpage.png in Resources */ = {isa = PBXBuildFile; fileRef = FDC5C4FA1C219D1300B29890 /* webpage.png */; };
 		FDC5C4FD1C21A0E800B29890 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = FDC5C4FC1C21A0E800B29890 /* search.png */; };
 		FDC5C5001C21A21800B29890 /* PJTernarySearchTree.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C4FF1C21A21800B29890 /* PJTernarySearchTree.m */; };
+		FDC72C6E1C562EFD004E1F7E /* BrowserHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC72C6D1C562EFD004E1F7E /* BrowserHistory.m */; };
+		FDC72C701C562F7C004E1F7E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC72C6F1C562F7C004E1F7E /* libsqlite3.tbd */; };
 		FDCA487C1BAB59A0001ACB8D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */; };
 		FDCF6E3B1C1068DF00A8A860 /* error.html in Resources */ = {isa = PBXBuildFile; fileRef = FDCF6E3A1C1068DF00A8A860 /* error.html */; };
 		FDD1FDD41B9B14F9006711B0 /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0A11B988E4A00FB32CC /* ChromiumTabs.framework */; };
@@ -489,6 +491,9 @@
 		FDC5C4FC1C21A0E800B29890 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = bilibili/img/search.png; sourceTree = "<group>"; };
 		FDC5C4FE1C21A21800B29890 /* PJTernarySearchTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJTernarySearchTree.h; path = Others/PJTernarySearchTree.h; sourceTree = "<group>"; };
 		FDC5C4FF1C21A21800B29890 /* PJTernarySearchTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJTernarySearchTree.m; path = Others/PJTernarySearchTree.m; sourceTree = "<group>"; };
+		FDC72C6C1C562EFD004E1F7E /* BrowserHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrowserHistory.h; path = DataStore/BrowserHistory.h; sourceTree = "<group>"; };
+		FDC72C6D1C562EFD004E1F7E /* BrowserHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrowserHistory.m; path = DataStore/BrowserHistory.m; sourceTree = "<group>"; };
+		FDC72C6F1C562F7C004E1F7E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		FDCA48771BAB4F92001ACB8D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		FDCA487A1BAB5256001ACB8D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -579,6 +584,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDC72C701C562F7C004E1F7E /* libsqlite3.tbd in Frameworks */,
 				FD29EC691BAF9AF200B8724B /* VPPlugin.framework in Frameworks */,
 				FDCA487C1BAB59A0001ACB8D /* QuartzCore.framework in Frameworks */,
 				FD62CC8F1B6E6BB0000AED57 /* CoreData.framework in Frameworks */,
@@ -660,6 +666,7 @@
 		FD076C521AC8CBBB00C893FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FDC72C6A1C562EC8004E1F7E /* DataStore */,
 				FD3CED891BC64B1100BE9A8B /* Notifications */,
 				FDDE11791BA9E25100230184 /* VideoProvider */,
 				FD7257241B9D53D30015B0F1 /* RemoteCall */,
@@ -1103,6 +1110,16 @@
 			name = downloadManager;
 			sourceTree = "<group>";
 		};
+		FDC72C6A1C562EC8004E1F7E /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				FDC72C6F1C562F7C004E1F7E /* libsqlite3.tbd */,
+				FDC72C6C1C562EFD004E1F7E /* BrowserHistory.h */,
+				FDC72C6D1C562EFD004E1F7E /* BrowserHistory.m */,
+			);
+			name = DataStore;
+			sourceTree = "<group>";
+		};
 		FDDE11791BA9E25100230184 /* VideoProvider */ = {
 			isa = PBXGroup;
 			children = (
@@ -1472,6 +1489,7 @@
 				FDFE45201C0073150006856E /* BarrageClock.m in Sources */,
 				FDFE452D1C0073150006856E /* BarrageWalkTextSprite.m in Sources */,
 				FD4B84461BA5879400DD6F2F /* ServiceDiscovery.cpp in Sources */,
+				FDC72C6E1C562EFD004E1F7E /* BrowserHistory.m in Sources */,
 				FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */,
 				FD4B84441BA5879400DD6F2F /* AirPlay.mm in Sources */,
 				FDC5C4F91C2194FE00B29890 /* AddressBar.m in Sources */,
