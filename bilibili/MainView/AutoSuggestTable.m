@@ -136,29 +136,33 @@ extern NSString *sharedURLFieldString;
                 }
                 online_cache = [[NSMutableArray alloc] init];
                 // FXXK Objective-C JSON processing
-                if(dic[@"result"]){
-                    if(dic[@"result"][@"accurate"] && dic[@"result"][@"accurate"][@"bangumi"]){
-                        NSArray *b = dic[@"result"][@"accurate"][@"bangumi"];
-                        if([b count] > 0){
-                            for(int i = 0; i < [b count]; i++){
-                                NSString *bgmName = [b objectAtIndex:i][@"value"];
-                                if(bgmName){
-                                    [online_cache addObject:bgmName];
+                @try {
+                    if(dic[@"result"]){
+                        if(dic[@"result"][@"accurate"] && dic[@"result"][@"accurate"][@"bangumi"]){
+                            NSArray *b = dic[@"result"][@"accurate"][@"bangumi"];
+                            if([b count] > 0){
+                                for(int i = 0; i < [b count]; i++){
+                                    NSString *bgmName = [b objectAtIndex:i][@"value"];
+                                    if(bgmName){
+                                        [online_cache addObject:bgmName];
+                                    }
+                                }
+                            }
+                        }
+                        if(dic[@"result"][@"tag"]){
+                            NSArray *tags = dic[@"result"][@"tag"];
+                            if([tags count] > 0){
+                                for(int i = 0; i < [tags count]; i++){
+                                    NSString *tagName = [tags objectAtIndex:i][@"value"];
+                                    if(tagName){
+                                        [online_cache addObject:tagName];
+                                    }
                                 }
                             }
                         }
                     }
-                    if(dic[@"result"][@"tag"]){
-                        NSArray *tags = dic[@"result"][@"tag"];
-                        if([tags count] > 0){
-                            for(int i = 0; i < [tags count]; i++){
-                                NSString *tagName = [tags objectAtIndex:i][@"value"];
-                                if(tagName){
-                                    [online_cache addObject:tagName];
-                                }
-                            }
-                        }
-                    }
+                }@catch ( NSException *e ) {
+                    NSLog(@"[AddressBar] Ignore json read exception %@",e);
                 }
                 NSLog(@"[AddressBar] Online Suggest Load Succeeded with %lu object",(unsigned long)[online_cache count]);
                 dispatch_async(dispatch_get_main_queue(), ^(void){
