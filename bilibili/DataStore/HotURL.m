@@ -9,15 +9,18 @@
 #import "HotURL.h"
 #import "PJTernarySearchTree.h"
 
+#define MAX_URL_COUNT 512
+
 @implementation HotURL{
     FMDatabase *db;
 }
 
-- (instancetype)initWithDatabase:(FMDatabase *)icdb{
+- (instancetype)initWithDatabase:(FMDatabase *)icdb path:(NSString *)path{
     if (self = [super init])
     {
         db = icdb;
         [self initTable];
+        [self loadDataToTST:path];
     }
     return self;
 }
@@ -33,6 +36,25 @@
     return true;
 }
 
+- (void)loadDataToTST:(NSString *)path{
+    PJTernarySearchTree *tree = [PJTernarySearchTree sharedTree];
+    dispatch_async([tree sharedIndexQueue], ^(void){
+        // For thread safety , create a new db instance
+        FMDatabase *importdb = [FMDatabase databaseWithPath:path];
+        if (![importdb open]) {
+            return;
+        }
+        FMResultSet *s = [importdb executeQueryWithFormat:@"SELECT url FROM hot_url ORDER BY times DESC LIMIT 0,%d",MAX_URL_COUNT];
+        int count = 0;
+        while ([s next]) {
+            count++;
+            NSString *url = [s stringForColumn:@"url"];
+            [tree insertString:url];
+        }
+        NSLog(@"[SearchTree] Imported %d hot url from database",count);
+    });
+}
+
 - (BOOL)appendURL:(NSString *)URL{
     BOOL success = [db executeUpdate:@"UPDATE hot_url SET times = times + 1 WHERE url = ?", URL];
     if (!success) {
@@ -45,6 +67,10 @@
             return false;
         }else{
             NSLog(@"[HotURL] URL inserted");
+            PJTernarySearchTree *tree = [PJTernarySearchTree sharedTree];
+            dispatch_async([tree sharedIndexQueue], ^(void){
+                [tree insertString:URL];
+            });
             return true;
         }
     }
@@ -53,15 +79,26 @@
 }
 
 - (void)trimData {
-    // Remove items more than 512
+    // Remove items if content more than MAX_URL_COUNT
     FMResultSet *s = [db executeQuery:@"SELECT Count(*) FROM hot_url"];
     if([s next]) {
         int totalCount = [s intForColumnIndex:0];
-        NSLog(@"Total count: %d",totalCount);
-        if(totalCount > 512){
+        NSLog(@"[HotURL] Total count: %d",totalCount);
+        if(totalCount > MAX_URL_COUNT){
+            int needTrimCount = totalCount - MAX_URL_COUNT;
+            NSLog(@"[HotURL] Will remove %d items",totalCount);
+            FMResultSet *s = [db executeQueryWithFormat:@"SELECT * FROM hot_url ORDER BY times ASC LIMIT 0,%d",needTrimCount];
+            while ([s next]) {
+                NSString *url = [s stringForColumn:@"url"];
+                [db executeUpdate:@"DELETE FROM hot_url WHERE url = ?", url];
+            }
             
         }
     }
+}
+
+- (void)dealloc {
+    [self trimData];
 }
 
 @end

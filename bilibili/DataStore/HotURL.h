@@ -11,7 +11,7 @@
 
 @interface HotURL : NSObject
 
-- (instancetype)initWithDatabase:(FMDatabase *)icdb;
+- (instancetype)initWithDatabase:(FMDatabase *)icdb path:(NSString *)path;
 - (BOOL)appendURL:(NSString *)URL;
 - (void)trimData;
 

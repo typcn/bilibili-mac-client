@@ -8,7 +8,6 @@
 
 #import "BrowserHistory.h"
 #import "HotURL.h"
-#import "PJTernarySearchTree.h"
 #import <FMDB/FMDB.h>
 
 @implementation BrowserHistory{
@@ -38,7 +37,7 @@
             return NULL;
         }else{
             [self initTable];
-            huc = [[HotURL alloc] initWithDatabase:db];
+            huc = [[HotURL alloc] initWithDatabase:db path:path];
             NSLog(@"[HistoryManager] Database load success");
         }
     }
@@ -92,10 +91,5 @@
     [db close];
     NSLog(@"[HistoryManager] Shutting down");
 }
-//
-//PJTernarySearchTree *tree = [PJTernarySearchTree sharedTree];
-//dispatch_async([tree sharedIndexQueue], ^(void){
-//    [tree insertString:url];
-//});
 
 @end
