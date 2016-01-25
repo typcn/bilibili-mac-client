@@ -16,6 +16,7 @@ NSString *sharedURLFieldString;
     BOOL isLoaded;
     BOOL isEditing;
     NSTableView *ASTable;
+    NSTimer *textChangeTimer;
 }
 
 - (BOOL)acceptsFirstResponder{
@@ -45,10 +46,20 @@ NSString *sharedURLFieldString;
 }
 
 - (void)controlTextDidChange:(NSNotification *)note {
-    if(isEditing){
-        return;
+    if(note && [note object]){
+        sharedURLFieldString = [[note object] stringValue];
     }
-    isEditing = true;
+    if(textChangeTimer){
+        [textChangeTimer invalidate];
+    }
+    textChangeTimer = [NSTimer scheduledTimerWithTimeInterval:(0.5)
+                                                                   target:self
+                                                                 selector:@selector(updateSuggestContext)
+                                                                 userInfo:nil 
+                                                                  repeats:NO];
+}
+
+- (void)updateSuggestContext{
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
     id tv = [tc GetTWebView];
     if(!tv){
@@ -59,15 +70,9 @@ NSString *sharedURLFieldString;
         return;
     }
     if([wv subviews] && [wv subviews][0]){
-        if([note object]){
-            sharedURLFieldString = [[note object] stringValue];
-        }
         id contentView = [wv subviews][0];
         [ASTable setFrameSize:NSMakeSize([contentView frame].size.width, 200)];
         [contentView addSubview:ASTable];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            isEditing = false;
-        });
     }
 }
 
