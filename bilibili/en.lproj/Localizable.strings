@@ -40,7 +40,7 @@
 "视频解析出现错误，JSON 解析失败，可能的原因：\n1. 您的网络被劫持\n2. Bilibili 服务器出现故障\n请尝试以下步骤：\n1. 尝试更换网络\n2. 过一会再试\n\n如果您确信是软件问题，请点击帮助 -- 反馈" = "Resolving error, JSON parser fail, Maybe reasons：\n1. Your network is hijacked\n2. Bilibili server error\nTry the following steps:\n1. Change Network\n2. Retry later\n\nIf you make sure this is not your fault, Please help -- Feedback";
 "正在尝试重新解析" = "Retry Resolving";
 "视频无法解析" = "Video unable to resolve";
-"正在获取视频信息" = "Reading video infomation";
+"正在获取视频信息" = "Reading video information";
 "读取视频失败，可能视频源已失效" = "Read Video Fail, video source outdated. ";
 "读取视频失败，视频服务器故障" = "Read Video Fail, video server error. ";
 "%@ - 服务器: %@" = "%@ - Server: %@";
