@@ -9,7 +9,7 @@
 #import "WebTabView.h"
 #import "ToolBar.h"
 #import "Analytics.h"
-#import "PJTernarySearchTree.h"
+#import "BrowserHistory.h"
 
 @implementation WebTabView {
     PluginManager *pm;
@@ -18,6 +18,7 @@
     NSView* HudView;
     bool ariainit;
     long acceptAnalytics;
+    int64_t historyTabId;
 }
 
 -(id)initWithBaseTabContents:(CTTabContents*)baseContents {
@@ -126,6 +127,11 @@
     if([url containsString:@"about:blank"]){
         return NO;
     }
+    BrowserHistory *bhm = [BrowserHistory sharedManager];
+    if(bhm && historyTabId){
+        [bhm setStatus:0 forID:historyTabId];
+        NSLog(@"[WebTabView] Leaving tab %lld , set status to 0.",historyTabId);
+    }
     return YES;
 }
 
@@ -227,14 +233,20 @@
 {
     [self setIsLoading:NO];
     [self setTitle:[webView getTitle]];
-    PJTernarySearchTree *tree = [PJTernarySearchTree sharedTree];
+
     NSString *url = [webView getURL];
-    dispatch_async([tree sharedIndexQueue], ^(void){
-        [tree insertString:url];
-    });
+    NSString *title = [webView getTitle];
+    if(!title || [title length] < 1){
+        title = @"Untitled";
+    }
+    BrowserHistory *bhm = [BrowserHistory sharedManager];
+    if(bhm){
+        historyTabId = [bhm insertURL:url title:title];
+        NSLog(@"[WebTabView] Tab %lld loaded.",historyTabId);
+    }
 }
 
-- (void)onTitleChange:(NSString *)str{
+- (void)onTitleChange:(NSString *)str {
     [self setTitle:str];
     [webView runJavascript:[self decideScriptInject]];
 }
@@ -244,6 +256,14 @@
     NSAlert *alert = [[NSAlert alloc] init];
     [alert setMessageText:NSLocalizedString(@"文件读取失败，您可能无法正常使用本软件，请向开发者反馈。", nil)];
     [alert runModal];
+}
+
+- (void)dealloc {
+    BrowserHistory *bhm = [BrowserHistory sharedManager];
+    if(bhm && historyTabId){
+        [bhm setStatus:0 forID:historyTabId];
+        NSLog(@"[WebTabView] Closing tab %lld , set status to 0.",historyTabId);
+    }
 }
 
 @end

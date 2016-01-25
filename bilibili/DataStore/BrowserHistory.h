@@ -11,5 +11,8 @@
 @interface BrowserHistory : NSObject
 
 + (instancetype)sharedManager;
+- (int64_t)insertURL:(NSString *)URL title:(NSString *)title;
+- (bool)setStatus:(int64_t)status forID:(int64_t)ID;
+- (bool)deleteItem:(int64_t)ID;
 
 @end

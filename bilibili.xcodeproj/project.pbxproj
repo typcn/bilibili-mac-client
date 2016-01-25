@@ -110,6 +110,9 @@
 		FD8F72811BC74F6F0076B015 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FD8F72801BC74F6F0076B015 /* EULA.rtf */; };
 		FD98B2251C11810C001A0382 /* error.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDCF6E3A1C1068DF00A8A860 /* error.html */; };
 		FD98B2281C119243001A0382 /* NetErr.strings in Resources */ = {isa = PBXBuildFile; fileRef = FD98B2261C119243001A0382 /* NetErr.strings */; };
+		FDA01C471C56908F00298CEF /* HotURL.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA01C461C56908F00298CEF /* HotURL.m */; };
+		FDA01C4E1C56915A00298CEF /* PJTernarySearchTree.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA01C4D1C56915A00298CEF /* PJTernarySearchTree.m */; };
+		FDA01C661C56976700298CEF /* FMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA01C631C5696B200298CEF /* FMDB.framework */; };
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB54D601BCB6B68007A1615 /* BrowserExtInterface.m */; };
 		FDC5C4EC1C213EE400B29890 /* PreloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C4EB1C213EE400B29890 /* PreloadManager.m */; };
@@ -118,7 +121,6 @@
 		FDC5C4F91C2194FE00B29890 /* AddressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C4F81C2194FE00B29890 /* AddressBar.m */; };
 		FDC5C4FB1C219D1300B29890 /* webpage.png in Resources */ = {isa = PBXBuildFile; fileRef = FDC5C4FA1C219D1300B29890 /* webpage.png */; };
 		FDC5C4FD1C21A0E800B29890 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = FDC5C4FC1C21A0E800B29890 /* search.png */; };
-		FDC5C5001C21A21800B29890 /* PJTernarySearchTree.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C4FF1C21A21800B29890 /* PJTernarySearchTree.m */; };
 		FDC72C6E1C562EFD004E1F7E /* BrowserHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC72C6D1C562EFD004E1F7E /* BrowserHistory.m */; };
 		FDC72C701C562F7C004E1F7E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC72C6F1C562F7C004E1F7E /* libsqlite3.tbd */; };
 		FDCA487C1BAB59A0001ACB8D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDCA487B1BAB59A0001ACB8D /* QuartzCore.framework */; };
@@ -235,6 +237,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = CEE28CD01AE004D800F4023C;
 			remoteInfo = "GCDWebServers (Mac)";
+		};
+		FDA01C581C5696B200298CEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDA01C4F1C5696B100298CEF /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DD76FA10486AA7600D96B5E;
+			remoteInfo = fmdb;
+		};
+		FDA01C5A1C5696B200298CEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDA01C4F1C5696B100298CEF /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EE4290EF12B42F870088BD94;
+			remoteInfo = FMDB;
+		};
+		FDA01C621C5696B200298CEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDA01C4F1C5696B100298CEF /* fmdb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 83C73F0B1C326ADA00FFC730;
+			remoteInfo = "FMDB MacOS";
+		};
+		FDA01C641C56975A00298CEF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDA01C4F1C5696B100298CEF /* fmdb.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 83C73F0A1C326ADA00FFC730;
+			remoteInfo = "FMDB MacOS";
 		};
 		FDD1FDD61B9B14F9006711B0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -476,6 +506,11 @@
 		FD8BBC871BEB81A20018AA18 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FD8F72801BC74F6F0076B015 /* EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = EULA.rtf; path = Others/EULA.rtf; sourceTree = "<group>"; };
 		FD98B2271C119243001A0382 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/NetErr.strings; sourceTree = "<group>"; };
+		FDA01C451C56908F00298CEF /* HotURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HotURL.h; path = DataStore/HotURL.h; sourceTree = "<group>"; };
+		FDA01C461C56908F00298CEF /* HotURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HotURL.m; path = DataStore/HotURL.m; sourceTree = "<group>"; };
+		FDA01C4C1C56915A00298CEF /* PJTernarySearchTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJTernarySearchTree.h; path = DataStore/PJTernarySearchTree.h; sourceTree = "<group>"; };
+		FDA01C4D1C56915A00298CEF /* PJTernarySearchTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJTernarySearchTree.m; path = DataStore/PJTernarySearchTree.m; sourceTree = "<group>"; };
+		FDA01C4F1C5696B100298CEF /* fmdb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = fmdb.xcodeproj; path = fmdb/fmdb.xcodeproj; sourceTree = "<group>"; };
 		FDA775E01AD93DC900426483 /* aria2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = aria2.hpp; path = bilibili/headers/aria2.hpp; sourceTree = "<group>"; };
 		FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FDB54D5F1BCB6B68007A1615 /* BrowserExtInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrowserExtInterface.h; path = RemoteCall/BrowserExtInterface.h; sourceTree = "<group>"; };
@@ -489,8 +524,6 @@
 		FDC5C4F81C2194FE00B29890 /* AddressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressBar.m; path = MainView/AddressBar.m; sourceTree = "<group>"; };
 		FDC5C4FA1C219D1300B29890 /* webpage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = webpage.png; path = bilibili/img/webpage.png; sourceTree = "<group>"; };
 		FDC5C4FC1C21A0E800B29890 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = bilibili/img/search.png; sourceTree = "<group>"; };
-		FDC5C4FE1C21A21800B29890 /* PJTernarySearchTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PJTernarySearchTree.h; path = Others/PJTernarySearchTree.h; sourceTree = "<group>"; };
-		FDC5C4FF1C21A21800B29890 /* PJTernarySearchTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PJTernarySearchTree.m; path = Others/PJTernarySearchTree.m; sourceTree = "<group>"; };
 		FDC72C6C1C562EFD004E1F7E /* BrowserHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrowserHistory.h; path = DataStore/BrowserHistory.h; sourceTree = "<group>"; };
 		FDC72C6D1C562EFD004E1F7E /* BrowserHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrowserHistory.m; path = DataStore/BrowserHistory.m; sourceTree = "<group>"; };
 		FDC72C6F1C562F7C004E1F7E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -584,6 +617,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDA01C661C56976700298CEF /* FMDB.framework in Frameworks */,
 				FDC72C701C562F7C004E1F7E /* libsqlite3.tbd in Frameworks */,
 				FD29EC691BAF9AF200B8724B /* VPPlugin.framework in Frameworks */,
 				FDCA487C1BAB59A0001ACB8D /* QuartzCore.framework in Frameworks */,
@@ -648,6 +682,7 @@
 				FD076C521AC8CBBB00C893FA /* Source */,
 				FD36B0991B988CB600FB32CC /* Third-party */,
 				FD076C511AC8CBBB00C893FA /* Products */,
+				FDA01C4F1C5696B100298CEF /* fmdb.xcodeproj */,
 				FD29EC6A1BAF9BE300B8724B /* VPPlugin.xcodeproj */,
 				FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */,
 				FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */,
@@ -932,8 +967,6 @@
 				FD83027C1BAB303C00FF68DB /* DonateView.mm */,
 				FDD43E831C2049D300293223 /* SimpleVideoFormatParser.h */,
 				FDD43E841C2049D300293223 /* SimpleVideoFormatParser.mm */,
-				FDC5C4FE1C21A21800B29890 /* PJTernarySearchTree.h */,
-				FDC5C4FF1C21A21800B29890 /* PJTernarySearchTree.m */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -1084,6 +1117,16 @@
 			name = AirPlay;
 			sourceTree = "<group>";
 		};
+		FDA01C501C5696B100298CEF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FDA01C591C5696B200298CEF /* fmdb */,
+				FDA01C5B1C5696B200298CEF /* libFMDB.a */,
+				FDA01C631C5696B200298CEF /* FMDB.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		FDA775DC1AD93D0D00426483 /* aria2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1116,6 +1159,10 @@
 				FDC72C6F1C562F7C004E1F7E /* libsqlite3.tbd */,
 				FDC72C6C1C562EFD004E1F7E /* BrowserHistory.h */,
 				FDC72C6D1C562EFD004E1F7E /* BrowserHistory.m */,
+				FDA01C451C56908F00298CEF /* HotURL.h */,
+				FDA01C461C56908F00298CEF /* HotURL.m */,
+				FDA01C4C1C56915A00298CEF /* PJTernarySearchTree.h */,
+				FDA01C4D1C56915A00298CEF /* PJTernarySearchTree.m */,
 			);
 			name = DataStore;
 			sourceTree = "<group>";
@@ -1225,6 +1272,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FDA01C651C56975A00298CEF /* PBXTargetDependency */,
 				FDD1FDD71B9B14F9006711B0 /* PBXTargetDependency */,
 				FD7257201B9D534C0015B0F1 /* PBXTargetDependency */,
 			);
@@ -1287,6 +1335,10 @@
 					ProjectRef = FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */;
 				},
 				{
+					ProductGroup = FDA01C501C5696B100298CEF /* Products */;
+					ProjectRef = FDA01C4F1C5696B100298CEF /* fmdb.xcodeproj */;
+				},
+				{
 					ProductGroup = FD72570E1B9D52FD0015B0F1 /* Products */;
 					ProjectRef = FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */;
 				},
@@ -1323,6 +1375,27 @@
 			fileType = wrapper.framework;
 			path = GCDWebServers.framework;
 			remoteRef = FD7257191B9D52FE0015B0F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FDA01C591C5696B200298CEF /* fmdb */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = fmdb;
+			remoteRef = FDA01C581C5696B200298CEF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FDA01C5B1C5696B200298CEF /* libFMDB.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libFMDB.a;
+			remoteRef = FDA01C5A1C5696B200298CEF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FDA01C631C5696B200298CEF /* FMDB.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FMDB.framework;
+			remoteRef = FDA01C621C5696B200298CEF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1469,9 +1542,9 @@
 				FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */,
 				FDFE45211C0073150006856E /* BarrageDescriptor.m in Sources */,
 				FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */,
-				FDC5C5001C21A21800B29890 /* PJTernarySearchTree.m in Sources */,
 				FDFE452C1C0073150006856E /* BarrageWalkSprite.m in Sources */,
 				FDFE45271C0073150006856E /* BarrageFloatSprite.m in Sources */,
+				FDA01C4E1C56915A00298CEF /* PJTernarySearchTree.m in Sources */,
 				FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */,
 				FDDE11601BA9459E00230184 /* reverseHTTP.cpp in Sources */,
 				FD3CED8E1BC64B5000BE9A8B /* DynamicView.m in Sources */,
@@ -1485,6 +1558,7 @@
 				FDFE452A1C0073150006856E /* BarrageSpriteUtility.m in Sources */,
 				FD1954B01B259318003A958F /* Settings.m in Sources */,
 				FD7257261B9D5E190015B0F1 /* Analytics.mm in Sources */,
+				FDA01C471C56908F00298CEF /* HotURL.m in Sources */,
 				FD62CC891B6E6848000AED57 /* MBProgressHUD.m in Sources */,
 				FDFE45201C0073150006856E /* BarrageClock.m in Sources */,
 				FDFE452D1C0073150006856E /* BarrageWalkTextSprite.m in Sources */,
@@ -1527,6 +1601,11 @@
 			isa = PBXTargetDependency;
 			name = "GCDWebServers (Mac)";
 			targetProxy = FD72571F1B9D534C0015B0F1 /* PBXContainerItemProxy */;
+		};
+		FDA01C651C56975A00298CEF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "FMDB MacOS";
+			targetProxy = FDA01C641C56975A00298CEF /* PBXContainerItemProxy */;
 		};
 		FDD1FDD71B9B14F9006711B0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
