@@ -131,6 +131,7 @@
     [theMenu setAutoenablesItems:YES];
     [[theMenu addItemWithTitle:NSLocalizedString(@"复制链接",nil) action:@selector(copyLink) keyEquivalent:@""] setTarget:self];
     [[theMenu addItemWithTitle:NSLocalizedString(@"下载管理",nil) action:@selector(dlMan) keyEquivalent:@""] setTarget:self];
+    [[theMenu addItemWithTitle:NSLocalizedString(@"历史记录",nil) action:@selector(history) keyEquivalent:@""] setTarget:self];
     [[theMenu addItemWithTitle:NSLocalizedString(@"发送邮件",nil) action:@selector(contact) keyEquivalent:@""] setTarget:self];
     [[theMenu addItemWithTitle:NSLocalizedString(@"退出",nil) action:@selector(exit) keyEquivalent:@""] setTarget:self];
     [theMenu popUpMenuPositioningItem:nil atLocation:[NSEvent mouseLocation] inView:nil];
@@ -164,6 +165,11 @@
     hud.labelText = NSLocalizedString(@"当前页面地址已经复制到剪贴板", nil);
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay:3];
+}
+
+- (void)history{
+    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withUrl:@"http://vp-hub.eqoe.cn/history.html"];
+    [browser addTabContents:ct inForeground:YES];
 }
 
 - (void)dlMan{
