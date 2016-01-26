@@ -341,6 +341,7 @@ int forceIPFake;
             NSLog(@"YouGet-Callback:\n%@",vresult);
             NSArray *arr = [vresult componentsSeparatedByString:@"Real URLs:\n"];
             NSArray *urls  = [arr[1] componentsSeparatedByString:@"\n"];
+            int finalCount = 0;
             for(int i = 0; i < [urls count]; i++ )
             {
                 NSString *path = [urls objectAtIndex:i];
@@ -349,14 +350,20 @@ int forceIPFake;
                 if(i == 0){
                     vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",realLength, @"%" , path ,@";"];
                     vAID = path; // Store first video to vAID
+                    finalCount = 1;
                 }else if(realLength > 0){
                     NSURL* url = [NSURL URLWithString:path];
                     if (url == nil) {
                         NSLog(@"String is not url: %@", path);
                     }else{
                         vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@",   vUrl   , @"%",realLength, @"%" , path ,@";"];
+                        finalCount++;
                     }
                 }
+            }
+            if(finalCount == 1){
+                NSString *path = [urls objectAtIndex:0];
+                vUrl = path;
             }
             vCID = @"LOCALVIDEO";
             NSLog(@"YouGet-FinalURL:%@",vUrl);
