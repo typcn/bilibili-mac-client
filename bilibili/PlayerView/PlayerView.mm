@@ -572,7 +572,7 @@ static void wakeup(void *context) {
     int enableHW = [self getSettings:@"enableHW"];
     if(enableHW){
         check_error(mpv_set_option_string(mpv, "hwdec", "videotoolbox"));
-        check_error(mpv_set_option_string(mpv, "sub-fps", "60"));
+        //check_error(mpv_set_option_string(mpv, "sub-fps", "60"));
         check_error(mpv_set_option_string(mpv, "display-fps", "60"));
         check_error(mpv_set_option_string(mpv, "demuxer-rawvideo-fps", "60"));
     }else{
