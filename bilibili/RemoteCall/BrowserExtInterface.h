@@ -11,5 +11,7 @@
 @interface BrowserExtInterface : NSObject
 
 - (NSArray *)GetScriptList;
+- (NSArray *)GetHistory:(int)page;
+- (BOOL)DelHistory:(NSString *)ids;
 
 @end

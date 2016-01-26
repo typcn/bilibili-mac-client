@@ -264,11 +264,24 @@ int forceIPFake;
              rep = [GCDWebServerDataResponse responseWithJSONObject:arr];
          }else if([action isEqualToString:@"scriptList"]){
              NSArray *scList = [browserEIF GetScriptList];
-             
-             //NSString *str = [[PluginManager sharedInstance] javascriptForDomain:data];
+
              rep = [GCDWebServerDataResponse responseWithJSONObject:scList];
+         }else if([action isEqualToString:@"history"]){
+             NSString *origin = [request headers][@"Origin"];
+             if(origin && [origin isEqualToString:@"http://vp-hub.eqoe.cn"]){
+                 int page = [data intValue];
+                 NSArray *hsList = [browserEIF GetHistory:page];
+                 rep = [GCDWebServerDataResponse responseWithJSONObject:hsList];
+             }
+         }else if([action isEqualToString:@"delHistory"]){
+             NSString *origin = [request headers][@"Origin"];
+             if(origin && [origin isEqualToString:@"http://vp-hub.eqoe.cn"]){
+                 BOOL result = [browserEIF DelHistory:data];
+                 if(!result){
+                     rep = [GCDWebServerDataResponse responseWithText:@"error"];
+                 }
+             }
          }
-         
          [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];
          return rep;
      }];

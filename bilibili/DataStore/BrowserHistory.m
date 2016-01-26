@@ -69,6 +69,21 @@
     return rid;
 }
 
+- (NSArray *)get:(int)start count:(int)count{
+    NSMutableArray *rv = [[NSMutableArray alloc] init];
+    FMResultSet *s = [db executeQueryWithFormat:@"SELECT * FROM browse_history ORDER BY id DESC LIMIT %d,%d",start,count];
+    while ([s next]) {
+        [rv addObject:@{
+                        @"id":@([s intForColumn:@"id"]),
+                        @"title":[s stringForColumn:@"title"],
+                        @"url":[s stringForColumn:@"url"],
+                        @"time":@([s intForColumn:@"time"]),
+                        @"status":@([s intForColumn:@"status"])
+                        }];
+    }
+    return rv;
+}
+
 - (bool)setStatus:(int64_t)status forID:(int64_t)ID{
     BOOL success = [db executeUpdate:@"UPDATE browse_history SET status=? WHERE id=?", @(status), @(ID)];
     if (!success) {
@@ -81,7 +96,16 @@
 - (bool)deleteItem:(int64_t)ID{
     BOOL success = [db executeUpdate:@"DELETE FROM browse_history WHERE id=?", @(ID)];
     if (!success) {
-        NSLog(@"[HistoryManager] History update failed: %@", [db lastErrorMessage]);
+        NSLog(@"[HistoryManager] History delete failed: %@", [db lastErrorMessage]);
+        return false;
+    }
+    return true;
+}
+
+- (bool)deleteAll{
+    BOOL success = [db executeUpdate:@"DELETE FROM browse_history"];
+    if (!success) {
+        NSLog(@"[HistoryManager] History delete failed: %@", [db lastErrorMessage]);
         return false;
     }
     return true;

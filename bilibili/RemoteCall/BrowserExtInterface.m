@@ -8,6 +8,7 @@
 
 #import "BrowserExtInterface.h"
 #import "PluginManager.h"
+#import "BrowserHistory.h"
 
 @implementation BrowserExtInterface
 
@@ -40,6 +41,44 @@
                         }];
     
     return scList;
+}
+
+- (NSArray *)GetHistory:(int)page{
+    BrowserHistory *bhm = [BrowserHistory sharedManager];
+    if(bhm){
+        int count = 50;
+        int start = page * count;
+        if(start > -1){
+            return [bhm get:start count:count];
+        }
+    }
+    return NULL;
+}
+
+- (BOOL)DelHistory:(NSString *)ids{
+    if(!ids || [ids length] < 1){
+        return false;
+    }
+    BrowserHistory *bhm = [BrowserHistory sharedManager];
+    if(bhm){
+        if([ids isEqualToString:@"ALL"]){
+            return [bhm deleteAll];
+        }else if(![ids containsString:@","]){
+            return [bhm deleteItem:[ids longLongValue]];
+        }
+        NSArray *arr = [ids componentsSeparatedByString:@","];
+        if([arr count] > 50){
+            return false;
+        }
+        for (int i = 0; i < [arr count]; i++) {
+            NSString *idx = [arr objectAtIndex:i];
+            if(![bhm deleteItem:[idx longLongValue]]){
+                return false;
+            }
+        }
+        return true;
+    }
+    return false;
 }
 
 @end
