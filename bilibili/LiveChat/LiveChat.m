@@ -18,6 +18,7 @@ BOOL hasMsg;
 
 @interface LiveChat (){
     LiveSocket *socket;
+    NSArray *blockwords;
     BOOL renderDisabled;
 }
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
@@ -32,7 +33,11 @@ BOOL hasMsg;
     socket = [[LiveSocket alloc] init];
     [socket setDelegate:self];
     [socket ConnectToTheFuckingFlashSocketServer:[vCID intValue]];
-    
+    NSString *block = [[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"];
+    NSArray *blocks = [block componentsSeparatedByString:@"|"];
+    if([block length] > 0 && [blocks count] > 0){
+        blockwords = blocks;
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.view.window];
 }
 
@@ -49,8 +54,20 @@ BOOL hasMsg;
                                             blue:((float)((intColor & 0x0000FF) >>  0))/255.0 \
                                            alpha:1.0];
         
-        [self addSpritToVideo:ftype content:cmContent size:fsize color:Color];
-        [self AppendToTextView:[NSString stringWithFormat:@"%@ : %@\n",userName,cmContent]];
+        bool isBlocked = false;
+        if([blockwords count] > 0){
+            for (NSString* string in blockwords) {
+                if([cmContent containsString:string]){
+                    isBlocked = true;
+                }
+            }
+        }
+        if(isBlocked){
+            [self AppendToTextView:[NSString stringWithFormat:@"%@ : 1条被屏蔽的弹幕\n",userName]];
+        }else{
+            [self addSpritToVideo:ftype content:cmContent size:fsize color:Color];
+            [self AppendToTextView:[NSString stringWithFormat:@"%@ : %@\n",userName,cmContent]];
+        }
         hasMsg = true;
     }
 }
