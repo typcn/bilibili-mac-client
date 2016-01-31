@@ -203,9 +203,19 @@
 				<string>bd</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLName</key>
+			<string>com.bilibili.url</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>bl</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1751</string>
+	<string>1752</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
