@@ -74,7 +74,6 @@
             return true;
         }
     }
-    [self trimData];
     return true;
 }
 
