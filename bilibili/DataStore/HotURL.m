@@ -21,6 +21,7 @@
         db = icdb;
         [self initTable];
         [self loadDataToTST:path];
+        [self trimData];
     }
     return self;
 }
@@ -97,6 +98,7 @@
 }
 
 - (void)dealloc {
+    NSLog(@"[HotURL] Trimming URL Count");
     [self trimData];
 }
 
