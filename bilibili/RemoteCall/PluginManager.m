@@ -363,7 +363,8 @@
 {
     double process = (double)totalBytesWritten / totalBytesExpectedToWrite;
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        hud.progress = process;
+        // The real gui progress seems to 0-60, not 0-1
+        hud.progress = process*60;
     });
 }
 
