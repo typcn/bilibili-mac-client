@@ -53,6 +53,9 @@
 /* Class = "NSButtonCell"; title = "关闭底部弹幕"; ObjectID = "6pD-zG-Fl9"; */
 "6pD-zG-Fl9.title" = "Disable Bottom Comments";
 
+/* Class = "NSButtonCell"; title = "不占用 iTunes 媒体键"; ObjectID = "6pD-zG-Fl9"; */
+"djV-1w-XE2.title" = "Disable iTunes Media keys";
+
 /* Class = "NSButtonCell"; title = "播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）"; ObjectID = "6zZ-XI-ZEK"; */
 "6zZ-XI-ZEK.title" = "Prefer Play MP4 Format Video";
 
