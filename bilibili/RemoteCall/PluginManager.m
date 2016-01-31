@@ -235,13 +235,26 @@
                 return;
             }
             
+            NSString *filename = [object objectForKey:@"name"];
+            if(filename && [filename length] > 0){
+                @try {
+                    NSError *err;
+                    NSString *path = [NSString stringWithFormat:@"%@%@.bundle",sprtdir,filename];
+                    [[NSFileManager defaultManager] removeItemAtPath:path error:&err];
+                    NSLog(@"[PluginManager] Removed old plugin, Error: %@",err);
+                }
+                @catch (NSException *exception) {
+                    // 忽略
+                }
+            }
+            
+            
             if(instType == 1){
                 hud.labelText = NSLocalizedString(@"正在更新解析模块", nil);
             }else{
                 hud.labelText = NSLocalizedString(@"正在下载插件", nil);
             }
             hud.mode =  MBProgressHUDModeAnnularDeterminate;
-            
             bgsession = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
             NSLog(@"Plugin download address: %@",downloadAddr);
             NSURLSessionDownloadTask *downloadTask = [bgsession downloadTaskWithURL:[NSURL URLWithString:downloadAddr]];
