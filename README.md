@@ -57,5 +57,5 @@ see [HOW TO BUILD](https://github.com/typcn/bilibili-mac-client/blob/master/HOW_
 
 # License
 
-GPLv2
+GPLv3
 
