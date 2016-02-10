@@ -544,6 +544,7 @@ static void wakeup(void *context) {
     check_error(mpv_set_option_string(mpv, "fs-black-out-screens", "yes"));
     check_error(mpv_set_option_string(mpv, "vo", "opengl:pbo:dither=no:alpha=no"));
     check_error(mpv_set_option_string(mpv, "screenshot-directory", "~/Desktop"));
+    check_error(mpv_set_option_string(mpv, "screenshot-format", "png"));
     
     int disableMediaKey = [self getSettings:@"disableiTunesMediaKey"];
     if(!disableMediaKey){
