@@ -19,5 +19,6 @@
 @interface VP_Bilibili : VideoProvider
 
 @property NSString *hwid;
+@property NSString *userAgent;
 
 @end

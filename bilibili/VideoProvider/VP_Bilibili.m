@@ -29,6 +29,7 @@
             [ud setObject:self.hwid forKey:@"hwid_2"];
         }
         
+        self.userAgent = @"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36";
     }
     return self;
 }
@@ -65,6 +66,8 @@
     NSString *type = [self getFormat:[params[@"download"] boolValue]];
     
     NSLog(@"[VP_Bilibili] AV: %@, CID: %@, PID: %@", params[@"aid"], params[@"cid"], params[@"pid"]);
+    
+    [self writeHistory:params[@"cid"] :params[@"aid"]];
     
     NSString *req_path = [NSString stringWithFormat:@"platform=android&_device=android&_hwid=%@&_aid=%@&_tid=0&_p=%@&_down=0&cid=%@&quality=%d&otype=json&appkey=%@&type=%@",
                           self.hwid, // Hardware ID ( Generate on first start )
@@ -154,7 +157,7 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
     FLVFailRetry = NO;
     
     VideoAddress *video = [[VideoAddress alloc] init];
-    [video setUserAgent:@"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36"];
+    [video setUserAgent:self.userAgent];
     
     BOOL URLisString = [[[dUrls valueForKey:@"url"] className] isEqualToString:@"__NSCFString"];
     
@@ -222,7 +225,7 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
     }
     
     [request setValue:[ud objectForKey:@"cookie"] forHTTPHeaderField:@"Cookie"];
-    [request setValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
     [request setValue:@"trailers" forHTTPHeaderField:@"TE"];
     
     NSURLResponse * response = nil;
@@ -287,6 +290,28 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
     }
     
     return NULL;
+}
+
+- (void)writeHistory: (NSString *)cid :(NSString *)aid{
+    NSURL* URL = [NSURL URLWithString:[NSString stringWithFormat:@"http://interface.bilibili.com/player?id=cid:%@&aid=%@",cid,aid]];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+    request.HTTPMethod = @"GET";
+    request.timeoutInterval = 5;
+
+    long isDisabled = [ud integerForKey:@"disableWritePlayHistory"];
+    if(isDisabled){
+        return;
+    }
+    NSString *xff = [ud objectForKey:@"xff"];
+    NSString *cookie = [ud objectForKey:@"cookie"];
+    if([xff length] > 4){
+        [request setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
+        [request setValue:xff forHTTPHeaderField:@"Client-IP"];
+    }
+    [request setValue:cookie forHTTPHeaderField:@"Cookie"];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+    NSURLConnection* connection = [NSURLConnection connectionWithRequest:request delegate:nil];
+    [connection start];
 }
 
 - (NSString *)getFakeIP: (NSDictionary *)params{
