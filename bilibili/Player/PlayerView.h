@@ -7,25 +7,21 @@
 //
 
 #import <Cocoa/Cocoa.h>
+
 #import "WebTabView.h"
+#import "VideoAddress.h"
+
+@class Player;
 
 @interface PlayerView : NSViewController
+
 @property (weak) IBOutlet NSTextField *textTip;
 @property (weak) IBOutlet NSTextField *subtip;
 @property (weak) IBOutlet NSImageView *loadingImage;
 @property (strong) NSWindowController* liveChatWindowC;
+@property (weak) Player *player;
 
-- (NSDictionary *) getVideoInfo:(NSString *)url;
-- (NSString *) getComments:(NSNumber *)width :(NSNumber *)height;
-- (void)LoadVideo;
-
-@end
-
-
-@interface PlayerWindow : NSWindow <NSWindowDelegate>
-
-@property (strong) NSWindowController* postCommentWindowC;
-
--(void)keyDown:(NSEvent*)event;
+- (id)initWithPlayer:(Player *)player;
+- (void)loadVideo:(VideoAddress *)video;
 
 @end
