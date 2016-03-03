@@ -104,6 +104,15 @@
     return req_url;
 }
 
+//  Complete params:
+//      {
+//          "cid":0,
+//          "aid":0,
+//          "pid":0,
+//          "url":"",
+//          "title":"",
+//          "download":true
+//      }
 
 - (VideoAddress *) getVideoAddress: (NSDictionary *)params{
     if(!params[@"cid"]){
@@ -148,34 +157,37 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
     [video setUserAgent:@"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36"];
     
     BOOL URLisString = [[[dUrls valueForKey:@"url"] className] isEqualToString:@"__NSCFString"];
-    if(URLisString){ // URL is String ( Single Fragment )
+    
+    if(URLisString){ // URL is String ( Some old videos , Single fragment )
+        
         NSString *url = [dUrls valueForKey:@"url"];
-        [video setDefaultPlayURL:url];
+        [video addDefaultPlayURL:url];
         [video setFirstFragmentURL:url];
-    }else{ // URL is Array
-        for (NSDictionary *match in dUrls) {
-            if([dUrls count] == 1){ // Single Fragment
-                NSString *url = [match valueForKey:@"url"];
-                [video setDefaultPlayURL:url];
-                [video setFirstFragmentURL:url];
-                
-                NSArray *burl = [match valueForKey:@"backup_url"];
-                if([burl count] > 0){
-                    [video setBackupPlayURLs:burl];
-                }
-            }else{ // Multi Fragment
-                NSString *edlUrl;
-                NSString *tmp = [match valueForKey:@"url"];
-                if(![[video firstFragmentURL] length]){ // FirstFragment is empty
-                    [video setFirstFragmentURL:tmp];
-                    edlUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",(unsigned long)[tmp length], @"%" , tmp ,@";"];
-                }else{
-                    edlUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@",  edlUrl  , @"%",(unsigned long)[tmp length], @"%" , tmp ,@";"];
-                }
-                [video setDefaultPlayURL:edlUrl];
-                
+        
+    }else if([dUrls count] == 1){ // URL is Array ( Most MP4 videos, Single fragment )
+        
+        NSString *url = [[dUrls objectAtIndex:0] valueForKey:@"url"];
+        [video addDefaultPlayURL:url];
+        [video setFirstFragmentURL:url];
+        
+        NSArray *bUrls = [[dUrls objectAtIndex:0] valueForKey:@"backup_url"];
+        if([bUrls count] > 0){
+            for (NSString *burl in bUrls) {
+                [video addBackupURL:@[burl]];
             }
         }
+        
+    }else{ // URL is Array ( Most FLV videos, Multi fragment )
+        
+        for (NSDictionary *match in dUrls) {
+            NSString *url = [match valueForKey:@"url"];
+            if(![[video firstFragmentURL] length]){ // Set first fragment url
+                [video setFirstFragmentURL:url];
+            }
+            
+            [video addDefaultPlayURL:url];
+        }
+        
     }
     
     // Sina old video ( only flv )
