@@ -7,8 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Player.h"
 
 @interface LiveChat : NSViewController
+
+- (id)initWithPlayer:(Player *)player;
 
 - (void)onNewMessage:(NSDictionary *)data;
 - (void)onNewError:(NSString *)str;

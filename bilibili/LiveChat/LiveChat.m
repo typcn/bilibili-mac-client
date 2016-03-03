@@ -10,22 +10,28 @@
 #import "BilibiliSocketClient.h"
 #import "BarrageHeader.h"
 
-extern NSString *vCID;
-extern BOOL isTesting;
-extern BarrageRenderer * _renderer;
-
-BOOL hasMsg;
-
 @interface LiveChat (){
     LiveSocket *socket;
     NSArray *blockwords;
     BOOL renderDisabled;
+    
+    Player *player;
+    BarrageRenderer *renderer;
 }
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
 
 @end
 
 @implementation LiveChat
+
+- (id)initWithPlayer:(Player *)m_player{
+    self = [super init];
+    if(self){
+        player = m_player;
+        renderer = player.barrageRenderer;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,7 +74,6 @@ BOOL hasMsg;
             [self addSpritToVideo:ftype content:cmContent size:fsize color:Color];
             [self AppendToTextView:[NSString stringWithFormat:@"%@ : %@\n",userName,cmContent]];
         }
-        hasMsg = true;
     }
 }
 
@@ -98,18 +103,18 @@ BOOL hasMsg;
     
     // type is not supported right
     descriptor.params[@"direction"] = @(BarrageWalkDirectionR2L);
-    [_renderer receive:descriptor];
+    [renderer receive:descriptor];
 }
 
 - (IBAction)disableRender:(id)sender {
     if(renderDisabled){
         renderDisabled = false;
         [sender setTitle:@"关闭弹幕渲染"];
-        [_renderer start];
+        [renderer start];
     }else{
         renderDisabled = true;
         [sender setTitle:@"开启弹幕渲染"];
-        [_renderer stop];
+        [renderer stop];
     }
 }
 
