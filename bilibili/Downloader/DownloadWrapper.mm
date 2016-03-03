@@ -52,13 +52,17 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
                                  @"title":name,
                                  @"download":@YES
                                  };
-    NSArray  *urls;
-
-    int sucCount = 0 ;
-    int failCount = 0;
-    
-    if(!urls){
-        NSLog(@"[Downloader] ERROR");
+    NSArray *urls;
+    @try {
+        VP_Bilibili *bili = [VP_Bilibili sharedInstance];
+        VideoAddress *video = [bili getVideoAddress:params];
+        if(!video){
+            [NSException raise:@VP_RESOLVE_ERROR format:@"Empty Content"];
+        }
+        urls = [video defaultPlayURL];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"[Downloader] Error: %@",exception);
         NSUserNotification *notification = [[NSUserNotification alloc] init];
         notification.title = @"Bilibili Client";
         notification.informativeText = NSLocalizedString(@"下载失败，无法解析视频", nil);
@@ -66,8 +70,12 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
         [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
         return false;
     }
-    if([[[urls valueForKey:@"url"] className] isEqualToString:@"__NSCFString"]){
-        NSString *tmp = [urls valueForKey:@"url"];
+
+    int sucCount = 0 ;
+    int failCount = 0;
+    
+
+    for (NSDictionary *tmp in urls) {
         NSString *taskid = [NSString stringWithFormat:@"%d-%ld",cid,time(0)];
         NSURL* URL = [NSURL URLWithString:@"http://localhost:23336/jsonrpc"];
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
@@ -99,44 +107,8 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
             failCount++;
             return false;
         }
-    }else{
-        for (NSDictionary *match in urls) {
-            NSString *tmp = [match valueForKey:@"url"];
-            NSString *taskid = [NSString stringWithFormat:@"%d-%ld",cid,time(0)];
-            NSURL* URL = [NSURL URLWithString:@"http://localhost:23336/jsonrpc"];
-            NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
-            request.HTTPMethod = @"POST";
-            NSDictionary* bodyObject = @{
-                                         @"jsonrpc": @"2.0",
-                                         @"id": taskid,
-                                         @"method": @"aria2.addUri",
-                                         @"params": @[
-                                                 @[tmp],
-                                                 @{
-                                                     @"dir": path,
-                                                     @"split": @"10",
-                                                     @"max-connection-per-server" : @"10",
-                                                     @"min-split-size": @"1M"
-                                                     },
-                                                 ]
-                                         };
-            request.HTTPBody = [NSJSONSerialization dataWithJSONObject:bodyObject options:kNilOptions error:NULL];
-            NSURLResponse * response = nil;
-            NSError * error = nil;
-            [NSURLConnection sendSynchronousRequest:request
-                                                    returningResponse:&response
-                                                    error:&error];
-            if(!error && [(NSHTTPURLResponse *)response statusCode] == 200){
-                NSLog(@"Download Task Added");
-                sucCount++;
-            }else{
-                failCount++;
-                return false;
-            }
-            
-            
-        }
     }
+
     NSDictionary *activeApp = [[NSWorkspace sharedWorkspace] activeApplication];
     NSString *activeName = (NSString *)[activeApp objectForKey:@"NSApplicationName"];
     if(![activeName isEqualToString:@"Bilibili"]){
