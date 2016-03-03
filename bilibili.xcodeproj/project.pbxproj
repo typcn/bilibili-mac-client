@@ -693,8 +693,8 @@
 				FD855FAE1B07D86C004A1610 /* RealTimeComments */,
 				FDA775E81AD93ED600426483 /* downloadManager */,
 				FD476C701AD22AEC00584EFE /* GUI */,
-				FD476C6B1AD22A0D00584EFE /* Main View */,
-				FD476C6E1AD22A6D00584EFE /* Player View */,
+				FD476C6B1AD22A0D00584EFE /* Browser */,
+				FD476C6E1AD22A6D00584EFE /* Player */,
 				FD8CEDEC1AD249540092452F /* Settings View */,
 				FD476C6C1AD22A2000584EFE /* Others */,
 				FD1954CE1B259462003A958F /* AppDelegate.h */,
@@ -914,7 +914,7 @@
 			name = mediainfo;
 			sourceTree = "<group>";
 		};
-		FD476C6B1AD22A0D00584EFE /* Main View */ = {
+		FD476C6B1AD22A0D00584EFE /* Browser */ = {
 			isa = PBXGroup;
 			children = (
 				FD36B0B41B98920A00FB32CC /* WebTabView.h */,
@@ -932,7 +932,7 @@
 				FDC5C4F71C2194FE00B29890 /* AddressBar.h */,
 				FDC5C4F81C2194FE00B29890 /* AddressBar.m */,
 			);
-			name = "Main View";
+			name = Browser;
 			sourceTree = "<group>";
 		};
 		FD476C6C1AD22A2000584EFE /* Others */ = {
@@ -952,7 +952,7 @@
 			name = Others;
 			sourceTree = "<group>";
 		};
-		FD476C6E1AD22A6D00584EFE /* Player View */ = {
+		FD476C6E1AD22A6D00584EFE /* Player */ = {
 			isa = PBXGroup;
 			children = (
 				FD1954B11B259330003A958F /* PlayerView.h */,
@@ -966,7 +966,7 @@
 				FDDE11681BA9955400230184 /* AirPlayView.h */,
 				FDDE11691BA9955400230184 /* AirPlayView.mm */,
 			);
-			name = "Player View";
+			name = Player;
 			sourceTree = "<group>";
 		};
 		FD476C701AD22AEC00584EFE /* GUI */ = {
