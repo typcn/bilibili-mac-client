@@ -16,7 +16,7 @@
     if(!currentURLIndex){
         currentURLIndex = 1;
         return self.defaultPlayURL;
-    }else{
+    }else if(self.backupPlayURLs){
         int backupIdx = currentURLIndex - 1;
         int backupCount = (int)[self.backupPlayURLs count];
         if(backupCount > backupIdx){
@@ -25,6 +25,7 @@
             return NULL;
         }
     }
+    return NULL;
 }
 
 @end
