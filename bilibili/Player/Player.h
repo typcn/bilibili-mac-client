@@ -18,6 +18,8 @@
 
 @property (readonly, strong) PlayerView *view;
 
+@property NSString *siteName;
+
 @property BarrageRenderer *barrageRenderer;
 @property VideoAddress *video;
 
@@ -26,6 +28,9 @@
 
 - (id)initWithVideo:(VideoAddress *)video;
 
+- (id)getAttr:(NSString *)key;
+- (void)setAttr:(NSString *)key data:(id)data;
+- (void)setAttr:(NSDictionary *)dict;
 
 - (void)stopAndDestory;
 

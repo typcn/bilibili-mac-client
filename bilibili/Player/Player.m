@@ -9,7 +9,9 @@
 #import "Player.h"
 #import "PlayerManager.h"
 
-@implementation Player
+@implementation Player{
+    NSMutableDictionary *attrs;
+}
 
 @synthesize view;
 
@@ -22,11 +24,23 @@
     self = [super init];
     if(self){
         self.video = m_video;
+        attrs = [[NSMutableDictionary alloc] init];
         view = [[PlayerView alloc] initWithPlayer:self];
     }
     return self;
 }
 
+- (id)getAttr:(NSString *)key{
+    return attrs[key];
+}
+
+- (void)setAttr:(NSString *)key data:(id)data{
+    attrs[key] = data;
+}
+
+- (void)setAttr:(NSDictionary *)dict{
+    attrs = [dict mutableCopy];
+}
 
 - (void)stopAndDestory{
     [[PlayerManager sharedInstance] removePlayer:self];
