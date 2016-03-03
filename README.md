@@ -2,6 +2,8 @@
 
 An unofficial bilibili client for mac
 
+［部分模块重构中，Git 上的代码暂时无法编译]
+
 # Features
 - 硬解播放
 - libass 显示弹幕，超低 CPU 占用
