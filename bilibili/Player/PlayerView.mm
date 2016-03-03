@@ -169,9 +169,9 @@ static inline void check_error(int status)
     
 
     self.player.queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
-    NSLog(@"player: %@",self.player);
+
     dispatch_async(self.player.queue, ^{
-        NSLog(@"player: %@",self.player);
+
 //        if([vCID isEqualToString:@"LOCALVIDEO"]){
 //            if([vUrl length] > 5){
 //                NSDictionary *VideoInfoJson = [self getVideoInfo:vAID];
@@ -238,12 +238,14 @@ getInfo:
     if(videoDomain){
         title = [NSString stringWithFormat:NSLocalizedString(@"%@ - 服务器: %@", nil),title, videoDomain];
     }
+    if(self.player.mpv){
+        [self setMPVOption:"force-media-title" :[title UTF8String]];
+    }
     [window setTitle:title];
 }
 
 - (void)playVideo:(NSString *)URL{
-    NSLog(@"player: %@",self.player);
-    NSLog(@"player mpv: %@",self.player.mpv);
+
     // Start Playing Video
     self.player.mpv  = mpv_create();
 
@@ -289,7 +291,8 @@ getInfo:
     if(disableKeepAspect == 1){
         [self setMPVOption:"keepaspect" :"no"];
     }
-    if(![vCID isEqualToString:@"LOCALVIDEO"]){
+    
+    if(self.title){
         [self setMPVOption:"force-media-title" :[self.title UTF8String]];
     }
     
