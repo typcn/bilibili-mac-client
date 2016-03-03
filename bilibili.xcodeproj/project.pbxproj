@@ -106,6 +106,7 @@
 		FD7684A91C887F48006B44F2 /* PlayerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD7684A21C887F48006B44F2 /* PlayerView.mm */; };
 		FD7684AA1C887F48006B44F2 /* PlayLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684A41C887F48006B44F2 /* PlayLocalFile.m */; };
 		FD7684AB1C887F48006B44F2 /* PostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684A61C887F48006B44F2 /* PostComment.m */; };
+		FD7684AE1C887F73006B44F2 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684AD1C887F73006B44F2 /* PlayerManager.m */; };
 		FD83027D1BAB303C00FF68DB /* DonateView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD83027C1BAB303C00FF68DB /* DonateView.mm */; };
 		FD8BBC881BEB81A20018AA18 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8BBC861BEB81A20018AA18 /* Fabric.framework */; };
 		FD8BBC891BEB81A20018AA18 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8BBC871BEB81A20018AA18 /* Crashlytics.framework */; };
@@ -452,7 +453,7 @@
 		FD4EDBB21BE42C66009309EC /* mpv.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = mpv.icns; path = bilibili/img/mpv.icns; sourceTree = "<group>"; };
 		FD4EDBB41BE42D9B009309EC /* MPVSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPVSettings.h; path = Settings/MPVSettings.h; sourceTree = "<group>"; };
 		FD4EDBB51BE42D9B009309EC /* MPVSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPVSettings.m; path = Settings/MPVSettings.m; sourceTree = "<group>"; };
-		FD5101901ACC1A7600C49430 /* client.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = client.h; path = bilibili/headers/client.h; sourceTree = "<group>"; };
+		FD5101901ACC1A7600C49430 /* mpv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mpv.h; path = bilibili/headers/mpv.h; sourceTree = "<group>"; };
 		FD51A8601ACA8464007D8972 /* APIKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
 		FD5305E91B2692CE00659B32 /* SmartBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartBlockSettings.h; path = Settings/SmartBlockSettings.h; sourceTree = "<group>"; };
 		FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmartBlockSettings.m; path = Settings/SmartBlockSettings.m; sourceTree = "<group>"; };
@@ -497,6 +498,8 @@
 		FD7684A41C887F48006B44F2 /* PlayLocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayLocalFile.m; path = Player/PlayLocalFile.m; sourceTree = "<group>"; };
 		FD7684A51C887F48006B44F2 /* PostComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostComment.h; path = Player/PostComment.h; sourceTree = "<group>"; };
 		FD7684A61C887F48006B44F2 /* PostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostComment.m; path = Player/PostComment.m; sourceTree = "<group>"; };
+		FD7684AC1C887F73006B44F2 /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerManager.h; path = Player/PlayerManager.h; sourceTree = "<group>"; };
+		FD7684AD1C887F73006B44F2 /* PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerManager.m; path = Player/PlayerManager.m; sourceTree = "<group>"; };
 		FD8302771BAB1C0900FF68DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AirPlay.xib; sourceTree = "<group>"; };
 		FD83027B1BAB303C00FF68DB /* DonateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DonateView.h; path = Others/DonateView.h; sourceTree = "<group>"; };
 		FD83027C1BAB303C00FF68DB /* DonateView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DonateView.mm; path = Others/DonateView.mm; sourceTree = "<group>"; };
@@ -765,7 +768,7 @@
 		FD076C781AC8DA5C00C893FA /* headers */ = {
 			isa = PBXGroup;
 			children = (
-				FD5101901ACC1A7600C49430 /* client.h */,
+				FD5101901ACC1A7600C49430 /* mpv.h */,
 			);
 			name = headers;
 			sourceTree = "<group>";
@@ -955,16 +958,18 @@
 		FD476C6E1AD22A6D00584EFE /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				FD7684A11C887F48006B44F2 /* PlayerView.h */,
+				FD7684A21C887F48006B44F2 /* PlayerView.mm */,
 				FD76849D1C887F48006B44F2 /* AirPlayView.h */,
 				FD76849E1C887F48006B44F2 /* AirPlayView.mm */,
 				FD76849F1C887F48006B44F2 /* PlayerControlView.h */,
 				FD7684A01C887F48006B44F2 /* PlayerControlView.m */,
-				FD7684A11C887F48006B44F2 /* PlayerView.h */,
-				FD7684A21C887F48006B44F2 /* PlayerView.mm */,
 				FD7684A31C887F48006B44F2 /* PlayLocalFile.h */,
 				FD7684A41C887F48006B44F2 /* PlayLocalFile.m */,
 				FD7684A51C887F48006B44F2 /* PostComment.h */,
 				FD7684A61C887F48006B44F2 /* PostComment.m */,
+				FD7684AC1C887F73006B44F2 /* PlayerManager.h */,
+				FD7684AD1C887F73006B44F2 /* PlayerManager.m */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -1520,6 +1525,7 @@
 				FDFE45251C0073150006856E /* BarrageLoader.m in Sources */,
 				FD7684971C887F33006B44F2 /* AutoSuggestTable.m in Sources */,
 				FD7684991C887F33006B44F2 /* ToolBar.m in Sources */,
+				FD7684AE1C887F73006B44F2 /* PlayerManager.m in Sources */,
 				FD76849B1C887F33006B44F2 /* WebTabView.mm in Sources */,
 				FD3CED921BC64B8900BE9A8B /* Popover.m in Sources */,
 				FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */,
