@@ -30,6 +30,7 @@
         int backupCount = (int)[self.backupPlayURLs count];
         if(backupCount > backupIdx){
             id urls = [self.backupPlayURLs objectAtIndex:backupIdx];
+            self.firstFragmentURL = [urls objectAtIndex:0];
             return [self processMultiFragment:urls];
         }else{
             return NULL;
