@@ -23,11 +23,25 @@
     __weak IBOutlet NSButton *disconnBtn;
     const char* sel_devName; // Selected device name
     const char* sel_domain; // Selected device address or domain
+    
+    NSString *cid;
+    NSString *url;
+    NSString *title;
 }
 
 @end
 
 @implementation AirPlayView
+
+- (id)initWithCID:(NSString *)CID title:(NSString *)Title andURL:(NSString *)URL{
+    self = [super init];
+    if(self){
+        cid = CID;
+        url = URL;
+        title = Title;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -91,39 +105,28 @@
         [self writeLog:@"连接成功，正在尝试解析视频"];
         
 
-        vPID = @"1";
-        
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\/video\\/av(\\d+)(\\/index.html|\\/index_(\\d+).html)?" options:NSRegularExpressionCaseInsensitive error:nil];
-        
-        NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
-        
-        NSRange aidRange = [match rangeAtIndex:1];
-        
-        if(aidRange.length > 0){
-            vAID = [vUrl substringWithRange:aidRange];
-            NSRange pidRange = [match rangeAtIndex:3];
-            if(pidRange.length > 0 ){
-                vPID = [vUrl substringWithRange:pidRange];
-            }
-        }else{
-            vAID = @"0";
-        }
+        VP_Bilibili *bili = [VP_Bilibili sharedInstance];
+        NSMutableDictionary *params = [[bili generateParamsFromURL:url] mutableCopy];
 
-        NSArray  *urls = vp_bili_get_url([vCID intValue],vAID,vPID, k_biliVideoType_mp4);
-        if(!urls){
+        params[@"cid"] = cid;
+        params[@"title"] = title;
+
+        
+        NSString *playurl;
+        @try {
+            VideoAddress *video = [bili getVideoAddress:params];
+            if(!video){
+                [NSException raise:@VP_RESOLVE_ERROR format:@"Empty Content"];
+            }
+            playurl = [video firstFragmentURL];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"[AirPlay] Error: %@",exception);
             [self writeLog:@"Bilibili API 暂时不可用，请稍后再试"];
             [self connStop];
             return;
         }
         
-        NSString *playurl;
-        if([[[urls valueForKey:@"url"] className] isEqualToString:@"__NSCFString"]){
-            playurl = [urls valueForKey:@"url"];
-        }else{
-            for (NSDictionary *match in urls) {
-                playurl = [match valueForKey:@"url"];
-            }
-        }
         if(!playurl){
             [self writeLog:@"视频解析失败，可能是视频源已失效，或者无 MP4 格式的视频（Apple 不支持 FLV）"];
             [self connStop];
@@ -157,20 +160,28 @@
         vAID = @"0";
     }
     
-    NSArray  *urls = vp_bili_get_url([vCID intValue],vAID,vPID, k_biliVideoType_mp4);
-    if(!urls){
-        [self writeLog:@"Bilibili API 暂时不可用，请稍后再试"];
-        return;
-    }
+    VP_Bilibili *bili = [VP_Bilibili sharedInstance];
+    NSMutableDictionary *params = [[bili generateParamsFromURL:url] mutableCopy];
+    
+    params[@"cid"] = cid;
+    params[@"title"] = title;
+    
     
     NSString *playurl;
-    if([[[urls valueForKey:@"url"] className] isEqualToString:@"__NSCFString"]){
-        playurl = [urls valueForKey:@"url"];
-    }else{
-        for (NSDictionary *match in urls) {
-            playurl = [match valueForKey:@"url"];
+    @try {
+        VideoAddress *video = [bili getVideoAddress:params];
+        if(!video){
+            [NSException raise:@VP_RESOLVE_ERROR format:@"Empty Content"];
         }
+        playurl = [video firstFragmentURL];
     }
+    @catch (NSException *exception) {
+        NSLog(@"[AirPlay] Error: %@",exception);
+        [self writeLog:@"Bilibili API 暂时不可用，请稍后再试"];
+        [self connStop];
+        return;
+    }
+
     if(!playurl){
         [self writeLog:@"视频解析失败，可能是视频源已失效，或者无 MP4 格式的视频（Apple 不支持 FLV）"];
         return;
