@@ -8,11 +8,9 @@
 
 #import "VP_Bilibili.h"
 #import "PluginManager.h"
+#import "APIKey.h"
 
 #import <CommonCrypto/CommonDigest.h>
-
-extern NSString *APIKey;
-extern NSString *APISecret;
 
 @implementation VP_Bilibili{
     NSUserDefaults *ud;
