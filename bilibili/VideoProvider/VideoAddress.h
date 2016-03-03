@@ -10,6 +10,7 @@
 
 @interface VideoAddress : NSObject
 
+@property NSString *firstFragmentURL;
 @property NSString *defaultPlayURL;
 @property NSArray *backupPlayURLs;
 
