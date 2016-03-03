@@ -274,6 +274,7 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         dispatch_async(self.player.queue, ^{
             const char *args[] = {"quit", NULL};
             mpv_command(self.player.mpv, args);
+            mpv_detach_destroy(self.player.mpv);
         });
     }
 }

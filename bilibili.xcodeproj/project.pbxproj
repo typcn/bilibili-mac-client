@@ -15,7 +15,7 @@
 		FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A91B259318003A958F /* CommentBlockSettings.m */; };
 		FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AB1B259318003A958F /* KeywordBlockSettings.m */; };
 		FD1954B01B259318003A958F /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AD1B259318003A958F /* Settings.m */; };
-		FD1954BC1B259342003A958F /* downloadWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BA1B259342003A958F /* downloadWrapper.mm */; };
+		FD1954BC1B259342003A958F /* DownloadWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BA1B259342003A958F /* DownloadWrapper.mm */; };
 		FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BE1B259368003A958F /* BilibiliSocketClient.mm */; };
 		FD1954C41B259368003A958F /* LiveChat.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C01B259368003A958F /* LiveChat.m */; };
 		FD1954C51B259368003A958F /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C11B259368003A958F /* Socket.cpp */; };
@@ -107,6 +107,11 @@
 		FD7684AA1C887F48006B44F2 /* PlayLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684A41C887F48006B44F2 /* PlayLocalFile.m */; };
 		FD7684AB1C887F48006B44F2 /* PostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684A61C887F48006B44F2 /* PostComment.m */; };
 		FD7684AE1C887F73006B44F2 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684AD1C887F73006B44F2 /* PlayerManager.m */; };
+		FD7684B11C88809D006B44F2 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684B01C88809D006B44F2 /* Player.m */; };
+		FD7684B41C888491006B44F2 /* VideoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684B31C888491006B44F2 /* VideoProvider.m */; };
+		FD7684B71C8885F8006B44F2 /* VideoAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684B61C8885F8006B44F2 /* VideoAddress.m */; };
+		FD7684BA1C8888C7006B44F2 /* VP_Bilibili.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684B91C8888C7006B44F2 /* VP_Bilibili.m */; };
+		FD7684BE1C88D331006B44F2 /* PlayerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684BD1C88D331006B44F2 /* PlayerWindow.m */; };
 		FD83027D1BAB303C00FF68DB /* DonateView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD83027C1BAB303C00FF68DB /* DonateView.mm */; };
 		FD8BBC881BEB81A20018AA18 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8BBC861BEB81A20018AA18 /* Fabric.framework */; };
 		FD8BBC891BEB81A20018AA18 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8BBC871BEB81A20018AA18 /* Crashlytics.framework */; };
@@ -181,7 +186,6 @@
 		FDDE11601BA9459E00230184 /* reverseHTTP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */; };
 		FDDE11611BA9497000230184 /* reverseHTTP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */; };
 		FDDE116F1BA997EB00230184 /* AirPlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDDE116D1BA997EB00230184 /* AirPlay.xib */; };
-		FDDE11801BA9E91400230184 /* vp_bilibili.mm in Sources */ = {isa = PBXBuildFile; fileRef = FDDE117D1BA9E28B00230184 /* vp_bilibili.mm */; };
 		FDE74C171C39B01300EF2993 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = FDE74C161C39B01300EF2993 /* play.png */; };
 		FDFAD67B1C0078CD00BA06C7 /* NSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFAD67A1C0078CD00BA06C7 /* NSLabel.m */; };
 		FDFAD67E1C007B4E00BA06C7 /* NSView+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFAD67D1C007B4E00BA06C7 /* NSView+UIView.m */; };
@@ -370,8 +374,8 @@
 		FD1954AB1B259318003A958F /* KeywordBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeywordBlockSettings.m; path = Settings/KeywordBlockSettings.m; sourceTree = "<group>"; };
 		FD1954AC1B259318003A958F /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = Settings/Settings.h; sourceTree = "<group>"; };
 		FD1954AD1B259318003A958F /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Settings/Settings.m; sourceTree = "<group>"; };
-		FD1954B91B259342003A958F /* downloadWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = downloadWrapper.h; path = Downloader/downloadWrapper.h; sourceTree = "<group>"; };
-		FD1954BA1B259342003A958F /* downloadWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = downloadWrapper.mm; path = Downloader/downloadWrapper.mm; sourceTree = "<group>"; };
+		FD1954B91B259342003A958F /* DownloadWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadWrapper.h; path = Downloader/DownloadWrapper.h; sourceTree = "<group>"; };
+		FD1954BA1B259342003A958F /* DownloadWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DownloadWrapper.mm; path = Downloader/DownloadWrapper.mm; sourceTree = "<group>"; };
 		FD1954BD1B259368003A958F /* BilibiliSocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BilibiliSocketClient.h; path = LiveChat/BilibiliSocketClient.h; sourceTree = "<group>"; };
 		FD1954BE1B259368003A958F /* BilibiliSocketClient.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BilibiliSocketClient.mm; path = LiveChat/BilibiliSocketClient.mm; sourceTree = "<group>"; };
 		FD1954BF1B259368003A958F /* LiveChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LiveChat.h; path = LiveChat/LiveChat.h; sourceTree = "<group>"; };
@@ -500,6 +504,16 @@
 		FD7684A61C887F48006B44F2 /* PostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostComment.m; path = Player/PostComment.m; sourceTree = "<group>"; };
 		FD7684AC1C887F73006B44F2 /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerManager.h; path = Player/PlayerManager.h; sourceTree = "<group>"; };
 		FD7684AD1C887F73006B44F2 /* PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerManager.m; path = Player/PlayerManager.m; sourceTree = "<group>"; };
+		FD7684AF1C88809D006B44F2 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Player/Player.h; sourceTree = "<group>"; };
+		FD7684B01C88809D006B44F2 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = Player/Player.m; sourceTree = "<group>"; };
+		FD7684B21C888491006B44F2 /* VideoProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoProvider.h; path = VideoProvider/VideoProvider.h; sourceTree = "<group>"; };
+		FD7684B31C888491006B44F2 /* VideoProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoProvider.m; path = VideoProvider/VideoProvider.m; sourceTree = "<group>"; };
+		FD7684B51C8885F8006B44F2 /* VideoAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoAddress.h; path = VideoProvider/VideoAddress.h; sourceTree = "<group>"; };
+		FD7684B61C8885F8006B44F2 /* VideoAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoAddress.m; path = VideoProvider/VideoAddress.m; sourceTree = "<group>"; };
+		FD7684B81C8888C7006B44F2 /* VP_Bilibili.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VP_Bilibili.h; path = VideoProvider/VP_Bilibili.h; sourceTree = "<group>"; };
+		FD7684B91C8888C7006B44F2 /* VP_Bilibili.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VP_Bilibili.m; path = VideoProvider/VP_Bilibili.m; sourceTree = "<group>"; };
+		FD7684BC1C88D331006B44F2 /* PlayerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerWindow.h; path = Player/PlayerWindow.h; sourceTree = "<group>"; };
+		FD7684BD1C88D331006B44F2 /* PlayerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerWindow.m; path = Player/PlayerWindow.m; sourceTree = "<group>"; };
 		FD8302771BAB1C0900FF68DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AirPlay.xib; sourceTree = "<group>"; };
 		FD83027B1BAB303C00FF68DB /* DonateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DonateView.h; path = Others/DonateView.h; sourceTree = "<group>"; };
 		FD83027C1BAB303C00FF68DB /* DonateView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DonateView.mm; path = Others/DonateView.mm; sourceTree = "<group>"; };
@@ -559,8 +573,6 @@
 		FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = reverseHTTP.cpp; path = AirPlay/reverseHTTP.cpp; sourceTree = "<group>"; };
 		FDDE115F1BA9459E00230184 /* reverseHTTP.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = reverseHTTP.hpp; path = AirPlay/reverseHTTP.hpp; sourceTree = "<group>"; };
 		FDDE116E1BA997EB00230184 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AirPlay.xib; sourceTree = "<group>"; };
-		FDDE117D1BA9E28B00230184 /* vp_bilibili.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = vp_bilibili.mm; path = VideoProvider/vp_bilibili.mm; sourceTree = "<group>"; };
-		FDDE117E1BA9E28B00230184 /* vp_bilibili.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vp_bilibili.h; path = VideoProvider/vp_bilibili.h; sourceTree = "<group>"; };
 		FDE74C161C39B01300EF2993 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = bilibili/img/play.png; sourceTree = "<group>"; };
 		FDFAD6791C0078CD00BA06C7 /* NSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSLabel.h; path = BarrageRenderer/NSLabel.h; sourceTree = SOURCE_ROOT; };
 		FDFAD67A1C0078CD00BA06C7 /* NSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSLabel.m; path = BarrageRenderer/NSLabel.m; sourceTree = SOURCE_ROOT; };
@@ -694,7 +706,7 @@
 				FDDE11791BA9E25100230184 /* VideoProvider */,
 				FD7257241B9D53D30015B0F1 /* RemoteCall */,
 				FD855FAE1B07D86C004A1610 /* RealTimeComments */,
-				FDA775E81AD93ED600426483 /* downloadManager */,
+				FDA775E81AD93ED600426483 /* DownloadManager */,
 				FD476C701AD22AEC00584EFE /* GUI */,
 				FD476C6B1AD22A0D00584EFE /* Browser */,
 				FD476C6E1AD22A6D00584EFE /* Player */,
@@ -958,8 +970,14 @@
 		FD476C6E1AD22A6D00584EFE /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				FD7684AF1C88809D006B44F2 /* Player.h */,
+				FD7684B01C88809D006B44F2 /* Player.m */,
 				FD7684A11C887F48006B44F2 /* PlayerView.h */,
 				FD7684A21C887F48006B44F2 /* PlayerView.mm */,
+				FD7684BC1C88D331006B44F2 /* PlayerWindow.h */,
+				FD7684BD1C88D331006B44F2 /* PlayerWindow.m */,
+				FD7684AC1C887F73006B44F2 /* PlayerManager.h */,
+				FD7684AD1C887F73006B44F2 /* PlayerManager.m */,
 				FD76849D1C887F48006B44F2 /* AirPlayView.h */,
 				FD76849E1C887F48006B44F2 /* AirPlayView.mm */,
 				FD76849F1C887F48006B44F2 /* PlayerControlView.h */,
@@ -968,8 +986,6 @@
 				FD7684A41C887F48006B44F2 /* PlayLocalFile.m */,
 				FD7684A51C887F48006B44F2 /* PostComment.h */,
 				FD7684A61C887F48006B44F2 /* PostComment.m */,
-				FD7684AC1C887F73006B44F2 /* PlayerManager.h */,
-				FD7684AD1C887F73006B44F2 /* PlayerManager.m */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -1132,13 +1148,13 @@
 			name = headers;
 			sourceTree = "<group>";
 		};
-		FDA775E81AD93ED600426483 /* downloadManager */ = {
+		FDA775E81AD93ED600426483 /* DownloadManager */ = {
 			isa = PBXGroup;
 			children = (
-				FD1954B91B259342003A958F /* downloadWrapper.h */,
-				FD1954BA1B259342003A958F /* downloadWrapper.mm */,
+				FD1954B91B259342003A958F /* DownloadWrapper.h */,
+				FD1954BA1B259342003A958F /* DownloadWrapper.mm */,
 			);
-			name = downloadManager;
+			name = DownloadManager;
 			sourceTree = "<group>";
 		};
 		FDC72C6A1C562EC8004E1F7E /* DataStore */ = {
@@ -1158,8 +1174,12 @@
 		FDDE11791BA9E25100230184 /* VideoProvider */ = {
 			isa = PBXGroup;
 			children = (
-				FDDE117E1BA9E28B00230184 /* vp_bilibili.h */,
-				FDDE117D1BA9E28B00230184 /* vp_bilibili.mm */,
+				FD7684B21C888491006B44F2 /* VideoProvider.h */,
+				FD7684B31C888491006B44F2 /* VideoProvider.m */,
+				FD7684B51C8885F8006B44F2 /* VideoAddress.h */,
+				FD7684B61C8885F8006B44F2 /* VideoAddress.m */,
+				FD7684B81C8888C7006B44F2 /* VP_Bilibili.h */,
+				FD7684B91C8888C7006B44F2 /* VP_Bilibili.m */,
 			);
 			name = VideoProvider;
 			sourceTree = "<group>";
@@ -1517,11 +1537,12 @@
 				FD1954D01B259462003A958F /* AppDelegate.m in Sources */,
 				FDFAD6811C007BA700BA06C7 /* NSValue+iOS.m in Sources */,
 				FDFE45281C0073150006856E /* BarrageFloatTextSprite.m in Sources */,
-				FD1954BC1B259342003A958F /* downloadWrapper.mm in Sources */,
+				FD1954BC1B259342003A958F /* DownloadWrapper.mm in Sources */,
 				FD1954C71B25942F003A958F /* main.m in Sources */,
 				FDFE45261C0073150006856E /* BarrageFloatImageSprite.m in Sources */,
 				FD7684A81C887F48006B44F2 /* PlayerControlView.m in Sources */,
 				FD76849A1C887F33006B44F2 /* TWebView.mm in Sources */,
+				FD7684BA1C8888C7006B44F2 /* VP_Bilibili.m in Sources */,
 				FDFE45251C0073150006856E /* BarrageLoader.m in Sources */,
 				FD7684971C887F33006B44F2 /* AutoSuggestTable.m in Sources */,
 				FD7684991C887F33006B44F2 /* ToolBar.m in Sources */,
@@ -1533,6 +1554,7 @@
 				FDFE45211C0073150006856E /* BarrageDescriptor.m in Sources */,
 				FD7684981C887F33006B44F2 /* Browser.mm in Sources */,
 				FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */,
+				FD7684B11C88809D006B44F2 /* Player.m in Sources */,
 				FDFE452C1C0073150006856E /* BarrageWalkSprite.m in Sources */,
 				FDFE45271C0073150006856E /* BarrageFloatSprite.m in Sources */,
 				FDA01C4E1C56915A00298CEF /* PJTernarySearchTree.m in Sources */,
@@ -1544,12 +1566,12 @@
 				FDFE45231C0073150006856E /* BarrageRenderer.m in Sources */,
 				FDFE45291C0073150006856E /* BarrageSprite.m in Sources */,
 				FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */,
-				FDDE11801BA9E91400230184 /* vp_bilibili.mm in Sources */,
 				FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */,
 				FDFE45241C0073150006856E /* BarrageSpriteFactory.m in Sources */,
 				FD7684A71C887F48006B44F2 /* AirPlayView.mm in Sources */,
 				FDFE452A1C0073150006856E /* BarrageSpriteUtility.m in Sources */,
 				FD1954B01B259318003A958F /* Settings.m in Sources */,
+				FD7684B71C8885F8006B44F2 /* VideoAddress.m in Sources */,
 				FD7257261B9D5E190015B0F1 /* Analytics.mm in Sources */,
 				FDA01C471C56908F00298CEF /* HotURL.m in Sources */,
 				FD7684A91C887F48006B44F2 /* PlayerView.mm in Sources */,
@@ -1567,7 +1589,9 @@
 				FDD43E851C2049D300293223 /* SimpleVideoFormatParser.mm in Sources */,
 				FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */,
 				FD7684AA1C887F48006B44F2 /* PlayLocalFile.m in Sources */,
+				FD7684BE1C88D331006B44F2 /* PlayerWindow.m in Sources */,
 				FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */,
+				FD7684B41C888491006B44F2 /* VideoProvider.m in Sources */,
 				FD83027D1BAB303C00FF68DB /* DonateView.mm in Sources */,
 				FD59846C1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m in Sources */,
 			);

@@ -11,9 +11,11 @@
 
 @implementation Player{
     NSMutableDictionary *attrs;
+    mpv_handle *mpv_handle_var;
 }
 
 @synthesize view;
+@synthesize windowController;
 
 - (id)init{
     [NSException raise:@"NoVideoError" format:@"You must init player with video"];
@@ -25,7 +27,12 @@
     if(self){
         self.video = m_video;
         attrs = [[NSMutableDictionary alloc] init];
-        view = [[PlayerView alloc] initWithPlayer:self];
+        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+        windowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
+        view = (PlayerView *)windowController.contentViewController;
+        [view loadWithPlayer:self];
+        [windowController showWindow:self];
+        [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
     }
     return self;
 }

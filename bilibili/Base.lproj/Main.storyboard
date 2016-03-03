@@ -786,8 +786,8 @@ GQ
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="ContentView" destination="16g-QT-hVf" id="wQV-7t-F9V"/>
                         <outlet property="LoadingView" destination="zPp-I3-qDp" id="nEM-ED-xvf"/>
-                        <outlet property="PlayerView" destination="16g-QT-hVf" id="Akt-lc-s8R"/>
                         <outlet property="loadingImage" destination="d4M-72-jUI" id="fmB-92-FBV"/>
                         <outlet property="showLiveChat" destination="AOg-hv-Slo" id="zQr-hq-29W"/>
                         <outlet property="subtip" destination="nwA-xX-SSg" id="oAy-Dk-ud7"/>

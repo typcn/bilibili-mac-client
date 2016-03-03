@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Player.h"
 
 @interface PlayerControlView : NSView
+
+- (id)initWithPlayer:(Player *)player;
 
 @end

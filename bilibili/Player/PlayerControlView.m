@@ -7,12 +7,25 @@
 //
 
 #import "PlayerControlView.h"
-#import "client.h"
+#import "mpv.h"
 
-extern mpv_handle *mpv;
-extern dispatch_queue_t queue;
 
-@implementation PlayerControlView
+
+@implementation PlayerControlView{
+    Player *player;
+    mpv_handle *mpv;
+    dispatch_queue_t queue;
+}
+
+- (id)initWithPlayer:(Player *)m_player{
+    self = [super init];
+    if(self){
+        player = m_player;
+        mpv = player.mpv;
+        queue = player.queue;
+    }
+    return self;
+}
 
 - (void)drawRect:(NSRect)dirtyRect {
     [[NSColor blackColor] setFill];

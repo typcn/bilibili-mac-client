@@ -68,15 +68,15 @@ static inline void check_error(int status)
     }
 }
 
-- (id)initWithPlayer:(Player *)m_player{
-    self = [super init];
-    if(self){
-        self.player = m_player;
+- (void)loadWithPlayer:(Player *)m_player{
+    self.player = m_player;
+    if(window){
+        [window setPlayer:self.player];
     }
-    return self;
+    [self loadControls];
+    [self loadVideo:self.player.video];
+
 }
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -105,9 +105,6 @@ static inline void check_error(int status)
         rect.size = NSMakeSize(Wwidth, Wheight);
         [self.view setFrame:rect];
     }
-    
-    [self loadControls];
-    [self loadVideo:self.player.video];
     
     hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
 }
@@ -172,8 +169,9 @@ static inline void check_error(int status)
     
 
     self.player.queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
+    NSLog(@"player: %@",self.player);
     dispatch_async(self.player.queue, ^{
-        
+        NSLog(@"player: %@",self.player);
 //        if([vCID isEqualToString:@"LOCALVIDEO"]){
 //            if([vUrl length] > 5){
 //                NSDictionary *VideoInfoJson = [self getVideoInfo:vAID];
@@ -244,9 +242,11 @@ getInfo:
 }
 
 - (void)playVideo:(NSString *)URL{
-    
+    NSLog(@"player: %@",self.player);
+    NSLog(@"player mpv: %@",self.player.mpv);
     // Start Playing Video
-    self.player.mpv = mpv_create();
+    self.player.mpv  = mpv_create();
+
     if (!self.player.mpv) {
         NSLog(@"[PlayerView] Failed creating context");
         return [self setTip:@"无法创建播放器"];
@@ -577,7 +577,7 @@ getInfo:
     switch (event->event_id) {
         case MPV_EVENT_SHUTDOWN: {
             mpv_detach_destroy(self.player.mpv);
-            self.player.mpv = NULL;
+            //[self.player setMpvHandle:NULL];
             NSLog(@"Stopping player");
             break;
         }

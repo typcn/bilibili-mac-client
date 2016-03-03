@@ -19,9 +19,9 @@
 @property (weak) IBOutlet NSTextField *subtip;
 @property (weak) IBOutlet NSImageView *loadingImage;
 @property (strong) NSWindowController* liveChatWindowC;
-@property (weak) Player *player;
+@property (strong, nonatomic) Player *player;
 
-- (id)initWithPlayer:(Player *)player;
+- (void)loadWithPlayer:(Player *)m_player;
 - (void)loadVideo:(VideoAddress *)video;
 
 @end

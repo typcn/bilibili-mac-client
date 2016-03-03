@@ -16,15 +16,16 @@
 
 @interface Player : NSObject
 
-@property (readonly, strong) PlayerView *view;
+@property (nonatomic, readonly, strong) PlayerView *view;
+@property (nonatomic, readonly, strong) NSWindowController *windowController;
 
-@property NSString *siteName;
+@property (nonatomic) NSString *siteName;
 
-@property BarrageRenderer *barrageRenderer;
-@property VideoAddress *video;
+@property (nonatomic) BarrageRenderer *barrageRenderer;
+@property (nonatomic) VideoAddress *video;
 
-@property mpv_handle *mpv;
-@property dispatch_queue_t queue;
+@property (nonatomic, assign) mpv_handle *mpv;
+@property (nonatomic, strong) dispatch_queue_t queue;
 
 - (id)initWithVideo:(VideoAddress *)video;
 

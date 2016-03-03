@@ -7,16 +7,17 @@
 //
 
 #import "PostComment.h"
-#import "client.h"
-
-extern NSString *vAID;
-extern NSString *vPID;
-extern NSString *vCID;
-extern NSString *userAgent;
-extern mpv_handle *mpv;
+#import "mpv.h"
+#import "Player.h"
 
 @interface PostComment (){
     BOOL posted;
+    NSString *vAID;
+    NSString *vPID;
+    NSString *vCID;
+    NSString *userAgent;
+    Player *player;
+    mpv_handle *mpv;
     __weak IBOutlet NSSegmentedControl *CommentTypeSelecter;
 }
 
@@ -24,12 +25,29 @@ extern mpv_handle *mpv;
 
 @implementation PostComment
 
+- (id)initWithPlayer:(Player *)m_player{
+    if(![player.siteName isEqualToString:@"bilibili"]){
+        return NULL;
+    }
+    self = [super init];
+    if(self){
+        player = m_player;
+        mpv = player.mpv;
+        userAgent = [player getAttr:@"ua"];
+        vAID = [player getAttr:@"aid"];
+        vPID = [player getAttr:@"pid"];
+        vCID = [player getAttr:@"cid"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     //[self.view.window makeKeyWindow];
     //[self.view.window makeFirstResponder:self];
     posted = false;
 }
+
 - (IBAction)Send:(id)sender {
     if(posted){
         return;

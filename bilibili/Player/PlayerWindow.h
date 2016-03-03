@@ -12,8 +12,8 @@
 @interface PlayerWindow : NSWindow <NSWindowDelegate>
 
 @property (strong) NSWindowController* postCommentWindowC;
-@property (weak) Player *player;
-@property (weak) NSWindow *lastWindow;
+@property (strong, nonatomic) Player *player;
+@property (weak, nonatomic) NSWindow *lastWindow;
 
 -(void)keyDown:(NSEvent*)event;
 
