@@ -1,15 +1,15 @@
 //
-//  downloadWrapper.cpp
+//  DownloadWrapper.cpp
 //  bilibili
 //
 //  Created by TYPCN on 2015/6/6.
 //  Copyright (c) 2016 TYPCN. All rights reserved.
 //
 
-#include "downloadWrapper.h"
+#include "DownloadWrapper.h"
 
-#import "APIKey.h"
-#import "vp_bilibili.h"
+
+#import "VP_Bilibili.h"
 #import <CommonCrypto/CommonDigest.h>
 
 BOOL Downloader::downloadComment(int cid,NSString *name){
@@ -44,17 +44,19 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
     
     NSLog(@"[Downloader] Comment downloaded");
     
-    NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
-    long isMP4 = [settingsController integerForKey:@"playMP4"];
-    int vtype = k_biliVideoType_flv;
-    if(isMP4 == 1){
-        vtype = k_biliVideoType_mp4;
-    }
     
+    
+    NSDictionary *params = @{    @"cid":[NSString stringWithFormat:@"%d",cid],
+                                 @"aid":aid,
+                                 @"pid":pid,
+                                 @"title":name,
+                                 @"download":@YES
+                                 };
+    NSArray  *urls;
+
     int sucCount = 0 ;
     int failCount = 0;
     
-    NSArray  *urls = vp_bili_get_url(cid,aid,pid,vtype);
     if(!urls){
         NSLog(@"[Downloader] ERROR");
         NSUserNotification *notification = [[NSUserNotification alloc] init];
@@ -138,8 +140,9 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
     NSDictionary *activeApp = [[NSWorkspace sharedWorkspace] activeApplication];
     NSString *activeName = (NSString *)[activeApp objectForKey:@"NSApplicationName"];
     if(![activeName isEqualToString:@"Bilibili"]){
+        NSInteger isMP4 = [[NSUserDefaults standardUserDefaults] integerForKey:@"DLMP4"];
         NSString *vtypeStr = @"FLV";
-        if(isMP4){
+        if(isMP4 > 0){
             vtypeStr = @"MP4";
         }
         NSUserNotification *notification = [[NSUserNotification alloc] init];

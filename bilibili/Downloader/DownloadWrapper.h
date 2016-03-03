@@ -1,5 +1,5 @@
 //
-//  downloadWrapper.h
+//  DownloadWrapper.h
 //  bilibili
 //
 //  Created by TYPCN on 2015/6/6.
