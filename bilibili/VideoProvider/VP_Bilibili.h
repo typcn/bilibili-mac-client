@@ -7,6 +7,14 @@
 //
 
 #import "VideoProvider.h"
+#ifndef vp_bilibili_h
+#define vp_bilibili_h
+
+#define VP_BILI_API_ERROR "Bilibili API Error"
+#define VP_BILI_JSON_ERROR "Bilibili API JSON Error"
+#define VP_BILI_DYN_PARSER_ERROR "Bilibili Dynamic Parser Error"
+
+#endif
 
 @interface VP_Bilibili : VideoProvider
 

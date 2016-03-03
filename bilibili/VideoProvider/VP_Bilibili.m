@@ -116,7 +116,7 @@
 
 - (VideoAddress *) getVideoAddress: (NSDictionary *)params{
     if(!params[@"cid"]){
-        [NSException raise:@"Params CID Error" format:@"CID Cannot be empty"];
+        [NSException raise:@VP_PARAM_ERROR format:@"CID Cannot be empty"];
         return NULL;
     }
                       
@@ -142,7 +142,7 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
     if([dUrls count] == 0){
         if(FLVFailRetry){
             FLVFailRetry = NO;
-            [NSException raise:@"VideoResolveError" format:@"Bilibili API Error"];
+            [NSException raise:@VP_RESOLVE_ERROR format:@"Unable to resolve this video"];
             return NULL;
         }else{
             FLVFailRetry = YES;
@@ -232,7 +232,7 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
                                                           error:&error];
     if(error || !respData){
         NSLog(@"[VP_Bilibili] API Request Error: %@",error);
-        [NSException raise:@"APIError" format:@"%@", error.localizedDescription];
+        [NSException raise:@VP_BILI_API_ERROR format:@"%@", error.localizedDescription];
         return NULL;
     }
     
@@ -240,7 +240,7 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
     
     if(error){
         NSLog(@"[VP_Bilibili] JSON Parse Error: %@",error);
-        [NSException raise:@"APIJSONError" format:@"%@", error.localizedDescription];
+        [NSException raise:@VP_BILI_JSON_ERROR format:@"%@", error.localizedDescription];
         return NULL;
     }
     
@@ -270,7 +270,7 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
             
             if(error || !videoResult){
                 NSLog(@"[VP_Bilibili] JSON Parse Error: %@",error);
-                [NSException raise:@"APIJSONError" format:@"%@", error.localizedDescription];
+                [NSException raise:@VP_BILI_JSON_ERROR format:@"%@", error.localizedDescription];
                 return NULL;
             }
             
@@ -279,11 +279,11 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
             return videoResult;
             
         }else{
-            [NSException raise:@"DynamicParserError" format:@"视频解析出现错误，且云端动态解析模块未安装，请升级到最新版，或重新启动软件再试。"];
+            [NSException raise:@VP_BILI_DYN_PARSER_ERROR format:@"视频解析出现错误，且云端动态解析模块也无法解析，可能该版本已失效，请升级到最新版，或稍后重新启动软件再试。"];
         }
     }else{
         NSLog(@"[VP_Bilibili] Can't load dynamic parser");
-        [NSException raise:@"DynamicParserError" format:@"视频解析出现错误，且云端动态解析模块未安装，请升级到最新版，或重新启动软件再试。"];
+        [NSException raise:@VP_BILI_DYN_PARSER_ERROR format:@"视频解析出现错误，且云端动态解析模块未安装，请升级到最新版，或重新启动软件再试。"];
     }
     
     return NULL;

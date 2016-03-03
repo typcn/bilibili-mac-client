@@ -12,6 +12,15 @@
 #import <Foundation/Foundation.h>
 #import "VideoAddress.h"
 
+#ifndef vp_h
+#define vp_h
+
+#define VP_RESOLVE_ERROR "Video Resolve Error"
+#define VP_PARAM_ERROR "Input Param Error"
+
+#endif
+
+
 @interface VideoProvider : NSObject
 
 + (instancetype) sharedInstance;
