@@ -53,6 +53,7 @@
         Player *p = [players objectForKey:key];
         if(p == player){
             [self removePlayerWithName:key];
+            break;
         }
     }
     return YES;
