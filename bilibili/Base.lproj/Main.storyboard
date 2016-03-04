@@ -716,7 +716,7 @@ GQ
         <!--Miedia Player Window Controller-->
         <scene sceneID="DUG-BS-fjC">
             <objects>
-                <windowController storyboardIdentifier="playerWindow" showSeguePresentationStyle="single" id="3Nx-YC-zmP" userLabel="Miedia Player Window Controller" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="playerWindow" id="3Nx-YC-zmP" userLabel="Miedia Player Window Controller" sceneMemberID="viewController">
                     <window key="window" title="TYPCN Media Player" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="utilityWindow" frameAutosaveName="" id="Qzs-of-Uzm" customClass="PlayerWindow">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
@@ -801,7 +801,7 @@ GQ
         <!--Realtime Comment-->
         <scene sceneID="PkE-Ql-sEX">
             <objects>
-                <windowController storyboardIdentifier="LiveChatWindow" showSeguePresentationStyle="single" id="ffQ-wz-5FH" userLabel="Realtime Comment" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="LiveChatWindow" id="ffQ-wz-5FH" userLabel="Realtime Comment" sceneMemberID="viewController">
                     <window key="window" title="实时弹幕" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="i8z-Ck-rGI" userLabel="Realtime Comment">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -877,7 +877,7 @@ GQ
         <!--Post Comment Window Controller-->
         <scene sceneID="bs0-gn-v1d">
             <objects>
-                <windowController storyboardIdentifier="PostCommentWindow" showSeguePresentationStyle="single" id="eqf-bZ-eNQ" userLabel="Post Comment Window Controller" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="PostCommentWindow" id="eqf-bZ-eNQ" userLabel="Post Comment Window Controller" sceneMemberID="viewController">
                     <window key="window" title="发送弹幕" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" id="uoV-BV-vze" customClass="PostCommentWindow">
                         <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
                         <rect key="contentRect" x="640" y="200" width="480" height="36"/>
