@@ -46,7 +46,7 @@
 
 @synthesize liveChatWindowC;
 
-static void wakeup(void *context) {
+void wakeup(void *context) {
 //    if(isCancelled){
 //        return;
 //    }
@@ -58,7 +58,7 @@ static void wakeup(void *context) {
     }
 }
 
-static inline void check_error(int status)
+inline void check_error(int status)
 {
     if (status < 0) {
         NSLog(@"mpv API error: %s", mpv_error_string(status));
