@@ -46,13 +46,24 @@
 
 
 - (void)loadVideoFrom:(VideoProvider *)provider withPageUrl:(NSString *)url{
-    NSDictionary *dict = [provider generateParamsFromURL:url];
-    [self loadVideoFrom:provider withData:dict];
+    [self show];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = NSLocalizedString(@"正在生成解析参数", nil);
+    dispatch_async(vl_queue, ^(void){
+        NSDictionary *dict = [provider generateParamsFromURL:url];
+        if(!dict){
+            [self showError:@"错误" :@"解析参数生成失败，请检查 URL 是否正确"];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            [self loadVideoFrom:provider withData:dict];
+        });
+    });
 }
 
 
 - (void)loadVideoFrom:(VideoProvider *)provider withData:(NSDictionary *)params{
-    [self.window makeKeyAndOrderFront:self];
+    [self show];
+    hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = NSLocalizedString(@"正在解析视频地址", nil);
     dispatch_async(vl_queue, ^(void){
         @try {
@@ -85,21 +96,31 @@
     if(!p){
         [self showError:@"错误" :@"播放器创建失败"];
     }
-    [self hide];
+    [self hide:1.0];
 }
 
 - (void)showError:(NSString *)title :(NSString *)desc{
     dispatch_sync(dispatch_get_main_queue(), ^(void){
+        [self show];
         hud.mode = MBProgressHUDModeText;
-        hud.labelText = title;
-        hud.detailsLabelText = desc;
-        [self hide];
+        hud.labelText = NSLocalizedString(title, nil);
+        hud.detailsLabelText = NSLocalizedString(desc, nil);
+        [self hide:3.0];
     });
 }
 
-- (void)hide{
-    [hud hide:YES afterDelay:3.0];
-    [NSTimer scheduledTimerWithTimeInterval:5.0
+- (void)show{
+    [hud show:YES];
+    
+    [self.window setLevel:NSPopUpMenuWindowLevel];
+    [self.window makeKeyAndOrderFront:self];
+    [[self.window contentView] setHidden:NO];
+    [NSApp activateIgnoringOtherApps:YES];
+}
+
+- (void)hide:(NSTimeInterval)i{
+    [hud hide:YES afterDelay:i];
+    [NSTimer scheduledTimerWithTimeInterval:i+2.0
                                      target:self
                                    selector:@selector(hideWindow)
                                    userInfo:nil
@@ -108,6 +129,8 @@
 
 - (void)hideWindow{
     [self.window orderBack:self];
+    [self.window setLevel:NSNormalWindowLevel];
+    [[self.window contentView] setHidden:YES];
 }
 
 - (void)windowDidLoad {
@@ -115,7 +138,7 @@
     [self.window setHidesOnDeactivate:YES];
     [self.window setOpaque:YES];
     [self.window setBackgroundColor:[NSColor clearColor]];
-
+    [hud show:YES];
     hud = [MBProgressHUD showHUDAddedTo:self.window.contentView animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = NSLocalizedString(@"正在载入", nil);
