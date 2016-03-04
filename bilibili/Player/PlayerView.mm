@@ -42,8 +42,6 @@
 
 @implementation PlayerView
 
-- (BOOL)canBecomeMainWindow { return YES; }
-- (BOOL)canBecomeKeyWindow { return YES; }
 
 @synthesize liveChatWindowC;
 
@@ -73,6 +71,7 @@ inline void check_error(int status)
     self.player = m_player;
     if(window){
         [window setPlayer:self.player];
+        [window setAcceptsMouseMovedEvents:YES];
     }
     [self loadControls];
     [self loadVideo:self.player.video];
@@ -150,7 +149,10 @@ inline void check_error(int status)
                  20
                  )];
     
+    // Enable layer-backed window will cause NSOpenGLWindow very buggy ( low performance, more memory usage , crash on update, blank content when resize )
+    // TODO: Show controls as new window with transparent background
     [self.view setWantsLayer:YES];
+
     [playerControlView setHidden:YES];
     [self.view addSubview:playerControlView positioned:NSWindowAbove relativeTo:nil];
 }
@@ -163,7 +165,7 @@ inline void check_error(int status)
 
 - (void)loadVideo:(VideoAddress *)video{
     
-    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
+    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
     NSLog(@"Playerview load success");
     
 
@@ -713,6 +715,11 @@ getInfo:
     if(self.player.mpv) {
         if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved) >= 1) {
             [NSCursor setHiddenUntilMouseMoves:YES];
+//            [self.view setWantsLayer:NO];
+//            [playerControlView hide];
+        }else{
+//            [self.view setWantsLayer:YES];
+//            [playerControlView show];
         }
     }
 }
