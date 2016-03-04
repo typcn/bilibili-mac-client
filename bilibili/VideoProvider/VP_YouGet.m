@@ -11,6 +11,12 @@
 
 @implementation VP_YouGet
 
+- (NSDictionary *)generateParamsFromURL: (NSString *)URL{    
+    return @{
+             @"url":URL
+             };
+}
+
 - (VideoAddress *) getVideoAddress: (NSDictionary *)params{
     if(!params[@"url"]){
         [NSException raise:@VP_PARAM_ERROR format:@"CID Cannot be empty"];
