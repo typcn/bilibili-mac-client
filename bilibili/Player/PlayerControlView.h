@@ -11,6 +11,11 @@
 
 @interface PlayerControlView : NSView
 
-- (id)initWithPlayer:(Player *)player;
+@property (weak, nonatomic) Player *player;
+
+- (void)onMpvEvent:(mpv_event *)event;
+
+- (void)hide;
+- (void)show;
 
 @end

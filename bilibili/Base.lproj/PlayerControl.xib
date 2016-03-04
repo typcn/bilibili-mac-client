@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView alphaValue="0.25323943661971821" id="JST-bT-Zjs" userLabel="PlayerControlView" customClass="PlayerControlView">
+        <customView alphaValue="0.59999999999999998" id="JST-bT-Zjs" userLabel="PlayerControlView" customClass="PlayerControlView">
             <rect key="frame" x="0.0" y="0.0" width="432" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -38,7 +38,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <sliderCell key="cell" controlSize="mini" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="100" tickMarkPosition="above" sliderType="linear" id="FKg-1b-Ly5" customClass="BGHUDSliderCell"/>
                     <connections>
-                        <action selector="setVolume:" target="JST-bT-Zjs" id="Utd-iU-vHL"/>
+                        <action selector="setVolume:" target="JST-bT-Zjs" id="4yt-Gc-ErW"/>
                     </connections>
                 </slider>
                 <button toolTip="toggle Mute" id="Piz-ep-gVW">
@@ -73,9 +73,9 @@
                 <slider verticalHuggingPriority="750" id="a22-tv-SRB" userLabel="Time Slider">
                     <rect key="frame" x="62" y="7" width="306" height="15"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <sliderCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" doubleValue="62.371134020618555" tickMarkPosition="above" sliderType="linear" id="inW-u3-Qaq" customClass="TimeSliderCell"/>
+                    <sliderCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="inW-u3-Qaq" customClass="TimeSliderCell"/>
                     <connections>
-                        <action selector="seekTo:" target="JST-bT-Zjs" id="S4W-m9-e2F"/>
+                        <action selector="seekTo:" target="JST-bT-Zjs" id="5cS-NP-e3m"/>
                     </connections>
                 </slider>
                 <customView hidden="YES" id="TOQ-9E-Nr7" userLabel="Accessary Control">
@@ -176,7 +176,7 @@
                         <button toolTip="Play/Pause" id="gb1-yG-vcO">
                             <rect key="frame" x="56" y="2" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="play" imagePosition="overlaps" alignment="center" alternateImage="pause" imageScaling="axesIndependently" inset="2" id="ugD-7r-FGi">
+                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="b_play" imagePosition="overlaps" alignment="center" alternateImage="pause" imageScaling="axesIndependently" inset="2" id="ugD-7r-FGi">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -226,19 +226,21 @@
                 <outlet property="fillScreenButton" destination="XkJ-oN-pvE" id="laa-W4-iab"/>
                 <outlet property="fullScreenButton" destination="BIn-rS-nkp" id="Mob-uD-lLa"/>
                 <outlet property="hintTime" destination="Jl9-L6-PuC" id="78w-qN-XTH"/>
+                <outlet property="playPauseButton" destination="gb1-yG-vcO" id="6I6-Vr-wHD"/>
+                <outlet property="rightTimeText" destination="SbL-1z-Qas" id="gso-33-9jn"/>
                 <outlet property="speedText" destination="E5Y-5G-Osr" id="P39-Sf-PVP"/>
                 <outlet property="subDelayText" destination="Scy-1m-DbU" id="jfs-UD-c07"/>
                 <outlet property="timeDispSwitch" destination="zT5-26-P8o" id="Dzl-oV-p1O"/>
-                <outlet property="timeSlider" destination="a22-tv-SRB" id="vzD-vB-dPT"/>
-                <outlet property="timeText" destination="ADe-cN-mci" id="N9d-rr-i9z"/>
-                <outlet property="timeTextAlt" destination="SbL-1z-Qas" id="PvV-eO-gyd"/>
+                <outlet property="timeSlider" destination="a22-tv-SRB" id="RdR-cL-FWb"/>
+                <outlet property="timeText" destination="ADe-cN-mci" id="u7L-qp-QB6"/>
                 <outlet property="toggleAcceButton" destination="I0h-Gf-ylJ" id="o8h-4V-fls"/>
                 <outlet property="volumeButton" destination="Piz-ep-gVW" id="5lS-gl-BAj"/>
-                <outlet property="volumeSlider" destination="Fc0-9r-eK1" id="CDu-3Y-XOY"/>
+                <outlet property="volumeSlider" destination="Fc0-9r-eK1" id="ZJh-gz-J82"/>
             </connections>
         </customView>
     </objects>
     <resources>
+        <image name="b_play" width="48" height="48"/>
         <image name="enterfullscreen" width="48" height="48"/>
         <image name="exitfillscreen_ub" width="48" height="48"/>
         <image name="exitfullscreen" width="48" height="48"/>
@@ -247,7 +249,6 @@
         <image name="mute" width="48" height="48"/>
         <image name="next-episode" width="48" height="48"/>
         <image name="pause" width="48" height="48"/>
-        <image name="play" width="48" height="48"/>
         <image name="prev-episode" width="48" height="48"/>
         <image name="unfold" width="48" height="48"/>
         <image name="vol_mid" width="48" height="48"/>

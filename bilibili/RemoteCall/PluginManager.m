@@ -68,7 +68,7 @@
 
 - (void)reloadList{
     BOOL isDebugger = [self isDebugger];
-    if(isDebugger){
+    if(isDebugger && ![NSUserName() isEqualToString:@"typcn"]){
         static dispatch_once_t once;
         dispatch_once(&once, ^{
             NSAlert *alert = [[NSAlert alloc] init];

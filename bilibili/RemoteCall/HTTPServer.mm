@@ -33,7 +33,6 @@ int forceIPFake;
     BrowserExtInterface *browserEIF;
 }
 
-@synthesize playerWindowController;
 @synthesize airplayWindowController;
 @synthesize settingsWindowController;
 
@@ -421,12 +420,12 @@ int forceIPFake;
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
     }
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-        playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
-        [playerWindowController showWindow:self];
-        [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-    });
+//    dispatch_async(dispatch_get_main_queue(), ^(void){
+//        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+//        playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
+//        [playerWindowController showWindow:self];
+//        [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+//    });
 }
 
 - (void)playVideoByUrl:(NSString *)Url
@@ -455,12 +454,12 @@ int forceIPFake;
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
     }
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-        playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
-        [playerWindowController showWindow:self];
-        [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-    });
+//    dispatch_async(dispatch_get_main_queue(), ^(void){
+//        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+//        playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
+//        [playerWindowController showWindow:self];
+//        [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+//    });
 }
 
 

@@ -23,6 +23,9 @@ BOOL frontMost = NO;
 
 - (BOOL)canBecomeMainWindow { return YES; }
 - (BOOL)canBecomeKeyWindow { return YES; }
+- (BOOL)acceptsFirstResponder { return YES; }
+- (BOOL)becomeFirstResponder { return YES; }
+- (BOOL)resignFirstResponder { return YES; }
 
 - (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)window{
     return nil;
@@ -32,6 +35,24 @@ BOOL frontMost = NO;
 startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     
 }
+
+//- (void)becomeKeyWindow{
+//    [super becomeKeyWindow];
+//    if(self.player.mpv){
+//        dispatch_async(self.player.queue, ^{
+//            mpv_set_option_string(self.player.mpv, "input-cursor", "yes");
+//        });
+//    }
+//}
+//
+//- (void)resignKeyWindow{
+//    [super resignKeyWindow];
+//    if(self.player.mpv){
+//        dispatch_async(self.player.queue, ^{
+//            mpv_set_option_string(self.player.mpv, "input-cursor", "no");
+//        });
+//    }
+//}
 
 - (NSSize)windowWillResize:(NSWindow *)sender
                     toSize:(NSSize)frameSize{
@@ -77,11 +98,14 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     [self flagsChanged:event];
     
     if(!self.player.mpv){
+        NSLog(@"MPV not exists");
         return;
     }
-    switch( [event keyCode] ) {
-        case 125:{ // ⬇️
-            dispatch_async(self.player.queue, ^{
+    
+    // mpv is thread-safe , just run command on new thread to prevent block main thread
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        switch( [event keyCode] ) {
+            case 125:{ // ⬇️
                 int volume = atoi(mpv_get_property_string(self.player.mpv,"volume"));
                 if(volume < 5){
                     return;
@@ -90,11 +114,10 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
                 snprintf(volstr , 4, "%d", volume - 5);
                 NSLog(@"Volume: %s",volstr);
                 mpv_set_property_string(self.player.mpv,"volume",volstr);
-            });
-            break;
-        }
-        case 126:{ // ⬆️
-            dispatch_async(self.player.queue, ^{
+                break;
+            }
+            case 126:{ // ⬆️
+                
                 int volume = atoi(mpv_get_property_string(self.player.mpv,"volume"));
                 if(volume > 94){
                     return;
@@ -103,72 +126,71 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
                 snprintf(volstr , 4, "%d", volume + 5);
                 NSLog(@"Volume: %s",volstr);
                 mpv_set_property_string(self.player.mpv,"volume",volstr);
-            });
-            break;
-        }
-        case 124:{ // 👉
-            dispatch_async(self.player.queue, ^{
+                
+                break;
+            }
+            case 124:{ // 👉
+                
                 const char *args[] = {"seek", shiftKeyPressed?"1":"5" ,NULL};
                 mpv_command(self.player.mpv, args);
-            });
-            break;
-        }
-        case 123:{ // 👈
-            dispatch_async(self.player.queue, ^{
+                break;
+            }
+            case 123:{ // 👈
                 const char *args[] = {"seek", shiftKeyPressed?"-1":"-5" ,NULL};
                 mpv_command(self.player.mpv, args);
-            });
-            break;
-        }
-        case 49:{ // Space
-            dispatch_async(self.player.queue, ^{
+                break;
+            }
+            case 49:{ // Space
+                
                 if(strcmp(mpv_get_property_string(self.player.mpv,"pause"),"no")){
                     mpv_set_property_string(self.player.mpv,"pause","no");
                 }else{
                     mpv_set_property_string(self.player.mpv,"pause","yes");
                 }
-            });
-            break;
-        }
-        case 36:{ // Enter
-            if(self.player.mpv){
+                
+                break;
+            }
+            case 36:{ // Enter
+                if(self.player.mpv){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+                        postCommentWindowC = [storyBoard instantiateControllerWithIdentifier:@"PostCommentWindow"];
+                        [postCommentWindowC showWindow:self];
+                    });
+                }
+                break;
+            }
+            case 53:{ // Esc key to hide mouse
+                // Nothing to do
+                break;
+            }
+            case 3:{
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-                    postCommentWindowC = [storyBoard instantiateControllerWithIdentifier:@"PostCommentWindow"];
-                    [postCommentWindowC showWindow:self];
+                    NSUInteger flags = [[NSApp currentEvent] modifierFlags];
+                    if ((flags & NSCommandKeyMask)) {
+                        [self toggleFullScreen:self]; // Command+F key to toggle fullscreen
+                    }else if(frontMost){
+                        [self setLevel:NSNormalWindowLevel];
+                        frontMost = NO;
+                    }else{
+                        [self setLevel:NSScreenSaverWindowLevel + 1]; // F key to front most
+                        [self orderFront:nil];
+                        frontMost = YES;
+                    }
                 });
+                break;
             }
-            break;
-        }
-        case 53:{ // Esc key to hide mouse
-            // Nothing to do
-            break;
-        }
-        case 3:{
-            NSUInteger flags = [[NSApp currentEvent] modifierFlags];
-            if ((flags & NSCommandKeyMask)) {
-                [self toggleFullScreen:self]; // Command+F key to toggle fullscreen
-            }else if(frontMost){
-                [self setLevel:NSNormalWindowLevel];
-                frontMost = NO;
-            }else{
-                [self setLevel:NSScreenSaverWindowLevel + 1]; // F key to front most
-                [self orderFront:nil];
-                frontMost = YES;
-            }
-            break;
-        }
-        case 51:{ // BACKSPACE
-            dispatch_async(self.player.queue, ^{
+            case 51:{ // BACKSPACE
                 mpv_set_property_string(self.player.mpv,"speed","1");
-            });
-            break;
+                break;
+            }
+                
+            default:{
+                [self handleKeyboardEvnet:event keyDown:YES];
+                break;
+            }
         }
-            
-        default:
-            [self handleKeyboardEvnet:event keyDown:YES];
-            break;
-    }
+    });
 }
 
 -(void)keyUp:(NSEvent*)event {
@@ -187,75 +209,66 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     
     const char *keyState = keyDown?"keydown":"keyup";
     
-    switch ( [event keyCode] ) {
-        case 1:{ // s
-            const char *args[] = {keyState, shiftKeyPressed?"S":"s", NULL};
-            mpv_command(self.player.mpv, args);
-            break;
-        }
-        case 9:{ // v
-            const char *args[] = {keyState, shiftKeyPressed?"V":"v", NULL};
-            mpv_command(self.player.mpv, args);
-            break;
-        }
-        case 31:{ // o
-            const char *args[] = {keyState, shiftKeyPressed?"O":"o", NULL};
-            mpv_command(self.player.mpv, args);
-            break;
-        }
-        case 43:{ // ,
-            dispatch_async(self.player.queue, ^{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        switch ( [event keyCode] ) {
+            case 1:{ // s
+                const char *args[] = {keyState, shiftKeyPressed?"S":"s", NULL};
+                mpv_command(self.player.mpv, args);
+                break;
+            }
+            case 9:{ // v
+                const char *args[] = {keyState, shiftKeyPressed?"V":"v", NULL};
+                mpv_command(self.player.mpv, args);
+                break;
+            }
+            case 31:{ // o
+                const char *args[] = {keyState, shiftKeyPressed?"O":"o", NULL};
+                mpv_command(self.player.mpv, args);
+                break;
+            }
+            case 43:{ // ,
+                
                 const char *args[] = {keyState, shiftKeyPressed?"<":"," ,NULL};
                 mpv_command(self.player.mpv, args);
-            });
-            break;
-        }
-        case 47:{ // .
-            dispatch_async(self.player.queue, ^{
+                
+                break;
+            }
+            case 47:{ // .
+                
                 const char *args[] = {keyState, shiftKeyPressed?">":"." ,NULL};
                 mpv_command(self.player.mpv, args);
-            });
-            break;
-        }
-        case 33:{ // [{
-            dispatch_async(self.player.queue, ^{
+                break;
+            }
+            case 33:{ // [{
                 const char *args[] = {keyState, shiftKeyPressed?"{":"[" ,NULL};
                 mpv_command(self.player.mpv, args);
-            });
-            break;
-        }
-        case 30:{ // ]}
-            dispatch_async(self.player.queue, ^{
+                break;
+            }
+            case 30:{ // ]}
                 const char *args[] = {keyState, shiftKeyPressed?"}":"]" ,NULL};
                 mpv_command(self.player.mpv, args);
-            });
-            break;
-        }
-        case 6:{ // z
-            dispatch_async(self.player.queue, ^{
+                break;
+            }
+            case 6:{ // z
                 const char *args[] = {keyState, "z" ,NULL};
                 mpv_command(self.player.mpv, args);
-            });
-            break;
-        }
-        case 7:{ // x
-            dispatch_async(self.player.queue, ^{
+                break;
+            }
+            case 7:{ // x
                 const char *args[] = {keyState, "x" ,NULL};
                 mpv_command(self.player.mpv, args);
-            });
-            break;
-        }
-        case 37:{ // l
-            dispatch_sync(self.player.queue, ^{
+                break;
+            }
+            case 37:{ // l
                 const char *args[] = {keyState, shiftKeyPressed?"L":"l" ,NULL};
                 mpv_command(self.player.mpv, args);
-            });
-            break;
+                break;
+            }
+            default: // Unknow
+                NSLog(@"Key pressed: %hu", [event keyCode]);
+                break;
         }
-        default: // Unknow
-            NSLog(@"Key pressed: %hu", [event keyCode]);
-            break;
-    }
+    });
 }
 
 
@@ -265,13 +278,14 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         dispatch_async(self.player.queue, ^{
             mpv_set_wakeup_callback(self.player.mpv, NULL,NULL);
             
-            const char *stop[] = {"stop", NULL};
-            mpv_command(self.player.mpv, stop);
-            
-            const char *quit[] = {"quit", NULL};
-            mpv_command(self.player.mpv, quit);
+//            const char *stop[] = {"stop", NULL};
+//            mpv_command(self.player.mpv, stop);
+//            
+//            const char *quit[] = {"quit", NULL};
+//            mpv_command(self.player.mpv, quit);
 
-            mpv_detach_destroy(self.player.mpv);
+            mpv_terminate_destroy(self.player.mpv);
+            self.player.mpv = NULL;
         });
     }
 }

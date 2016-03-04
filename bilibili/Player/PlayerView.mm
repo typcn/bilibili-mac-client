@@ -17,6 +17,7 @@
 #import "PreloadManager.h"
 #import "Player.h"
 #import "PlayerWindow.h"
+#import "PlayerControlView.h"
 
 #include "../CommentConvert/danmaku2ass.hpp"
 
@@ -24,10 +25,10 @@
 
 
 @interface PlayerView (){
-    PlayerWindow *window;
-    NSWindow *lastWindow;
+    __weak PlayerWindow *window;
+    __weak PlayerControlView *playerControlView;
+    __weak NSWindow *lastWindow;
     
-    NSView *PlayerControlView;
     __weak IBOutlet NSView *ContentView;
     __weak IBOutlet NSView *LoadingView;
     
@@ -51,7 +52,7 @@ void wakeup(void *context) {
 //        return;
 //    }
     if(context){
-        PlayerView *a = (__bridge PlayerView *) context;
+        PlayerView *a = (__bridge __weak PlayerView *) context;
         if(a){
             [a readEvents];
         }
@@ -83,8 +84,6 @@ inline void check_error(int status)
     lastWindow = [[NSApplication sharedApplication] keyWindow];
     [lastWindow resignKeyWindow];
     [lastWindow miniaturize:self];
-
-    [self.loadingImage setAnimates:YES];
     
     double Wheight = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerheight"];
     double Wwidth = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerwidth"];
@@ -105,15 +104,12 @@ inline void check_error(int status)
         rect.size = NSMakeSize(Wwidth, Wheight);
         [self.view setFrame:rect];
     }
-    
-    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
 }
 
 - (void)viewDidAppear{
     window = (PlayerWindow *)self.view.window;
     [window makeKeyAndOrderFront:NSApp];
     [window makeMainWindow];
-
     if(!self.player.mpv){
         double WX = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerX"];
         double WY = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerY"];
@@ -122,38 +118,41 @@ inline void check_error(int status)
         [window setFrameOrigin:pos];
         [window setPlayer:self.player];
         [window setLastWindow:lastWindow];
+        [self.loadingImage setAnimates:YES];
     }
 }
 
 - (void)loadControls {
     // Load Player Control View
-    //    NSArray *tlo;
-    //    BOOL c = [[NSBundle mainBundle] loadNibNamed:@"PlayerControl" owner:self topLevelObjects:&tlo];
-    //    if(c){
-    //        for(int i=0;i<tlo.count;i++){
-    //            NSString *cname = [tlo[i] className];
-    //            if([cname isEqualToString:@"PlayerControlView"]){
-    //                PlayerControlView = tlo[i];
-    //            }
-    //        }
-    //    }
+    NSArray *tlo;
+    BOOL c = [[NSBundle mainBundle] loadNibNamed:@"PlayerControl" owner:self topLevelObjects:&tlo];
+    if(c){
+        for(int i=0;i<tlo.count;i++){
+            NSString *cname = [tlo[i] className];
+            if([cname isEqualToString:@"PlayerControlView"]){
+                playerControlView = tlo[i];
+            }
+        }
+    }
     
     /* Add Player Control view */
     
-    //    NSRect rect = PlayerControlView.frame;
-    //    [PlayerControlView setFrame:NSMakeRect(rect.origin.x,
-    //                                           rect.origin.y,
-    //                                           self.view.frame.size.width * 0.8,
-    //                                           rect.size.height)];
-    //    [PlayerControlView setFrameOrigin:
-    //     NSMakePoint(
-    //                 (NSWidth([self.view bounds]) - NSWidth([PlayerControlView frame])) / 2,
-    //                 20
-    //                 )];
-    //
-    //    [self.view setWantsLayer:YES];
-    //    [PlayerControlView setHidden:YES];
-    //[self.view addSubview:PlayerControlView positioned:NSWindowAbove relativeTo:nil];
+    [playerControlView setPlayer:self.player];
+    
+    NSRect rect = playerControlView.frame;
+    [playerControlView setFrame:NSMakeRect(rect.origin.x,
+                                           rect.origin.y,
+                                           self.view.frame.size.width * 0.8,
+                                           rect.size.height)];
+    [playerControlView setFrameOrigin:
+     NSMakePoint(
+                 (NSWidth([self.view bounds]) - NSWidth([playerControlView frame])) / 2,
+                 20
+                 )];
+    
+    [self.view setWantsLayer:YES];
+    [playerControlView setHidden:YES];
+    [self.view addSubview:playerControlView positioned:NSWindowAbove relativeTo:nil];
 }
 
 - (void)setTip:(NSString *)text{
@@ -263,9 +262,9 @@ getInfo:
     // NOTE: Interaction with the window seems to be broken for now.
     [self setMPVOption:"input-default-bindings" :"yes"];
     [self setMPVOption:"input-vo-keyboard" :"yes"];
-    [self setMPVOption:"input-cursor" :"yes"];
-    [self setMPVOption:"osc" :"yes"];
-    [self setMPVOption:"script-opts" :"osc-layout=box,osc-seekbarstyle=bar"];
+    [self setMPVOption:"input-cursor" :"no"];
+    [self setMPVOption:"osc" :"no"];
+    //[self setMPVOption:"script-opts" :"osc-layout=box,osc-seekbarstyle=bar"];
     [self setMPVOption:"user-agent" :[userAgent cStringUsingEncoding:NSUTF8StringEncoding]];
     [self setMPVOption:"framedrop" :"vo"];
     [self setMPVOption:"hr-seek" :"yes"];
@@ -577,6 +576,9 @@ getInfo:
 }
 - (void) handleEvent:(mpv_event *)event
 {
+    if(playerControlView){
+        [playerControlView onMpvEvent:event];
+    }
     switch (event->event_id) {
         case MPV_EVENT_SHUTDOWN: {
             mpv_detach_destroy(self.player.mpv);
@@ -593,7 +595,7 @@ getInfo:
             
         case MPV_EVENT_VIDEO_RECONFIG: {
             dispatch_async(dispatch_get_main_queue(), ^{
-                [PlayerControlView setHidden:NO];
+                [playerControlView show];
             });
             break;
         }
@@ -636,8 +638,8 @@ getInfo:
             break;
         }
             
-        default:
-            NSLog(@"Player Event: %s", mpv_event_name(event->event_id));
+        default: ;
+            //NSLog(@"Player Event: %s", mpv_event_name(event->event_id));
     }
 }
 
@@ -716,6 +718,8 @@ getInfo:
 }
 
 - (void)viewWillDisappear {
+    [playerControlView removeFromSuperviewWithoutNeedingDisplay];
+    playerControlView = nil;
     [hideCursorTimer invalidate];
     hideCursorTimer = nil;
 }

@@ -35,7 +35,7 @@
 		FD3553AF1B9C4356000EE41E /* mute.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553981B9C4356000EE41E /* mute.pdf */; };
 		FD3553B01B9C4356000EE41E /* next-episode.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553991B9C4356000EE41E /* next-episode.pdf */; };
 		FD3553B11B9C4356000EE41E /* pause.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD35539A1B9C4356000EE41E /* pause.pdf */; };
-		FD3553B21B9C4356000EE41E /* play.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD35539B1B9C4356000EE41E /* play.pdf */; };
+		FD3553B21B9C4356000EE41E /* b_play.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD35539B1B9C4356000EE41E /* b_play.pdf */; };
 		FD3553B31B9C4356000EE41E /* prev-episode.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD35539C1B9C4356000EE41E /* prev-episode.pdf */; };
 		FD3553B41B9C4356000EE41E /* resizeindicator.png in Resources */ = {isa = PBXBuildFile; fileRef = FD35539D1B9C4356000EE41E /* resizeindicator.png */; };
 		FD3553B51B9C4356000EE41E /* titlebar-corner-left.png in Resources */ = {isa = PBXBuildFile; fileRef = FD35539E1B9C4356000EE41E /* titlebar-corner-left.png */; };
@@ -112,6 +112,9 @@
 		FD7684B71C8885F8006B44F2 /* VideoAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684B61C8885F8006B44F2 /* VideoAddress.m */; };
 		FD7684BA1C8888C7006B44F2 /* VP_Bilibili.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684B91C8888C7006B44F2 /* VP_Bilibili.m */; };
 		FD7684BE1C88D331006B44F2 /* PlayerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684BD1C88D331006B44F2 /* PlayerWindow.m */; };
+		FD7684F01C89A09B006B44F2 /* PlayerLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684EF1C89A09B006B44F2 /* PlayerLoader.m */; };
+		FD7684F31C89A0C3006B44F2 /* PlayerLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD7684F11C89A0C3006B44F2 /* PlayerLoader.xib */; };
+		FD7684F61C89B037006B44F2 /* VP_YouGet.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684F51C89B037006B44F2 /* VP_YouGet.m */; };
 		FD83027D1BAB303C00FF68DB /* DonateView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD83027C1BAB303C00FF68DB /* DonateView.mm */; };
 		FD8BBC881BEB81A20018AA18 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8BBC861BEB81A20018AA18 /* Fabric.framework */; };
 		FD8BBC891BEB81A20018AA18 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8BBC871BEB81A20018AA18 /* Crashlytics.framework */; };
@@ -410,7 +413,7 @@
 		FD3553981B9C4356000EE41E /* mute.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = mute.pdf; path = bilibili/img/player/mute.pdf; sourceTree = "<group>"; };
 		FD3553991B9C4356000EE41E /* next-episode.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "next-episode.pdf"; path = "bilibili/img/player/next-episode.pdf"; sourceTree = "<group>"; };
 		FD35539A1B9C4356000EE41E /* pause.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = pause.pdf; path = bilibili/img/player/pause.pdf; sourceTree = "<group>"; };
-		FD35539B1B9C4356000EE41E /* play.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = play.pdf; path = bilibili/img/player/play.pdf; sourceTree = "<group>"; };
+		FD35539B1B9C4356000EE41E /* b_play.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = b_play.pdf; path = bilibili/img/player/b_play.pdf; sourceTree = "<group>"; };
 		FD35539C1B9C4356000EE41E /* prev-episode.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "prev-episode.pdf"; path = "bilibili/img/player/prev-episode.pdf"; sourceTree = "<group>"; };
 		FD35539D1B9C4356000EE41E /* resizeindicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = resizeindicator.png; path = bilibili/img/player/resizeindicator.png; sourceTree = "<group>"; };
 		FD35539E1B9C4356000EE41E /* titlebar-corner-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "titlebar-corner-left.png"; path = "bilibili/img/player/titlebar-corner-left.png"; sourceTree = "<group>"; };
@@ -514,6 +517,11 @@
 		FD7684B91C8888C7006B44F2 /* VP_Bilibili.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VP_Bilibili.m; path = VideoProvider/VP_Bilibili.m; sourceTree = "<group>"; };
 		FD7684BC1C88D331006B44F2 /* PlayerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerWindow.h; path = Player/PlayerWindow.h; sourceTree = "<group>"; };
 		FD7684BD1C88D331006B44F2 /* PlayerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerWindow.m; path = Player/PlayerWindow.m; sourceTree = "<group>"; };
+		FD7684EE1C89A09B006B44F2 /* PlayerLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerLoader.h; path = Player/PlayerLoader.h; sourceTree = "<group>"; };
+		FD7684EF1C89A09B006B44F2 /* PlayerLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerLoader.m; path = Player/PlayerLoader.m; sourceTree = "<group>"; };
+		FD7684F21C89A0C3006B44F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PlayerLoader.xib; sourceTree = "<group>"; };
+		FD7684F41C89B037006B44F2 /* VP_YouGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VP_YouGet.h; path = VideoProvider/VP_YouGet.h; sourceTree = "<group>"; };
+		FD7684F51C89B037006B44F2 /* VP_YouGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VP_YouGet.m; path = VideoProvider/VP_YouGet.m; sourceTree = "<group>"; };
 		FD8302771BAB1C0900FF68DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AirPlay.xib; sourceTree = "<group>"; };
 		FD83027B1BAB303C00FF68DB /* DonateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DonateView.h; path = Others/DonateView.h; sourceTree = "<group>"; };
 		FD83027C1BAB303C00FF68DB /* DonateView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DonateView.mm; path = Others/DonateView.mm; sourceTree = "<group>"; };
@@ -831,7 +839,7 @@
 				FD3553981B9C4356000EE41E /* mute.pdf */,
 				FD3553991B9C4356000EE41E /* next-episode.pdf */,
 				FD35539A1B9C4356000EE41E /* pause.pdf */,
-				FD35539B1B9C4356000EE41E /* play.pdf */,
+				FD35539B1B9C4356000EE41E /* b_play.pdf */,
 				FD35539C1B9C4356000EE41E /* prev-episode.pdf */,
 				FD35539D1B9C4356000EE41E /* resizeindicator.png */,
 				FD35539E1B9C4356000EE41E /* titlebar-corner-left.png */,
@@ -970,14 +978,16 @@
 		FD476C6E1AD22A6D00584EFE /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				FD7684EE1C89A09B006B44F2 /* PlayerLoader.h */,
+				FD7684EF1C89A09B006B44F2 /* PlayerLoader.m */,
 				FD7684AF1C88809D006B44F2 /* Player.h */,
 				FD7684B01C88809D006B44F2 /* Player.m */,
 				FD7684A11C887F48006B44F2 /* PlayerView.h */,
 				FD7684A21C887F48006B44F2 /* PlayerView.mm */,
-				FD7684BC1C88D331006B44F2 /* PlayerWindow.h */,
-				FD7684BD1C88D331006B44F2 /* PlayerWindow.m */,
 				FD7684AC1C887F73006B44F2 /* PlayerManager.h */,
 				FD7684AD1C887F73006B44F2 /* PlayerManager.m */,
+				FD7684BC1C88D331006B44F2 /* PlayerWindow.h */,
+				FD7684BD1C88D331006B44F2 /* PlayerWindow.m */,
 				FD76849F1C887F48006B44F2 /* PlayerControlView.h */,
 				FD7684A01C887F48006B44F2 /* PlayerControlView.m */,
 				FD7684A31C887F48006B44F2 /* PlayLocalFile.h */,
@@ -998,6 +1008,7 @@
 				FD076C5D1AC8CBBB00C893FA /* Images.xcassets */,
 				FDDE116D1BA997EB00230184 /* AirPlay.xib */,
 				FDC5C4F11C21941E00B29890 /* AutoSuggestTable.xib */,
+				FD7684F11C89A0C3006B44F2 /* PlayerLoader.xib */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -1180,6 +1191,8 @@
 				FD7684B61C8885F8006B44F2 /* VideoAddress.m */,
 				FD7684B81C8888C7006B44F2 /* VP_Bilibili.h */,
 				FD7684B91C8888C7006B44F2 /* VP_Bilibili.m */,
+				FD7684F41C89B037006B44F2 /* VP_YouGet.h */,
+				FD7684F51C89B037006B44F2 /* VP_YouGet.m */,
 			);
 			name = VideoProvider;
 			sourceTree = "<group>";
@@ -1443,9 +1456,10 @@
 				E09BF99F1B84CCC6005E08CE /* Localizable.strings in Resources */,
 				FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */,
 				FD3553AA1B9C4356000EE41E /* exitfillscreen_ub.pdf in Resources */,
-				FD3553B21B9C4356000EE41E /* play.pdf in Resources */,
+				FD3553B21B9C4356000EE41E /* b_play.pdf in Resources */,
 				FD8F72811BC74F6F0076B015 /* EULA.rtf in Resources */,
 				FDCF6E3B1C1068DF00A8A860 /* error.html in Resources */,
+				FD7684F31C89A0C3006B44F2 /* PlayerLoader.xib in Resources */,
 				FD4EDBB31BE42C66009309EC /* mpv.icns in Resources */,
 				FDE74C171C39B01300EF2993 /* play.png in Resources */,
 				FD36B0F01B99B48B00FB32CC /* homepage.png in Resources */,
@@ -1534,6 +1548,7 @@
 				FD3CED981BC6A7E100BE9A8B /* PFAboutWindowController.m in Sources */,
 				FDC5C4EC1C213EE400B29890 /* PreloadManager.m in Sources */,
 				FDFAD6841C007DCF00BA06C7 /* NHDisplayLink.m in Sources */,
+				FD7684F01C89A09B006B44F2 /* PlayerLoader.m in Sources */,
 				FD1954D01B259462003A958F /* AppDelegate.m in Sources */,
 				FDFAD6811C007BA700BA06C7 /* NSValue+iOS.m in Sources */,
 				FDFE45281C0073150006856E /* BarrageFloatTextSprite.m in Sources */,
@@ -1541,6 +1556,7 @@
 				FD1954C71B25942F003A958F /* main.m in Sources */,
 				FDFE45261C0073150006856E /* BarrageFloatImageSprite.m in Sources */,
 				FD7684A81C887F48006B44F2 /* PlayerControlView.m in Sources */,
+				FD7684F61C89B037006B44F2 /* VP_YouGet.m in Sources */,
 				FD76849A1C887F33006B44F2 /* TWebView.mm in Sources */,
 				FD7684BA1C8888C7006B44F2 /* VP_Bilibili.m in Sources */,
 				FDFE45251C0073150006856E /* BarrageLoader.m in Sources */,
@@ -1675,6 +1691,14 @@
 			name = PFAboutWindow.xib;
 			sourceTree = "<group>";
 		};
+		FD7684F11C89A0C3006B44F2 /* PlayerLoader.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD7684F21C89A0C3006B44F2 /* Base */,
+			);
+			name = PlayerLoader.xib;
+			sourceTree = "<group>";
+		};
 		FD98B2261C119243001A0382 /* NetErr.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1800,6 +1824,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					__danmaku2ass_native__NoMainFunc__,
 					"DEBUG=1",
+					__vp_enable_alert__,
 				);
 				INFOPLIST_FILE = bilibili/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -1838,7 +1863,10 @@
 					"$(PROJECT_DIR)/Build/Products/Debug",
 					"$(PROJECT_DIR)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = __danmaku2ass_native__NoMainFunc__;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					__danmaku2ass_native__NoMainFunc__,
+					__vp_enable_alert__,
+				);
 				INFOPLIST_FILE = bilibili/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
