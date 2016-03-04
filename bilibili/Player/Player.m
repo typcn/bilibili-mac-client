@@ -27,6 +27,10 @@
     if(self){
         self.video = m_video;
         attrs = [[NSMutableDictionary alloc] init];
+        
+        NSString *queue_name = [NSString stringWithFormat:@"player_queue_%ld",time(0)];
+        self.queue = dispatch_queue_create([queue_name UTF8String], DISPATCH_QUEUE_SERIAL);
+        
         NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
         windowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
         view = (PlayerView *)windowController.contentViewController;
@@ -50,8 +54,20 @@
 }
 
 - (void)stopAndDestory{
+    [windowController.window performClose:self];
+    view = nil;
+    windowController = nil;
+    [[PlayerManager sharedInstance] removePlayer:self];
+}
+
+- (void)destory{
     [[PlayerManager sharedInstance] removePlayer:self];
     view = nil;
+    windowController = nil;
+}
+
+- (void)dealloc{
+    NSLog(@"[Player] Dealloc player %@",self);
 }
 
 @end

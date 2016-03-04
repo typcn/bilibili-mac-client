@@ -30,8 +30,12 @@
 }
 
 - (Player *)createPlayer:(NSString *)name withVideo:(VideoAddress *)video{
+    if(players[name]){
+        NSLog(@"[PlayerManager] Failed to create player with duplicate key %@",name);
+        return NULL;
+    }
     Player *p = [[Player alloc] initWithVideo:video];
-    [players insertValue:p inPropertyWithKey:name];
+    players[name] = p;
     NSLog(@"[PlayerManager] Create player %@",name);
     return p;
 }
@@ -59,7 +63,6 @@
     if(!p){
         return YES;
     }
-    [p stopAndDestory];
     [players removeObjectForKey:name];
     NSLog(@"[PlayerManager] Removed player %@",name);
     return true;

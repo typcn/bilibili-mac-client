@@ -492,8 +492,8 @@
 		FD7684931C887F33006B44F2 /* WebTabView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WebTabView.mm; path = Browser/WebTabView.mm; sourceTree = "<group>"; };
 		FD7684941C887F33006B44F2 /* WebView+SwipeNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WebView+SwipeNavigation.h"; path = "Browser/WebView+SwipeNavigation.h"; sourceTree = "<group>"; };
 		FD7684951C887F33006B44F2 /* WebView+SwipeNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WebView+SwipeNavigation.m"; path = "Browser/WebView+SwipeNavigation.m"; sourceTree = "<group>"; };
-		FD76849D1C887F48006B44F2 /* AirPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AirPlayView.h; path = Player/AirPlayView.h; sourceTree = "<group>"; };
-		FD76849E1C887F48006B44F2 /* AirPlayView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AirPlayView.mm; path = Player/AirPlayView.mm; sourceTree = "<group>"; };
+		FD76849D1C887F48006B44F2 /* AirPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AirPlayView.h; path = bilibili/Player/AirPlayView.h; sourceTree = "<group>"; };
+		FD76849E1C887F48006B44F2 /* AirPlayView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AirPlayView.mm; path = bilibili/Player/AirPlayView.mm; sourceTree = "<group>"; };
 		FD76849F1C887F48006B44F2 /* PlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerControlView.h; path = Player/PlayerControlView.h; sourceTree = "<group>"; };
 		FD7684A01C887F48006B44F2 /* PlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerControlView.m; path = Player/PlayerControlView.m; sourceTree = "<group>"; };
 		FD7684A11C887F48006B44F2 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerView.h; path = Player/PlayerView.h; sourceTree = "<group>"; };
@@ -978,8 +978,6 @@
 				FD7684BD1C88D331006B44F2 /* PlayerWindow.m */,
 				FD7684AC1C887F73006B44F2 /* PlayerManager.h */,
 				FD7684AD1C887F73006B44F2 /* PlayerManager.m */,
-				FD76849D1C887F48006B44F2 /* AirPlayView.h */,
-				FD76849E1C887F48006B44F2 /* AirPlayView.mm */,
 				FD76849F1C887F48006B44F2 /* PlayerControlView.h */,
 				FD7684A01C887F48006B44F2 /* PlayerControlView.m */,
 				FD7684A31C887F48006B44F2 /* PlayLocalFile.h */,
@@ -1112,6 +1110,8 @@
 			children = (
 				FD4B84411BA5879400DD6F2F /* AirPlay.hpp */,
 				FD4B84401BA5879400DD6F2F /* AirPlay.mm */,
+				FD76849D1C887F48006B44F2 /* AirPlayView.h */,
+				FD76849E1C887F48006B44F2 /* AirPlayView.mm */,
 				FDDE115F1BA9459E00230184 /* reverseHTTP.hpp */,
 				FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */,
 				FD4B84431BA5879400DD6F2F /* ServiceDiscovery.hpp */,

@@ -168,7 +168,7 @@ static inline void check_error(int status)
     NSLog(@"Playerview load success");
     
 
-    self.player.queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
+    
 
     dispatch_async(self.player.queue, ^{
 
@@ -625,7 +625,6 @@ getInfo:
                 [self.textTip setStringValue:NSLocalizedString(@"播放完成，关闭窗口继续", nil)];
                 [self runAutoSwitch];
                 [self.view.window performClose:self];
-                [self.player stopAndDestory];
             });
             break;
         }

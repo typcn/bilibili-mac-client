@@ -258,44 +258,40 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     }
 }
 
-- (void) mpv_stop
-{
-    if (self.player.mpv) {
-        dispatch_async(self.player.queue, ^{
-            const char *args[] = {"stop", NULL};
-            mpv_command(self.player.mpv, args);
-        });
-    }
-}
 
-- (void) mpv_quit
+- (void) mpv_cleanup
 {
     if (self.player.mpv) {
         dispatch_async(self.player.queue, ^{
-            const char *args[] = {"quit", NULL};
-            mpv_command(self.player.mpv, args);
+            mpv_set_wakeup_callback(self.player.mpv, NULL,NULL);
+            
+            const char *stop[] = {"stop", NULL};
+            mpv_command(self.player.mpv, stop);
+            
+            const char *quit[] = {"quit", NULL};
+            mpv_command(self.player.mpv, quit);
+
             mpv_detach_destroy(self.player.mpv);
         });
     }
 }
 
 - (BOOL)windowShouldClose:(id)sender{
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
-    NSLog(@"Removing lastplay url");
     if(obServer){
         [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self];
         obServer = NO;
     }
-    dispatch_async(self.player.queue, ^{
-        if(self.player.mpv){
-            mpv_set_wakeup_callback(self.player.mpv, NULL,NULL);
-        }
-    });
+
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
+    NSLog(@"[PlayerWindow] Closing Window");
+
+    if(self.player.queue){
+        [self mpv_cleanup];
+        [self.player destory];
+    }
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.x forKey:@"playerX"];
         [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.y forKey:@"playerY"];
-        [self mpv_stop];
-        [self mpv_quit];
         [postCommentWindowC close];
         if([browser tabCount] > 0){
             [self.lastWindow makeKeyAndOrderFront:nil];

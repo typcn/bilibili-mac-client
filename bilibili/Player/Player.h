@@ -34,5 +34,6 @@
 - (void)setAttr:(NSDictionary *)dict;
 
 - (void)stopAndDestory;
+- (void)destory;
 
 @end

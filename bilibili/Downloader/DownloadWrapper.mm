@@ -54,8 +54,7 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
                                  };
     NSArray *urls;
     @try {
-        VP_Bilibili *bili = [VP_Bilibili sharedInstance];
-        VideoAddress *video = [bili getVideoAddress:params];
+        VideoAddress *video = [[VP_Bilibili sharedInstance] getVideoAddress:params];
         if(!video){
             [NSException raise:@VP_RESOLVE_ERROR format:@"Empty Content"];
         }
