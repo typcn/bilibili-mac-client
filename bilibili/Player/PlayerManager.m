@@ -21,6 +21,14 @@
     return sharedInstance;
 }
 
+- (id)init {
+    self = [super init];
+    if(self){
+        players = [[NSMutableDictionary alloc] init];
+    }
+    return self;
+}
+
 - (Player *)createPlayer:(NSString *)name withVideo:(VideoAddress *)video{
     Player *p = [[Player alloc] initWithVideo:video];
     [players insertValue:p inPropertyWithKey:name];
