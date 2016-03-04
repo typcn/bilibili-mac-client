@@ -52,7 +52,7 @@ void wakeup(void *context) {
 //        return;
 //    }
     if(context){
-        PlayerView *a = (__bridge __weak PlayerView *) context;
+        PlayerView *a = (__bridge PlayerView *) context;
         if(a){
             [a readEvents];
         }
