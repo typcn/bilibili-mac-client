@@ -22,7 +22,13 @@
     MBProgressHUD *hud;
     NSString *lastPlayerId;
     SubtitleHelper *subHelper;
+    
+    BOOL isLoading;
+    NSInteger thread_id;
 }
+
+#define IS_VL_QUEUE (strcmp("video_address_load_queue", \
+    dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL)) == 0)
 
 - (BOOL) canBecomeKeyWindow { return YES; }
 - (BOOL) canBecomeMainWindow { return YES; }
@@ -50,6 +56,10 @@
 
 
 - (void)loadVideoFrom:(VideoProvider *)provider withPageUrl:(NSString *)url{
+    if(isLoading){
+        return;
+    }
+    
     [self show];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = NSLocalizedString(@"正在生成解析参数", nil);
@@ -64,6 +74,9 @@
 
 
 - (void)loadVideoFrom:(VideoProvider *)provider withData:(NSDictionary *)params{
+    if(isLoading){
+        return;
+    }
     [self show];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = NSLocalizedString(@"正在解析视频地址", nil);
@@ -90,6 +103,9 @@
 }
 
 - (void)loadVideo:(VideoAddress *)video withAttrs:(NSDictionary *)attrs{
+    if(isLoading && !IS_VL_QUEUE){
+        return;
+    }
     dispatch_async(vl_queue, ^(void){
         NSDictionary *_attrs = attrs;
         BOOL haveSub = [subHelper canHandle:_attrs];
@@ -135,7 +151,7 @@
 
 - (void)show{
     [hud show:YES];
-    
+    isLoading = YES;
     [self.window setLevel:NSPopUpMenuWindowLevel];
     [self.window makeKeyAndOrderFront:self];
     [[self.window contentView] setHidden:NO];
@@ -155,6 +171,7 @@
     [self.window orderBack:self];
     [self.window setLevel:NSNormalWindowLevel];
     [[self.window contentView] setHidden:YES];
+    isLoading = NO;
 }
 
 - (void)windowDidLoad {
