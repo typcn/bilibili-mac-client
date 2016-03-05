@@ -77,6 +77,22 @@
     mpv_get_property_async(self.player.mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG);
     mpv_observe_property(self.player.mpv, 0, "volume", MPV_FORMAT_DOUBLE);
+    
+    NSWindow *playerWindow = self.player.windowController.window;
+    
+    // OSX Screen rect 0 start from left-bottom
+    
+    // Control bottom relative to screen  = Player window bottom + 40
+    CGFloat y = 40 + playerWindow.frame.origin.y;
+    
+    // Control left = (Player width / 2) - ( Control width / 2 )
+    CGFloat x = (playerWindow.frame.size.width - self.window.frame.size.width) / 2;
+
+    // Control left relative to screen = Control left + Player Window left
+    x += playerWindow.frame.origin.x;
+    
+    [self.window setFrameOrigin: NSMakePoint(x,y)];
+    [self show];
 }
 
 - (void)updateTime {
@@ -102,12 +118,16 @@
                                                      selector:@selector(updateTime)
                                                      userInfo:nil
                                                       repeats:YES];
+    [self.window setLevel:self.player.windowController.window.level + 1];
+    [self.window orderWindow:NSWindowAbove relativeTo:self.player.windowController.window.windowNumber];
 }
 
 - (void)hide{
     [self setHidden:YES];
     [timeUpdateTimer invalidate];
     timeUpdateTimer = nil;
+    [self.window setLevel:NSNormalWindowLevel];
+    [self.window orderOut:self];
 }
 
 - (IBAction)nextEP:(id)sender {
@@ -184,6 +204,28 @@
     [super removeFromSuperviewWithoutNeedingDisplay];
     [timeUpdateTimer invalidate];
     timeUpdateTimer = nil;
+}
+
+@end
+
+@implementation PlayerControlWindow
+
+// Make sure this window never got focus
+
+- (BOOL) canBecomeKeyWindow { return NO; }
+- (BOOL) canBecomeMainWindow { return YES; }
+- (BOOL) acceptsFirstResponder { return NO; }
+
+@end
+
+@implementation PlayerControlWindowController
+
+- (void)windowDidLoad {
+    [super windowDidLoad];
+    [self.window setOpaque:YES];
+    [self.window setBackgroundColor:[NSColor clearColor]];
+    [self.window setMovable:YES];
+    [self.window setMovableByWindowBackground:YES];
 }
 
 @end

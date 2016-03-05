@@ -32,6 +32,7 @@
     __weak IBOutlet NSView *ContentView;
     __weak IBOutlet NSView *LoadingView;
     
+    PlayerControlWindowController *playerControlWindowController;
     NSTimer *hideCursorTimer;
     
     NSString *videoDomain;
@@ -123,38 +124,42 @@ inline void check_error(int status)
 
 - (void)loadControls {
     // Load Player Control View
-    NSArray *tlo;
-    BOOL c = [[NSBundle mainBundle] loadNibNamed:@"PlayerControl" owner:self topLevelObjects:&tlo];
-    if(c){
-        for(int i=0;i<tlo.count;i++){
-            NSString *cname = [tlo[i] className];
-            if([cname isEqualToString:@"PlayerControlView"]){
-                playerControlView = tlo[i];
-            }
-        }
-    }
+//    NSArray *tlo;
+//    BOOL c = [[NSBundle mainBundle] loadNibNamed:@"PlayerControl" owner:self topLevelObjects:&tlo];
+//    if(c){
+//        for(int i=0;i<tlo.count;i++){
+//            NSString *cname = [tlo[i] className];
+//            if([cname isEqualToString:@"PlayerControlView"]){
+//                playerControlView = tlo[i];
+//            }
+//        }
+//    }
+//    
+
+    playerControlWindowController = [[PlayerControlWindowController alloc] initWithWindowNibName:@"PlayerControl"];
     
-    /* Add Player Control view */
-    
+    playerControlView = (PlayerControlView *)playerControlWindowController.window.contentView;
     [playerControlView setPlayer:self.player];
     
-    NSRect rect = playerControlView.frame;
-    [playerControlView setFrame:NSMakeRect(rect.origin.x,
-                                           rect.origin.y,
-                                           self.view.frame.size.width * 0.8,
-                                           rect.size.height)];
-    [playerControlView setFrameOrigin:
-     NSMakePoint(
-                 (NSWidth([self.view bounds]) - NSWidth([playerControlView frame])) / 2,
-                 20
-                 )];
+    self.player.playerControlView = playerControlView;
+    /* Add Player Control view */
     
-    // Enable layer-backed window will cause NSOpenGLWindow very buggy ( low performance, more memory usage , crash on update, blank content when resize )
-    // TODO: Show controls as new window with transparent background
-    [self.view setWantsLayer:YES];
-
-    [playerControlView setHidden:YES];
-    [self.view addSubview:playerControlView positioned:NSWindowAbove relativeTo:nil];
+    //[playerControlView setPlayer:self.player];
+    
+//    NSRect rect = playerControlView.frame;
+//    [playerControlView setFrame:NSMakeRect(rect.origin.x,
+//                                           rect.origin.y,
+//                                           self.view.frame.size.width * 0.8,
+//                                           rect.size.height)];
+//    [playerControlView setFrameOrigin:
+//     NSMakePoint(
+//                 (NSWidth([self.view bounds]) - NSWidth([playerControlView frame])) / 2,
+//                 20
+//                 )];
+//    
+//
+//    [playerControlView setHidden:YES];
+//    [self.view addSubview:playerControlView positioned:NSWindowAbove relativeTo:nil];
 }
 
 - (void)setTip:(NSString *)text{
@@ -596,9 +601,7 @@ getInfo:
         }
             
         case MPV_EVENT_VIDEO_RECONFIG: {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [playerControlView show];
-            });
+
             break;
         }
         

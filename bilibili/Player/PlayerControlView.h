@@ -19,3 +19,17 @@
 - (void)show;
 
 @end
+
+// Why do this ? because you can't overlap the apple's opengl view except you enable layer-backed view
+// If you enable that , app will take more memory usage,  about 2x cpu usage , sometimes hang up / crash
+
+// I think the best solution is create an borderless window
+
+@interface PlayerControlWindow : NSWindow
+
+@end
+
+@interface PlayerControlWindowController : NSWindowController
+
+
+@end

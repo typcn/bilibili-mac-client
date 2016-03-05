@@ -14,10 +14,13 @@
 
 #include "mpv.h"
 
+@class PlayerControlView;
+
 @interface Player : NSObject
 
 @property (nonatomic, readonly, strong) PlayerView *view;
 @property (nonatomic, readonly, strong) NSWindowController *windowController;
+@property (nonatomic, weak) PlayerControlView *playerControlView;
 
 @property (nonatomic) NSString *siteName;
 

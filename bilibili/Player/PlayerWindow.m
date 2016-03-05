@@ -7,19 +7,17 @@
 //
 
 #import "PlayerWindow.h"
+#import "PlayerControlView.h"
 
 @implementation PlayerWindow{
-    
+    BOOL paused;
+    BOOL hide;
+    BOOL shiftKeyPressed;
+    BOOL frontMost;
+    CGPoint initialLocation;
 }
 
 @synthesize postCommentWindowC;
-
-BOOL paused = NO;
-BOOL hide = NO;
-BOOL obServer = NO;
-BOOL isFirstCall = YES;
-BOOL shiftKeyPressed = NO;
-BOOL frontMost = NO;
 
 - (BOOL)canBecomeMainWindow { return YES; }
 - (BOOL)canBecomeKeyWindow { return YES; }
@@ -36,57 +34,67 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     
 }
 
-//- (void)becomeKeyWindow{
-//    [super becomeKeyWindow];
-//    if(self.player.mpv){
-//        dispatch_async(self.player.queue, ^{
-//            mpv_set_option_string(self.player.mpv, "input-cursor", "yes");
-//        });
-//    }
-//}
-//
-//- (void)resignKeyWindow{
-//    [super resignKeyWindow];
-//    if(self.player.mpv){
-//        dispatch_async(self.player.queue, ^{
-//            mpv_set_option_string(self.player.mpv, "input-cursor", "no");
-//        });
-//    }
-//}
+- (void)becomeKeyWindow{
+    if(self.player.playerControlView){
+        [self.player.playerControlView.window setLevel:self.level + 1];
+        [self.player.playerControlView.window orderWindow:NSWindowAbove relativeTo:self.windowNumber];
+    }
+    [super becomeKeyWindow];
+}
+
+- (void)resignKeyWindow{
+    if(self.player.playerControlView){
+        [self.player.playerControlView.window setLevel:self.level];
+        [self.player.playerControlView.window orderWindow:NSWindowAbove relativeTo:self.windowNumber];
+    }
+    [super resignKeyWindow];
+}
+
+// setMovableByWindowBackground will not work with NSOpenGLContext
+-(void)mouseDown:(NSEvent *)theEvent {
+    NSRect  windowFrame = self.frame;
+    
+    initialLocation = [NSEvent mouseLocation];
+    
+    initialLocation.x -= windowFrame.origin.x;
+    initialLocation.y -= windowFrame.origin.y;
+}
+
+- (void)mouseDragged:(NSEvent *)theEvent {
+    CGPoint currentLocation = [NSEvent mouseLocation];
+    
+    CGPoint newOrigin;
+    CGPoint oldOrigin = self.frame.origin;
+    
+    currentLocation = [NSEvent mouseLocation];
+    newOrigin.x = currentLocation.x - initialLocation.x;
+    newOrigin.y = currentLocation.y - initialLocation.y;
+    
+    [self setFrameOrigin:newOrigin];
+
+    // move player control view
+    
+    if(self.player.playerControlView){
+        newOrigin = self.frame.origin; // If moved to top bar , new origin will changed by system
+        CGFloat movedX = newOrigin.x - oldOrigin.x;
+        CGFloat movedY = newOrigin.y - oldOrigin.y;
+    
+        NSWindow *pcw = self.player.playerControlView.window;
+        CGPoint pOrigin = [pcw frame].origin;
+        pOrigin.x += movedX;
+        pOrigin.y += movedY;
+        
+        [pcw setFrameOrigin:pOrigin];
+    }
+}
+
 
 - (NSSize)windowWillResize:(NSWindow *)sender
                     toSize:(NSSize)frameSize{
-    if(!obServer){
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResize:) name:NSWindowDidResizeNotification object:self];
-        obServer = YES;
-    }else{
-        if(self.player.mpv){
-            dispatch_async(self.player.queue, ^{
-                if(strcmp(mpv_get_property_string(self.player.mpv,"pause"),"yes")){
-                    mpv_set_property_string(self.player.mpv,"pause","yes");
-                }
-            });
-        }
-    }
-    // Save window size
+
     [[NSUserDefaults standardUserDefaults] setDouble:frameSize.width forKey:@"playerwidth"];
     [[NSUserDefaults standardUserDefaults] setDouble:frameSize.height forKey:@"playerheight"];
     return frameSize;
-}
-- (void)windowDidResize:(NSNotification *)notification{
-    [self performSelector:@selector(Continue) withObject:nil afterDelay:1.0];
-}
-
-- (void)Continue{
-    if(self.player.mpv && !isFirstCall){
-        dispatch_async(self.player.queue, ^{
-            if(strcmp(mpv_get_property_string(self.player.mpv,"pause"),"no")){
-                mpv_set_property_string(self.player.mpv,"pause","no");
-            }
-        });
-    }else{
-        isFirstCall = NO;
-    }
 }
 
 - (void)flagsChanged:(NSEvent *) event {
@@ -175,6 +183,7 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
                     }else{
                         [self setLevel:NSScreenSaverWindowLevel + 1]; // F key to front most
                         [self orderFront:nil];
+                        [self becomeKeyWindow];
                         frontMost = YES;
                     }
                 });
@@ -291,11 +300,6 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
 }
 
 - (BOOL)windowShouldClose:(id)sender{
-    if(obServer){
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowDidResizeNotification object:self];
-        obServer = NO;
-    }
-
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     NSLog(@"[PlayerWindow] Closing Window");
 
@@ -307,6 +311,10 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.x forKey:@"playerX"];
         [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.y forKey:@"playerY"];
         [postCommentWindowC close];
+        if(self.player.playerControlView.window){
+            // The dealloc of player control view will have delay , hide it first
+            [self.player.playerControlView hide];
+        }
         if([browser tabCount] > 0){
             [self.lastWindow makeKeyAndOrderFront:nil];
         }
