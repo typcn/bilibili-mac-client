@@ -382,12 +382,9 @@ int forceIPFake;
 
 - (void)playVideoByCID:(NSString *)cid withPage:(NSString *)pgUrl title:(NSString *)title
 {
-    if(parsing){
-        return;
-    }
-    parsing = true;
-    vCID = cid;
-
+    NSString *vtitle;
+    NSString *url;
+    
     if(!pgUrl || !title){
         WebTabView *tv = (WebTabView *)[browser activeTabContents];
         if(!tv){
@@ -399,33 +396,36 @@ int forceIPFake;
         }
         NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
         NSString *mediaTitle = [fn objectAtIndex:0];
-        vUrl = [wv getURL];
+        url = [wv getURL];
         if([mediaTitle length] > 0){
-            vTitle = [fn objectAtIndex:0];
+            vtitle = [fn objectAtIndex:0];
         }else{
-            vTitle = NSLocalizedString(@"未命名", nil);
+            vtitle = NSLocalizedString(@"未命名", nil);
         }
     }else{
-        vTitle = [[title componentsSeparatedByString:@"_"] objectAtIndex:0];
-        vUrl = pgUrl;
+        vtitle = [[title componentsSeparatedByString:@"_"] objectAtIndex:0];
+        url = pgUrl;
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:vUrl forKey:@"LastPlay"];
-    NSLog(@"Video detected ! CID: %@",vCID);
+    [[NSUserDefaults standardUserDefaults] setObject:url forKey:@"LastPlay"];
+    NSLog(@"Video detected ! CID: %@",cid);
     if(acceptAnalytics == 1){
-        action("video", "play", [vCID cStringUsingEncoding:NSUTF8StringEncoding]);
+        action("video", "play", [cid cStringUsingEncoding:NSUTF8StringEncoding]);
         screenView("PlayerView");
     }else if(acceptAnalytics == 2){
         screenView("PlayerView");
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
     }
-//    dispatch_async(dispatch_get_main_queue(), ^(void){
-//        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-//        playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
-//        [playerWindowController showWindow:self];
-//        [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-//    });
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSDictionary *params = [[VP_Bilibili sharedInstance] generateParamsFromURL:url];
+    if(params){
+        dict = [params mutableCopy];
+    }
+    dict[@"title"] = vtitle;
+    dict[@"url"] = url;
+    dict[@"cid"] = cid;
+    [[PlayerLoader sharedInstance] loadVideoFrom:[VP_Bilibili sharedInstance] withData:dict];
 }
 
 - (void)playVideoByUrl:(NSString *)Url

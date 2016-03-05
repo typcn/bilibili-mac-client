@@ -139,35 +139,9 @@ inline void check_error(int status)
 }
 
 - (void)loadVideo:(VideoAddress *)video{
-    NSLog(@"Playerview load success");
+    NSLog(@"[PlayerView] Starting load video");
 
     dispatch_async(self.player.queue, ^{
-
-//        if([vCID isEqualToString:@"LOCALVIDEO"]){
-//            if([vUrl length] > 5){
-//                NSDictionary *VideoInfoJson = [self getVideoInfo:vAID];
-//                NSNumber *width = [VideoInfoJson objectForKey:@"width"];
-//                NSNumber *height = [VideoInfoJson objectForKey:@"height"];
-//                NSString *commentFile = @"/NotFound";
-//                if([cmFile length] > 5){
-//                    commentFile = [self getComments:width :height];
-//                    if([subFile length] > 5){
-//                        [self addSubtitle:subFile withCommentFile:commentFile];
-//                    }
-//                }else if([subFile length] > 5){
-//                    commentFile = subFile;
-//                }
-//                
-//                [self PlayVideo:commentFile :res];
-//            }else{
-//                dispatch_async(dispatch_get_main_queue(), ^(void){
-//                    [self.view.window performClose:self];
-//                });
-//            }
-//            return;
-//        }
-            
-
 getInfo:
 
         NSString *playURL = [video nextPlayURL];
@@ -191,6 +165,9 @@ getInfo:
             goto getInfo;
         }
         
+        [self.player setAttr:@"vheight" data:height];
+        [self.player setAttr:@"vwidth" data:width];
+        
         NSString *fvHost = [[NSURL URLWithString:firstVideo] host];
         if([fvHost length] > 0){
             videoDomain = fvHost;
@@ -208,9 +185,6 @@ getInfo:
 - (void)setTitle:(NSString *)title{
     if(videoDomain){
         title = [NSString stringWithFormat:NSLocalizedString(@"%@ - 服务器: %@", nil),title, videoDomain];
-    }
-    if(self.player.mpv){
-        [self setMPVOption:"force-media-title" :[title UTF8String]];
     }
     [window setTitle:title];
 }
@@ -294,22 +268,38 @@ getInfo:
 //            [liveChatWindowC showWindow:self];
 //        });
     }
-//    
-//    if([commentFile isEqualToString:@"/NotFound"]){
-//        loadComment = false;
-//    }
+
+    NSString *windowTitle = [self.player getAttr:@"title"];
+    if(![windowTitle length]){
+        windowTitle = @"TYPCN Media Player";
+    }
     
-//    if(loadComment){
-//        [self setMPVOption: "sub-ass" : "yes"];
-//        
-//        int substatus = mpv_set_option_string(self.player.mpv, "sub-file", [commentFile cStringUsingEncoding:NSUTF8StringEncoding]);
-//        if(substatus < 0){
-//            dispatch_async(dispatch_get_main_queue(), ^(void){
-//                NSString *t2 = [NSString stringWithFormat:@"%@ - 弹幕载入失败",self.view.window.title];
-//                [self.view.window setTitle:t2];
-//            });
-//        }
-//    }
+    NSString *cmfile = [self.player getAttr:@"commentFile"];
+    NSString *subfile = [self.player getAttr:@"subtitleFile"];
+    
+    if(cmfile){ // If have comment file
+        NSString *converted_comment = [self convertComments:cmfile]; // Convert comment file to ass sub
+        if(converted_comment && subfile){ // If convert success and have sub file
+            [self addSubtitle:subfile withCommentFile:converted_comment]; // Append comment to sub file
+        }else if(converted_comment){ // If convert success but not have sub file
+            subfile = converted_comment;
+        }else{
+            windowTitle = [windowTitle stringByAppendingString:NSLocalizedString(@" - 弹幕转换失败", nil)];
+        }
+    }
+    
+    if(subfile){
+        [self setMPVOption: "sub-ass" : "yes"];
+        
+        int substatus = mpv_set_option_string(self.player.mpv, "sub-file", [subfile UTF8String]);
+        if(substatus < 0){
+            windowTitle = [windowTitle stringByAppendingString:NSLocalizedString(@" - 字幕载入失败", nil)];
+        }
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self setTitle:windowTitle];
+    });
     
     [self loadMPVSettings];
     
@@ -373,130 +363,108 @@ getInfo:
     return info;
 }
 
-- (NSString *) getComments:(NSNumber *)width :(NSNumber *)height {
+- (NSString *) convertComments:(NSString *)file{
 
+    NSNumber *width = [self.player getAttr:@"vwidth"];
+    NSNumber *height = [self.player getAttr:@"vheight"];
+    
     NSString *resolution = [NSString stringWithFormat:@"%@x%@",width,height];
     NSLog(@"Video resolution: %@",resolution);
     
     if([height intValue] < 100 || [width intValue] < 100){
-        return @"";
+        return NULL;
     }
     
-    [self.textTip setStringValue:NSLocalizedString(@"正在读取弹幕", nil)];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:file]){
+        return NULL;
+    }
     
+    [self setTip:@"正在读取弹幕"];
     
-    BOOL LC = [vCID isEqualToString:@"LOCALVIDEO"];
+    NSString *fontName = [[NSUserDefaults standardUserDefaults] objectForKey:@"fontName"];
+    if(!fontName || [fontName length] < 1){
+        fontName = @"STHeiti";
+    }
     
-    NSData *urlData = [[PreloadManager sharedInstance] GetComment:vCID];
+    NSString *OutFile = [NSString stringWithFormat:@"%@%@.cminfo.ass", NSTemporaryDirectory(),[self.player playerName]];
     
-    if(!urlData){
-        NSString *stringURL = [NSString stringWithFormat:@"http://comment.bilibili.com/%@.xml",vCID];
-        if(LC){
-            stringURL = cmFile;
-        }
-        NSLog(@"Getting Comments from %@",stringURL);
-        urlData = [NSData dataWithContentsOfURL:[NSURL URLWithString:stringURL]];
+    float mq = 6.75*[width doubleValue]/[height doubleValue]-4;
+    float moveSpeed = [self getSettings:@"moveSpeed"];
+    if(!moveSpeed){
+        moveSpeed = 1.0;
     }else{
-        NSLog(@"Comment cache hit from PreloadManager");
+        moveSpeed = (0-moveSpeed)+1;
+    }
+    mq = mq*moveSpeed;
+    float fontsize = [self getSettings:@"fontsize"];
+    if(!fontsize){
+        fontsize = 25.1;
+    }else{
+        fontsize = fontsize + 0.1;
+    }
+    if(mq < 3.0){
+        mq = 3.0;
     }
     
-    if (urlData or LC)
-    {
-        NSString *fontName = [[NSUserDefaults standardUserDefaults] objectForKey:@"fontName"];
-        if(!fontName || [fontName length] < 1){
-            fontName = @"STHeiti";
-        }
-        
-        NSString  *filePath = [NSString stringWithFormat:@"%@%@.cminfo.xml", NSTemporaryDirectory(),vCID];
-        
-        if(LC){
-            NSString *correctString = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
-            urlData = [correctString dataUsingEncoding:NSUTF8StringEncoding];
-        }
-        
-        [urlData writeToFile:filePath atomically:YES];
-        
-        NSString *OutFile = [NSString stringWithFormat:@"%@%@.cminfo.ass", NSTemporaryDirectory(),vCID];
-        
-        float mq = 6.75*[width doubleValue]/[height doubleValue]-4;
-        float moveSpeed = [self getSettings:@"moveSpeed"];
-        if(!moveSpeed){
-            moveSpeed = 1.0;
-        }else{
-            moveSpeed = (0-moveSpeed)+1;
-        }
-        mq = mq*moveSpeed;
-        float fontsize = [self getSettings:@"fontsize"];
-        if(!fontsize){
-            fontsize = 25.1;
-        }else{
-            fontsize = fontsize + 0.1;
-        }
-        if(mq < 3.0){
-            mq = 3.0;
-        }
-        
-        bool disableBottom;
-        float disableSettings = [self getSettings:@"disableBottomComment"];
-        if(disableSettings > 0 ){
-            disableBottom = true;
-        }else{
-            disableBottom = false;
-        }
-        
-        [[NSFileManager defaultManager] removeItemAtPath:OutFile error:nil];
-        
-        bilibiliParser *p = new bilibiliParser;
-        
-        NSString *block = [[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"];
-        int blockBadword = [self getSettings:@"blcokBadword"];
-        int blockDate = [self getSettings:@"blockDate"];
-        int blockSpoiler = [self getSettings:@"blockSpoilers"];
-        int block2B = [self getSettings:@"block2B"];
-
-        if([block length] > 1){
-            NSLog(@"Blockword got");
-            NSMutableString *blockstr = [block mutableCopy];
-            if(blockBadword == 1){
-                [blockstr appendString:@"|脑残|傻|大脑有|大脑进|你妈|孙子"];
-            }
-            if(blockDate == 1){
-                [blockstr appendString:@"|201|200|周目"];
-            }
-            if(blockSpoiler == 1){
-                [blockstr appendString:@"|然后|后来|结果|剧透"];
-            }
-            if(block2B == 1){
-                [blockstr appendString:@"|笑看|笑摸|笑而不语|看着你们"];
-            }
-            NSArray *blocks = [blockstr componentsSeparatedByString:@"|"];
-            if([block length] > 0){
-                for (NSString* string in blocks) {
-                    p->SetBlockWord([string cStringUsingEncoding:NSUTF8StringEncoding]);
-                }
-            }
-        }
-        
-        p->SetFile([filePath cStringUsingEncoding:NSUTF8StringEncoding], [OutFile cStringUsingEncoding:NSUTF8StringEncoding]);
-        p->SetRes([width intValue], [height intValue]);
-        p->SetFont([fontName cStringUsingEncoding:NSUTF8StringEncoding], (int)[height intValue]/fontsize);
-        p->SetDuration(mq,5);
-        p->SetAlpha([[NSString stringWithFormat:@"%.2f",[self getSettings:@"transparency"]] floatValue]);
-        p->Convert(disableBottom);
-        
-        NSLog(@"Comment converted to %@",OutFile);
-        
-        
-        
-        return OutFile;
+    bool disableBottom;
+    float disableSettings = [self getSettings:@"disableBottomComment"];
+    if(disableSettings > 0 ){
+        disableBottom = true;
     }else{
-        return @"";
+        disableBottom = false;
     }
+    
+    [[NSFileManager defaultManager] removeItemAtPath:OutFile error:nil];
+    
+    CommentParser *p = new CommentParser;
+    
+    NSString *block = [[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"];
+    int blockBadword = [self getSettings:@"blcokBadword"];
+    int blockDate = [self getSettings:@"blockDate"];
+    int blockSpoiler = [self getSettings:@"blockSpoilers"];
+    int block2B = [self getSettings:@"block2B"];
+    
+    if([block length] > 1){
+        NSLog(@"Blockword got");
+        NSMutableString *blockstr = [block mutableCopy];
+        if(blockBadword == 1){
+            [blockstr appendString:@"|脑残|傻|大脑有|大脑进|你妈|孙子"];
+        }
+        if(blockDate == 1){
+            [blockstr appendString:@"|201|200|周目"];
+        }
+        if(blockSpoiler == 1){
+            [blockstr appendString:@"|然后|后来|结果|剧透"];
+        }
+        if(block2B == 1){
+            [blockstr appendString:@"|笑看|笑摸|笑而不语|看着你们"];
+        }
+        NSArray *blocks = [blockstr componentsSeparatedByString:@"|"];
+        if([block length] > 0){
+            for (NSString* string in blocks) {
+                p->SetBlockWord([string cStringUsingEncoding:NSUTF8StringEncoding]);
+            }
+        }
+    }
+    
+    p->SetFile([file cStringUsingEncoding:NSUTF8StringEncoding], [OutFile cStringUsingEncoding:NSUTF8StringEncoding]);
+    p->SetRes([width intValue], [height intValue]);
+    p->SetFont([fontName cStringUsingEncoding:NSUTF8StringEncoding], (int)[height intValue]/fontsize);
+    p->SetDuration(mq,5);
+    p->SetAlpha([[NSString stringWithFormat:@"%.2f",[self getSettings:@"transparency"]] floatValue]);
+    p->SetRemoveBottom(disableBottom);
+    bool isSuc = p->Convert(0);
+    if(!isSuc){
+        return NULL;
+    }
+    
+    NSLog(@"Comment converted to %@",OutFile);
+    return OutFile;
 }
 
 - (void) addSubtitle:(NSString *)filename withCommentFile:(NSString *)comment
 {
-    [self.textTip setStringValue:NSLocalizedString(@"正在合并弹幕字幕", nil)];
+    [self setTip:@"正在合并弹幕字幕"];
     
     NSError *error = nil;
     NSString *str = [[NSString alloc] initWithContentsOfFile:filename

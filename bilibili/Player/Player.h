@@ -24,6 +24,7 @@
 @property (nonatomic, weak) NSView *videoView;
 
 @property (nonatomic) NSString *siteName;
+@property (nonatomic) NSString *playerName;
 
 @property (nonatomic) BarrageRenderer *barrageRenderer;
 @property (nonatomic) VideoAddress *video;

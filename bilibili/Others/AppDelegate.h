@@ -12,7 +12,6 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (strong) NSWindowController* donatew;
-@property (strong) NSWindowController* playerWindowController;
 
 @end
 

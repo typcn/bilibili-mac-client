@@ -9,6 +9,7 @@
 #import "PlayerLoader.h"
 #import "PlayerManager.h"
 #import "MBProgressHUD.h"
+#import "SubtitleHelper.h"
 
 #import <zlib.h>
 
@@ -19,6 +20,8 @@
 @implementation PlayerLoader {
     dispatch_queue_t vl_queue;
     MBProgressHUD *hud;
+    NSString *lastPlayerId;
+    SubtitleHelper *subHelper;
 }
 
 - (BOOL) canBecomeKeyWindow { return YES; }
@@ -40,6 +43,7 @@
     self = [super initWithWindowNibName:windowNibName];
     if(self){
         vl_queue = dispatch_queue_create("video_address_load_queue", NULL);
+        subHelper = [[SubtitleHelper alloc] init];
     }
     return self;
 }
@@ -54,9 +58,7 @@
         if(!dict){
             [self showError:@"错误" :@"解析参数生成失败，请检查 URL 是否正确"];
         }
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [self loadVideoFrom:provider withData:dict];
-        });
+        [self loadVideoFrom:provider withData:dict];
     });
 }
 
@@ -71,9 +73,7 @@
             if(!video){
                 [NSException raise:@VP_RESOLVE_ERROR format:@"Empty Content"];
             }
-            dispatch_async(dispatch_get_main_queue(), ^(void){
-                [self loadVideo:video];
-            });
+            [self loadVideo:video withAttrs:params];
         }
         @catch (NSException *exception) {
             [self showError:[exception name] :[exception description]];
@@ -82,10 +82,30 @@
 }
 
 - (void)loadVideoWithLocalFiles:(NSArray *)files {
-    [self.window makeKeyAndOrderFront:self];
+    // TODO
 }
 
 - (void)loadVideo:(VideoAddress *)video {
+    [self loadVideo:video withAttrs:nil];
+}
+
+- (void)loadVideo:(VideoAddress *)video withAttrs:(NSDictionary *)attrs{
+    dispatch_async(vl_queue, ^(void){
+        NSDictionary *_attrs = attrs;
+        BOOL haveSub = [subHelper canHandle:_attrs];
+        if(haveSub){
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                hud.labelText = NSLocalizedString(@"正在下载弹幕/字幕", nil);
+            });
+            _attrs = [subHelper getSubtitle:attrs];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            [self _loadVideo:video withAttrs:_attrs];
+        });
+    });
+}
+
+- (void)_loadVideo:(VideoAddress *)video withAttrs:(NSDictionary *)attrs{
     hud.labelText = NSLocalizedString(@"正在创建播放器", nil);
     
     NSData* fgurl = [[video firstFragmentURL] dataUsingEncoding:NSUTF8StringEncoding];
@@ -96,8 +116,12 @@
     if(!p){
         [self showError:@"错误" :@"播放器创建失败"];
     }
+    [p setAttr:attrs];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"TYPlayerCreated" object:playerId];
+    lastPlayerId = playerId;
     [self hide:1.0];
 }
+
 
 - (void)showError:(NSString *)title :(NSString *)desc{
     dispatch_sync(dispatch_get_main_queue(), ^(void){
@@ -143,6 +167,10 @@
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = NSLocalizedString(@"正在载入", nil);
     hud.removeFromSuperViewOnHide = NO;
+}
+
+- (NSString *)lastPlayerId {
+    return lastPlayerId;
 }
 
 @end

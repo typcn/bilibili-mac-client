@@ -127,7 +127,7 @@ getUrl: NSLog(@"[VP_Bilibili] Getting video url");
 
     NSString *pbUrl;
     
-    if(params[@"live"]){
+    if(!params[@"live"]){
         pbUrl = [self getPlaybackRequestURL:params];
     }else{
         pbUrl = [self getLiveRequestURL:params];

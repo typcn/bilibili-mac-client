@@ -179,6 +179,9 @@
 		FDA01CB21C576C7E00298CEF /* libfontconfig.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDA01C801C576C6700298CEF /* libfontconfig.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FDA01CB31C576C7E00298CEF /* libmediainfo.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FDA31A5E1C6B959100B25240 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA31A5D1C6B959100B25240 /* Tools.m */; };
+		FDA52C6B1C8B7ADE00E5092F /* SubtitleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C6A1C8B7ADE00E5092F /* SubtitleHelper.m */; };
+		FDA52C6E1C8B7DC900E5092F /* SubtitleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C6D1C8B7DC900E5092F /* SubtitleProvider.m */; };
+		FDA52C711C8B7DFA00E5092F /* SP_Bilibili.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C701C8B7DFA00E5092F /* SP_Bilibili.m */; };
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB54D601BCB6B68007A1615 /* BrowserExtInterface.m */; };
 		FDC5C4EC1C213EE400B29890 /* PreloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C4EB1C213EE400B29890 /* PreloadManager.m */; };
@@ -576,6 +579,12 @@
 		FDA01C801C576C6700298CEF /* libfontconfig.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfontconfig.1.dylib; path = bilibili/libs/libfontconfig.1.dylib; sourceTree = "<group>"; };
 		FDA31A5C1C6B959100B25240 /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tools.h; path = Settings/Tools.h; sourceTree = "<group>"; };
 		FDA31A5D1C6B959100B25240 /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tools.m; path = Settings/Tools.m; sourceTree = "<group>"; };
+		FDA52C691C8B7ADE00E5092F /* SubtitleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubtitleHelper.h; path = SubHelper/SubtitleHelper.h; sourceTree = "<group>"; };
+		FDA52C6A1C8B7ADE00E5092F /* SubtitleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubtitleHelper.m; path = SubHelper/SubtitleHelper.m; sourceTree = "<group>"; };
+		FDA52C6C1C8B7DC900E5092F /* SubtitleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubtitleProvider.h; path = SubHelper/SubtitleProvider.h; sourceTree = "<group>"; };
+		FDA52C6D1C8B7DC900E5092F /* SubtitleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubtitleProvider.m; path = SubHelper/SubtitleProvider.m; sourceTree = "<group>"; };
+		FDA52C6F1C8B7DFA00E5092F /* SP_Bilibili.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SP_Bilibili.h; path = SubHelper/SP_Bilibili.h; sourceTree = "<group>"; };
+		FDA52C701C8B7DFA00E5092F /* SP_Bilibili.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SP_Bilibili.m; path = SubHelper/SP_Bilibili.m; sourceTree = "<group>"; };
 		FDA775E01AD93DC900426483 /* aria2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = aria2.hpp; path = bilibili/headers/aria2.hpp; sourceTree = "<group>"; };
 		FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FDB54D5F1BCB6B68007A1615 /* BrowserExtInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrowserExtInterface.h; path = RemoteCall/BrowserExtInterface.h; sourceTree = "<group>"; };
@@ -727,6 +736,7 @@
 		FD076C521AC8CBBB00C893FA /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FDA52C651C8B7AC000E5092F /* SubHelper */,
 				FDC72C6A1C562EC8004E1F7E /* DataStore */,
 				FD3CED891BC64B1100BE9A8B /* Notifications */,
 				FDDE11791BA9E25100230184 /* VideoProvider */,
@@ -1187,6 +1197,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FDA52C651C8B7AC000E5092F /* SubHelper */ = {
+			isa = PBXGroup;
+			children = (
+				FDA52C6C1C8B7DC900E5092F /* SubtitleProvider.h */,
+				FDA52C6D1C8B7DC900E5092F /* SubtitleProvider.m */,
+				FDA52C691C8B7ADE00E5092F /* SubtitleHelper.h */,
+				FDA52C6A1C8B7ADE00E5092F /* SubtitleHelper.m */,
+				FDA52C6F1C8B7DFA00E5092F /* SP_Bilibili.h */,
+				FDA52C701C8B7DFA00E5092F /* SP_Bilibili.m */,
+			);
+			name = SubHelper;
+			sourceTree = "<group>";
+		};
 		FDA775DC1AD93D0D00426483 /* aria2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1584,6 +1607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDA52C6B1C8B7ADE00E5092F /* SubtitleHelper.m in Sources */,
 				FD7684961C887F33006B44F2 /* AddressBar.m in Sources */,
 				FDFE452B1C0073150006856E /* BarrageWalkImageSprite.m in Sources */,
 				FDFAD67E1C007B4E00BA06C7 /* NSView+UIView.m in Sources */,
@@ -1597,6 +1621,7 @@
 				FDFAD6841C007DCF00BA06C7 /* NHDisplayLink.m in Sources */,
 				FD7684F01C89A09B006B44F2 /* PlayerLoader.m in Sources */,
 				FD1954D01B259462003A958F /* AppDelegate.m in Sources */,
+				FDA52C6E1C8B7DC900E5092F /* SubtitleProvider.m in Sources */,
 				FDFAD6811C007BA700BA06C7 /* NSValue+iOS.m in Sources */,
 				FDFE45281C0073150006856E /* BarrageFloatTextSprite.m in Sources */,
 				FD1954BC1B259342003A958F /* DownloadWrapper.mm in Sources */,
@@ -1638,6 +1663,7 @@
 				FDFE452A1C0073150006856E /* BarrageSpriteUtility.m in Sources */,
 				FD76850A1C8B0D7F006B44F2 /* PlayerControlView.m in Sources */,
 				FD1954B01B259318003A958F /* Settings.m in Sources */,
+				FDA52C711C8B7DFA00E5092F /* SP_Bilibili.m in Sources */,
 				FD7684B71C8885F8006B44F2 /* VideoAddress.m in Sources */,
 				FD7257261B9D5E190015B0F1 /* Analytics.mm in Sources */,
 				FDA01C471C56908F00298CEF /* HotURL.m in Sources */,

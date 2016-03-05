@@ -35,6 +35,7 @@
         return NULL;
     }
     Player *p = [[Player alloc] initWithVideo:video];
+    [p setPlayerName:name];
     players[name] = p;
     NSLog(@"[PlayerManager] Create player %@",name);
     return p;
