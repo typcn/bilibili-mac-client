@@ -17,9 +17,9 @@
     __weak IBOutlet NSSlider *timeSlider;
     __weak IBOutlet NSTextField *timeText;
     __weak IBOutlet NSTextField *rightTimeText;
-    
-    BOOL currentPaused;
 }
+
+@synthesize currentPaused;
 
 - (void)onMpvEvent:(mpv_event *)event{
     if(event->event_id == MPV_EVENT_GET_PROPERTY_REPLY || event->event_id == MPV_EVENT_PROPERTY_CHANGE){
@@ -106,6 +106,9 @@
 }
 
 - (void)show{
+    if(!self.hidden){
+        return;
+    }
     [self setHidden:NO];
     [self setState:NSVisualEffectStateActive];
     if(timeUpdateTimer){
@@ -123,6 +126,9 @@
 }
 
 - (void)hide{
+    if(self.hidden){
+        return;
+    }
     NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.1;
     [self performSelector:@selector(orderOut) withObject:nil afterDelay:delay];
     

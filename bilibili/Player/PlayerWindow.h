@@ -15,6 +15,7 @@
 @property (weak, nonatomic) Player *player;
 @property (weak, nonatomic) NSWindow *lastWindow;
 
--(void)keyDown:(NSEvent*)event;
+- (void)keyDown:(NSEvent*)event;
+- (void)setPlayerAndInit:(Player *)player;
 
 @end

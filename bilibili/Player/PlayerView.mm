@@ -33,7 +33,6 @@
     __weak IBOutlet NSView *LoadingView;
     
     PlayerControlWindowController *playerControlWindowController;
-    NSTimer *hideCursorTimer;
     
     NSString *videoDomain;
 }
@@ -71,7 +70,7 @@ inline void check_error(int status)
 - (void)loadWithPlayer:(Player *)m_player{
     self.player = m_player;
     if(window){
-        [window setPlayer:self.player];
+        [window setPlayerAndInit:self.player];
         [window setAcceptsMouseMovedEvents:YES];
     }
     [self loadControls];
@@ -116,50 +115,20 @@ inline void check_error(int status)
         NSPoint pos = NSMakePoint(WX, WY);
         NSLog(@"[PlayerView] X: %f Y: %f",WX,WY);
         [window setFrameOrigin:pos];
-        [window setPlayer:self.player];
+        [window setPlayerAndInit:self.player];
         [window setLastWindow:lastWindow];
+        [window setAcceptsMouseMovedEvents:YES];
         [self.loadingImage setAnimates:YES];
     }
 }
 
 - (void)loadControls {
-    // Load Player Control View
-//    NSArray *tlo;
-//    BOOL c = [[NSBundle mainBundle] loadNibNamed:@"PlayerControl" owner:self topLevelObjects:&tlo];
-//    if(c){
-//        for(int i=0;i<tlo.count;i++){
-//            NSString *cname = [tlo[i] className];
-//            if([cname isEqualToString:@"PlayerControlView"]){
-//                playerControlView = tlo[i];
-//            }
-//        }
-//    }
-//    
-
     playerControlWindowController = [[PlayerControlWindowController alloc] initWithWindowNibName:@"PlayerControl"];
     
     playerControlView = (PlayerControlView *)playerControlWindowController.window.contentView;
     [playerControlView setPlayer:self.player];
     
     self.player.playerControlView = playerControlView;
-    /* Add Player Control view */
-    
-    //[playerControlView setPlayer:self.player];
-    
-//    NSRect rect = playerControlView.frame;
-//    [playerControlView setFrame:NSMakeRect(rect.origin.x,
-//                                           rect.origin.y,
-//                                           self.view.frame.size.width * 0.8,
-//                                           rect.size.height)];
-//    [playerControlView setFrameOrigin:
-//     NSMakePoint(
-//                 (NSWidth([self.view bounds]) - NSWidth([playerControlView frame])) / 2,
-//                 20
-//                 )];
-//    
-//
-//    [playerControlView setHidden:YES];
-//    [self.view addSubview:playerControlView positioned:NSWindowAbove relativeTo:nil];
 }
 
 - (void)setTip:(NSString *)text{
@@ -169,12 +138,7 @@ inline void check_error(int status)
 }
 
 - (void)loadVideo:(VideoAddress *)video{
-    
-    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hideCursor:) userInfo:nil repeats:YES];
     NSLog(@"Playerview load success");
-    
-
-    
 
     dispatch_async(self.player.queue, ^{
 
@@ -714,24 +678,9 @@ getInfo:
     }
 }
 
-- (void)hideCursor:(id)sender {
-    if(self.player.mpv) {
-        if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved) >= 1) {
-            [NSCursor setHiddenUntilMouseMoves:YES];
-//            [self.view setWantsLayer:NO];
-//            [playerControlView hide];
-        }else{
-//            [self.view setWantsLayer:YES];
-//            [playerControlView show];
-        }
-    }
-}
-
 - (void)viewWillDisappear {
     [playerControlView removeFromSuperviewWithoutNeedingDisplay];
     playerControlView = nil;
-    [hideCursorTimer invalidate];
-    hideCursorTimer = nil;
 }
 
 @end

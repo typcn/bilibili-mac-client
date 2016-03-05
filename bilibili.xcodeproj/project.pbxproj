@@ -12,6 +12,7 @@
 		FD0103291C8B0EEF00505344 /* BGTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0103231C8B0EEF00505344 /* BGTheme.m */; };
 		FD01032A1C8B0EEF00505344 /* BGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0103251C8B0EEF00505344 /* BGThemeManager.m */; };
 		FD01032D1C8B2D4200505344 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD01032C1C8B2D4200505344 /* CoreGraphics.framework */; };
+		FD0103301C8B4CF900505344 /* ControlsWithVibracy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD01032F1C8B4CF900505344 /* ControlsWithVibracy.m */; };
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
 		FD0829C91B67844500D2B126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0829C71B67844500D2B126 /* Main.storyboard */; };
 		FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */; };
@@ -375,6 +376,8 @@
 		FD0103241C8B0EEF00505344 /* BGThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BGThemeManager.h; path = Player/Control/BGThemeManager.h; sourceTree = "<group>"; };
 		FD0103251C8B0EEF00505344 /* BGThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BGThemeManager.m; path = Player/Control/BGThemeManager.m; sourceTree = "<group>"; };
 		FD01032C1C8B2D4200505344 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FD01032E1C8B4CF900505344 /* ControlsWithVibracy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlsWithVibracy.h; path = Player/Control/ControlsWithVibracy.h; sourceTree = "<group>"; };
+		FD01032F1C8B4CF900505344 /* ControlsWithVibracy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ControlsWithVibracy.m; path = Player/Control/ControlsWithVibracy.m; sourceTree = "<group>"; };
 		FD076C501AC8CBBB00C893FA /* Bilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C541AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C5D1AC8CBBB00C893FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -1122,6 +1125,8 @@
 				FD0103231C8B0EEF00505344 /* BGTheme.m */,
 				FD0103241C8B0EEF00505344 /* BGThemeManager.h */,
 				FD0103251C8B0EEF00505344 /* BGThemeManager.m */,
+				FD01032E1C8B4CF900505344 /* ControlsWithVibracy.h */,
+				FD01032F1C8B4CF900505344 /* ControlsWithVibracy.m */,
 			);
 			name = "Player Control";
 			sourceTree = "<group>";
@@ -1582,6 +1587,7 @@
 				FD7684961C887F33006B44F2 /* AddressBar.m in Sources */,
 				FDFE452B1C0073150006856E /* BarrageWalkImageSprite.m in Sources */,
 				FDFAD67E1C007B4E00BA06C7 /* NSView+UIView.m in Sources */,
+				FD0103301C8B4CF900505344 /* ControlsWithVibracy.m in Sources */,
 				FD1954C51B259368003A958F /* Socket.cpp in Sources */,
 				FDFAD67B1C0078CD00BA06C7 /* NSLabel.m in Sources */,
 				FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */,

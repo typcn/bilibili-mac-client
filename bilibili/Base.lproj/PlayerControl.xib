@@ -17,11 +17,11 @@
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1057"/>
             <value key="minSize" type="size" width="480" height="60"/>
             <value key="maxSize" type="size" width="9999" height="60"/>
-            <customView key="contentView" hidden="YES" wantsLayer="YES" alphaValue="0.59999999999999998" id="JST-bT-Zjs" userLabel="PlayerControlView" customClass="PlayerControlView">
+            <customView key="contentView" hidden="YES" alphaValue="0.59999999999999998" id="JST-bT-Zjs" userLabel="PlayerControlView" customClass="PlayerControlView">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="60"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button toolTip="Enter/Exit Fullscreen" id="BIn-rS-nkp">
+                    <button toolTip="Enter/Exit Fullscreen" id="BIn-rS-nkp" customClass="NSButtonWithVibracy">
                         <rect key="frame" x="418" y="31" width="22" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="enterfullscreen" imagePosition="overlaps" alignment="left" alternateImage="exitfullscreen" imageScaling="axesIndependently" inset="2" id="0Q9-Lf-Hft">
@@ -32,7 +32,7 @@
                             <action selector="toggleFullScreen:" target="JST-bT-Zjs" id="1a7-p0-8Qf"/>
                         </connections>
                     </button>
-                    <button toolTip="Toggle Fillscreen" id="XkJ-oN-pvE">
+                    <button toolTip="Toggle Fillscreen" id="XkJ-oN-pvE" customClass="NSButtonWithVibracy">
                         <rect key="frame" x="382" y="30" width="24" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="fillscreen_ub" imagePosition="overlaps" alignment="center" alternateImage="exitfillscreen_ub" state="on" imageScaling="axesIndependently" inset="2" id="gZu-4V-PeM">
@@ -51,7 +51,7 @@
                             <action selector="setVolume:" target="JST-bT-Zjs" id="4yt-Gc-ErW"/>
                         </connections>
                     </slider>
-                    <button toolTip="toggle Mute" id="Piz-ep-gVW">
+                    <button toolTip="toggle Mute" id="Piz-ep-gVW" customClass="NSButtonWithVibracy">
                         <rect key="frame" x="14" y="33" width="18" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="vol_mid" imagePosition="overlaps" alignment="left" alternateImage="mute" imageScaling="axesIndependently" inset="2" id="9X7-Pf-ckj">
@@ -62,7 +62,7 @@
                             <action selector="toggleMute:" target="JST-bT-Zjs" id="7g5-2x-OKc"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" id="ADe-cN-mci" userLabel="timeText">
+                    <textField verticalHuggingPriority="750" id="ADe-cN-mci" userLabel="timeText" customClass="NSTextFieldWithVibracy">
                         <rect key="frame" x="3" y="8" width="58" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="right" id="2eS-qI-3VC">
@@ -71,7 +71,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="SbL-1z-Qas" userLabel="timeTextAlt">
+                    <textField verticalHuggingPriority="750" id="SbL-1z-Qas" userLabel="timeTextAlt" customClass="NSTextFieldWithVibracy">
                         <rect key="frame" x="417" y="8" width="58" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" placeholderString="unknown" id="gVE-Sa-SBJ">
@@ -159,7 +159,7 @@
                             </textField>
                         </subviews>
                     </customView>
-                    <button toolTip="Show/Hide Playing Controls" id="I0h-Gf-ylJ" userLabel="showHide accessary Control">
+                    <button toolTip="Show/Hide Playing Controls" id="I0h-Gf-ylJ" userLabel="showHide accessary Control" customClass="NSButtonWithVibracy">
                         <rect key="frame" x="450" y="31" width="22" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="fold" imagePosition="only" alignment="center" alternateImage="unfold" controlSize="mini" imageScaling="axesIndependently" inset="2" id="kvV-DU-ajL">
@@ -170,7 +170,7 @@
                             <action selector="toggleAccessaryControls:" target="JST-bT-Zjs" id="zMj-yX-exZ"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" id="Jl9-L6-PuC" userLabel="hintTime">
+                    <textField verticalHuggingPriority="750" id="Jl9-L6-PuC" userLabel="hintTime" customClass="NSTextFieldWithVibracy">
                         <rect key="frame" x="117" y="32" width="75" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" id="EjU-vd-Tlv">
@@ -183,7 +183,7 @@
                         <rect key="frame" x="172" y="28" width="136" height="28"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <button toolTip="Play/Pause" id="gb1-yG-vcO">
+                            <button toolTip="Play/Pause" id="gb1-yG-vcO" customClass="NSButtonWithVibracy">
                                 <rect key="frame" x="56" y="2" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="b_play" imagePosition="overlaps" alignment="center" alternateImage="pause" imageScaling="axesIndependently" inset="2" id="ugD-7r-FGi">
@@ -194,7 +194,7 @@
                                     <action selector="playPause:" target="JST-bT-Zjs" id="gbk-n8-8mW"/>
                                 </connections>
                             </button>
-                            <button id="QlD-VB-ZI6">
+                            <button id="QlD-VB-ZI6" customClass="NSButtonWithVibracy">
                                 <rect key="frame" x="110" y="2" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="next-episode" imagePosition="overlaps" alignment="center" imageScaling="axesIndependently" inset="2" id="4St-Zn-pcR">
@@ -205,7 +205,7 @@
                                     <action selector="nextEP:" target="JST-bT-Zjs" id="O7V-Ww-ntG"/>
                                 </connections>
                             </button>
-                            <button id="N1P-Sm-ilq">
+                            <button id="N1P-Sm-ilq" customClass="NSButtonWithVibracy">
                                 <rect key="frame" x="2" y="2" width="24" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="prev-episode" imagePosition="overlaps" alignment="center" imageScaling="axesIndependently" inset="2" id="bLl-am-l34">
@@ -218,7 +218,7 @@
                             </button>
                         </subviews>
                     </customView>
-                    <button id="zT5-26-P8o">
+                    <button id="zT5-26-P8o" customClass="NSButtonWithVibracy">
                         <rect key="frame" x="417" y="8" width="58" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" controlSize="small" inset="2" id="8j7-n0-pq4">

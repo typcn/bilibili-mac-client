@@ -12,6 +12,7 @@
 @interface PlayerControlView : NSVisualEffectView
 
 @property (weak, nonatomic) Player *player;
+@property (nonatomic) BOOL currentPaused;
 
 - (void)onMpvEvent:(mpv_event *)event;
 

@@ -15,6 +15,7 @@
     BOOL shiftKeyPressed;
     BOOL frontMost;
     CGPoint initialLocation;
+    NSTimer *hideCursorTimer;
 }
 
 @synthesize postCommentWindowC;
@@ -24,6 +25,11 @@
 - (BOOL)acceptsFirstResponder { return YES; }
 - (BOOL)becomeFirstResponder { return YES; }
 - (BOOL)resignFirstResponder { return YES; }
+
+- (void)setPlayerAndInit:(Player *)player{
+    [self hideCursorAndHudAfter:1.0];
+    self.player = player;
+}
 
 - (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)window{
     return nil;
@@ -86,6 +92,61 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     }
 }
 
+- (void)mouseMoved:(NSEvent *)event
+{
+    if(self.player.playerControlView){
+        NSInteger windowId = [NSWindow windowNumberAtPoint:[NSEvent mouseLocation] belowWindowWithWindowNumber:0];
+        if(windowId == self.player.playerControlView.window.windowNumber){
+            // Cursor is in control window
+            if(hideCursorTimer){
+                [hideCursorTimer invalidate];
+                hideCursorTimer = nil;
+            }
+            return;
+            
+        }else if (windowId != self.windowNumber) {
+            // Cursor is outside this window
+            [self hideCursorAndHudAfter:0.5];
+        }else{
+            
+            // Cursor is in window
+            [self.player.playerControlView show];
+            if(hideCursorTimer){
+                return;
+            }
+            [self hideCursorAndHudAfter:1.0];
+        }
+    }
+}
+
+- (void)hideCursor{
+    [hideCursorTimer invalidate];
+    hideCursorTimer = nil;
+    if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved) >= 1) {
+        [NSCursor setHiddenUntilMouseMoves:YES];
+        [self.player.playerControlView hide];
+    }else{
+        [self hideCursorAndHudAfter:0.5];
+    }
+}
+
+- (void)hideCursorAndHudAfter:(NSTimeInterval)time{
+    if(hideCursorTimer){
+        [hideCursorTimer invalidate];
+        hideCursorTimer = nil;
+    }
+    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:time target:self selector:@selector(hideCursor) userInfo:nil repeats:NO];
+}
+
+- (void)rightMouseDown:(NSEvent *)theEvent{
+    if(self.player.mpv){
+        int pause = 0;
+        if(!self.player.playerControlView.currentPaused){
+            pause = 1;
+        }
+        mpv_set_property_async(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG, &pause);
+    }
+}
 
 - (NSSize)windowWillResize:(NSWindow *)sender
                     toSize:(NSSize)frameSize{
@@ -148,11 +209,11 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
             }
             case 49:{ // Space
                 
-                if(strcmp(mpv_get_property_string(self.player.mpv,"pause"),"no")){
-                    mpv_set_property_string(self.player.mpv,"pause","no");
-                }else{
-                    mpv_set_property_string(self.player.mpv,"pause","yes");
+                int pause = 0;
+                if(!self.player.playerControlView.currentPaused){
+                    pause = 1;
                 }
+                mpv_set_property_async(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG, &pause);
                 
                 break;
             }
@@ -311,7 +372,11 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
         [postCommentWindowC close];
         if(self.player.playerControlView.window){
             // The dealloc of player control view will have delay , hide it first
-            [self.player.playerControlView hide];
+            [self.player.playerControlView setHidden:YES];
+        }
+        if(hideCursorTimer){
+            [hideCursorTimer invalidate];
+            hideCursorTimer = nil;
         }
         if([browser tabCount] > 0){
             [self.lastWindow makeKeyAndOrderFront:nil];
