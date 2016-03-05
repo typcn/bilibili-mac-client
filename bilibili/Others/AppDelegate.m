@@ -163,14 +163,7 @@ Browser *browser;
         [Fabric with:@[[Crashlytics class]]];
 #endif
         [PJTernarySearchTree sharedTree]; // Preload Shared Tree
-    });
-
-    
-    VideoAddress *v = [[VideoAddress alloc] init];
-    [v setFirstFragmentURL:@"http://127.0.0.1:20003/%5bK%5d%5bF%5d%20Toaru%20Kagakuno%20Railgun%201%20%5bH264_1080P_FLAC%5d/%5bKamigami%5d%20Toaru%20Kagakuno%20Railgun%20-%2001%20%28BD%201920%c3%971080%20x264%20FLAC%29.mkv"];
-    [v addDefaultPlayURL:@"http://127.0.0.1:20003/%5bK%5d%5bF%5d%20Toaru%20Kagakuno%20Railgun%201%20%5bH264_1080P_FLAC%5d/%5bKamigami%5d%20Toaru%20Kagakuno%20Railgun%20-%2001%20%28BD%201920%c3%971080%20x264%20FLAC%29.mkv"];
-    [[PlayerLoader sharedInstance] loadVideo:v];
-    
+    });    
 }
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
@@ -221,10 +214,6 @@ Browser *browser;
     donatew = [storyBoard instantiateControllerWithIdentifier:@"donatewindow"];
     [donatew showWindow:self];
     [donatew.window makeKeyAndOrderFront:NSApp];
-    VideoAddress *v = [[VideoAddress alloc] init];
-    [v setFirstFragmentURL:@"http://127.0.0.1:20003/%5bK%5d%5bF%5d%20Toaru%20Kagakuno%20Railgun%201%20%5bH264_1080P_FLAC%5d/%5bKamigami%5d%20Toaru%20Kagakuno%20Railgun%20-%2001%20%28BD%201920%c3%971080%20x264%20FLAC%29.mkv?v=2"];
-    [v addDefaultPlayURL:@"http://127.0.0.1:20003/%5bK%5d%5bF%5d%20Toaru%20Kagakuno%20Railgun%201%20%5bH264_1080P_FLAC%5d/%5bKamigami%5d%20Toaru%20Kagakuno%20Railgun%20-%2001%20%28BD%201920%c3%971080%20x264%20FLAC%29.mkv?v=2"];
-    [[PlayerLoader sharedInstance] loadVideo:v];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
