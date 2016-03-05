@@ -176,7 +176,7 @@
             if(left < 0){
                 left = 0;
             }
-            [line appendBezierPathWithRect:NSMakeRect(left, rcBounds.origin.y - 4, 3, 14)];
+            [line appendBezierPathWithRect:NSMakeRect(left, rcBounds.origin.y - 4, 3, 12)];
             
             if([self isEnabled]) {
                 [[NSColor colorWithDeviceWhite:0.6 alpha:1.0] set];

@@ -68,6 +68,7 @@ inline void check_error(int status)
 }
 
 - (void)loadWithPlayer:(Player *)m_player{
+    [m_player setVideoView:ContentView];
     self.player = m_player;
     if(window){
         [window setPlayerAndInit:self.player];

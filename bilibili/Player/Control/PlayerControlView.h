@@ -13,6 +13,9 @@
 
 @property (weak, nonatomic) Player *player;
 @property (nonatomic) BOOL currentPaused;
+@property (nonatomic) BOOL currentMuted;
+@property (nonatomic) BOOL currentFullscreen;
+@property (nonatomic) BOOL currentSubVis;
 
 - (void)onMpvEvent:(mpv_event *)event;
 

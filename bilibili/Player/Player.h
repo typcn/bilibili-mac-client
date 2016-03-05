@@ -21,6 +21,7 @@
 @property (nonatomic, readonly, strong) PlayerView *view;
 @property (nonatomic, readonly, strong) NSWindowController *windowController;
 @property (nonatomic, weak) PlayerControlView *playerControlView;
+@property (nonatomic, weak) NSView *videoView;
 
 @property (nonatomic) NSString *siteName;
 

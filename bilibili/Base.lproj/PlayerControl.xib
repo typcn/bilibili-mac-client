@@ -21,7 +21,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="60"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button toolTip="Enter/Exit Fullscreen" id="BIn-rS-nkp" customClass="NSButtonWithVibracy">
+                    <button toolTip="Enter/Exit Fullscreen" id="BIn-rS-nkp" userLabel="Full Screen Button" customClass="NSButtonWithVibracy">
                         <rect key="frame" x="418" y="31" width="22" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="enterfullscreen" imagePosition="overlaps" alignment="left" alternateImage="exitfullscreen" imageScaling="axesIndependently" inset="2" id="0Q9-Lf-Hft">
@@ -29,10 +29,10 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="toggleFullScreen:" target="JST-bT-Zjs" id="1a7-p0-8Qf"/>
+                            <action selector="fullScreen:" target="JST-bT-Zjs" id="07a-N1-mrh"/>
                         </connections>
                     </button>
-                    <button toolTip="Toggle Fillscreen" id="XkJ-oN-pvE" customClass="NSButtonWithVibracy">
+                    <button toolTip="Toggle Fillscreen" id="XkJ-oN-pvE" userLabel="KeepAspect Button" customClass="NSButtonWithVibracy">
                         <rect key="frame" x="382" y="30" width="24" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="fillscreen_ub" imagePosition="overlaps" alignment="center" alternateImage="exitfillscreen_ub" state="on" imageScaling="axesIndependently" inset="2" id="gZu-4V-PeM">
@@ -40,7 +40,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="toggleFillScreen:" target="JST-bT-Zjs" id="K0y-Mc-5IB"/>
+                            <action selector="keepAspectSwitch:" target="JST-bT-Zjs" id="zMI-au-7r2"/>
                         </connections>
                     </button>
                     <slider toolTip="Volume" verticalHuggingPriority="750" id="Fc0-9r-eK1" userLabel="Horizontal Slider (VolumeSlider)">
@@ -51,7 +51,7 @@
                             <action selector="setVolume:" target="JST-bT-Zjs" id="4yt-Gc-ErW"/>
                         </connections>
                     </slider>
-                    <button toolTip="toggle Mute" id="Piz-ep-gVW" customClass="NSButtonWithVibracy">
+                    <button toolTip="toggle Mute" id="Piz-ep-gVW" userLabel="Mute Button" customClass="NSButtonWithVibracy">
                         <rect key="frame" x="14" y="33" width="18" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="vol_mid" imagePosition="overlaps" alignment="left" alternateImage="mute" imageScaling="axesIndependently" inset="2" id="9X7-Pf-ckj">
@@ -59,7 +59,7 @@
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="toggleMute:" target="JST-bT-Zjs" id="7g5-2x-OKc"/>
+                            <action selector="mute:" target="JST-bT-Zjs" id="xnc-Ix-Ayf"/>
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" id="ADe-cN-mci" userLabel="timeText" customClass="NSTextFieldWithVibracy">
@@ -81,85 +81,14 @@
                         </textFieldCell>
                     </textField>
                     <slider verticalHuggingPriority="750" id="a22-tv-SRB" userLabel="Time Slider">
-                        <rect key="frame" x="62" y="7" width="354" height="15"/>
+                        <rect key="frame" x="73" y="7" width="333" height="15"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <sliderCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="inW-u3-Qaq" customClass="TimeSliderCell"/>
                         <connections>
                             <action selector="seekTo:" target="JST-bT-Zjs" id="5cS-NP-e3m"/>
                         </connections>
                     </slider>
-                    <customView hidden="YES" id="TOQ-9E-Nr7" userLabel="Accessary Control">
-                        <rect key="frame" x="80" y="0.0" width="320" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField verticalHuggingPriority="750" id="5fW-h4-ArN">
-                                <rect key="frame" x="17" y="7" width="34" height="11"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="Speed:" usesSingleLineMode="YES" id="yyP-nG-ht4">
-                                    <font key="font" metaFont="miniSystem"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField toolTip="set play speed" verticalHuggingPriority="750" id="E5Y-5G-Osr" userLabel="speed (1.0)" customClass="ArrowTextField">
-                                <rect key="frame" x="51" y="4" width="32" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="truncatingTail" selectable="YES" editable="YES" continuous="YES" allowsUndo="NO" state="on" borderStyle="border" alignment="right" title="1.0" usesSingleLineMode="YES" bezelStyle="round" id="czR-04-K7E">
-                                    <font key="font" metaFont="miniSystem"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
-                                </textFieldCell>
-                                <connections>
-                                    <action selector="changeSpeed:" target="JST-bT-Zjs" id="DbJ-2h-5dQ"/>
-                                    <outlet property="nextKeyView" destination="P8o-Y3-RLm" id="OzW-AG-tek"/>
-                                </connections>
-                            </textField>
-                            <textField verticalHuggingPriority="750" id="Dz0-WA-bA9">
-                                <rect key="frame" x="111" y="7" width="60" height="11"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="Audio Delay:" usesSingleLineMode="YES" id="e0o-e5-L97">
-                                    <font key="font" metaFont="miniSystem"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField toolTip="set Audio Delay" verticalHuggingPriority="750" id="P8o-Y3-RLm" userLabel="audioDelay (0.0)" customClass="ArrowTextField">
-                                <rect key="frame" x="171" y="4" width="32" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="truncatingTail" selectable="YES" editable="YES" continuous="YES" allowsUndo="NO" state="on" borderStyle="border" alignment="right" title="0.0" drawsBackground="YES" usesSingleLineMode="YES" id="iOG-VU-nce">
-                                    <font key="font" metaFont="miniSystem"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
-                                </textFieldCell>
-                                <connections>
-                                    <action selector="changeAudioDelay:" target="JST-bT-Zjs" id="a7y-Of-7hU"/>
-                                    <outlet property="nextKeyView" destination="Scy-1m-DbU" id="jeO-wv-riT"/>
-                                </connections>
-                            </textField>
-                            <textField verticalHuggingPriority="750" id="2ao-sg-yY2">
-                                <rect key="frame" x="227" y="7" width="50" height="11"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" title="Sub Delay:" usesSingleLineMode="YES" id="huz-Ha-MLa">
-                                    <font key="font" metaFont="miniSystem"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField toolTip="set Subtitle Delay" verticalHuggingPriority="750" id="Scy-1m-DbU" userLabel="subDelay (0.0)" customClass="ArrowTextField">
-                                <rect key="frame" x="277" y="4" width="32" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
-                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="truncatingTail" selectable="YES" editable="YES" continuous="YES" allowsUndo="NO" state="on" borderStyle="border" alignment="right" title="0.0" drawsBackground="YES" usesSingleLineMode="YES" id="QYP-PE-cHE">
-                                    <font key="font" metaFont="miniSystem"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
-                                </textFieldCell>
-                                <connections>
-                                    <action selector="changeSubDelay:" target="JST-bT-Zjs" id="lWj-Vm-hKF"/>
-                                </connections>
-                            </textField>
-                        </subviews>
-                    </customView>
-                    <button toolTip="Show/Hide Playing Controls" id="I0h-Gf-ylJ" userLabel="showHide accessary Control" customClass="NSButtonWithVibracy">
+                    <button toolTip="Show/Hide Playing Controls" id="I0h-Gf-ylJ" userLabel="Sub Visibility Button" customClass="NSButtonWithVibracy">
                         <rect key="frame" x="450" y="31" width="22" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="fold" imagePosition="only" alignment="center" alternateImage="unfold" controlSize="mini" imageScaling="axesIndependently" inset="2" id="kvV-DU-ajL">
@@ -167,7 +96,7 @@
                             <font key="font" metaFont="miniSystem"/>
                         </buttonCell>
                         <connections>
-                            <action selector="toggleAccessaryControls:" target="JST-bT-Zjs" id="zMj-yX-exZ"/>
+                            <action selector="subSwitch:" target="JST-bT-Zjs" id="eDK-YV-MPg"/>
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" id="Jl9-L6-PuC" userLabel="hintTime" customClass="NSTextFieldWithVibracy">
@@ -225,26 +154,16 @@
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
-                        <connections>
-                            <action selector="toggleTimeAltDisplayMode:" target="JST-bT-Zjs" id="2Wc-C7-VxT"/>
-                        </connections>
                     </button>
                 </subviews>
                 <connections>
-                    <outlet property="accessaryContainer" destination="TOQ-9E-Nr7" id="0lg-R3-0XR"/>
-                    <outlet property="audioDelayText" destination="P8o-Y3-RLm" id="3Mc-Uu-avd"/>
-                    <outlet property="fillScreenButton" destination="XkJ-oN-pvE" id="laa-W4-iab"/>
-                    <outlet property="fullScreenButton" destination="BIn-rS-nkp" id="Mob-uD-lLa"/>
-                    <outlet property="hintTime" destination="Jl9-L6-PuC" id="78w-qN-XTH"/>
+                    <outlet property="keepAspectButton" destination="XkJ-oN-pvE" id="wLj-8E-mdJ"/>
+                    <outlet property="muteButton" destination="Piz-ep-gVW" id="KDC-dY-yVl"/>
                     <outlet property="playPauseButton" destination="gb1-yG-vcO" id="6I6-Vr-wHD"/>
                     <outlet property="rightTimeText" destination="SbL-1z-Qas" id="gso-33-9jn"/>
-                    <outlet property="speedText" destination="E5Y-5G-Osr" id="P39-Sf-PVP"/>
-                    <outlet property="subDelayText" destination="Scy-1m-DbU" id="jfs-UD-c07"/>
-                    <outlet property="timeDispSwitch" destination="zT5-26-P8o" id="Dzl-oV-p1O"/>
+                    <outlet property="subVisButton" destination="I0h-Gf-ylJ" id="brr-bh-9JO"/>
                     <outlet property="timeSlider" destination="a22-tv-SRB" id="RdR-cL-FWb"/>
                     <outlet property="timeText" destination="ADe-cN-mci" id="u7L-qp-QB6"/>
-                    <outlet property="toggleAcceButton" destination="I0h-Gf-ylJ" id="o8h-4V-fls"/>
-                    <outlet property="volumeButton" destination="Piz-ep-gVW" id="5lS-gl-BAj"/>
                     <outlet property="volumeSlider" destination="Fc0-9r-eK1" id="ZJh-gz-J82"/>
                 </connections>
             </customView>

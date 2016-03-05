@@ -13,13 +13,22 @@
 @implementation PlayerControlView{
     NSTimer *timeUpdateTimer;
     __weak IBOutlet NSButton *playPauseButton;
+    __weak IBOutlet NSButton *muteButton;
+    __weak IBOutlet NSButton *subVisButton;
+    __weak IBOutlet NSButton *keepAspectButton;
     __weak IBOutlet NSSlider *volumeSlider;
     __weak IBOutlet NSSlider *timeSlider;
     __weak IBOutlet NSTextField *timeText;
     __weak IBOutlet NSTextField *rightTimeText;
+    
+    BOOL isAfterVideoRender;
+    BOOL isKeepAspect;
 }
 
 @synthesize currentPaused;
+@synthesize currentMuted;
+@synthesize currentFullscreen;
+@synthesize currentSubVis;
 
 - (void)onMpvEvent:(mpv_event *)event{
     if(event->event_id == MPV_EVENT_GET_PROPERTY_REPLY || event->event_id == MPV_EVENT_PROPERTY_CHANGE){
@@ -28,6 +37,15 @@
         if(strcmp(propety->name, "pause") == 0){
             int paused = *(int *)data;
             [self onPaused:paused];
+        }else if(strcmp(propety->name, "mute") == 0){
+            int mute = *(int *)data;
+            [self onMuted:mute];
+        }else if(strcmp(propety->name, "sub-visibility") == 0){
+            int vis = *(int *)data;
+            [self onSubVisibility:vis];
+        }else if(strcmp(propety->name, "options/keepaspect") == 0){
+            int keep = *(int *)data;
+            [self onKeepAspect:keep];
         }else if(strcmp(propety->name, "volume") == 0){
             double volume = *(double *)data;
             [self onVolume:volume];
@@ -68,12 +86,19 @@
 }
 
 - (void)readInitState{
+    if(isAfterVideoRender){
+        return;
+    }
+    isAfterVideoRender = YES;
     mpv_get_property_async(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG);
     mpv_get_property_async(self.player.mpv, 0, "volume", MPV_FORMAT_DOUBLE);
-    mpv_get_property_async(self.player.mpv, 0, "duration", MPV_FORMAT_DOUBLE);
     mpv_get_property_async(self.player.mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG);
+    mpv_observe_property(self.player.mpv, 0, "mute", MPV_FORMAT_FLAG);
+    mpv_observe_property(self.player.mpv, 0, "sub-visibility", MPV_FORMAT_FLAG);
+    mpv_observe_property(self.player.mpv, 0, "options/keepaspect", MPV_FORMAT_FLAG);
     mpv_observe_property(self.player.mpv, 0, "volume", MPV_FORMAT_DOUBLE);
+    mpv_observe_property(self.player.mpv, 0, "duration", MPV_FORMAT_DOUBLE);
     
     [self setMaterial:NSVisualEffectMaterialDark];
     [self setState:NSVisualEffectStateActive];
@@ -89,7 +114,7 @@
     
     // Control left = (Player width / 2) - ( Control width / 2 )
     CGFloat x = (playerWindow.frame.size.width - self.window.frame.size.width) / 2;
-
+    
     // Control left relative to screen = Control left + Player Window left
     x += playerWindow.frame.origin.x;
     
@@ -101,12 +126,11 @@
     if(currentPaused || !self.player || !self.player.mpv){
         return;
     }
-    //NSLog(@"%d",[self disableBlurFilter]);
     mpv_get_property_async(self.player.mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
 }
 
 - (void)show{
-    if(!self.hidden){
+    if(!self.hidden || !isAfterVideoRender){
         return;
     }
     [self setHidden:NO];
@@ -121,7 +145,7 @@
                                                       repeats:YES];
     [self.window setLevel:self.player.windowController.window.level + 1];
     [self.window orderWindow:NSWindowAbove relativeTo:self.player.windowController.window.windowNumber];
-   
+    
     [[self.window animator] setAlphaValue:1.0];
 }
 
@@ -134,6 +158,7 @@
     
     [[self.window animator] setAlphaValue:0.0];
     [self.window setLevel:NSNormalWindowLevel];
+    [self.window orderWindow:NSWindowAbove relativeTo:self.player.windowController.window.windowNumber];
 }
 
 - (void)orderOut{
@@ -145,11 +170,13 @@
 }
 
 - (IBAction)nextEP:(id)sender {
-
+    const char *args[] = {"playlist-next" ,NULL};
+    mpv_command_async(self.player.mpv,0, args);
 }
 
 - (IBAction)prevEP:(id)sender {
-    
+    const char *args[] = {"playlist-prev" ,NULL};
+    mpv_command_async(self.player.mpv,0, args);
 }
 
 
@@ -170,6 +197,43 @@
     }
     mpv_set_property_async(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG, &pause);
 }
+
+- (IBAction)mute:(id)sender {
+    int mute = 0;
+    if(!currentMuted){
+        mute = 1;
+    }
+    mpv_set_property_async(self.player.mpv, 0, "mute", MPV_FORMAT_FLAG, &mute);
+}
+
+- (IBAction)fullScreen:(id)sender {
+    [self.player.windowController.window toggleFullScreen:sender];
+}
+
+- (IBAction)subSwitch:(id)sender {
+    int vis = 0;
+    if(!currentSubVis){
+        vis = 1;
+    }
+    const char *args[] = {"show-text", vis?"已开启弹幕/字幕":"已关闭弹幕/字幕" ,NULL};
+    mpv_command_async(self.player.mpv,0, args);
+    mpv_set_property_async(self.player.mpv, 0, "sub-visibility", MPV_FORMAT_FLAG, &vis);
+}
+
+- (IBAction)keepAspectSwitch:(id)sender {
+    int keep = 1;
+    if(isKeepAspect){
+        keep = 0;
+        isKeepAspect = NO;
+    }else{
+        isKeepAspect = YES;
+    }
+    const char *args[] = {"show-text", keep?"关闭填满窗口":"开启填满窗口" ,NULL};
+    mpv_command_async(self.player.mpv,0, args);
+    mpv_set_property_async(self.player.mpv, 0, "options/keepaspect", MPV_FORMAT_FLAG, &keep);
+}
+
+
 
 - (void)onVolume:(double)volume{
     dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -199,6 +263,50 @@
         }else{
             currentPaused = NO;
             playPauseButton.state = NSOnState;
+        }
+    });
+}
+
+- (void)onMuted:(int)isMuted{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        if(isMuted){
+            currentMuted = YES;
+            muteButton.state = NSOnState;
+        }else{
+            currentMuted = NO;
+            muteButton.state = NSOffState;
+        }
+    });
+}
+
+- (void)onSubVisibility:(int)vis{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        if(vis){
+            currentSubVis = YES;
+            subVisButton.state = NSOffState;
+        }else{
+            currentSubVis = NO;
+            subVisButton.state = NSOnState;
+        }
+    });
+}
+
+- (void)onKeepAspect:(int)keep{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        // call SetFrame to force opengl canvas resize
+        NSView *videoView = self.player.videoView;
+        NSRect rect = videoView.frame;
+        rect.size.width += 1;
+        [videoView setFrame:rect];
+        rect.size.width -= 1;
+        [videoView setFrame:rect];
+        
+        if(keep){
+            isKeepAspect = YES;
+            keepAspectButton.state = NSOffState;
+        }else{
+            isKeepAspect = NO;
+            keepAspectButton.state = NSOnState;
         }
     });
 }
@@ -241,7 +349,7 @@
     [self.window setBackgroundColor:[NSColor clearColor]];
     [self.window setMovable:YES];
     [self.window setMovableByWindowBackground:YES];
-
+    
 }
 
 @end
