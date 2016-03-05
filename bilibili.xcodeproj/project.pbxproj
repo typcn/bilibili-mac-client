@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		E09BF99F1B84CCC6005E08CE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E09BF9A11B84CCC6005E08CE /* Localizable.strings */; };
+		FD0103281C8B0EEF00505344 /* BGHUDSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0103211C8B0EEF00505344 /* BGHUDSliderCell.m */; };
+		FD0103291C8B0EEF00505344 /* BGTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0103231C8B0EEF00505344 /* BGTheme.m */; };
+		FD01032A1C8B0EEF00505344 /* BGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0103251C8B0EEF00505344 /* BGThemeManager.m */; };
+		FD01032D1C8B2D4200505344 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD01032C1C8B2D4200505344 /* CoreGraphics.framework */; };
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
 		FD0829C91B67844500D2B126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0829C71B67844500D2B126 /* Main.storyboard */; };
 		FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */; };
@@ -101,11 +105,7 @@
 		FD76849A1C887F33006B44F2 /* TWebView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD7684911C887F33006B44F2 /* TWebView.mm */; };
 		FD76849B1C887F33006B44F2 /* WebTabView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD7684931C887F33006B44F2 /* WebTabView.mm */; };
 		FD76849C1C887F33006B44F2 /* WebView+SwipeNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684951C887F33006B44F2 /* WebView+SwipeNavigation.m */; };
-		FD7684A71C887F48006B44F2 /* AirPlayView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD76849E1C887F48006B44F2 /* AirPlayView.mm */; };
-		FD7684A81C887F48006B44F2 /* PlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684A01C887F48006B44F2 /* PlayerControlView.m */; };
 		FD7684A91C887F48006B44F2 /* PlayerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD7684A21C887F48006B44F2 /* PlayerView.mm */; };
-		FD7684AA1C887F48006B44F2 /* PlayLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684A41C887F48006B44F2 /* PlayLocalFile.m */; };
-		FD7684AB1C887F48006B44F2 /* PostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684A61C887F48006B44F2 /* PostComment.m */; };
 		FD7684AE1C887F73006B44F2 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684AD1C887F73006B44F2 /* PlayerManager.m */; };
 		FD7684B11C88809D006B44F2 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684B01C88809D006B44F2 /* Player.m */; };
 		FD7684B41C888491006B44F2 /* VideoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684B31C888491006B44F2 /* VideoProvider.m */; };
@@ -115,6 +115,11 @@
 		FD7684F01C89A09B006B44F2 /* PlayerLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684EF1C89A09B006B44F2 /* PlayerLoader.m */; };
 		FD7684F31C89A0C3006B44F2 /* PlayerLoader.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD7684F11C89A0C3006B44F2 /* PlayerLoader.xib */; };
 		FD7684F61C89B037006B44F2 /* VP_YouGet.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684F51C89B037006B44F2 /* VP_YouGet.m */; };
+		FD7685031C8B0D6F006B44F2 /* AirPlayView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD7684FE1C8B0D6F006B44F2 /* AirPlayView.mm */; };
+		FD7685041C8B0D6F006B44F2 /* PlayLocalFile.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7685001C8B0D6F006B44F2 /* PlayLocalFile.m */; };
+		FD7685051C8B0D6F006B44F2 /* PostComment.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7685021C8B0D6F006B44F2 /* PostComment.m */; };
+		FD76850A1C8B0D7F006B44F2 /* PlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7685071C8B0D7F006B44F2 /* PlayerControlView.m */; };
+		FD76850B1C8B0D7F006B44F2 /* TimeSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7685091C8B0D7F006B44F2 /* TimeSliderCell.m */; };
 		FD83027D1BAB303C00FF68DB /* DonateView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD83027C1BAB303C00FF68DB /* DonateView.mm */; };
 		FD8BBC881BEB81A20018AA18 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8BBC861BEB81A20018AA18 /* Fabric.framework */; };
 		FD8BBC891BEB81A20018AA18 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD8BBC871BEB81A20018AA18 /* Crashlytics.framework */; };
@@ -363,6 +368,13 @@
 		E0DF88161B875D650051870D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E0DF88171B875D660051870D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E0DF88181B875D7C0051870D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FD0103201C8B0EEF00505344 /* BGHUDSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BGHUDSliderCell.h; path = Player/Control/BGHUDSliderCell.h; sourceTree = "<group>"; };
+		FD0103211C8B0EEF00505344 /* BGHUDSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BGHUDSliderCell.m; path = Player/Control/BGHUDSliderCell.m; sourceTree = "<group>"; };
+		FD0103221C8B0EEF00505344 /* BGTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BGTheme.h; path = Player/Control/BGTheme.h; sourceTree = "<group>"; };
+		FD0103231C8B0EEF00505344 /* BGTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BGTheme.m; path = Player/Control/BGTheme.m; sourceTree = "<group>"; };
+		FD0103241C8B0EEF00505344 /* BGThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BGThemeManager.h; path = Player/Control/BGThemeManager.h; sourceTree = "<group>"; };
+		FD0103251C8B0EEF00505344 /* BGThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BGThemeManager.m; path = Player/Control/BGThemeManager.m; sourceTree = "<group>"; };
+		FD01032C1C8B2D4200505344 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FD076C501AC8CBBB00C893FA /* Bilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C541AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C5D1AC8CBBB00C893FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -495,16 +507,8 @@
 		FD7684931C887F33006B44F2 /* WebTabView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WebTabView.mm; path = Browser/WebTabView.mm; sourceTree = "<group>"; };
 		FD7684941C887F33006B44F2 /* WebView+SwipeNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "WebView+SwipeNavigation.h"; path = "Browser/WebView+SwipeNavigation.h"; sourceTree = "<group>"; };
 		FD7684951C887F33006B44F2 /* WebView+SwipeNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WebView+SwipeNavigation.m"; path = "Browser/WebView+SwipeNavigation.m"; sourceTree = "<group>"; };
-		FD76849D1C887F48006B44F2 /* AirPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AirPlayView.h; path = bilibili/Player/AirPlayView.h; sourceTree = "<group>"; };
-		FD76849E1C887F48006B44F2 /* AirPlayView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AirPlayView.mm; path = bilibili/Player/AirPlayView.mm; sourceTree = "<group>"; };
-		FD76849F1C887F48006B44F2 /* PlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerControlView.h; path = Player/PlayerControlView.h; sourceTree = "<group>"; };
-		FD7684A01C887F48006B44F2 /* PlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerControlView.m; path = Player/PlayerControlView.m; sourceTree = "<group>"; };
 		FD7684A11C887F48006B44F2 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerView.h; path = Player/PlayerView.h; sourceTree = "<group>"; };
 		FD7684A21C887F48006B44F2 /* PlayerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PlayerView.mm; path = Player/PlayerView.mm; sourceTree = "<group>"; };
-		FD7684A31C887F48006B44F2 /* PlayLocalFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayLocalFile.h; path = Player/PlayLocalFile.h; sourceTree = "<group>"; };
-		FD7684A41C887F48006B44F2 /* PlayLocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayLocalFile.m; path = Player/PlayLocalFile.m; sourceTree = "<group>"; };
-		FD7684A51C887F48006B44F2 /* PostComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostComment.h; path = Player/PostComment.h; sourceTree = "<group>"; };
-		FD7684A61C887F48006B44F2 /* PostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostComment.m; path = Player/PostComment.m; sourceTree = "<group>"; };
 		FD7684AC1C887F73006B44F2 /* PlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerManager.h; path = Player/PlayerManager.h; sourceTree = "<group>"; };
 		FD7684AD1C887F73006B44F2 /* PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerManager.m; path = Player/PlayerManager.m; sourceTree = "<group>"; };
 		FD7684AF1C88809D006B44F2 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Player/Player.h; sourceTree = "<group>"; };
@@ -522,6 +526,16 @@
 		FD7684F21C89A0C3006B44F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PlayerLoader.xib; sourceTree = "<group>"; };
 		FD7684F41C89B037006B44F2 /* VP_YouGet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VP_YouGet.h; path = VideoProvider/VP_YouGet.h; sourceTree = "<group>"; };
 		FD7684F51C89B037006B44F2 /* VP_YouGet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VP_YouGet.m; path = VideoProvider/VP_YouGet.m; sourceTree = "<group>"; };
+		FD7684FD1C8B0D6F006B44F2 /* AirPlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AirPlayView.h; path = "Player/Util Window/AirPlayView.h"; sourceTree = "<group>"; };
+		FD7684FE1C8B0D6F006B44F2 /* AirPlayView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AirPlayView.mm; path = "Player/Util Window/AirPlayView.mm"; sourceTree = "<group>"; };
+		FD7684FF1C8B0D6F006B44F2 /* PlayLocalFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayLocalFile.h; path = "Player/Util Window/PlayLocalFile.h"; sourceTree = "<group>"; };
+		FD7685001C8B0D6F006B44F2 /* PlayLocalFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayLocalFile.m; path = "Player/Util Window/PlayLocalFile.m"; sourceTree = "<group>"; };
+		FD7685011C8B0D6F006B44F2 /* PostComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PostComment.h; path = "Player/Util Window/PostComment.h"; sourceTree = "<group>"; };
+		FD7685021C8B0D6F006B44F2 /* PostComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PostComment.m; path = "Player/Util Window/PostComment.m"; sourceTree = "<group>"; };
+		FD7685061C8B0D7F006B44F2 /* PlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerControlView.h; path = Player/Control/PlayerControlView.h; sourceTree = "<group>"; };
+		FD7685071C8B0D7F006B44F2 /* PlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerControlView.m; path = Player/Control/PlayerControlView.m; sourceTree = "<group>"; };
+		FD7685081C8B0D7F006B44F2 /* TimeSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSliderCell.h; path = Player/Control/TimeSliderCell.h; sourceTree = "<group>"; };
+		FD7685091C8B0D7F006B44F2 /* TimeSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSliderCell.m; path = Player/Control/TimeSliderCell.m; sourceTree = "<group>"; };
 		FD8302771BAB1C0900FF68DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AirPlay.xib; sourceTree = "<group>"; };
 		FD83027B1BAB303C00FF68DB /* DonateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DonateView.h; path = Others/DonateView.h; sourceTree = "<group>"; };
 		FD83027C1BAB303C00FF68DB /* DonateView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DonateView.mm; path = Others/DonateView.mm; sourceTree = "<group>"; };
@@ -630,6 +644,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD01032D1C8B2D4200505344 /* CoreGraphics.framework in Frameworks */,
 				FDA01C8E1C576C6700298CEF /* liblcms2.2.dylib in Frameworks */,
 				FDA01C841C576C6700298CEF /* libass.5.dylib in Frameworks */,
 				FDA01C661C56976700298CEF /* FMDB.framework in Frameworks */,
@@ -914,6 +929,7 @@
 		FD471FD11AC92D7C00A2A727 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FD01032C1C8B2D4200505344 /* CoreGraphics.framework */,
 				FD8BBC861BEB81A20018AA18 /* Fabric.framework */,
 				FD8BBC871BEB81A20018AA18 /* Crashlytics.framework */,
 				FD29EC681BAF9AF200B8724B /* VPPlugin.framework */,
@@ -978,6 +994,8 @@
 		FD476C6E1AD22A6D00584EFE /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				FD7684F91C8B0C7F006B44F2 /* Player Control */,
+				FD7684F81C8B0C6A006B44F2 /* Util Window */,
 				FD7684EE1C89A09B006B44F2 /* PlayerLoader.h */,
 				FD7684EF1C89A09B006B44F2 /* PlayerLoader.m */,
 				FD7684AF1C88809D006B44F2 /* Player.h */,
@@ -988,12 +1006,6 @@
 				FD7684AD1C887F73006B44F2 /* PlayerManager.m */,
 				FD7684BC1C88D331006B44F2 /* PlayerWindow.h */,
 				FD7684BD1C88D331006B44F2 /* PlayerWindow.m */,
-				FD76849F1C887F48006B44F2 /* PlayerControlView.h */,
-				FD7684A01C887F48006B44F2 /* PlayerControlView.m */,
-				FD7684A31C887F48006B44F2 /* PlayLocalFile.h */,
-				FD7684A41C887F48006B44F2 /* PlayLocalFile.m */,
-				FD7684A51C887F48006B44F2 /* PostComment.h */,
-				FD7684A61C887F48006B44F2 /* PostComment.m */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -1084,6 +1096,36 @@
 			name = RemoteCall;
 			sourceTree = "<group>";
 		};
+		FD7684F81C8B0C6A006B44F2 /* Util Window */ = {
+			isa = PBXGroup;
+			children = (
+				FD7684FD1C8B0D6F006B44F2 /* AirPlayView.h */,
+				FD7684FE1C8B0D6F006B44F2 /* AirPlayView.mm */,
+				FD7684FF1C8B0D6F006B44F2 /* PlayLocalFile.h */,
+				FD7685001C8B0D6F006B44F2 /* PlayLocalFile.m */,
+				FD7685011C8B0D6F006B44F2 /* PostComment.h */,
+				FD7685021C8B0D6F006B44F2 /* PostComment.m */,
+			);
+			name = "Util Window";
+			sourceTree = "<group>";
+		};
+		FD7684F91C8B0C7F006B44F2 /* Player Control */ = {
+			isa = PBXGroup;
+			children = (
+				FD7685061C8B0D7F006B44F2 /* PlayerControlView.h */,
+				FD7685071C8B0D7F006B44F2 /* PlayerControlView.m */,
+				FD7685081C8B0D7F006B44F2 /* TimeSliderCell.h */,
+				FD7685091C8B0D7F006B44F2 /* TimeSliderCell.m */,
+				FD0103201C8B0EEF00505344 /* BGHUDSliderCell.h */,
+				FD0103211C8B0EEF00505344 /* BGHUDSliderCell.m */,
+				FD0103221C8B0EEF00505344 /* BGTheme.h */,
+				FD0103231C8B0EEF00505344 /* BGTheme.m */,
+				FD0103241C8B0EEF00505344 /* BGThemeManager.h */,
+				FD0103251C8B0EEF00505344 /* BGThemeManager.m */,
+			);
+			name = "Player Control";
+			sourceTree = "<group>";
+		};
 		FD855FAE1B07D86C004A1610 /* RealTimeComments */ = {
 			isa = PBXGroup;
 			children = (
@@ -1121,8 +1163,6 @@
 			children = (
 				FD4B84411BA5879400DD6F2F /* AirPlay.hpp */,
 				FD4B84401BA5879400DD6F2F /* AirPlay.mm */,
-				FD76849D1C887F48006B44F2 /* AirPlayView.h */,
-				FD76849E1C887F48006B44F2 /* AirPlayView.mm */,
 				FDDE115F1BA9459E00230184 /* reverseHTTP.hpp */,
 				FDDE115E1BA9459E00230184 /* reverseHTTP.cpp */,
 				FD4B84431BA5879400DD6F2F /* ServiceDiscovery.hpp */,
@@ -1545,6 +1585,7 @@
 				FD1954C51B259368003A958F /* Socket.cpp in Sources */,
 				FDFAD67B1C0078CD00BA06C7 /* NSLabel.m in Sources */,
 				FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */,
+				FD7685031C8B0D6F006B44F2 /* AirPlayView.mm in Sources */,
 				FD3CED981BC6A7E100BE9A8B /* PFAboutWindowController.m in Sources */,
 				FDC5C4EC1C213EE400B29890 /* PreloadManager.m in Sources */,
 				FDFAD6841C007DCF00BA06C7 /* NHDisplayLink.m in Sources */,
@@ -1554,12 +1595,13 @@
 				FDFE45281C0073150006856E /* BarrageFloatTextSprite.m in Sources */,
 				FD1954BC1B259342003A958F /* DownloadWrapper.mm in Sources */,
 				FD1954C71B25942F003A958F /* main.m in Sources */,
+				FD7685051C8B0D6F006B44F2 /* PostComment.m in Sources */,
 				FDFE45261C0073150006856E /* BarrageFloatImageSprite.m in Sources */,
-				FD7684A81C887F48006B44F2 /* PlayerControlView.m in Sources */,
 				FD7684F61C89B037006B44F2 /* VP_YouGet.m in Sources */,
 				FD76849A1C887F33006B44F2 /* TWebView.mm in Sources */,
 				FD7684BA1C8888C7006B44F2 /* VP_Bilibili.m in Sources */,
 				FDFE45251C0073150006856E /* BarrageLoader.m in Sources */,
+				FD0103291C8B0EEF00505344 /* BGTheme.m in Sources */,
 				FD7684971C887F33006B44F2 /* AutoSuggestTable.m in Sources */,
 				FD7684991C887F33006B44F2 /* ToolBar.m in Sources */,
 				FD7684AE1C887F73006B44F2 /* PlayerManager.m in Sources */,
@@ -1567,6 +1609,7 @@
 				FD3CED921BC64B8900BE9A8B /* Popover.m in Sources */,
 				FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */,
 				FD76849C1C887F33006B44F2 /* WebView+SwipeNavigation.m in Sources */,
+				FD76850B1C8B0D7F006B44F2 /* TimeSliderCell.m in Sources */,
 				FDFE45211C0073150006856E /* BarrageDescriptor.m in Sources */,
 				FD7684981C887F33006B44F2 /* Browser.mm in Sources */,
 				FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */,
@@ -1577,15 +1620,17 @@
 				FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */,
 				FDDE11601BA9459E00230184 /* reverseHTTP.cpp in Sources */,
 				FD3CED8E1BC64B5000BE9A8B /* DynamicView.m in Sources */,
-				FD7684AB1C887F48006B44F2 /* PostComment.m in Sources */,
 				FD4EDBB61BE42D9B009309EC /* MPVSettings.m in Sources */,
 				FDFE45231C0073150006856E /* BarrageRenderer.m in Sources */,
 				FDFE45291C0073150006856E /* BarrageSprite.m in Sources */,
+				FD01032A1C8B0EEF00505344 /* BGThemeManager.m in Sources */,
 				FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */,
 				FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */,
 				FDFE45241C0073150006856E /* BarrageSpriteFactory.m in Sources */,
-				FD7684A71C887F48006B44F2 /* AirPlayView.mm in Sources */,
+				FD7685041C8B0D6F006B44F2 /* PlayLocalFile.m in Sources */,
+				FD0103281C8B0EEF00505344 /* BGHUDSliderCell.m in Sources */,
 				FDFE452A1C0073150006856E /* BarrageSpriteUtility.m in Sources */,
+				FD76850A1C8B0D7F006B44F2 /* PlayerControlView.m in Sources */,
 				FD1954B01B259318003A958F /* Settings.m in Sources */,
 				FD7684B71C8885F8006B44F2 /* VideoAddress.m in Sources */,
 				FD7257261B9D5E190015B0F1 /* Analytics.mm in Sources */,
@@ -1604,7 +1649,6 @@
 				FDFE451F1C0073150006856E /* BarrageCanvas.m in Sources */,
 				FDD43E851C2049D300293223 /* SimpleVideoFormatParser.mm in Sources */,
 				FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */,
-				FD7684AA1C887F48006B44F2 /* PlayLocalFile.m in Sources */,
 				FD7684BE1C88D331006B44F2 /* PlayerWindow.m in Sources */,
 				FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */,
 				FD7684B41C888491006B44F2 /* VideoProvider.m in Sources */,

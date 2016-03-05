@@ -17,7 +17,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1057"/>
             <value key="minSize" type="size" width="480" height="60"/>
             <value key="maxSize" type="size" width="9999" height="60"/>
-            <customView key="contentView" hidden="YES" alphaValue="0.59999999999999998" id="JST-bT-Zjs" userLabel="PlayerControlView" customClass="PlayerControlView">
+            <customView key="contentView" hidden="YES" wantsLayer="YES" alphaValue="0.59999999999999998" id="JST-bT-Zjs" userLabel="PlayerControlView" customClass="PlayerControlView">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="60"/>
                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>

@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "Player.h"
 
-@interface PlayerControlView : NSView
+@interface PlayerControlView : NSVisualEffectView
 
 @property (weak, nonatomic) Player *player;
 

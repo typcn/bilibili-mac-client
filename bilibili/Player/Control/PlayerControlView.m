@@ -10,7 +10,6 @@
 #import "mpv.h"
 
 
-
 @implementation PlayerControlView{
     NSTimer *timeUpdateTimer;
     __weak IBOutlet NSButton *playPauseButton;
@@ -20,12 +19,6 @@
     __weak IBOutlet NSTextField *rightTimeText;
     
     BOOL currentPaused;
-}
-
-- (void)drawRect:(NSRect)dirtyRect {
-    [[NSColor blackColor] setFill];
-    NSRectFill(dirtyRect);
-    [super drawRect:dirtyRect];
 }
 
 - (void)onMpvEvent:(mpv_event *)event{
@@ -61,13 +54,17 @@
             break;
         }
         case MPV_EVENT_SEEK: {
-            [self updateRealTime];
+            [self updateTime];
             break;
         }
         default:{
             break;
         }
     }
+}
+
+- (BOOL)allowsVibrancy{
+    return YES;
 }
 
 - (void)readInitState{
@@ -77,6 +74,11 @@
     mpv_get_property_async(self.player.mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
     mpv_observe_property(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG);
     mpv_observe_property(self.player.mpv, 0, "volume", MPV_FORMAT_DOUBLE);
+    
+    [self setMaterial:NSVisualEffectMaterialDark];
+    [self setState:NSVisualEffectStateActive];
+    [self setAppearance:[NSAppearance appearanceNamed:NSAppearanceNameVibrantDark]];
+    [self setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
     
     NSWindow *playerWindow = self.player.windowController.window;
     
@@ -99,17 +101,13 @@
     if(currentPaused || !self.player || !self.player.mpv){
         return;
     }
-    // If you use mpv api to get time when you perform pause/play , Will cause deadlock, So here calc fake time
-     mpv_get_property_async(self.player.mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);}
-
-- (void)updateRealTime {
+    //NSLog(@"%d",[self disableBlurFilter]);
     mpv_get_property_async(self.player.mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
-//    last_update_video_time = [self getDouble:"playback-time"];
-//    last_update_system_time = CFAbsoluteTimeGetCurrent();
 }
 
 - (void)show{
     [self setHidden:NO];
+    [self setState:NSVisualEffectStateActive];
     if(timeUpdateTimer){
         [timeUpdateTimer invalidate];
     }
@@ -120,14 +118,24 @@
                                                       repeats:YES];
     [self.window setLevel:self.player.windowController.window.level + 1];
     [self.window orderWindow:NSWindowAbove relativeTo:self.player.windowController.window.windowNumber];
+   
+    [[self.window animator] setAlphaValue:1.0];
 }
 
 - (void)hide{
+    NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.1;
+    [self performSelector:@selector(orderOut) withObject:nil afterDelay:delay];
+    
+    [[self.window animator] setAlphaValue:0.0];
+    [self.window setLevel:NSNormalWindowLevel];
+}
+
+- (void)orderOut{
+    [self setState:NSVisualEffectStateInactive];
     [self setHidden:YES];
+    [self.window orderOut:self];
     [timeUpdateTimer invalidate];
     timeUpdateTimer = nil;
-    [self.window setLevel:NSNormalWindowLevel];
-    [self.window orderOut:self];
 }
 
 - (IBAction)nextEP:(id)sender {
@@ -220,12 +228,14 @@
 
 @implementation PlayerControlWindowController
 
+
 - (void)windowDidLoad {
     [super windowDidLoad];
-    [self.window setOpaque:YES];
+    [self.window setOpaque:NO];
     [self.window setBackgroundColor:[NSColor clearColor]];
     [self.window setMovable:YES];
     [self.window setMovableByWindowBackground:YES];
+
 }
 
 @end

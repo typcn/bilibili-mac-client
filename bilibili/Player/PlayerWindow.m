@@ -36,16 +36,14 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
 
 - (void)becomeKeyWindow{
     if(self.player.playerControlView){
-        [self.player.playerControlView.window setLevel:self.level + 1];
-        [self.player.playerControlView.window orderWindow:NSWindowAbove relativeTo:self.windowNumber];
+        [self.player.playerControlView show];
     }
     [super becomeKeyWindow];
 }
 
 - (void)resignKeyWindow{
     if(self.player.playerControlView){
-        [self.player.playerControlView.window setLevel:self.level];
-        [self.player.playerControlView.window orderWindow:NSWindowAbove relativeTo:self.windowNumber];
+        [self.player.playerControlView hide];
     }
     [super resignKeyWindow];
 }
