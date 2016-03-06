@@ -8,6 +8,7 @@
 
 #import "SubtitleHelper.h"
 #import "SP_Bilibili.h"
+#import "SP_Local.h"
 
 @implementation SubtitleHelper{
     NSArray *providerList;
@@ -18,6 +19,7 @@
     if(self){
         providerList = @[
                          [[SP_Bilibili alloc] init],
+                         [[SP_Local alloc] init]
                          ];
     }
     return self;
