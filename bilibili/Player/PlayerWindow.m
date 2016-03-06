@@ -33,15 +33,6 @@
     self.player = player;
 }
 
-- (NSArray *)customWindowsToEnterFullScreenForWindow:(NSWindow *)window{
-    return nil;
-}
-
-- (void)window:(NSWindow *)window
-startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
-    
-}
-
 - (void)becomeKeyWindow{
     if(self.player.playerControlView){
         [self.player.playerControlView show];
@@ -70,27 +61,102 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     CGPoint currentLocation = [NSEvent mouseLocation];
     
     CGPoint newOrigin;
-    CGPoint oldOrigin = self.frame.origin;
     
     currentLocation = [NSEvent mouseLocation];
     newOrigin.x = currentLocation.x - initialLocation.x;
     newOrigin.y = currentLocation.y - initialLocation.y;
     
     [self setFrameOrigin:newOrigin];
+}
 
-    // move player control view
-    
+- (void)setFrame:(NSRect)windowFrame
+         display:(BOOL)displayViews{
+    NSRect oldRect = self.frame;
+    [super setFrame:windowFrame display:displayViews];
+    [self resizePlayerControlView:oldRect new:windowFrame];
+}
+
+- (void)setFrameOrigin:(NSPoint)aPoint{
+    NSRect oldRect = self.frame;
+
+    [super setFrameOrigin:aPoint];
+     NSRect newRect = self.frame;
+    [self resizePlayerControlView:oldRect new:newRect];
+
+}
+
+- (void)resizePlayerControlView:(NSRect)old new:(NSRect)new{
     if(self.player.playerControlView){
-        newOrigin = self.frame.origin; // If moved to top bar , new origin will changed by system
-        CGFloat movedX = newOrigin.x - oldOrigin.x;
-        CGFloat movedY = newOrigin.y - oldOrigin.y;
-    
-        NSWindow *pcw = self.player.playerControlView.window;
-        CGPoint pOrigin = [pcw frame].origin;
-        pOrigin.x += movedX;
-        pOrigin.y += movedY;
+        NSRect pcw = self.player.playerControlView.window.frame;
+
+        CGFloat playerLeft = old.origin.x;
+        CGFloat playerRight = playerLeft + old.size.width;
+        CGFloat playerBottom = old.origin.y;
+        CGFloat playerTop = playerBottom + old.size.height;
         
-        [pcw setFrameOrigin:pOrigin];
+        CGFloat controlLeft = pcw.origin.x;
+        CGFloat controlRight = controlLeft + pcw.size.width;
+        CGFloat controlBottom = pcw.origin.y;
+        CGFloat controlTop = controlBottom + pcw.size.height;
+        
+        
+        // 检查播放控制条是否与播放器窗口有重叠区域
+        if(controlRight < playerLeft || controlLeft > playerRight || controlBottom > playerTop || controlTop < playerBottom){
+            // 没有则认为用户已经分离播放器和控制条，不做任何处理
+            return;
+        }
+        
+        // 播放条是否在播放器中心
+        
+        BOOL isAtCenter = NO;
+        CGFloat playerCenterAbs = (old.size.width / 2) + old.origin.x;
+        CGFloat controlCenterAbs = (pcw.size.width / 2) + pcw.origin.x;
+        
+        if(ABS(playerCenterAbs - controlCenterAbs) < 10){
+            isAtCenter = YES;
+        }
+        
+
+        if(!CGSizeEqualToSize(old.size, new.size)){
+            // 播放器大小有变化
+            if(pcw.size.width > (new.size.width * 0.8)){ // Width overflow
+                pcw.size.width = (new.size.width * 0.8);
+            }
+            
+            if(pcw.size.width < 480){ // Min size
+                pcw.size.width = 480;
+            }
+            
+            CGFloat newControlRight = pcw.origin.x + pcw.size.width;
+            CGFloat newPlayerRight = new.origin.x + new.size.width;
+            
+            // 右边溢出，拖回来
+            if(newControlRight > newPlayerRight){
+                CGFloat diff = new.size.width - old.size.width;
+                pcw.origin.x += diff;
+            }
+            
+            // OSX 的 Y 坐标是从下面开始的，转换成人的习惯，缩小的时候顶间距不变
+            CGFloat diff = new.size.height - old.size.height;
+            pcw.origin.y += diff;
+            
+            // 下边溢出，或者播放条在屏幕底部
+            if(pcw.origin.y < new.origin.y || (controlBottom - playerBottom < 300 && new.size.height > 300)){
+                pcw.origin.y -= diff;
+            }
+        }
+        if(!CGPointEqualToPoint(old.origin, new.origin)){
+            // 位置有变化
+            pcw.origin.x += new.origin.x - old.origin.x;
+            pcw.origin.y += new.origin.y - old.origin.y;
+        }
+        
+        
+        if(isAtCenter){
+            pcw.origin.x = ((new.size.width - pcw.size.width) / 2) + new.origin.x; // Reset location to center
+        }
+        
+        [self.player.playerControlView.window setFrame:pcw display:YES];
     }
 }
 
@@ -152,7 +218,6 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
 
 - (NSSize)windowWillResize:(NSWindow *)sender
                     toSize:(NSSize)frameSize{
-
     [[NSUserDefaults standardUserDefaults] setDouble:frameSize.width forKey:@"playerwidth"];
     [[NSUserDefaults standardUserDefaults] setDouble:frameSize.height forKey:@"playerheight"];
     return frameSize;

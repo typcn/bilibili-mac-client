@@ -28,6 +28,7 @@
 // If you enable that , app will take more memory usage,  about 2x cpu usage , sometimes hang up / crash
 
 // I think the best solution is create an borderless window
+// I'm going to add vo-metal in the future
 
 @interface PlayerControlWindow : NSWindow
 
