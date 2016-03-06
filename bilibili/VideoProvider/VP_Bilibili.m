@@ -235,7 +235,7 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
                                                           error:&error];
     if(error || !respData){
         NSLog(@"[VP_Bilibili] API Request Error: %@",error);
-        [NSException raise:@VP_BILI_API_ERROR format:@"%@", error.localizedDescription];
+        [NSException raise:@VP_BILI_API_ERROR format:@"视频解析出现错误，返回内容为空，可能的原因：\n1. 您的网络连接出现故障\n2. Bilibili API 服务器出现故障\n请尝试以下步骤：\n1. 更换网络连接或重启电脑\n2. 可能触发了频率限制，请更换 IP 地址\n\n如果您确信是软件问题，请点击帮助 -- 反馈"];
         return NULL;
     }
     
@@ -243,7 +243,7 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
     
     if(error){
         NSLog(@"[VP_Bilibili] JSON Parse Error: %@",error);
-        [NSException raise:@VP_BILI_JSON_ERROR format:@"%@", error.localizedDescription];
+        [NSException raise:@VP_BILI_JSON_ERROR format:@"视频解析出现错误，JSON 解析失败，可能的原因：\n1. 您的网络被劫持\n2. Bilibili 服务器出现故障\n请尝试以下步骤：\n1. 尝试更换网络\n2. 过一会再试\n\n如果您确信是软件问题，请点击帮助 -- 反馈"];
         return NULL;
     }
     

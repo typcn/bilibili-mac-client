@@ -303,44 +303,11 @@
                     } error:nil];
 }
 
-- (void)updateParser{
-    WebTabView *tv = (WebTabView *)[browser activeTabContents];
-    if(!tv){
-        return;
-    }
-    id wv = [tv GetWebView];
-    if(!wv){
-        return;
-    }
-    if([wv subviews] && [wv subviews][0]){
-        [[PluginManager sharedInstance] install:@"com.typcn.vp.bilibili" :[wv subviews][0] :1];
-    }
-}
-
-- (void)installPlugIn:(NSString *)name{
-    WebTabView *tv = (WebTabView *)[browser activeTabContents];
-    if(!tv){
-        return;
-    }
-    id wv = [tv GetWebView];
-    if(!wv){
-        return;
-    }
-    if([wv subviews] && [wv subviews][0]){
-        [[PluginManager sharedInstance] install:name :[wv subviews][0] :0];
-    }
-}
-
-- (void)saveCookie{
-    if(cookie && [cookie length] > 5){
-        [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:@"cookie"];
-    }
-}
-
 #define kIBTitle 1
 #define kIBURL 2
+#define kIBView 3
 
-- (NSString *)getInternalBrowser:(int)type{
+- (id)getInternalBrowser:(int)type{
     WebTabView *tv = (WebTabView *)[browser activeTabContents];
     if(!tv){
         return NULL;
@@ -359,8 +326,31 @@
         }
     }else if(type == kIBURL){
         return [wv getURL];
+    }else if(type == kIBView){
+        return [[tv GetWebView] subviews][0];
     }
+    
     return NULL;
+}
+
+- (void)updateParser{
+    id view = [self getInternalBrowser:kIBView];
+    if(view){
+        [[PluginManager sharedInstance] install:@"com.typcn.vp.bilibili" :view :0];
+    }
+}
+
+- (void)installPlugIn:(NSString *)name{
+    id view = [self getInternalBrowser:kIBView];
+    if(view){
+        [[PluginManager sharedInstance] install:name :view :0];
+    }
+}
+
+- (void)saveCookie{
+    if(cookie && [cookie length] > 5){
+        [[NSUserDefaults standardUserDefaults] setObject:cookie forKey:@"cookie"];
+    }
 }
 
 - (void)showAirPlayByCID:(NSString *)cid withPage:(NSString *)pgUrl title:(NSString *)pgTitle
@@ -403,6 +393,10 @@
         url = [self getInternalBrowser:kIBURL];
     }
     
+    if(title){
+        title = [[title componentsSeparatedByString:@"_"] objectAtIndex:0];
+    }
+    
     NSLog(@"Video detected ! CID: %@",cid);
     if(acceptAnalytics == 1){
         action("video", "play", [cid cStringUsingEncoding:NSUTF8StringEncoding]);
@@ -426,22 +420,6 @@
 
 - (void)playVideoByUrl:(NSString *)Url
 {
-    if(parsing){
-        return;
-    }
-//    WebTabView *tv = (WebTabView *)[browser activeTabContents];
-//    if(!tv){
-//        return;
-//    }
-//    TWebView *wv = [tv GetTWebView];
-//    if(!wv){
-//        return;
-//    }
-    parsing = true;
-    vCID = @"LOCALVIDEO";
-    vAID = Url;
-    vUrl = Url;
-    
     if(acceptAnalytics == 1){
         action("video", "play", "pluginVideo");
         screenView("PlayerView");
@@ -450,66 +428,32 @@
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
     }
-//    dispatch_async(dispatch_get_main_queue(), ^(void){
-//        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-//        playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
-//        [playerWindowController showWindow:self];
-//        [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-//    });
+    VideoAddress *video = [[VideoAddress alloc] init];
+    [video setFirstFragmentURL:Url];
+    [video addDefaultPlayURL:Url];
+    [[PlayerLoader sharedInstance] loadVideo:video];
 }
 
-
-- (void)downloadVideoByCID:(NSString *)cid withPage:(NSString *)pgUrl title:(NSString *)title
+- (void)downloadVideoByCID:(NSString *)cid withPage:(NSString *)pgUrl title:(NSString *)pgTitle
 {
-    NSString *fulltitle;
-    id wvContentView;
+    NSString *title = pgTitle;
+    NSString *url = pgUrl;
+    
     if(!pgUrl || !title){
-        WebTabView *tv = (WebTabView *)[browser activeTabContents];
-        if(!tv){
-            return;
-        }
-        id wv = [tv GetWebView];
-        if(!wv){
-            return;
-        }
-        TWebView *twv = [tv GetTWebView];
-        if(!twv){
-            return;
-        }
-        vUrl = [twv getURL];
-        wvContentView = [wv subviews][0];
-        fulltitle = [twv getTitle];
-    }else{
-        vUrl = pgUrl;
+        title = [self getInternalBrowser:kIBTitle];
+        url = [self getInternalBrowser:kIBURL];
+    }
+    
+    if(title){
+        title = [[title componentsSeparatedByString:@"_"] objectAtIndex:0];
+    }
+    
+    id wvContentView = [self getInternalBrowser:kIBView];
+    if(!wvContentView){
         wvContentView = [[NSView alloc] init];
-        fulltitle = title;
-        WebTabView *tv = (WebTabView *)[browser activeTabContents];
-        if(tv){
-            id wv = [tv GetWebView];
-            if(wv){
-                wvContentView = [wv subviews][0];
-            }
-        }
     }
-
-    vCID = cid;
-    vPID = @"1";
     
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\/video\\/av(\\d+)(\\/index.html|\\/index_(\\d+).html)?" options:NSRegularExpressionCaseInsensitive error:nil];
-    
-    NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
-    
-    NSRange aidRange = [match rangeAtIndex:1];
-    
-    if(aidRange.length > 0){
-        vAID = [vUrl substringWithRange:aidRange];
-        NSRange pidRange = [match rangeAtIndex:3];
-        if(pidRange.length > 0 ){
-            vPID = [vUrl substringWithRange:pidRange];
-        }
-    }else{
-        vAID = @"0";
-    }
+    NSDictionary *dict = [[VP_Bilibili sharedInstance] generateParamsFromURL:url];
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:wvContentView animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
@@ -529,13 +473,14 @@
         NSLog(@"Analytics disabled ! won't upload.");
     }
     
-    NSLog(@"[Downloader] video name %@",fulltitle);
-    NSArray *fn = [fulltitle componentsSeparatedByString:@"_"];
-    NSString *filename = [fn objectAtIndex:0];
+    NSLog(@"[Downloader] video name %@",title);
+    
+    NSString *aid = dict[@"aid"];
+    NSString *pid = dict[@"pid"];
     
     dispatch_async( dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         hud.labelText = NSLocalizedString(@"正在解析视频地址", nil);
-        BOOL s = DL->newTask([cid intValue],vAID,vPID, filename);
+        BOOL s = DL->newTask([cid intValue],aid,pid, title);
         dispatch_async(dispatch_get_main_queue(), ^(void){
             if(s){
                 hud.labelText = NSLocalizedString(@"成功开始下载", nil);
@@ -556,15 +501,9 @@
 
 - (void)downloadComment:(NSString *)cid title:(NSString *)title
 {
-    id wvContentView;
-    wvContentView = [[NSView alloc] init];
-    
-    WebTabView *tv = (WebTabView *)[browser activeTabContents];
-    if(tv){
-        id wv = [tv GetWebView];
-        if(wv){
-            wvContentView = [wv subviews][0];
-        }
+    id wvContentView = [self getInternalBrowser:kIBView];
+    if(!wvContentView){
+        wvContentView = [[NSView alloc] init];
     }
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:wvContentView animated:YES];

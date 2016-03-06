@@ -74,7 +74,7 @@
 
 
 - (void)loadVideoFrom:(VideoProvider *)provider withData:(NSDictionary *)params{
-    if(isLoading){
+    if(isLoading && !IS_VL_QUEUE){
         return;
     }
     [self show];
@@ -172,6 +172,7 @@
 - (void)show{
     [hud show:YES];
     isLoading = YES;
+    hud.detailsLabelText = @"";
     [self.window setLevel:NSPopUpMenuWindowLevel];
     [self.window makeKeyAndOrderFront:self];
     [[self.window contentView] setHidden:NO];
