@@ -67,6 +67,7 @@
         NSDictionary *dict = [provider generateParamsFromURL:url];
         if(!dict){
             [self showError:@"错误" :@"解析参数生成失败，请检查 URL 是否正确"];
+            return;
         }
         [self loadVideoFrom:provider withData:dict];
     });
@@ -160,7 +161,7 @@
 
 
 - (void)showError:(NSString *)title :(NSString *)desc{
-    dispatch_sync(dispatch_get_main_queue(), ^(void){
+    dispatch_async(dispatch_get_main_queue(), ^(void){
         [self show];
         hud.mode = MBProgressHUDModeText;
         hud.labelText = NSLocalizedString(title, nil);
@@ -170,22 +171,26 @@
 }
 
 - (void)show{
-    [hud show:YES];
-    isLoading = YES;
-    hud.detailsLabelText = @"";
-    [self.window setLevel:NSPopUpMenuWindowLevel];
-    [self.window makeKeyAndOrderFront:self];
-    [[self.window contentView] setHidden:NO];
-    [NSApp activateIgnoringOtherApps:YES];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [hud show:YES];
+        isLoading = YES;
+        hud.detailsLabelText = @"";
+        [self.window setLevel:NSPopUpMenuWindowLevel];
+        [self.window makeKeyAndOrderFront:self];
+        [[self.window contentView] setHidden:NO];
+        [NSApp activateIgnoringOtherApps:YES];
+    });
 }
 
 - (void)hide:(NSTimeInterval)i{
-    [hud hide:YES afterDelay:i];
-    [NSTimer scheduledTimerWithTimeInterval:i+2.0
-                                     target:self
-                                   selector:@selector(hideWindow)
-                                   userInfo:nil
-                                    repeats:NO];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [hud hide:YES afterDelay:i];
+        [NSTimer scheduledTimerWithTimeInterval:i+2.0
+                                         target:self
+                                       selector:@selector(hideWindow)
+                                       userInfo:nil
+                                        repeats:NO];
+    });
 }
 
 - (void)hideWindow{

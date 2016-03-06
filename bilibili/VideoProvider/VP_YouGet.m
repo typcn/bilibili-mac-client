@@ -11,6 +11,15 @@
 
 @implementation VP_YouGet
 
++ (instancetype)sharedInstance {
+    static id sharedInstance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
 - (NSDictionary *)generateParamsFromURL: (NSString *)URL{    
     return @{
              @"url":URL
@@ -19,7 +28,7 @@
 
 - (VideoAddress *) getVideoAddress: (NSDictionary *)params{
     if(!params[@"url"]){
-        [NSException raise:@VP_PARAM_ERROR format:@"CID Cannot be empty"];
+        [NSException raise:@VP_PARAM_ERROR format:@"URL Cannot be empty"];
         return NULL;
     }
     

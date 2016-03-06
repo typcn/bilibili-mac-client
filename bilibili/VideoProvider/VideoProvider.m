@@ -10,15 +10,6 @@
 
 @implementation VideoProvider
 
-+ (instancetype)sharedInstance {
-    static id sharedInstance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [[self alloc] init];
-    });
-    return sharedInstance;
-}
-
 - (NSDictionary *) generateParamsFromURL: (NSString *)url{
     return NULL;
 }

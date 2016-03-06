@@ -10,6 +10,15 @@
 
 @implementation VP_Local
 
++ (instancetype)sharedInstance {
+    static id sharedInstance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
 - (NSDictionary *)generateParamsFromURL: (NSString *)URL{
     return NULL;
 }
