@@ -104,21 +104,10 @@ Browser *browser;
     [s synchronize];
     NSLog(@"AcceptAnalytics=%ld WithoutGUI=%d",acceptAnalytics,without_gui);
     if(!without_gui){
-        browser = (Browser *)[Browser browser];
-        browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
-        NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
-        [re setURL:[NSURL URLWithString:@"http://www.bilibili.com"]];
-        NSString *xff = [s objectForKey:@"xff"];
-        if([xff length] > 4){
-            [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
-            [re setValue:xff forHTTPHeaderField:@"Client-IP"];
-        }
-        
-        [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
-        [browser.windowController showWindow:NSApp];
-        sleep(0.2);
-        [browser.window makeKeyAndOrderFront:NSApp];
-        [browser.window makeMainWindow];
+        [self openBrowserWithUrl:@"http://www.bilibili.com"];
+        [browser.window performSelector:@selector(makeKeyAndOrderFront:) withObject:NSApp afterDelay:0.5];
+        [browser.window performSelector:@selector(makeMainWindow) withObject:nil afterDelay:0.5];
+        [NSApp activateIgnoringOtherApps:YES];
     }
     
     // Start ARIA2
@@ -194,33 +183,14 @@ Browser *browser;
         }else if(browser && browser.window && browser.tabCount > 0){
             [browser.window makeKeyAndOrderFront:nil];
             return YES;
+        }else if(!browser || browser.tabCount == 0){
+            [self openBrowserWithUrl:@"http://www.bilibili.com"];
         }
         return NO;
     }
     else
     {
-        NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
-        [re setURL:[NSURL URLWithString:@"http://www.bilibili.com"]];
-        NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
-        NSString *xff = [settingsController objectForKey:@"xff"];
-        if([xff length] > 4){
-            [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
-            [re setValue:xff forHTTPHeaderField:@"Client-IP"];
-        }
-
-        if(without_gui){
-            browser = (Browser *)[Browser browser];
-            browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
-            [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
-            [browser.windowController showWindow:NSApp];
-            sleep(0.2);
-            [browser.window makeKeyAndOrderFront:NSApp];
-            [browser.window makeMainWindow];
-            without_gui = false;
-        }else{
-            [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
-            [browser.windowController showWindow:self];
-        }
+        [self openBrowserWithUrl:@"http://www.bilibili.com"];
         return YES;
     }
 }
@@ -246,19 +216,30 @@ Browser *browser;
         without_gui = 1;
         return;
     }
+    [self openBrowserWithUrl:[NSString stringWithFormat:@"http://%@", url]];
+}
+
+- (void)openBrowserWithUrl:(NSString *)url{
     NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
-    [re setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@", url]]];
+    [re setURL:[NSURL URLWithString:url]];
     NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
     NSString *xff = [settingsController objectForKey:@"xff"];
     if([xff length] > 4){
         [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
         [re setValue:xff forHTTPHeaderField:@"Client-IP"];
     }
+    if(!browser){
+        browser = (Browser *)[Browser browser];
+        browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
+        without_gui = false;
+    }
 
+    
     [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
     [browser.windowController showWindow:self];
+    [browser.window makeKeyAndOrderFront:NSApp];
+    [browser.window makeMainWindow];
 }
-
 
 // Main Menu Events
 
