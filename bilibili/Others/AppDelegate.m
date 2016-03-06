@@ -14,7 +14,6 @@
 #import "PJTernarySearchTree.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import "PlayerManager.h"
 #import "PlayerLoader.h"
 
 Browser *browser;
@@ -168,44 +167,7 @@ Browser *browser;
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
-    vCID = @"LOCALVIDEO";
-    vUrl = @"";
-    vAID = @"";
-    cmFile = @"";
-    subFile = @"";
-    if([filenames count] == 1){
-        vUrl = [filenames objectAtIndex:0];
-    }else{
-        for(int i = 0; i < [filenames count]; i++ )
-        {
-            NSString *path = [filenames objectAtIndex:i];
-            unsigned long realLength = strlen([path UTF8String]);
-            
-            if([[path pathExtension] isEqualToString:@"xml"]){
-                cmFile = [[NSURL fileURLWithPath:path] absoluteString];
-                continue;
-            }else if([[path pathExtension] isEqualToString:@"ass"]){
-                subFile = path;
-                continue;
-            }
-            
-            if(i == 0){
-                vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",realLength, @"%" , path ,@";"];
-                vAID = path; // Store first video to vAID
-            }else{
-                vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@",   vUrl   , @"%",realLength, @"%" , path ,@";"];
-            }
-        }
-    }
-    if([vUrl length] > 3){
-        without_gui = 1;
-//        dispatch_async(dispatch_get_main_queue(), ^(void){
-//            NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-//            playerWindowController = [storyBoard instantiateControllerWithIdentifier:@"playerWindow"];
-//            [playerWindowController showWindow:self];
-//            [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-//        });
-    }
+    [[PlayerLoader sharedInstance] loadVideoWithLocalFiles:filenames];
     NSLog(@"Handle open files: %@",filenames);
 }
 

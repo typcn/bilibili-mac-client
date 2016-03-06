@@ -182,6 +182,9 @@
 		FDA52C6B1C8B7ADE00E5092F /* SubtitleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C6A1C8B7ADE00E5092F /* SubtitleHelper.m */; };
 		FDA52C6E1C8B7DC900E5092F /* SubtitleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C6D1C8B7DC900E5092F /* SubtitleProvider.m */; };
 		FDA52C711C8B7DFA00E5092F /* SP_Bilibili.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C701C8B7DFA00E5092F /* SP_Bilibili.m */; };
+		FDA52C741C8B9C7600E5092F /* SP_Local.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C731C8B9C7600E5092F /* SP_Local.m */; };
+		FDA52C7A1C8BA98B00E5092F /* NSString+LcsDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C791C8BA98B00E5092F /* NSString+LcsDiff.m */; };
+		FDA52C7D1C8BAFF900E5092F /* VP_Local.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C7C1C8BAFF900E5092F /* VP_Local.m */; };
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB54D601BCB6B68007A1615 /* BrowserExtInterface.m */; };
 		FDC5C4EC1C213EE400B29890 /* PreloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C4EB1C213EE400B29890 /* PreloadManager.m */; };
@@ -585,6 +588,12 @@
 		FDA52C6D1C8B7DC900E5092F /* SubtitleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubtitleProvider.m; path = SubHelper/SubtitleProvider.m; sourceTree = "<group>"; };
 		FDA52C6F1C8B7DFA00E5092F /* SP_Bilibili.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SP_Bilibili.h; path = SubHelper/SP_Bilibili.h; sourceTree = "<group>"; };
 		FDA52C701C8B7DFA00E5092F /* SP_Bilibili.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SP_Bilibili.m; path = SubHelper/SP_Bilibili.m; sourceTree = "<group>"; };
+		FDA52C721C8B9C7600E5092F /* SP_Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SP_Local.h; path = SubHelper/SP_Local.h; sourceTree = "<group>"; };
+		FDA52C731C8B9C7600E5092F /* SP_Local.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SP_Local.m; path = SubHelper/SP_Local.m; sourceTree = "<group>"; };
+		FDA52C781C8BA98B00E5092F /* NSString+LcsDiff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+LcsDiff.h"; path = "SubHelper/NSString+LcsDiff.h"; sourceTree = "<group>"; };
+		FDA52C791C8BA98B00E5092F /* NSString+LcsDiff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+LcsDiff.m"; path = "SubHelper/NSString+LcsDiff.m"; sourceTree = "<group>"; };
+		FDA52C7B1C8BAFF900E5092F /* VP_Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VP_Local.h; path = VideoProvider/VP_Local.h; sourceTree = "<group>"; };
+		FDA52C7C1C8BAFF900E5092F /* VP_Local.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VP_Local.m; path = VideoProvider/VP_Local.m; sourceTree = "<group>"; };
 		FDA775E01AD93DC900426483 /* aria2.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = aria2.hpp; path = bilibili/headers/aria2.hpp; sourceTree = "<group>"; };
 		FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		FDB54D5F1BCB6B68007A1615 /* BrowserExtInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BrowserExtInterface.h; path = RemoteCall/BrowserExtInterface.h; sourceTree = "<group>"; };
@@ -1206,6 +1215,10 @@
 				FDA52C6A1C8B7ADE00E5092F /* SubtitleHelper.m */,
 				FDA52C6F1C8B7DFA00E5092F /* SP_Bilibili.h */,
 				FDA52C701C8B7DFA00E5092F /* SP_Bilibili.m */,
+				FDA52C721C8B9C7600E5092F /* SP_Local.h */,
+				FDA52C731C8B9C7600E5092F /* SP_Local.m */,
+				FDA52C781C8BA98B00E5092F /* NSString+LcsDiff.h */,
+				FDA52C791C8BA98B00E5092F /* NSString+LcsDiff.m */,
 			);
 			name = SubHelper;
 			sourceTree = "<group>";
@@ -1261,6 +1274,8 @@
 				FD7684B91C8888C7006B44F2 /* VP_Bilibili.m */,
 				FD7684F41C89B037006B44F2 /* VP_YouGet.h */,
 				FD7684F51C89B037006B44F2 /* VP_YouGet.m */,
+				FDA52C7B1C8BAFF900E5092F /* VP_Local.h */,
+				FDA52C7C1C8BAFF900E5092F /* VP_Local.m */,
 			);
 			name = VideoProvider;
 			sourceTree = "<group>";
@@ -1609,6 +1624,8 @@
 			files = (
 				FDA52C6B1C8B7ADE00E5092F /* SubtitleHelper.m in Sources */,
 				FD7684961C887F33006B44F2 /* AddressBar.m in Sources */,
+				FDA52C741C8B9C7600E5092F /* SP_Local.m in Sources */,
+				FDA52C7D1C8BAFF900E5092F /* VP_Local.m in Sources */,
 				FDFE452B1C0073150006856E /* BarrageWalkImageSprite.m in Sources */,
 				FDFAD67E1C007B4E00BA06C7 /* NSView+UIView.m in Sources */,
 				FD0103301C8B4CF900505344 /* ControlsWithVibracy.m in Sources */,
@@ -1667,6 +1684,7 @@
 				FD7684B71C8885F8006B44F2 /* VideoAddress.m in Sources */,
 				FD7257261B9D5E190015B0F1 /* Analytics.mm in Sources */,
 				FDA01C471C56908F00298CEF /* HotURL.m in Sources */,
+				FDA52C7A1C8BA98B00E5092F /* NSString+LcsDiff.m in Sources */,
 				FD7684A91C887F48006B44F2 /* PlayerView.mm in Sources */,
 				FD62CC891B6E6848000AED57 /* MBProgressHUD.m in Sources */,
 				FDFE45201C0073150006856E /* BarrageClock.m in Sources */,

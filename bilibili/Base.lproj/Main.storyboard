@@ -104,21 +104,9 @@
                                     <action selector="setURL:" target="0d3-4B-65W" id="gnk-CD-aLH"/>
                                 </connections>
                             </textField>
-                            <button hidden="YES" verticalHuggingPriority="750" id="Y4W-Rj-GID">
-                                <rect key="frame" x="31" y="13" width="115" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="playerTrigger" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KGn-qO-V8N">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <segue destination="3Nx-YC-zmP" kind="show" id="bio-S6-cZ8"/>
-                                </connections>
-                            </button>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="playerTrigger" destination="Y4W-Rj-GID" id="7BM-nP-CmI"/>
                         <outlet property="subUrl" destination="W36-Oj-e30" id="zOn-s3-XHu"/>
                         <outlet property="textUrl" destination="EP3-TH-MpO" id="oIj-ai-9Yp"/>
                         <outlet property="videoUrl" destination="bDH-si-sdl" id="gCa-Sy-wza"/>

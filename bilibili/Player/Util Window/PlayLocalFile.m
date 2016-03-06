@@ -7,13 +7,9 @@
 //
 
 #import "playLocalFile.h"
+#import "VideoAddress.h"
+#import "PlayerLoader.h"
 
-
-extern NSString *vUrl;
-extern NSString *vCID;
-extern NSString *vAID;
-NSString *cmFile;
-NSString *subFile;
 
 @interface playLocalFile ()
 @property (weak) IBOutlet NSTextField *videoUrl;
@@ -23,15 +19,15 @@ NSString *subFile;
 
 @end
 
-@implementation playLocalFile
+@implementation playLocalFile{
+    VideoAddress *video;
+    NSMutableDictionary *attrs;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    vCID = @"LOCALVIDEO";
-    vUrl = @"";
-    vAID = @"";
-    cmFile = @"";
-    subFile = @"";
+    video = [[VideoAddress alloc] init];
+    attrs = [[NSMutableDictionary alloc] init];
 }
 - (IBAction)selectVideo:(id)sender {
     NSOpenPanel* openDlg = [NSOpenPanel openPanel];
@@ -46,22 +42,26 @@ NSString *subFile;
         for(int i = 0; i < [urls count]; i++ )
         {
             NSString *path = [[urls objectAtIndex:i] path];
-            unsigned long realLength = strlen([path UTF8String]);
             
             if(i == 0){
-                vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",realLength, @"%" , path ,@";"];
-                vAID = path; // Store first video to vAID
-            }else{
-                vUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@",   vUrl   , @"%",realLength, @"%" , path ,@";"];
+                [video setFirstFragmentURL:path];
             }
+            
+            [video addDefaultPlayURL:path];
         }
         
-        [self.videoUrl setStringValue:vUrl];
+        attrs[@"files"] = [video defaultPlayURL];
+        [self.videoUrl setStringValue:[NSString stringWithFormat:@"合并 %lu 个本地文件",(unsigned long)[urls count]]];
     }
 }
 - (IBAction)setURL:(id)sender {
-    if([self.videoUrl stringValue] && [[self.videoUrl stringValue] length] > 5){
-        vUrl = [self.videoUrl stringValue];
+    if([[self.videoUrl stringValue] containsString:@" 个本地文件"]){
+        return;
+    }else if([self.videoUrl stringValue]){
+        [video setFirstFragmentURL:[self.videoUrl stringValue]];
+        [video setDefaultPlayURL:[@[
+                                    [self.videoUrl stringValue]
+                                    ] mutableCopy]];
     }
 }
 - (IBAction)selectComment:(id)sender {
@@ -73,8 +73,8 @@ NSString *subFile;
     
     if ( [openDlg runModal] == NSModalResponseOK )
     {
-        NSString* filepath = [NSString stringWithFormat:@"%@",[openDlg URL]];
-        cmFile = filepath;
+        NSString* filepath = [NSString stringWithFormat:@"%@",[openDlg URL].path];
+        attrs[@"commentFile"] = filepath;
         [self.textUrl setStringValue:filepath];
     }
 }
@@ -88,15 +88,13 @@ NSString *subFile;
     if ( [openDlg runModal] == NSModalResponseOK )
     {
         NSString* filepath = [NSString stringWithFormat:@"%@",[openDlg URL].path];
-        subFile = filepath;
+        attrs[@"subtitleFile"] = filepath;
         [self.subUrl setStringValue:filepath];
     }
 }
 - (IBAction)playClick:(id)sender {
-    [self.playerTrigger performClick:sender];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.view.window close];
-    });
+    [[PlayerLoader sharedInstance] loadVideo:video withAttrs:attrs];
+    [self.view.window close];
 }
 
 @end

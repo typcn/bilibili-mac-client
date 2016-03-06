@@ -10,7 +10,7 @@
 #import "PlayerManager.h"
 #import "MBProgressHUD.h"
 #import "SubtitleHelper.h"
-
+#import "VP_Local.h"
 #import <zlib.h>
 
 @interface PlayerLoader ()
@@ -95,7 +95,27 @@
 }
 
 - (void)loadVideoWithLocalFiles:(NSArray *)files {
-    // TODO
+    if(isLoading){
+        return;
+    }
+    [self show];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = NSLocalizedString(@"正在打开本地文件", nil);
+    dispatch_async(vl_queue, ^(void){
+        @try {
+            NSDictionary *params = @{
+                @"files":files
+            };
+            VideoAddress *video = [[VP_Local sharedInstance] getVideoAddress:params];
+            if(!video){
+                [NSException raise:@VP_RESOLVE_ERROR format:@"Empty Content"];
+            }
+            [self loadVideo:video withAttrs:params];
+        }
+        @catch (NSException *exception) {
+            [self showError:[exception name] :[exception description]];
+        }
+    });
 }
 
 - (void)loadVideo:(VideoAddress *)video {
@@ -199,7 +219,8 @@
 
 @implementation PlayerLoaderWindow
 
-- (BOOL) canBecomeMainWindow { return YES; }
+- (BOOL) canBecomeKeyWindow { return NO; }
+- (BOOL) canBecomeMainWindow { return NO; }
 - (BOOL) acceptsFirstResponder { return NO; }
 - (BOOL) becomeFirstResponder { return NO; }
 - (BOOL) resignFirstResponder { return NO; }
