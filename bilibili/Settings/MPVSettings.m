@@ -17,23 +17,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSString *settings = [[NSUserDefaults standardUserDefaults] objectForKey:@"mpvSettings"];
-    if(settings && [settings length] > 1){
-        [self.textView setString:settings];
-    }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.view.window];
+
 }
 
 - (void)windowWillClose:(NSNotification *)notification
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+}
+
+- (IBAction)openMpvConfDir:(id)sender {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString *applicationSupportDirectory = [paths firstObject];
+    NSString *confDir = [NSString stringWithFormat:@"%@/com.typcn.bilibili/conf/",applicationSupportDirectory];
     
-    if(![[self.textView string] length]){
-        return;
+    BOOL isDir = NO;
+    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:confDir isDirectory:&isDir];
+    if(!isExist){
+        [[NSFileManager defaultManager] createDirectoryAtPath:confDir withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:[self.textView string] forKey:@"mpvSettings"];
+    [[NSWorkspace sharedWorkspace] openFile:confDir withApplication:@"Finder"];
 }
+
 
 @end

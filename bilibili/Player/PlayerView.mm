@@ -61,9 +61,11 @@ inline void check_error(int status)
 {
     if (status < 0) {
         NSLog(@"mpv API error: %s", mpv_error_string(status));
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"Fatal Error\nPlease open console.app and upload logs to GitHub or send email to typcncom@gmail.com"];
-        [alert runModal];
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:@"Fatal Error\nPlease open console.app and upload logs to GitHub or send email to typcncom@gmail.com"];
+            [alert runModal];
+        });
     }
 }
 
@@ -218,7 +220,8 @@ getInfo:
     [self setMPVOption:"vo" :"opengl:pbo:dither=no:alpha=no"];
     [self setMPVOption:"screenshot-directory" :"~/Desktop"];
     [self setMPVOption:"screenshot-format" :"png"];
-    
+
+
     int disableMediaKey = [self getSettings:@"disableiTunesMediaKey"];
     if(!disableMediaKey){
         [self setMPVOption:"input-media-keys" :"yes"];
@@ -317,30 +320,31 @@ getInfo:
 }
 
 - (void) loadMPVSettings{
-    NSString *settings = [[NSUserDefaults standardUserDefaults] objectForKey:@"mpvSettings"];
-    if(settings && [settings length] > 1){
-        NSArray *lines = [settings componentsSeparatedByString:@"\n"];
-        for(NSString *line in lines){
-            if([line hasPrefix:@"#"]){
-                continue;
-            }
-            NSArray *pair = [line componentsSeparatedByString:@"="];
-            if(!pair || [pair count] < 2){
-                continue;
-            }
-            NSString *key = [pair[0] stringByReplacingOccurrencesOfString:@" " withString:@""];
-            NSString *value = [pair[1] stringByReplacingOccurrencesOfString:@" " withString:@""];
-            int status = mpv_set_option_string(self.player.mpv, [key cStringUsingEncoding:NSUTF8StringEncoding], [value cStringUsingEncoding:NSUTF8StringEncoding]);
-            if (status < 0) {
-                NSLog(@"mpv API error: %s", mpv_error_string(status));
-                NSString *errStr = [NSString stringWithFormat:@"配置行：%@\n解析结果：参数 %@ 值 %@\n错误消息：%s",line,key,value,mpv_error_string(status)];
-                NSAlert *alert = [[NSAlert alloc] init];
-                [alert setMessageText:@"您的自定义 MPV 配置文件有误"];
-                [alert setInformativeText:errStr];
-                [alert runModal];
-            }
-        }
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString *applicationSupportDirectory = [paths firstObject];
+    NSString *confDir = [NSString stringWithFormat:@"%@/com.typcn.bilibili/conf/",applicationSupportDirectory];
+    
+    BOOL isDir = NO;
+    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:confDir isDirectory:&isDir];
+    if(!isExist){
+        [[NSFileManager defaultManager] createDirectoryAtPath:confDir withIntermediateDirectories:YES attributes:nil error:nil];
     }
+    
+    NSString *oldsettings = [[NSUserDefaults standardUserDefaults] objectForKey:@"mpvSettings"];
+    if(oldsettings && [oldsettings length] > 1){
+        // For OSX chinese auto corrention
+        oldsettings = [oldsettings stringByReplacingOccurrencesOfString:@"“" withString:@"\""];
+        oldsettings = [oldsettings stringByReplacingOccurrencesOfString:@"”" withString:@"\""];
+        oldsettings = [oldsettings stringByReplacingOccurrencesOfString:@"＃" withString:@"#"];
+        
+        NSString *confFile = [NSString stringWithFormat:@"%@mpv.conf",confDir];
+        
+        [oldsettings writeToFile:confFile atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"mpvSettings"];
+    }
+    
+    mpv_set_option_string(self.player.mpv, "config-dir",[confDir UTF8String]);
+    [self setMPVOption:"config" :"yes"];
 }
 
 - (NSDictionary *) getVideoInfo:(NSString *)url{
