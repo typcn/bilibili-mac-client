@@ -503,6 +503,7 @@
 		FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GCDWebServer.xcodeproj; path = GCDWebServer/GCDWebServer.xcodeproj; sourceTree = "<group>"; };
 		FD7257251B9D5E190015B0F1 /* Analytics.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Analytics.mm; path = Others/Analytics.mm; sourceTree = "<group>"; };
 		FD7632571C8C91920044F566 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AirPlay.strings; sourceTree = "<group>"; };
+		FD76325B1C8CEECA0044F566 /* mpv_nullsafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mpv_nullsafe.h; path = bilibili/headers/mpv_nullsafe.h; sourceTree = "<group>"; };
 		FD7684881C887F33006B44F2 /* AddressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressBar.h; path = Browser/AddressBar.h; sourceTree = "<group>"; };
 		FD7684891C887F33006B44F2 /* AddressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressBar.m; path = Browser/AddressBar.m; sourceTree = "<group>"; };
 		FD76848A1C887F33006B44F2 /* AutoSuggestTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutoSuggestTable.h; path = Browser/AutoSuggestTable.h; sourceTree = "<group>"; };
@@ -826,6 +827,7 @@
 			isa = PBXGroup;
 			children = (
 				FD5101901ACC1A7600C49430 /* mpv.h */,
+				FD76325B1C8CEECA0044F566 /* mpv_nullsafe.h */,
 			);
 			name = headers;
 			sourceTree = "<group>";

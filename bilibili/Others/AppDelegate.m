@@ -237,8 +237,8 @@ Browser *browser;
     
     [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
     [browser.windowController showWindow:self];
-    [browser.window makeKeyAndOrderFront:NSApp];
     [browser.window makeMainWindow];
+    [browser.window makeKeyAndOrderFront:NSApp];
 }
 
 // Main Menu Events

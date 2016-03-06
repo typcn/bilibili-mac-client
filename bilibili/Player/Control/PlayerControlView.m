@@ -8,7 +8,7 @@
 
 #import "PlayerControlView.h"
 #import "mpv.h"
-
+#import "mpv_nullsafe.h"
 
 @implementation PlayerControlView{
     NSTimer *timeUpdateTimer;
@@ -181,7 +181,6 @@
     const char *args[] = {"playlist-prev" ,NULL};
     mpv_command_async(self.player.mpv,0, args);
 }
-
 
 - (IBAction)setVolume:(id)sender {
     double volume = volumeSlider.doubleValue;

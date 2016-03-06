@@ -23,7 +23,6 @@
 
 #import "Common.hpp"
 
-
 @interface PlayerView (){
     __weak PlayerWindow *window;
     __weak PlayerControlView *playerControlView;
