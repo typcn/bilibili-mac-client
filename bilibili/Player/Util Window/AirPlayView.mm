@@ -16,6 +16,7 @@
     NSMutableArray *deviceList;
     AirPlay *ap;
     dispatch_queue_t queue;
+    __weak AirPlayWindowController *apwc;
     __weak IBOutlet NSTableView *tableView;
     __unsafe_unretained IBOutlet NSTextView *textView;
     __weak IBOutlet NSButton *refreshBtn;
@@ -23,25 +24,12 @@
     __weak IBOutlet NSButton *disconnBtn;
     const char* sel_devName; // Selected device name
     const char* sel_domain; // Selected device address or domain
-    
-    NSString *cid;
-    NSString *url;
-    NSString *title;
 }
 
 @end
 
 @implementation AirPlayView
 
-- (id)initWithCID:(NSString *)CID title:(NSString *)Title andURL:(NSString *)URL{
-    self = [super init];
-    if(self){
-        cid = CID;
-        url = URL;
-        title = Title;
-    }
-    return self;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,6 +40,7 @@
     [tableView setFocusRingType:NSFocusRingTypeNone];
     [self writeLog:@"注意：该功能仅供测试，可能有很多 BUG ，如果出现问题，请点击帮助 -- 反馈，或者加群 467687309"];
     [self refreshDeviceList];
+    apwc = self.view.window.windowController;
 }
 
 - (void)refreshDeviceList {
@@ -106,10 +95,10 @@
         
 
         VP_Bilibili *bili = [VP_Bilibili sharedInstance];
-        NSMutableDictionary *params = [[bili generateParamsFromURL:url] mutableCopy];
+        NSMutableDictionary *params = [[bili generateParamsFromURL:apwc.url] mutableCopy];
 
-        params[@"cid"] = cid;
-        params[@"title"] = title;
+        params[@"cid"] = apwc.cid;
+        params[@"title"] = apwc.vtitle;
 
         
         NSString *playurl;
@@ -143,28 +132,11 @@
 }
 - (IBAction)playWithQT:(id)sender {
     [self writeLog:@"正在尝试解析视频"];
-    vPID = @"1";
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\/video\\/av(\\d+)(\\/index.html|\\/index_(\\d+).html)?" options:NSRegularExpressionCaseInsensitive error:nil];
-    
-    NSTextCheckingResult *match = [regex firstMatchInString:vUrl options:0 range:NSMakeRange(0, [vUrl length])];
-    
-    NSRange aidRange = [match rangeAtIndex:1];
-    
-    if(aidRange.length > 0){
-        vAID = [vUrl substringWithRange:aidRange];
-        NSRange pidRange = [match rangeAtIndex:3];
-        if(pidRange.length > 0 ){
-            vPID = [vUrl substringWithRange:pidRange];
-        }
-    }else{
-        vAID = @"0";
-    }
-    
     VP_Bilibili *bili = [VP_Bilibili sharedInstance];
-    NSMutableDictionary *params = [[bili generateParamsFromURL:url] mutableCopy];
+    NSMutableDictionary *params = [[bili generateParamsFromURL:apwc.url] mutableCopy];
     
-    params[@"cid"] = cid;
-    params[@"title"] = title;
+    params[@"cid"] = apwc.cid;
+    params[@"title"] = apwc.vtitle;
     
     
     NSString *playurl;
@@ -274,5 +246,11 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
         [textView scrollRangeToVisible:NSMakeRange([[textView string] length], 0)];
     });
 }
+
+@end
+
+@implementation AirPlayWindowController
+
+
 
 @end

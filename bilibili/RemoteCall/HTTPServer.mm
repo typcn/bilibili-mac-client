@@ -12,6 +12,7 @@
 #import "downloadWrapper.h"
 #import "PreloadManager.h"
 #import "PlayerLoader.h"
+#import "AirPlayView.h"
 
 #import "VP_Bilibili.h"
 #import "VP_YouGet.h"
@@ -24,8 +25,6 @@
 #import <GCDWebServers/GCDWebServerDataResponse.h>
 
 #import <QuartzCore/CoreImage.h>
-
-int forceIPFake;
 
 @implementation HTTPServer{
     long acceptAnalytics;
@@ -149,9 +148,6 @@ int forceIPFake;
                     [self playVideoByCID:data withPage:nil title:nil];
                 }else if([arr count] > 2){
                     [self playVideoByCID:arr[0] withPage:arr[1] title:arr[2]];
-                }
-                if([arr count] == 4){
-                    forceIPFake = [arr[3] intValue];
                 }
             }else if([action isEqualToString:@"preloadComment"]){
                 [[PreloadManager sharedInstance] preloadComment:data];
@@ -341,30 +337,40 @@ int forceIPFake;
     }
 }
 
-- (void)showAirPlayByCID:(NSString *)cid withPage:(NSString *)pgUrl title:(NSString *)title
-{
-    vCID = cid;
-    
-    if(!pgUrl || !title){
-        WebTabView *tv = (WebTabView *)[browser activeTabContents];
-        if(!tv){
-            return;
-        }
-        TWebView *wv = [tv GetTWebView];
-        if(!wv){
-            return;
-        }
+#define kIBTitle 1
+#define kIBURL 2
+
+- (NSString *)getInternalBrowser:(int)type{
+    WebTabView *tv = (WebTabView *)[browser activeTabContents];
+    if(!tv){
+        return NULL;
+    }
+    TWebView *wv = [tv GetTWebView];
+    if(!wv){
+        return NULL;
+    }
+    if(type == kIBTitle){
         NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
         NSString *mediaTitle = [fn objectAtIndex:0];
-        vUrl = [wv getURL];
         if([mediaTitle length] > 0){
-            vTitle = [fn objectAtIndex:0];
+            return [fn objectAtIndex:0];
         }else{
-            vTitle = NSLocalizedString(@"未命名", nil);
+            return NSLocalizedString(@"未命名", nil);
         }
-    }else{
-        vTitle = [[title componentsSeparatedByString:@"_"] objectAtIndex:0];
-        vUrl = pgUrl;
+    }else if(type == kIBURL){
+        return [wv getURL];
+    }
+    return NULL;
+}
+
+- (void)showAirPlayByCID:(NSString *)cid withPage:(NSString *)pgUrl title:(NSString *)pgTitle
+{
+    NSString *title = pgTitle;
+    NSString *url = pgUrl;
+    
+    if(!pgUrl || !title){
+        title = [self getInternalBrowser:kIBTitle];
+        url = [self getInternalBrowser:kIBURL];
     }
     
     if(acceptAnalytics == 1){
@@ -375,39 +381,28 @@ int forceIPFake;
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
     }
-    airplayWindowController =[[NSWindowController alloc] initWithWindowNibName:@"AirPlay"];
-    [airplayWindowController showWindow:self];
+    AirPlayWindowController *ap = [[AirPlayWindowController alloc] initWithWindowNibName:@"AirPlay"];
+    
+    [ap setUrl:url];
+    [ap setVtitle:title];
+    [ap setCid:cid];
+    [ap showWindow:self];
+    
+    airplayWindowController = ap;
+    
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 }
 
-- (void)playVideoByCID:(NSString *)cid withPage:(NSString *)pgUrl title:(NSString *)title
+- (void)playVideoByCID:(NSString *)cid withPage:(NSString *)pgUrl title:(NSString *)pgTitle
 {
-    NSString *vtitle;
-    NSString *url;
+    NSString *title = pgTitle;
+    NSString *url = pgUrl;
     
     if(!pgUrl || !title){
-        WebTabView *tv = (WebTabView *)[browser activeTabContents];
-        if(!tv){
-            return;
-        }
-        TWebView *wv = [tv GetTWebView];
-        if(!wv){
-            return;
-        }
-        NSArray *fn = [[wv getTitle] componentsSeparatedByString:@"_"];
-        NSString *mediaTitle = [fn objectAtIndex:0];
-        url = [wv getURL];
-        if([mediaTitle length] > 0){
-            vtitle = [fn objectAtIndex:0];
-        }else{
-            vtitle = NSLocalizedString(@"未命名", nil);
-        }
-    }else{
-        vtitle = [[title componentsSeparatedByString:@"_"] objectAtIndex:0];
-        url = pgUrl;
+        title = [self getInternalBrowser:kIBTitle];
+        url = [self getInternalBrowser:kIBURL];
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:url forKey:@"LastPlay"];
     NSLog(@"Video detected ! CID: %@",cid);
     if(acceptAnalytics == 1){
         action("video", "play", [cid cStringUsingEncoding:NSUTF8StringEncoding]);
@@ -417,12 +412,13 @@ int forceIPFake;
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
     }
+
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     NSDictionary *params = [[VP_Bilibili sharedInstance] generateParamsFromURL:url];
     if(params){
         dict = [params mutableCopy];
     }
-    dict[@"title"] = vtitle;
+    dict[@"title"] = title;
     dict[@"url"] = url;
     dict[@"cid"] = cid;
     [[PlayerLoader sharedInstance] loadVideoFrom:[VP_Bilibili sharedInstance] withData:dict];

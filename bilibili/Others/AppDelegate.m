@@ -105,8 +105,8 @@ Browser *browser;
     NSLog(@"AcceptAnalytics=%ld WithoutGUI=%d",acceptAnalytics,without_gui);
     if(!without_gui){
         [self openBrowserWithUrl:@"http://www.bilibili.com"];
-        [browser.window performSelector:@selector(makeKeyAndOrderFront:) withObject:NSApp afterDelay:0.5];
-        [browser.window performSelector:@selector(makeMainWindow) withObject:nil afterDelay:0.5];
+        [browser.window performSelector:@selector(makeMainWindow) withObject:nil afterDelay:0.2];
+        [browser.window performSelector:@selector(makeKeyAndOrderFront:) withObject:NSApp afterDelay:0.2];
         [NSApp activateIgnoringOtherApps:YES];
     }
     

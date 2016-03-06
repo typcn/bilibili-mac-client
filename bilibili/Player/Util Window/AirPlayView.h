@@ -10,6 +10,13 @@
 
 @interface AirPlayView : NSViewController < NSTableViewDataSource >
 
-- (id)initWithCID:(NSString *)CID title:(NSString *)Title andURL:(NSString *)URL;
+@end
+
+
+@interface AirPlayWindowController : NSWindowController
+
+@property (nonatomic) NSString *cid;
+@property (nonatomic) NSString *url;
+@property (nonatomic) NSString *vtitle;
 
 @end

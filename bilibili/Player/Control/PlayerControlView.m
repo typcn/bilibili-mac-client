@@ -86,7 +86,7 @@
 }
 
 - (void)readInitState{
-    if(isAfterVideoRender){
+    if(isAfterVideoRender || !self.player.mpv){
         return;
     }
     isAfterVideoRender = YES;

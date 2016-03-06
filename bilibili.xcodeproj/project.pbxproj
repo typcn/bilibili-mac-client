@@ -502,6 +502,7 @@
 		FD62CC8E1B6E6BB0000AED57 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GCDWebServer.xcodeproj; path = GCDWebServer/GCDWebServer.xcodeproj; sourceTree = "<group>"; };
 		FD7257251B9D5E190015B0F1 /* Analytics.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Analytics.mm; path = Others/Analytics.mm; sourceTree = "<group>"; };
+		FD7632571C8C91920044F566 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/AirPlay.strings; sourceTree = "<group>"; };
 		FD7684881C887F33006B44F2 /* AddressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressBar.h; path = Browser/AddressBar.h; sourceTree = "<group>"; };
 		FD7684891C887F33006B44F2 /* AddressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressBar.m; path = Browser/AddressBar.m; sourceTree = "<group>"; };
 		FD76848A1C887F33006B44F2 /* AutoSuggestTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AutoSuggestTable.h; path = Browser/AutoSuggestTable.h; sourceTree = "<group>"; };
@@ -545,7 +546,6 @@
 		FD7685071C8B0D7F006B44F2 /* PlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerControlView.m; path = Player/Control/PlayerControlView.m; sourceTree = "<group>"; };
 		FD7685081C8B0D7F006B44F2 /* TimeSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimeSliderCell.h; path = Player/Control/TimeSliderCell.h; sourceTree = "<group>"; };
 		FD7685091C8B0D7F006B44F2 /* TimeSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimeSliderCell.m; path = Player/Control/TimeSliderCell.m; sourceTree = "<group>"; };
-		FD8302771BAB1C0900FF68DB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AirPlay.xib; sourceTree = "<group>"; };
 		FD83027B1BAB303C00FF68DB /* DonateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DonateView.h; path = Others/DonateView.h; sourceTree = "<group>"; };
 		FD83027C1BAB303C00FF68DB /* DonateView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DonateView.mm; path = Others/DonateView.mm; sourceTree = "<group>"; };
 		FD8BBC861BEB81A20018AA18 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -1813,7 +1813,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FDDE116E1BA997EB00230184 /* Base */,
-				FD8302771BAB1C0900FF68DB /* en */,
+				FD7632571C8C91920044F566 /* en */,
 			);
 			name = AirPlay.xib;
 			sourceTree = "<group>";
