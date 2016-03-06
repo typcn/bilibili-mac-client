@@ -52,10 +52,11 @@
     }
     NSString *edlUrl;
     for (NSString *url in URLs) {
+        unsigned long realLength = strlen([url UTF8String]);
         if(![edlUrl length]){
-            edlUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",(unsigned long)[url length], @"%" , url ,@";"];
+            edlUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@", @"edl://", @"%",realLength, @"%" , url ,@";"];
         }else{
-            edlUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@",  edlUrl  , @"%",(unsigned long)[url length], @"%" , url ,@";"];
+            edlUrl = [NSString stringWithFormat:@"%@%@%lu%@%@%@",  edlUrl  , @"%",realLength, @"%" , url ,@";"];
         }
     }
     return edlUrl;
