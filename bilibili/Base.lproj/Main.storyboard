@@ -1243,15 +1243,37 @@ GQ
                         <rect key="frame" x="0.0" y="0.0" width="654" height="368"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" id="twM-AP-xxi">
-                                <rect key="frame" x="233" y="166" width="187" height="32"/>
+                            <button verticalHuggingPriority="750" id="O6d-SP-FXN">
+                                <rect key="frame" x="233" y="187" width="187" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <buttonCell key="cell" type="push" title="打开 MPV 配置文件夹" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mIY-wq-37X">
+                                <buttonCell key="cell" type="push" title="查看 mpv.conf 语法" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qiX-BK-MM9">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="openMpvConfDir:" target="pWa-Nw-Vzq" id="pEv-X4-tQD"/>
+                                    <action selector="helpConf:" target="pWa-Nw-Vzq" id="3dv-X8-Ncs"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" id="hGm-Tw-eMa">
+                                <rect key="frame" x="233" y="154" width="187" height="32"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <buttonCell key="cell" type="push" title="查看自定义快捷键语法" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gnl-in-lsH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="helpInput:" target="pWa-Nw-Vzq" id="6bP-MP-Dac"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" id="cEv-6R-x7g">
+                                <rect key="frame" x="233" y="121" width="187" height="32"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <buttonCell key="cell" type="push" title="查看 Lua 脚本 API" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2aS-4d-u2x">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="helpLua:" target="pWa-Nw-Vzq" id="quB-0K-0Qh"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="GaI-8H-iHI">
@@ -1272,6 +1294,17 @@ GQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" id="twM-AP-xxi">
+                                <rect key="frame" x="234" y="251" width="187" height="32"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <buttonCell key="cell" type="push" title="打开 MPV 配置文件夹" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mIY-wq-37X">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openMpvConfDir:" target="pWa-Nw-Vzq" id="pEv-X4-tQD"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                 </viewController>

@@ -39,5 +39,17 @@
     [[NSWorkspace sharedWorkspace] openFile:confDir withApplication:@"Finder"];
 }
 
+- (IBAction)helpConf:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://mpv.io/manual/master/#putting-command-line-options-into-the-configuration-file"]];
+}
+
+- (IBAction)helpInput:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://mpv.io/manual/master/#command-interface"]];
+}
+
+- (IBAction)helpLua:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://mpv.io/manual/master/#lua-scripting"]];
+}
+
 
 @end
