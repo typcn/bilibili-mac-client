@@ -525,8 +525,9 @@ getInfo:
     }
     switch (event->event_id) {
         case MPV_EVENT_SHUTDOWN: {
-            mpv_detach_destroy(self.player.mpv);
-            //[self.player setMpvHandle:NULL];
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                [self.view.window performClose:self];
+            });
             NSLog(@"Stopping player");
             break;
         }

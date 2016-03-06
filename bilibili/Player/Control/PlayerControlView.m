@@ -34,6 +34,9 @@
     if(event->event_id == MPV_EVENT_GET_PROPERTY_REPLY || event->event_id == MPV_EVENT_PROPERTY_CHANGE){
         mpv_event_property *propety = event->data;
         void *data = propety->data;
+        if(!data){
+            return;
+        }
         if(strcmp(propety->name, "pause") == 0){
             int paused = *(int *)data;
             [self onPaused:paused];

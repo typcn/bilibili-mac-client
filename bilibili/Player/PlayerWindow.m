@@ -8,6 +8,8 @@
 
 #import "PlayerWindow.h"
 #import "PlayerControlView.h"
+#import <CoreFoundation/CoreFoundation.h>
+#import <Carbon/Carbon.h>
 
 @implementation PlayerWindow{
     BOOL paused;
@@ -173,38 +175,23 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         switch( [event keyCode] ) {
             case 125:{ // ⬇️
-                int volume = atoi(mpv_get_property_string(self.player.mpv,"volume"));
-                if(volume < 5){
-                    return;
-                }
-                char volstr[4];
-                snprintf(volstr , 4, "%d", volume - 5);
-                NSLog(@"Volume: %s",volstr);
-                mpv_set_property_string(self.player.mpv,"volume",volstr);
+                const char *args[] = {"add", "volume", shiftKeyPressed?"-5":"-20" ,NULL};
+                mpv_command_async(self.player.mpv, 0, args);
                 break;
             }
             case 126:{ // ⬆️
-                
-                int volume = atoi(mpv_get_property_string(self.player.mpv,"volume"));
-                if(volume > 94){
-                    return;
-                }
-                char volstr[3];
-                snprintf(volstr , 4, "%d", volume + 5);
-                NSLog(@"Volume: %s",volstr);
-                mpv_set_property_string(self.player.mpv,"volume",volstr);
-                
+                const char *args[] = {"add", "volume", shiftKeyPressed?"5":"20" ,NULL};
+                mpv_command_async(self.player.mpv, 0, args);
                 break;
             }
             case 124:{ // 👉
-                
                 const char *args[] = {"seek", shiftKeyPressed?"1":"5" ,NULL};
-                mpv_command(self.player.mpv, args);
+                mpv_command_async(self.player.mpv, 0, args);
                 break;
             }
             case 123:{ // 👈
                 const char *args[] = {"seek", shiftKeyPressed?"-1":"-5" ,NULL};
-                mpv_command(self.player.mpv, args);
+                mpv_command_async(self.player.mpv, 0, args);
                 break;
             }
             case 49:{ // Space
@@ -227,7 +214,7 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
                 }
                 break;
             }
-            case 53:{ // Esc key to hide mouse
+            case 53:{ // Esc key
                 // Nothing to do
                 break;
             }
@@ -249,7 +236,8 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
                 break;
             }
             case 51:{ // BACKSPACE
-                mpv_set_property_string(self.player.mpv,"speed","1");
+                double speed = 1;
+                mpv_set_property_async(self.player.mpv, 0, "speed", MPV_FORMAT_DOUBLE, &speed);
                 break;
             }
                 
@@ -265,80 +253,70 @@ startCustomAnimationToEnterFullScreenWithDuration:(NSTimeInterval)duration{
     
     [self flagsChanged:event];
     
-    if(!self.player.mpv){
-        return;
-    }
-    
     [self handleKeyboardEvnet:event keyDown:NO];
     
 }
 
 - (void)handleKeyboardEvnet:(NSEvent *)event keyDown:(BOOL)keyDown {
-    
+    if(!self.player.mpv){
+        return;
+    }
     const char *keyState = keyDown?"keydown":"keyup";
+    NSString *str = [self stringByKeyEvent:event];
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        switch ( [event keyCode] ) {
-            case 1:{ // s
-                const char *args[] = {keyState, shiftKeyPressed?"S":"s", NULL};
-                mpv_command(self.player.mpv, args);
-                break;
-            }
-            case 9:{ // v
-                const char *args[] = {keyState, shiftKeyPressed?"V":"v", NULL};
-                mpv_command(self.player.mpv, args);
-                break;
-            }
-            case 31:{ // o
-                const char *args[] = {keyState, shiftKeyPressed?"O":"o", NULL};
-                mpv_command(self.player.mpv, args);
-                break;
-            }
-            case 43:{ // ,
-                
-                const char *args[] = {keyState, shiftKeyPressed?"<":"," ,NULL};
-                mpv_command(self.player.mpv, args);
-                
-                break;
-            }
-            case 47:{ // .
-                
-                const char *args[] = {keyState, shiftKeyPressed?">":"." ,NULL};
-                mpv_command(self.player.mpv, args);
-                break;
-            }
-            case 33:{ // [{
-                const char *args[] = {keyState, shiftKeyPressed?"{":"[" ,NULL};
-                mpv_command(self.player.mpv, args);
-                break;
-            }
-            case 30:{ // ]}
-                const char *args[] = {keyState, shiftKeyPressed?"}":"]" ,NULL};
-                mpv_command(self.player.mpv, args);
-                break;
-            }
-            case 6:{ // z
-                const char *args[] = {keyState, "z" ,NULL};
-                mpv_command(self.player.mpv, args);
-                break;
-            }
-            case 7:{ // x
-                const char *args[] = {keyState, "x" ,NULL};
-                mpv_command(self.player.mpv, args);
-                break;
-            }
-            case 37:{ // l
-                const char *args[] = {keyState, shiftKeyPressed?"L":"l" ,NULL};
-                mpv_command(self.player.mpv, args);
-                break;
-            }
-            default: // Unknow
-                NSLog(@"Key pressed: %hu", [event keyCode]);
-                break;
-        }
-    });
+    const char *args[] = {keyState, [str UTF8String], NULL};
+    mpv_command_async(self.player.mpv, 0, args);
 }
 
+CFStringRef stringByKeyCode(CGKeyCode keyCode)
+{
+    TISInputSourceRef currentKeyboard = TISCopyCurrentKeyboardInputSource();
+    CFDataRef layoutData =
+    TISGetInputSourceProperty(currentKeyboard,
+                              kTISPropertyUnicodeKeyLayoutData);
+    const UCKeyboardLayout *keyboardLayout =
+    (const UCKeyboardLayout *)CFDataGetBytePtr(layoutData);
+    
+    UInt32 keysDown = 0;
+    UniChar chars[4];
+    UniCharCount realLength;
+    
+    UCKeyTranslate(keyboardLayout,
+                   keyCode,
+                   kUCKeyActionDisplay,
+                   0,
+                   LMGetKbdType(),
+                   kUCKeyTranslateNoDeadKeysBit,
+                   &keysDown,
+                   sizeof(chars) / sizeof(chars[0]),
+                   &realLength,
+                   chars);
+    CFRelease(currentKeyboard);
+    
+    return CFStringCreateWithCharacters(kCFAllocatorDefault, chars, 1);
+}
+
+
+- (NSString *)stringByKeyEvent:(NSEvent*)event
+{
+    NSString *str = @"";
+    int cocoaModifiers = [event modifierFlags];
+    if (cocoaModifiers & NSControlKeyMask)
+        str = [str stringByAppendingString:@"Ctrl+"];
+    if (cocoaModifiers & NSCommandKeyMask)
+        str = [str stringByAppendingString:@"Meta+"];
+    if (cocoaModifiers & NSAlternateKeyMask)
+        str = [str stringByAppendingString:@"Alt+"];
+    if (cocoaModifiers & NSShiftKeyMask)
+        str = [str stringByAppendingString:@"Shift+"];
+    
+    NSString *keystr = (__bridge NSString *)stringByKeyCode([event keyCode]);
+    
+    str = [str stringByAppendingString:keystr];
+    
+    NSLog(@"[PlayerWindow] Key event: %@",str);
+    return str;
+}
 
 - (void) mpv_cleanup
 {
