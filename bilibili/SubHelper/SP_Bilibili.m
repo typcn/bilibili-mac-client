@@ -19,6 +19,9 @@
 }
 
 - (NSDictionary *) getSubtitle: (NSDictionary *)dict{
+    if(dict[@"live"]){
+        return dict;
+    }
     NSString *vCID = dict[@"cid"];
     NSData *urlData = [[PreloadManager sharedInstance] GetComment:vCID];
     

@@ -14,8 +14,7 @@
     LiveSocket *socket;
     NSArray *blockwords;
     BOOL renderDisabled;
-    
-    Player *player;
+
     BarrageRenderer *renderer;
 }
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
@@ -24,27 +23,28 @@
 
 @implementation LiveChat
 
-- (id)initWithPlayer:(Player *)m_player{
-    self = [super init];
-    if(self){
-        player = m_player;
-        renderer = player.barrageRenderer;
-    }
-    return self;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)setPlayerAndInit:(Player *)player{
+    self.player = player;
     renderDisabled = false;
     socket = [[LiveSocket alloc] init];
     [socket setDelegate:self];
-    [socket ConnectToTheFuckingFlashSocketServer:[vCID intValue]];
+    [socket ConnectToTheFuckingFlashSocketServer:[[self.player getAttr:@"cid"] intValue]];
     NSString *block = [[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"];
     NSArray *blocks = [block componentsSeparatedByString:@"|"];
     if([block length] > 0 && [blocks count] > 0){
         blockwords = blocks;
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.view.window];
+    renderer = self.player.barrageRenderer;
+    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(test) userInfo:nil repeats:YES];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
+-(void)test{
+    [self addSpritToVideo:1 content:@"test" size:26 color:[NSColor whiteColor]];
 }
 
 - (void)onNewMessage:(NSDictionary *)data{
@@ -120,16 +120,10 @@
 
 - (void)windowWillClose:(NSNotification *)notification
 {
-    NSString *name = [notification.object className];
-    if([name isEqualToString:@"PostCommentWindow"]){
-        return;
-    }else if([name isEqualToString:@"PlayerWindow"]){
+    if([notification object] == self.player.windowController){
         [[NSNotificationCenter defaultCenter] removeObserver:self];
         [socket Disconnect];
         [self.view.window close];
-    }else{
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
-        [socket Disconnect];
     }
 }
 

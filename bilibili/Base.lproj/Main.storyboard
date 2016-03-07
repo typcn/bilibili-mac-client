@@ -735,17 +735,6 @@ GQ
                                 <rect key="frame" x="0.0" y="0.0" width="432" height="265"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <button hidden="YES" verticalHuggingPriority="750" id="AOg-hv-Slo" userLabel="ShowLiveChatButton">
-                                        <rect key="frame" x="208" y="116" width="15" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gP4-5d-Xlk">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <segue destination="ffQ-wz-5FH" kind="show" id="U2J-aP-P9v"/>
-                                        </connections>
-                                    </button>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="d4M-72-jUI">
                                         <rect key="frame" x="166" y="95" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
@@ -777,7 +766,6 @@ GQ
                         <outlet property="ContentView" destination="16g-QT-hVf" id="wQV-7t-F9V"/>
                         <outlet property="LoadingView" destination="zPp-I3-qDp" id="nEM-ED-xvf"/>
                         <outlet property="loadingImage" destination="d4M-72-jUI" id="fmB-92-FBV"/>
-                        <outlet property="showLiveChat" destination="AOg-hv-Slo" id="zQr-hq-29W"/>
                         <outlet property="subtip" destination="nwA-xX-SSg" id="oAy-Dk-ud7"/>
                         <outlet property="textTip" destination="q3q-RS-pq9" id="aqJ-eF-Wbt"/>
                     </connections>

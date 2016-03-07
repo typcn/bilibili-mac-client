@@ -36,7 +36,7 @@ IB_DESIGNABLE
 @property(nonatomic, assign)               NSTextAlignment     textAlignment;
 @property(nonatomic, assign)               NSLineBreakMode     lineBreakMode;
 @property(nonatomic, assign) IBInspectable CGFloat             preferredMaxLayoutWidth;
-
+@property(nonatomic, retain) NSShadow *dropShadow;
 - (instancetype)init;
 - (instancetype)initWithFrame:(NSRect)frameRect NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithCoder:(NSCoder*)coder NS_DESIGNATED_INITIALIZER;

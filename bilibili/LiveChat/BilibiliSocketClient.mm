@@ -10,13 +10,14 @@
 
 #include "Socket.hpp"
 
-int room;
-tcp_client c;
+
 
 @implementation LiveSocket{
     id delegate;
     BOOL disconnected;
     NSTimer *hbTimer;
+    int room;
+    tcp_client c;
 }
 - (void)setDelegate:(id)del{
     delegate = del;
@@ -25,7 +26,7 @@ tcp_client c;
 - (bool)ConnectToTheFuckingFlashSocketServer: (int)roomid{
     disconnected = false;
     room = roomid;
-    if(!c.conn("livecmt-1.bilibili.com" , 88)){
+    if(!c.conn("livecmt-1.bilibili.com" , 88, &room)){
         return false;
     }
     
@@ -104,7 +105,8 @@ tcp_client c;
 
 @end
 
-void handShake(){
+void handshakeCB(tcp_client *c, void *userdata){
+    int room = *(int *)userdata;
     NSString *initStr = [NSString stringWithFormat:@"0101000c0000%04x00000000",room];
     const char *chars = [initStr UTF8String];
     int i = 0, len = (int)initStr.length;
@@ -119,5 +121,5 @@ void handShake(){
         wholeByte = strtoul(byteChars, NULL, 16);
         [data appendBytes:&wholeByte length:1];
     }
-    c.send_data([data bytes], (int)[data length]);
+    c->send_data([data bytes], (int)[data length]);
 }

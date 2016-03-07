@@ -17,11 +17,6 @@ extern Downloader* DL;
 #endif
 
 extern Browser* browser;
-extern NSString *vUrl;
-extern NSString *vCID;
-extern NSString *vAID;
-extern NSString *vPID;
-extern NSString *vTitle;
 extern NSString *userAgent;
 extern NSWindow *currWindow;
 

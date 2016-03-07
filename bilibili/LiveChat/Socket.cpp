@@ -17,7 +17,7 @@
 
 using namespace std;
 
-void handShake();
+void handshakeCB(tcp_client *c, void *userdata);
 
 tcp_client::tcp_client()
 {
@@ -26,16 +26,14 @@ tcp_client::tcp_client()
     address = "";
 }
 
-string rec_address;
-int rec_port;
-
 /**
  Connect to a host on a certain port number
  */
-bool tcp_client::conn(string address , int port)
+bool tcp_client::conn(string address , int port, void *userdata)
 {
     rec_address = address;
     rec_port = port;
+    rec_userdata = userdata;
     //create socket if it is not already created
     if(sock == -1)
     {
@@ -90,7 +88,7 @@ bool tcp_client::conn(string address , int port)
         perror("connect failed. Error");
         return 1;
     }
-    handShake();
+    handshakeCB(this, userdata);
     cout<<"Connected\n";
     return true;
 }
@@ -105,11 +103,11 @@ bool tcp_client::send_data(const void *data,int size)
     {
         shutdown(sock, SHUT_RDWR);
         sock = -1;
-        conn(rec_address, rec_port);
+        conn(rec_address, rec_port, rec_userdata);
         return false;
     }else if(code < 0){
         sock = -1;
-        conn(rec_address, rec_port);
+        conn(rec_address, rec_port, rec_userdata);
         return false;
     }
     return true;
@@ -127,11 +125,11 @@ string tcp_client::receive(int size=512)
     {
         shutdown(sock, SHUT_RDWR);
         sock = -1;
-        conn(rec_address, rec_port);
+        conn(rec_address, rec_port, rec_userdata);
         return "Server closed connection , reconnecting";
     }else if(code < 0){
         sock = -1;
-        conn(rec_address, rec_port);
+        conn(rec_address, rec_port, rec_userdata);
         return "Server closed connection , reconnecting";
     }
     buffer[0] = ' ';

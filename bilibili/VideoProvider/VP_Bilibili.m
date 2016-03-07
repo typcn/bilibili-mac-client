@@ -45,6 +45,12 @@
 
 - (NSDictionary *)generateParamsFromURL: (NSString *)URL{
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    if([URL containsString:@"live.bilibili.com"]){
+        params[@"aid"] = @"0";
+        params[@"pid"] = @"0";
+        params[@"url"] = URL;
+        params[@"live"] = @"true";
+    }
     
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\/video\\/av(\\d+)(\\/index.html|\\/index_(\\d+).html)?" options:NSRegularExpressionCaseInsensitive error:nil];
     

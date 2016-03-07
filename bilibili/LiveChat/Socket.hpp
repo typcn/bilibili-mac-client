@@ -19,10 +19,13 @@ private:
     std::string address;
     int port;
     struct sockaddr_in server;
+    std::string rec_address;
+    int rec_port;
+    void *rec_userdata;
     
 public:
     tcp_client();
-    bool conn(std::string, int);
+    bool conn(std::string, int, void *userdata);
     bool send_data(const void *data,int size);
     std::string receive(int);
     void disconnect😈();

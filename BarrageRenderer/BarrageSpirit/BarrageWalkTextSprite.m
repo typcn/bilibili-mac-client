@@ -40,9 +40,9 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-        _textColor = [NSColor blackColor];
+        _textColor = [NSColor whiteColor];
         _fontSize = 16.0f;
-        _shadowColor = nil;
+        _shadowColor = [NSColor blackColor];
         _shadowOffset = CGSizeMake(0, -1);
     }
     return self;
@@ -55,8 +55,11 @@
     NSLabel * label = [[NSLabel alloc] init];
     label.text = self.text;
     label.textColor = self.textColor;
-    //label.shadowColor = _shadowColor;
-    //label.shadowOffset = _shadowOffset;
+    NSShadow *dropShadow = [[NSShadow alloc] init];
+    [dropShadow setShadowColor:_shadowColor];
+    [dropShadow setShadowOffset:_shadowOffset];
+//    [dropShadow setShadowBlurRadius:10.0];
+    label.dropShadow = dropShadow;
     label.font = self.fontFamily?[NSFont fontWithName:self.fontFamily size:self.fontSize]:[NSFont systemFontOfSize:self.fontSize];
     if (self.attributedText) {
         label.attributedText = self.attributedText;

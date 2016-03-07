@@ -131,7 +131,9 @@
                                                                              NSForegroundColorAttributeName : self.textColor,
                                                                              NSBackgroundColorAttributeName : self.backgroundColor,
                                                                              NSParagraphStyleAttributeName  : self.drawingParagraphStyle,
+                                                                             NSShadowAttributeName          : self.dropShadow
                                                                              }];
+        
     } else if ((attributedText = self.attributedText)) {
         [attributedText drawWithRect:drawRect options:self.drawingOptions];
     }

@@ -198,7 +198,7 @@
                 NSLog(@"GoURL: %@",data);
                 [twv setURL:data];
             }else if([action isEqualToString:@"setVUrl"]){
-                vUrl = data;
+                //vUrl = data;
             }else if([action isEqualToString:@"uniplay"]){
                 [[PlayerLoader sharedInstance] loadVideoFrom:[VP_YouGet sharedInstance] withPageUrl:data];
             }
@@ -364,7 +364,7 @@
     }
     
     if(acceptAnalytics == 1){
-        action("video", "play", [vCID cStringUsingEncoding:NSUTF8StringEncoding]);
+        action("video", "play", [cid cStringUsingEncoding:NSUTF8StringEncoding]);
         screenView("AirPlayView");
     }else if(acceptAnalytics == 2){
         screenView("AirPlayView");

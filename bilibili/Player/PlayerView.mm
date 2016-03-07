@@ -8,20 +8,16 @@
 
 
 #import "PlayerView.h"
-
 #import "MediaInfoDLL.h"
 #import "SimpleVideoFormatParser.h"
-
 #import "BarrageHeader.h"
-
 #import "PreloadManager.h"
 #import "Player.h"
 #import "PlayerWindow.h"
 #import "PlayerControlView.h"
+#import "LiveChat.h"
 
-#include "../CommentConvert/danmaku2ass.hpp"
-
-#import "Common.hpp"
+#import "../CommentConvert/danmaku2ass.hpp"
 
 @interface PlayerView (){
     __weak PlayerWindow *window;
@@ -32,7 +28,6 @@
     __weak IBOutlet NSView *LoadingView;
     
     PlayerControlWindowController *playerControlWindowController;
-    
     NSString *videoDomain;
 }
 
@@ -42,7 +37,7 @@
 @implementation PlayerView
 
 
-@synthesize liveChatWindowC;
+@synthesize liveChatWC;
 
 void wakeup(void *context) {
 //    if(isCancelled){
@@ -205,8 +200,6 @@ getInfo:
     int64_t wid = (intptr_t) ContentView;
     check_error(mpv_set_option(self.player.mpv, "wid", MPV_FORMAT_INT64, &wid));
     
-    // Maybe set some options here, like default key bindings.
-    // NOTE: Interaction with the window seems to be broken for now.
     [self setMPVOption:"input-default-bindings" :"yes"];
     [self setMPVOption:"input-vo-keyboard" :"yes"];
     [self setMPVOption:"input-cursor" :"no"];
@@ -252,23 +245,22 @@ getInfo:
     }else{
         [self setMPVOption: "vf" : "lavfi=\"fps=fps=60:round=down\""];
     }
-    
-    bool loadComment = true;
-    if(![vUrl containsString:@"live_"]){
-        
-    }else{
-        loadComment = false;
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            _renderer = [[BarrageRenderer alloc] init];
-//            [self.view setWantsLayer:YES];
-//            [_renderer.view setFrame:NSMakeRect(0,0,self.view.frame.size.width,self.view.frame.size.height)];
-//            [_renderer.view setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
-//            [self.view addSubview:_renderer.view positioned:NSWindowAbove relativeTo:nil];
-//            [_renderer start];
-//            NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-//            liveChatWindowC = [storyBoard instantiateControllerWithIdentifier:@"LiveChatWindow"];
-//            [liveChatWindowC showWindow:self];
-//        });
+
+    if([self.player getAttr:@"live"] && [self.player getAttr:@"cid"]){
+        dispatch_async(dispatch_get_main_queue(), ^{
+            BarrageRenderer *_renderer = [[BarrageRenderer alloc] init];
+            [self.view setWantsLayer:YES];
+            [_renderer.view setFrame:NSMakeRect(0,0,self.view.frame.size.width,self.view.frame.size.height)];
+            [_renderer.view setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
+            [self.view addSubview:_renderer.view positioned:NSWindowAbove relativeTo:nil];
+            [_renderer start];
+            self.player.barrageRenderer = _renderer;
+            NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+            self.liveChatWC = [storyBoard instantiateControllerWithIdentifier:@"LiveChatWindow"];
+            [self.liveChatWC showWindow:self];
+            LiveChat *lc = (LiveChat *)self.liveChatWC.window.contentViewController;
+            [lc setPlayerAndInit:self.player];
+        });
     }
 
     NSString *windowTitle = [self.player getAttr:@"title"];

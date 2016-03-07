@@ -9,10 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import "Player.h"
 
+// TODO: Allow render comments on external window, avoid to use CALayer
+
 @interface LiveChat : NSViewController
+@property (weak, nonatomic) Player *player;
 
-- (id)initWithPlayer:(Player *)player;
-
+- (void)setPlayerAndInit:(Player *)player;
 - (void)onNewMessage:(NSDictionary *)data;
 - (void)onNewError:(NSString *)str;
 
