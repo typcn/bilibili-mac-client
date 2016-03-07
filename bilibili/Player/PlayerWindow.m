@@ -18,11 +18,10 @@
     BOOL frontMost;
     CGPoint initialLocation;
     NSTimer *hideCursorTimer;
-    
-    BOOL isActive;
 }
 
 @synthesize postCommentWindowC;
+@synthesize isActive;
 
 - (BOOL)canBecomeMainWindow { return YES; }
 - (BOOL)canBecomeKeyWindow { return YES; }

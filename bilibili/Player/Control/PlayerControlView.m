@@ -9,9 +9,11 @@
 #import "PlayerControlView.h"
 #import "mpv.h"
 #import "mpv_nullsafe.h"
+#import "PlayerWindow.h"
 
 @implementation PlayerControlView{
     NSTimer *timeUpdateTimer;
+    __weak PlayerWindow *playerWindow;
     __weak IBOutlet NSButton *playPauseButton;
     __weak IBOutlet NSButton *muteButton;
     __weak IBOutlet NSButton *subVisButton;
@@ -20,7 +22,7 @@
     __weak IBOutlet NSSlider *timeSlider;
     __weak IBOutlet NSTextField *timeText;
     __weak IBOutlet NSTextField *rightTimeText;
-    
+     
     BOOL isAfterVideoRender;
     BOOL isKeepAspect;
 }
@@ -108,7 +110,7 @@
     [self setAppearance:[NSAppearance appearanceNamed:NSAppearanceNameVibrantDark]];
     [self setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
     
-    NSWindow *playerWindow = self.player.windowController.window;
+    playerWindow = (PlayerWindow *)self.player.windowController.window;
     
     // OSX Screen rect 0 start from left-bottom
     
@@ -133,7 +135,7 @@
 }
 
 - (void)show{
-    if(!self.hidden || !isAfterVideoRender){
+    if(!self.hidden || !isAfterVideoRender || !playerWindow.isActive){
         return;
     }
     [self setHidden:NO];
@@ -147,7 +149,7 @@
                                                      userInfo:nil
                                                       repeats:YES];
     [self.window setLevel:self.player.windowController.window.level + 1];
-    [self.window orderWindow:NSWindowAbove relativeTo:self.player.windowController.window.windowNumber];
+    [self.window orderWindow:NSWindowAbove relativeTo:playerWindow.windowNumber];
     
     [[self.window animator] setAlphaValue:1.0];
 }
@@ -161,7 +163,7 @@
     
     [[self.window animator] setAlphaValue:0.0];
     [self.window setLevel:NSNormalWindowLevel];
-    [self.window orderWindow:NSWindowAbove relativeTo:self.player.windowController.window.windowNumber];
+    [self.window orderWindow:NSWindowAbove relativeTo:playerWindow.windowNumber];
 }
 
 - (void)orderOut{
@@ -209,7 +211,7 @@
 }
 
 - (IBAction)fullScreen:(id)sender {
-    [self.player.windowController.window toggleFullScreen:sender];
+    [playerWindow toggleFullScreen:sender];
 }
 
 - (IBAction)subSwitch:(id)sender {

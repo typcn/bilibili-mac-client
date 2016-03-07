@@ -14,6 +14,7 @@
 @property (strong) NSWindowController* postCommentWindowC;
 @property (weak, nonatomic) Player *player;
 @property (weak, nonatomic) NSWindow *lastWindow;
+@property (nonatomic) BOOL isActive;
 
 - (void)keyDown:(NSEvent*)event;
 - (void)setPlayerAndInit:(Player *)player;
