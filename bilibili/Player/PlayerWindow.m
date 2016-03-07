@@ -388,11 +388,13 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
 
 - (void) mpv_cleanup
 {
-    if (self.player.mpv) {
+    if (self.player.queue) {
         dispatch_async(self.player.queue, ^{
-            mpv_set_wakeup_callback(self.player.mpv, NULL,NULL);
-            
             // mpv may dealloc here
+            if(self.player.mpv){
+                mpv_set_wakeup_callback(self.player.mpv, NULL,NULL);
+            }
+            
             if(self.player.mpv){
                 const char *stop[] = {"stop", NULL};
                 mpv_command(self.player.mpv, stop);
