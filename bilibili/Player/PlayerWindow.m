@@ -244,82 +244,79 @@
         return;
     }
     
-    // mpv is thread-safe , just run command on new thread to prevent block main thread
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        switch( [event keyCode] ) {
-            case 125:{ // ⬇️
-                const char *args[] = {"add", "volume", shiftKeyPressed?"-5":"-20" ,NULL};
-                mpv_command_async(self.player.mpv, 0, args);
-                break;
-            }
-            case 126:{ // ⬆️
-                const char *args[] = {"add", "volume", shiftKeyPressed?"5":"20" ,NULL};
-                mpv_command_async(self.player.mpv, 0, args);
-                break;
-            }
-            case 124:{ // 👉
-                const char *args[] = {"seek", shiftKeyPressed?"1":"5" ,NULL};
-                mpv_command_async(self.player.mpv, 0, args);
-                break;
-            }
-            case 123:{ // 👈
-                const char *args[] = {"seek", shiftKeyPressed?"-1":"-5" ,NULL};
-                mpv_command_async(self.player.mpv, 0, args);
-                break;
-            }
-            case 49:{ // Space
-                
-                int pause = 0;
-                if(!self.player.playerControlView.currentPaused){
-                    pause = 1;
-                }
-                mpv_set_property_async(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG, &pause);
-                
-                break;
-            }
-            case 36:{ // Enter
-                if(self.player.mpv){
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-                        postCommentWindowC = [storyBoard instantiateControllerWithIdentifier:@"PostCommentWindow"];
-                        [postCommentWindowC showWindow:self];
-                    });
-                }
-                break;
-            }
-            case 53:{ // Esc key
-                // Nothing to do
-                break;
-            }
-            case 3:{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSUInteger flags = [[NSApp currentEvent] modifierFlags];
-                    if ((flags & NSCommandKeyMask)) {
-                        [self toggleFullScreen:self]; // Command+F key to toggle fullscreen
-                    }else if(frontMost){
-                        [self setLevel:NSNormalWindowLevel];
-                        frontMost = NO;
-                    }else{
-                        [self setLevel:NSScreenSaverWindowLevel + 1]; // F key to front most
-                        [self orderFront:nil];
-                        [self becomeKeyWindow];
-                        frontMost = YES;
-                    }
-                });
-                break;
-            }
-            case 51:{ // BACKSPACE
-                double speed = 1;
-                mpv_set_property_async(self.player.mpv, 0, "speed", MPV_FORMAT_DOUBLE, &speed);
-                break;
-            }
-                
-            default:{
-                [self handleKeyboardEvnet:event keyDown:YES];
-                break;
-            }
+    switch( [event keyCode] ) {
+        case 125:{ // ⬇️
+            const char *args[] = {"add", "volume", shiftKeyPressed?"-5":"-20" ,NULL};
+            mpv_command_async(self.player.mpv, 0, args);
+            break;
         }
-    });
+        case 126:{ // ⬆️
+            const char *args[] = {"add", "volume", shiftKeyPressed?"5":"20" ,NULL};
+            mpv_command_async(self.player.mpv, 0, args);
+            break;
+        }
+        case 124:{ // 👉
+            const char *args[] = {"seek", shiftKeyPressed?"1":"5" ,NULL};
+            mpv_command_async(self.player.mpv, 0, args);
+            break;
+        }
+        case 123:{ // 👈
+            const char *args[] = {"seek", shiftKeyPressed?"-1":"-5" ,NULL};
+            mpv_command_async(self.player.mpv, 0, args);
+            break;
+        }
+        case 49:{ // Space
+            
+            int pause = 0;
+            if(!self.player.playerControlView.currentPaused){
+                pause = 1;
+            }
+            mpv_set_property_async(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG, &pause);
+            
+            break;
+        }
+        case 36:{ // Enter
+            if(self.player.mpv){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+                    postCommentWindowC = [storyBoard instantiateControllerWithIdentifier:@"PostCommentWindow"];
+                    [postCommentWindowC showWindow:self];
+                });
+            }
+            break;
+        }
+        case 53:{ // Esc key
+            // Nothing to do
+            break;
+        }
+        case 3:{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSUInteger flags = [[NSApp currentEvent] modifierFlags];
+                if ((flags & NSCommandKeyMask)) {
+                    [self toggleFullScreen:self]; // Command+F key to toggle fullscreen
+                }else if(frontMost){
+                    [self setLevel:NSNormalWindowLevel];
+                    frontMost = NO;
+                }else{
+                    [self setLevel:NSScreenSaverWindowLevel + 1]; // F key to front most
+                    [self orderFront:nil];
+                    [self becomeKeyWindow];
+                    frontMost = YES;
+                }
+            });
+            break;
+        }
+        case 51:{ // BACKSPACE
+            double speed = 1;
+            mpv_set_property_async(self.player.mpv, 0, "speed", MPV_FORMAT_DOUBLE, &speed);
+            break;
+        }
+            
+        default:{
+            [self handleKeyboardEvnet:event keyDown:YES];
+            break;
+        }
+    }
 }
 
 -(void)keyUp:(NSEvent*)event {
@@ -343,10 +340,8 @@
 
 CFStringRef stringByKeyCode(CGKeyCode keyCode)
 {
-    TISInputSourceRef currentKeyboard = TISCopyCurrentKeyboardInputSource();
-    CFDataRef layoutData =
-    TISGetInputSourceProperty(currentKeyboard,
-                              kTISPropertyUnicodeKeyLayoutData);
+    TISInputSourceRef currentKeyboard = TISCopyInputSourceForLanguage(CFSTR("en-US"));
+    CFDataRef layoutData = TISGetInputSourceProperty(currentKeyboard, kTISPropertyUnicodeKeyLayoutData);
     const UCKeyboardLayout *keyboardLayout =
     (const UCKeyboardLayout *)CFDataGetBytePtr(layoutData);
     
