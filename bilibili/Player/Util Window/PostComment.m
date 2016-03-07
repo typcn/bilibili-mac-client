@@ -25,20 +25,16 @@
 
 @implementation PostComment
 
-- (id)initWithPlayer:(Player *)m_player{
-    if(![player.siteName isEqualToString:@"bilibili"]){
-        return NULL;
+- (void)setPlayer:(Player *)m_player{
+    player = m_player;
+    mpv = player.mpv;
+    userAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/601.1.43 (KHTML, like Gecko) Version/9.0 Safari/601.1.43";
+    vAID = [player getAttr:@"aid"];
+    vPID = [player getAttr:@"pid"];
+    vCID = [player getAttr:@"cid"];
+    if([player getAttr:@"live"]){
+        vAID = @"LIVE";
     }
-    self = [super init];
-    if(self){
-        player = m_player;
-        mpv = player.mpv;
-        userAgent = [player getAttr:@"ua"];
-        vAID = [player getAttr:@"aid"];
-        vPID = [player getAttr:@"pid"];
-        vCID = [player getAttr:@"cid"];
-    }
-    return self;
 }
 
 - (void)viewDidLoad {

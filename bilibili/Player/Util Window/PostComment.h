@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class Player;
 
 @interface PostComment : NSViewController
+
+- (void)setPlayer:(Player *)m_player;
 
 @end

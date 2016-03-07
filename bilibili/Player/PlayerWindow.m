@@ -8,6 +8,7 @@
 
 #import "PlayerWindow.h"
 #import "PlayerControlView.h"
+#import "PostComment.h"
 #import <CoreFoundation/CoreFoundation.h>
 #import <Carbon/Carbon.h>
 
@@ -284,10 +285,16 @@
         }
         case 36:{ // Enter
             if(self.player.mpv){
+                // none-bilibili video
+                if(![self.player getAttr:@"cid"]){
+                    break;
+                }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
                     postCommentWindowC = [storyBoard instantiateControllerWithIdentifier:@"PostCommentWindow"];
                     [postCommentWindowC showWindow:self];
+                    PostComment *pcv = (PostComment *)postCommentWindowC.window.contentViewController;
+                    [pcv setPlayer:self.player];
                 });
             }
             break;
