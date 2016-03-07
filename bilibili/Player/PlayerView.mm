@@ -214,12 +214,7 @@ getInfo:
     [self setMPVOption:"screenshot-format" :"png"];
 
 
-    int disableMediaKey = [self getSettings:@"disableiTunesMediaKey"];
-    if(!disableMediaKey){
-        [self setMPVOption:"input-media-keys" :"yes"];
-    }else{
-        [self setMPVOption:"input-media-keys" :"no"];
-    }
+    [self setMPVOption:"input-media-keys" :"no"];
     
     int maxBuffer = [self getSettings:@"maxBufferSize"];
     NSString *maxBufStr = [NSString stringWithFormat:@"%d",maxBuffer];
