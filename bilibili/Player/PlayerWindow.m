@@ -392,13 +392,21 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
         dispatch_async(self.player.queue, ^{
             mpv_set_wakeup_callback(self.player.mpv, NULL,NULL);
             
-            const char *stop[] = {"stop", NULL};
-            mpv_command(self.player.mpv, stop);
+            // mpv may dealloc here
+            if(self.player.mpv){
+                const char *stop[] = {"stop", NULL};
+                mpv_command(self.player.mpv, stop);
+            }
+            if(self.player.mpv){
+                const char *quit[] = {"quit", NULL};
+                mpv_command(self.player.mpv, quit);
+            }
             
-            const char *quit[] = {"quit", NULL};
-            mpv_command(self.player.mpv, quit);
+            if(self.player.mpv){
+                mpv_detach_destroy(self.player.mpv);
+            }
             
-            mpv_detach_destroy(self.player.mpv);
+            
             self.player.mpv = NULL;
         });
     }
