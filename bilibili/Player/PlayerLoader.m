@@ -25,6 +25,11 @@
     
     BOOL isLoading;
     NSInteger thread_id;
+    
+    // Temp workaround for live play ( currently must enable CALayer ) & Apple's high-end opengl driver
+    // If you create two opengl context with CALayer enabled , the first will hang up on "update" , the second will create success but can't draw anything
+    // Prevent create two live player
+    NSString *lastLivePlayerId;
 }
 
 #define IS_VL_QUEUE (strcmp("video_address_load_queue", \
@@ -134,6 +139,13 @@
 
 - (void)_loadVideo:(VideoAddress *)video withAttrs:(NSDictionary *)attrs{
     [self setText:@"正在创建播放器"];
+    if(attrs[@"live"] && lastLivePlayerId){
+        Player *p = [[PlayerManager sharedInstance] getPlayer:lastLivePlayerId];
+        if(p){
+            [self showError:@"无法创建两个直播窗口" :@"目前渲染弹幕必须开 CALayer，开两个 CALayer+OpenGLContext 会导致第一个卡死在 Update，第二个会没法画任何东西，我会在之后制作 vo_metal 避免这一问题"];
+            return;
+        }
+    }
     
     NSData* fgurl = [[video firstFragmentURL] dataUsingEncoding:NSUTF8StringEncoding];
     unsigned long result = crc32(0, [fgurl bytes], (UInt)[fgurl length]);
@@ -145,15 +157,18 @@
         return;
     }
     [p setAttr:attrs];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TYPlayerCreated" object:playerId];
     lastPlayerId = playerId;
+    if(attrs[@"live"]){
+        lastLivePlayerId = playerId;
+    }
     [self hide:1.0];
 }
 
 
 - (void)showError:(NSString *)title :(NSString *)desc{
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        [self show];
         hud.mode = MBProgressHUDModeText;
         hud.labelText = NSLocalizedString(title, nil);
         hud.detailsLabelText = NSLocalizedString(desc, nil);
@@ -171,6 +186,10 @@
     dispatch_async(dispatch_get_main_queue(), ^(void){
         [hud show:YES];
         isLoading = YES;
+        if(hud){
+            hud = [MBProgressHUD showHUDAddedTo:self.window.contentView animated:YES];
+            hud.removeFromSuperViewOnHide = YES;
+        }
         hud.mode = MBProgressHUDModeIndeterminate;
         hud.detailsLabelText = @"";
         [self.window setLevel:NSPopUpMenuWindowLevel];
@@ -207,7 +226,7 @@
     hud = [MBProgressHUD showHUDAddedTo:self.window.contentView animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     [self setText:@"正在载入"];
-    hud.removeFromSuperViewOnHide = NO;
+    hud.removeFromSuperViewOnHide = YES;
 }
 
 - (NSString *)lastPlayerId {

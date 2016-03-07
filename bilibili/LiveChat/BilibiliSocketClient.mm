@@ -13,7 +13,7 @@
 
 
 @implementation LiveSocket{
-    id delegate;
+    __weak id delegate;
     BOOL disconnected;
     NSTimer *hbTimer;
     int room;

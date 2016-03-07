@@ -34,17 +34,11 @@
     if([block length] > 0 && [blocks count] > 0){
         blockwords = blocks;
     }
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.view.window];
     renderer = self.player.barrageRenderer;
-    [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(test) userInfo:nil repeats:YES];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
-
--(void)test{
-    [self addSpritToVideo:1 content:@"test" size:26 color:[NSColor whiteColor]];
 }
 
 - (void)onNewMessage:(NSDictionary *)data{
@@ -78,7 +72,7 @@
 }
 
 - (void)onNewError:(NSString *)str{
-    [self AppendToTextView:[NSString stringWithFormat:NSLocalizedString(@"未知指令: %@\n", nil),str]];
+   // [self AppendToTextView:[NSString stringWithFormat:NSLocalizedString(@"未知指令: %@\n", nil),str]];
 }
 
 - (void)AppendToTextView:(NSString *)text{
@@ -118,13 +112,12 @@
     }
 }
 
-- (void)windowWillClose:(NSNotification *)notification
-{
-    if([notification object] == self.player.windowController){
-        [[NSNotificationCenter defaultCenter] removeObserver:self];
-        [socket Disconnect];
-        [self.view.window close];
-    }
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.player.barrageRenderer stop];
+    [socket Disconnect];
+    [self.view.window close];
+    NSLog(@"[LiveChat] Dealloc");
 }
 
 @end

@@ -18,6 +18,8 @@
     BOOL frontMost;
     CGPoint initialLocation;
     NSTimer *hideCursorTimer;
+    
+    BOOL isActive;
 }
 
 @synthesize postCommentWindowC;
@@ -31,12 +33,14 @@
 - (void)setPlayerAndInit:(Player *)player{
     [self hideCursorAndHudAfter:1.0];
     self.player = player;
+    isActive = YES;
 }
 
 - (void)becomeKeyWindow{
     if(self.player.playerControlView){
         [self.player.playerControlView show];
     }
+    isActive = YES;
     [super becomeKeyWindow];
 }
 
@@ -44,6 +48,7 @@
     if(self.player.playerControlView){
         [self.player.playerControlView hide];
     }
+    isActive = NO;
     [super resignKeyWindow];
 }
 
@@ -177,6 +182,10 @@
             [self hideCursorAndHudAfter:0.5];
         }else{
             
+            // Sometimes the mousemoved event will still called even if loss focus
+            if(!isActive){
+                return;
+            }
             // Cursor is in window
             [self.player.playerControlView show];
             if(hideCursorTimer){
@@ -426,6 +435,10 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
         }
     });
     return YES;
+}
+
+- (void)dealloc{
+    NSLog(@"[PlayerWindow] Dealloc");
 }
 
 @end

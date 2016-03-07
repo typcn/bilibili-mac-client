@@ -778,7 +778,7 @@ GQ
         <scene sceneID="PkE-Ql-sEX">
             <objects>
                 <windowController storyboardIdentifier="LiveChatWindow" id="ffQ-wz-5FH" userLabel="Realtime Comment" sceneMemberID="viewController">
-                    <window key="window" title="实时弹幕" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="i8z-Ck-rGI" userLabel="Realtime Comment">
+                    <window key="window" title="实时弹幕" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="i8z-Ck-rGI" userLabel="Realtime Comment">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="313" width="480" height="270"/>

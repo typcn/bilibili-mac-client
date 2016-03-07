@@ -648,4 +648,8 @@ getInfo:
     playerControlView = nil;
 }
 
+- (void)dealloc{
+    NSLog(@"[PlayerView] Dealloc");
+}
+
 @end
