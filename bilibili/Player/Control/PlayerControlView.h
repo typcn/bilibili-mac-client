@@ -19,7 +19,7 @@
 
 - (void)onMpvEvent:(mpv_event *)event;
 
-- (void)hide;
+- (void)hide:(BOOL)noAnimation;
 - (void)show;
 
 @end

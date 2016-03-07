@@ -638,10 +638,6 @@ getInfo:
     }
 }
 
-- (void)viewWillDisappear {
-    [playerControlView removeFromSuperviewWithoutNeedingDisplay];
-    playerControlView = nil;
-}
 
 - (void)dealloc{
     NSLog(@"[PlayerView] Dealloc");

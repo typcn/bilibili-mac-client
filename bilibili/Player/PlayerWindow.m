@@ -45,10 +45,17 @@
 
 - (void)resignKeyWindow{
     if(self.player.playerControlView){
-        [self.player.playerControlView hide];
+        [self.player.playerControlView hide:NO];
     }
     isActive = NO;
     [super resignKeyWindow];
+}
+
+- (void)miniaturize:(id)sender{
+    if(self.player.playerControlView){
+        [self.player.playerControlView hide:YES];
+    }
+    [super miniaturize:sender];
 }
 
 // setMovableByWindowBackground will not work with NSOpenGLContext
@@ -84,7 +91,7 @@
     NSRect oldRect = self.frame;
 
     [super setFrameOrigin:aPoint];
-     NSRect newRect = self.frame;
+    NSRect newRect = self.frame;
     [self resizePlayerControlView:oldRect new:newRect];
 
 }
@@ -159,7 +166,7 @@
         if(isAtCenter){
             pcw.origin.x = ((new.size.width - pcw.size.width) / 2) + new.origin.x; // Reset location to center
         }
-        
+
         [self.player.playerControlView.window setFrame:pcw display:YES];
     }
 }
@@ -200,7 +207,7 @@
     hideCursorTimer = nil;
     if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved) >= 1) {
         [NSCursor setHiddenUntilMouseMoves:YES];
-        [self.player.playerControlView hide];
+        [self.player.playerControlView hide:NO];
     }else{
         [self hideCursorAndHudAfter:0.5];
     }

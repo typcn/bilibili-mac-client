@@ -11,7 +11,7 @@
 #import "mpv_nullsafe.h"
 #import "PlayerWindow.h"
 
-@implementation PlayerControlView{
+@implementation PlayerControlView {
     NSTimer *timeUpdateTimer;
     __weak PlayerWindow *playerWindow;
     __weak IBOutlet NSButton *playPauseButton;
@@ -25,6 +25,7 @@
      
     BOOL isAfterVideoRender;
     BOOL isKeepAspect;
+    BOOL isHided;
 }
 
 @synthesize currentPaused;
@@ -94,6 +95,7 @@
     if(isAfterVideoRender || !self.player.mpv){
         return;
     }
+    isHided = YES;
     isAfterVideoRender = YES;
     mpv_get_property_async(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG);
     mpv_get_property_async(self.player.mpv, 0, "volume", MPV_FORMAT_DOUBLE);
@@ -135,7 +137,7 @@
 }
 
 - (void)show{
-    if(!self.hidden || !isAfterVideoRender || !playerWindow.isActive){
+    if(!isHided || !isAfterVideoRender || !playerWindow.isActive){
         return;
     }
     [self setHidden:NO];
@@ -148,22 +150,28 @@
                                                      selector:@selector(updateTime)
                                                      userInfo:nil
                                                       repeats:YES];
-    [self.window setLevel:self.player.windowController.window.level + 1];
-    [self.window orderWindow:NSWindowAbove relativeTo:playerWindow.windowNumber];
-    
-    [[self.window animator] setAlphaValue:1.0];
+    if(playerWindow.level - NSNormalWindowLevel > -1){
+        [self.window setLevel:playerWindow.level + 1];
+        [self.window orderWindow:NSWindowAbove relativeTo:playerWindow.windowNumber];
+        [[self.window animator] setAlphaValue:1.0];
+        isHided = NO;
+    }
 }
 
-- (void)hide{
-    if(self.hidden){
+- (void)hide:(BOOL)noAnimation{
+    if(isHided){
         return;
     }
-    NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.1;
-    [self performSelector:@selector(orderOut) withObject:nil afterDelay:delay];
     
     [[self.window animator] setAlphaValue:0.0];
     [self.window setLevel:NSNormalWindowLevel];
     [self.window orderWindow:NSWindowAbove relativeTo:playerWindow.windowNumber];
+    if(noAnimation){
+        [self orderOut];
+    }else{
+        NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.1;
+        [self performSelector:@selector(orderOut) withObject:nil afterDelay:delay];
+    }
 }
 
 - (void)orderOut{
@@ -172,6 +180,7 @@
     [self.window orderOut:self];
     [timeUpdateTimer invalidate];
     timeUpdateTimer = nil;
+    isHided = YES;
 }
 
 - (IBAction)nextEP:(id)sender {
@@ -326,10 +335,14 @@
 }
 
 
-- (void)removeFromSuperviewWithoutNeedingDisplay{
-    [super removeFromSuperviewWithoutNeedingDisplay];
-    [timeUpdateTimer invalidate];
-    timeUpdateTimer = nil;
+
+- (void)dealloc{
+    if(timeUpdateTimer){
+        [timeUpdateTimer invalidate];
+        timeUpdateTimer = nil;
+    }
+
+    NSLog(@"[PlayerControl] Dealloc");
 }
 
 @end
@@ -353,7 +366,6 @@
     [self.window setBackgroundColor:[NSColor clearColor]];
     [self.window setMovable:YES];
     [self.window setMovableByWindowBackground:YES];
-    
 }
 
 @end
