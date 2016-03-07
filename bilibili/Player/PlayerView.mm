@@ -270,6 +270,7 @@ getInfo:
         NSString *converted_comment = [self convertComments:cmfile]; // Convert comment file to ass sub
         if(converted_comment && subfile){ // If convert success and have sub file
             [self addSubtitle:subfile withCommentFile:converted_comment]; // Append comment to sub file
+            subfile = converted_comment;
         }else if(converted_comment){ // If convert success but not have sub file
             subfile = converted_comment;
         }else{

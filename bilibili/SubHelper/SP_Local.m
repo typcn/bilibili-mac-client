@@ -70,7 +70,7 @@
     // Find sub file with same name
     NSString *sameNameSub = [[firstVideoPath stringByDeletingPathExtension] stringByAppendingString:ext];
     if([[NSFileManager defaultManager] fileExistsAtPath:sameNameSub]){
-        return sameNameSub;
+        return [sameNameSub lastPathComponent];
     }
     
     if([files count] == 0){
