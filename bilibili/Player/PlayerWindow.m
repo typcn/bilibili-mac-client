@@ -437,6 +437,10 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
             if(handle_temp){
                 mpv_detach_destroy(handle_temp);
             }
+
+            if(self.player){
+                self.player.mpv = NULL;
+            }
         });
     }
 }
