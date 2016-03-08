@@ -58,8 +58,6 @@
     if(isLoading){
         return;
     }
-    
-    [self show];
     [self setText:@"正在生成解析参数"];
     dispatch_async(vl_queue, ^(void){
         NSDictionary *dict = [provider generateParamsFromURL:url];
@@ -76,7 +74,6 @@
     if(isLoading && !IS_VL_QUEUE){
         return;
     }
-    [self show];
     [self setText:@"正在解析视频地址"];
     dispatch_async(vl_queue, ^(void){
         @try {
@@ -96,8 +93,6 @@
     if(isLoading){
         return;
     }
-    [self show];
-    
     [self setText:@"正在打开本地文件"];
     dispatch_async(vl_queue, ^(void){
         @try {
@@ -178,31 +173,28 @@
 
 - (void)setText:(NSString *)text{
     dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self show];
         hud.labelText = NSLocalizedString(text, nil);
     });
 }
 
 - (void)show{
-    dispatch_async(dispatch_get_main_queue(), ^(void){
-        [hud show:YES];
-        isLoading = YES;
-        if(hud){
-            hud = [MBProgressHUD showHUDAddedTo:self.window.contentView animated:YES];
-            hud.removeFromSuperViewOnHide = YES;
-        }
+    isLoading = YES;
+    if(!hud){
+        hud = [MBProgressHUD showHUDAddedTo:self.window.contentView animated:YES];
+        hud.removeFromSuperViewOnHide = YES;
         hud.mode = MBProgressHUDModeIndeterminate;
-        hud.detailsLabelText = @"";
         [self.window setLevel:NSPopUpMenuWindowLevel];
         [self.window makeKeyAndOrderFront:self];
         [[self.window contentView] setHidden:NO];
         [NSApp activateIgnoringOtherApps:YES];
-    });
+    }
 }
 
 - (void)hide:(NSTimeInterval)i{
     dispatch_async(dispatch_get_main_queue(), ^(void){
         [hud hide:YES afterDelay:i];
-        [NSTimer scheduledTimerWithTimeInterval:i+2.0
+        [NSTimer scheduledTimerWithTimeInterval:i+0.5
                                          target:self
                                        selector:@selector(hideWindow)
                                        userInfo:nil
@@ -211,22 +203,18 @@
 }
 
 - (void)hideWindow{
-    [self.window orderBack:self];
-    [self.window setLevel:NSNormalWindowLevel];
     [[self.window contentView] setHidden:YES];
+    [self.window setLevel:NSNormalWindowLevel-1];
+    [self.window orderBack:self];
+    hud = NULL;
     isLoading = NO;
 }
 
 - (void)windowDidLoad {
     [super windowDidLoad];
     [self.window setHidesOnDeactivate:YES];
-    [self.window setOpaque:YES];
+    [self.window setOpaque:NO];
     [self.window setBackgroundColor:[NSColor clearColor]];
-    [hud show:YES];
-    hud = [MBProgressHUD showHUDAddedTo:self.window.contentView animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    [self setText:@"正在载入"];
-    hud.removeFromSuperViewOnHide = YES;
 }
 
 - (NSString *)lastPlayerId {
