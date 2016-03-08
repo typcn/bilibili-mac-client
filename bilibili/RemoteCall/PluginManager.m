@@ -194,7 +194,7 @@
     /* Start a new Task */
     NSURLSessionDataTask* task = [bgsession dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error == nil) {
-            if(!data){
+            if(!data || ![[response className] isEqualToString:@"NSHTTPURLResponse"]){
                 hud.labelText = NSLocalizedString(@"插件信息解析失败，返回内容为空", nil);
                 [self hidehud];
                 return;

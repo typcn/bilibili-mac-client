@@ -34,7 +34,7 @@
     
     /* Start a new Task */
     NSURLSessionDataTask* task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error == nil) {
+        if (error == nil && [[response className] isEqualToString:@"NSHTTPURLResponse"]) {
             int code = (int)((NSHTTPURLResponse*)response).statusCode;
             if(code == 200){
                 cmPreloadList[cid] = data;

@@ -168,7 +168,7 @@
     
     /* Start a new Task */
     NSURLSessionDataTask* task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        if (error == nil) {
+        if (error == nil && [[response className] isEqualToString:@"NSHTTPURLResponse"]) {
             if(((NSHTTPURLResponse*)response).statusCode == 200){
                 NSImage *favicon = [[NSImage alloc] initWithData:data];
                 if(favicon){

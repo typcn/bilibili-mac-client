@@ -99,7 +99,7 @@ BOOL Downloader::newTask(int cid,NSString* aid,NSString *pid,NSString *name){
         [NSURLConnection sendSynchronousRequest:request
                               returningResponse:&response
                                           error:&error];
-        if(!error && [(NSHTTPURLResponse *)response statusCode] == 200){
+        if(!error && [[response className] isEqualToString:@"NSHTTPURLResponse"] && [(NSHTTPURLResponse *)response statusCode] == 200){
             NSLog(@"Download Task Added");
             sucCount++;
         }else{
