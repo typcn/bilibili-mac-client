@@ -18,5 +18,6 @@
 
 - (void)keyDown:(NSEvent*)event;
 - (void)setPlayerAndInit:(Player *)player;
+- (void)hideCursorAndHudAfter:(NSTimeInterval)time;
 
 @end

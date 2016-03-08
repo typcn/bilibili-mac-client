@@ -39,6 +39,7 @@
 - (void)becomeKeyWindow{
     if(self.player.playerControlView){
         [self.player.playerControlView show];
+        [self hideCursorAndHudAfter:1.0];
     }
     isActive = YES;
     [super becomeKeyWindow];
@@ -97,6 +98,11 @@
 
 }
 
+- (void)toggleFullScreen:(id)sender{
+    [self.player.playerControlView show];
+    [super toggleFullScreen:sender];
+    [self hideCursorAndHudAfter:2.0];
+}
 
 - (void)resizePlayerControlView:(NSRect)old new:(NSRect)new{
     if(self.player.playerControlView){
