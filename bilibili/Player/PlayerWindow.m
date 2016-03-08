@@ -97,6 +97,7 @@
 
 }
 
+
 - (void)resizePlayerControlView:(NSRect)old new:(NSRect)new{
     if(self.player.playerControlView){
         NSRect pcw = self.player.playerControlView.window.frame;
@@ -127,7 +128,6 @@
         if(ABS(playerCenterAbs - controlCenterAbs) < 10){
             isAtCenter = YES;
         }
-        
 
         if(!CGSizeEqualToSize(old.size, new.size)){
             // 播放器大小有变化
@@ -163,6 +163,14 @@
             pcw.origin.y += new.origin.y - old.origin.y;
         }
         
+        
+        // 如果要进入全屏，或者从全屏退出，则重置控制条位置
+        
+        if((new.origin.x == 0 && new.origin.y == 0)
+           || (old.origin.x == 0 && old.origin.y == 0)){
+            pcw.origin.y = new.origin.y + 40;
+            isAtCenter = YES;
+        }
         
         if(isAtCenter){
             pcw.origin.x = ((new.size.width - pcw.size.width) / 2) + new.origin.x; // Reset location to center
