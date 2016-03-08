@@ -12,9 +12,8 @@
 #import "PFAboutWindowController.h"
 #import "WebTabView.h"
 #import "PJTernarySearchTree.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
 #import "PlayerLoader.h"
+#import "CrashReport.h"
 
 Browser *browser;
 
@@ -29,15 +28,9 @@ Browser *browser;
 }
 
 @synthesize donatew;
+@synthesize crashw;
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
-//    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
-//    if(version.minorVersion == 11){
-//        NSAlert *alert = [[NSAlert alloc] init];
-//        [alert setMessageText:@"对不起，由于 OpenGL 问题，软件暂时无法兼容 10.11, 请尝试使用 Xcode7 重新编译 libmpv.dylib"];
-//        [alert runModal];
-//        return;
-//    }
     signal(SIGPIPE, SIG_IGN);
     [[NSAppleEventManager sharedAppleEventManager]
      setEventHandler:self
@@ -148,10 +141,11 @@ Browser *browser;
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
 #ifndef DEBUG
+        CrashlyticsKit.delegate = self;
         [Fabric with:@[[Crashlytics class]]];
 #endif
         [PJTernarySearchTree sharedTree]; // Preload Shared Tree
-    });    
+    });
 }
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
@@ -332,5 +326,21 @@ Browser *browser;
     return randomString;
 }
 
+
+
+- (BOOL)crashlyticsCanUseBackgroundSessions:(Crashlytics *)crashlytics{
+    return YES;
+}
+
+- (void)crashlyticsDidDetectReportForLastExecution:(CLSReport *)report completionHandler:(void (^)(BOOL submit))completionHandler{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+        crashw = [storyBoard instantiateControllerWithIdentifier:@"crashReportWindow"];
+        [crashw showWindow:self];
+        [crashw.window makeKeyAndOrderFront:NSApp];
+        CrashReport *crv = (CrashReport *)crashw.window.contentViewController;
+        [crv setCallbackHandler:completionHandler andReport:report];
+    });
+}
 
 @end

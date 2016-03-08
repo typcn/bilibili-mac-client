@@ -7,11 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 #import "Browser.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, CrashlyticsDelegate>
 
 @property (strong) NSWindowController* donatew;
+@property (strong) NSWindowController* crashw;
 
 @end
 
