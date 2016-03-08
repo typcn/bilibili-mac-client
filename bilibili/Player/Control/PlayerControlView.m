@@ -92,7 +92,7 @@
 }
 
 - (void)readInitState{
-    if(isAfterVideoRender || !self.player.mpv){
+    if(isAfterVideoRender || !self.player.mpv || !self.player.windowController){
         return;
     }
     isHided = YES;
@@ -130,7 +130,7 @@
 }
 
 - (void)updateTime {
-    if(currentPaused || !self.player || !self.player.mpv){
+    if(currentPaused || !self.player || !self.player.mpv || !self.player.windowController){
         return;
     }
     mpv_get_property_async(self.player.mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);

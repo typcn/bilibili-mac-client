@@ -40,9 +40,6 @@
 @synthesize liveChatWC;
 
 void wakeup(void *context) {
-//    if(isCancelled){
-//        return;
-//    }
     if(context){
         PlayerView *a = (__bridge PlayerView *) context;
         if(a &&

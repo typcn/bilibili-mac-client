@@ -402,7 +402,7 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
 
 - (void) mpv_cleanup
 {
-    dispatch_queue_t strong_queue_temp;
+    dispatch_queue_t strong_queue_temp = self.player.queue;
     if (strong_queue_temp) {
         mpv_handle *handle_temp = self.player.mpv;
         dispatch_async(strong_queue_temp, ^{
