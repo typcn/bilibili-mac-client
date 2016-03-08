@@ -402,28 +402,27 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
 
 - (void) mpv_cleanup
 {
-    if (self.player.queue) {
-        dispatch_async(self.player.queue, ^{
+    dispatch_queue_t strong_queue_temp;
+    if (strong_queue_temp) {
+        mpv_handle *handle_temp = self.player.mpv;
+        dispatch_async(strong_queue_temp, ^{
             // mpv may dealloc here
-            if(self.player.mpv){
-                mpv_set_wakeup_callback(self.player.mpv, NULL,NULL);
+            if(handle_temp){
+                mpv_set_wakeup_callback(handle_temp, NULL,NULL);
             }
             
-            if(self.player.mpv){
+            if(handle_temp){
                 const char *stop[] = {"stop", NULL};
-                mpv_command(self.player.mpv, stop);
+                mpv_command(handle_temp, stop);
             }
-            if(self.player.mpv){
+            if(handle_temp){
                 const char *quit[] = {"quit", NULL};
-                mpv_command(self.player.mpv, quit);
+                mpv_command(handle_temp, quit);
             }
             
-            if(self.player.mpv){
-                mpv_detach_destroy(self.player.mpv);
+            if(handle_temp){
+                mpv_detach_destroy(handle_temp);
             }
-            
-            
-            self.player.mpv = NULL;
         });
     }
 }
@@ -432,10 +431,9 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     NSLog(@"[PlayerWindow] Closing Window");
 
-    if(self.player.queue){
-        [self mpv_cleanup];
-        [self.player destory];
-    }
+    [self mpv_cleanup];
+    [self.player destory];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.x forKey:@"playerX"];
         [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.y forKey:@"playerY"];

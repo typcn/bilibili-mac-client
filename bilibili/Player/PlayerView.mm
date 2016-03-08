@@ -45,7 +45,9 @@ void wakeup(void *context) {
 //    }
     if(context){
         PlayerView *a = (__bridge PlayerView *) context;
-        if(a){
+        if(a &&
+           [a.className isEqualToString:@"PlayerView"] &&
+           [a respondsToSelector:@selector(readEvents)]){
             [a readEvents];
         }
     }
@@ -582,9 +584,11 @@ getInfo:
                 break;
             if (event->event_id == MPV_EVENT_NONE)
                 break;
-//            if(isCancelled)
-//                break;
-            [self handleEvent:event];
+            if(self && [self respondsToSelector:@selector(handleEvent:)]){
+                [self handleEvent:event];
+            }else{
+                return;
+            }
         }
     });
 }
