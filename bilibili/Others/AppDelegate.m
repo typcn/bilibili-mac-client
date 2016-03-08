@@ -326,7 +326,7 @@ Browser *browser;
     NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
     
     for (int i=0; i<len; i++) {
-        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform((int)[letters length])]];
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform((int)[letters length]-1)]];
     }
     
     return randomString;

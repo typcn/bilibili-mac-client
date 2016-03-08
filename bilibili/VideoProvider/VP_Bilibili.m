@@ -368,7 +368,7 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
     NSMutableString *randomString = [NSMutableString stringWithCapacity:16];
     
     for (int i=0; i<16; i++) {
-        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform((int)[letters length])]];
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform((int)[letters length]-1)]];
     }
     
     return randomString;
