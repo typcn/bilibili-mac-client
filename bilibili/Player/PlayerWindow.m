@@ -356,6 +356,9 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
 {
     TISInputSourceRef currentKeyboard = TISCopyInputSourceForLanguage(CFSTR("en-US"));
     CFDataRef layoutData = TISGetInputSourceProperty(currentKeyboard, kTISPropertyUnicodeKeyLayoutData);
+    if(!layoutData){
+        return NULL;
+    }
     const UCKeyboardLayout *keyboardLayout =
     (const UCKeyboardLayout *)CFDataGetBytePtr(layoutData);
     
@@ -392,10 +395,21 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
     if (cocoaModifiers & NSShiftKeyMask)
         str = [str stringByAppendingString:@"Shift+"];
     
-    NSString *keystr = (__bridge NSString *)stringByKeyCode([event keyCode]);
-    
-    str = [str stringByAppendingString:keystr];
-    
+    NSString *keystr;
+
+    CFStringRef keystr_ref = stringByKeyCode([event keyCode]);
+    if(keystr_ref){
+        keystr = (__bridge NSString *)keystr_ref;
+    }else{
+        // If can't get key data from UCKeyTranslate, just convert ascii code , this will get many key works
+        int value = [event keyCode];
+        keystr = [NSString stringWithFormat:@"%c",(char)value];
+    }
+
+    if(keystr){
+            str = [str stringByAppendingString:keystr];
+    }
+
     NSLog(@"[PlayerWindow] Key event: %@",str);
     return str;
 }
