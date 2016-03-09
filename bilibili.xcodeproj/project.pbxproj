@@ -188,6 +188,7 @@
 		FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = FDAF8BA61ACA502000C0C55D /* dsa_pub.pem */; };
 		FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB54D601BCB6B68007A1615 /* BrowserExtInterface.m */; };
 		FDB5ADF51C8F8AE6001FA4A6 /* CrashReport.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB5ADF41C8F8AE6001FA4A6 /* CrashReport.m */; };
+		FDB5ADFB1C8F9A45001FA4A6 /* PlayerEventProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = FDB5ADFA1C8F9A45001FA4A6 /* PlayerEventProxy.m */; };
 		FDC5C4EC1C213EE400B29890 /* PreloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC5C4EB1C213EE400B29890 /* PreloadManager.m */; };
 		FDC5C4F31C21941E00B29890 /* AutoSuggestTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDC5C4F11C21941E00B29890 /* AutoSuggestTable.xib */; };
 		FDC5C4FB1C219D1300B29890 /* webpage.png in Resources */ = {isa = PBXBuildFile; fileRef = FDC5C4FA1C219D1300B29890 /* webpage.png */; };
@@ -602,6 +603,8 @@
 		FDB54D601BCB6B68007A1615 /* BrowserExtInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BrowserExtInterface.m; path = RemoteCall/BrowserExtInterface.m; sourceTree = "<group>"; };
 		FDB5ADF31C8F8AE6001FA4A6 /* CrashReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CrashReport.h; path = Others/CrashReport.h; sourceTree = "<group>"; };
 		FDB5ADF41C8F8AE6001FA4A6 /* CrashReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CrashReport.m; path = Others/CrashReport.m; sourceTree = "<group>"; };
+		FDB5ADF91C8F9A45001FA4A6 /* PlayerEventProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerEventProxy.h; path = Player/PlayerEventProxy.h; sourceTree = "<group>"; };
+		FDB5ADFA1C8F9A45001FA4A6 /* PlayerEventProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerEventProxy.m; path = Player/PlayerEventProxy.m; sourceTree = "<group>"; };
 		FDC5C4EA1C213EE400B29890 /* PreloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreloadManager.h; path = RemoteCall/PreloadManager.h; sourceTree = "<group>"; };
 		FDC5C4EB1C213EE400B29890 /* PreloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreloadManager.m; path = RemoteCall/PreloadManager.m; sourceTree = "<group>"; };
 		FDC5C4F21C21941E00B29890 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AutoSuggestTable.xib; sourceTree = "<group>"; };
@@ -1035,6 +1038,8 @@
 				FD7684AD1C887F73006B44F2 /* PlayerManager.m */,
 				FD7684BC1C88D331006B44F2 /* PlayerWindow.h */,
 				FD7684BD1C88D331006B44F2 /* PlayerWindow.m */,
+				FDB5ADF91C8F9A45001FA4A6 /* PlayerEventProxy.h */,
+				FDB5ADFA1C8F9A45001FA4A6 /* PlayerEventProxy.m */,
 			);
 			name = Player;
 			sourceTree = "<group>";
@@ -1650,6 +1655,7 @@
 				FDFAD6811C007BA700BA06C7 /* NSValue+iOS.m in Sources */,
 				FDFE45281C0073150006856E /* BarrageFloatTextSprite.m in Sources */,
 				FD1954BC1B259342003A958F /* DownloadWrapper.mm in Sources */,
+				FDB5ADFB1C8F9A45001FA4A6 /* PlayerEventProxy.m in Sources */,
 				FD1954C71B25942F003A958F /* main.m in Sources */,
 				FD7685051C8B0D6F006B44F2 /* PostComment.m in Sources */,
 				FDFE45261C0073150006856E /* BarrageFloatImageSprite.m in Sources */,

@@ -28,7 +28,7 @@
     [self.disableKeepAspect setState:[settingsController integerForKey:@"disableKeepAspect"]];
     [self.disableHwDec setState:[settingsController integerForKey:@"enableHW"]];
     [self.disableWriteHistory setState:[settingsController integerForKey:@"disableWritePlayHistory"]];
-    [self.disableiTunesMediaKey setState:[settingsController integerForKey:@"disableiTunesMediaKey"]];
+    [self.changeGestureDirection setState:[settingsController integerForKey:@"changeGestureDirection"]];
     
     float trans = [settingsController floatForKey:@"transparency"];
     if(!trans){
@@ -151,8 +151,8 @@
     [settingsController setInteger:[self.maxBufferSize integerValue] forKey:@"maxBufferSize"];
     [settingsController synchronize];
 }
-- (IBAction)disableiTunesMediaKey:(id)sender {
-    [settingsController setInteger:[self.disableiTunesMediaKey integerValue] forKey:@"disableiTunesMediaKey"];
+- (IBAction)changeGestureDirection:(id)sender {
+    [settingsController setInteger:[self.changeGestureDirection integerValue] forKey:@"changeGestureDirection"];
     [settingsController synchronize];
 }
 

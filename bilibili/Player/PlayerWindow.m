@@ -82,6 +82,41 @@
     [self setFrameOrigin:newOrigin];
 }
 
+- (void)mouseUp:(NSEvent *)event
+{
+    NSInteger clickCount = [event clickCount];
+    if (2 == clickCount){
+        [self toggleFullScreen:event];
+    }
+}
+
+- (void)scrollWheel:(NSEvent *)theEvent {
+    if(self.player.mpv){
+        CGFloat deltaY = [theEvent deltaY];
+        CGFloat deltaX = [theEvent deltaX];
+        CGFloat delta = deltaY;
+        if(ABS(deltaX) > ABS(deltaY)){
+            delta = deltaX;
+        }
+        
+        // 默认给的事件就是反的，设置里面如果开了反转就不处理
+        long reverse = [[NSUserDefaults standardUserDefaults] integerForKey:@"changeGestureDirection"];
+        if(!reverse){
+            if(delta > 0){
+                delta = 0 - delta;
+            }else{
+                delta = ABS(delta);
+            }
+        }
+        
+
+        NSString *deltaStr = [NSString stringWithFormat:@"%f",delta];
+        const char *args[] = {"seek", [deltaStr UTF8String] ,NULL};
+        mpv_command_async(self.player.mpv, 0, args);
+        return;
+    }
+}
+
 - (void)setFrame:(NSRect)windowFrame
          display:(BOOL)displayViews{
     NSRect oldRect = self.frame;

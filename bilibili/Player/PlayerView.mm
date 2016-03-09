@@ -15,6 +15,7 @@
 #import "Player.h"
 #import "PlayerWindow.h"
 #import "PlayerControlView.h"
+#import "PlayerEventProxy.h"
 #import "LiveChat.h"
 
 #import "../CommentConvert/danmaku2ass.hpp"
@@ -115,6 +116,12 @@ inline void check_error(int status)
         [window setLastWindow:lastWindow];
         [window setAcceptsMouseMovedEvents:YES];
         [self.loadingImage setAnimates:YES];
+        
+        PlayerEventProxy *ep = [[PlayerEventProxy alloc] init];
+        [ep setAcceptsTouchEvents:YES];
+        [ep setFrame:NSMakeRect(0,0,self.view.frame.size.width,self.view.frame.size.height)];
+        [ep setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
+        [self.view addSubview:ep positioned:NSWindowAbove relativeTo:nil];
     }
 }
 
@@ -525,7 +532,7 @@ getInfo:
         }
             
         case MPV_EVENT_VIDEO_RECONFIG: {
-
+            
             break;
         }
         
