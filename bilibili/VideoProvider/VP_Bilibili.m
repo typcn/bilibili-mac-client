@@ -84,12 +84,22 @@
     
     [self writeHistory:params[@"cid"] :params[@"aid"]];
     
-    NSString *req_path = [NSString stringWithFormat:@"platform=android&_device=android&_hwid=%@&_aid=%@&_tid=0&_p=%@&_down=0&cid=%@&quality=%d&otype=json&appkey=%@&type=%@",
-                          self.hwid, // Hardware ID ( Generate on first start )
-                          params[@"aid"], // Page ID ( AV )
-                          params[@"pid"], // Page Number
+//    NSString *req_path = [NSString stringWithFormat:@"platform=android&_device=android&_hwid=%@&_aid=%@&_tid=0&_p=%@&_down=0&cid=%@&quality=%d&otype=json&appkey=%@&type=%@",
+//                          self.hwid, // Hardware ID ( Generate on first start )
+//                          params[@"aid"], // Page ID ( AV )
+//                          params[@"pid"], // Page Number
+//                          params[@"cid"], // Video ID
+//                          quality,APIKey,type];
+//    
+//    NSString *req_sign = [self getSign:req_path];
+//    
+//    NSString *req_url = [NSString stringWithFormat:@"http://interface.bilibili.com/playurl?%@&sign=%@",req_path,req_sign];
+
+    int rnd = arc4random_uniform(9999);
+    
+    NSString *req_path = [NSString stringWithFormat:@"platform=android&cid=%@&quality=%d&otype=json&appkey=%@&type=%@&rnd=%d",
                           params[@"cid"], // Video ID
-                          quality,APIKey,type];
+                          quality,APIKey,type,rnd];
     
     NSString *req_sign = [self getSign:req_path];
     
@@ -103,16 +113,26 @@
 - (NSString *)getLiveRequestURL: (NSDictionary *)params{
     NSLog(@"[VP_Bilibili] LiveRoom: %@", params[@"cid"]);
     
-    NSString *uuid = [[NSUUID UUID] UUIDString];
-    NSString *hwid = [self getRandomHWID];
-    
-    NSString *req_path = [NSString stringWithFormat:@"platform=android&_appver=406001&_buvid=%@infoc&_device=android&_hwid=%@&_aid=0&_tid=0&_p=%@&_down=0&cid=%@&quality=1&otype=json&appkey=%@&type=mp4",
-                          uuid, // BUVID ( Unkown , Random here )
-                          hwid, // Hardware ID ( Random here , avoid BUVID
-                          params[@"cid"], // Live room ID
-                          params[@"cid"], // Live room ID
-                          APIKey];
+//    NSString *uuid = [[NSUUID UUID] UUIDString];
+//    NSString *hwid = [self getRandomHWID];
+//    
+//    NSString *req_path = [NSString stringWithFormat:@"platform=android&_appver=406001&_buvid=%@infoc&_device=android&_hwid=%@&_aid=0&_tid=0&_p=%@&_down=0&cid=%@&quality=1&otype=json&appkey=%@&type=mp4",
+//                          uuid, // BUVID ( Unkown , Random here )
+//                          hwid, // Hardware ID ( Random here , avoid BUVID
+//                          params[@"cid"], // Live room ID
+//                          params[@"cid"], // Live room ID
+//                          APIKey];
+//
+//    NSString *req_sign = [self getSign:req_path];
+//    
+//    NSString *req_url = [NSString stringWithFormat:@"http://live.bilibili.com/api/playurl?%@&sign=%@",req_path,req_sign];
 
+    int rnd = arc4random_uniform(9999);
+    
+    NSString *req_path = [NSString stringWithFormat:@"platform=android&cid=%@&quality=1&otype=json&appkey=%@&type=mp4&rnd=%d",
+                          params[@"cid"], // Video ID
+                          APIKey,rnd];
+    
     NSString *req_sign = [self getSign:req_path];
     
     NSString *req_url = [NSString stringWithFormat:@"http://live.bilibili.com/api/playurl?%@&sign=%@",req_path,req_sign];
@@ -160,8 +180,9 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
     if([dUrls count] == 0){
         if(FLVFailRetry){
             FLVFailRetry = NO;
-            [NSException raise:@VP_RESOLVE_ERROR format:@"Unable to resolve this video"];
-            return NULL;
+            NSLog(@"[VP_Bilibili] Anti-Hotlinking video detected! use dynamic parser.");
+            videoResult = [self dynamicPluginParser:params];
+            goto parseJSON;
         }else{
             FLVFailRetry = YES;
             NSLog(@"[VP_Bilibili] Retring resolve with FLV format");
@@ -239,10 +260,15 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
         [request setValue:fakeIP forHTTPHeaderField:@"Client-IP"];
     }
     
-    [request setValue:[ud objectForKey:@"cookie"] forHTTPHeaderField:@"Cookie"];
-    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
-    [request setValue:@"trailers" forHTTPHeaderField:@"TE"];
-    
+//    [request setValue:[ud objectForKey:@"cookie"] forHTTPHeaderField:@"Cookie"];
+//    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+//    [request setValue:@"trailers" forHTTPHeaderField:@"TE"];
+
+    [request setValue:@"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:@"http://interface.bilibili.com/" forHTTPHeaderField:@"Referer"];
+    [request setValue:@"gzip, deflate, sdch" forHTTPHeaderField:@"Accept-Encoding"];
+    [request setValue:@"text/html, application/xhtml+xml, application/xml; q=0.9, image/webp, */*; q=0.8" forHTTPHeaderField:@"Accept"];
+
     NSURLResponse * response = nil;
     NSError * error = nil;
     NSData * respData = [NSURLConnection sendSynchronousRequest:request
