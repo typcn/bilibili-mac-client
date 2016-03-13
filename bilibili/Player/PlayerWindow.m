@@ -17,6 +17,7 @@
     BOOL hide;
     BOOL shiftKeyPressed;
     BOOL frontMost;
+    BOOL enteringFullScreen;
     CGPoint initialLocation;
     NSTimer *hideCursorTimer;
 }
@@ -31,26 +32,29 @@
 - (BOOL)resignFirstResponder { return YES; }
 
 - (void)setPlayerAndInit:(Player *)player{
-    [self hideCursorAndHudAfter:1.0];
     self.player = player;
     self.delegate = self;
     isActive = YES;
+    if(hideCursorTimer){
+        [hideCursorTimer invalidate];
+        hideCursorTimer = nil;
+    }
+    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hideCursor) userInfo:nil repeats:YES];
 }
 
 - (void)becomeKeyWindow{
+    isActive = YES;
     if(self.player.playerControlView){
         [self.player.playerControlView show];
-        [self hideCursorAndHudAfter:1.0];
     }
-    isActive = YES;
     [super becomeKeyWindow];
 }
 
 - (void)resignKeyWindow{
+    isActive = NO;
     if(self.player.playerControlView){
         [self.player.playerControlView hide:NO];
     }
-    isActive = NO;
     [super resignKeyWindow];
 }
 
@@ -134,10 +138,25 @@
 
 }
 
+
 - (void)toggleFullScreen:(id)sender{
+    enteringFullScreen = YES;
     [self.player.playerControlView show];
     [super toggleFullScreen:sender];
-    [self hideCursorAndHudAfter:2.0];
+}
+
+- (void)windowWillEnterFullScreen:(NSNotification *)notification{
+    enteringFullScreen = YES;
+    [self.player.playerControlView show];
+}
+
+- (void)windowDidEnterFullScreen:(NSNotification *)notification{
+    [self.player.playerControlView show];
+    enteringFullScreen = NO;
+}
+
+- (void)windowDidExitFullScreen:(NSNotification *)notification{
+    enteringFullScreen = NO;
 }
 
 - (void)resizePlayerControlView:(NSRect)old new:(NSRect)new{
@@ -228,15 +247,10 @@
         NSInteger windowId = [NSWindow windowNumberAtPoint:[NSEvent mouseLocation] belowWindowWithWindowNumber:0];
         if(windowId == self.player.playerControlView.window.windowNumber){
             // Cursor is in control window
-            if(hideCursorTimer){
-                [hideCursorTimer invalidate];
-                hideCursorTimer = nil;
-            }
             return;
             
         }else if (windowId != self.windowNumber) {
             // Cursor is outside this window
-            [self hideCursorAndHudAfter:0.5];
         }else{
             
             // Sometimes the mousemoved event will still called even if loss focus
@@ -245,32 +259,28 @@
             }
             // Cursor is in window
             [self.player.playerControlView show];
-            if(hideCursorTimer){
-                return;
-            }
-            [self hideCursorAndHudAfter:1.0];
         }
     }
 }
 
 - (void)hideCursor{
-    [hideCursorTimer invalidate];
-    hideCursorTimer = nil;
-    if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved) >= 1) {
+    if(!self.player || !self.player.playerControlView){
+        return;
+    }
+    NSInteger windowId = [NSWindow windowNumberAtPoint:[NSEvent mouseLocation] belowWindowWithWindowNumber:0];
+    if(windowId == self.player.playerControlView.window.windowNumber){
+        // Cursor is in control window
+    }else if (enteringFullScreen){
+        // Window is entering full screen
+    }else if(!isActive){
+        // Window is not focus ( Don't hide cursor )
+        [self.player.playerControlView hide:NO];
+    }else if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved) >= 1) {
         [NSCursor setHiddenUntilMouseMoves:YES];
         [self.player.playerControlView hide:NO];
-    }else{
-        [self hideCursorAndHudAfter:0.5];
     }
 }
 
-- (void)hideCursorAndHudAfter:(NSTimeInterval)time{
-    if(hideCursorTimer){
-        [hideCursorTimer invalidate];
-        hideCursorTimer = nil;
-    }
-    hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:time target:self selector:@selector(hideCursor) userInfo:nil repeats:NO];
-}
 
 - (void)rightMouseDown:(NSEvent *)theEvent{
     if(self.player.mpv){
