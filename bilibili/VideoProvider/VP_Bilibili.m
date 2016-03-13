@@ -331,11 +331,17 @@ genAddress: FLVFailRetry = NO;
             intIsMp4 = 1;
         }
         
+        NSString *url = params[@"url"];
+        if(!url){
+            // For old version compatibility
+            url = [NSString stringWithFormat:@"http://www.bilibili.com/video/av%@/index_%@.html",params[@"aid"],params[@"pid"]];
+        }
+        
         NSDictionary *o = @{
                             @"cid": [NSNumber numberWithInt:intcid] ,
                             @"quality": [NSNumber numberWithInt:quality],
                             @"isMP4": [NSNumber numberWithInt:intIsMp4],
-                            @"url": params[@"url"]
+                            @"url": url
                             };
     
         NSData *d= [NSJSONSerialization dataWithJSONObject:o options:NSJSONWritingPrettyPrinted error:nil];
