@@ -147,19 +147,23 @@
                             </button>
                         </subviews>
                     </customView>
-                    <button id="zT5-26-P8o" customClass="NSButtonWithVibracy">
+                    <button id="zT5-26-P8o" userLabel="RightTextSwitchButton" customClass="NSButtonWithVibracy">
                         <rect key="frame" x="417" y="8" width="58" height="14"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" imagePosition="only" alignment="left" controlSize="small" inset="2" id="8j7-n0-pq4">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="rightTextSwitch:" target="JST-bT-Zjs" id="GSZ-FP-ir8"/>
+                        </connections>
                     </button>
                 </subviews>
                 <connections>
                     <outlet property="keepAspectButton" destination="XkJ-oN-pvE" id="wLj-8E-mdJ"/>
                     <outlet property="muteButton" destination="Piz-ep-gVW" id="KDC-dY-yVl"/>
                     <outlet property="playPauseButton" destination="gb1-yG-vcO" id="6I6-Vr-wHD"/>
+                    <outlet property="rightTextSwitchButton" destination="zT5-26-P8o" id="5Oj-5D-9Nz"/>
                     <outlet property="rightTimeText" destination="SbL-1z-Qas" id="gso-33-9jn"/>
                     <outlet property="subVisButton" destination="I0h-Gf-ylJ" id="brr-bh-9JO"/>
                     <outlet property="timeSlider" destination="a22-tv-SRB" id="RdR-cL-FWb"/>

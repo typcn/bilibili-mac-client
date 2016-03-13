@@ -18,11 +18,17 @@
     __weak IBOutlet NSButton *muteButton;
     __weak IBOutlet NSButton *subVisButton;
     __weak IBOutlet NSButton *keepAspectButton;
+    __weak IBOutlet NSButton *rightTextSwitchButton;
     __weak IBOutlet NSSlider *volumeSlider;
     __weak IBOutlet NSSlider *timeSlider;
     __weak IBOutlet NSTextField *timeText;
     __weak IBOutlet NSTextField *rightTimeText;
-     
+
+    double v_duration;
+    double v_filesize;
+    double v_playback_time;
+
+    BOOL isShowingDuration;
     BOOL isAfterVideoRender;
     BOOL isKeepAspect;
     BOOL isHided;
@@ -61,6 +67,12 @@
         }else if(strcmp(propety->name, "time-pos") == 0){
             double t = *(double *)data;
             [self onPlaybackTime:t];
+        }else if(strcmp(propety->name, "cache-used") == 0){
+            double t = *(double *)data;
+            [self onCacheSize:t];
+        }else if(strcmp(propety->name, "cache") == 0){
+            double t = *(double *)data;
+            [self onCacheFillRate:t];
         }
     }else{
         mpv_event_id event_id = event->event_id;
@@ -134,6 +146,12 @@
         return;
     }
     mpv_get_property_async(self.player.mpv, 0, "time-pos", MPV_FORMAT_DOUBLE);
+    if(!isShowingDuration){
+        mpv_get_property_async(self.player.mpv, 0, "cache-used", MPV_FORMAT_DOUBLE);
+        mpv_get_property_async(self.player.mpv, 0, "cache", MPV_FORMAT_DOUBLE);
+    }else{
+        [self onDuration:v_duration];
+    }
 }
 
 - (void)show{
@@ -246,7 +264,13 @@
     mpv_set_property_async(self.player.mpv, 0, "options/keepaspect", MPV_FORMAT_FLAG, &keep);
 }
 
-
+- (IBAction)rightTextSwitch:(id)sender {
+    if(isShowingDuration){
+        isShowingDuration = NO;
+    }else{
+        isShowingDuration = YES;
+    }
+}
 
 - (void)onVolume:(double)volume{
     dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -258,6 +282,7 @@
     dispatch_async(dispatch_get_main_queue(), ^(void){
         timeSlider.maxValue = duration;
         rightTimeText.stringValue = [self timeFormatted:duration];
+        v_duration = duration;
     });
 }
 
@@ -265,8 +290,32 @@
     dispatch_async(dispatch_get_main_queue(), ^(void){
         timeSlider.doubleValue = t;
         timeText.stringValue = [self timeFormatted:t];
+        v_playback_time = t;
     });
 }
+
+- (void)onCacheSize:(double)t{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        if(t > 0){
+            int sizeMB = t/1024;
+            rightTimeText.stringValue = [NSString stringWithFormat:@"%d MB",sizeMB];
+        }
+    });
+}
+
+- (void)onCacheFillRate:(double)t{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        if(t > 0){
+            double playbackRate = (v_playback_time / v_duration)*100;
+            double allRate = playbackRate + t;
+            if(allRate > 90){
+                rightTimeText.stringValue = @"缓冲完成";
+                isShowingDuration = YES;
+            }
+        }
+    });
+}
+
 
 - (void)onPaused:(int)isPaused{
     dispatch_async(dispatch_get_main_queue(), ^(void){
