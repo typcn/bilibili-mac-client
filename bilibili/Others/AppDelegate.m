@@ -334,12 +334,13 @@ Browser *browser;
 
 - (void)crashlyticsDidDetectReportForLastExecution:(CLSReport *)report completionHandler:(void (^)(BOOL submit))completionHandler{
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-        crashw = [storyBoard instantiateControllerWithIdentifier:@"crashReportWindow"];
-        [crashw showWindow:self];
-        [crashw.window makeKeyAndOrderFront:NSApp];
-        CrashReport *crv = (CrashReport *)crashw.window.contentViewController;
-        [crv setCallbackHandler:completionHandler andReport:report];
+        completionHandler(YES);
+//        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+//        crashw = [storyBoard instantiateControllerWithIdentifier:@"crashReportWindow"];
+//        [crashw showWindow:self];
+//        [crashw.window makeKeyAndOrderFront:NSApp];
+//        CrashReport *crv = (CrashReport *)crashw.window.contentViewController;
+//        [crv setCallbackHandler:completionHandler andReport:report];
     });
 }
 

@@ -149,7 +149,7 @@
     if(!isShowingDuration){
         mpv_get_property_async(self.player.mpv, 0, "cache-used", MPV_FORMAT_DOUBLE);
         mpv_get_property_async(self.player.mpv, 0, "cache", MPV_FORMAT_DOUBLE);
-    }else{
+    }else if(v_duration > 0){
         [self onDuration:v_duration];
     }
 }
@@ -305,7 +305,7 @@
 
 - (void)onCacheFillRate:(double)t{
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        if(t > 0){
+        if(t > 0 && v_duration > 0){
             double playbackRate = (v_playback_time / v_duration)*100;
             double allRate = playbackRate + t;
             if(allRate > 90){
