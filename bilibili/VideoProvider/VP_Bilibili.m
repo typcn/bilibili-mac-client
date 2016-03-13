@@ -50,6 +50,7 @@
         params[@"pid"] = @"0";
         params[@"url"] = URL;
         params[@"live"] = @"true";
+        return params;
     }
     
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\/video\\/av(\\d+)(\\/index.html|\\/index_(\\d+).html)?" options:NSRegularExpressionCaseInsensitive error:nil];
@@ -64,11 +65,11 @@
         if(pidRange.length > 0 ){
             params[@"pid"] = [URL substringWithRange:pidRange];
         }else{
-            params[@"pid"] = @"0";
+            params[@"pid"] = @"1";
         }
     }else{
         params[@"aid"] = @"0";
-        params[@"pid"] = @"0";
+        params[@"pid"] = @"1";
     }
     
     params[@"url"] = URL;
@@ -171,8 +172,31 @@ getUrl: NSLog(@"[VP_Bilibili] Getting video url");
     NSURL* URL = [NSURL URLWithString:pbUrl];
     
     NSString *fakeIP = [self getFakeIP:params];
+
+    NSDictionary *videoResult;
     
-    NSDictionary *videoResult = [self sendAPIRequest:URL :fakeIP];
+    // Their offical android/ios client is using dynamic downloaded lua to parse video
+    // So I've implemented a lua interpreter , will find the appkey & secret automatically
+    // My continuous integration server will build new dynamic library if new key detected
+    // This program will download new dynamic library on startup, and verify the digital signature of  library, load it into memory
+    
+    
+    // Build-in parser's result(ws.acgvideo.com/path.flv?*&or=xxx the "or" param) have speed limit , so use dynamic parser by default
+    
+#ifndef DEBUG
+    VP_Plugin *plugin = [[PluginManager sharedInstance] Get:@"bilibili-resolveAddr"];
+    if(plugin){
+        NSLog(@"[VP_Bilibili] Using dynamic parser");
+        videoResult = [self dynamicPluginParser:params];
+    }else{
+#endif
+        NSLog(@"[VP_Bilibili] Dynamic parser not installed ( or running in debug mode )");
+        NSLog(@"[VP_Bilibili] Using built-in parser");
+        videoResult = [self sendAPIRequest:URL :fakeIP];
+#ifndef DEBUG
+    }
+#endif
+
     
 parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
     
@@ -180,7 +204,7 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
     if([dUrls count] == 0){
         if(FLVFailRetry){
             FLVFailRetry = NO;
-            NSLog(@"[VP_Bilibili] Anti-Hotlinking video detected! use dynamic parser.");
+            NSLog(@"[VP_Bilibili] Retring using dynamic parser.");
             videoResult = [self dynamicPluginParser:params];
             goto parseJSON;
         }else{
@@ -297,12 +321,20 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
         // Generate plugin message ( old format )
         // TODO: Update plugin params
         int intcid = [params[@"cid"] intValue];
+        int quality = [self getQuality];
+        int intIsMp4 = 0;
+        NSString *type = [self getFormat:[params[@"download"] boolValue]];
+        if([type isEqualToString:@"mp4"]){
+            intIsMp4 = 1;
+        }
+        
         NSDictionary *o = @{
                             @"cid": [NSNumber numberWithInt:intcid] ,
-                            @"quality": [NSNumber numberWithInt:[self getQuality]],
-                            @"isMP4": [NSNumber numberWithInt:(int)[ud integerForKey:@"quality"]],
+                            @"quality": [NSNumber numberWithInt:quality],
+                            @"isMP4": [NSNumber numberWithInt:intIsMp4],
                             @"url": params[@"url"]
                             };
+    
         NSData *d= [NSJSONSerialization dataWithJSONObject:o options:NSJSONWritingPrettyPrinted error:nil];
         NSString *jsonString = [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding];
         NSString *vjson = [plugin processEvent:@"bilibili-resolveAddr" :jsonString];
