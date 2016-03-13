@@ -341,6 +341,7 @@ getInfo:
 }
 
 - (NSDictionary *) getVideoInfo:(NSString *)url{
+    NSLog(@"[VideoReader] Video Address: %@",url);
     if([url containsString:@"acgvideo.com"] && ![url containsString:@"live"]){
         NSDictionary *dic =  readVideoInfoFromURL(url);
         if(dic){

@@ -201,9 +201,12 @@ getUrl: NSLog(@"[VP_Bilibili] Getting video url");
 parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
     
     NSArray *dUrls = [videoResult objectForKey:@"durl"];
-    if([dUrls count] == 0){
+    if([dUrls count] == 0 || ![videoResult objectForKey:@"result"]){
         if(FLVFailRetry){
             FLVFailRetry = NO;
+            if(![videoResult objectForKey:@"result"]){
+                goto genAddress;
+            }
             NSLog(@"[VP_Bilibili] Retring using dynamic parser.");
             videoResult = [self dynamicPluginParser:params];
             goto parseJSON;
@@ -214,7 +217,7 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
         }
     }
     
-    FLVFailRetry = NO;
+genAddress: FLVFailRetry = NO;
     
     VideoAddress *video = [[VideoAddress alloc] init];
     [video setUserAgent:self.userAgent];
