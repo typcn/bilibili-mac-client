@@ -33,6 +33,7 @@
 - (void)setPlayerAndInit:(Player *)player{
     [self hideCursorAndHudAfter:1.0];
     self.player = player;
+    self.delegate = self;
     isActive = YES;
 }
 
@@ -494,30 +495,49 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
     }
 }
 
+- (void)destroyPlayer{
+    if(self.player.playerControlView.window){
+        // The dealloc of player control view will have delay , hide it first
+        [self.player.playerControlView setHidden:YES];
+    }
+
+    if(self.player){
+        [self mpv_cleanup];
+        [self.player destory];
+    }
+    
+    if(hideCursorTimer){
+        [hideCursorTimer invalidate];
+        hideCursorTimer = nil;
+    }
+    
+    if(postCommentWindowC){
+        [postCommentWindowC close];
+    }
+}
+
 - (BOOL)windowShouldClose:(id)sender{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     NSLog(@"[PlayerWindow] Closing Window");
 
-    [self mpv_cleanup];
-    [self.player destory];
+    [self destroyPlayer];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.x forKey:@"playerX"];
-        [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.y forKey:@"playerY"];
-        [postCommentWindowC close];
-        if(self.player.playerControlView.window){
-            // The dealloc of player control view will have delay , hide it first
-            [self.player.playerControlView setHidden:YES];
-        }
-        if(hideCursorTimer){
-            [hideCursorTimer invalidate];
-            hideCursorTimer = nil;
-        }
-        if([browser tabCount] > 0){
-            [self.lastWindow makeKeyAndOrderFront:nil];
-        }
-    });
+    [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.x forKey:@"playerX"];
+    [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.y forKey:@"playerY"];
+
+    if([browser tabCount] > 0){
+        [self.lastWindow makeKeyAndOrderFront:nil];
+    }
     return YES;
+}
+
+- (void)windowWillClose:(NSNotification *)notification{
+    [self destroyPlayer];
+}
+
+- (void)close{
+    [super close];
+    [self destroyPlayer];
 }
 
 - (void)dealloc{
