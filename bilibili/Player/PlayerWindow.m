@@ -153,6 +153,7 @@
 - (void)windowDidEnterFullScreen:(NSNotification *)notification{
     [self.player.playerControlView show];
     enteringFullScreen = NO;
+    [self makeKeyAndOrderFront:self];
 }
 
 - (void)windowDidExitFullScreen:(NSNotification *)notification{
