@@ -30,6 +30,8 @@
     
     PlayerControlWindowController *playerControlWindowController;
     NSString *videoDomain;
+    
+    BOOL windowSetup;
 }
 
 @end
@@ -72,7 +74,6 @@ inline void check_error(int status)
     }
     [self loadControls];
     [self loadVideo:self.player.video];
-
 }
 
 - (void)viewDidLoad {
@@ -106,22 +107,9 @@ inline void check_error(int status)
     window = (PlayerWindow *)self.view.window;
     [window makeKeyAndOrderFront:NSApp];
     [window makeMainWindow];
-    if(!self.player.mpv){
-        double WX = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerX"];
-        double WY = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerY"];
-        NSPoint pos = NSMakePoint(WX, WY);
-        NSLog(@"[PlayerView] X: %f Y: %f",WX,WY);
-        [window setFrameOrigin:pos];
-        [window setPlayerAndInit:self.player];
-        [window setLastWindow:lastWindow];
-        [window setAcceptsMouseMovedEvents:YES];
-        [self.loadingImage setAnimates:YES];
-        
-        PlayerEventProxy *ep = [[PlayerEventProxy alloc] init];
-        [ep setAcceptsTouchEvents:YES];
-        [ep setFrame:NSMakeRect(0,0,self.view.frame.size.width,self.view.frame.size.height)];
-        [ep setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
-        [self.view addSubview:ep positioned:NSWindowAbove relativeTo:nil];
+    if(!windowSetup){
+        [self setupWindow];
+        windowSetup = YES;
     }
 }
 
@@ -132,6 +120,24 @@ inline void check_error(int status)
     [playerControlView setPlayer:self.player];
     
     self.player.playerControlView = playerControlView;
+}
+
+- (void)setupWindow {
+    double WX = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerX"];
+    double WY = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerY"];
+    NSPoint pos = NSMakePoint(WX, WY);
+    NSLog(@"[PlayerView] X: %f Y: %f",WX,WY);
+    [window setFrameOrigin:pos];
+    [window setPlayerAndInit:self.player];
+    [window setLastWindow:lastWindow];
+    [window setAcceptsMouseMovedEvents:YES];
+    [self.loadingImage setAnimates:YES];
+    
+    PlayerEventProxy *ep = [[PlayerEventProxy alloc] init];
+    [ep setAcceptsTouchEvents:YES];
+    [ep setFrame:NSMakeRect(0,0,self.view.frame.size.width,self.view.frame.size.height)];
+    [ep setAutoresizingMask:NSViewMaxYMargin|NSViewMinXMargin|NSViewWidthSizable|NSViewMaxXMargin|NSViewHeightSizable|NSViewMinYMargin];
+    [self.view addSubview:ep positioned:NSWindowAbove relativeTo:nil];
 }
 
 - (void)setTip:(NSString *)text{
@@ -156,19 +162,22 @@ getInfo:
         NSLog(@"[PlayerView] Reading video info");
         
         NSString *firstVideo = [video firstFragmentURL];
-        NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
-        
-        NSLog(@"[PlayerView] Read video info completed");
-
-        NSNumber *width = [VideoInfoJson objectForKey:@"width"];
-        NSNumber *height = [VideoInfoJson objectForKey:@"height"];
-        
-        if([height intValue] < 100 || [width intValue] < 100){
-            goto getInfo;
+        NSLog(@"%@",[self.player getAttr:@"commentFile"]);
+        if([self.player getAttr:@"commentFile"]){
+            NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
+            
+            NSLog(@"[PlayerView] Read video info completed");
+            
+            NSNumber *width = [VideoInfoJson objectForKey:@"width"];
+            NSNumber *height = [VideoInfoJson objectForKey:@"height"];
+            
+            if([height intValue] < 100 || [width intValue] < 100){
+                goto getInfo;
+            }
+            
+            [self.player setAttr:@"vheight" data:height];
+            [self.player setAttr:@"vwidth" data:width];
         }
-        
-        [self.player setAttr:@"vheight" data:height];
-        [self.player setAttr:@"vwidth" data:width];
         
         NSString *fvHost = [[NSURL URLWithString:firstVideo] host];
         if([fvHost length] > 0){
