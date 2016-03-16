@@ -29,12 +29,12 @@
     return self;
 }
 
-- (Player *)createPlayer:(NSString *)name withVideo:(VideoAddress *)video{
+- (Player *)createPlayer:(NSString *)name withVideo:(VideoAddress *)video attrs:(NSDictionary *)dict{
     if(players[name]){
         NSLog(@"[PlayerManager] Failed to create player with duplicate key %@",name);
         return NULL;
     }
-    Player *p = [[Player alloc] initWithVideo:video];
+    Player *p = [[Player alloc] initWithVideo:video attrs:dict];
     [p setPlayerName:name];
     players[name] = p;
     NSLog(@"[PlayerManager] Create player %@",name);

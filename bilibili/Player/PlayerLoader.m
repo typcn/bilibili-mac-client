@@ -146,12 +146,11 @@
     unsigned long result = crc32(0, [fgurl bytes], (UInt)[fgurl length]);
     NSString *playerId = [NSString stringWithFormat:@"%ld",result];
     
-    Player *p = [[PlayerManager sharedInstance] createPlayer:playerId withVideo:video];
+    Player *p = [[PlayerManager sharedInstance] createPlayer:playerId withVideo:video attrs:attrs];
     if(!p){
         [self showError:@"错误" :@"播放器创建失败"];
         return;
     }
-    [p setAttr:attrs];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TYPlayerCreated" object:playerId];
     lastPlayerId = playerId;

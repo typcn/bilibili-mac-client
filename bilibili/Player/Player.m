@@ -22,11 +22,15 @@
     return NULL;
 }
 
-- (id)initWithVideo:(VideoAddress *)m_video{
+- (id)initWithVideo:(VideoAddress *)m_video attrs:(NSDictionary *)dict{
     self = [super init];
     if(self){
         self.video = m_video;
-        attrs = [[NSMutableDictionary alloc] init];
+        if(dict){
+            attrs = [dict mutableCopy];
+        }else{
+            attrs = [[NSMutableDictionary alloc] init];
+        }
         
         NSString *queue_name = [NSString stringWithFormat:@"player_queue_%ld",time(0)];
         self.queue = dispatch_queue_create([queue_name UTF8String], DISPATCH_QUEUE_SERIAL);
@@ -47,10 +51,6 @@
 
 - (void)setAttr:(NSString *)key data:(id)data{
     attrs[key] = data;
-}
-
-- (void)setAttr:(NSDictionary *)dict{
-    attrs = [dict mutableCopy];
 }
 
 - (void)stopAndDestory{

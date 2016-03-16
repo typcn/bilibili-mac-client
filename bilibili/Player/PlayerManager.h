@@ -14,7 +14,7 @@
 
 + (instancetype)sharedInstance;
 
-- (Player *)createPlayer:(NSString *)name withVideo:(VideoAddress *)video;
+- (Player *)createPlayer:(NSString *)name withVideo:(VideoAddress *)video attrs:(NSDictionary *)dict;
 - (Player *)getPlayer:(NSString *)name;
 
 - (NSDictionary *)getPlayerList;

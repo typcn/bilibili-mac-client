@@ -32,11 +32,10 @@
 @property (nonatomic, assign) mpv_handle *mpv;
 @property (nonatomic, strong) dispatch_queue_t queue;
 
-- (id)initWithVideo:(VideoAddress *)video;
+- (id)initWithVideo:(VideoAddress *)m_video attrs:(NSDictionary *)dict;
 
 - (id)getAttr:(NSString *)key;
 - (void)setAttr:(NSString *)key data:(id)data;
-- (void)setAttr:(NSDictionary *)dict;
 
 - (void)stopAndDestory;
 - (void)destory;

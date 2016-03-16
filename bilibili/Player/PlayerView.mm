@@ -162,7 +162,6 @@ getInfo:
         NSLog(@"[PlayerView] Reading video info");
         
         NSString *firstVideo = [video firstFragmentURL];
-        NSLog(@"%@",[self.player getAttr:@"commentFile"]);
         if([self.player getAttr:@"commentFile"]){
             NSDictionary *VideoInfoJson = [self getVideoInfo:firstVideo];
             
