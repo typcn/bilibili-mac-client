@@ -350,12 +350,20 @@ getInfo:
 
 - (NSDictionary *) getVideoInfo:(NSString *)url{
     NSLog(@"[VideoReader] Video Address: %@",url);
-    if([url containsString:@"acgvideo.com"] && ![url containsString:@"live"]){
+    BOOL trySimpleParser;
+    if([url containsString:@".flv"] ||
+       [url containsString:@"acgvideo.com"] ||
+       [url containsString:@"v.iask.com"] ||
+       [url containsString:@"g3proxy.lecloud.com"] ){
+        trySimpleParser = YES;
+    }
+    if(trySimpleParser && ![url containsString:@"live"]){
         NSDictionary *dic =  readVideoInfoFromURL(url);
         if(dic){
             return dic;
         }
     }
+    
     MediaInfoDLL::MediaInfo MI = *new MediaInfoDLL::MediaInfo;
     MI.Open([url cStringUsingEncoding:NSUTF8StringEncoding]);
     MI.Option(__T("Inform"), __T("Video;%Width%"));
