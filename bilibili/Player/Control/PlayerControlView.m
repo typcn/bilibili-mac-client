@@ -32,6 +32,8 @@
     BOOL isAfterVideoRender;
     BOOL isKeepAspect;
     BOOL isHided;
+     
+    BOOL isFirstBuffed;
 }
 
 @synthesize currentPaused;
@@ -299,6 +301,10 @@
         if(t > 0){
             int sizeMB = t/1024;
             rightTimeText.stringValue = [NSString stringWithFormat:@"%d MB",sizeMB];
+            if(sizeMB > 10 && !isFirstBuffed){
+                isFirstBuffed = YES;
+                isShowingDuration = YES;
+            }
         }
     });
 }
