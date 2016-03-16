@@ -18,7 +18,7 @@
 
 @interface Player : NSObject
 
-@property (nonatomic, readonly, strong) PlayerView *view;
+@property (nonatomic, readonly, weak) PlayerView *view;
 @property (nonatomic, readonly, strong) NSWindowController *windowController;
 @property (nonatomic, weak) PlayerControlView *playerControlView;
 @property (nonatomic, weak) NSView *videoView;

@@ -480,16 +480,22 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
     dispatch_queue_t strong_queue_temp = self.player.queue;
     if (strong_queue_temp) {
         mpv_handle *handle_temp = self.player.mpv;
+        self.player.mpv = NULL;
         dispatch_async(strong_queue_temp, ^{
             // mpv may dealloc here
             if(handle_temp){
                 mpv_set_wakeup_callback(handle_temp, NULL,NULL);
+            }else{
+                NSLog(@"[PlayerWindow] Cannot set callback ! mpv not found!");
             }
             
             if(handle_temp){
                 const char *stop[] = {"stop", NULL};
                 mpv_command(handle_temp, stop);
+            }else{
+                NSLog(@"[PlayerWindow] Cannot stop playing ! mpv not found!");
             }
+            
             if(handle_temp){
                 const char *quit[] = {"quit", NULL};
                 mpv_command(handle_temp, quit);
@@ -498,11 +504,21 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
             if(handle_temp){
                 mpv_detach_destroy(handle_temp);
             }
-
-            if(self.player){
-                self.player.mpv = NULL;
-            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                if(self.player){
+                    [self.player destory];
+                }else{
+                    NSLog(@"[PlayerWindow] Cannot destroy player!");
+                }
+            });
         });
+    }else{
+        NSLog(@"[PlayerWindow] Cannot dealloc ! Queue not found!");
+        if(self.player){
+            self.player.mpv = NULL;
+            [self.player destory];
+        }
     }
 }
 
@@ -514,7 +530,6 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
 
     if(self.player){
         [self mpv_cleanup];
-        [self.player destory];
     }
     
     if(hideCursorTimer){
@@ -530,8 +545,6 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
 - (BOOL)windowShouldClose:(id)sender{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     NSLog(@"[PlayerWindow] Closing Window");
-
-    [self destroyPlayer];
     
     [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.x forKey:@"playerX"];
     [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.y forKey:@"playerY"];
@@ -543,12 +556,12 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
 }
 
 - (void)windowWillClose:(NSNotification *)notification{
+    NSLog(@"[PlayerWindow] Destroy player");
     [self destroyPlayer];
 }
 
 - (void)close{
     [super close];
-    [self destroyPlayer];
 }
 
 - (void)dealloc{
