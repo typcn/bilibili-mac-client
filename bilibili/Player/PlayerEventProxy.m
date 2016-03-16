@@ -11,8 +11,8 @@
 @implementation PlayerEventProxy
 
 - (void)drawRect:(NSRect)dirtyRect {
-    [[NSColor clearColor] setFill];
-    NSRectFill(dirtyRect);
+//    [[NSColor clearColor] setFill];
+//    NSRectFill(dirtyRect);
 }
 
 - (void)rightMouseDown:(NSEvent *)theEvent{
