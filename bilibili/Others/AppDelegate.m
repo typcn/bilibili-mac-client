@@ -316,7 +316,7 @@ Browser *browser;
 
 - (NSString *) randomStringWithLength: (int) len {
     
-    NSString *letters = @"abcdefghijklmnopqrstuvwxyz0123456789";
+    NSString *letters = @"abcdef0123456789";
     NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
     
     for (int i=0; i<len; i++) {
