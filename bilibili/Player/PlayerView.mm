@@ -44,6 +44,12 @@
 
 void wakeup(void *context) {
     if(context){
+        // Damn ARC
+        const uint8_t *data_ctx = (uint8_t *)context;
+        if(data_ctx[0] == 0x88 && data_ctx[1] == 0x00 && data_ctx[2] == 0x00){
+            NSLog(@"Invalid callback context.");
+            return;
+        }
         PlayerView *a = (__bridge PlayerView *) context;
         if(a &&
            [a.className isEqualToString:@"PlayerView"] &&
