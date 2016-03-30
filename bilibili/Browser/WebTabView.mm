@@ -197,14 +197,6 @@
     }else{
         NSLog(@"Analytics disabled ! won't upload.");
     }
-    NSString *lastPlay = [[NSUserDefaults standardUserDefaults] objectForKey:@"LastPlay"];
-    if([lastPlay length] > 1){
-        [webView setURL:lastPlay];
-        NSLog(@"Opening last play url %@",lastPlay);
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
-    }else{
-        [self loadFavicon];
-    }
 }
 
 - (void) failLoadOrNavigation: (NSURLRequest *) request withError: (NSError *) error

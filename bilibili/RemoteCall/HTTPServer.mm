@@ -13,6 +13,7 @@
 #import "PreloadManager.h"
 #import "PlayerLoader.h"
 #import "AirPlayView.h"
+#import "BrowserHistory.h"
 
 #import "VP_Bilibili.h"
 #import "VP_YouGet.h"
@@ -279,6 +280,17 @@
                  if(!result){
                      rep = [GCDWebServerDataResponse responseWithText:@"error"];
                  }
+             }
+         }else if([action isEqualToString:@"unclosed"]){
+             NSString *origin = [request headers][@"Origin"];
+             if(origin && [origin isEqualToString:@"http://vp-hub.eqoe.cn"]){
+                 rep = [GCDWebServerDataResponse responseWithJSONObject:[[BrowserHistory sharedManager] getUnclosed]];
+             }
+             
+         }else if([action isEqualToString:@"resetStatus"]){
+             NSString *origin = [request headers][@"Origin"];
+             if(origin && [origin isEqualToString:@"http://vp-hub.eqoe.cn"]){
+                 [[BrowserHistory sharedManager] resetStatus];
              }
          }
          [rep setValue:@"*" forAdditionalHeader:@"Access-Control-Allow-Origin"];

@@ -547,7 +547,6 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
 }
 
 - (BOOL)windowShouldClose:(id)sender{
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     NSLog(@"[PlayerWindow] Closing Window");
 
     if([browser tabCount] > 0){

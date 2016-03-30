@@ -14,6 +14,7 @@
 #import "PJTernarySearchTree.h"
 #import "PlayerLoader.h"
 #import "CrashReport.h"
+#import "BrowserHistory.h"
 
 Browser *browser;
 
@@ -97,7 +98,12 @@ Browser *browser;
     [s synchronize];
     NSLog(@"AcceptAnalytics=%ld WithoutGUI=%d",acceptAnalytics,without_gui);
     if(!without_gui){
-        [self openBrowserWithUrl:@"http://www.bilibili.com"];
+        NSArray *unclosed = [[BrowserHistory sharedManager] getUnclosed];
+        if(unclosed && [unclosed count] > 0){
+            [self openBrowserWithUrl:@"http://vp-hub.eqoe.cn/unclosed.html"];
+        }else{
+            [self openBrowserWithUrl:@"http://www.bilibili.com"];
+        }
         [browser.window performSelector:@selector(makeMainWindow) withObject:nil afterDelay:0.2];
         [browser.window performSelector:@selector(makeKeyAndOrderFront:) withObject:NSApp afterDelay:0.2];
         [NSApp activateIgnoringOtherApps:YES];
@@ -163,6 +169,7 @@ Browser *browser;
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+    
 }
 - (IBAction)issues:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/typcn/bilibili-mac-client/issues"]];

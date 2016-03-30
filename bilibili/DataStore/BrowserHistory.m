@@ -52,6 +52,14 @@
         NSLog(@"[HistoryManager] Table create failed: %@",[db lastErrorMessage]);
         return false;
     }
+    
+    sql = @"CREATE INDEX IF NOT EXISTS status_idx ON browse_history (status)";
+    success = [db executeStatements:sql];
+    if(!success){
+        NSLog(@"[HistoryManager] Index create failed: %@",[db lastErrorMessage]);
+        return false;
+    }
+    
     return true;
 }
 
@@ -82,6 +90,25 @@
                         }];
     }
     return rv;
+}
+
+- (NSArray *)getUnclosed{
+    NSMutableArray *rv = [[NSMutableArray alloc] init];
+    FMResultSet *s = [db executeQuery:@"SELECT * FROM browse_history WHERE status = 1 ORDER BY id DESC LIMIT 0,30"];
+    while ([s next]) {
+        [rv addObject:@{
+                        @"id":@([s intForColumn:@"id"]),
+                        @"title":[s stringForColumn:@"title"],
+                        @"url":[s stringForColumn:@"url"],
+                        @"time":@([s intForColumn:@"time"]),
+                        @"status":@([s intForColumn:@"status"])
+                        }];
+    }
+    return rv;
+}
+
+- (void)resetStatus{
+    [db executeUpdate:@"UPDATE browse_history SET status = 0 WHERE status = 1"];   
 }
 
 - (bool)setStatus:(int64_t)status forID:(int64_t)ID{
