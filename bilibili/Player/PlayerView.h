@@ -20,6 +20,7 @@
 @property (weak) IBOutlet NSImageView *loadingImage;
 @property (strong) NSWindowController* liveChatWC;
 @property (weak, nonatomic) Player *player;
+@property (nonatomic) BOOL windowSetup;
 
 - (void)loadWithPlayer:(Player *)m_player;
 - (void)loadVideo:(VideoAddress *)video;

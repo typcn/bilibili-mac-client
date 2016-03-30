@@ -161,6 +161,10 @@
 }
 
 - (void)resizePlayerControlView:(NSRect)old new:(NSRect)new{
+    if(self.player.view.windowSetup){
+        [[NSUserDefaults standardUserDefaults] setDouble:new.origin.x forKey:@"playerX"];
+        [[NSUserDefaults standardUserDefaults] setDouble:new.origin.y forKey:@"playerY"];
+    }
     if(self.player.playerControlView){
         NSRect pcw = self.player.playerControlView.window.frame;
 
@@ -545,9 +549,6 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
 - (BOOL)windowShouldClose:(id)sender{
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"LastPlay"];
     NSLog(@"[PlayerWindow] Closing Window");
-    
-    [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.x forKey:@"playerX"];
-    [[NSUserDefaults standardUserDefaults] setDouble:self.frame.origin.y forKey:@"playerY"];
 
     if([browser tabCount] > 0){
         [self.lastWindow makeKeyAndOrderFront:nil];

@@ -30,8 +30,6 @@
     
     PlayerControlWindowController *playerControlWindowController;
     NSString *videoDomain;
-    
-    BOOL windowSetup;
 }
 
 @end
@@ -39,7 +37,7 @@
 
 @implementation PlayerView
 
-
+@synthesize windowSetup;
 @synthesize liveChatWC;
 
 void wakeup(void *context) {
@@ -87,26 +85,6 @@ inline void check_error(int status)
     lastWindow = [[NSApplication sharedApplication] keyWindow];
     [lastWindow resignKeyWindow];
     [lastWindow miniaturize:self];
-    
-    double Wheight = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerheight"];
-    double Wwidth = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerwidth"];
-
-    NSString *res = [NSString stringWithFormat:@"%dx%d",(int)Wwidth,(int)Wheight];
-    
-    NSLog(@"[PlayerView] Width: %f Height: %f",Wwidth,Wheight);
-    
-    if(Wwidth < 300 || Wheight < 300){
-        NSLog(@"[PlayerView] Size set to fillscreen");
-        NSRect rect = [[NSScreen mainScreen] visibleFrame];
-        NSNumber *viewHeight = [NSNumber numberWithFloat:rect.size.height];
-        NSNumber *viewWidth = [NSNumber numberWithFloat:rect.size.width];
-        res = [NSString stringWithFormat:@"%dx%d",[viewWidth intValue],[viewHeight intValue]];
-        [self.view setFrame:rect];
-    }else{
-        NSRect rect = self.view.frame;
-        rect.size = NSMakeSize(Wwidth, Wheight);
-        [self.view setFrame:rect];
-    }
 }
 
 - (void)viewDidAppear{
@@ -129,11 +107,26 @@ inline void check_error(int status)
 }
 
 - (void)setupWindow {
-    double WX = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerX"];
-    double WY = [[NSUserDefaults standardUserDefaults] doubleForKey:@"playerY"];
-    NSPoint pos = NSMakePoint(WX, WY);
-    NSLog(@"[PlayerView] X: %f Y: %f",WX,WY);
-    [window setFrameOrigin:pos];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSRect rect = window.frame;
+    double WX = [ud doubleForKey:@"playerX"];
+    double WY = [ud doubleForKey:@"playerY"];
+    if(WX && WY){
+        rect.origin = NSMakePoint(WX, WY);
+    }
+    
+    double Wheight = [ud doubleForKey:@"playerheight"];
+    double Wwidth = [ud doubleForKey:@"playerwidth"];
+    if(Wheight > 300 && Wwidth > 300){
+        rect.size = NSMakeSize(Wwidth, Wheight);
+    }else{
+        NSRect visFrameRect = [[NSScreen mainScreen] visibleFrame];
+        rect.size = visFrameRect.size;
+    }
+    
+    NSLog(@"[PlayerView] X: %f Y: %f Width: %f Height: %f",WX,WY,Wwidth,Wheight);
+    
+    [window setFrame:rect display:YES];
     [window setPlayerAndInit:self.player];
     [window setLastWindow:lastWindow];
     [window setAcceptsMouseMovedEvents:YES];
