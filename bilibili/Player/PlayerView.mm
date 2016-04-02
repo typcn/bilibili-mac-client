@@ -49,8 +49,7 @@ void wakeup(void *context) {
             return;
         }
         PlayerView *a = (__bridge PlayerView *) context;
-        if(a &&
-           [a.className isEqualToString:@"PlayerView"] &&
+        if(a && a.className &&
            [a respondsToSelector:@selector(readEvents)]){
             [a readEvents];
         }
