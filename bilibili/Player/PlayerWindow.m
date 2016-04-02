@@ -486,18 +486,18 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
         mpv_handle *handle_temp = self.player.mpv;
         self.player.mpv = NULL;
         dispatch_async(strong_queue_temp, ^{
-            // mpv may dealloc here
+
             if(handle_temp){
                 mpv_set_wakeup_callback(handle_temp, NULL,NULL);
             }else{
-                NSLog(@"[PlayerWindow] Cannot set callback ! mpv not found!");
+                CLS_LOG(@"[PlayerWindow] Cannot set callback ! mpv not found!");
             }
             
             if(handle_temp){
                 const char *stop[] = {"stop", NULL};
                 mpv_command(handle_temp, stop);
             }else{
-                NSLog(@"[PlayerWindow] Cannot stop playing ! mpv not found!");
+                CLS_LOG(@"[PlayerWindow] Cannot stop playing ! mpv not found!");
             }
             
             if(handle_temp){
@@ -513,12 +513,12 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
                 if(self.player){
                     [self.player destory];
                 }else{
-                    NSLog(@"[PlayerWindow] Cannot destroy player!");
+                    CLS_LOG(@"[PlayerWindow] Cannot destroy player!");
                 }
             });
         });
     }else{
-        NSLog(@"[PlayerWindow] Cannot dealloc ! Queue not found!");
+        CLS_LOG(@"[PlayerWindow] Cannot dealloc ! Queue not found!");
         if(self.player){
             self.player.mpv = NULL;
             [self.player destory];
