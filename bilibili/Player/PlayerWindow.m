@@ -485,30 +485,15 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
     if (strong_queue_temp) {
         mpv_handle *handle_temp = self.player.mpv;
         self.player.mpv = NULL;
-        dispatch_async(strong_queue_temp, ^{
+        
+        if(handle_temp){
+            mpv_set_wakeup_callback(handle_temp, NULL,NULL);
+        }else{
+            CLS_LOG(@"[PlayerWindow] Cannot set callback ! mpv not found!");
+        }
 
-            if(handle_temp){
-                mpv_set_wakeup_callback(handle_temp, NULL,NULL);
-            }else{
-                CLS_LOG(@"[PlayerWindow] Cannot set callback ! mpv not found!");
-            }
-            
-            if(handle_temp){
-                const char *stop[] = {"stop", NULL};
-                mpv_command(handle_temp, stop);
-            }else{
-                CLS_LOG(@"[PlayerWindow] Cannot stop playing ! mpv not found!");
-            }
-            
-            if(handle_temp){
-                const char *quit[] = {"quit", NULL};
-                mpv_command(handle_temp, quit);
-            }
-            
-            if(handle_temp){
-                mpv_detach_destroy(handle_temp);
-            }
-            
+        dispatch_async(strong_queue_temp, ^{
+            mpv_terminate_destroy(handle_temp);
             dispatch_async(dispatch_get_main_queue(), ^(void){
                 if(self.player){
                     [self.player destory];

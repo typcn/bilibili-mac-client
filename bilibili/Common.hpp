@@ -18,11 +18,5 @@ extern Downloader* DL;
 
 extern Browser* browser;
 extern NSString *userAgent;
-extern NSWindow *currWindow;
-
-extern BOOL parsing;
-
-extern NSString *cmFile;
-extern NSString *subFile;
 
 #endif
