@@ -493,7 +493,9 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
         }
 
         dispatch_async(strong_queue_temp, ^{
-            mpv_terminate_destroy(handle_temp);
+            if(handle_temp){
+                mpv_terminate_destroy(handle_temp);
+            }
             dispatch_async(dispatch_get_main_queue(), ^(void){
                 if(self.player){
                     [self.player destory];
