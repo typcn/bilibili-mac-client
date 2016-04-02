@@ -8,6 +8,7 @@
 
 #import "SP_Bilibili.h"
 #import "PreloadManager.h"
+#import "Common.hpp"
 
 @implementation SP_Bilibili
 
@@ -24,11 +25,28 @@
     }
     NSString *vCID = dict[@"cid"];
     NSData *urlData = [[PreloadManager sharedInstance] GetComment:vCID];
+    int t = 0;
+
+cmDownload:
     
-    if(!urlData){
+    if(!urlData && t < 3){
         NSString *stringURL = [NSString stringWithFormat:@"http://comment.bilibili.com/%@.xml",vCID];
-        NSLog(@"Getting Comments from %@",stringURL);
-        urlData = [NSData dataWithContentsOfURL:[NSURL URLWithString:stringURL]];
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:stringURL]];
+        request.HTTPMethod = @"GET";
+        request.timeoutInterval = 3;
+        
+        [request setValue:userAgent forHTTPHeaderField:@"User-Agent"];
+        
+        NSURLResponse * response = nil;
+        NSError * error = nil;
+        urlData = [NSURLConnection sendSynchronousRequest:request
+                                                   returningResponse:&response
+                                                               error:&error];
+        if(error){
+            t++;
+            NSLog(@"Comment download failed, retry %d",t);
+            goto cmDownload;
+        }
     }else{
         NSLog(@"Comment cache hit from PreloadManager");
     }

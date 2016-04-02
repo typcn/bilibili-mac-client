@@ -28,7 +28,7 @@
 - (void)setPlayer:(Player *)m_player{
     player = m_player;
     mpv = player.mpv;
-    userAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/601.1.43 (KHTML, like Gecko) Version/9.0 Safari/601.1.43";
+    userAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/601.5.17 (KHTML, like Gecko) Version/9.1 Safari/601.5.17";
     vAID = [player getAttr:@"aid"];
     vPID = [player getAttr:@"pid"];
     vCID = [player getAttr:@"cid"];
