@@ -110,7 +110,7 @@ inline void check_error(int status)
     NSRect rect = window.frame;
     double WX = [ud doubleForKey:@"playerX"];
     double WY = [ud doubleForKey:@"playerY"];
-    if(WX && WY){
+    if(WX > -1 && WY > -1){
         rect.origin = NSMakePoint(WX, WY);
     }
     
