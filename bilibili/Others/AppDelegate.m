@@ -26,6 +26,7 @@ Browser *browser;
 
 @implementation AppDelegate{
     int without_gui;
+    int firstInit;
 }
 
 @synthesize donatew;
@@ -109,6 +110,8 @@ Browser *browser;
         [NSApp activateIgnoringOtherApps:YES];
     }
     
+    firstInit = 1;
+    
     // Start ARIA2
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"startaria" ofType:@"sh"];
@@ -156,6 +159,9 @@ Browser *browser;
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
+    if(!firstInit){
+        without_gui = 1;
+    }
     [[PlayerLoader sharedInstance] loadVideoWithLocalFiles:filenames];
     NSLog(@"Handle open files: %@",filenames);
 }
