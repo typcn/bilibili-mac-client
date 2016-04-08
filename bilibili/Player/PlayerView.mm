@@ -30,6 +30,8 @@
     
     PlayerControlWindowController *playerControlWindowController;
     NSString *videoDomain;
+    
+    BOOL endFile;
 }
 
 @end
@@ -537,6 +539,7 @@ getInfo:
     if(playerControlView){
         [playerControlView onMpvEvent:event];
     }
+
     switch (event->event_id) {
         case MPV_EVENT_SHUTDOWN: {
             dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -567,6 +570,7 @@ getInfo:
                     [self.textTip setStringValue:NSLocalizedString(@"正在缓冲", nil)];
                 }
             });
+            endFile = NO;
             break;
         }
             
@@ -579,15 +583,22 @@ getInfo:
         }
         
         case MPV_EVENT_END_FILE:{
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [LoadingView setHidden:NO];
-                [self.textTip setStringValue:NSLocalizedString(@"播放完成，关闭窗口继续", nil)];
-                [self runAutoSwitch];
-                [self.view.window performClose:self];
-            });
+            endFile = YES;
             break;
         }
         
+        case MPV_EVENT_IDLE:{
+            if(endFile){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [LoadingView setHidden:NO];
+                    [self.textTip setStringValue:NSLocalizedString(@"播放完成，关闭窗口继续", nil)];
+                    [self runAutoSwitch];
+                    [self.view.window performClose:self];
+                });
+            }
+            break;
+        }
+            
         case MPV_EVENT_PAUSE: {
             break;
         }
