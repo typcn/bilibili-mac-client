@@ -327,6 +327,9 @@ genAddress: FLVFailRetry = NO;
         int quality = [self getQuality];
         int intIsMp4 = 0;
         NSString *type = [self getFormat:[params[@"download"] boolValue]];
+        if(params[@"forceType"]){
+            type = params[@"forceType"];
+        }
         if([type isEqualToString:@"mp4"]){
             intIsMp4 = 1;
         }

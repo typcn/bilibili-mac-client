@@ -99,7 +99,7 @@
 
         params[@"cid"] = apwc.cid;
         params[@"title"] = apwc.vtitle;
-
+        params[@"forceType"] = @"mp4";
         
         NSString *playurl;
         @try {
@@ -137,7 +137,7 @@
     
     params[@"cid"] = apwc.cid;
     params[@"title"] = apwc.vtitle;
-    
+    params[@"forceType"] = @"mp4";
     
     NSString *playurl;
     @try {
