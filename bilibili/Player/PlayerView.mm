@@ -71,10 +71,6 @@ inline void check_error(int status)
 - (void)loadWithPlayer:(Player *)m_player{
     [m_player setVideoView:ContentView];
     self.player = m_player;
-    if(window){
-        [window setPlayerAndInit:self.player];
-        [window setAcceptsMouseMovedEvents:YES];
-    }
     [self loadControls];
     [self loadVideo:self.player.video];
 }
@@ -84,6 +80,16 @@ inline void check_error(int status)
     lastWindow = [[NSApplication sharedApplication] keyWindow];
     [lastWindow resignKeyWindow];
     [lastWindow miniaturize:self];
+    
+    // The window is not got initialized here
+    // But sometimes viewDidAppear not get called....
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if(!windowSetup){
+            CLS_LOG(@"Forced a window setup");
+            [self setupWindow];
+            windowSetup = YES;
+        }
+    });
 }
 
 - (void)viewDidAppear{
