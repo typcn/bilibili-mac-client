@@ -254,6 +254,13 @@
 			remoteGlobalIDString = CEE28CD01AE004D800F4023C;
 			remoteInfo = "GCDWebServers (Mac)";
 		};
+		FD858FA31CDB3987006D1629 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FD858F851CD974AB006D1629;
+			remoteInfo = GCDWebServer_Test;
+		};
 		FDA01C581C5696B200298CEF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FDA01C4F1C5696B100298CEF /* fmdb.xcodeproj */;
@@ -1109,6 +1116,7 @@
 			isa = PBXGroup;
 			children = (
 				FD72571A1B9D52FE0015B0F1 /* GCDWebServers.framework */,
+				FD858FA41CDB3987006D1629 /* GCDWebServer_Test.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1491,6 +1499,13 @@
 			fileType = wrapper.framework;
 			path = GCDWebServers.framework;
 			remoteRef = FD7257191B9D52FE0015B0F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FD858FA41CDB3987006D1629 /* GCDWebServer_Test.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GCDWebServer_Test.xctest;
+			remoteRef = FD858FA31CDB3987006D1629 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		FDA01C591C5696B200298CEF /* fmdb */ = {
