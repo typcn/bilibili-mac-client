@@ -83,8 +83,10 @@ extern NSString *sharedURLFieldString;
             NSString *urlAddPrefix = [NSString stringWithFormat:@"http://%@",sharedURLFieldString];
             item_cache = [[PJTernarySearchTree sharedTree] retrievePrefix:urlAddPrefix countLimit:4];
         }
-        // Otherwise get from online
-        [self loadOnlineResultAsync:aTableView];
+        if(![sharedURLFieldString containsString:@"http://"]){
+            // Otherwise get from online if not start with http
+            [self loadOnlineResultAsync:aTableView];
+        }
     }
     if([aTableColumn.identifier isEqualToString:@"st_icon_col"]){
         if(rowIndex < 4){
