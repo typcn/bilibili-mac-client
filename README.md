@@ -14,6 +14,7 @@ Mac 必备的在线视频播放器
 - 弹幕关键词屏蔽，智能屏蔽
 - 支持观看直播，带有直播弹幕
 - 支持自定义 mpv 配置文件，可自定义快捷键，加载 Lua 脚本
+- 多语言/字体完美 ASS 字幕渲染
 
 # Screenshot
 
@@ -36,7 +37,7 @@ see [HOW TO BUILD](https://github.com/typcn/bilibili-mac-client/blob/master/HOW_
 
 # Known problems
 
-- 首次播放可能创建字体缓存，大约需要两分钟，多等一会即可开始播放
+- <del>首次播放可能创建字体缓存，大约需要两分钟，多等一会即可开始播放</del> 不再需要字体缓存
 
 
 # Thanks
