@@ -43,15 +43,6 @@ extern NSString *sharedURLFieldString;
         WebTabView *tc = (WebTabView *)[browser activeTabContents];
         [[tc GetTWebView] setURL:url];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:url userInfo:nil];
-    }else if([online_cache count] > OnlineCacheIndex){
-        NSString *word = [online_cache objectAtIndex:OnlineCacheIndex];
-        if(!word){
-            return NO;
-        }
-        NSString *URL = [NSString stringWithFormat:@"http://search.bilibili.com/all?keyword=%@",[word stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        WebTabView *tc = (WebTabView *)[browser activeTabContents];
-        [[tc GetTWebView] setURL:URL];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:URL userInfo:nil];
     }else if(rowIndex == 4){
         NSString *URL = [NSString stringWithFormat:@"http://search.bilibili.com/all?keyword=%@",[sharedURLFieldString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         WebTabView *tc = (WebTabView *)[browser activeTabContents];
@@ -59,6 +50,15 @@ extern NSString *sharedURLFieldString;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:URL userInfo:nil];
     }else if(rowIndex == 5){
         NSString *URL = [NSString stringWithFormat:@"https://www.google.com/search?q=%@",[sharedURLFieldString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        WebTabView *tc = (WebTabView *)[browser activeTabContents];
+        [[tc GetTWebView] setURL:URL];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:URL userInfo:nil];
+    }else if([online_cache count] > OnlineCacheIndex){
+        NSString *word = [online_cache objectAtIndex:OnlineCacheIndex];
+        if(!word){
+            return NO;
+        }
+        NSString *URL = [NSString stringWithFormat:@"http://search.bilibili.com/all?keyword=%@",[word stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         WebTabView *tc = (WebTabView *)[browser activeTabContents];
         [[tc GetTWebView] setURL:URL];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:URL userInfo:nil];
