@@ -206,6 +206,9 @@ getInfo:
 }
 
 - (void)playVideo:(NSString *)URL{
+    if(self.player.pendingDealloc){
+        return CLS_LOG(@"[PlayerView] Player is pending dealloc, stop loading.");
+    }
 
     // Start Playing Video
     self.player.mpv  = mpv_create();
@@ -312,6 +315,10 @@ getInfo:
     });
     
     [self loadMPVSettings];
+    
+    if(self.player.pendingDealloc){
+        return CLS_LOG(@"[PlayerView] Player is pending dealloc, stop loading.");
+    }
     
     // request important errors
     check_error(mpv_request_log_messages(self.player.mpv, "warn"));

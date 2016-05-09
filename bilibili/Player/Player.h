@@ -29,6 +29,8 @@
 @property (nonatomic) BarrageRenderer *barrageRenderer;
 @property (nonatomic) VideoAddress *video;
 
+@property (nonatomic) BOOL pendingDealloc;
+
 @property (nonatomic, assign) mpv_handle *mpv;
 @property (nonatomic, strong) dispatch_queue_t queue;
 

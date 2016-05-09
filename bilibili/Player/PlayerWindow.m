@@ -520,6 +520,7 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
     }
 
     if(self.player){
+        self.player.pendingDealloc = YES;
         [self mpv_cleanup];
     }
     
