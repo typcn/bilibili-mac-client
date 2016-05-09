@@ -297,6 +297,31 @@
     }
 }
 
+- (void)showMediaInfo{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+        char *url = mpv_get_property_string(self.player.mpv, "path");
+        char *size = mpv_get_property_string(self.player.mpv, "file-size");
+        char *cache_size = mpv_get_property_string(self.player.mpv, "cache-used");
+        char *format = mpv_get_property_string(self.player.mpv, "file-format");
+        char *frameDrop = mpv_get_property_string(self.player.mpv, "drop-frame-count");
+
+        char *audioCodec = mpv_get_property_string(self.player.mpv, "audio-codec-name");
+        char *audioParams = mpv_get_property_string(self.player.mpv, "audio-params");
+        char *videoCodec = mpv_get_property_string(self.player.mpv, "video-codec");
+        char *videoParams = mpv_get_property_string(self.player.mpv, "video-params");
+        
+        char *width = mpv_get_property_string(self.player.mpv, "width");
+        char *height = mpv_get_property_string(self.player.mpv, "height");
+        
+        char *fps = mpv_get_property_string(self.player.mpv, "fps");
+
+        NSString *alertStr = [NSString stringWithFormat:@"视频地址：%s\n文件大小：%s 缓冲大小：%s 分辨率：%sx%s 帧率：%s\n容器格式：%s\n丢帧数量：%s\n音频解码器：%s\n音频参数：%s\n视频解码器：%s\n视频参数：%s\n以上内容已输出到 Console",url,size,cache_size,width, height,fps,format,frameDrop,audioCodec,audioParams,videoCodec,videoParams];
+        NSLog(@"%@",alertStr);
+        const char *args[] = {"show-text", [alertStr UTF8String] , "3000" ,NULL};
+        mpv_command_async(self.player.mpv,0, args);
+    });
+}
+
 - (NSSize)windowWillResize:(NSWindow *)sender
                     toSize:(NSSize)frameSize{
     [[NSUserDefaults standardUserDefaults] setDouble:frameSize.width forKey:@"playerwidth"];
@@ -389,6 +414,13 @@
             double speed = 1;
             mpv_set_property_async(self.player.mpv, 0, "speed", MPV_FORMAT_DOUBLE, &speed);
             break;
+        }
+            
+        case 34:{
+            if(shiftKeyPressed){
+                [self showMediaInfo];
+                break;
+            }
         }
             
         default:{
