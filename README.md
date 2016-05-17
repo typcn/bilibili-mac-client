@@ -24,7 +24,7 @@ Mac 必备的在线视频播放器
 
 [GitHub](https://github.com/typcn/bilibili-mac-client/releases)
 
-[百度盘](http://pan.baidu.com/s/1o7iFDjk)
+[百度盘](http://pan.baidu.com/s/1pLSrVVP)
 
 
 # FAQ
