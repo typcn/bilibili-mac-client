@@ -46,6 +46,15 @@
     }else{
         [self.qualityBox setStringValue:NSLocalizedStringFromTable(@"UtE-Jc-IKj.ibShadowedObjectValues[3]", @"Main", @"原画")];
     }
+    
+    NSString* liveLine = [settingsController objectForKey:@"liveLine"];
+    NSLog(@"[liveLine origin]:%@", liveLine);
+    if (liveLine != nil) {
+        [self.liveLineBox setStringValue:liveLine];
+    } else {
+        [self.liveLineBox setStringValue: @"原始地址"];
+    }
+    
 
     
     NSString *IP = [settingsController objectForKey:@"xff"];
@@ -99,6 +108,11 @@
         NSLog(@"Select max quanlity");
         [settingsController setInteger:4 forKey:@"quality"];
     }
+    [settingsController synchronize];
+}
+- (IBAction)liveLineChanged:(id)sender {
+    NSString *line = [self.liveLineBox stringValue];
+    [settingsController setObject:line forKey:@"liveLine"];
     [settingsController synchronize];
 }
 - (IBAction)transparencyChanged:(id)sender {
@@ -168,5 +182,7 @@
 - (NSInteger)randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max
 {
     return min + arc4random_uniform((u_int32_t)max - (u_int32_t)min + 1);
+}
+- (IBAction)liveLineBox:(NSComboBox *)sender {
 }
 @end

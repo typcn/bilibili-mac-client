@@ -27,4 +27,5 @@
 @property (weak) IBOutlet NSTextField *maxBufferSize;
 @property (weak) IBOutlet NSButton *changeGestureDirection;
 
+@property (weak) IBOutlet NSComboBox *liveLineBox;
 @end
