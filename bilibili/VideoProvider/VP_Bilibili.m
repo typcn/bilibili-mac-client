@@ -350,19 +350,20 @@ genAddress: FLVFailRetry = NO;
         NSLog(@"[xml response]:%@", rt);
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<!\\[CDATA\\[(http.*)\\]\\]><\\/.*url>" options:NSRegularExpressionCaseInsensitive error:nil];
         
-        NSArray<NSTextCheckingResult *> *match_new = [regex matchesInString:rt options:0 range:NSMakeRange(0, [rt length])];
-        NSMutableArray *result = [[NSMutableArray alloc]initWithCapacity:[match_new count]];
-        for (int i = 0; i < [match_new count]; i++) {
-            NSRange rg = [[match_new objectAtIndex:i] rangeAtIndex:1];
-            if (rg.length > 0){
-                NSString* rt_new = [rt substringWithRange:rg];
-                NSLog(@"%@", rt_new);
-                [result insertObject:rt_new atIndex:i];
+        NSArray<NSTextCheckingResult *> *match = [regex matchesInString:rt options:0 range:NSMakeRange(0, [rt length])];
+        if (match){
+            NSMutableArray *result = [[NSMutableArray alloc]initWithCapacity:[match count]];
+            for (int i = 0; i < [match count]; i++) {
+                NSRange rg = [[match objectAtIndex:i] rangeAtIndex:1];
+                if (rg.length > 0){
+                    NSString* rt_new = [rt substringWithRange:rg];
+                    NSLog(@"%@", rt_new);
+                    [result insertObject:rt_new atIndex:i];
+                }
             }
+            NSDictionary *dict1 = [NSDictionary dictionaryWithObject:result forKey:@"durl"];
+            return dict1;
         }
-        NSDictionary *dict1 = [NSDictionary dictionaryWithObject:result forKey:@"durl"];
-        return dict1;
-        
         [NSException raise:@VP_BILI_JSON_ERROR format:@"视频解析出现错误，JSON 解析失败，可能的原因：\n1. 您的网络被劫持\n2. Bilibili 服务器出现故障\n请尝试以下步骤：\n1. 尝试更换网络\n2. 过一会再试\n\n如果您确信是软件问题，请点击帮助 -- 反馈"];
         return NULL;
     }
