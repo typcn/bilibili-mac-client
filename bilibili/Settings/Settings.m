@@ -52,7 +52,7 @@
     if (liveLine != nil) {
         [self.liveLineBox setStringValue:liveLine];
     } else {
-        [self.liveLineBox setStringValue: @"原始地址"];
+        [self.liveLineBox setStringValue: @"主线"];
     }
     
 

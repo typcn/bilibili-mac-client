@@ -1339,10 +1339,10 @@ GQ
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <objectValues>
-                                        <string>原始地址</string>
-                                        <string>http://live-play-1.acgvideo.com/live/</string>
-                                        <string>http://live-play-2.acgvideo.com/live/</string>
-                                        <string>http://live-play-3.acgvideo.com/live/</string>
+                                        <string>主线</string>
+                                        <string>支线1</string>
+                                        <string>支线2</string>
+                                        <string>支线3</string>
                                     </objectValues>
                                 </comboBoxCell>
                                 <connections>
