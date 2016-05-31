@@ -22,6 +22,8 @@ Mac 必备的在线视频播放器
 
 # Download
 
+[TYPCN 下载中心](https://typcn.download/info/574d8ead8136f301fe008e61)
+
 [GitHub](https://github.com/typcn/bilibili-mac-client/releases)
 
 [百度盘](http://pan.baidu.com/s/1pLSrVVP)
