@@ -22,7 +22,8 @@ function applyUI(){
     }catch(e){
         
     }
-    if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("topic") > 1 || window.location.href.indexOf("live") > 1 || window.location.href.indexOf("html") > 1){
+    var isBangumiPage = (window.location.href.indexOf('anime/v') > 1);
+    if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("topic") > 1 || window.location.href.indexOf("live") > 1 || window.location.href.indexOf("html") > 1 || isBangumiPage){
         console.log("getting cid");
         try{
             var fv=$("param[name='flashvars']").val();
@@ -65,15 +66,26 @@ function applyUI(){
                 $('embed').parent().html(window.injectHTML);
             }else{
                 window.sendToView({action:'preloadComment',data:TYPCN_PLAYER_CID});
-                window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + window.location.href + '|' + document.title;
+                if(isBangumiPage){
+                    window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|http://www.bilibili.com/video/av' + aid + '/|' + document.title;
+                }else{
+                    window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + window.location.href + '|' + document.title;
+                }
+
                 console.log("inject player page");
                 $('#bofqi').html(window.injectHTML);
                 $('.player-box').html(window.injectHTML);
                 var ci = document.querySelector(".cover_image");
+                var imgUrl;
                 if(ci && ci.src){
+                    imgUrl = ci.src;
+                }else if(window.wb_img){
+                    imgUrl = window.wb_img;
+                }
+                if(imgUrl){
                     var ph = document.querySelector(".TYPCN_PLAYER_INJECT_PAGE .player-placeholder");
                     if(ph){
-                        ph.style.backgroundImage = "url(http://localhost:23330/blur/" + ci.src + ")"
+                        ph.style.backgroundImage = "url(http://localhost:23330/blur/" + imgUrl + ")"
                         ph.style.backgroundAttachment = "initial";
                     }
                 }
