@@ -166,12 +166,12 @@ if(!window.isFirstPlay){
             clearInterval(window.i);
             return;
         }
-        if(!window.isInjected){
-            window.isInjected = true;
-            $.getScript("http://cdn.eqoe.cn/files/bilibili/widget-min.js?ver=" + window.bilimacVersion);
-        }
         if((typeof $) == 'function'){
             applyUI();
+            if(!window.isInjected){
+                window.isInjected = true;
+                $.getScript("http://cdn.eqoe.cn/files/bilibili/widget-min.js?ver=" + window.bilimacVersion);
+            }
         }
     }
     var mimierr = document.querySelector('.error-content-inner');
