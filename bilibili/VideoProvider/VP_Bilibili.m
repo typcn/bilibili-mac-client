@@ -358,7 +358,7 @@ genAddress: FLVFailRetry = NO;
             
             if(error || !videoResult){
                 NSLog(@"[VP_Bilibili] JSON Parse Error: %@",error);
-                [NSException raise:@VP_BILI_JSON_ERROR format:@"%@", error.localizedDescription];
+                [NSException raise:@VP_BILI_JSON_ERROR format:@"%@\n这通常是由于网络问题，运营商劫持，或者B站挂了", error.localizedDescription];
                 return NULL;
             }
             
@@ -367,11 +367,11 @@ genAddress: FLVFailRetry = NO;
             return videoResult;
             
         }else{
-            [NSException raise:@VP_BILI_DYN_PARSER_ERROR format:@"视频解析出现错误，且云端动态解析模块也无法解析，可能该版本已失效，请升级到最新版，或稍后重新启动软件再试。"];
+            [NSException raise:@VP_BILI_DYN_PARSER_ERROR format:@"视频解析出现错误，且云端动态解析模块也无法解析\n可能该版本已失效，请升级到最新版\n或稍后重新启动软件再试。"];
         }
     }else{
         NSLog(@"[VP_Bilibili] Can't load dynamic parser");
-        [NSException raise:@VP_BILI_DYN_PARSER_ERROR format:@"视频解析出现错误，且云端动态解析模块未安装，请升级到最新版，或重新启动软件再试。"];
+        [NSException raise:@VP_BILI_DYN_PARSER_ERROR format:@"视频解析出现错误，且云端动态解析模块未安装\n请升级到最新版，或重新启动软件再试。"];
     }
     
     return NULL;

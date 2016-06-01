@@ -34,7 +34,7 @@
     
     VP_Plugin *plugin = [[PluginManager sharedInstance] Get:@"youget-resolveAddr"];
     if(!plugin){
-        [NSException raise:@VP_YG_NOT_INSTALLED format:@"您暂未安装 You-Get 模块，安装后即可解析全球大多数的视频网站，请点击新建标签按钮进入插件中心，在 You-Get 模块下方点击安装。"];
+        [NSException raise:@VP_YG_NOT_INSTALLED format:@"您暂未安装 You-Get 模块，安装后即可解析全球大多数的视频网站\n请点击新建标签按钮进入插件中心，在 You-Get 模块下方点击安装"];
         return NULL;
     }
     
