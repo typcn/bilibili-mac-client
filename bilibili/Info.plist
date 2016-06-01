@@ -122,7 +122,11 @@
 				<string>webm</string>
 				<string>wmv</string>
 				<string>mk3d</string>
+				<string>letv</string>
+				<string>hlv</string>
 			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>MovieFileIcon</string>
 			<key>CFBundleTypeName</key>
 			<string>Movie file</string>
 			<key>CFBundleTypeRole</key>
@@ -137,6 +141,8 @@
 			<array>
 				<string>XML</string>
 			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>SubFileIcon</string>
 			<key>CFBundleTypeName</key>
 			<string>Video Barrage</string>
 			<key>CFBundleTypeRole</key>
@@ -147,6 +153,8 @@
 			<array>
 				<string>ass</string>
 			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>SubFileIcon</string>
 			<key>CFBundleTypeName</key>
 			<string>ASS Subtitle</string>
 			<key>CFBundleTypeRole</key>
@@ -225,7 +233,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2980</string>
+	<string>2982</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>

@@ -17,6 +17,8 @@
 		FD0829C91B67844500D2B126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0829C71B67844500D2B126 /* Main.storyboard */; };
 		FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */; };
 		FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC651BAEF269008FD9BF /* PluginManager.m */; };
+		FD0D236E1CFF9C1800448E31 /* MovieFileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FD0D236D1CFF9C1800448E31 /* MovieFileIcon.png */; };
+		FD0D23701CFFA31900448E31 /* SubFileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FD0D236F1CFFA31900448E31 /* SubFileIcon.png */; };
 		FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A91B259318003A958F /* CommentBlockSettings.m */; };
 		FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AB1B259318003A958F /* KeywordBlockSettings.m */; };
 		FD1954B01B259318003A958F /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AD1B259318003A958F /* Settings.m */; };
@@ -401,6 +403,8 @@
 		FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = HTTPServer.mm; path = RemoteCall/HTTPServer.mm; sourceTree = "<group>"; };
 		FD0CCC641BAEF269008FD9BF /* PluginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PluginManager.h; path = RemoteCall/PluginManager.h; sourceTree = "<group>"; };
 		FD0CCC651BAEF269008FD9BF /* PluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PluginManager.m; path = RemoteCall/PluginManager.m; sourceTree = "<group>"; };
+		FD0D236D1CFF9C1800448E31 /* MovieFileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MovieFileIcon.png; path = bilibili/img/MovieFileIcon.png; sourceTree = "<group>"; };
+		FD0D236F1CFFA31900448E31 /* SubFileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SubFileIcon.png; path = bilibili/img/SubFileIcon.png; sourceTree = "<group>"; };
 		FD1954A81B259318003A958F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentBlockSettings.h; path = Settings/CommentBlockSettings.h; sourceTree = "<group>"; };
 		FD1954A91B259318003A958F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentBlockSettings.m; path = Settings/CommentBlockSettings.m; sourceTree = "<group>"; };
 		FD1954AA1B259318003A958F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeywordBlockSettings.h; path = Settings/KeywordBlockSettings.h; sourceTree = "<group>"; };
@@ -1079,6 +1083,8 @@
 		FD4D37691ACEF3F20022ABF3 /* img */ = {
 			isa = PBXGroup;
 			children = (
+				FD0D236F1CFFA31900448E31 /* SubFileIcon.png */,
+				FD0D236D1CFF9C1800448E31 /* MovieFileIcon.png */,
 				FDC5C4FC1C21A0E800B29890 /* search.png */,
 				FDC5C4FA1C219D1300B29890 /* webpage.png */,
 				FD4EDBB21BE42C66009309EC /* mpv.icns */,
@@ -1537,6 +1543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD3CED8F1BC64B5000BE9A8B /* DynamicView.xib in Resources */,
+				FD0D236E1CFF9C1800448E31 /* MovieFileIcon.png in Resources */,
 				FD3553C81B9C82A5000EE41E /* Toolbar.xib in Resources */,
 				FD3553C91B9C82A5000EE41E /* PlayerControl.xib in Resources */,
 				FD3553B51B9C4356000EE41E /* titlebar-corner-left.png in Resources */,
@@ -1566,6 +1573,7 @@
 				E09BF99F1B84CCC6005E08CE /* Localizable.strings in Resources */,
 				FDAF8BA71ACA502000C0C55D /* dsa_pub.pem in Resources */,
 				FD3553AA1B9C4356000EE41E /* exitfillscreen_ub.pdf in Resources */,
+				FD0D23701CFFA31900448E31 /* SubFileIcon.png in Resources */,
 				FD3553B21B9C4356000EE41E /* b_play.pdf in Resources */,
 				FD8F72811BC74F6F0076B015 /* EULA.rtf in Resources */,
 				FDCF6E3B1C1068DF00A8A860 /* error.html in Resources */,
