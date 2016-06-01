@@ -3,6 +3,8 @@ function attachAutoSwitch(){
         _attachBGM()
     }else if($('.v-plist .curPage').length > 0){
         _attachPRG();
+    }else if($('.v1-bangumi-list-part-child.cur').length > 0){
+        _attachBGMNew();
     }
     
 }
@@ -26,5 +28,11 @@ function _attachPRG(){
     }
 }
 
+function _attachBGMNew(){
+    var nextUrl = $('.v1-bangumi-list-part-child.cur').next().children('a').attr('href');
+    if(nextUrl && nextUrl.length > 1){
+        window.sendToView({'action':'goURL','data':nextUrl + '?autoplay=1'});
+    }
+}
 
 attachAutoSwitch()
