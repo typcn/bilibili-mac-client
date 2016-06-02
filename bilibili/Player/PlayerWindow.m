@@ -280,7 +280,7 @@
     }else if(!isActive){
         // Window is not focus ( Don't hide cursor )
         [self.player.playerControlView hide:NO];
-    }else if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved) >= 1) {
+    }else if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateCombinedSessionState, kCGEventMouseMoved) >= 0.5) {
         [NSCursor setHiddenUntilMouseMoves:YES];
         [self.player.playerControlView hide:NO];
     }
