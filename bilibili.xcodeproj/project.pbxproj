@@ -19,6 +19,7 @@
 		FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC651BAEF269008FD9BF /* PluginManager.m */; };
 		FD0D236E1CFF9C1800448E31 /* MovieFileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FD0D236D1CFF9C1800448E31 /* MovieFileIcon.png */; };
 		FD0D23701CFFA31900448E31 /* SubFileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = FD0D236F1CFFA31900448E31 /* SubFileIcon.png */; };
+		FD0D23731CFFA5A700448E31 /* PlayPosition.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0D23721CFFA5A700448E31 /* PlayPosition.m */; };
 		FD1954AE1B259318003A958F /* CommentBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954A91B259318003A958F /* CommentBlockSettings.m */; };
 		FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AB1B259318003A958F /* KeywordBlockSettings.m */; };
 		FD1954B01B259318003A958F /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AD1B259318003A958F /* Settings.m */; };
@@ -405,6 +406,8 @@
 		FD0CCC651BAEF269008FD9BF /* PluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PluginManager.m; path = RemoteCall/PluginManager.m; sourceTree = "<group>"; };
 		FD0D236D1CFF9C1800448E31 /* MovieFileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MovieFileIcon.png; path = bilibili/img/MovieFileIcon.png; sourceTree = "<group>"; };
 		FD0D236F1CFFA31900448E31 /* SubFileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SubFileIcon.png; path = bilibili/img/SubFileIcon.png; sourceTree = "<group>"; };
+		FD0D23711CFFA5A700448E31 /* PlayPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayPosition.h; path = DataStore/PlayPosition.h; sourceTree = "<group>"; };
+		FD0D23721CFFA5A700448E31 /* PlayPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayPosition.m; path = DataStore/PlayPosition.m; sourceTree = "<group>"; };
 		FD1954A81B259318003A958F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentBlockSettings.h; path = Settings/CommentBlockSettings.h; sourceTree = "<group>"; };
 		FD1954A91B259318003A958F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentBlockSettings.m; path = Settings/CommentBlockSettings.m; sourceTree = "<group>"; };
 		FD1954AA1B259318003A958F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeywordBlockSettings.h; path = Settings/KeywordBlockSettings.h; sourceTree = "<group>"; };
@@ -1285,6 +1288,8 @@
 				FDA01C461C56908F00298CEF /* HotURL.m */,
 				FDA01C4C1C56915A00298CEF /* PJTernarySearchTree.h */,
 				FDA01C4D1C56915A00298CEF /* PJTernarySearchTree.m */,
+				FD0D23711CFFA5A700448E31 /* PlayPosition.h */,
+				FD0D23721CFFA5A700448E31 /* PlayPosition.m */,
 			);
 			name = DataStore;
 			sourceTree = "<group>";
@@ -1663,6 +1668,7 @@
 				FDA52C7D1C8BAFF900E5092F /* VP_Local.m in Sources */,
 				FDFE452B1C0073150006856E /* BarrageWalkImageSprite.m in Sources */,
 				FDFAD67E1C007B4E00BA06C7 /* NSView+UIView.m in Sources */,
+				FD0D23731CFFA5A700448E31 /* PlayPosition.m in Sources */,
 				FD0103301C8B4CF900505344 /* ControlsWithVibracy.m in Sources */,
 				FD1954C51B259368003A958F /* Socket.cpp in Sources */,
 				FDFAD67B1C0078CD00BA06C7 /* NSLabel.m in Sources */,

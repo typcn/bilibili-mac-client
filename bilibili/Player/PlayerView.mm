@@ -17,6 +17,7 @@
 #import "PlayerControlView.h"
 #import "PlayerEventProxy.h"
 #import "LiveChat.h"
+#import "PlayPosition.h"
 
 #import "../CommentConvert/danmaku2ass.hpp"
 
@@ -307,6 +308,14 @@ getInfo:
         int substatus = mpv_set_option_string(self.player.mpv, "sub-file", [subfile UTF8String]);
         if(substatus < 0){
             windowTitle = [windowTitle stringByAppendingString:NSLocalizedString(@" - 字幕载入失败", nil)];
+        }
+    }
+    
+    NSString *cid = [self.player getAttr:@"cid"];
+    if(cid && [cid length]){
+        int64_t start_pos = [[PlayPosition sharedManager] getKey:cid];
+        if(start_pos > 1){
+            [self setMPVOption:"start" :[[NSString stringWithFormat:@"%lld",start_pos] UTF8String]];
         }
     }
     

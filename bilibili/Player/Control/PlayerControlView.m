@@ -10,6 +10,7 @@
 #import "mpv.h"
 #import "mpv_nullsafe.h"
 #import "PlayerWindow.h"
+#import "PlayPosition.h"
 
 @implementation PlayerControlView {
     NSTimer *timeUpdateTimer;
@@ -34,6 +35,8 @@
     BOOL isHided;
      
     BOOL isFirstBuffed;
+     
+    BOOL needSaveTime;
 }
 
 @synthesize currentPaused;
@@ -109,6 +112,10 @@
     if(isAfterVideoRender || !self.player.mpv || !self.player.windowController){
         return;
     }
+     NSString *cid = [self.player getAttr:@"cid"];
+     if(cid && [cid length]){
+          needSaveTime = YES;
+     }
     isHided = YES;
     isAfterVideoRender = YES;
     mpv_get_property_async(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG);
@@ -182,7 +189,9 @@
     if(isHided){
         return;
     }
-    
+    if(needSaveTime){
+        [self savePlayPosition];
+    }
     [[self.window animator] setAlphaValue:0.0];
     [self.window setLevel:NSNormalWindowLevel];
     [self.window orderWindow:NSWindowAbove relativeTo:playerWindow.windowNumber];
@@ -389,7 +398,18 @@
     return [NSString stringWithFormat:@"%02d:%02d:%02d",hours, minutes, seconds];
 }
 
-
+- (void)savePlayPosition{
+    NSString *cid = [self.player getAttr:@"cid"];
+    if(cid && [cid length]){
+        if(v_duration - v_playback_time < 120){
+            NSLog(@"[PlayerControl] Seems video is ending, remove position record");
+            [[PlayPosition sharedManager] removeKey:cid];
+        }else{
+            [[PlayPosition sharedManager] addKey:cid time:v_playback_time];
+            NSLog(@"[PlayerControl] Saving position");
+        }
+    }
+}
 
 - (void)dealloc{
     if(timeUpdateTimer){
