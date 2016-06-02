@@ -127,6 +127,27 @@
     if([url containsString:@"about:blank"]){
         return NO;
     }
+    // Some magical Chinese ISP may insert iframe and play AD BGM
+    NSString *ref = [request valueForHTTPHeaderField:@"Referer"];
+    if(ref && [ref length]){
+        // They usually not on standard port
+        if([request.URL.scheme isEqualToString:@"http"] && request.URL.port.intValue > 81){
+            NSLog(@"[WebTabView] Blocked a possible hijack request , ref %@ , sch %@ , port %@", ref, request.URL.scheme, request.URL.port);
+            return NO;
+        }
+    }
+    // Some ISP may hijack page and redirect it
+    if(request.URL.query && [request.URL.query containsString:@"bilibili.com"]){
+        NSLog(@"[WebTabView] Site appears in URL params, searching for it");
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(http.*?bilibili.com\\/.*(\\/|html))&?" options:NSRegularExpressionCaseInsensitive error:nil];
+        NSTextCheckingResult *match = [regex firstMatchInString:request.URL.query options:0 range:NSMakeRange(0, [request.URL.query length])];
+        NSRange range = [match rangeAtIndex:1];
+        if(range.length > 0){
+            NSString *targetURL = [request.URL.query substringWithRange:range];
+            NSLog(@"[WebTabView] Found possible hijack , Just redirecting to %@",targetURL);
+            [webView setURL:[NSString stringWithFormat:@"%@?t=%ld",targetURL,time(0)]];
+        }
+    }
     BrowserHistory *bhm = [BrowserHistory sharedManager];
     if(bhm && historyTabId){
         [bhm setStatus:0 forID:historyTabId];
