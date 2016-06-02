@@ -234,7 +234,7 @@
         
         if((new.origin.x == 0 && new.origin.y == 0)
            || (old.origin.x == 0 && old.origin.y == 0)){
-            pcw.origin.y = new.origin.y + 40;
+            pcw.origin.y = new.origin.y + 100;
             isAtCenter = YES;
         }
         

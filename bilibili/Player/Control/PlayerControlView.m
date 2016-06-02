@@ -137,8 +137,8 @@
     
     // OSX Screen rect 0 start from left-bottom
     
-    // Control bottom relative to screen  = Player window bottom + 40
-    CGFloat y = 40 + playerWindow.frame.origin.y;
+    // Control bottom relative to screen  = Player window bottom + 100
+    CGFloat y = 100 + playerWindow.frame.origin.y;
     
     // Control left = (Player width / 2) - ( Control width / 2 )
     CGFloat x = (playerWindow.frame.size.width - self.window.frame.size.width) / 2;
