@@ -130,7 +130,11 @@
 
     int rnd = arc4random_uniform(9999);
     
-    NSString *req_path = [NSString stringWithFormat:@"platform=android&cid=%@&quality=1&otype=json&appkey=%@&type=mp4&rnd=%d",
+//    NSString *req_path = [NSString stringWithFormat:@"platform=android&cid=%@&quality=1&otype=json&appkey=%@&type=mp4&rnd=%d",
+//                          params[@"cid"], // Video ID
+//                          APIKey,rnd];
+    
+    NSString *req_path = [NSString stringWithFormat:@"platform=android&cid=%@&quality=1&otype=xml&appkey=%@&type=mp4&rnd=%d",
                           params[@"cid"], // Video ID
                           APIKey,rnd];
     
@@ -153,6 +157,7 @@
 //          "download":true
 //      }
 
+
 - (VideoAddress *) getVideoAddress: (NSDictionary *)params{
     if(!params[@"cid"]){
         [NSException raise:@VP_PARAM_ERROR format:@"CID Cannot be empty"];
@@ -162,11 +167,13 @@
 getUrl: NSLog(@"[VP_Bilibili] Getting video url");
 
     NSString *pbUrl;
+    Boolean isLive = NO;
     
     if(!params[@"live"]){
         pbUrl = [self getPlaybackRequestURL:params];
     }else{
         pbUrl = [self getLiveRequestURL:params];
+        isLive = YES;
     }
     
     NSURL* URL = [NSURL URLWithString:pbUrl];
@@ -211,9 +218,12 @@ parseJSON: NSLog(@"[VP_Bilibili] Parsing result");
             videoResult = [self dynamicPluginParser:params];
             goto parseJSON;
         }else{
-            FLVFailRetry = YES;
-            NSLog(@"[VP_Bilibili] Retring resolve with FLV format");
-            goto getUrl;
+            if (!isLive){
+                FLVFailRetry = YES;
+                NSLog(@"[VP_Bilibili] Retring resolve with FLV format");
+                goto getUrl;
+            }
+            
         }
     }
     
@@ -221,40 +231,64 @@ genAddress: FLVFailRetry = NO;
     
     VideoAddress *video = [[VideoAddress alloc] init];
     [video setUserAgent:self.userAgent];
-    
-    BOOL URLisString = [[[dUrls valueForKey:@"url"] className] isEqualToString:@"__NSCFString"];
-    
-    if(URLisString){ // URL is String ( Some old videos , Single fragment )
-        
-        NSString *url = [dUrls valueForKey:@"url"];
-        [video addDefaultPlayURL:url];
-        [video setFirstFragmentURL:url];
-        
-    }else if([dUrls count] == 1){ // URL is Array ( Most MP4 videos, Single fragment )
-        
-        NSString *url = [[dUrls objectAtIndex:0] valueForKey:@"url"];
-        [video addDefaultPlayURL:url];
-        [video setFirstFragmentURL:url];
-        
-        NSArray *bUrls = [[dUrls objectAtIndex:0] valueForKey:@"backup_url"];
-        if([bUrls count] > 0){
-            for (NSString *burl in bUrls) {
-                [video addBackupURL:@[burl]];
-            }
+
+    if (isLive){
+        NSString* liveLine = (NSString *)[ud objectForKey:@"liveLine"];
+        NSLog(@"[liveLine]: %@", liveLine);
+        NSString *url;
+        if ([liveLine isEqualToString:@"主线"]) {
+            url = [dUrls objectAtIndex:0];
+        } else if ([liveLine isEqualToString:@"支线1"]) {
+            url = [dUrls objectAtIndex:1];
+        } else if ([liveLine isEqualToString:@"支线2"]) {
+            url = [dUrls objectAtIndex:2];
+        } else{
+            url = [dUrls objectAtIndex:3];
         }
         
-    }else{ // URL is Array ( Most FLV videos, Multi fragment )
+        [video addDefaultPlayURL:url];
+        [video setFirstFragmentURL:url];
+
+    } else {
         
-        for (NSDictionary *match in dUrls) {
-            NSString *url = [match valueForKey:@"url"];
-            if(![[video firstFragmentURL] length]){ // Set first fragment url
-                [video setFirstFragmentURL:url];
-            }
+        BOOL URLisString = [[[dUrls valueForKey:@"url"] className] isEqualToString:@"__NSCFString"];
+        
+        if(URLisString){ // URL is String ( Some old videos , Single fragment )
+            
+            NSString *url = [dUrls valueForKey:@"url"];
+            [video addDefaultPlayURL:url];
+            
+            [video setFirstFragmentURL:url];
+            
+        }else if([dUrls count] == 1){ // URL is Array ( Most MP4 videos, Single fragment )
+            
+            NSString *url = [[dUrls objectAtIndex:0] valueForKey:@"url"];
             
             [video addDefaultPlayURL:url];
+            
+            [video setFirstFragmentURL:url];
+            
+            NSArray *bUrls = [[dUrls objectAtIndex:0] valueForKey:@"backup_url"];
+            if([bUrls count] > 0){
+                for (NSString *burl in bUrls) {
+                    [video addBackupURL:@[burl]];
+                }
+            }
+            
+        }else{ // URL is Array ( Most FLV videos, Multi fragment )
+            
+            for (NSDictionary *match in dUrls) {
+                NSString *url = [match valueForKey:@"url"];
+                if(![[video firstFragmentURL] length]){ // Set first fragment url
+                    [video setFirstFragmentURL:url];
+                }
+                [video addDefaultPlayURL:url];
+            }
+            
         }
-        
     }
+    
+    
     
     // Sina old video ( only flv )
     if([[video firstFragmentURL] isEqualToString:@"http://v.iask.com/v_play_ipad.php?vid=false"]){
@@ -306,11 +340,30 @@ genAddress: FLVFailRetry = NO;
         [NSException raise:@VP_BILI_API_ERROR format:@"视频解析出现错误，返回内容为空，可能的原因：\n1. 您的网络连接出现故障\n2. Bilibili API 服务器出现故障\n请尝试以下步骤：\n1. 更换网络连接或重启电脑\n2. 可能触发了频率限制，请更换 IP 地址\n\n如果您确信是软件问题，请点击帮助 -- 反馈"];
         return NULL;
     }
-    
     NSMutableDictionary *videoResult = [NSJSONSerialization JSONObjectWithData:respData options:0 error:&error];
     
     if(error){
         NSLog(@"[VP_Bilibili] JSON Parse Error: %@",error);
+        
+        NSString *rt = [[NSString alloc] initWithData:respData
+                                                 encoding:NSASCIIStringEncoding];
+        NSLog(@"[xml response]:%@", rt);
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<!\\[CDATA\\[(http.*)\\]\\]><\\/.*url>" options:NSRegularExpressionCaseInsensitive error:nil];
+        
+        NSArray<NSTextCheckingResult *> *match = [regex matchesInString:rt options:0 range:NSMakeRange(0, [rt length])];
+        if (match){
+            NSMutableArray *result = [[NSMutableArray alloc]initWithCapacity:[match count]];
+            for (int i = 0; i < [match count]; i++) {
+                NSRange rg = [[match objectAtIndex:i] rangeAtIndex:1];
+                if (rg.length > 0){
+                    NSString* rt_new = [rt substringWithRange:rg];
+                    NSLog(@"%@", rt_new);
+                    [result insertObject:rt_new atIndex:i];
+                }
+            }
+            NSDictionary *dict1 = [NSDictionary dictionaryWithObject:result forKey:@"durl"];
+            return dict1;
+        }
         [NSException raise:@VP_BILI_JSON_ERROR format:@"视频解析出现错误，JSON 解析失败，可能的原因：\n1. 您的网络被劫持\n2. Bilibili 服务器出现故障\n请尝试以下步骤：\n1. 尝试更换网络\n2. 过一会再试\n\n如果您确信是软件问题，请点击帮助 -- 反馈"];
         return NULL;
     }
