@@ -20,7 +20,7 @@ void screenView(const char *view){
                           "&t=screenview&an=BilibiliMac"
                           "&av=%@&aid=com.typcn.bilimac"
                           "&cd=%s",uuid,ver,view];
-    NSURL* URL = [NSURL URLWithString:@"http://www.google-analytics.com/collect"];
+    NSURL* URL = [NSURL URLWithString:@"https://www.google-analytics.com/collect"];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
     request.HTTPMethod = @"POST";
     [request addValue:UA forHTTPHeaderField:@"User-Agent"];
@@ -43,7 +43,7 @@ void action(const char *type,const char *action,const char *label){
                           "&t=event&an=BilibiliMac"
                           "&av=%@&aid=com.typcn.bilimac"
                           "&ec=%s&ea=%s&el=%s&sr=%@",uuid,ver,type,action,label,res];
-    NSURL* URL = [NSURL URLWithString:@"http://www.google-analytics.com/collect"];
+    NSURL* URL = [NSURL URLWithString:@"https://www.google-analytics.com/collect"];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
     request.HTTPMethod = @"POST";
     request.HTTPBody = [POSTDATA dataUsingEncoding:NSUTF8StringEncoding];
