@@ -11,23 +11,38 @@
 #import "SP_Local.h"
 
 @implementation SubtitleHelper{
-    NSArray *providerList;
+    NSMutableArray *providerList;
+}
+
++ (instancetype)sharedInstance {
+    static id sharedInstance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
 }
 
 - (id)init{
     self = [super init];
     if(self){
-        providerList = @[
+        providerList = [@[
                          [[SP_Bilibili alloc] init],
                          [[SP_Local alloc] init]
-                         ];
+                         ] mutableCopy];
     }
     return self;
+}
+
+- (void)addProvider: (SubtitleProvider *)prov{
+    NSLog(@"[SubHelper] Adding subtitle provider %@", prov);
+    [providerList addObject:prov];
 }
 
 - (BOOL) canHandle: (NSDictionary *)dict{
     for (SubtitleProvider *prov in providerList) {
         if([prov canHandle:dict]){
+            NSLog(@"[SubHelper] Using subtitle provider %@",prov);
             return YES;
         }
     }

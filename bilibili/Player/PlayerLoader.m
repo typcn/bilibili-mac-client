@@ -48,7 +48,7 @@
     self = [super initWithWindowNibName:windowNibName];
     if(self){
         vl_queue = dispatch_queue_create("video_address_load_queue", NULL);
-        subHelper = [[SubtitleHelper alloc] init];
+        subHelper = [SubtitleHelper sharedInstance];
     }
     return self;
 }

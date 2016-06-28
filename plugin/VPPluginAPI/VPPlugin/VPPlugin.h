@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SubtitleProvider.h"
 
 //! Project version number for VPPlugin.
 FOUNDATION_EXPORT double VPPluginVersionNumber;
@@ -18,7 +19,7 @@ FOUNDATION_EXPORT const unsigned char VPPluginVersionString[];
 
 
 #ifndef vp_plg_api
-#define vp_plg_api 0.1
+#define vp_plg_api 0.2
 #endif
 
 @interface VP_Plugin : NSObject
@@ -37,5 +38,10 @@ FOUNDATION_EXPORT const unsigned char VPPluginVersionString[];
 
 // trigger when user click "settings"
 - (void)openSettings;
+
+// return an allocated & inited object of type or NULL
+//    TYPE        RETURN CLASS        HEADER FILE
+// SubProvider  SubtitleProvider   SubtitleProvider.h
+- (id)getClassOfType:(NSString *)type;
 
 @end

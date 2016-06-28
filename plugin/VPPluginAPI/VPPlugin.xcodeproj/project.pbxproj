@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		FD0CCC881BAF1FCC008FD9BF /* VPPlugin.h in Headers */ = {isa = PBXBuildFile; fileRef = FD0CCC871BAF1FCC008FD9BF /* VPPlugin.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FD0CCC901BAF2070008FD9BF /* VPPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC8F1BAF2070008FD9BF /* VPPlugin.m */; settings = {ASSET_TAGS = (); }; };
+		FD0CCC901BAF2070008FD9BF /* VPPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC8F1BAF2070008FD9BF /* VPPlugin.m */; };
+		FD7FA3E41D22FDED00CDEFE6 /* SubtitleProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = FD7FA3E21D22FDED00CDEFE6 /* SubtitleProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD7FA3E51D22FDED00CDEFE6 /* SubtitleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7FA3E31D22FDED00CDEFE6 /* SubtitleProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +18,8 @@
 		FD0CCC871BAF1FCC008FD9BF /* VPPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPPlugin.h; sourceTree = "<group>"; };
 		FD0CCC891BAF1FCC008FD9BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD0CCC8F1BAF2070008FD9BF /* VPPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPPlugin.m; sourceTree = "<group>"; };
+		FD7FA3E21D22FDED00CDEFE6 /* SubtitleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtitleProvider.h; sourceTree = "<group>"; };
+		FD7FA3E31D22FDED00CDEFE6 /* SubtitleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtitleProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,8 @@
 		FD0CCC861BAF1FCC008FD9BF /* VPPlugin */ = {
 			isa = PBXGroup;
 			children = (
+				FD7FA3E21D22FDED00CDEFE6 /* SubtitleProvider.h */,
+				FD7FA3E31D22FDED00CDEFE6 /* SubtitleProvider.m */,
 				FD0CCC871BAF1FCC008FD9BF /* VPPlugin.h */,
 				FD0CCC8F1BAF2070008FD9BF /* VPPlugin.m */,
 				FD0CCC891BAF1FCC008FD9BF /* Info.plist */,
@@ -63,6 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD0CCC881BAF1FCC008FD9BF /* VPPlugin.h in Headers */,
+				FD7FA3E41D22FDED00CDEFE6 /* SubtitleProvider.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD7FA3E51D22FDED00CDEFE6 /* SubtitleProvider.m in Sources */,
 				FD0CCC901BAF2070008FD9BF /* VPPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

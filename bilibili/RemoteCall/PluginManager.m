@@ -10,6 +10,7 @@
 #import "NSBundle+OBCodeSigningInfo.h"
 #import <sys/sysctl.h>
 #import "MBProgressHUD.h"
+#include "SubtitleHelper.h"
 
 @implementation PluginManager{
     NSString *sprtdir;
@@ -142,6 +143,12 @@
         NSLog(@"Loading native plugin %@",name);
         VP_Plugin *plgInstance = [[prinClass alloc] init];
         [plgInstance load:ver];
+        id subprov = [plgInstance getClassOfType:@"SubProvider"];
+        if(subprov){
+            [[SubtitleHelper sharedInstance] addProvider:subprov];
+        }else{
+            NSLog(@"Subtitle provider not found for plugin %@", name);
+        }
         return plgInstance;
     }
 }

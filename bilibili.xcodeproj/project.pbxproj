@@ -181,7 +181,6 @@
 		FDA01CB31C576C7E00298CEF /* libmediainfo.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FDA31A5E1C6B959100B25240 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA31A5D1C6B959100B25240 /* Tools.m */; };
 		FDA52C6B1C8B7ADE00E5092F /* SubtitleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C6A1C8B7ADE00E5092F /* SubtitleHelper.m */; };
-		FDA52C6E1C8B7DC900E5092F /* SubtitleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C6D1C8B7DC900E5092F /* SubtitleProvider.m */; };
 		FDA52C711C8B7DFA00E5092F /* SP_Bilibili.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C701C8B7DFA00E5092F /* SP_Bilibili.m */; };
 		FDA52C741C8B9C7600E5092F /* SP_Local.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C731C8B9C7600E5092F /* SP_Local.m */; };
 		FDA52C7A1C8BA98B00E5092F /* NSString+LcsDiff.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA52C791C8BA98B00E5092F /* NSString+LcsDiff.m */; };
@@ -596,8 +595,6 @@
 		FDA31A5D1C6B959100B25240 /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tools.m; path = Settings/Tools.m; sourceTree = "<group>"; };
 		FDA52C691C8B7ADE00E5092F /* SubtitleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubtitleHelper.h; path = SubHelper/SubtitleHelper.h; sourceTree = "<group>"; };
 		FDA52C6A1C8B7ADE00E5092F /* SubtitleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubtitleHelper.m; path = SubHelper/SubtitleHelper.m; sourceTree = "<group>"; };
-		FDA52C6C1C8B7DC900E5092F /* SubtitleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SubtitleProvider.h; path = SubHelper/SubtitleProvider.h; sourceTree = "<group>"; };
-		FDA52C6D1C8B7DC900E5092F /* SubtitleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SubtitleProvider.m; path = SubHelper/SubtitleProvider.m; sourceTree = "<group>"; };
 		FDA52C6F1C8B7DFA00E5092F /* SP_Bilibili.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SP_Bilibili.h; path = SubHelper/SP_Bilibili.h; sourceTree = "<group>"; };
 		FDA52C701C8B7DFA00E5092F /* SP_Bilibili.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SP_Bilibili.m; path = SubHelper/SP_Bilibili.m; sourceTree = "<group>"; };
 		FDA52C721C8B9C7600E5092F /* SP_Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SP_Local.h; path = SubHelper/SP_Local.h; sourceTree = "<group>"; };
@@ -1230,8 +1227,6 @@
 		FDA52C651C8B7AC000E5092F /* SubHelper */ = {
 			isa = PBXGroup;
 			children = (
-				FDA52C6C1C8B7DC900E5092F /* SubtitleProvider.h */,
-				FDA52C6D1C8B7DC900E5092F /* SubtitleProvider.m */,
 				FDA52C691C8B7ADE00E5092F /* SubtitleHelper.h */,
 				FDA52C6A1C8B7ADE00E5092F /* SubtitleHelper.m */,
 				FDA52C6F1C8B7DFA00E5092F /* SP_Bilibili.h */,
@@ -1669,7 +1664,6 @@
 				FDFAD6841C007DCF00BA06C7 /* NHDisplayLink.m in Sources */,
 				FD7684F01C89A09B006B44F2 /* PlayerLoader.m in Sources */,
 				FD1954D01B259462003A958F /* AppDelegate.m in Sources */,
-				FDA52C6E1C8B7DC900E5092F /* SubtitleProvider.m in Sources */,
 				FDB5ADF51C8F8AE6001FA4A6 /* CrashReport.m in Sources */,
 				FDFAD6811C007BA700BA06C7 /* NSValue+iOS.m in Sources */,
 				FDFE45281C0073150006856E /* BarrageFloatTextSprite.m in Sources */,

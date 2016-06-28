@@ -24,4 +24,7 @@
 - (void)openSettings{
     return;
 }
+- (id)getClassOfType:(NSString *)type{
+    return NULL;
+}
 @end

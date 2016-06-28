@@ -6,7 +6,7 @@
 //  Copyright © 2016 TYPCN. All rights reserved.
 //
 
-#import "SubtitleProvider.h"
+#import <VPPlugin/SubtitleProvider.h>
 
 @interface SP_Local : SubtitleProvider
 

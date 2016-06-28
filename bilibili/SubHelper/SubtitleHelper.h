@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SubtitleProvider.h"
+#import <VPPlugin/SubtitleProvider.h>
 
 @interface SubtitleHelper : SubtitleProvider
 
++ (instancetype)sharedInstance;
+- (void)addProvider: (SubtitleProvider *)prov;
 
 @end
