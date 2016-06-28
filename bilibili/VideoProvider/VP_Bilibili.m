@@ -8,7 +8,6 @@
 
 #import "VP_Bilibili.h"
 #import "PluginManager.h"
-#import "APIKey.h"
 
 #import <CommonCrypto/CommonDigest.h>
 
@@ -123,13 +122,11 @@
 
     int rnd = arc4random_uniform(9999);
     
-    NSString *req_path = [NSString stringWithFormat:@"platform=android&cid=%@&quality=1&otype=json&appkey=%@&type=mp4&rnd=%d",
+    NSString *req_path = [NSString stringWithFormat:@"platform=android&cid=%@&quality=1&otype=json&appkey=422fd9d7289a1dd9&type=mp4&rnd=%d",
                           params[@"cid"], // Video ID
-                          APIKey,rnd];
+                          rnd];
     
-    NSString *req_sign = [self getSign:req_path];
-    
-    NSString *req_url = [NSString stringWithFormat:@"http://live.bilibili.com/api/playurl?%@&sign=%@",req_path,req_sign];
+    NSString *req_url = [NSString stringWithFormat:@"http://live.bilibili.com/api/playurl?%@",req_path];
     
     NSLog(@"[VP_Bilibili] API Request URL: %@", req_url);
     
@@ -308,10 +305,12 @@ genAddress: FLVFailRetry = NO;
         return NULL;
     }
     
+    if(videoResult[@"src"]){
+        [videoResult setValue:@{
+                                @"url":[videoResult valueForKey:@"src"]
+                                } forKey:@"durl"];
+    }
    
-    [videoResult setValue:@{
-                           @"url":[videoResult valueForKey:@"src"]
-                           } forKey:@"durl"];
     return videoResult;
 }
 
@@ -416,19 +415,19 @@ genAddress: FLVFailRetry = NO;
     
     return xff;
 }
-
-- (NSString *)getSign:(NSString *)path{
-    NSString *input = [NSString stringWithFormat:@"%@%@",path,APISecret];
-    const char *cStr = [input UTF8String];
-    unsigned char digest[16];
-    CC_MD5( cStr, (CC_LONG)strlen(cStr), digest ); // This is the md5 call
-    
-    NSMutableString *md5 = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
-    
-    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
-        [md5 appendFormat:@"%02x", digest[i]];
-    return md5;
-}
+//
+//- (NSString *)getSign:(NSString *)path{
+//    NSString *input = [NSString stringWithFormat:@"%@%@",path,APISecret];
+//    const char *cStr = [input UTF8String];
+//    unsigned char digest[16];
+//    CC_MD5( cStr, (CC_LONG)strlen(cStr), digest ); // This is the md5 call
+//    
+//    NSMutableString *md5 = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+//    
+//    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+//        [md5 appendFormat:@"%02x", digest[i]];
+//    return md5;
+//}
 
 - (NSString *)getRandomHWID {
     NSString *letters = @"abcdef0123456789";

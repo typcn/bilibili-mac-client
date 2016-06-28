@@ -6,29 +6,23 @@
 
 # Download Sources
 
+	brew install git-lfs
 	git clone https://github.com/typcn/bilibili-mac-client.git
 	git submodule update --init
 
-# Add key file
+# Change code signing
 
-Create a file at bilibili/APIKey.h
-
-	NSString *APIKey = @"Your Bilibili API KEY";
-	NSString *APISecret = @"Your Bilibili API Secret";
-( If you don't have it, please [contact me](mailto:typcncom@gmail.com) )
-
-Then open bilibili.xcodeproj to edit or build.
-
-( If you don't have code signing , please set signing to "None" )
+If you don't have code signing , please set signing to "None"
 
 # Change bundle id
 
 Project Navigator -> Bilibili -> Change com.typcn to others
 
-# Add Crashlytics Key
-Project Navigator -> Bilibili -> Build Phases -> Run Script( Fabric )
+# About the video quality
 
-Get project key from fabric , or delete this build script
+Debug build is using html5 playurl api, you can only play low quality videos.
+
+If you need play high quality video , just build with Release mode, dynamic video parser will load into memory.
 
 # About libraries
 

@@ -498,7 +498,6 @@
 		FD4EDBB41BE42D9B009309EC /* MPVSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPVSettings.h; path = Settings/MPVSettings.h; sourceTree = "<group>"; };
 		FD4EDBB51BE42D9B009309EC /* MPVSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPVSettings.m; path = Settings/MPVSettings.m; sourceTree = "<group>"; };
 		FD5101901ACC1A7600C49430 /* mpv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mpv.h; path = bilibili/headers/mpv.h; sourceTree = "<group>"; };
-		FD51A8601ACA8464007D8972 /* APIKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
 		FD5305E91B2692CE00659B32 /* SmartBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartBlockSettings.h; path = Settings/SmartBlockSettings.h; sourceTree = "<group>"; };
 		FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmartBlockSettings.m; path = Settings/SmartBlockSettings.m; sourceTree = "<group>"; };
 		FD59846A1BB3F57C001E0B17 /* NSBundle+OBCodeSigningInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+OBCodeSigningInfo.h"; path = "RemoteCall/NSBundle+OBCodeSigningInfo.h"; sourceTree = "<group>"; };
@@ -783,7 +782,6 @@
 				FD4855071AE67AD8008F49AA /* gencache.sh */,
 				FD3553C31B9C5DF4000EE41E /* startaria.sh */,
 				FD076C531AC8CBBB00C893FA /* Supporting Files */,
-				FD51A8601ACA8464007D8972 /* APIKey.h */,
 				FD36B0D01B995A2C00FB32CC /* Common.hpp */,
 			);
 			name = Source;
