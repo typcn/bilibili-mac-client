@@ -23,6 +23,26 @@ If set to "FILE" , will load Plugin.bundle/Contents/Resources/FILE.js
 
 Main class of plugin , must inherit "VP_Plugin"
 
+## Classes
+
+```
+- (id)getClassOfType:(NSString *)type{
+	if([type isEqualToString:@"SubProvider"]){
+		return [[YourSubtitleProvider alloc] init];
+	}else{
+		return NULL;		
+   }
+}
+```
+
+## SubtitleProvider 
+
+See [SP_Local](https://github.com/typcn/bilibili-mac-client/blob/master/bilibili/SubHelper/SP_Local.m) or [SP_Bilibili](https://github.com/typcn/bilibili-mac-client/blob/master/bilibili/SubHelper/SP_Bilibili.m)
+
+commentFile is XML in bilibili format
+
+subtitleFile is in ASS subtitle format
+
 ## Code
 
 See ExamplePlugin in workspace
