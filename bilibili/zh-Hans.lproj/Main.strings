@@ -308,8 +308,8 @@
 /* Class = "NSMenuItem"; title = "删除"; ObjectID = "rj8-A1-Hze"; */
 "rj8-A1-Hze.title" = "删除";
 
-/* Class = "NSButtonCell"; title = "禁用实时弹幕显示（推迟发布）"; ObjectID = "sbQ-fv-ZWa"; */
-"sbQ-fv-ZWa.title" = "禁用实时弹幕显示（推迟发布）";
+/* Class = "NSButtonCell"; title = "开始播放自动全屏"; ObjectID = "sbQ-fv-ZWa"; */
+"sbQ-fv-ZWa.title" = "开始播放自动全屏";
 
 /* Class = "NSWindow"; title = "Donate"; ObjectID = "ttS-aB-exK"; */
 "ttS-aB-exK.title" = "Donate";

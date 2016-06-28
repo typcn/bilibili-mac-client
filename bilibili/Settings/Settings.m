@@ -21,7 +21,7 @@
     settingsController = [NSUserDefaults standardUserDefaults];
     
     [self.autoPlay setState:[settingsController integerForKey:@"autoPlay"]];
-    [self.RealTimeComment setState:[settingsController integerForKey:@"RealTimeComment"]];
+    [self.autoFullscreen setState:[settingsController integerForKey:@"autoFullscreen"]];
     [self.disablebottomComment setState:[settingsController integerForKey:@"disableBottomComment"]];
     [self.playMP4 setState:[settingsController integerForKey:@"playMP4"]];
     [self.DownloadMP4 setState:[settingsController integerForKey:@"DLMP4"]];
@@ -82,8 +82,8 @@
     [settingsController setInteger:[self.autoPlay state] forKey:@"autoPlay"];
     [settingsController synchronize];
 }
-- (IBAction)disableRealTimeComment:(id)sender {
-    [settingsController setInteger:[self.RealTimeComment state] forKey:@"RealTimeComment"];
+- (IBAction)switchAutoFullscreen:(id)sender {
+    [settingsController setInteger:[self.autoFullscreen state] forKey:@"autoFullscreen"];
     [settingsController synchronize];
 }
 - (IBAction)qualityChanged:(id)sender {

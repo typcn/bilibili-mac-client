@@ -12,7 +12,7 @@
 
 @property (weak) IBOutlet NSButton *autoPlay;
 @property (weak) IBOutlet NSComboBox *qualityBox;
-@property (weak) IBOutlet NSButton *RealTimeComment;
+@property (weak) IBOutlet NSButton *autoFullscreen;
 @property (weak) IBOutlet NSSlider *transparency;
 @property (weak) IBOutlet NSComboBox *FakeIP;
 @property (weak) IBOutlet NSTextField *fontsize;

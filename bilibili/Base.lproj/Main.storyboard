@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <scenes>
         <!--Window Controller-->
@@ -1053,15 +1053,15 @@ GQ
                                     <action selector="autoPlay:" target="z8a-gg-iMj" id="uJc-pW-LXG"/>
                                 </connections>
                             </button>
-                            <button id="aRT-dE-rbd">
+                            <button id="aRT-dE-rbd" userLabel="Auto Fullscreen">
                                 <rect key="frame" x="25" y="404" width="412" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="禁用实时弹幕显示（推迟发布）" bezelStyle="regularSquare" imagePosition="left" alignment="left" enabled="NO" inset="2" id="sbQ-fv-ZWa">
+                                <buttonCell key="cell" type="check" title="开始播放自动全屏" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="sbQ-fv-ZWa">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="disableRealTimeComment:" target="z8a-gg-iMj" id="lXb-rn-bF9"/>
+                                    <action selector="switchAutoFullscreen:" target="z8a-gg-iMj" id="gZY-r3-Hvs"/>
                                 </connections>
                             </button>
                             <button id="AeH-XX-C7T">
@@ -1327,7 +1327,7 @@ GQ
                     <connections>
                         <outlet property="DownloadMP4" destination="wjO-cr-vaH" id="dkM-tB-Lsv"/>
                         <outlet property="FakeIP" destination="JLT-R0-aaz" id="Iyy-RE-YYY"/>
-                        <outlet property="RealTimeComment" destination="aRT-dE-rbd" id="l2e-xo-Z43"/>
+                        <outlet property="autoFullscreen" destination="aRT-dE-rbd" id="FNS-6o-4NW"/>
                         <outlet property="autoPlay" destination="hj3-k4-IwT" id="Da1-w3-5FH"/>
                         <outlet property="changeGestureDirection" destination="djV-1w-XE2" id="puZ-6y-SvB"/>
                         <outlet property="commentMoveSpeed" destination="7WK-cw-6iP" id="6O1-he-JPW"/>

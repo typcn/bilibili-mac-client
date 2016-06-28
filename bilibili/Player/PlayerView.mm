@@ -572,7 +572,15 @@ getInfo:
         }
             
         case MPV_EVENT_VIDEO_RECONFIG: {
-            
+            if([self getSettings:@"autoFullscreen"]){
+                NSApplicationPresentationOptions opts = [[NSApplication sharedApplication ] presentationOptions];
+                if (opts & NSApplicationPresentationFullScreen) {
+                    NSLog(@"[AutoFS] Already in fullscreen");
+                }else{
+                    NSLog(@"[AutoFS] Start fullscreen");
+                    [window toggleFullScreen:window];
+                }
+            }
             break;
         }
         
