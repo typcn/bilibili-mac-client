@@ -78,8 +78,8 @@
 }
 
 - (NSString *)getPlaybackRequestURL: (NSDictionary *)params{
-    int quality = [self getQuality];
-    NSString *type = [self getFormat:[params[@"download"] boolValue]];
+//    int quality = [self getQuality];
+//    NSString *type = [self getFormat:[params[@"download"] boolValue]];
     
     NSLog(@"[VP_Bilibili] AV: %@, CID: %@, PID: %@", params[@"aid"], params[@"cid"], params[@"pid"]);
     
@@ -96,15 +96,8 @@
 //    
 //    NSString *req_url = [NSString stringWithFormat:@"http://interface.bilibili.com/playurl?%@&sign=%@",req_path,req_sign];
 
-    int rnd = arc4random_uniform(9999);
     
-    NSString *req_path = [NSString stringWithFormat:@"platform=android&cid=%@&quality=%d&otype=json&appkey=%@&type=%@&rnd=%d",
-                          params[@"cid"], // Video ID
-                          quality,APIKey,type,rnd];
-    
-    NSString *req_sign = [self getSign:req_path];
-    
-    NSString *req_url = [NSString stringWithFormat:@"http://interface.bilibili.com/playurl?%@&sign=%@",req_path,req_sign];
+    NSString *req_url = [NSString stringWithFormat:@"http://www.bilibili.com/m/html5?aid=%@&page=%@",params[@"aid"],params[@"pid"]];
     
     NSLog(@"[VP_Bilibili] API Request URL: %@", req_url);
     
@@ -291,10 +284,10 @@ genAddress: FLVFailRetry = NO;
 //    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
 //    [request setValue:@"trailers" forHTTPHeaderField:@"TE"];
 
-    [request setValue:@"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36" forHTTPHeaderField:@"User-Agent"];
-    [request setValue:@"http://interface.bilibili.com/" forHTTPHeaderField:@"Referer"];
+    [request setValue:@"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.76 Mobile Safari/537.36" forHTTPHeaderField:@"User-Agent"];
     [request setValue:@"gzip, deflate, sdch" forHTTPHeaderField:@"Accept-Encoding"];
-    [request setValue:@"text/html, application/xhtml+xml, application/xml; q=0.9, image/webp, */*; q=0.8" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"application/json, text/javascript, */*; q=0.01" forHTTPHeaderField:@"Accept"];
+    [request setValue:@"XMLHttpRequest" forHTTPHeaderField:@"X-Requested-With"];
 
     NSURLResponse * response = nil;
     NSError * error = nil;
@@ -307,7 +300,7 @@ genAddress: FLVFailRetry = NO;
         return NULL;
     }
     
-    NSMutableDictionary *videoResult = [NSJSONSerialization JSONObjectWithData:respData options:0 error:&error];
+    NSMutableDictionary *videoResult = [NSJSONSerialization JSONObjectWithData:respData options:NSJSONReadingMutableContainers error:&error];
     
     if(error){
         NSLog(@"[VP_Bilibili] JSON Parse Error: %@",error);
@@ -315,6 +308,10 @@ genAddress: FLVFailRetry = NO;
         return NULL;
     }
     
+   
+    [videoResult setValue:@{
+                           @"url":[videoResult valueForKey:@"src"]
+                           } forKey:@"durl"];
     return videoResult;
 }
 
