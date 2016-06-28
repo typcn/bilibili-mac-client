@@ -1,5 +1,7 @@
 # Bilibili Mac Client
 
+![build status](https://git.typcn.com/ci-scripts/bilimac/badges/master/build.svg)
+
 Mac 必备的在线视频播放器
 
 # Features
