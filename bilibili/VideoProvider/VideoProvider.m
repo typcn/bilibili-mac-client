@@ -8,6 +8,11 @@
 
 #import "VideoProvider.h"
 
+
+#pragma clang diagnostic push
+// This is only a placeholder class, disable warning for it
+#pragma clang diagnostic ignored "-Wincomplete-implementation"
+
 @implementation VideoProvider
 
 - (NSDictionary *) generateParamsFromURL: (NSString *)url{
@@ -19,3 +24,5 @@
 }
 
 @end
+
+#pragma clang diagnostic pop
