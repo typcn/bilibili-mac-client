@@ -7,11 +7,11 @@
 //
 
 #import "LiveChat.h"
-#import "BilibiliSocketClient.h"
+#import "BilibiliSocketProvider.h"
 #import "BarrageHeader.h"
 
 @interface LiveChat (){
-    LiveSocket *socket;
+    id socket;
     NSArray *blockwords;
     BOOL renderDisabled;
 
@@ -26,9 +26,10 @@
 - (void)setPlayerAndInit:(Player *)player{
     self.player = player;
     renderDisabled = false;
-    socket = [[LiveSocket alloc] init];
+    socket = [[BilibiliSocketProvider alloc] init];
     [socket setDelegate:self];
-    [socket ConnectToTheFuckingFlashSocketServer:[[self.player getAttr:@"cid"] intValue]];
+    [socket loadWithPlayer:player];
+    
     NSString *block = [[NSUserDefaults standardUserDefaults] objectForKey:@"blockKeywords"];
     NSArray *blocks = [block componentsSeparatedByString:@"|"];
     if([block length] > 0 && [blocks count] > 0){
@@ -41,19 +42,8 @@
     [super viewDidLoad];
 }
 
-- (void)onNewMessage:(NSDictionary *)data{
-    if([[data objectForKey:@"cmd"] isEqualToString:@"DANMU_MSG"]){
-        NSArray *info = [data objectForKey:@"info"];
-        NSString *cmContent = [info objectAtIndex:1];
-        NSString *userName = [[info objectAtIndex:2] objectAtIndex:1];
-        int ftype = [[[info objectAtIndex:0] objectAtIndex:1] intValue];
-        int fsize = [[[info objectAtIndex:0] objectAtIndex:2] intValue];
-        unsigned int intColor = [[[info objectAtIndex:0] objectAtIndex:3] intValue];
-        NSColor  *Color  = [NSColor colorWithRed:((float)((intColor & 0xFF0000) >> 16))/255.0 \
-                                           green:((float)((intColor & 0x00FF00) >>  8))/255.0 \
-                                            blue:((float)((intColor & 0x0000FF) >>  0))/255.0 \
-                                           alpha:1.0];
-        
+- (void)onNewMessage:(NSString *)cmContent :(NSString *)userName :(int)ftype :(int)fsize :(NSColor *)color{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
         bool isBlocked = false;
         if([blockwords count] > 0){
             for (NSString* string in blockwords) {
@@ -65,14 +55,16 @@
         if(isBlocked){
             [self AppendToTextView:[NSString stringWithFormat:@"%@ : 1条被屏蔽的弹幕\n",userName]];
         }else{
-            [self addSpritToVideo:ftype content:cmContent size:fsize color:Color];
+            [self addSpritToVideo:ftype content:cmContent size:fsize color:color];
             [self AppendToTextView:[NSString stringWithFormat:@"%@ : %@\n",userName,cmContent]];
         }
-    }
+    });
 }
 
 - (void)onNewError:(NSString *)str{
-   // [self AppendToTextView:[NSString stringWithFormat:NSLocalizedString(@"未知指令: %@\n", nil),str]];
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        [self AppendToTextView:[NSString stringWithFormat:NSLocalizedString(@"错误: %@\n", nil),str]];
+    });
 }
 
 - (void)AppendToTextView:(NSString *)text{
@@ -115,7 +107,7 @@
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.player.barrageRenderer stop];
-    [socket Disconnect];
+    [socket disconnect];
     [self.view.window close];
     NSLog(@"[LiveChat] Dealloc");
 }

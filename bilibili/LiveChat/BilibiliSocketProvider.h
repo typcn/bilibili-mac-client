@@ -1,5 +1,5 @@
 //
-//  BilibiliSocketClient.h
+//  BilibiliSocketProvider.h
 //  bilibili
 //
 //  Created by TYPCN on 2015/5/17.
@@ -12,11 +12,11 @@
 #import <Foundation/Foundation.h>
 #import "LiveChat.h"
 
-@interface LiveSocket : NSObject
+@interface BilibiliSocketProvider : NSObject
 
-- (bool)ConnectToTheFuckingFlashSocketServer: (int)roomid;
+- (void)loadWithPlayer: (Player *)player;
 - (void)setDelegate:(id)del;
-- (void)Disconnect;
+- (void)disconnect;
 
 @end
 

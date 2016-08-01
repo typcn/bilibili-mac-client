@@ -22,9 +22,8 @@
 		FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AB1B259318003A958F /* KeywordBlockSettings.m */; };
 		FD1954B01B259318003A958F /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AD1B259318003A958F /* Settings.m */; };
 		FD1954BC1B259342003A958F /* DownloadWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BA1B259342003A958F /* DownloadWrapper.mm */; };
-		FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BE1B259368003A958F /* BilibiliSocketClient.mm */; };
+		FD1954C31B259368003A958F /* BilibiliSocketProvider.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BE1B259368003A958F /* BilibiliSocketProvider.mm */; };
 		FD1954C41B259368003A958F /* LiveChat.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C01B259368003A958F /* LiveChat.m */; };
-		FD1954C51B259368003A958F /* Socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C11B259368003A958F /* Socket.cpp */; };
 		FD1954C71B25942F003A958F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C61B25942F003A958F /* main.m */; };
 		FD1954D01B259462003A958F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954CF1B259462003A958F /* AppDelegate.m */; };
 		FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954D71B2594AC003A958F /* AssClass.cpp */; };
@@ -411,12 +410,10 @@
 		FD1954AD1B259318003A958F /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = Settings/Settings.m; sourceTree = "<group>"; };
 		FD1954B91B259342003A958F /* DownloadWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadWrapper.h; path = Downloader/DownloadWrapper.h; sourceTree = "<group>"; };
 		FD1954BA1B259342003A958F /* DownloadWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DownloadWrapper.mm; path = Downloader/DownloadWrapper.mm; sourceTree = "<group>"; };
-		FD1954BD1B259368003A958F /* BilibiliSocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BilibiliSocketClient.h; path = LiveChat/BilibiliSocketClient.h; sourceTree = "<group>"; };
-		FD1954BE1B259368003A958F /* BilibiliSocketClient.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BilibiliSocketClient.mm; path = LiveChat/BilibiliSocketClient.mm; sourceTree = "<group>"; };
+		FD1954BD1B259368003A958F /* BilibiliSocketProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BilibiliSocketProvider.h; path = LiveChat/BilibiliSocketProvider.h; sourceTree = "<group>"; };
+		FD1954BE1B259368003A958F /* BilibiliSocketProvider.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BilibiliSocketProvider.mm; path = LiveChat/BilibiliSocketProvider.mm; sourceTree = "<group>"; };
 		FD1954BF1B259368003A958F /* LiveChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LiveChat.h; path = LiveChat/LiveChat.h; sourceTree = "<group>"; };
 		FD1954C01B259368003A958F /* LiveChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LiveChat.m; path = LiveChat/LiveChat.m; sourceTree = "<group>"; };
-		FD1954C11B259368003A958F /* Socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Socket.cpp; path = LiveChat/Socket.cpp; sourceTree = "<group>"; };
-		FD1954C21B259368003A958F /* Socket.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Socket.hpp; path = LiveChat/Socket.hpp; sourceTree = "<group>"; };
 		FD1954C61B25942F003A958F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Others/main.m; sourceTree = "<group>"; };
 		FD1954CE1B259462003A958F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Others/AppDelegate.h; sourceTree = "<group>"; };
 		FD1954CF1B259462003A958F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Others/AppDelegate.m; sourceTree = "<group>"; };
@@ -1171,12 +1168,10 @@
 		FD855FAE1B07D86C004A1610 /* RealTimeComments */ = {
 			isa = PBXGroup;
 			children = (
-				FD1954BD1B259368003A958F /* BilibiliSocketClient.h */,
-				FD1954BE1B259368003A958F /* BilibiliSocketClient.mm */,
 				FD1954BF1B259368003A958F /* LiveChat.h */,
 				FD1954C01B259368003A958F /* LiveChat.m */,
-				FD1954C21B259368003A958F /* Socket.hpp */,
-				FD1954C11B259368003A958F /* Socket.cpp */,
+				FD1954BD1B259368003A958F /* BilibiliSocketProvider.h */,
+				FD1954BE1B259368003A958F /* BilibiliSocketProvider.mm */,
 			);
 			name = RealTimeComments;
 			sourceTree = "<group>";
@@ -1655,7 +1650,6 @@
 				FDFAD67E1C007B4E00BA06C7 /* NSView+UIView.m in Sources */,
 				FD0D23731CFFA5A700448E31 /* PlayPosition.m in Sources */,
 				FD0103301C8B4CF900505344 /* ControlsWithVibracy.m in Sources */,
-				FD1954C51B259368003A958F /* Socket.cpp in Sources */,
 				FDFAD67B1C0078CD00BA06C7 /* NSLabel.m in Sources */,
 				FD0CCC661BAEF269008FD9BF /* PluginManager.m in Sources */,
 				FD7685031C8B0D6F006B44F2 /* AirPlayView.mm in Sources */,
@@ -1682,7 +1676,7 @@
 				FD7684AE1C887F73006B44F2 /* PlayerManager.m in Sources */,
 				FD76849B1C887F33006B44F2 /* WebTabView.mm in Sources */,
 				FD3CED921BC64B8900BE9A8B /* Popover.m in Sources */,
-				FD1954C31B259368003A958F /* BilibiliSocketClient.mm in Sources */,
+				FD1954C31B259368003A958F /* BilibiliSocketProvider.mm in Sources */,
 				FD76849C1C887F33006B44F2 /* WebView+SwipeNavigation.m in Sources */,
 				FD76850B1C8B0D7F006B44F2 /* TimeSliderCell.m in Sources */,
 				FDFE45211C0073150006856E /* BarrageDescriptor.m in Sources */,

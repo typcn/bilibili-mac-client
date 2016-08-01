@@ -15,7 +15,7 @@
 @property (weak, nonatomic) Player *player;
 
 - (void)setPlayerAndInit:(Player *)player;
-- (void)onNewMessage:(NSDictionary *)data;
+- (void)onNewMessage:(NSString *)cmContent :(NSString *)userName :(int)ftype :(int)fsize :(NSColor *)color;
 - (void)onNewError:(NSString *)str;
 
 @end
