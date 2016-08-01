@@ -67,6 +67,7 @@ bool PTTH::conn(const char *address)
     }
     
     printf("[PTTH] %s Connected\n",addr_port);
+    free(addr_chr);
     return true;
 }
 

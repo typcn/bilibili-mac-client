@@ -372,7 +372,7 @@ getInfo:
 
 - (NSDictionary *) getVideoInfo:(NSString *)url{
     NSLog(@"[VideoReader] Video Address: %@",url);
-    BOOL trySimpleParser;
+    BOOL trySimpleParser = NO;
     if([url containsString:@".flv"] ||
        [url containsString:@"acgvideo.com"] ||
        [url containsString:@"v.iask.com"] ||
@@ -396,6 +396,7 @@ getInfo:
                            @"width": width,
                            @"height": height,
                            };
+    delete &MI;
     return info;
 }
 

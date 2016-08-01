@@ -29,6 +29,7 @@
 }
 
 -(id)initWithRequest:(NSURLRequest *)req andConfig:(id)cfg{
+    self = [super init];
     webView = [[TWebView alloc] initWithRequest:req andConfig:cfg setDelegate:self];
     [self loadStartupScripts];
     [self setIsWaitingForResponse:YES];

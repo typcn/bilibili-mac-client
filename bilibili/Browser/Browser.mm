@@ -30,8 +30,7 @@ Downloader* DL;
 }
 
 -(CTTabContents*)createTabBasedOn:(CTTabContents*)baseContents withRequest:(NSURLRequest*) req andConfig:(id)cfg{
-    NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
-    re = (NSMutableURLRequest *) req.mutableCopy;
+    NSMutableURLRequest *re = (NSMutableURLRequest *) req.mutableCopy;
     NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
     NSString *xff = [settingsController objectForKey:@"xff"];
     if([xff length] > 4){

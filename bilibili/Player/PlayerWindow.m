@@ -80,7 +80,6 @@
     
     CGPoint newOrigin;
     
-    currentLocation = [NSEvent mouseLocation];
     newOrigin.x = currentLocation.x - initialLocation.x;
     newOrigin.y = currentLocation.y - initialLocation.y;
     

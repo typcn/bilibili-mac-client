@@ -23,6 +23,8 @@
 }
 
 - (TWebView *)initWithRequest:(NSURLRequest *)req andConfig:(id)cfg setDelegate:(id <TWebViewDelegate>)aDelegate{
+    self = [super init];
+
     if (self.delegate != aDelegate) {
         self.delegate = aDelegate;
         settingsController =  [NSUserDefaults standardUserDefaults];
@@ -198,8 +200,7 @@ didReceiveTitle:(NSString *)title
          redirectResponse:(NSURLResponse *)redirectResponse
            fromDataSource:(WebDataSource *)dataSource{
     NSString *URL = [request.URL absoluteString];
-    NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
-    re = (NSMutableURLRequest *) request.mutableCopy;
+    NSMutableURLRequest *re = (NSMutableURLRequest *) request.mutableCopy;
     if([URL containsString:@"googlesyndication"] || [URL containsString:@"analytics.js"]){
         // Google ad is blocked in some (china) area, maybe take 30 seconds to wait for timeout
         [re setURL:[NSURL URLWithString:@"http://static.hdslb.com/images/transparent.gif"]];
