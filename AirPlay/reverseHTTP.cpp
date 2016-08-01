@@ -27,7 +27,7 @@ PTTH::PTTH()
 
 bool PTTH::conn(const char *address)
 {
-    char *addr_chr = (char *)malloc(strlen(address)+1);
+    char addr_chr[strlen(address) + 1];
     strcpy(addr_chr,address);
 
     char *addr_hostname = strtok(addr_chr, ":");
@@ -67,7 +67,6 @@ bool PTTH::conn(const char *address)
     }
     
     printf("[PTTH] %s Connected\n",addr_port);
-    free(addr_chr);
     return true;
 }
 
