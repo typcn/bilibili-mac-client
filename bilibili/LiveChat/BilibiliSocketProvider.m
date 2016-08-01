@@ -173,7 +173,7 @@
 - (void)parseMessage: (const uint8_t *)data size: (uint32_t)len{
     NSData *d = [NSData dataWithBytes:data length:len];
     NSError *err;
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:d options:NSJSONWritingPrettyPrinted error:&err];
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:d options:0 error:&err];
     if(!err){
         if(dic){
             if([[dic objectForKey:@"cmd"] isEqualToString:@"DANMU_MSG"]){
