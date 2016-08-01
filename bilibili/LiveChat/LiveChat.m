@@ -7,8 +7,8 @@
 //
 
 #import "LiveChat.h"
-#import "BilibiliSocketProvider.h"
 #import "BarrageHeader.h"
+#import "SocketProvider.h"
 
 @interface LiveChat (){
     id socket;
@@ -26,7 +26,10 @@
 - (void)setPlayerAndInit:(Player *)player{
     self.player = player;
     renderDisabled = false;
-    socket = [[BilibiliSocketProvider alloc] init];
+    socket = [player getAttr:@"SocketProvider"];
+    if(!socket){
+        return;
+    }
     [socket setDelegate:self];
     [socket loadWithPlayer:player];
     

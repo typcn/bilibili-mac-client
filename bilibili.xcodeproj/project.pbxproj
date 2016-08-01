@@ -13,6 +13,7 @@
 		FD01032A1C8B0EEF00505344 /* BGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0103251C8B0EEF00505344 /* BGThemeManager.m */; };
 		FD01032D1C8B2D4200505344 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD01032C1C8B2D4200505344 /* CoreGraphics.framework */; };
 		FD0103301C8B4CF900505344 /* ControlsWithVibracy.m in Sources */ = {isa = PBXBuildFile; fileRef = FD01032F1C8B4CF900505344 /* ControlsWithVibracy.m */; };
+		FD04D7131D4FB8D10097F40B /* SocketProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FD04D7121D4FB8D10097F40B /* SocketProvider.m */; };
 		FD076C5E1AC8CBBB00C893FA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD076C5D1AC8CBBB00C893FA /* Images.xcassets */; };
 		FD0829C91B67844500D2B126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0829C71B67844500D2B126 /* Main.storyboard */; };
 		FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC621BAEF25B008FD9BF /* HTTPServer.mm */; };
@@ -22,7 +23,7 @@
 		FD1954AF1B259318003A958F /* KeywordBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AB1B259318003A958F /* KeywordBlockSettings.m */; };
 		FD1954B01B259318003A958F /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954AD1B259318003A958F /* Settings.m */; };
 		FD1954BC1B259342003A958F /* DownloadWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BA1B259342003A958F /* DownloadWrapper.mm */; };
-		FD1954C31B259368003A958F /* BilibiliSocketProvider.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BE1B259368003A958F /* BilibiliSocketProvider.mm */; };
+		FD1954C31B259368003A958F /* BilibiliSocketProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954BE1B259368003A958F /* BilibiliSocketProvider.m */; };
 		FD1954C41B259368003A958F /* LiveChat.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C01B259368003A958F /* LiveChat.m */; };
 		FD1954C71B25942F003A958F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954C61B25942F003A958F /* main.m */; };
 		FD1954D01B259462003A958F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954CF1B259462003A958F /* AppDelegate.m */; };
@@ -392,6 +393,8 @@
 		FD01032C1C8B2D4200505344 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		FD01032E1C8B4CF900505344 /* ControlsWithVibracy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlsWithVibracy.h; path = Player/Control/ControlsWithVibracy.h; sourceTree = "<group>"; };
 		FD01032F1C8B4CF900505344 /* ControlsWithVibracy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ControlsWithVibracy.m; path = Player/Control/ControlsWithVibracy.m; sourceTree = "<group>"; };
+		FD04D7111D4FB8D10097F40B /* SocketProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocketProvider.h; path = LiveChat/SocketProvider.h; sourceTree = "<group>"; };
+		FD04D7121D4FB8D10097F40B /* SocketProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocketProvider.m; path = LiveChat/SocketProvider.m; sourceTree = "<group>"; };
 		FD076C501AC8CBBB00C893FA /* Bilibili.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bilibili.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD076C541AC8CBBB00C893FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD076C5D1AC8CBBB00C893FA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -411,7 +414,7 @@
 		FD1954B91B259342003A958F /* DownloadWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DownloadWrapper.h; path = Downloader/DownloadWrapper.h; sourceTree = "<group>"; };
 		FD1954BA1B259342003A958F /* DownloadWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = DownloadWrapper.mm; path = Downloader/DownloadWrapper.mm; sourceTree = "<group>"; };
 		FD1954BD1B259368003A958F /* BilibiliSocketProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BilibiliSocketProvider.h; path = LiveChat/BilibiliSocketProvider.h; sourceTree = "<group>"; };
-		FD1954BE1B259368003A958F /* BilibiliSocketProvider.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = BilibiliSocketProvider.mm; path = LiveChat/BilibiliSocketProvider.mm; sourceTree = "<group>"; };
+		FD1954BE1B259368003A958F /* BilibiliSocketProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BilibiliSocketProvider.m; path = LiveChat/BilibiliSocketProvider.m; sourceTree = "<group>"; };
 		FD1954BF1B259368003A958F /* LiveChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LiveChat.h; path = LiveChat/LiveChat.h; sourceTree = "<group>"; };
 		FD1954C01B259368003A958F /* LiveChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LiveChat.m; path = LiveChat/LiveChat.m; sourceTree = "<group>"; };
 		FD1954C61B25942F003A958F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Others/main.m; sourceTree = "<group>"; };
@@ -1170,8 +1173,10 @@
 			children = (
 				FD1954BF1B259368003A958F /* LiveChat.h */,
 				FD1954C01B259368003A958F /* LiveChat.m */,
+				FD04D7111D4FB8D10097F40B /* SocketProvider.h */,
+				FD04D7121D4FB8D10097F40B /* SocketProvider.m */,
 				FD1954BD1B259368003A958F /* BilibiliSocketProvider.h */,
-				FD1954BE1B259368003A958F /* BilibiliSocketProvider.mm */,
+				FD1954BE1B259368003A958F /* BilibiliSocketProvider.m */,
 			);
 			name = RealTimeComments;
 			sourceTree = "<group>";
@@ -1676,7 +1681,7 @@
 				FD7684AE1C887F73006B44F2 /* PlayerManager.m in Sources */,
 				FD76849B1C887F33006B44F2 /* WebTabView.mm in Sources */,
 				FD3CED921BC64B8900BE9A8B /* Popover.m in Sources */,
-				FD1954C31B259368003A958F /* BilibiliSocketProvider.mm in Sources */,
+				FD1954C31B259368003A958F /* BilibiliSocketProvider.m in Sources */,
 				FD76849C1C887F33006B44F2 /* WebView+SwipeNavigation.m in Sources */,
 				FD76850B1C8B0D7F006B44F2 /* TimeSliderCell.m in Sources */,
 				FDFE45211C0073150006856E /* BarrageDescriptor.m in Sources */,
@@ -1709,6 +1714,7 @@
 				FD7684A91C887F48006B44F2 /* PlayerView.mm in Sources */,
 				FD62CC891B6E6848000AED57 /* MBProgressHUD.m in Sources */,
 				FDFE45201C0073150006856E /* BarrageClock.m in Sources */,
+				FD04D7131D4FB8D10097F40B /* SocketProvider.m in Sources */,
 				FDFE452D1C0073150006856E /* BarrageWalkTextSprite.m in Sources */,
 				FD4B84461BA5879400DD6F2F /* ServiceDiscovery.cpp in Sources */,
 				FDC72C6E1C562EFD004E1F7E /* BrowserHistory.m in Sources */,

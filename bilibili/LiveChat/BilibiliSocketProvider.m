@@ -7,6 +7,8 @@
 //
 
 #import "BilibiliSocketProvider.h"
+#import "Player.h"
+
 #include <sys/socket.h>
 #include <netdb.h>
 #include <sys/time.h>
@@ -25,7 +27,7 @@
     delegate = del;
 }
 
-- (void)loadWithPlayer: (Player *)player{
+- (void)loadWithPlayer: (id)player{
     disconnected = false;
     room = [[player getAttr:@"cid"] intValue];
     mBuf = [[NSMutableData alloc] init];
@@ -75,7 +77,7 @@
 
 - (void)connect {
     sockfd = socket(AF_INET , SOCK_STREAM , 0);
-    sockaddr_in server;
+    struct sockaddr_in server;
     struct hostent *he;
     struct in_addr **addr_list;
     if ((he = gethostbyname([host UTF8String])) == NULL)

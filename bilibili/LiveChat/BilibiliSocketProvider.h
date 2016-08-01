@@ -11,12 +11,10 @@
 
 #import <Foundation/Foundation.h>
 #import "LiveChat.h"
+#import "SocketProvider.h"
 
-@interface BilibiliSocketProvider : NSObject
+@interface BilibiliSocketProvider : SocketProvider
 
-- (void)loadWithPlayer: (Player *)player;
-- (void)setDelegate:(id)del;
-- (void)disconnect;
 
 @end
 

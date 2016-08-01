@@ -8,6 +8,7 @@
 
 #import "VP_Bilibili.h"
 #import "PluginManager.h"
+#import "BilibiliSocketProvider.h"
 
 #import <CommonCrypto/CommonDigest.h>
 
@@ -49,6 +50,7 @@
         params[@"pid"] = @"0";
         params[@"url"] = URL;
         params[@"live"] = @"true";
+        params[@"SocketProvider"] = [[BilibiliSocketProvider alloc] init];
         return params;
     }
     
