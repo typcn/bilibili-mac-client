@@ -45,6 +45,21 @@ function applyUI(){
         }catch(e){
             console.log(e);
         }
+        
+        var haveCorrectFlashVar = (fv.indexOf('cid') > -1) && (fv.indexOf('aid') > -1);
+        if(isBangumiPage && !haveCorrectFlashVar && window.LoadTimes > 4){
+            window.LoadTimes = 999;
+            clearInterval(window.i);
+            // There is no browser UA short than 100 , right ?
+            if(navigator.userAgent.length < 90){
+                // Running in built in webview
+                window.sendToView({'action':'goURL','data':$('.v-av-link').attr('href')});
+            }else{
+                // Running in other browser
+                window.location = $('.v-av-link').attr('href');
+            }
+        }
+        
         console.log("fv:" + fv);
         var re = /cid=(\d+)&/;
         var m = re.exec(fv);
@@ -95,6 +110,7 @@ function applyUI(){
                     },200);
                 }
             }
+            window.LoadTimes = 999;
             clearInterval(window.i);
         }else{
             
