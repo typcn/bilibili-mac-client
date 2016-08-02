@@ -3,10 +3,10 @@
 (Early test , API may change)
 
 
-## Get Start
+## Get Start for new plugin api
 
-1. download the repo ( see [HOW\_TO\_BUILD](https://github.com/typcn/bilibili-mac-client/blob/master/HOW_TO_BUILD.md) )
-2. Open VideoPolymer.xcworkspace and locate to PluginExample.xcodeproj
+1. Checkout this plugin: https://github.com/typcn/vp.tucao
+2. Open project
 3. Edit / Run
 
 ## Info.plist
@@ -43,9 +43,13 @@ commentFile is XML in bilibili format
 
 subtitleFile is in ASS subtitle format
 
-## Code
+## Example Code
 
-See ExamplePlugin in workspace
+https://github.com/typcn/vp.tucao
+
+https://github.com/typcn/vp.letv
+
+https://github.com/typcn/vp.youku
 
 ## Code Signing
 
