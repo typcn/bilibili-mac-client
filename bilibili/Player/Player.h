@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #import "PlayerView.h"
-#import "VideoAddress.h"
 #import "BarrageRenderer.h"
 
 #include "mpv.h"

@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "SubtitleProvider.h"
 #import "VideoProvider.h"
+#import "VideoAddress.h"
 
 //! Project version number for VPPlugin.
 FOUNDATION_EXPORT double VPPluginVersionNumber;

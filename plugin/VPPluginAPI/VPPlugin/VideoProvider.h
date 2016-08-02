@@ -10,6 +10,7 @@
 // Don't use this class directly , Inherit it
 
 #import <Foundation/Foundation.h>
+#import "VideoAddress.h"
 
 #ifndef vp_h
 #define vp_h
@@ -19,7 +20,6 @@
 
 #endif
 
-@class VideoAddress;
 
 @interface VideoProvider : NSObject
 

@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "Player.h"
-#import "VideoAddress.h"
 
 @interface PlayerManager : NSObject
 

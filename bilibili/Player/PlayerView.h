@@ -9,7 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 #import "WebTabView.h"
-#import "VideoAddress.h"
 
 @class Player;
 

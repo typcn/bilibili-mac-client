@@ -7,7 +7,6 @@
 //
 
 #import <VPPlugin/VideoProvider.h>
-#import "VideoAddress.h"
 
 #ifndef vp_youget_h
 #define vp_youget_h
