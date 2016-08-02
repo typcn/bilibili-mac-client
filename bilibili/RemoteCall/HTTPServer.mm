@@ -232,9 +232,7 @@
              if(!vp){
                  return nil;
              }
-             [[PlayerLoader sharedInstance] loadVideoFrom:vp withData:@{
-                                                                        @"userstr":data
-                                                                        }];
+             [[PlayerLoader sharedInstance] loadVideoFrom:vp withPageUrl:data];
              return nil;
          }
          bool canHandle = [plugin canHandleEvent:action];
