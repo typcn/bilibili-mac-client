@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "SubtitleProvider.h"
+#import "VideoProvider.h"
 
 //! Project version number for VPPlugin.
 FOUNDATION_EXPORT double VPPluginVersionNumber;
@@ -42,6 +43,7 @@ FOUNDATION_EXPORT const unsigned char VPPluginVersionString[];
 // return an allocated & inited object of type or NULL
 //    TYPE        RETURN CLASS        HEADER FILE
 // SubProvider  SubtitleProvider   SubtitleProvider.h
+// VideoProvider  VideoProvider     VideoProvider.h
 - (id)getClassOfType:(NSString *)type;
 
 @end

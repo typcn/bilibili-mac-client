@@ -6,7 +6,9 @@
 //  Copyright © 2016 TYPCN. All rights reserved.
 //
 
-#import "VideoProvider.h"
+#import <VPPlugin/VideoProvider.h>
+#import "VideoAddress.h"
+
 #ifndef vp_bilibili_h
 #define vp_bilibili_h
 

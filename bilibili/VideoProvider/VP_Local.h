@@ -6,7 +6,7 @@
 //  Copyright © 2016 TYPCN. All rights reserved.
 //
 
-#import "VideoProvider.h"
+#import <VPPlugin/VideoProvider.h>
 
 @interface VP_Local : VideoProvider
 

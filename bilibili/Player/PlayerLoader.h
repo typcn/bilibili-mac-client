@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "VideoProvider.h"
+#import <VPPlugin/VideoProvider.h>
 
 @class Player;
 

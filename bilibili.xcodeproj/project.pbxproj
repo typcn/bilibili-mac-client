@@ -110,7 +110,6 @@
 		FD7684A91C887F48006B44F2 /* PlayerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD7684A21C887F48006B44F2 /* PlayerView.mm */; };
 		FD7684AE1C887F73006B44F2 /* PlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684AD1C887F73006B44F2 /* PlayerManager.m */; };
 		FD7684B11C88809D006B44F2 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684B01C88809D006B44F2 /* Player.m */; };
-		FD7684B41C888491006B44F2 /* VideoProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684B31C888491006B44F2 /* VideoProvider.m */; };
 		FD7684B71C8885F8006B44F2 /* VideoAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684B61C8885F8006B44F2 /* VideoAddress.m */; };
 		FD7684BA1C8888C7006B44F2 /* VP_Bilibili.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684B91C8888C7006B44F2 /* VP_Bilibili.m */; };
 		FD7684BE1C88D331006B44F2 /* PlayerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7684BD1C88D331006B44F2 /* PlayerWindow.m */; };
@@ -534,8 +533,6 @@
 		FD7684AD1C887F73006B44F2 /* PlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerManager.m; path = Player/PlayerManager.m; sourceTree = "<group>"; };
 		FD7684AF1C88809D006B44F2 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Player/Player.h; sourceTree = "<group>"; };
 		FD7684B01C88809D006B44F2 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = Player/Player.m; sourceTree = "<group>"; };
-		FD7684B21C888491006B44F2 /* VideoProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoProvider.h; path = VideoProvider/VideoProvider.h; sourceTree = "<group>"; };
-		FD7684B31C888491006B44F2 /* VideoProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoProvider.m; path = VideoProvider/VideoProvider.m; sourceTree = "<group>"; };
 		FD7684B51C8885F8006B44F2 /* VideoAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VideoAddress.h; path = VideoProvider/VideoAddress.h; sourceTree = "<group>"; };
 		FD7684B61C8885F8006B44F2 /* VideoAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VideoAddress.m; path = VideoProvider/VideoAddress.m; sourceTree = "<group>"; };
 		FD7684B81C8888C7006B44F2 /* VP_Bilibili.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VP_Bilibili.h; path = VideoProvider/VP_Bilibili.h; sourceTree = "<group>"; };
@@ -1284,8 +1281,6 @@
 		FDDE11791BA9E25100230184 /* VideoProvider */ = {
 			isa = PBXGroup;
 			children = (
-				FD7684B21C888491006B44F2 /* VideoProvider.h */,
-				FD7684B31C888491006B44F2 /* VideoProvider.m */,
 				FD7684B51C8885F8006B44F2 /* VideoAddress.h */,
 				FD7684B61C8885F8006B44F2 /* VideoAddress.m */,
 				FD7684B81C8888C7006B44F2 /* VP_Bilibili.h */,
@@ -1728,7 +1723,6 @@
 				FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */,
 				FD7684BE1C88D331006B44F2 /* PlayerWindow.m in Sources */,
 				FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */,
-				FD7684B41C888491006B44F2 /* VideoProvider.m in Sources */,
 				FD83027D1BAB303C00FF68DB /* DonateView.mm in Sources */,
 				FD59846C1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m in Sources */,
 			);

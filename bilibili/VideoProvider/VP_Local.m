@@ -7,6 +7,7 @@
 //
 
 #import "VP_Local.h"
+#import "VideoAddress.h"
 
 @implementation VP_Local
 

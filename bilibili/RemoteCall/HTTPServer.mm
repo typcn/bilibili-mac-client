@@ -227,6 +227,15 @@
          if([data isEqualToString:@"showSettings"]){
              [plugin openSettings];
              return nil;
+         }else if([data isEqualToString:@"callVideoProvider"]){
+             VideoProvider *vp = [plugin getClassOfType:@"VideoProvider"];
+             if(!vp){
+                 return nil;
+             }
+             [[PlayerLoader sharedInstance] loadVideoFrom:vp withData:@{
+                                                                        @"userstr":data
+                                                                        }];
+             return nil;
          }
          bool canHandle = [plugin canHandleEvent:action];
          
