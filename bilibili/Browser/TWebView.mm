@@ -33,6 +33,9 @@
     if (NSClassFromString(@"WKWebView")) {
         if(!cfg){
             wvConfig = [[WKWebViewConfiguration  alloc] init];
+#ifdef DEBUG
+            [wvConfig.preferences setValue:@YES forKey:@"developerExtrasEnabled"];
+#endif
         }else{
             wvConfig = [cfg copy];
         }
