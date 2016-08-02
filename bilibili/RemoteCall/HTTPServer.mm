@@ -227,7 +227,7 @@
          if([data isEqualToString:@"showSettings"]){
              [plugin openSettings];
              return nil;
-         }else if([data isEqualToString:@"callVideoProvider"]){
+         }else if([action containsString:@"callVideoProvider"]){
              VideoProvider *vp = [plugin getClassOfType:@"VideoProvider"];
              if(!vp){
                  return nil;

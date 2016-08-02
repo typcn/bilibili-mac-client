@@ -42,8 +42,9 @@ FOUNDATION_EXPORT const unsigned char VPPluginVersionString[];
 
 // return an allocated & inited object of type or NULL
 //    TYPE        RETURN CLASS        HEADER FILE
-// SubProvider  SubtitleProvider   SubtitleProvider.h
-// VideoProvider  VideoProvider     VideoProvider.h
+// SubProvider  SubtitleProvider   SubtitleProvider.h    Will register to main program on load
+// VideoProvider  VideoProvider     VideoProvider.h      Will used on call pluginName-callVideoProvider
+
 - (id)getClassOfType:(NSString *)type;
 
 @end
