@@ -46,7 +46,7 @@
     NSRect frame = NSZeroRect;
     frame.size = [(NSScrollView*)(view_) contentSize];
     [webView setFrameSize:frame];
-    HudView = [[webView GetWebView] subviews][0];
+    HudView = [[NSView alloc] init];
     dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
         [[NSUserDefaults standardUserDefaults] setDouble:frame.size.width forKey:@"webwidth"];
         [[NSUserDefaults standardUserDefaults] setDouble:frame.size.height forKey:@"webheight"];
@@ -265,6 +265,11 @@
 - (void)onTitleChange:(NSString *)str {
     [self setTitle:str];
     [webView runJavascript:[self decideScriptInject]];
+    @try {
+        HudView = [[webView GetWebView] subviews][0];
+    } @catch (NSException *exception) {
+        // Ah... Just ignore it
+    }
 }
 
 - (void)showError

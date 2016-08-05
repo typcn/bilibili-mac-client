@@ -34,13 +34,6 @@ Browser *browser;
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
     signal(SIGPIPE, SIG_IGN);
-    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
-    if(version.minorVersion == 12){
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:@"由于 10.12 break 了 abi 兼容，且系统框架也存在一些问题 ，预编译版本无法在该系统运行。\n请使用 Xcode Beta 版手动编译软件以便使用。\n源代码地址： https://github.com/typcn/bilibili-mac-client\n预编译版本（自动更新通道）将在 10.12 正式版发布后进行兼容。"];
-        [alert runModal];
-        return;
-    }
     [[NSAppleEventManager sharedAppleEventManager]
      setEventHandler:self
      andSelector:@selector(handleURLEvent:withReplyEvent:)
