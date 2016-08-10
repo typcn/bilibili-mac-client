@@ -7,83 +7,83 @@
 */
 
 //  LiveChat
-"未知指令: %@\n" = "Unknow command: %@\n";
+"未知指令: %@\n" = "Unknown command: %@\n";
 
 //  DownloadManager
 "请稍后" = "Wait a sec";
 "下载已完成" = "Download complete";
-"正在等待恢复" = "Waiting for resume";
-"恢复下载失败" = "Resume download failed";
+"正在等待恢复" = "Waiting for resuming";
+"恢复下载失败" = "Failed to resume download";
 
 //  downloadWrapper
 "下载失败" = "Download failed";
-"下载失败，无法解析视频" = "Download failed, can't resolve.";
+"下载失败，无法解析视频" = "Download failed, can't resolve video URL.";
 "剩余分段:%d 下载速度:%dKB/s 大小:%d/%dMB" = "Part remaining:%d Down Speed:%dKB/s Size:%d/%dMB";
 "视频与弹幕下载完成" = "Video and Comment download complete";
-"下载已完成" = "Download Complete";
+"下载已完成" = "Download complete";
 
 //  WebView
-"未命名" = "untitled";
-"注意：下载功能仅供测试，可能有各种 BUG，支持分段视频，默认保存在 Movies 文件夹。\n点击 文件->下载管理 来查看任务" = "Attention: Download feature is still developing. May have BUGs, Save in Movies folder. \nClick File->Open Download Manager to view tasks";
-"正在启动下载引擎" = "Starting Download Engine";
+"未命名" = "Untitled";
+"注意：下载功能仅供测试，可能有各种 BUG，支持分段视频，默认保存在 Movies 文件夹。\n点击 文件->下载管理 来查看任务" = "Attention: The Download feature is still under development and contains various bugs. Videos are saved to ~\\Movies by default. \nSelect File->Open Download Manager to view tasks.";
+"正在启动下载引擎" = "Starting download engine";
 "正在等待" = "Waiting";
-"成功开始下载" = "Begin Downloading";
-"文件读取失败，您可能无法正常使用本软件，请向开发者反馈。" = "File load failed, you may not use this software, please feedback.";
-"复制页面地址" = "Copy URL";
-"强制显示播放界面" = "Force Display Play View";
-"呼叫程序猿" = "Contact Developer";
-"当前页面地址已经复制到剪贴板" = "Current URL copied!";
+"成功开始下载" = "Download started";
+"文件读取失败，您可能无法正常使用本软件，请向开发者反馈。" = "Failed to read file. Application is not running properly, please feedback to developer.";
+"复制页面地址" = "Copy page URL";
+"强制显示播放界面" = "Force showing view of playback";
+"呼叫程序猿" = "Contact developer";
+"当前页面地址已经复制到剪贴板" = "Current page URL copied";
 
 //  PlayerView
-"正在解析视频地址" = "Resolving Video URL";
-"视频解析出现错误，返回内容为空，可能的原因：\n1. 您的网络连接出现故障\n2. Bilibili API 服务器出现故障\n请尝试以下步骤：\n1. 更换网络连接或重启电脑\n2. 可能触发了频率限制，请更换 IP 地址\n\n如果您确信是软件问题，请点击帮助 -- 反馈" = "Resolving error, return null, Maybe reasons:\n1. Your network problem\n2. Bilibili API Server Error\nTry following:：\n1. Change Network or Restart computer.\n2. Maybe out of limit, change IP address\n\nIf you make sure this is not your fault, Please help -- Feedback";
-"视频解析出现错误，JSON 解析失败，可能的原因：\n1. 您的网络被劫持\n2. Bilibili 服务器出现故障\n请尝试以下步骤：\n1. 尝试更换网络\n2. 过一会再试\n\n如果您确信是软件问题，请点击帮助 -- 反馈" = "Resolving error, JSON parser fail, Maybe reasons：\n1. Your network is hijacked\n2. Bilibili server error\nTry the following steps:\n1. Change Network\n2. Retry later\n\nIf you make sure this is not your fault, Please help -- Feedback";
-"正在尝试重新解析" = "Retry Resolving";
-"视频无法解析" = "Video unable to resolve";
-"正在获取视频信息" = "Reading video information";
-"读取视频失败，可能视频源已失效" = "Read Video Fail, video source outdated. ";
-"读取视频失败，视频服务器故障" = "Read Video Fail, video server error. ";
+"正在解析视频地址" = "Resolving video URL";
+"视频解析出现错误，返回内容为空，可能的原因：\n1. 您的网络连接出现故障\n2. Bilibili API 服务器出现故障\n请尝试以下步骤：\n1. 更换网络连接或重启电脑\n2. 可能触发了频率限制，请更换 IP 地址\n\n如果您确信是软件问题，请点击帮助 -- 反馈" = "Error resolving URL, returned null. Possible reasons:\n1. Network problem\n2. Bilibili API Server Error\nTry following:\n1. Change your network connection or restart your computer.\n2. Rate limit exceeded, you could try changing IP address\n\nIf you're sure this is not your problem, please feedback to us.";
+"视频解析出现错误，JSON 解析失败，可能的原因：\n1. 您的网络被劫持\n2. Bilibili 服务器出现故障\n请尝试以下步骤：\n1. 尝试更换网络\n2. 过一会再试\n\n如果您确信是软件问题，请点击帮助 -- 反馈" = "Error resolving URL, JSON parser failed. Possible reasons:\n1. Your network environment is being hijacked\n2. Bilibili server error\nTry following:\n1. Change your network connection\n2. Retry later\n\nIf you're sure this is not your problem, please feedback to us.";
+"正在尝试重新解析" = "Retrying to resolve";
+"视频无法解析" = "Unable to resolve video";
+"正在获取视频信息" = "Reading video info";
+"读取视频失败，可能视频源已失效" = "Failed to load video, video source is outdated. ";
+"读取视频失败，视频服务器故障" = "Failed to load video, video server error. ";
 "%@ - 服务器: %@" = "%@ - Server: %@";
-"视频信息读取失败" = "Read video info fail";
+"视频信息读取失败" = "Failed to read video info";
 "正在载入视频" = "Loading video";
-"正在读取弹幕" = "Loading Comment";
-"正在合并弹幕字幕" = "Merge comment and subtitle";
-"正在创建字体缓存" = "Creating fonts cache";
-"首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口" = "First time need less than 2 minute to creating cache\nPlease don't close window";
-"正在缓冲" = "Downloading...";
-"播放完成，关闭窗口继续" = "Play finished, please close window.";
+"正在读取弹幕" = "Loading comments";
+"正在合并弹幕字幕" = "Merging comments and subtitle";
+"正在创建字体缓存" = "Building font cache";
+"首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口" = "Building font cache for the first time.\nPlease do not close the window.";
+"正在缓冲" = "Caching...";
+"播放完成，关闭窗口继续" = "Playback finished, please close the window.";
 
 //  PostComment
 "😁发送成功！" = "😁Comment sent.";
-"😢发送失败 错误码 %d" = "😢Comment send failed. Error code: %d";
-"😡简直日了狗了！没发出去！" = "😡Comment send failed. Empty response";
+"😢发送失败 错误码 %d" = "😢Failed to send comment. Error code: %d";
+"😡简直日了狗了！没发出去！" = "😡Failed to send comment. Empty response";
 
 //  playLocalFile
-"选择视频" = "Choose Video";
+"选择视频" = "Select Video";
 "选择弹幕" = "Select Comment";
 "选择字幕" = "Select Subtitle";
 
 //  KeywordBlockSettings
-"请输入关键词，一行一个" = "Input keywords, one per line.";
+"请输入关键词，一行一个" = "Please input keywords here, one per line.";
 
 
-"复制链接" = "Copy Link";
+"复制链接" = "Copy Page URL";
 "下载管理" = "Download Manager";
 "历史记录" = "History";
 "发送邮件" = "Send Email";
 "退出"    = "Exit";
 
-"下载失败，请点击帮助 - 反馈" = "Download Failed , Please feedback";
+"下载失败，请点击帮助 - 反馈" = "Download Failed. Please feedback to the developer.";
 
 
 // AirPlay
 
 "读取中"   = "Loading";
 "刷新"     = "Refresh";
-"正在刷新设备列表" = "Loading device list";
-"设备列表刷新成功，请在左边选择一个服务器进行连接" = "Device list got , Select a server in left table";
-"正在尝试连接设备"  = "Connecting to device";
+"正在刷新设备列表" = "Refreshing list of AirPlay devices";
+"设备列表刷新成功，请在左边选择一个服务器进行连接" = "List refreshed successfully. Please select an AirPlay device on the left";
+"正在尝试连接设备"  = "Connecting to AirPlay device";
 "无法连接到指定设备" = "Unable to connect";
-"连接成功，正在尝试解析视频" = "Connected , Resolving video play address";
+"连接成功，正在尝试解析视频" = "Connected, resolving video address";
 "视频解析成功，正在尝试开始播放" = "Trying to start playback";
-"已发起播放，请查看电视" = "Request sent";
+"已发起播放，请查看电视" = "Playback request sent";
