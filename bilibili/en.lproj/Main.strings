@@ -87,7 +87,7 @@
 "Dgo-Bk-4mh.title" = "Optional, only ASS Format is supported currently";
 
 /* Class = "NSButtonCell"; title = "启用 VT 硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）"; ObjectID = "Dkz-2s-yhr"; */
-"Dkz-2s-yhr.title" = "Enable VT hardware decoding (may decrease comment FPS)";
+"Dkz-2s-yhr.title" = "Enable VT hardware decoding (might decrease comment FPS)";
 
 /* Class = "NSTextFieldCell"; title = "由于弹幕引擎重写，暂时只支持 Bilibili 格式"; ObjectID = "E2h-KF-1Hp"; */
 "E2h-KF-1Hp.title" = "Only support Bilibili format";
@@ -132,7 +132,7 @@
 "JGr-Ox-SQp.title" = "(Please refresh page if you encoutered SSL connection error when redirecting to Alipay)";
 
 /* Class = "NSMenuItem"; title = "GitHub 反馈"; ObjectID = "KKI-vi-xOu"; */
-"KKI-vi-xOu.title" = "Feedback on GitHub";
+"KKI-vi-xOu.title" = "Provide Feedback on GitHub";
 
 /* Class = "NSTextFieldCell"; title = "一行一个，不区分大小写，请勿输入特殊符号，下次播放时生效，关闭窗口自动保存"; ObjectID = "Lfm-eh-7YA"; */
 "Lfm-eh-7YA.title" = "One Keyword per line; Settings are autosaved and applied on next playback.";
@@ -240,10 +240,10 @@
 "cvU-jO-K6m.title" = "Open Download Manager";
 
 /* Class = "NSTextFieldCell"; title = "弹幕大小参数"; ObjectID = "dJb-2c-b1m"; */
-"dJb-2c-b1m.title" = "Font Size";
+"dJb-2c-b1m.title" = "Argument";
 
 /* Class = "NSTextFieldCell"; title = "1.弹幕字体计算方式为 视频高度除以字体参数 ，参数越大 弹幕越小"; ObjectID = "dYW-v7-aMe"; */
-"dYW-v7-aMe.title" = "1. Comment font size = Video Height/Font Arg , Higher is smaller";
+"dYW-v7-aMe.title" = "1. Comment font size = Video Height / Argument, higher value results in smaller size";
 
 /* Class = "NSButtonCell"; title = "屏蔽优越感弹幕"; ObjectID = "dZF-c1-3Mj"; */
 "dZF-c1-3Mj.title" = "Block comments showing superiority";
@@ -282,7 +282,7 @@
 "lbG-e1-MKm.title" = "Press Enter to send comment (after video loaded)";
 
 /* Class = "NSMenuItem"; title = "论坛反馈"; ObjectID = "m2k-Ll-pRS"; */
-"m2k-Ll-pRS.title" = "Feedback on Forum";
+"m2k-Ll-pRS.title" = "Provide Feedback on Forum";
 
 /* Class = "NSMenuItem"; title = "文件"; ObjectID = "mOQ-3u-0ak"; */
 "mOQ-3u-0ak.title" = "File";
@@ -346,4 +346,3 @@
 
 /* Class = "NSTextFieldCell"; title = "弹幕移动速度"; ObjectID = "zpf-lu-2U6"; */
 "zpf-lu-2U6.title" = "Comment scrolling speed";
-

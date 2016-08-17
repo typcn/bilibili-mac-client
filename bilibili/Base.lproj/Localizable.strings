@@ -28,7 +28,7 @@
 "正在启动下载引擎" = "Starting download engine";
 "正在等待" = "Waiting";
 "成功开始下载" = "Download started";
-"文件读取失败，您可能无法正常使用本软件，请向开发者反馈。" = "Failed to read file. Application is not running properly, please feedback to developer.";
+"文件读取失败，您可能无法正常使用本软件，请向开发者反馈。" = "Failed to read file. Application is not running properly, please provide feedback to developer.";
 "复制页面地址" = "Copy page URL";
 "强制显示播放界面" = "Force showing view of playback";
 "呼叫程序猿" = "Contact developer";
@@ -36,18 +36,18 @@
 
 //  PlayerView
 "正在解析视频地址" = "Resolving video URL";
-"视频解析出现错误，返回内容为空，可能的原因：\n1. 您的网络连接出现故障\n2. Bilibili API 服务器出现故障\n请尝试以下步骤：\n1. 更换网络连接或重启电脑\n2. 可能触发了频率限制，请更换 IP 地址\n\n如果您确信是软件问题，请点击帮助 -- 反馈" = "Error resolving URL, returned null. Possible reasons:\n1. Network problem\n2. Bilibili API Server Error\nTry following:\n1. Change your network connection or restart your computer.\n2. Rate limit exceeded, you could try changing IP address\n\nIf you're sure this is not your problem, please feedback to us.";
-"视频解析出现错误，JSON 解析失败，可能的原因：\n1. 您的网络被劫持\n2. Bilibili 服务器出现故障\n请尝试以下步骤：\n1. 尝试更换网络\n2. 过一会再试\n\n如果您确信是软件问题，请点击帮助 -- 反馈" = "Error resolving URL, JSON parser failed. Possible reasons:\n1. Your network environment is being hijacked\n2. Bilibili server error\nTry following:\n1. Change your network connection\n2. Retry later\n\nIf you're sure this is not your problem, please feedback to us.";
+"视频解析出现错误，返回内容为空，可能的原因：\n1. 您的网络连接出现故障\n2. Bilibili API 服务器出现故障\n请尝试以下步骤：\n1. 更换网络连接或重启电脑\n2. 可能触发了频率限制，请更换 IP 地址\n\n如果您确信是软件问题，请点击帮助 -- 反馈" = "Error resolving URL, returned null. Possible reasons:\n1. Network problem\n2. Bilibili API Server Error\nTry following:\n1. Change your network connection or restart your computer.\n2. Rate limit exceeded, you could try changing IP address\n\nIf you're sure this is not your problem, please provide feedback to developer.";
+"视频解析出现错误，JSON 解析失败，可能的原因：\n1. 您的网络被劫持\n2. Bilibili 服务器出现故障\n请尝试以下步骤：\n1. 尝试更换网络\n2. 过一会再试\n\n如果您确信是软件问题，请点击帮助 -- 反馈" = "Error resolving URL, JSON parser failed. Possible reasons:\n1. Your network environment is being hijacked\n2. Bilibili server error\nTry following:\n1. Change your network connection\n2. Retry later\n\nIf you're sure this is not your problem, please provide feedback to developer.";
 "正在尝试重新解析" = "Retrying to resolve";
 "视频无法解析" = "Unable to resolve video URL";
 "正在获取视频信息" = "Reading video info";
-"读取视频失败，可能视频源已失效" = "Failed to load video, video source maybe outdated. ";
+"读取视频失败，可能视频源已失效" = "Failed to load video, video source might be outdated. ";
 "读取视频失败，视频服务器故障" = "Failed to load video, video server error. ";
 "%@ - 服务器: %@" = "%@ - Server: %@";
 "视频信息读取失败" = "Failed to read video info";
 "正在载入视频" = "Loading video";
 "正在读取弹幕" = "Loading comments";
-"正在合并弹幕字幕" = "Merge comments and subtitle";
+"正在合并弹幕字幕" = "Merging comments and subtitle";
 "正在创建字体缓存" = "Building font cache";
 "首次播放需要最多 2 分钟来建立缓存\n请不要关闭窗口" = "Building font cache for the first time.\nPlease do not close the window.";
 "正在缓冲" = "Caching...";
