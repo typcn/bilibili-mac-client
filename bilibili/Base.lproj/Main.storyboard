@@ -152,7 +152,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="选择字幕" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="24g-g2-xbB">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="selectSubtitle:" target="0d3-4B-65W" id="rd6-xO-0vC"/>
@@ -171,7 +171,7 @@
                                 <rect key="frame" x="161" y="95" width="274" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="暂时只支持 ASS 格式的字幕，可以不选择" id="Dgo-Bk-4mh">
-                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -191,7 +191,7 @@
                                 <rect key="frame" x="154" y="49" width="203" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请确认全部为 UTF-8 格式" id="PvP-kq-5oz">
-                                    <font key="font" size="13" name="STHeitiSC-Light"/>
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -763,7 +763,7 @@ GQ
                                 <rect key="frame" x="80" y="36" width="360" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" title="更多功能欢迎到 GitHub 参与开发   https://github.com/typcn/bilibili-mac-client" id="BKA-mo-Ldx">
-                                    <font key="font" size="12" name="STHeitiSC-Light"/>
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -868,7 +868,7 @@ GQ
                                         <rect key="frame" x="8" y="20" width="416" height="34"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="提示：开始播放后按回车可以发送弹幕" id="lbG-e1-MKm">
-                                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -877,7 +877,7 @@ GQ
                                         <rect key="frame" x="146" y="70" width="141" height="17"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Loading" id="hhw-OI-vOH">
-                                            <font key="font" size="13" name="STHeitiSC-Light"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
