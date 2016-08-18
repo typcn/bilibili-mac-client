@@ -90,7 +90,7 @@
 "Dkz-2s-yhr.title" = "Enable VT hardware decoding (might decrease comment FPS)";
 
 /* Class = "NSTextFieldCell"; title = "由于弹幕引擎重写，暂时只支持 Bilibili 格式"; ObjectID = "E2h-KF-1Hp"; */
-"E2h-KF-1Hp.title" = "Only supports Bilibili format";
+"E2h-KF-1Hp.title" = "Only Bilibili format is supported currently";
 
 /* Class = "NSMenuItem"; title = "撤销"; ObjectID = "EBS-37-po7"; */
 "EBS-37-po7.title" = "Undo";
@@ -156,7 +156,7 @@
 "LpX-yR-5U2.title" = "Config in the text field would be saved to this folder after first playback";
 
 /* Class = "NSTextFieldCell"; title = "注意：错误的配置文件可能导致无法正常播放"; ObjectID = "MjF-vP-vTC"; */
-"MjF-vP-vTC.title" = "Warning: incorrect configuration might cause playback issues";
+"MjF-vP-vTC.title" = "Warning: Incorrect configuration might cause playback issues";
 
 /* Class = "NSButtonCell"; title = "发送错误报告"; ObjectID = "N0P-u5-UBx"; */
 "N0P-u5-UBx.title" = "Send error report";
