@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
@@ -12,7 +12,7 @@
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="353" width="397" height="230"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1057"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
                     </window>
                     <connections>
                         <segue destination="qFr-wi-ptm" kind="relationship" relationship="window.shadowedContentViewController" id="c1Y-pX-QZF"/>
@@ -43,17 +43,17 @@
                                 <rect key="frame" x="20" y="152" width="359" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <clipView key="contentView" id="LK4-eA-AGj">
-                                    <rect key="frame" x="1" y="1" width="342" height="78"/>
+                                    <rect key="frame" x="1" y="1" width="357" height="78"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="vbw-5q-kZk">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="78"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="342" height="78"/>
+                                            <size key="minSize" width="357" height="78"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="342" height="78"/>
+                                            <size key="minSize" width="357" height="78"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                         </textView>
                                     </subviews>
@@ -64,7 +64,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rih-nB-JqP">
-                                    <rect key="frame" x="343" y="1" width="15" height="78"/>
+                                    <rect key="frame" x="342" y="1" width="16" height="78"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -168,7 +168,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="W36-Oj-e30">
-                                <rect key="frame" x="161" y="95" width="274" height="17"/>
+                                <rect key="frame" x="161" y="95" width="301" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="暂时只支持 ASS 格式的字幕，可以不选择" id="Dgo-Bk-4mh">
                                     <font key="font" metaFont="system"/>
@@ -187,15 +187,6 @@
                                     <action selector="selectVideo:" target="0d3-4B-65W" id="sF9-Ev-ytw"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="x5b-ok-GNF">
-                                <rect key="frame" x="154" y="49" width="203" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="请确认全部为 UTF-8 格式" id="PvP-kq-5oz">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button verticalHuggingPriority="750" id="bwu-t8-jef">
                                 <rect key="frame" x="184" y="13" width="112" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -227,6 +218,15 @@
                                 <connections>
                                     <action selector="setURL:" target="0d3-4B-65W" id="gnk-CD-aLH"/>
                                 </connections>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="x5b-ok-GNF">
+                                <rect key="frame" x="94" y="49" width="291" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="请确认全部为 UTF-8 格式" id="PvP-kq-5oz">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
                             </textField>
                         </subviews>
                     </view>
@@ -691,10 +691,10 @@ GQ
                                             <rect key="frame" x="0.0" y="0.0" width="468" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="468" height="230"/>
+                                            <size key="minSize" width="483" height="230"/>
                                             <size key="maxSize" width="485" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="468" height="230"/>
+                                            <size key="minSize" width="483" height="230"/>
                                             <size key="maxSize" width="485" height="10000000"/>
                                         </textView>
                                     </subviews>
@@ -705,7 +705,7 @@ GQ
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Tku-Hz-Coo">
-                                    <rect key="frame" x="469" y="1" width="15" height="230"/>
+                                    <rect key="frame" x="468" y="1" width="16" height="230"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -935,10 +935,10 @@ GQ
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="463" height="268"/>
+                                            <size key="minSize" width="478" height="268"/>
                                             <size key="maxSize" width="480" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="463" height="268"/>
+                                            <size key="minSize" width="478" height="268"/>
                                             <size key="maxSize" width="480" height="10000000"/>
                                         </textView>
                                     </subviews>
@@ -949,7 +949,7 @@ GQ
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Ft0-cT-2BV">
-                                    <rect key="frame" x="464" y="1" width="15" height="268"/>
+                                    <rect key="frame" x="463" y="1" width="16" height="268"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -1047,7 +1047,7 @@ GQ
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="自动换P" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="IwE-aZ-Bxq">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="autoPlay:" target="z8a-gg-iMj" id="uJc-pW-LXG"/>
@@ -1076,7 +1076,7 @@ GQ
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" id="k65-FX-xi6">
-                                <rect key="frame" x="27" y="176" width="99" height="26"/>
+                                <rect key="frame" x="25" y="177" width="100" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="UtE-Jc-IKj">
                                     <font key="font" metaFont="system"/>
@@ -1094,7 +1094,7 @@ GQ
                                 </connections>
                             </comboBox>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="jlv-di-fx2">
-                                <rect key="frame" x="25" y="214" width="56" height="17"/>
+                                <rect key="frame" x="25" y="214" width="100" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="优先画质" id="Sd9-OH-JrH">
                                     <font key="font" metaFont="system"/>
@@ -1103,7 +1103,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="LGC-Jg-Mns">
-                                <rect key="frame" x="129" y="214" width="170" height="17"/>
+                                <rect key="frame" x="133" y="214" width="170" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="IP 伪造 ( 大陆用户请勿开启 )" id="vMH-pa-ZpX">
                                     <font key="font" metaFont="system"/>
@@ -1112,7 +1112,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="v5E-aw-wG4">
-                                <rect key="frame" x="312" y="214" width="100" height="17"/>
+                                <rect key="frame" x="313" y="214" width="84" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕大小参数" id="dJb-2c-b1m">
                                     <font key="font" metaFont="system"/>
@@ -1121,7 +1121,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" id="ajt-jS-Z4K">
-                                <rect key="frame" x="314" y="180" width="89" height="22"/>
+                                <rect key="frame" x="315" y="180" width="80" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="默认25" drawsBackground="YES" id="pXu-zi-Y7u">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Dl4-M8-KPr"/>
@@ -1134,7 +1134,7 @@ GQ
                                 </connections>
                             </textField>
                             <comboBox verticalHuggingPriority="750" id="JLT-R0-aaz">
-                                <rect key="frame" x="131" y="176" width="169" height="26"/>
+                                <rect key="frame" x="135" y="177" width="170" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="P8V-DP-s5N">
                                     <font key="font" metaFont="system"/>
@@ -1170,7 +1170,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="8GO-QK-utF">
-                                <rect key="frame" x="30" y="20" width="481" height="17"/>
+                                <rect key="frame" x="25" y="20" width="620" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="3.所有设置将在下次开始播放时生效，文本框需要按回车保存" id="43T-62-L37">
                                     <font key="font" metaFont="system"/>
@@ -1179,7 +1179,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="CNv-ip-Ik8">
-                                <rect key="frame" x="30" y="71" width="481" height="17"/>
+                                <rect key="frame" x="25" y="71" width="620" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1.弹幕字体计算方式为 视频高度除以字体参数 ，参数越大 弹幕越小" id="dYW-v7-aMe">
                                     <font key="font" metaFont="system"/>
@@ -1188,7 +1188,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Ubj-zp-AMU">
-                                <rect key="frame" x="30" y="46" width="481" height="17"/>
+                                <rect key="frame" x="25" y="46" width="620" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="2.仅支持在 /System/Library/Fonts/ 中的弹幕字体" id="QaX-PH-0zE">
                                     <font key="font" metaFont="system"/>
@@ -1207,17 +1207,8 @@ GQ
                                     <action selector="disableKeepAspectRatioChanged:" target="z8a-gg-iMj" id="ujo-xw-stY"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OIq-ag-IQD">
-                                <rect key="frame" x="419" y="214" width="75" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕字体" id="6ZU-bU-OI7">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField verticalHuggingPriority="750" id="iLa-hJ-dgh">
-                                <rect key="frame" x="421" y="180" width="88" height="22"/>
+                                <rect key="frame" x="405" y="180" width="90" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="STHeiti" drawsBackground="YES" id="A8r-5c-QC5">
                                     <font key="font" metaFont="system"/>
@@ -1246,7 +1237,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Pn0-p5-eUE">
-                                <rect key="frame" x="524" y="214" width="112" height="17"/>
+                                <rect key="frame" x="503" y="214" width="132" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="最大缓冲( KB )" id="GCK-CB-vEX">
                                     <font key="font" metaFont="system"/>
@@ -1255,7 +1246,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" id="nHb-Pd-fXL">
-                                <rect key="frame" x="526" y="180" width="88" height="22"/>
+                                <rect key="frame" x="505" y="180" width="90" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="QiJ-fu-Jcf">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="OGs-UT-bmo"/>
@@ -1322,6 +1313,15 @@ GQ
                                     <action selector="changeGestureDirection:" target="z8a-gg-iMj" id="8O2-rc-U2I"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OIq-ag-IQD">
+                                <rect key="frame" x="403" y="214" width="75" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕字体" id="6ZU-bU-OI7">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -1356,7 +1356,7 @@ GQ
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button verticalHuggingPriority="750" id="O6d-SP-FXN">
-                                <rect key="frame" x="233" y="187" width="187" height="32"/>
+                                <rect key="frame" x="202" y="187" width="250" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="push" title="查看 mpv.conf 语法" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qiX-BK-MM9">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1367,7 +1367,7 @@ GQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="hGm-Tw-eMa">
-                                <rect key="frame" x="233" y="154" width="187" height="32"/>
+                                <rect key="frame" x="202" y="154" width="250" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="push" title="查看自定义快捷键语法" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gnl-in-lsH">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1378,7 +1378,7 @@ GQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="cEv-6R-x7g">
-                                <rect key="frame" x="233" y="121" width="187" height="32"/>
+                                <rect key="frame" x="202" y="121" width="250" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="push" title="查看 Lua 脚本 API" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2aS-4d-u2x">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1407,7 +1407,7 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" id="twM-AP-xxi">
-                                <rect key="frame" x="234" y="251" width="187" height="32"/>
+                                <rect key="frame" x="202" y="251" width="250" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="push" title="打开 MPV 配置文件夹" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mIY-wq-37X">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1433,7 +1433,7 @@ GQ
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button verticalHuggingPriority="750" id="fG5-nh-fgK">
-                                <rect key="frame" x="98" y="232" width="242" height="32"/>
+                                <rect key="frame" x="109" y="232" width="250" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="清空 WebKit 缓存" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="viS-pD-yfp">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1444,7 +1444,7 @@ GQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="8eu-Bb-4tc">
-                                <rect key="frame" x="98" y="80" width="242" height="32"/>
+                                <rect key="frame" x="109" y="80" width="250" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="push" title="清空 WebKit 数据" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LKV-eP-GTR">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1455,7 +1455,7 @@ GQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="ljs-HF-elC">
-                                <rect key="frame" x="98" y="166" width="242" height="32"/>
+                                <rect key="frame" x="109" y="166" width="250" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="清空 B 站 Cookie" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ekg-LR-KbM">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1466,7 +1466,7 @@ GQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" id="hyR-jh-QTw">
-                                <rect key="frame" x="98" y="47" width="242" height="32"/>
+                                <rect key="frame" x="109" y="47" width="250" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="push" title="清空 SharedCookieStorage" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sFu-HQ-dwa">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1476,17 +1476,8 @@ GQ
                                     <action selector="clearLocalCookie:" target="Gh7-k4-ULc" id="Thn-RO-7V6"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="YRq-gK-oZF">
-                                <rect key="frame" x="69" y="29" width="355" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="注意：谨慎使用，可能会一同清除掉其他应用程序的 Cookie" id="gn1-1w-IgH">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button verticalHuggingPriority="750" id="LzX-yL-Y6X">
-                                <rect key="frame" x="98" y="199" width="242" height="32"/>
+                                <rect key="frame" x="109" y="199" width="250" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="清空 NSURLCache" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B0w-uc-yhF">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1496,6 +1487,15 @@ GQ
                                     <action selector="clearURLCache:" target="Gh7-k4-ULc" id="4nU-xb-uGd"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="YRq-gK-oZF">
+                                <rect key="frame" x="34" y="29" width="400" height="17"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="注意：谨慎使用，可能会一同清除掉其他应用程序的 Cookie" id="gn1-1w-IgH">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                 </viewController>
