@@ -78,6 +78,8 @@
     NSMutableArray *res = [NSMutableArray arrayWithCapacity:10];
     for (;;) {
         if (idxc >= lc) break;
+        if (idx1 >= l1) break;
+        if (idx2 >= l2) break;
         unichar c1 = [self characterAtIndex:idx1];
         unichar c2 = [string characterAtIndex:idx2];
         unichar cc = [lcs characterAtIndex:idxc];
