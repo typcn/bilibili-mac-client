@@ -112,10 +112,10 @@
     if(isAfterVideoRender || !self.player.mpv || !self.player.windowController){
         return;
     }
-     NSString *cid = [self.player getAttr:@"cid"];
-     if(cid && [cid length]){
-          needSaveTime = YES;
-     }
+    NSString *cid = [self.player getAttr:@"cid"];
+    if(cid && [cid length]){
+        needSaveTime = YES;
+    }
     isHided = YES;
     isAfterVideoRender = YES;
     mpv_get_property_async(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG);
@@ -182,15 +182,15 @@
         [self.window orderWindow:NSWindowAbove relativeTo:playerWindow.windowNumber];
         [[self.window animator] setAlphaValue:1.0];
         isHided = NO;
+        if(needSaveTime){
+            [self savePlayPosition];
+        }
     }
 }
 
 - (void)hide:(BOOL)noAnimation{
     if(isHided){
         return;
-    }
-    if(needSaveTime){
-        [self savePlayPosition];
     }
     [[self.window animator] setAlphaValue:0.0];
     [self.window setLevel:NSNormalWindowLevel];

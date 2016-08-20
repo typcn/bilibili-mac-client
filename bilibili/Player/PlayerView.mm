@@ -613,6 +613,10 @@ getInfo:
         }
         
         case MPV_EVENT_IDLE:{
+            NSString *cid = [self.player getAttr:@"cid"];
+            if(cid && [cid length]){
+                [[PlayPosition sharedManager] removeKey:cid];
+            }
             if(endFile){
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [LoadingView setHidden:NO];
