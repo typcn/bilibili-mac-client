@@ -412,7 +412,7 @@
             break;
         }
         case 53:{ // Esc key
-            // Nothing to do
+            [self toggleFullScreen:self];
             break;
         }
         case 3:{
