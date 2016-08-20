@@ -186,7 +186,10 @@ if(!window.isFirstPlay){
             applyUI();
             if(!window.isInjected){
                 window.isInjected = true;
-                $.getScript("http://cdn.eqoe.cn/files/bilibili/widget-min.js?ver=" + window.bilimacVersion);
+                $.getScript('http://cdn.eqoe.cn/files/bilibili/widget-min.js?ver=' + window.bilimacVersion);
+                localStorage.bilibililover = 'NO';
+                localStorage.defaulth5 = 0;
+                $('.bgray-btn-wrap').remove();
             }
         }
     }
@@ -195,3 +198,6 @@ if(!window.isFirstPlay){
         mimierr.innerHTML = '正在等待页面加载';
     }
 }
+window.GrayManager = { init:function(){} };
+Object.defineProperty(window.GrayManager, 'init', { writable: false} );
+Object.defineProperty(window, 'GrayManager', { writable: false} );
