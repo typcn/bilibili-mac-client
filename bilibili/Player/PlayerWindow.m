@@ -164,22 +164,22 @@
     [self.player.playerControlView show];
     enteringFullScreen = NO;
     [self makeKeyAndOrderFront:self];
-    if(self.player.mpv){
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if(self.player.mpv){
             int pause = 0;
             mpv_set_property_async(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG, &pause);
-        });
-    }
+        }
+    });
 }
 
 - (void)windowDidExitFullScreen:(NSNotification *)notification{
     enteringFullScreen = NO;
-    if(self.player.mpv){
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if(self.player.mpv){
             int pause = 0;
             mpv_set_property_async(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG, &pause);
-        });
-    }
+        }
+    });
 }
 
 - (void)resizePlayerControlView:(NSRect)old new:(NSRect)new{
