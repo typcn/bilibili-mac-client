@@ -355,7 +355,7 @@
 - (void)updateParser{
     id view = [self getInternalBrowser:kIBView];
     if(view){
-        [[PluginManager sharedInstance] install:@"com.typcn.vp.bilibili" :view :0];
+        [[PluginManager sharedInstance] install:@"com.typcn.vp.bilibili" :view :1];
     }
 }
 
