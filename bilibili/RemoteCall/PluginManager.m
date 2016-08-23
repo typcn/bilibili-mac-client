@@ -12,6 +12,15 @@
 #import "MBProgressHUD.h"
 #include "SubtitleHelper.h"
 
+
+@implementation NSDictionary (IFK)
+
+- (NSInteger)integerForKey:(NSString *)key{
+    return [[self objectForKey:key] integerValue];
+}
+
+@end
+
 @implementation PluginManager{
     NSString *sprtdir;
     NSURLSession* bgsession;
