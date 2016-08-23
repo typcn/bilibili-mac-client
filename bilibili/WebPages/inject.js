@@ -28,6 +28,9 @@ function applyUI(){
         try{
             var fv=$("param[name='flashvars']").val();
             if(!fv){
+                fv = 'cid=' + window.cid + '&';
+            }
+            if(!fv){
                 fv=$('#bofqiiframe').attr('src');
             }
             if(!fv){
@@ -38,9 +41,6 @@ function applyUI(){
             }
             if(!fv){
                 fv = 'cid=' + $('#modVideoCid').text() + '&';
-            }
-            if(!fv){
-                fv = 'cid=' + window.cid + '&';
             }
             if(window.ROOMID){
                 fv = 'cid=' + window.ROOMID + '&';
