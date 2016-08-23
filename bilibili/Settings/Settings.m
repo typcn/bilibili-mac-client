@@ -29,6 +29,7 @@
     [self.disableHwDec setState:[settingsController integerForKey:@"enableHW"]];
     [self.disableWriteHistory setState:[settingsController integerForKey:@"disableWritePlayHistory"]];
     [self.changeGestureDirection setState:[settingsController integerForKey:@"changeGestureDirection"]];
+    [self.enableFSBugWorkaround setState:[settingsController integerForKey:@"enableFSBugWorkaround"]];
     
     float trans = [settingsController floatForKey:@"transparency"];
     if(!trans){
@@ -153,6 +154,10 @@
 }
 - (IBAction)changeGestureDirection:(id)sender {
     [settingsController setInteger:[self.changeGestureDirection integerValue] forKey:@"changeGestureDirection"];
+    [settingsController synchronize];
+}
+- (IBAction)enableBugWorkaround:(id)sender {
+    [settingsController setInteger:[self.enableFSBugWorkaround integerValue] forKey:@"enableFSBugWorkaround"];
     [settingsController synchronize];
 }
 

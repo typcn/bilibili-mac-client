@@ -255,6 +255,13 @@ getInfo:
         [self setMPVOption:"force-media-title" :[self.title UTF8String]];
     }
     
+    int enableWorkaround = [self getSettings:@"enableFSBugWorkaround"];
+    if(enableWorkaround == 1){
+        setenv("__BILIMAC_ENABLE_GL_DRIVER_FS_BUG_WORKAROUND", "YES", 0);
+    }else{
+        unsetenv("__BILIMAC_ENABLE_GL_DRIVER_FS_BUG_WORKAROUND");
+    }
+    
     int enableHW = [self getSettings:@"enableHW"];
     if(enableHW){
         [self setMPVOption: "hwdec" : "videotoolbox"];
