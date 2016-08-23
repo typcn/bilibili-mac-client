@@ -37,7 +37,10 @@ function applyUI(){
                 fv=$('.player-wrapper embed').attr('flashvars');
             }
             if(!fv){
-                fv = 'cid=' + $("#modVideoCid").text() + '&';
+                fv = 'cid=' + $('#modVideoCid').text() + '&';
+            }
+            if(!fv){
+                fv = 'cid=' + window.cid + '&';
             }
             if(window.ROOMID){
                 fv = 'cid=' + window.ROOMID + '&';
@@ -176,7 +179,7 @@ function replaceMimi(){
 if(!window.isFirstPlay){
     window.isFirstPlay = true;
     window.i = setInterval(waitForReady,500);
-    console.log("start inject");
+    console.log('start inject');
     function waitForReady(){
         if(window.LoadTimes > 8){
             clearInterval(window.i);
@@ -184,19 +187,25 @@ if(!window.isFirstPlay){
         }
         if((typeof $) == 'function'){
             applyUI();
-            if(!window.isInjected){
-                window.isInjected = true;
-                $.getScript('http://cdn.eqoe.cn/files/bilibili/widget-min.js?ver=' + window.bilimacVersion);
-                localStorage.bilibililover = 'NO';
-                localStorage.defaulth5 = 0;
-                $('.bgray-btn-wrap').remove();
-            }
+            $('.bgray-btn-wrap').remove();
         }
     }
     var mimierr = document.querySelector('.error-content-inner');
     if(mimierr && mimierr.innerHTML == '该页面无法在您所在的区域访问。'){
         mimierr.innerHTML = '正在等待页面加载';
     }
+}
+if(!window.isInjected){
+    window.isInjected = true;
+    (function() {
+     var cs = document.createElement('script');
+     cs.type = 'text/javascript';
+     cs.src = 'http://cdn.eqoe.cn/files/bilibili/widget-min.js?ver=' + window.bilimacVersion;
+     cs.charset = 'UTF-8';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(cs);
+    })();
+    localStorage.bilibililover = 'NO';
+    localStorage.defaulth5 = 0;
 }
 window.GrayManager = { init:function(){} };
 Object.defineProperty(window.GrayManager, 'init', { writable: false} );
