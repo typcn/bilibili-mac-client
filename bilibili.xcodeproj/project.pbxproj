@@ -84,6 +84,10 @@
 		FD4EDBB31BE42C66009309EC /* mpv.icns in Resources */ = {isa = PBXBuildFile; fileRef = FD4EDBB21BE42C66009309EC /* mpv.icns */; };
 		FD4EDBB61BE42D9B009309EC /* MPVSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4EDBB51BE42D9B009309EC /* MPVSettings.m */; };
 		FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */; };
+		FD5408151D6C8EDA00E33EF7 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5408131D6C8EDA00E33EF7 /* libpcre.1.dylib */; };
+		FD5408161D6C8EDA00E33EF7 /* libjpeg.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5408141D6C8EDA00E33EF7 /* libjpeg.8.dylib */; };
+		FD5408171D6C8F0100E33EF7 /* libpcre.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5408131D6C8EDA00E33EF7 /* libpcre.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FD5408181D6C8F0700E33EF7 /* libjpeg.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5408141D6C8EDA00E33EF7 /* libjpeg.8.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FD59846C1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD59846B1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m */; };
 		FD5984751BB45A77001E0B17 /* jquery.min.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5984711BB45A77001E0B17 /* jquery.min.js */; };
 		FD5984761BB45A77001E0B17 /* masonry.pkgd.min.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5984721BB45A77001E0B17 /* masonry.pkgd.min.js */; };
@@ -303,6 +307,8 @@
 			dstPath = lib;
 			dstSubfolderSpec = 6;
 			files = (
+				FD5408181D6C8F0700E33EF7 /* libjpeg.8.dylib in CopyFiles */,
+				FD5408171D6C8F0100E33EF7 /* libpcre.1.dylib in CopyFiles */,
 				FDA01C9A1C576C7E00298CEF /* libmpv.dylib in CopyFiles */,
 				FDA01C9B1C576C7E00298CEF /* libavdevice.57.dylib in CopyFiles */,
 				FDA01C9C1C576C7E00298CEF /* libavfilter.6.dylib in CopyFiles */,
@@ -493,6 +499,8 @@
 		FD5101901ACC1A7600C49430 /* mpv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mpv.h; path = bilibili/headers/mpv.h; sourceTree = "<group>"; };
 		FD5305E91B2692CE00659B32 /* SmartBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartBlockSettings.h; path = Settings/SmartBlockSettings.h; sourceTree = "<group>"; };
 		FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmartBlockSettings.m; path = Settings/SmartBlockSettings.m; sourceTree = "<group>"; };
+		FD5408131D6C8EDA00E33EF7 /* libpcre.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcre.1.dylib; path = bilibili/libs/libpcre.1.dylib; sourceTree = "<group>"; };
+		FD5408141D6C8EDA00E33EF7 /* libjpeg.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjpeg.8.dylib; path = bilibili/libs/libjpeg.8.dylib; sourceTree = "<group>"; };
 		FD59846A1BB3F57C001E0B17 /* NSBundle+OBCodeSigningInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+OBCodeSigningInfo.h"; path = "RemoteCall/NSBundle+OBCodeSigningInfo.h"; sourceTree = "<group>"; };
 		FD59846B1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+OBCodeSigningInfo.m"; path = "RemoteCall/NSBundle+OBCodeSigningInfo.m"; sourceTree = "<group>"; };
 		FD5984711BB45A77001E0B17 /* jquery.min.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = jquery.min.js; path = bilibili/WebPages/jquery.min.js; sourceTree = "<group>"; };
@@ -704,7 +712,9 @@
 				FDA01C831C576C6700298CEF /* libavfilter.6.dylib in Frameworks */,
 				FDA01C881C576C6700298CEF /* libavutil.55.dylib in Frameworks */,
 				FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */,
+				FD5408161D6C8EDA00E33EF7 /* libjpeg.8.dylib in Frameworks */,
 				FD36B0CD1B9959CC00FB32CC /* Sparkle.framework in Frameworks */,
+				FD5408151D6C8EDA00E33EF7 /* libpcre.1.dylib in Frameworks */,
 				FDA01C8F1C576C6700298CEF /* liblua.5.2.dylib in Frameworks */,
 				FDA01C901C576C6700298CEF /* libopus.0.dylib in Frameworks */,
 				FDA01C971C576C6700298CEF /* libz.1.dylib in Frameworks */,
@@ -801,6 +811,8 @@
 		FD076C771AC8DA5600C893FA /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				FD5408131D6C8EDA00E33EF7 /* libpcre.1.dylib */,
+				FD5408141D6C8EDA00E33EF7 /* libjpeg.8.dylib */,
 				FDA01C681C576C6700298CEF /* libmpv.dylib */,
 				FDA01C691C576C6700298CEF /* libavdevice.57.dylib */,
 				FDA01C6A1C576C6700298CEF /* libavfilter.6.dylib */,
