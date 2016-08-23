@@ -1334,12 +1334,15 @@ GQ
                                 </textFieldCell>
                             </textField>
                             <button id="LQe-nf-k8t">
-                                <rect key="frame" x="380" y="397" width="255" height="18"/>
+                                <rect key="frame" x="319" y="397" width="316" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Zero Copy（可能导致弹幕 FPS 降低）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hpI-u2-iEc">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="enableZeroCopyOpt:" target="z8a-gg-iMj" id="yZw-LN-gKl"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
@@ -1355,6 +1358,7 @@ GQ
                         <outlet property="disableWriteHistory" destination="iLo-qY-8yG" id="dyR-ze-V54"/>
                         <outlet property="disablebottomComment" destination="5yv-E4-e3g" id="zXF-lZ-D8g"/>
                         <outlet property="enableFSBugWorkaround" destination="AjY-Tj-FeF" id="wQt-QF-lX9"/>
+                        <outlet property="enableZeroCopy" destination="LQe-nf-k8t" id="Y8j-db-KXO"/>
                         <outlet property="fontName" destination="iLa-hJ-dgh" id="jDT-c4-qHR"/>
                         <outlet property="fontsize" destination="ajt-jS-Z4K" id="ouz-gu-SI4"/>
                         <outlet property="maxBufferSize" destination="nHb-Pd-fXL" id="0io-Gk-bxi"/>

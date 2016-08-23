@@ -263,11 +263,12 @@ getInfo:
     }
     
     int enableHW = [self getSettings:@"enableHW"];
-    if(enableHW){
+    int enable0Copy = [self getSettings:@"enableZeroCopy"];
+    if(enableHW && enable0Copy){
         [self setMPVOption: "hwdec" : "videotoolbox"];
-        //[self setMPVOption: "sub-fps" : "60"];
-        [self setMPVOption: "display-fps" : "60"];
-        [self setMPVOption: "demuxer-rawvideo-fps" : "60"];
+    }else if(enableHW){
+        [self setMPVOption: "hwdec" : "videotoolbox-copy"];
+        [self setMPVOption: "vf" : "lavfi=\"fps=fps=60:round=down\""];
     }else{
         [self setMPVOption: "vf" : "lavfi=\"fps=fps=60:round=down\""];
     }

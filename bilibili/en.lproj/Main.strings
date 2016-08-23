@@ -87,7 +87,10 @@
 "Dgo-Bk-4mh.title" = "Optional, only ASS Format is supported currently";
 
 /* Class = "NSButtonCell"; title = "启用 VT 硬解模式（发热太高尝试开启，可能导致弹幕 FPS 降低）"; ObjectID = "Dkz-2s-yhr"; */
-"Dkz-2s-yhr.title" = "Enable VT hardware decoding (might decrease comment FPS)";
+"Dkz-2s-yhr.title" = "Enable VT hardware decoding";
+
+/* Class = "NSButtonCell"; title = "Zero Copy（可能导致弹幕 FPS 降低）"; ObjectID = "hpI-u2-iEc"; */
+"hpI-u2-iEc.title" = "Zero Copy (might decrease comment FPS)";
 
 /* Class = "NSButtonCell"; title = "启用全屏驱动 BUG Workaround（全屏时发热严重可尝试开启此选项）"; ObjectID = "80d-Ce-8K6"; */
 "80d-Ce-8K6.title" = "Enable driver bug workaround for lower fullscreen GPU usage";

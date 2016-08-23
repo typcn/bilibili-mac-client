@@ -30,6 +30,7 @@
     [self.disableWriteHistory setState:[settingsController integerForKey:@"disableWritePlayHistory"]];
     [self.changeGestureDirection setState:[settingsController integerForKey:@"changeGestureDirection"]];
     [self.enableFSBugWorkaround setState:[settingsController integerForKey:@"enableFSBugWorkaround"]];
+    [self.enableZeroCopy setState:[settingsController integerForKey:@"enableZeroCopy"]];
     
     float trans = [settingsController floatForKey:@"transparency"];
     if(!trans){
@@ -158,6 +159,11 @@
 }
 - (IBAction)enableBugWorkaround:(id)sender {
     [settingsController setInteger:[self.enableFSBugWorkaround integerValue] forKey:@"enableFSBugWorkaround"];
+    [settingsController synchronize];
+}
+
+- (IBAction)enableZeroCopyOpt:(id)sender {
+    [settingsController setInteger:[self.enableZeroCopy integerValue] forKey:@"enableZeroCopy"];
     [settingsController synchronize];
 }
 
