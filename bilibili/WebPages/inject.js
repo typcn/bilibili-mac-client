@@ -204,9 +204,20 @@ if(!window.isInjected){
      cs.charset = 'UTF-8';
      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(cs);
     })();
-    localStorage.bilibililover = 'NO';
+    localStorage.bilibililover = 'no';
     localStorage.defaulth5 = 0;
 }
 window.GrayManager = { init:function(){} };
 Object.defineProperty(window.GrayManager, 'init', { writable: false} );
 Object.defineProperty(window, 'GrayManager', { writable: false} );
+
+(function(){
+ var hooked_ce = document.createElement.bind(document);
+ document.createElement = function(a,b){
+ if(a == 'video'){
+ a = 'div';
+ console.log('blocked html5 video creation');
+ }
+ return hooked_ce(a,b);
+ }
+})();
