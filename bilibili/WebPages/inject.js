@@ -11,9 +11,8 @@ function applyUI(){
         }
         if(!$('.i_face').attr('src')){
             $('.login').css('width',200).children('span').html('点击登录客户端以便发送弹幕');
-        }else{
-            window.sendToView({"action":"setcookie","data":document.cookie});
         }
+        window.sendToView({"action":"setcookie","data":document.cookie});
         if(window.LoadTimes){
             window.LoadTimes++;
         }else{
