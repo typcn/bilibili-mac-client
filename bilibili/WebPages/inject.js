@@ -26,7 +26,7 @@ function applyUI(){
         console.log("getting cid");
         try{
             var fv=$("param[name='flashvars']").val();
-            if(!fv){
+            if(!fv && window.cid > 0){
                 fv = 'cid=' + window.cid + '&';
             }
             if(!fv){
