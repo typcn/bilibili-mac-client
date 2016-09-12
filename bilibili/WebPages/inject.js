@@ -211,12 +211,25 @@ Object.defineProperty(window.GrayManager, 'init', { writable: false} );
 Object.defineProperty(window, 'GrayManager', { writable: false} );
 
 (function(){
- var hooked_ce = document.createElement.bind(document);
- document.createElement = function(a,b){
- if(a == 'video'){
- a = 'div';
- console.log('blocked html5 video creation');
- }
- return hooked_ce(a,b);
- }
+  var hooked_ce = document.createElement.bind(document);
+  document.createElement = function(a,b){
+    if(a == 'video'){
+      a = 'div';
+      console.log('blocked html5 video creation');
+    }
+    return hooked_ce(a,b);
+  }
+
+  var origOpen = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function(a,b,c) {
+      if(b.indexOf('data.bilibili.com') > -1 || b.indexOf('interface.bilibili.com/player') > -1
+        || b.indexOf('interface.bilibili.com/playurl') > -1 || b.indexOf('comment.bilibili.com') > -1){
+        console.log('Request blocked: ' + b);
+        return;
+      }
+      this.addEventListener('load', function() {
+          //console.log('Request complete');
+      });
+      origOpen.apply(this, arguments);
+  };
 })();
