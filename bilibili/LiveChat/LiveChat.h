@@ -17,5 +17,6 @@
 - (void)setPlayerAndInit:(Player *)player;
 - (void)onNewMessage:(NSString *)cmContent :(NSString *)userName :(int)ftype :(int)fsize :(NSColor *)color;
 - (void)onNewError:(NSString *)str;
+- (void)changeRenderStatus:(bool)status;
 
 @end

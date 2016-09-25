@@ -94,16 +94,25 @@
     descriptor.params[@"direction"] = @(BarrageWalkDirectionR2L);
     [renderer receive:descriptor];
 }
-
-- (IBAction)disableRender:(id)sender {
-    if(renderDisabled){
+- (void)changeRenderStatus:(bool)status {
+    NSButton *button = [self.view viewWithTag:10001];
+    if(status)
+    {
         renderDisabled = false;
-        [sender setTitle:@"关闭弹幕渲染"];
+        [button setTitle:@"关闭弹幕渲染"];
         [renderer start];
     }else{
         renderDisabled = true;
-        [sender setTitle:@"开启弹幕渲染"];
+        [button setTitle:@"开启弹幕渲染"];
         [renderer stop];
+    }
+}
+
+- (IBAction)disableRender:(id)sender {
+    if(renderDisabled){
+        [self changeRenderStatus:true];
+    }else{
+        [self changeRenderStatus:false];
     }
 }
 
