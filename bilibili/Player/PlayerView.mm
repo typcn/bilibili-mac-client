@@ -286,6 +286,7 @@ getInfo:
             self.liveChatWC = [storyBoard instantiateControllerWithIdentifier:@"LiveChatWindow"];
             [self.liveChatWC showWindow:self];
             LiveChat *lc = (LiveChat *)self.liveChatWC.window.contentViewController;
+            [playerControlView setLiveChat:lc];
             [lc setPlayerAndInit:self.player];
         });
     }

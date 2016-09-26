@@ -358,6 +358,10 @@
 
 - (void)onSubVisibility:(int)vis{
     dispatch_async(dispatch_get_main_queue(), ^(void){
+         if(self.liveChat)
+         {
+              [self.liveChat changeRenderStatus:(vis ? YES : NO)];
+         }
         if(vis){
             currentSubVis = YES;
             subVisButton.state = NSOffState;

@@ -8,10 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Player.h"
+#import "LiveChat.h"
 
 @interface PlayerControlView : NSVisualEffectView
 
 @property (weak, nonatomic) Player *player;
+@property (weak, nonatomic) LiveChat *liveChat;
 @property (nonatomic) BOOL currentPaused;
 @property (nonatomic) BOOL currentMuted;
 @property (nonatomic) BOOL currentFullscreen;

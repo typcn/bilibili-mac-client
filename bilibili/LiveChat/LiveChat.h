@@ -16,6 +16,11 @@
 
 - (void)setPlayerAndInit:(Player *)player;
 - (void)onNewMessage:(NSString *)cmContent :(NSString *)userName :(int)ftype :(int)fsize :(NSColor *)color;
+- (void)onNewGift :(NSString *)userName :(NSString *)giftName :(long)giftNum;
+- (void)onNewWelcome :(NSString *)userName :(bool)isAdmin :(bool)isVip;
 - (void)onNewError:(NSString *)str;
+- (void)changeRenderStatus:(bool)status;
+- (void)changeReconnectButtonStatus: (bool)status;
+- (void)AppendToTextView:(NSString *)text;
 
 @end
