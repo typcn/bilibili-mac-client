@@ -50,7 +50,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="78"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="357" height="78"/>
+                                            <size key="minSize" width="342" height="78"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -689,7 +689,7 @@ GQ
                                             <rect key="frame" x="0.0" y="0.0" width="468" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="483" height="230"/>
+                                            <size key="minSize" width="468" height="230"/>
                                             <size key="maxSize" width="485" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -957,6 +957,17 @@ GQ
                                 <connections>
                                     <action selector="disableRender:" target="rag-YS-WW4" id="EFM-b3-SeW"/>
                                 </connections>
+                            </button>
+                            <button hidden="YES" verticalHuggingPriority="750" misplaced="YES" tag="10002" id="3L0-57-1xO">
+                                <rect key="frame" x="244" y="0.0" width="113" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="重新连接弹幕" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="52J-tc-xCD">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="reconnect:" target="rag-YS-WW4" id="tZD-Yz-cIt"/>
+                                    </connections>
+                                </buttonCell>
                             </button>
                         </subviews>
                     </view>

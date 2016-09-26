@@ -120,6 +120,8 @@
                                              userInfo:nil
                                               repeats:YES];
     
+    [delegate changeReconnectButtonStatus:false];
+    
     [self doRecv];
 }
 
@@ -176,7 +178,7 @@
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:d options:0 error:&err];
     if(!err){
         if(dic){
-            if([[dic objectForKey:@"cmd"] isEqualToString:@"DANMU_MSG"]){
+            if([[dic objectForKey:@"cmd"] isEqualToString:@"DANMU_MSG"]){ // danmaku
                 NSArray *info = [dic objectForKey:@"info"];
                 NSString *cmContent = [info objectAtIndex:1];
                 NSString *userName = [[info objectAtIndex:2] objectAtIndex:1];
@@ -189,6 +191,26 @@
                                                    alpha:1.0];
                 
                 [delegate onNewMessage:cmContent :userName :ftype :fsize :color];
+            }else if([[dic objectForKey:@"cmd"] isEqualToString:@"SEND_GIFT"]){ // gifts
+                NSArray *info = [dic objectForKey:@"data"];
+                NSString *giftName = [info valueForKey:@"giftName"];
+                long giftNum = [[info valueForKey:@"num"] intValue];
+                NSString *userName = [info valueForKey:@"uname"];
+                // long userId = [[info valueForKey:@"uid"] intValue];
+                
+                [delegate onNewGift :userName :giftName :giftNum];
+            }else if([[dic objectForKey:@"cmd"] isEqualToString:@"WELCOME"]) { // welcome
+                NSArray *info = [dic objectForKey:@"data"];
+                NSString *userName = [info valueForKey:@"uname"];
+                // long userId = [[info valueForKey:@"uid"] intValue];
+                bool isAdmin = [[info valueForKey:@"isadmin"] boolValue];
+                bool isVip = [[info valueForKey:@"vip"] boolValue];
+                
+                [delegate onNewWelcome:userName :isAdmin :isVip];
+            }else{
+                // 未定义值
+                // [delegate AppendToTextView:[NSString stringWithFormat:@"SYSTEM: %@", dic]];
+                printf("@: %s\n", [[NSString stringWithFormat:@"%@", dic] UTF8String]);
             }
         }
     }else{

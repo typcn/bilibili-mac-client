@@ -13,5 +13,6 @@
 - (void)loadWithPlayer: (id)player;
 - (void)setDelegate:(id)del;
 - (void)disconnect;
+- (void)reconnect;
 
 @end
