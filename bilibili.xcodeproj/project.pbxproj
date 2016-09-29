@@ -31,6 +31,7 @@
 		FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954DA1B2594AC003A958F /* danmaku2ass.cpp */; };
 		FD29EC691BAF9AF200B8724B /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD29EC681BAF9AF200B8724B /* VPPlugin.framework */; };
 		FD29EC701BAF9C0100B8724B /* VPPlugin.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD29EC6F1BAF9BE300B8724B /* VPPlugin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FD353A841D9D821D00B715CE /* CloudScript.m in Sources */ = {isa = PBXBuildFile; fileRef = FD353A831D9D821D00B715CE /* CloudScript.m */; };
 		FD3553A81B9C4356000EE41E /* enterfullscreen.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553911B9C4356000EE41E /* enterfullscreen.pdf */; };
 		FD3553A91B9C4356000EE41E /* exitfillscreen_lr.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553921B9C4356000EE41E /* exitfillscreen_lr.pdf */; };
 		FD3553AA1B9C4356000EE41E /* exitfillscreen_ub.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553931B9C4356000EE41E /* exitfillscreen_ub.pdf */; };
@@ -438,6 +439,8 @@
 		FD29EC6A1BAF9BE300B8724B /* VPPlugin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VPPlugin.xcodeproj; path = plugin/VPPluginAPI/VPPlugin.xcodeproj; sourceTree = "<group>"; };
 		FD2BD56D1AD15AE0001A7E16 /* libmediainfo.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmediainfo.0.dylib; path = bilibili/libs/libmediainfo.0.dylib; sourceTree = "<group>"; };
 		FD2BD5701AD15BCA001A7E16 /* MediaInfoDLL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaInfoDLL.h; path = bilibili/headers/MediaInfoDLL/MediaInfoDLL.h; sourceTree = "<group>"; };
+		FD353A821D9D821D00B715CE /* CloudScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudScript.h; path = Browser/CloudScript.h; sourceTree = "<group>"; };
+		FD353A831D9D821D00B715CE /* CloudScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudScript.m; path = Browser/CloudScript.m; sourceTree = "<group>"; };
 		FD35538A1B9C34F9000EE41E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PlayerControl.xib; sourceTree = "<group>"; };
 		FD3553911B9C4356000EE41E /* enterfullscreen.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = enterfullscreen.pdf; path = bilibili/img/player/enterfullscreen.pdf; sourceTree = "<group>"; };
 		FD3553921B9C4356000EE41E /* exitfillscreen_lr.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = exitfillscreen_lr.pdf; path = bilibili/img/player/exitfillscreen_lr.pdf; sourceTree = "<group>"; };
@@ -1011,6 +1014,8 @@
 				FD7684931C887F33006B44F2 /* WebTabView.mm */,
 				FD7684941C887F33006B44F2 /* WebView+SwipeNavigation.h */,
 				FD7684951C887F33006B44F2 /* WebView+SwipeNavigation.m */,
+				FD353A821D9D821D00B715CE /* CloudScript.h */,
+				FD353A831D9D821D00B715CE /* CloudScript.m */,
 			);
 			name = Browser;
 			sourceTree = "<group>";
@@ -1694,6 +1699,7 @@
 				FDFE45271C0073150006856E /* BarrageFloatSprite.m in Sources */,
 				FDA01C4E1C56915A00298CEF /* PJTernarySearchTree.m in Sources */,
 				FD0CCC631BAEF25B008FD9BF /* HTTPServer.mm in Sources */,
+				FD353A841D9D821D00B715CE /* CloudScript.m in Sources */,
 				FDDE11601BA9459E00230184 /* reverseHTTP.cpp in Sources */,
 				FD3CED8E1BC64B5000BE9A8B /* DynamicView.m in Sources */,
 				FD4EDBB61BE42D9B009309EC /* MPVSettings.m in Sources */,

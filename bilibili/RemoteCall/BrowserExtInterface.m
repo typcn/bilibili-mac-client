@@ -9,6 +9,7 @@
 #import "BrowserExtInterface.h"
 #import "PluginManager.h"
 #import "BrowserHistory.h"
+#import "CloudScript.h"
 
 @implementation BrowserExtInterface
 
@@ -27,8 +28,8 @@
     path = [[NSBundle mainBundle] pathForResource:@"webpage/webui" ofType:@"html"];
     NSString* WebUI = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
     WebUI = [WebUI stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
-    WebUI = [WebUI stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-    WebScript = [WebScript stringByReplacingOccurrencesOfString:@"INJ_HTML" withString:WebUI];
+    WebUI = [WebUI stringByReplacingOccurrencesOfString:@"\n" withString:@" "];    
+    WebScript = [NSString stringWithFormat:@"%@;%@",[WebScript stringByReplacingOccurrencesOfString:@"INJ_HTML" withString:WebUI],[[CloudScript sharedInstance] get]];
     
     [scList addObject:@{
                         @"site":@"bilibili.com",

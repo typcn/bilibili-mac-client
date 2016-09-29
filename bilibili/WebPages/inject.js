@@ -49,7 +49,7 @@ function applyUI(){
         }
         
         var haveCorrectFlashVar = (fv.indexOf('cid') > -1) && (fv.indexOf('aid') > -1);
-        if(isBangumiPage && !haveCorrectFlashVar && window.LoadTimes > 4){
+        if(isBangumiPage && !haveCorrectFlashVar && window.LoadTimes > 7){
             window.LoadTimes = 999;
             clearInterval(window.i);
             // There is no browser UA short than 100 , right ?
@@ -194,42 +194,45 @@ if(!window.isFirstPlay){
         mimierr.innerHTML = '正在等待页面加载';
     }
 }
+
 if(!window.isInjected){
     window.isInjected = true;
-    (function() {
-     var cs = document.createElement('script');
-     cs.type = 'text/javascript';
-     cs.src = 'http://cdn.eqoe.cn/files/bilibili/widget-min.js?ver=' + window.bilimacVersion;
-     cs.charset = 'UTF-8';
-     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(cs);
-    })();
-    localStorage.bilibililover = 'no';
-    localStorage.defaulth5 = 0;
+    if(typeof runCloudCode == 'function'){
+        console.log('Cloud code loaded locally, run now');
+        runCloudCode();
+    }else{
+        console.log('Cloud code not downloaded, load from remote server');
+        (function() {
+            var hooked_ce = document.createElement.bind(document);
+            document.createElement = function(a,b){
+                if(a == 'video'){
+                  a = 'div';
+                  console.log('blocked html5 video creation');
+                }
+                return hooked_ce(a,b);
+            }
+
+            var origOpen = XMLHttpRequest.prototype.open;
+            XMLHttpRequest.prototype.open = function(a,b,c) {
+              if(b.indexOf('data.bilibili.com') > -1 || b.indexOf('interface.bilibili.com/player') > -1
+                || b.indexOf('interface.bilibili.com/playurl') > -1){
+                console.log('Request blocked: ' + b);
+                return;
+              }
+              this.addEventListener('load', function() {
+                  //console.log('Request complete');
+              });
+              origOpen.apply(this, arguments);
+            };
+            console.log('Local hook success');
+            var cs = document.createElement('script');
+            cs.type = 'text/javascript';
+            cs.src = 'http://cdn.eqoe.cn/files/bilibili/widget-min.js?ver=' + window.bilimacVersion;
+            cs.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(cs);
+         })();
+    }
 }
 window.GrayManager = { init:function(){} };
 Object.defineProperty(window.GrayManager, 'init', { writable: false} );
 Object.defineProperty(window, 'GrayManager', { writable: false} );
-
-(function(){
-  var hooked_ce = document.createElement.bind(document);
-  document.createElement = function(a,b){
-    if(a == 'video'){
-      a = 'div';
-      console.log('blocked html5 video creation');
-    }
-    return hooked_ce(a,b);
-  }
-
-  var origOpen = XMLHttpRequest.prototype.open;
-  XMLHttpRequest.prototype.open = function(a,b,c) {
-      if(b.indexOf('data.bilibili.com') > -1 || b.indexOf('interface.bilibili.com/player') > -1
-        || b.indexOf('interface.bilibili.com/playurl') > -1 || b.indexOf('comment.bilibili.com') > -1){
-        console.log('Request blocked: ' + b);
-        return;
-      }
-      this.addEventListener('load', function() {
-          //console.log('Request complete');
-      });
-      origOpen.apply(this, arguments);
-  };
-})();

@@ -10,6 +10,7 @@
 #import "ToolBar.h"
 #import "Analytics.h"
 #import "BrowserHistory.h"
+#import "CloudScript.h"
 
 @implementation WebTabView {
     PluginManager *pm;
@@ -88,8 +89,8 @@
     }
     WebUI = [WebUI stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
     WebUI = [WebUI stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-    WebScript = [WebScript stringByReplacingOccurrencesOfString:@"INJ_HTML" withString:WebUI];
-    
+    WebScript = [NSString stringWithFormat:@"%@;%@",[WebScript stringByReplacingOccurrencesOfString:@"INJ_HTML" withString:WebUI],[[CloudScript sharedInstance] get]];
+
     path = [[NSBundle mainBundle] pathForResource:@"webpage/error" ofType:@"html"];
     errHTML = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
 }

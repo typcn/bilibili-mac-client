@@ -10,8 +10,8 @@
 #import "NSBundle+OBCodeSigningInfo.h"
 #import <sys/sysctl.h>
 #import "MBProgressHUD.h"
-#include "SubtitleHelper.h"
-
+#import "SubtitleHelper.h"
+#import "CloudScript.h"
 
 @implementation NSDictionary (IFK)
 
@@ -360,6 +360,8 @@
     
     if ([unzipTask terminationStatus] == 0){
         if(lastInstType == 1){
+            hud.labelText = NSLocalizedString(@"正在更新云端脚本", nil);
+            [[CloudScript sharedInstance] updateScript];
             hud.labelText = NSLocalizedString(@"解析模块更新成功", nil);
         }else{
             hud.labelText = NSLocalizedString(@"安装成功", nil);
