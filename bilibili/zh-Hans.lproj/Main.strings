@@ -140,18 +140,6 @@
 /* Class = "NSMenu"; title = "服务"; ObjectID = "P0s-Pq-Zmu"; */
 "P0s-Pq-Zmu.title" = "服务";
 
-/* Class = "NSComboBoxCell"; P8V-DP-s5N.ibShadowedObjectValues[0] = "162.105.207.[RANDOM]"; ObjectID = "P8V-DP-s5N"; */
-"P8V-DP-s5N.ibShadowedObjectValues[0]" = "162.105.207.[RANDOM]";
-
-/* Class = "NSComboBoxCell"; P8V-DP-s5N.ibShadowedObjectValues[1] = "14.17.101.[RANDOM]"; ObjectID = "P8V-DP-s5N"; */
-"P8V-DP-s5N.ibShadowedObjectValues[1]" = "14.17.101.[RANDOM]";
-
-/* Class = "NSComboBoxCell"; P8V-DP-s5N.ibShadowedObjectValues[2] = "220.181.111.[RANDOM]"; ObjectID = "P8V-DP-s5N"; */
-"P8V-DP-s5N.ibShadowedObjectValues[2]" = "220.181.111.[RANDOM]";
-
-/* Class = "NSComboBoxCell"; P8V-DP-s5N.ibShadowedObjectValues[3] = "113.106.58.[RANDOM]"; ObjectID = "P8V-DP-s5N"; */
-"P8V-DP-s5N.ibShadowedObjectValues[3]" = "113.106.58.[RANDOM]";
-
 /* Class = "NSComboBoxCell"; P8V-DP-s5N.ibShadowedObjectValues[4] = "关闭"; ObjectID = "P8V-DP-s5N"; */
 "P8V-DP-s5N.ibShadowedObjectValues[4]" = "关闭";
 
