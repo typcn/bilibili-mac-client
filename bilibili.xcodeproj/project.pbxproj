@@ -32,6 +32,8 @@
 		FD29EC691BAF9AF200B8724B /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD29EC681BAF9AF200B8724B /* VPPlugin.framework */; };
 		FD29EC701BAF9C0100B8724B /* VPPlugin.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD29EC6F1BAF9BE300B8724B /* VPPlugin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD353A841D9D821D00B715CE /* CloudScript.m in Sources */ = {isa = PBXBuildFile; fileRef = FD353A831D9D821D00B715CE /* CloudScript.m */; };
+		FD353A961D9E5A2300B715CE /* UserContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD353A951D9E5A2300B715CE /* UserContentController.m */; };
+		FD353A991D9E5C2A00B715CE /* blocker.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD353A971D9E5C0200B715CE /* blocker.js */; };
 		FD3553A81B9C4356000EE41E /* enterfullscreen.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553911B9C4356000EE41E /* enterfullscreen.pdf */; };
 		FD3553A91B9C4356000EE41E /* exitfillscreen_lr.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553921B9C4356000EE41E /* exitfillscreen_lr.pdf */; };
 		FD3553AA1B9C4356000EE41E /* exitfillscreen_ub.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553931B9C4356000EE41E /* exitfillscreen_ub.pdf */; };
@@ -55,8 +57,8 @@
 		FD3553BC1B9C4356000EE41E /* vol_low.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A51B9C4356000EE41E /* vol_low.pdf */; };
 		FD3553BD1B9C4356000EE41E /* vol_mid.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A61B9C4356000EE41E /* vol_mid.pdf */; };
 		FD3553BE1B9C4356000EE41E /* vol_no.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FD3553A71B9C4356000EE41E /* vol_no.pdf */; };
-		FD3553C21B9C5D98000EE41E /* aria2c in Copy Files */ = {isa = PBXBuildFile; fileRef = FD3553BF1B9C5CB5000EE41E /* aria2c */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		FD3553C41B9C5E15000EE41E /* startaria.sh in Copy Files */ = {isa = PBXBuildFile; fileRef = FD3553C31B9C5DF4000EE41E /* startaria.sh */; };
+		FD3553C21B9C5D98000EE41E /* aria2c in Copy Files (3 items) */ = {isa = PBXBuildFile; fileRef = FD3553BF1B9C5CB5000EE41E /* aria2c */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		FD3553C41B9C5E15000EE41E /* startaria.sh in Copy Files (3 items) */ = {isa = PBXBuildFile; fileRef = FD3553C31B9C5DF4000EE41E /* startaria.sh */; };
 		FD3553C81B9C82A5000EE41E /* Toolbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD36B0E51B99B43200FB32CC /* Toolbar.xib */; };
 		FD3553C91B9C82A5000EE41E /* PlayerControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD3553891B9C34F9000EE41E /* PlayerControl.xib */; };
 		FD36B0CD1B9959CC00FB32CC /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD36B0CC1B9959CC00FB32CC /* Sparkle.framework */; };
@@ -75,7 +77,7 @@
 		FD3CED981BC6A7E100BE9A8B /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3CED971BC6A7E100BE9A8B /* PFAboutWindowController.m */; };
 		FD3CED9A1BC6AC2C00BE9A8B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FD3CED991BC6AC2C00BE9A8B /* Credits.rtf */; };
 		FD471B521AC904CB00A2A727 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD471B511AC904CB00A2A727 /* CoreAudio.framework */; };
-		FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files */ = {isa = PBXBuildFile; fileRef = FD4855071AE67AD8008F49AA /* gencache.sh */; };
+		FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files (3 items) */ = {isa = PBXBuildFile; fileRef = FD4855071AE67AD8008F49AA /* gencache.sh */; };
 		FD4B84441BA5879400DD6F2F /* AirPlay.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84401BA5879400DD6F2F /* AirPlay.mm */; };
 		FD4B84451BA5879400DD6F2F /* AirPlay.mm in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84401BA5879400DD6F2F /* AirPlay.mm */; };
 		FD4B84461BA5879400DD6F2F /* ServiceDiscovery.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD4B84421BA5879400DD6F2F /* ServiceDiscovery.cpp */; };
@@ -337,17 +339,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FD4855091AE67B2C008F49AA /* Copy Files */ = {
+		FD4855091AE67B2C008F49AA /* Copy Files (3 items) */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				FD3553C41B9C5E15000EE41E /* startaria.sh in Copy Files */,
-				FD3553C21B9C5D98000EE41E /* aria2c in Copy Files */,
-				FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files */,
+				FD3553C41B9C5E15000EE41E /* startaria.sh in Copy Files (3 items) */,
+				FD3553C21B9C5D98000EE41E /* aria2c in Copy Files (3 items) */,
+				FD48550A1AE67B35008F49AA /* gencache.sh in Copy Files (3 items) */,
 			);
-			name = "Copy Files";
+			name = "Copy Files (3 items)";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		FD61025F1AD7CBD80013119A /* CopyFiles */ = {
@@ -356,6 +358,7 @@
 			dstPath = webpage;
 			dstSubfolderSpec = 7;
 			files = (
+				FD353A991D9E5C2A00B715CE /* blocker.js in CopyFiles */,
 				FD98B2251C11810C001A0382 /* error.html in CopyFiles */,
 				FD3C7B731BC5204300E347EF /* autoswitch.js in CopyFiles */,
 				FD5984751BB45A77001E0B17 /* jquery.min.js in CopyFiles */,
@@ -441,6 +444,9 @@
 		FD2BD5701AD15BCA001A7E16 /* MediaInfoDLL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MediaInfoDLL.h; path = bilibili/headers/MediaInfoDLL/MediaInfoDLL.h; sourceTree = "<group>"; };
 		FD353A821D9D821D00B715CE /* CloudScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CloudScript.h; path = Browser/CloudScript.h; sourceTree = "<group>"; };
 		FD353A831D9D821D00B715CE /* CloudScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CloudScript.m; path = Browser/CloudScript.m; sourceTree = "<group>"; };
+		FD353A941D9E5A2300B715CE /* UserContentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserContentController.h; path = Browser/UserContentController.h; sourceTree = "<group>"; };
+		FD353A951D9E5A2300B715CE /* UserContentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserContentController.m; path = Browser/UserContentController.m; sourceTree = "<group>"; };
+		FD353A971D9E5C0200B715CE /* blocker.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = blocker.js; path = WebPages/blocker.js; sourceTree = "<group>"; };
 		FD35538A1B9C34F9000EE41E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PlayerControl.xib; sourceTree = "<group>"; };
 		FD3553911B9C4356000EE41E /* enterfullscreen.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = enterfullscreen.pdf; path = bilibili/img/player/enterfullscreen.pdf; sourceTree = "<group>"; };
 		FD3553921B9C4356000EE41E /* exitfillscreen_lr.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = exitfillscreen_lr.pdf; path = bilibili/img/player/exitfillscreen_lr.pdf; sourceTree = "<group>"; };
@@ -1016,6 +1022,8 @@
 				FD7684951C887F33006B44F2 /* WebView+SwipeNavigation.m */,
 				FD353A821D9D821D00B715CE /* CloudScript.h */,
 				FD353A831D9D821D00B715CE /* CloudScript.m */,
+				FD353A941D9E5A2300B715CE /* UserContentController.h */,
+				FD353A951D9E5A2300B715CE /* UserContentController.m */,
 			);
 			name = Browser;
 			sourceTree = "<group>";
@@ -1116,6 +1124,7 @@
 				FD61025D1AD7CBC10013119A /* webui.html */,
 				FD3C7B6D1BC5201A00E347EF /* autoswitch.js */,
 				FDCF6E3A1C1068DF00A8A860 /* error.html */,
+				FD353A971D9E5C0200B715CE /* blocker.js */,
 			);
 			name = WebPages;
 			path = bilibili;
@@ -1392,7 +1401,7 @@
 				FDAF8BA21ACA4EF100C0C55D /* Copy Files */,
 				FD471F731AC911CD00A2A727 /* CopyFiles */,
 				FD61025F1AD7CBD80013119A /* CopyFiles */,
-				FD4855091AE67B2C008F49AA /* Copy Files */,
+				FD4855091AE67B2C008F49AA /* Copy Files (3 items) */,
 				FD076C4E1AC8CBBB00C893FA /* Resources */,
 				FD8BBC841BEB813A0018AA18 /* Run Script ( Fabic ) */,
 				FD4855051AE675D7008F49AA /* Run Script ( Copy FontConfig ) */,
@@ -1734,6 +1743,7 @@
 				FDD43E851C2049D300293223 /* SimpleVideoFormatParser.mm in Sources */,
 				FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */,
 				FD7684BE1C88D331006B44F2 /* PlayerWindow.m in Sources */,
+				FD353A961D9E5A2300B715CE /* UserContentController.m in Sources */,
 				FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */,
 				FD83027D1BAB303C00FF68DB /* DonateView.mm in Sources */,
 				FD59846C1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m in Sources */,

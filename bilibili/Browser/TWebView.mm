@@ -6,11 +6,9 @@
 //  Copyright (c) 2016 TYPCN. All rights reserved.
 //
 
-// 为啥要这样而不是做 provider 类然后继承呢？其实主要是懒。。。加到原来的类就太乱了，不过先 make it works ， Clean 之后再说
-
 #import "TWebView.h"
 #import "WebTabView.h"
-
+#import "UserContentController.h"
 
 
 @implementation TWebView{
@@ -33,11 +31,13 @@
     if (NSClassFromString(@"WKWebView")) {
         if(!cfg){
             wvConfig = [[WKWebViewConfiguration  alloc] init];
+            wvConfig.userContentController = [UserContentController sharedInstance];
 #ifdef DEBUG
             [wvConfig.preferences setValue:@YES forKey:@"developerExtrasEnabled"];
 #endif
         }else{
             wvConfig = [cfg copy];
+            wvConfig.userContentController = [UserContentController sharedInstance];
         }
         
         webViewType = tWKWebView;

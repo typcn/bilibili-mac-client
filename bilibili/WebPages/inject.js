@@ -233,6 +233,3 @@ if(!window.isInjected){
          })();
     }
 }
-window.GrayManager = { init:function(){} };
-Object.defineProperty(window.GrayManager, 'init', { writable: false} );
-Object.defineProperty(window, 'GrayManager', { writable: false} );
