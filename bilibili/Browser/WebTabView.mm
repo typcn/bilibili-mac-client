@@ -139,7 +139,7 @@
         }
     }
     // Some ISP may hijack page and redirect it
-    if(request.URL.query && [request.URL.query containsString:@"bilibili.com"]){
+    if(request.URL.query && [request.URL.query containsString:@"bilibili.com"] && ![request.URL.absoluteString containsString:@"login/sns"]){
         NSLog(@"[WebTabView] Site appears in URL params, searching for it");
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(http.*?bilibili.com\\/.*(\\/|html))&?" options:NSRegularExpressionCaseInsensitive error:nil];
         NSTextCheckingResult *match = [regex firstMatchInString:request.URL.query options:0 range:NSMakeRange(0, [request.URL.query length])];
