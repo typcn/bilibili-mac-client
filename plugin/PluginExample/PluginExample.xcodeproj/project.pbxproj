@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FD0CCC5A1BAEE47D008FD9BF /* Example.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC591BAEE47D008FD9BF /* Example.m */; settings = {ASSET_TAGS = (); }; };
-		FD0CCC5D1BAEE73D008FD9BF /* ExamplePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD0CCC5C1BAEE73D008FD9BF /* ExamplePanel.xib */; settings = {ASSET_TAGS = (); }; };
-		FD0CCC5F1BAEE8F0008FD9BF /* Inject.js in Resources */ = {isa = PBXBuildFile; fileRef = FD0CCC5E1BAEE8F0008FD9BF /* Inject.js */; settings = {ASSET_TAGS = (); }; };
+		FD0CCC5A1BAEE47D008FD9BF /* Example.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0CCC591BAEE47D008FD9BF /* Example.m */; };
+		FD0CCC5D1BAEE73D008FD9BF /* ExamplePanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD0CCC5C1BAEE73D008FD9BF /* ExamplePanel.xib */; };
+		FD0CCC5F1BAEE8F0008FD9BF /* Inject.js in Resources */ = {isa = PBXBuildFile; fileRef = FD0CCC5E1BAEE8F0008FD9BF /* Inject.js */; };
 		FD29EC671BAF9ADB00B8724B /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD29EC661BAF9ADB00B8724B /* VPPlugin.framework */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +90,7 @@
 		FD47B9DD1BAECBDE00BAF397 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = TYPCN;
 				TargetAttributes = {
 					FD47B9E41BAECBDE00BAF397 = {
@@ -152,8 +152,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -194,8 +196,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
