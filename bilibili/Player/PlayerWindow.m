@@ -346,6 +346,9 @@
 
 - (NSSize)windowWillResize:(NSWindow *)sender
                     toSize:(NSSize)frameSize{
+    if(!self.player){
+        return frameSize;
+    }
     [[NSUserDefaults standardUserDefaults] setDouble:frameSize.width forKey:@"playerwidth"];
     [[NSUserDefaults standardUserDefaults] setDouble:frameSize.height forKey:@"playerheight"];
     return frameSize;
