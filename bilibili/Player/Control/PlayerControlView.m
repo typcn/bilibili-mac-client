@@ -32,9 +32,7 @@
     BOOL isShowingDuration;
     BOOL isAfterVideoRender;
     BOOL isKeepAspect;
-    BOOL isHiding;
     BOOL isHided;
-    BOOL cancelHide;
     
     
     BOOL isFirstBuffed;
@@ -170,7 +168,6 @@
     if(!isHided || !isAfterVideoRender || !playerWindow.isActive){
         return;
     }
-    cancelHide = YES;
     [self setHidden:NO];
     [self setState:NSVisualEffectStateActive];
     if(timeUpdateTimer){
@@ -202,23 +199,17 @@
     if(noAnimation){
         [self orderOut];
     }else{
-        isHiding = YES;
         NSTimeInterval delay = [[NSAnimationContext currentContext] duration] + 0.1;
         [self performSelector:@selector(orderOut) withObject:nil afterDelay:delay];
     }
 }
 
 - (void)orderOut{
-    if(isHiding && cancelHide){
-        cancelHide = NO;
-        return;
-    }
     [self setState:NSVisualEffectStateInactive];
     [self setHidden:YES];
     [self.window orderOut:self];
     [timeUpdateTimer invalidate];
     timeUpdateTimer = nil;
-    isHiding = NO;
     isHided = YES;
 }
 

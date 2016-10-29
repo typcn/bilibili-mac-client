@@ -149,6 +149,7 @@
         int pause = 1;
         mpv_set_property_async(self.player.mpv, 0, "pause", MPV_FORMAT_FLAG, &pause);
     };
+    [self.player.playerControlView hide:YES];
     [self.player.playerControlView show];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, latency * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [super toggleFullScreen:sender];
