@@ -413,6 +413,7 @@
 		FD0CCC651BAEF269008FD9BF /* PluginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PluginManager.m; path = RemoteCall/PluginManager.m; sourceTree = "<group>"; };
 		FD0D23711CFFA5A700448E31 /* PlayPosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayPosition.h; path = DataStore/PlayPosition.h; sourceTree = "<group>"; };
 		FD0D23721CFFA5A700448E31 /* PlayPosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayPosition.m; path = DataStore/PlayPosition.m; sourceTree = "<group>"; };
+		FD1316491DC56B0A0057B4F4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		FD1954A81B259318003A958F /* CommentBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentBlockSettings.h; path = Settings/CommentBlockSettings.h; sourceTree = "<group>"; };
 		FD1954A91B259318003A958F /* CommentBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentBlockSettings.m; path = Settings/CommentBlockSettings.m; sourceTree = "<group>"; };
 		FD1954AA1B259318003A958F /* KeywordBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeywordBlockSettings.h; path = Settings/KeywordBlockSettings.h; sourceTree = "<group>"; };
@@ -649,7 +650,6 @@
 		FDFAD6801C007BA700BA06C7 /* NSValue+iOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSValue+iOS.m"; path = "BarrageRenderer/NSValue+iOS.m"; sourceTree = SOURCE_ROOT; };
 		FDFAD6821C007DCF00BA06C7 /* NHDisplayLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NHDisplayLink.h; path = BarrageRenderer/NHDisplayLink.h; sourceTree = SOURCE_ROOT; };
 		FDFAD6831C007DCF00BA06C7 /* NHDisplayLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NHDisplayLink.m; path = BarrageRenderer/NHDisplayLink.m; sourceTree = SOURCE_ROOT; };
-		FDFDAE171BB05A2F00AD99AE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		FDFE44FD1C0073150006856E /* BarrageCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageCanvas.h; sourceTree = "<group>"; };
 		FDFE44FE1C0073150006856E /* BarrageCanvas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarrageCanvas.m; sourceTree = "<group>"; };
 		FDFE44FF1C0073150006856E /* BarrageClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarrageClock.h; sourceTree = "<group>"; };
@@ -1799,7 +1799,7 @@
 				FD0829C81B67844500D2B126 /* Base */,
 				FDCA48771BAB4F92001ACB8D /* zh-Hans */,
 				FDCA487A1BAB5256001ACB8D /* en */,
-				FDFDAE171BB05A2F00AD99AE /* ja */,
+				FD1316491DC56B0A0057B4F4 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
