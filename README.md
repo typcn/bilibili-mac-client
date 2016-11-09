@@ -39,9 +39,14 @@ see [FAQ](http://cdn2.eqoe.cn/files/bilibili/faq.html?v=3)
 
 see [HOW TO BUILD](https://github.com/typcn/bilibili-mac-client/blob/master/HOW_TO_BUILD.md)
 
-# Known problems
+# Performance
 
-- <del>首次播放可能创建字体缓存，大约需要两分钟，多等一会即可开始播放</del> 不再需要字体缓存
+相对于 HTML5 播放器，在观看 1080P 满弹幕视频时的电量消耗
+
+- BIlimac HWDEC ZeroCopy ![](https://cloud.githubusercontent.com/assets/8022103/20131908/5b095e04-a69b-11e6-8246-b8a9c6ffe78d.png)
+- Bilimac HWDEC ![](https://cloud.githubusercontent.com/assets/8022103/20131817/ce06f94e-a69a-11e6-8175-5af40732d89e.png)
+- Safari HTML5 (162%)![](https://cloud.githubusercontent.com/assets/8022103/20131799/a68ae3a8-a69a-11e6-88af-8477be180a6a.png)
+- Chrome HTML5 (246%）![](https://cloud.githubusercontent.com/assets/8022103/20131748/694e513c-a69a-11e6-9f6c-7fec337f0185.png)
 
 
 # Thanks
