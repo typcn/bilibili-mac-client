@@ -7,3 +7,6 @@
 [submodule "GCDWebServer"]
 	path = GCDWebServer
 	url = https://github.com/typcn/GCDWebServer.git
+[submodule "fmdb"]
+	path = fmdb
+	url = https://github.com/typcn/fmdb.git

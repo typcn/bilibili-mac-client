@@ -3,10 +3,13 @@
 //  VPPlugin
 //
 //  Created by TYPCN on 2015/9/21.
-//  Copyright © 2015 TYPCN. All rights reserved.
+//  Copyright © 2016 TYPCN. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SubtitleProvider.h"
+#import "VideoProvider.h"
+#import "VideoAddress.h"
 
 //! Project version number for VPPlugin.
 FOUNDATION_EXPORT double VPPluginVersionNumber;
@@ -18,7 +21,7 @@ FOUNDATION_EXPORT const unsigned char VPPluginVersionString[];
 
 
 #ifndef vp_plg_api
-#define vp_plg_api 0.1
+#define vp_plg_api 0.2
 #endif
 
 @interface VP_Plugin : NSObject
@@ -34,5 +37,15 @@ FOUNDATION_EXPORT const unsigned char VPPluginVersionString[];
 
 // trigger when event from javascript , return video url to play , reutrn NULL won't do anything
 - (NSString *)processEvent:(NSString *)eventName :(NSString *)eventData;
+
+// trigger when user click "settings"
+- (void)openSettings;
+
+// return an allocated & inited object of type or NULL
+//    TYPE        RETURN CLASS        HEADER FILE
+// SubProvider  SubtitleProvider   SubtitleProvider.h    Will register to main program on load
+// VideoProvider  VideoProvider     VideoProvider.h      Will used on call pluginName-callVideoProvider
+
+- (id)getClassOfType:(NSString *)type;
 
 @end

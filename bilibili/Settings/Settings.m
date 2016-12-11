@@ -3,7 +3,7 @@
 //  bilibili
 //
 //  Created by TYPCN on 2015/4/6.
-//  Copyright (c) 2015 TYPCN. All rights reserved.
+//  Copyright (c) 2016 TYPCN. All rights reserved.
 //
 
 #import "Settings.h"
@@ -21,14 +21,16 @@
     settingsController = [NSUserDefaults standardUserDefaults];
     
     [self.autoPlay setState:[settingsController integerForKey:@"autoPlay"]];
-    [self.RealTimeComment setState:[settingsController integerForKey:@"RealTimeComment"]];
+    [self.autoFullscreen setState:[settingsController integerForKey:@"autoFullscreen"]];
     [self.disablebottomComment setState:[settingsController integerForKey:@"disableBottomComment"]];
     [self.playMP4 setState:[settingsController integerForKey:@"playMP4"]];
     [self.DownloadMP4 setState:[settingsController integerForKey:@"DLMP4"]];
     [self.disableKeepAspect setState:[settingsController integerForKey:@"disableKeepAspect"]];
     [self.disableHwDec setState:[settingsController integerForKey:@"enableHW"]];
-    [self.disableNewRenderEngine setState:[settingsController integerForKey:@"disableWKWebkit"]];
     [self.disableWriteHistory setState:[settingsController integerForKey:@"disableWritePlayHistory"]];
+    [self.changeGestureDirection setState:[settingsController integerForKey:@"changeGestureDirection"]];
+    [self.enableFSBugWorkaround setState:[settingsController integerForKey:@"enableFSBugWorkaround"]];
+    [self.enableZeroCopy setState:[settingsController integerForKey:@"enableZeroCopy"]];
     
     float trans = [settingsController floatForKey:@"transparency"];
     if(!trans){
@@ -59,6 +61,12 @@
     }
     [self.fontsize setFloatValue:fontsize];
     
+    long maxBuffer = [settingsController integerForKey:@"maxBufferSize"];
+    if(!maxBuffer){
+        maxBuffer = 75000;
+    }
+    [self.maxBufferSize setIntegerValue:maxBuffer];
+    
     float moveSpeed = [settingsController floatForKey:@"moveSpeed"];
     if(!moveSpeed){
         moveSpeed = 0.0;
@@ -76,8 +84,8 @@
     [settingsController setInteger:[self.autoPlay state] forKey:@"autoPlay"];
     [settingsController synchronize];
 }
-- (IBAction)disableRealTimeComment:(id)sender {
-    [settingsController setInteger:[self.RealTimeComment state] forKey:@"RealTimeComment"];
+- (IBAction)switchAutoFullscreen:(id)sender {
+    [settingsController setInteger:[self.autoFullscreen state] forKey:@"autoFullscreen"];
     [settingsController synchronize];
 }
 - (IBAction)qualityChanged:(id)sender {
@@ -130,10 +138,6 @@
     [settingsController setInteger:[self.disableHwDec state] forKey:@"enableHW"];
     [settingsController synchronize];
 }
-- (IBAction)disableNewRenderEngine:(id)sender {
-    [settingsController setInteger:[self.disableNewRenderEngine state] forKey:@"disableWKWebkit"];
-    [settingsController synchronize];
-}
 
 - (IBAction)disableWritePlayHistory:(id)sender {
     [settingsController setInteger:[self.disableWriteHistory state] forKey:@"disableWritePlayHistory"];
@@ -142,6 +146,24 @@
 
 - (IBAction)fontNameChanged:(id)sender {
     [settingsController setObject:[self.fontName stringValue] forKey:@"fontName"];
+    [settingsController synchronize];
+}
+
+- (IBAction)maxBufferChanged:(id)sender {
+    [settingsController setInteger:[self.maxBufferSize integerValue] forKey:@"maxBufferSize"];
+    [settingsController synchronize];
+}
+- (IBAction)changeGestureDirection:(id)sender {
+    [settingsController setInteger:[self.changeGestureDirection integerValue] forKey:@"changeGestureDirection"];
+    [settingsController synchronize];
+}
+- (IBAction)enableBugWorkaround:(id)sender {
+    [settingsController setInteger:[self.enableFSBugWorkaround integerValue] forKey:@"enableFSBugWorkaround"];
+    [settingsController synchronize];
+}
+
+- (IBAction)enableZeroCopyOpt:(id)sender {
+    [settingsController setInteger:[self.enableZeroCopy integerValue] forKey:@"enableZeroCopy"];
     [settingsController synchronize];
 }
 

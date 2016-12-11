@@ -3,30 +3,36 @@
 //  bilibili
 //
 //  Created by TYPCN on 2015/3/30.
-//  Copyleft 2015 TYPCN. All rights reserved.
+//  Copyleft 2016 TYPCN. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "HTTPServer.h"
+#import "Popover.h"
+#import "PFAboutWindowController.h"
+#import "WebTabView.h"
+#import "PJTernarySearchTree.h"
+#import "PlayerLoader.h"
+#import "CrashReport.h"
+#import "BrowserHistory.h"
 
 Browser *browser;
 
 @interface AppDelegate ()
 
+@property PFAboutWindowController *aboutWindowController;
+
 @end
 
-@implementation AppDelegate
+@implementation AppDelegate{
+    int without_gui;
+    int firstInit;
+}
 
 @synthesize donatew;
+@synthesize crashw;
 
 - (void)applicationWillFinishLaunching:(NSNotification *)notification {
-    NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
-    if(version.minorVersion == 11){
-//        NSAlert *alert = [[NSAlert alloc] init];
-//        [alert setMessageText:@"对不起，由于 OpenGL 问题，软件暂时无法兼容 10.11, 请尝试使用 Xcode7 重新编译 libmpv.dylib"];
-//        [alert runModal];
-//        return;
-    }
     signal(SIGPIPE, SIG_IGN);
     [[NSAppleEventManager sharedAppleEventManager]
      setEventHandler:self
@@ -91,13 +97,20 @@ Browser *browser;
         showdonate = true; // Prevent multi alerts on software start
     }
     [s synchronize];
-    NSLog(@"AcceptAnalytics=%ld",acceptAnalytics);
+    NSLog(@"AcceptAnalytics=%ld WithoutGUI=%d",acceptAnalytics,without_gui);
+    if(!without_gui){
+        NSArray *unclosed = [[BrowserHistory sharedManager] getUnclosed];
+        if(unclosed && [unclosed count] > 0){
+            [self openBrowserWithUrl:@"http://vp-hub.eqoe.cn/unclosed.html"];
+        }else{
+            [self openBrowserWithUrl:@"http://www.bilibili.com"];
+        }
+        [browser.window performSelector:@selector(makeMainWindow) withObject:nil afterDelay:0.2];
+        [browser.window performSelector:@selector(makeKeyAndOrderFront:) withObject:NSApp afterDelay:0.2];
+        [NSApp activateIgnoringOtherApps:YES];
+    }
     
-    browser = (Browser *)[Browser browser];
-    browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
-    [browser addBlankTabInForeground:YES];
-    [browser.windowController showWindow:NSApp];
-    [browser.window makeKeyAndOrderFront:NSApp];
+    firstInit = 1;
     
     // Start ARIA2
     
@@ -114,6 +127,19 @@ Browser *browser;
         showdonate = false;
     }
     
+    NSString *hwid = [s objectForKey:@"hwid"];
+    if([hwid length] < 4){
+        hwid  = [self randomStringWithLength:16];
+        [s setObject:hwid forKey:@"hwid"];
+    }
+    
+    
+    // Add taskbar item
+    
+//    Popover *p = [[Popover alloc] init];
+//    [p addToStatusBar];
+//    [p startMonitor];
+    
     if(showdonate){
         [NSTimer scheduledTimerWithTimeInterval:2
                                          target:self
@@ -121,6 +147,23 @@ Browser *browser;
                                        userInfo:nil
                                         repeats:NO]; // Prevent browser window order back
     }
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
+#ifndef DEBUG
+        CrashlyticsKit.delegate = self;
+        [Fabric with:@[[Crashlytics class]]];
+#endif
+        [PJTernarySearchTree sharedTree]; // Preload Shared Tree
+    });
+}
+
+- (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
+{
+    if(!firstInit){
+        without_gui = 1;
+    }
+    [[PlayerLoader sharedInstance] loadVideoWithLocalFiles:filenames];
+    NSLog(@"Handle open files: %@",filenames);
 }
 
 - (void)showDonate {
@@ -132,6 +175,7 @@ Browser *browser;
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
+    
 }
 - (IBAction)issues:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/typcn/bilibili-mac-client/issues"]];
@@ -140,13 +184,20 @@ Browser *browser;
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
 {
     if (flag) {
+        if(theApplication.mainWindow){
+            [theApplication.mainWindow makeKeyAndOrderFront:nil];
+            return YES;
+        }else if(browser && browser.window && browser.tabCount > 0){
+            [browser.window makeKeyAndOrderFront:nil];
+            return YES;
+        }else if(!browser || browser.tabCount == 0){
+            [self openBrowserWithUrl:@"http://www.bilibili.com"];
+        }
         return NO;
     }
     else
     {
-        [browser addBlankTabInForeground:YES];
-        [browser.windowController showWindow:self];
-        
+        [self openBrowserWithUrl:@"http://www.bilibili.com"];
         return YES;
     }
 }
@@ -160,22 +211,43 @@ Browser *browser;
 {
     NSString* url = [[event paramDescriptorForKeyword:keyDirectObject]
                       stringValue];
+    NSLog(@"url: %@",url);
     url = [url substringFromIndex:5];
     if ([[url substringToIndex:6] isEqual: @"http//"]) { //somehow, 传入url的Colon会被移除 暂时没有找到相关的说明，这里统一去掉，在最后添加http://
         url = [url substringFromIndex:6];
     }
+    if([url isEqualToString:@"open_without_gui"]){
+        if(browser){
+            [browser closeWindow];
+        }
+        without_gui = 1;
+        return;
+    }
+    [self openBrowserWithUrl:[NSString stringWithFormat:@"http://%@", url]];
+}
+
+- (void)openBrowserWithUrl:(NSString *)url{
     NSMutableURLRequest *re = [[NSMutableURLRequest alloc] init];
-    [re setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@", url]]];
+    [re setURL:[NSURL URLWithString:url]];
     NSUserDefaults *settingsController = [NSUserDefaults standardUserDefaults];
     NSString *xff = [settingsController objectForKey:@"xff"];
     if([xff length] > 4){
         [re setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
         [re setValue:xff forHTTPHeaderField:@"Client-IP"];
     }
+    if(!browser){
+        browser = (Browser *)[Browser browser];
+        browser.windowController = [[CTBrowserWindowController alloc] initWithBrowser:browser];
+        without_gui = false;
+    }
 
+    
     [browser addTabContents:[browser createTabBasedOn:nil withRequest:re andConfig:nil] inForeground:YES];
+    [browser.windowController showWindow:self];
+    [browser.window makeKeyAndOrderFront:NSApp];
+    
+    [browser.window performSelector:@selector(makeMainWindow) withObject:nil afterDelay:100];
 }
-
 
 // Main Menu Events
 
@@ -204,10 +276,85 @@ Browser *browser;
     id ct = [browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/"];
     [browser addTabContents:ct inForeground:YES];
 }
+- (IBAction)showHelp:(id)sender {
+    id ct = [browser createTabBasedOn:nil withUrl:@"http://cdn.eqoe.cn/files/bilibili/faq.html"];
+    [browser addTabContents:ct inForeground:YES];
+}
 
 - (IBAction)dlFolder:(id)sender {
     NSString *path = [NSString stringWithFormat:@"%@%@",NSHomeDirectory(),@"/Movies/Bilibili/"];
     [[NSWorkspace sharedWorkspace]openFile:path withApplication:@"Finder"];
+}
+- (IBAction)aboutView:(id)sender {
+    if(!self.aboutWindowController){
+        self.aboutWindowController = [[PFAboutWindowController alloc] init];
+    }
+    [self.aboutWindowController showWindow:nil];
+}
+
+- (IBAction)reloadPage:(id)sender {
+    WebTabView *tc = (WebTabView *)[browser activeTabContents];
+    NSString *u = [[tc GetTWebView] getURL];
+    [[tc GetTWebView] setURL:u];
+}
+
+- (IBAction)addressBar:(id)sender {
+    if([browser window] && [browser window].contentView && [browser window].contentView.subviews){
+        NSArray *sv = [browser window].contentView.subviews;
+        for(int i = 0;i < sv.count; i++){
+            id obj = [sv objectAtIndex:i];
+            if(obj && [[obj className] isEqual: @"CTToolbarView"]){ // Find Toolbar
+                
+                NSArray *tbsv = [obj subviews];
+                for(int i = 0;i < tbsv.count; i++){
+                    NSTextField *tb_obj = [tbsv objectAtIndex:i];
+                    if(tb_obj && [[tb_obj className] isEqual: @"AddressBar"]){ // Find Address Bar
+
+                        [[browser window]
+                         performSelector: @selector(makeFirstResponder:) 
+                         withObject: tb_obj
+                         afterDelay:0.0];
+                        
+                        [[tb_obj currentEditor] setSelectedRange:NSMakeRange([[tb_obj stringValue] length], 0)];
+                        break;
+                    }
+                }
+                
+                break;
+            }
+        }
+    }
+    
+}
+
+- (NSString *) randomStringWithLength: (int) len {
+    
+    NSString *letters = @"abcdef0123456789";
+    NSMutableString *randomString = [NSMutableString stringWithCapacity: len];
+    
+    for (int i=0; i<len; i++) {
+        [randomString appendFormat: @"%C", [letters characterAtIndex: arc4random_uniform((int)[letters length]-1)]];
+    }
+    
+    return randomString;
+}
+
+
+
+- (BOOL)crashlyticsCanUseBackgroundSessions:(Crashlytics *)crashlytics{
+    return YES;
+}
+
+- (void)crashlyticsDidDetectReportForLastExecution:(CLSReport *)report completionHandler:(void (^)(BOOL submit))completionHandler{
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        completionHandler(YES);
+//        NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
+//        crashw = [storyBoard instantiateControllerWithIdentifier:@"crashReportWindow"];
+//        [crashw showWindow:self];
+//        [crashw.window makeKeyAndOrderFront:NSApp];
+//        CrashReport *crv = (CrashReport *)crashw.window.contentViewController;
+//        [crv setCallbackHandler:completionHandler andReport:report];
+    });
 }
 
 @end

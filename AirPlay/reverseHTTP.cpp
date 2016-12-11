@@ -3,7 +3,7 @@
 //  bilibili
 //
 //  Created by TYPCN on 2015/9/16.
-//  2015 TYPCN. MIT License
+//  2016 TYPCN. MIT License
 //
 //  WARNING: This is very experimental code , for testing only
 //
@@ -27,7 +27,7 @@ PTTH::PTTH()
 
 bool PTTH::conn(const char *address)
 {
-    char *addr_chr = (char *)malloc(strlen(address)+1);
+    char addr_chr[strlen(address) + 1];
     strcpy(addr_chr,address);
 
     char *addr_hostname = strtok(addr_chr, ":");

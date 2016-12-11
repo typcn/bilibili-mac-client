@@ -1,0 +1,30 @@
+
+/* Class = "NSTableColumn"; headerCell.title = "Address"; ObjectID = "3wQ-ES-pHP"; */
+"3wQ-ES-pHP.headerCell.title" = "Address";
+
+/* Class = "NSButtonCell"; title = "Quit"; ObjectID = "7Xw-IJ-rQj"; */
+"7Xw-IJ-rQj.title" = "Quit";
+
+/* Class = "NSTextFieldCell"; title = "Log"; ObjectID = "IAx-Ml-kBu"; */
+"IAx-Ml-kBu.title" = "Log";
+
+/* Class = "NSWindow"; title = "AirPlay Control ( TEST )"; ObjectID = "QvC-M9-y7g"; */
+"QvC-M9-y7g.title" = "AirPlay Control ( TEST )";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "aFL-Pm-uJD"; */
+"aFL-Pm-uJD.title" = "Text Cell";
+
+/* Class = "NSTableColumn"; headerCell.title = "Device"; ObjectID = "cgF-CO-0sw"; */
+"cgF-CO-0sw.headerCell.title" = "Device";
+
+/* Class = "NSTextFieldCell"; title = "Text Cell"; ObjectID = "k8a-yi-nUd"; */
+"k8a-yi-nUd.title" = "Text Cell";
+
+/* Class = "NSButtonCell"; title = "Play with QuickTime"; ObjectID = "dOX-1w-UUV"; */
+"dOX-1w-UUV.title" = "Play with QuickTime";
+
+/* Class = "NSButtonCell"; title = "Refresh"; ObjectID = "nle-RQ-e8f"; */
+"nle-RQ-e8f.title" = "Refresh";
+
+/* Class = "NSButtonCell"; title = "Connect"; ObjectID = "p0U-2v-EsG"; */
+"p0U-2v-EsG.title" = "Connect";

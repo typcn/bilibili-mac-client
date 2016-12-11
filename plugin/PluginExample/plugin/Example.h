@@ -3,7 +3,7 @@
 //  PluginExample
 //
 //  Created by TYPCN on 2015/9/20.
-//  Copyright © 2015 TYPCN. All rights reserved.
+//  Copyright © 2016 TYPCN. All rights reserved.
 //
 
 #ifndef Example_h
@@ -25,6 +25,9 @@
 
 // trigger when event from javascript , return video url to play , reutrn NULL won't do anything
 - (NSString *)processEvent:(NSString *)eventName :(NSString *)eventData;
+
+// trigger when user click "settings"
+- (void)openSettings;
 
 @end
 

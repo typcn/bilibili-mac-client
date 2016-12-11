@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1090" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="BLToolBar">
@@ -71,8 +70,8 @@
                         <action selector="menu:" target="Yub-VR-qOD" id="V4U-zb-pY5"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" id="Wfb-Je-aPV">
-                    <rect key="frame" x="127" y="5" width="439" height="25"/>
+                <textField verticalHuggingPriority="750" id="Wfb-Je-aPV" customClass="AddressBar">
+                    <rect key="frame" x="127" y="5" width="417" height="25"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" usesSingleLineMode="YES" bezelStyle="round" id="GJz-k7-BkD">
                         <font key="font" metaFont="cellTitle"/>
@@ -83,6 +82,17 @@
                         <action selector="OpenURL:" target="Yub-VR-qOD" id="GeJ-dz-Ulz"/>
                     </connections>
                 </textField>
+                <button id="Txe-aE-gyT" customClass="ToolbarButton">
+                    <rect key="frame" x="546" y="3" width="29" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="play" imagePosition="overlaps" alignment="center" controlSize="small" imageScaling="proportionallyUpOrDown" inset="2" id="80o-4V-o6A">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="universalVideoParse:" target="Yub-VR-qOD" id="MJ7-QO-rEK"/>
+                    </connections>
+                </button>
             </subviews>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="130"/>
@@ -97,6 +107,7 @@
         <image name="forward" width="75" height="75"/>
         <image name="homepage" width="75" height="75"/>
         <image name="menubutton" width="75" height="75"/>
+        <image name="play" width="37.5" height="37.5"/>
         <image name="reloadp" width="75" height="75"/>
     </resources>
 </document>

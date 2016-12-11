@@ -19,7 +19,7 @@ DerivedData
 *.xcuserstate
 
 APIKey.h
-
+fabric_submit_script.sh
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However

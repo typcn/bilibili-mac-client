@@ -413,11 +413,11 @@ enum {
 
 /**
  * The color of the HUD window. Defaults to black. If this property is set, color is set using
- * this UIColor and the opacity property is not used.  using retain because performing copy on
- * UIColor base colors (like [UIColor greenColor]) cause problems with the copyZone.
+ * this NSColor and the opacity property is not used.  using retain because performing copy on
+ * NSColor base colors (like [NSColor greenColor]) cause problems with the copyZone.
  */
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
-@property (MB_STRONG) UIColor *color;
+@property (MB_STRONG) NSColor *color;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 @property (MB_STRONG) NSColor *color;
 #endif  // (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
@@ -508,7 +508,7 @@ enum {
  * Color to be used for the main label. Set this property if the default is not adequate.
  */
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
-@property (MB_STRONG) UIColor* labelColor;
+@property (MB_STRONG) NSColor* labelColor;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 @property (MB_STRONG) NSColor* labelColor;
 #endif  // (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
@@ -526,7 +526,7 @@ enum {
  * Color to be used for the details label. Set this property if the default is not adequate.
  */
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
-@property (MB_STRONG) UIColor* detailsLabelColor;
+@property (MB_STRONG) NSColor* detailsLabelColor;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 @property (MB_STRONG) NSColor* detailsLabelColor;
 #endif  // (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
@@ -600,10 +600,10 @@ enum {
 
 /**
  * Indicator progress color.
- * Defaults to white [UIColor whiteColor]
+ * Defaults to white [NSColor whiteColor]
  */
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
-@property (nonatomic, MB_STRONG) UIColor *progressTintColor;
+@property (nonatomic, MB_STRONG) NSColor *progressTintColor;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 @property (nonatomic, MB_STRONG) NSColor *progressTintColor;
 #endif  // (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
@@ -613,7 +613,7 @@ enum {
  * Defaults to translucent white (alpha 0.1)
  */
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
-@property (nonatomic, MB_STRONG) UIColor *backgroundTintColor;
+@property (nonatomic, MB_STRONG) NSColor *backgroundTintColor;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 @property (nonatomic, MB_STRONG) NSColor *backgroundTintColor;
 #endif  // (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
@@ -645,30 +645,30 @@ enum {
 
 /**
  * Bar border line color.
- * Defaults to white [UIColor whiteColor].
+ * Defaults to white [NSColor whiteColor].
  */
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
-@property (nonatomic, MB_STRONG) UIColor *lineColor;
+@property (nonatomic, MB_STRONG) NSColor *lineColor;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 @property (nonatomic, MB_STRONG) NSColor *lineColor;
 #endif  // (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 
 /**
  * Bar background color.
- * Defaults to clear [UIColor clearColor];
+ * Defaults to clear [NSColor clearColor];
  */
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
-@property (nonatomic, MB_STRONG) UIColor *progressRemainingColor;
+@property (nonatomic, MB_STRONG) NSColor *progressRemainingColor;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 @property (nonatomic, MB_STRONG) NSColor *progressRemainingColor;
 #endif  // (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 
 /**
  * Bar progress color.
- * Defaults to white [UIColor whiteColor].
+ * Defaults to white [NSColor whiteColor].
  */
 #if (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
-@property (nonatomic, MB_STRONG) UIColor *progressColor;
+@property (nonatomic, MB_STRONG) NSColor *progressColor;
 #else   // !(TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)
 @property (nonatomic, MB_STRONG) NSColor *progressColor;
 #endif  // (TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE)

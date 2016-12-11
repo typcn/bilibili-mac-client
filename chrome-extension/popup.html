@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bilibili Mac Client Helper</title>
+        <link href="http://localhost:23330/static/material.min.css" rel="stylesheet" media="screen">
+        <link href="css/custom.css" rel="stylesheet" media="screen">        
+    </head>
+    
+    <body>
+        <div id="loading">
+            <div class="mdl-spinner mdl-js-spinner is-active"></div>
+            <p>正在连接到服务</p>
+        </div>
+        <div id="mainList" style="display:none;">
+            <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+                        mdl-layout--fixed-tabs">
+              <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                  <span id="title" class="mdl-layout-title">Loading</span>
+                </div>
+                <!-- Tabs -->
+                <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                  <a href="#fixed-tab-1" class="mdl-layout__tab is-active">操作</a>
+                  <a href="#fixed-tab-2" class="mdl-layout__tab">插件</a>
+                  <a href="#fixed-tab-3" class="mdl-layout__tab">设置</a>
+                </div>
+              </header>
+              <main class="mdl-layout__content">
+                <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+                  <div class="page-content" style="text-align:center;">
+                      <h5>You-Get</h5>
+                      <button id="youget-resolve" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                          解析本页视频
+                      </button>
+                      <h5>功能</h5>
+                      <button id="reloadPlugin" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                          重载插件
+                      </button>
+                      <button id="downloadManager" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                          下载管理
+                      </button>
+                      <button id="softwareSettings" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                          软件设置
+                      </button>
+                      <h5>工具</h5>
+                      <button id="pluginCenter" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                          插件中心
+                      </button>
+                      <button id="getUserByComment" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                          弹幕查用户
+                      </button>
+                  </div>
+                </section>
+                <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+                  <div class="page-content">
+                      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--12-col">
+                          <thead>
+                            <tr>
+                              <th class="mdl-data-table__cell--non-numeric">插件名</th>
+                              <th>版本</th>
+                              <th>注入</th>
+                            </tr>
+                          </thead>
+                          <tbody id="pluginListBody">
+                            
+                          </tbody>
+                        </table>
+                  </div>
+                </section>
+                <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+                  <div class="page-content">
+                      <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--12-col">
+                          <thead>
+                            <tr>
+                              <th class="mdl-data-table__cell--non-numeric">说明</th>
+                              <th>开关</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="mdl-data-table__cell--non-numeric">装有 Bilibili 助手时，不强制替换播放器</td>
+                              <td>
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="bili_helper" style="width: auto;">
+                                  <input type="checkbox" id="bili_helper" class="mdl-switch__input plugin-select" />
+                                  <span class="mdl-switch__label"></span>
+                                </label>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="mdl-data-table__cell--non-numeric">客户端未启动时自动静默打开</td>
+                              <td>
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="auto_open" style="width: auto;">
+                                  <input type="checkbox" id="auto_open" class="mdl-switch__input plugin-select" />
+                                  <span class="mdl-switch__label"></span>
+                                </label>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="mdl-data-table__cell--non-numeric">客户端未启动时不替换播放器 (与上条冲突)</td>
+                              <td>
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="no_close_replace" style="width: auto;">
+                                  <input type="checkbox" id="no_close_replace" class="mdl-switch__input plugin-select" />
+                                  <span class="mdl-switch__label"></span>
+                                </label>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="mdl-data-table__cell--non-numeric">隐藏右下角 FAQ 链接</td>
+                              <td>
+                                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="hide_faq" style="width: auto;">
+                                  <input type="checkbox" id="hide_faq" class="mdl-switch__input plugin-select" />
+                                  <span class="mdl-switch__label"></span>
+                                </label>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                  </div>
+                </section>
+              </main>
+            </div>
+        </div>
+        <script src="http://localhost:23330/static/material.min.js"></script>
+        <script src="js/custom.js"></script>
+    </body>
+</html>
