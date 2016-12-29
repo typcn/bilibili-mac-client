@@ -21,7 +21,7 @@ function applyUI(){
     }catch(e){
         
     }
-    var isBangumiPage = (window.location.href.indexOf('anime/v') > 1);
+    var isBangumiPage = (window.location.href.indexOf('anime/') > 1);
     if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("topic") > 1 || window.location.href.indexOf("live") > 1 || window.location.href.indexOf("html") > 1 || isBangumiPage){
         console.log("getting cid");
         try{
@@ -85,6 +85,11 @@ function applyUI(){
                 window.sendToView({action:'preloadComment',data:TYPCN_PLAYER_CID});
                 if(isBangumiPage){
                     window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|http://www.bilibili.com/video/av' + aid + '/|' + document.title;
+                    window.addEventListener("hashchange", function(){
+                        setTimeout(function(){
+                            window.location.reload();
+                        },100);
+                    }, false);
                 }else{
                     window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + window.location.href + '|' + document.title;
                 }

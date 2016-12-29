@@ -1,5 +1,4 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0CCD44618AE52F30F0983F8769C38291166A8AE0",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
@@ -12,15 +11,15 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C732EEB6-B3E3-4D74-A425-68B218A60AA8",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "97D300E66DDB1F6ADE081B27820BD9A08351D0FD" : "bilibili\/bilibili\/CommentConvert\/",
-    "0CCD44618AE52F30F0983F8769C38291166A8AE0" : "bilibili\/",
-    "04101981B66E318109934C9516F88D824BB96459" : "bilibili\/fmdb\/",
-    "F6F96CA34C5878B0A9123C7C37855491A5E599DA" : "bilibili\/GCDWebServer\/",
-    "6C0E902A660503ED1D4326F8C392D6FA86F6AF7F" : "bilibili\/chromium-tabs\/"
+    "97D300E66DDB1F6ADE081B27820BD9A08351D0FD" : "bilibili\/CommentConvert\/",
+    "0CCD44618AE52F30F0983F8769C38291166A8AE0" : "",
+    "04101981B66E318109934C9516F88D824BB96459" : "fmdb\/",
+    "F6F96CA34C5878B0A9123C7C37855491A5E599DA" : "GCDWebServer\/",
+    "6C0E902A660503ED1D4326F8C392D6FA86F6AF7F" : "chromium-tabs\/"
   },
-  "DVTSourceControlWorkspaceBlueprintNameKey" : "VideoPolymer",
+  "DVTSourceControlWorkspaceBlueprintNameKey" : ".",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "VideoPolymer.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : ".",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/typcn\/fmdb.git",
