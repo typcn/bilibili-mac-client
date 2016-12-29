@@ -94,6 +94,7 @@
                                          @"date": dateString,
                                          @"message": text,
                                          @"playTime": playTime,
+                                         @"rnd": [NSString stringWithFormat:@"%d",arc4random_uniform(99999)]
                                          };
         
         if([vAID isEqualToString:@"LIVE"]){
@@ -110,13 +111,11 @@
         
         // Headers
         
-        NSString *cookie = [[NSUserDefaults standardUserDefaults] objectForKey:@"cookie"];
-        [request setValue:cookie forHTTPHeaderField:@"Cookie"];
         [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
         [request addValue:userAgent forHTTPHeaderField:@"User-Agent"];
         [request setValue:@"http://static.hdslb.com" forHTTPHeaderField:@"Origin"];
         [request setValue:@"http://static.hdslb.com/play.swf" forHTTPHeaderField:@"Referer"];
-        [request setValue:@"ShockwaveFlash/17.0.0.188" forHTTPHeaderField:@"X-Requested-With"];
+        [request setValue:@"ShockwaveFlash/24.0.0.194" forHTTPHeaderField:@"X-Requested-With"];
         // Cookies will add automatically
         
         if([vAID isEqualToString:@"LIVE"]){
