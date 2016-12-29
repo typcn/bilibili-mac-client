@@ -386,12 +386,12 @@ genAddress: FLVFailRetry = NO;
         return;
     }
     NSString *xff = [ud objectForKey:@"xff"];
-    NSString *cookie = [ud objectForKey:@"cookie"];
+    //NSString *cookie = [ud objectForKey:@"cookie"];
     if([xff length] > 4){
         [request setValue:xff forHTTPHeaderField:@"X-Forwarded-For"];
         [request setValue:xff forHTTPHeaderField:@"Client-IP"];
     }
-    [request setValue:cookie forHTTPHeaderField:@"Cookie"];
+    //[request setValue:cookie forHTTPHeaderField:@"Cookie"];
     [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
     NSURLConnection* connection = [NSURLConnection connectionWithRequest:request delegate:nil];
     [connection start];
