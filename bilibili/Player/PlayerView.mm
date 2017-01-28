@@ -451,14 +451,6 @@ getInfo:
         mq = 3.0;
     }
     
-    bool disableBottom;
-    float disableSettings = [self getSettings:@"disableBottomComment"];
-    if(disableSettings > 0 ){
-        disableBottom = true;
-    }else{
-        disableBottom = false;
-    }
-    
     [[NSFileManager defaultManager] removeItemAtPath:OutFile error:nil];
     
     CommentParser *p = new CommentParser;
@@ -497,7 +489,18 @@ getInfo:
     p->SetFont([fontName cStringUsingEncoding:NSUTF8StringEncoding], (int)[height intValue]/fontsize);
     p->SetDuration(mq,5);
     p->SetAlpha([[NSString stringWithFormat:@"%.2f",[self getSettings:@"transparency"]] floatValue]);
-    p->SetRemoveBottom(disableBottom);
+    
+
+    if([self getSettings:@"disableScrollComment"] > 0){
+        p->AddDisallowMode(1);
+    }
+    if([self getSettings:@"disableTopComment"] > 0){
+        p->AddDisallowMode(2);
+    }
+    if([self getSettings:@"disableBottomComment"] > 0){
+        p->AddDisallowMode(3);
+    }
+
     bool isSuc = p->Convert(0);
     if(!isSuc){
         return NULL;

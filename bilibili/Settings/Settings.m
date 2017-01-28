@@ -22,7 +22,6 @@
     
     [self.autoPlay setState:[settingsController integerForKey:@"autoPlay"]];
     [self.autoFullscreen setState:[settingsController integerForKey:@"autoFullscreen"]];
-    [self.disablebottomComment setState:[settingsController integerForKey:@"disableBottomComment"]];
     [self.playMP4 setState:[settingsController integerForKey:@"playMP4"]];
     [self.DownloadMP4 setState:[settingsController integerForKey:@"DLMP4"]];
     [self.disableKeepAspect setState:[settingsController integerForKey:@"disableKeepAspect"]];
@@ -110,11 +109,6 @@
 }
 - (IBAction)fontsizeChanged:(id)sender {
     [settingsController setFloat:[self.fontsize floatValue] forKey:@"fontsize"];
-    [settingsController synchronize];
-}
-
-- (IBAction)disableBottomComment:(id)sender {
-    [settingsController setInteger:[self.disablebottomComment state] forKey:@"disableBottomComment"];
     [settingsController synchronize];
 }
 

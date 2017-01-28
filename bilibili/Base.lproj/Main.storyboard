@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Window Controller-->
@@ -46,15 +47,13 @@
                                     <rect key="frame" x="1" y="1" width="357" height="78"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="vbw-5q-kZk">
+                                        <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="vbw-5q-kZk">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="78"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="342" height="78"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="342" height="78"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,7 +63,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rih-nB-JqP">
-                                    <rect key="frame" x="343" y="1" width="15" height="78"/>
+                                    <rect key="frame" x="342" y="1" width="16" height="78"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -687,15 +686,13 @@ GQ
                                     <rect key="frame" x="1" y="1" width="483" height="230"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="l0e-ZN-Cyz">
+                                        <textView importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="l0e-ZN-Cyz">
                                             <rect key="frame" x="0.0" y="0.0" width="468" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <size key="minSize" width="468" height="230"/>
                                             <size key="maxSize" width="485" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="468" height="230"/>
-                                            <size key="maxSize" width="485" height="10000000"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -705,7 +702,7 @@ GQ
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Tku-Hz-Coo">
-                                    <rect key="frame" x="469" y="1" width="15" height="230"/>
+                                    <rect key="frame" x="468" y="1" width="16" height="230"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -731,7 +728,7 @@ GQ
         <!--Comment Block Settings-->
         <scene sceneID="8we-Xb-M8G">
             <objects>
-                <tabViewController title="弹幕屏蔽" selectedTabViewItemIndex="1" id="fZa-B8-J07" userLabel="Comment Block Settings" sceneMemberID="viewController">
+                <tabViewController title="弹幕屏蔽" selectedTabViewItemIndex="0" id="fZa-B8-J07" userLabel="Comment Block Settings" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem id="Vno-7c-Vm2" userLabel="Keyword Block Settings"/>
                         <tabViewItem id="uVa-K5-cbK" userLabel="Smart Block Settings"/>
@@ -751,16 +748,16 @@ GQ
             </objects>
             <point key="canvasLocation" x="892" y="-500"/>
         </scene>
-        <!--Smart Block Settings-->
+        <!--Other Block Settings-->
         <scene sceneID="ano-X6-NRf">
             <objects>
-                <viewController title="智能屏蔽" id="062-3f-byc" userLabel="Smart Block Settings" customClass="SmartBlockSettings" sceneMemberID="viewController">
+                <viewController title="屏蔽选项" id="062-3f-byc" userLabel="Other Block Settings" customClass="OtherBlockSettings" sceneMemberID="viewController">
                     <view key="view" id="foG-xs-fQU">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="266"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" id="fgL-iN-azg">
-                                <rect key="frame" x="80" y="36" width="360" height="66"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" id="fgL-iN-azg">
+                                <rect key="frame" x="51" y="7" width="360" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" title="更多功能欢迎到 GitHub 参与开发   https://github.com/typcn/bilibili-mac-client" id="BKA-mo-Ldx">
                                     <font key="font" metaFont="system"/>
@@ -768,8 +765,8 @@ GQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button id="BNA-Ae-2MF">
-                                <rect key="frame" x="80" y="206" width="425" height="18"/>
+                            <button misplaced="YES" id="BNA-Ae-2MF">
+                                <rect key="frame" x="51" y="154" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="check" title="屏蔽吵架弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="8tq-Pn-HDt">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -779,8 +776,30 @@ GQ
                                     <action selector="blcokBadword:" target="062-3f-byc" id="JW0-b8-xbr"/>
                                 </connections>
                             </button>
-                            <button id="rEv-Ih-Xb3">
-                                <rect key="frame" x="80" y="186" width="425" height="18"/>
+                            <button misplaced="YES" id="YSt-rC-ChP">
+                                <rect key="frame" x="51" y="230" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <buttonCell key="cell" type="check" title="关闭顶部弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="SNl-Cm-5OC">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="removeTop:" target="062-3f-byc" id="0ru-gy-crU"/>
+                                </connections>
+                            </button>
+                            <button misplaced="YES" id="BHe-z2-bJ8">
+                                <rect key="frame" x="51" y="210" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <buttonCell key="cell" type="check" title="关闭滚动弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="UeG-rX-Ff5">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="removeScroll:" target="062-3f-byc" id="sWa-yV-3hq"/>
+                                </connections>
+                            </button>
+                            <button misplaced="YES" id="rEv-Ih-Xb3">
+                                <rect key="frame" x="51" y="134" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="check" title="屏蔽日期弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="naf-pC-PtF">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -790,8 +809,8 @@ GQ
                                     <action selector="blockDate:" target="062-3f-byc" id="j5q-fJ-Tod"/>
                                 </connections>
                             </button>
-                            <button id="pts-Mu-teg">
-                                <rect key="frame" x="80" y="166" width="425" height="18"/>
+                            <button misplaced="YES" id="pts-Mu-teg">
+                                <rect key="frame" x="51" y="114" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="check" title="屏蔽剧透弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="5dB-gK-hjd">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -801,8 +820,8 @@ GQ
                                     <action selector="blockSpoilers:" target="062-3f-byc" id="tAU-Pm-FrL"/>
                                 </connections>
                             </button>
-                            <button id="3we-Xx-mYu">
-                                <rect key="frame" x="80" y="146" width="425" height="18"/>
+                            <button misplaced="YES" id="3we-Xx-mYu">
+                                <rect key="frame" x="51" y="94" width="425" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="check" title="屏蔽优越感弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="dZF-c1-3Mj">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -812,6 +831,17 @@ GQ
                                     <action selector="block2B:" target="062-3f-byc" id="xot-my-XWH"/>
                                 </connections>
                             </button>
+                            <button misplaced="YES" id="Q72-gp-hpq">
+                                <rect key="frame" x="51" y="190" width="425" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <buttonCell key="cell" type="check" title="关闭底部弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="9MS-bL-4FM">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="removeBottom:" target="062-3f-byc" id="NHF-Ig-beX"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -819,6 +849,9 @@ GQ
                         <outlet property="bb" destination="BNA-Ae-2MF" id="1kl-ST-OiH"/>
                         <outlet property="bd" destination="rEv-Ih-Xb3" id="Mrf-Gc-loC"/>
                         <outlet property="bs" destination="pts-Mu-teg" id="blc-wb-EZi"/>
+                        <outlet property="removeBottom" destination="Q72-gp-hpq" id="neZ-mO-sUF"/>
+                        <outlet property="removeScroll" destination="BHe-z2-bJ8" id="zzV-92-2Gv"/>
+                        <outlet property="removeTop" destination="YSt-rC-ChP" id="MOM-52-2OE"/>
                     </connections>
                 </viewController>
                 <customObject id="2y9-Aw-wV9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -931,15 +964,13 @@ GQ
                                     <rect key="frame" x="1" y="1" width="478" height="268"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView editable="NO" importsGraphics="NO" horizontallyResizable="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="Yey-g8-OWP">
+                                        <textView editable="NO" importsGraphics="NO" horizontallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="Yey-g8-OWP">
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="463" height="268"/>
+                                            <size key="minSize" width="478" height="268"/>
                                             <size key="maxSize" width="480" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="463" height="268"/>
-                                            <size key="maxSize" width="480" height="10000000"/>
                                         </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -949,7 +980,7 @@ GQ
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Ft0-cT-2BV">
-                                    <rect key="frame" x="464" y="1" width="15" height="268"/>
+                                    <rect key="frame" x="463" y="1" width="16" height="268"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -1280,50 +1311,6 @@ GQ
                                     <action selector="disableWritePlayHistory:" target="z8a-gg-iMj" id="4H6-uC-ord"/>
                                 </connections>
                             </button>
-                            <button id="5yv-E4-e3g">
-                                <rect key="frame" x="24" y="317" width="491" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="关闭底部弹幕" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6pD-zG-Fl9">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="disableBottomComment:" target="z8a-gg-iMj" id="t87-e4-R4R"/>
-                                </connections>
-                            </button>
-                            <button id="QLp-in-QLo">
-                                <rect key="frame" x="24" y="278" width="611" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6zZ-XI-ZEK">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="playMP4Changed:" target="z8a-gg-iMj" id="V2U-6u-f7a"/>
-                                </connections>
-                            </button>
-                            <button id="wjO-cr-vaH">
-                                <rect key="frame" x="24" y="258" width="611" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hFO-eX-oZN">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="DLMP4Changed:" target="z8a-gg-iMj" id="aHi-du-O6o"/>
-                                </connections>
-                            </button>
-                            <button id="djV-1w-XE2">
-                                <rect key="frame" x="24" y="297" width="491" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="反转手势方向" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Qmf-Aa-Lqo">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="changeGestureDirection:" target="z8a-gg-iMj" id="8O2-rc-U2I"/>
-                                </connections>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="OIq-ag-IQD">
                                 <rect key="frame" x="403" y="214" width="75" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1344,6 +1331,39 @@ GQ
                                     <action selector="enableZeroCopyOpt:" target="z8a-gg-iMj" id="yZw-LN-gKl"/>
                                 </connections>
                             </button>
+                            <button misplaced="YES" id="QLp-in-QLo">
+                                <rect key="frame" x="24" y="298" width="611" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="6zZ-XI-ZEK">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="playMP4Changed:" target="z8a-gg-iMj" id="V2U-6u-f7a"/>
+                                </connections>
+                            </button>
+                            <button misplaced="YES" id="wjO-cr-vaH">
+                                <rect key="frame" x="24" y="278" width="611" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="下载优先 MP4 格式（方便手机观看，且没有被官方限速，下载更快）" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="hFO-eX-oZN">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="DLMP4Changed:" target="z8a-gg-iMj" id="aHi-du-O6o"/>
+                                </connections>
+                            </button>
+                            <button misplaced="YES" id="djV-1w-XE2">
+                                <rect key="frame" x="24" y="317" width="491" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="反转手势方向" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Qmf-Aa-Lqo">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="changeGestureDirection:" target="z8a-gg-iMj" id="8O2-rc-U2I"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -1356,7 +1376,6 @@ GQ
                         <outlet property="disableHwDec" destination="AeH-XX-C7T" id="kqT-SQ-PdM"/>
                         <outlet property="disableKeepAspect" destination="1aB-2H-H2d" id="FjO-WG-C8v"/>
                         <outlet property="disableWriteHistory" destination="iLo-qY-8yG" id="dyR-ze-V54"/>
-                        <outlet property="disablebottomComment" destination="5yv-E4-e3g" id="zXF-lZ-D8g"/>
                         <outlet property="enableFSBugWorkaround" destination="AjY-Tj-FeF" id="wQt-QF-lX9"/>
                         <outlet property="enableZeroCopy" destination="LQe-nf-k8t" id="Y8j-db-KXO"/>
                         <outlet property="fontName" destination="iLa-hJ-dgh" id="jDT-c4-qHR"/>

@@ -1,5 +1,5 @@
 //
-//  SmartBlockSettings.h
+//  OtherBlockSettings.h
 //  bilibili
 //
 //  Created by TYPCN on 2015/6/9.
@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SmartBlockSettings : NSViewController
+@interface OtherBlockSettings : NSViewController
 
 @end

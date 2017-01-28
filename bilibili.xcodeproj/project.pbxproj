@@ -86,7 +86,7 @@
 		FD4D376B1ACEF3FE0022ABF3 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4D376A1ACEF3FE0022ABF3 /* loading.gif */; };
 		FD4EDBB31BE42C66009309EC /* mpv.icns in Resources */ = {isa = PBXBuildFile; fileRef = FD4EDBB21BE42C66009309EC /* mpv.icns */; };
 		FD4EDBB61BE42D9B009309EC /* MPVSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4EDBB51BE42D9B009309EC /* MPVSettings.m */; };
-		FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */; };
+		FD5305EB1B2692CE00659B32 /* OtherBlockSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5305EA1B2692CE00659B32 /* OtherBlockSettings.m */; };
 		FD5408151D6C8EDA00E33EF7 /* libpcre.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5408131D6C8EDA00E33EF7 /* libpcre.1.dylib */; };
 		FD5408161D6C8EDA00E33EF7 /* libjpeg.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5408141D6C8EDA00E33EF7 /* libjpeg.8.dylib */; };
 		FD5408171D6C8F0100E33EF7 /* libpcre.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FD5408131D6C8EDA00E33EF7 /* libpcre.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -507,8 +507,8 @@
 		FD4EDBB41BE42D9B009309EC /* MPVSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPVSettings.h; path = Settings/MPVSettings.h; sourceTree = "<group>"; };
 		FD4EDBB51BE42D9B009309EC /* MPVSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MPVSettings.m; path = Settings/MPVSettings.m; sourceTree = "<group>"; };
 		FD5101901ACC1A7600C49430 /* mpv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mpv.h; path = bilibili/headers/mpv.h; sourceTree = "<group>"; };
-		FD5305E91B2692CE00659B32 /* SmartBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartBlockSettings.h; path = Settings/SmartBlockSettings.h; sourceTree = "<group>"; };
-		FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmartBlockSettings.m; path = Settings/SmartBlockSettings.m; sourceTree = "<group>"; };
+		FD5305E91B2692CE00659B32 /* OtherBlockSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OtherBlockSettings.h; path = Settings/OtherBlockSettings.h; sourceTree = "<group>"; };
+		FD5305EA1B2692CE00659B32 /* OtherBlockSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OtherBlockSettings.m; path = Settings/OtherBlockSettings.m; sourceTree = "<group>"; };
 		FD5408131D6C8EDA00E33EF7 /* libpcre.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcre.1.dylib; path = bilibili/libs/libpcre.1.dylib; sourceTree = "<group>"; };
 		FD5408141D6C8EDA00E33EF7 /* libjpeg.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjpeg.8.dylib; path = bilibili/libs/libjpeg.8.dylib; sourceTree = "<group>"; };
 		FD59846A1BB3F57C001E0B17 /* NSBundle+OBCodeSigningInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+OBCodeSigningInfo.h"; path = "RemoteCall/NSBundle+OBCodeSigningInfo.h"; sourceTree = "<group>"; };
@@ -1210,8 +1210,8 @@
 				FD1954AB1B259318003A958F /* KeywordBlockSettings.m */,
 				FD1954AC1B259318003A958F /* Settings.h */,
 				FD1954AD1B259318003A958F /* Settings.m */,
-				FD5305E91B2692CE00659B32 /* SmartBlockSettings.h */,
-				FD5305EA1B2692CE00659B32 /* SmartBlockSettings.m */,
+				FD5305E91B2692CE00659B32 /* OtherBlockSettings.h */,
+				FD5305EA1B2692CE00659B32 /* OtherBlockSettings.m */,
 				FD4EDBB41BE42D9B009309EC /* MPVSettings.h */,
 				FD4EDBB51BE42D9B009309EC /* MPVSettings.m */,
 				FDA31A5C1C6B959100B25240 /* Tools.h */,
@@ -1744,7 +1744,7 @@
 				FDB54D611BCB6B68007A1615 /* BrowserExtInterface.m in Sources */,
 				FD7684BE1C88D331006B44F2 /* PlayerWindow.m in Sources */,
 				FD353A961D9E5A2300B715CE /* UserContentController.m in Sources */,
-				FD5305EB1B2692CE00659B32 /* SmartBlockSettings.m in Sources */,
+				FD5305EB1B2692CE00659B32 /* OtherBlockSettings.m in Sources */,
 				FD83027D1BAB303C00FF68DB /* DonateView.mm in Sources */,
 				FD59846C1BB3F596001E0B17 /* NSBundle+OBCodeSigningInfo.m in Sources */,
 			);

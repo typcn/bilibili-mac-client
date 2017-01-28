@@ -1,6 +1,6 @@
 
-/* Class = "NSViewController"; title = "智能屏蔽"; ObjectID = "062-3f-byc"; */
-"062-3f-byc.title" = "Smart Block";
+/* Class = "NSViewController"; title = "屏蔽选项"; ObjectID = "062-3f-byc"; */
+"062-3f-byc.title" = "Block Options";
 
 /* Class = "NSMenuItem"; title = "新建"; ObjectID = "0Ai-R8-YEq"; */
 "0Ai-R8-YEq.title" = "New";
