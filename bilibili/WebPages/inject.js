@@ -93,7 +93,10 @@ function applyUI(){
             }else{
                 window.sendToView({action:'preloadComment',data:TYPCN_PLAYER_CID});
                 if(isBangumiPage){
-                    window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|http://www.bilibili.com/video/av' + aid + '/|' + document.title;
+                    if(!window.capt_pid){
+                        window.capt_pid = 0;
+                    }
+                    window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + window.location.href + '&' + aid + '&' + window.capt_pid + '|' + document.title;
                     window.addEventListener("hashchange", function(){
                         setTimeout(function(){
                             window.location.reload();
