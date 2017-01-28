@@ -104,6 +104,7 @@
                                @"mode": @"1",
                                @"fontsize": @"25",
                                @"msg": text,
+                               @"rnd": [NSString stringWithFormat:@"%d",arc4random_uniform(99999)]
                                };
         }
         
