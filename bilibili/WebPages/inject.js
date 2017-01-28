@@ -105,6 +105,9 @@ function applyUI(){
                     imgUrl = window.wb_img;
                 }
                 if(imgUrl){
+                    if(imgUrl.indexOf('//') == 0){
+                        imgUrl = 'https:' + imgUrl;
+                    }
                     var ph = document.querySelector(".TYPCN_PLAYER_INJECT_PAGE .player-placeholder");
                     if(ph){
                         ph.style.backgroundImage = "url(http://localhost:23330/blur/" + imgUrl + ")"
