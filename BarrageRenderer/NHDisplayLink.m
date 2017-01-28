@@ -8,8 +8,6 @@
 
 #import "NHDisplayLink.h"
 
-#include <QuartzCore/CVDisplayLink.h>
-
 #if OS_OBJECT_USE_OBJC_RETAIN_RELEASE
 static void
 NHDispatchRelease(__strong dispatch_object_t *var) {
