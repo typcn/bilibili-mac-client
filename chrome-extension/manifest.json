@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "Bilibili Mac Client Helper",
     "description": "Chrome Helper for Bilibili Mac Client",
-    "version": "1.41",
+    "version": "1.5",
     "permissions": [
         "storage",
         "tabs",
@@ -26,7 +26,7 @@
     },
     "content_scripts": [
         {
-            "matches": ["http://*/*"],
+            "matches": ["http://*/*","https://*/*"],
             "js": ["js/inject.js"]
         }
     ],

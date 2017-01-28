@@ -2,12 +2,12 @@ chrome.runtime.onInstalled.addListener(function(details) {
  if (details.reason == "update") {
     var opt={
       type: "basic",
-      title: "Bilibili Mac Client Helper 更新 1.4",
-      message: "支持 You-Get 插件，解析播放近百家视频网站\n与 Bilibili 助手兼容，同时安装以支持 html5 与 mac 客户端播放器一键切换\n支持自动静默打开客户端等功能，可到扩展设置中开启",
+      title: "Bilibili Mac Client Helper 更新 1.5",
+      message: "支持 HTTPS 网站下的 RPC\n修复 bangumi 海外替换失败\n支持自动静默打开客户端等功能，可到扩展设置中开启",
       iconUrl: "img/icon48.png"
     }
-    if(localStorage.lastNotification != 1.4){
-      localStorage.lastNotification = 1.4;
+    if(localStorage.lastNotification != 1.5){
+      localStorage.lastNotification = 1.5;
       showNotification(opt);
     }
  };
@@ -69,6 +69,14 @@ chrome.extension.onMessage.addListener(
           }
         }else{
           sendResponse('!');
+        }
+      }else if(request.blHttpRPC){
+        if(request.blHttpRPC.platform == 'bilimac'){
+          var httpReq = new XMLHttpRequest();
+          httpReq.open('POST', 'http://localhost:23330/' + request.blHttpRPC.type, true);
+          httpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+          httpReq.send(request.blHttpRPC.data);
+          sendResponse('OK');
         }
       }
     }

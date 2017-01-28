@@ -49,3 +49,9 @@ chrome.runtime.sendMessage({blGetScript: window.location.host}, function(respons
 		}
 	}
 });
+
+document.querySelector('html').addEventListener('bilimac_http_rpc', function() {
+	var last_rpc_content = localStorage.bilimac_rpc_data;
+    chrome.runtime.sendMessage({blHttpRPC:JSON.parse(last_rpc_content)});
+    delete localStorage.bilimac_rpc_data;
+});
