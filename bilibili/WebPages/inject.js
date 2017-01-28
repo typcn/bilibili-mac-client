@@ -1,7 +1,16 @@
 window.bilimacVersion = 249;
 window.injectHTML = 'INJ_HTML';
 window.sendToView = function(data){
-    $.post("http://localhost:23330/rpc",data);
+    var rpcdata = 'action=' + encodeURIComponent(data.action) + '&data=' + encodeURIComponent(data.data);
+    var payload = JSON.stringify({platform:'bilimac',type:'rpc',data: rpcdata});
+    if((typeof chrome) == 'object'){
+        localStorage.bilimac_rpc_data = payload;
+        var evt = document.createEvent('Event');
+        evt.initEvent('bilimac_http_rpc', true, true);
+        document.querySelector('html').dispatchEvent(evt);
+    }else{
+        alert(payload);
+    }
 }
 function applyUI(){
     try{

@@ -285,6 +285,31 @@ didReceiveTitle:(NSString *)title
     [self.delegate finishLoadOrNavigation:nil];
 }
 
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:[message dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&err];
+    if(err || !dic){
+        NSLog(@"Discard Invalid Alert: %@",message);
+        return;
+    }else if(!dic[@"platform"] || !dic[@"type"] || !dic[@"data"]){
+        return;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        NSString *urlstr = [NSString stringWithFormat:@"http://localhost:23330/%@",dic[@"type"]];
+        NSURL* URL = [NSURL URLWithString:urlstr];
+        NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+        request.HTTPMethod = @"POST";
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        NSString *postdata = dic[@"data"];
+        request.HTTPBody = [postdata dataUsingEncoding:NSUTF8StringEncoding];
+        NSURLConnection* connection = [NSURLConnection connectionWithRequest:request delegate:nil];
+        [connection scheduleInRunLoop:[NSRunLoop mainRunLoop]
+                              forMode:NSDefaultRunLoopMode];
+        [connection start];
+    });
+    completionHandler();
+}
+
 - (WKWebView *)webView:(WKWebView *)webView
 createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration
    forNavigationAction:(WKNavigationAction *)navigationAction
