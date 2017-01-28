@@ -29,9 +29,10 @@ function _attachPRG(){
 }
 
 function _attachBGMNew(){
-    var nextUrl = $('.v1-bangumi-list-part-child.cur').next().children('a').attr('href');
-    if(nextUrl && nextUrl.length > 1){
-        window.sendToView({'action':'goURL','data':nextUrl + '?autoplay=1'});
+    try{
+        $('.v1-bangumi-list-part-child.cur').next().children('a').click();
+    }catch(e){
+        
     }
 }
 
