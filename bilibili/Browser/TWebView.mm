@@ -46,6 +46,7 @@
         [WKwv setNavigationDelegate: self];
         [WKwv setUIDelegate: self];
         [WKwv addObserver:self forKeyPath:@"title" options:NSKeyValueObservingOptionNew context:NULL];
+        [WKwv setAllowsMagnification:YES];
     } else {
         webViewType = tWebView;
         wv = [[WebView alloc] init];
