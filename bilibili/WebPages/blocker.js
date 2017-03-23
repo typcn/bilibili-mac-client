@@ -22,7 +22,7 @@
        if(a.src && checkBlock(a.src)){
            return console.log('Blocked script insert: ' + a.src);
        }
-       hooked_ib.apply(this, arguments);
+       return hooked_ib.apply(this, arguments);
     }
   }
 
