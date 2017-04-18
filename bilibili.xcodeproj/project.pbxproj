@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		191572211EA5C4180055974F /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191572201EA5C4180055974F /* VPPlugin.framework */; };
+		191572231EA5C48A0055974F /* ChromiumTabs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 191572221EA5C48A0055974F /* ChromiumTabs.framework */; };
+		1915722B1EA5C5F70055974F /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1915722A1EA5C5F70055974F /* GCDWebServers.framework */; };
 		E09BF99F1B84CCC6005E08CE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E09BF9A11B84CCC6005E08CE /* Localizable.strings */; };
 		FD0103281C8B0EEF00505344 /* BGHUDSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0103211C8B0EEF00505344 /* BGHUDSliderCell.m */; };
 		FD0103291C8B0EEF00505344 /* BGTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = FD0103231C8B0EEF00505344 /* BGTheme.m */; };
@@ -29,7 +32,6 @@
 		FD1954D01B259462003A958F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1954CF1B259462003A958F /* AppDelegate.m */; };
 		FD1954EB1B2594AC003A958F /* AssClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954D71B2594AC003A958F /* AssClass.cpp */; };
 		FD1954ED1B2594AC003A958F /* danmaku2ass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FD1954DA1B2594AC003A958F /* danmaku2ass.cpp */; };
-		FD29EC691BAF9AF200B8724B /* VPPlugin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD29EC681BAF9AF200B8724B /* VPPlugin.framework */; };
 		FD29EC701BAF9C0100B8724B /* VPPlugin.framework in Copy Files */ = {isa = PBXBuildFile; fileRef = FD29EC6F1BAF9BE300B8724B /* VPPlugin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FD353A841D9D821D00B715CE /* CloudScript.m in Sources */ = {isa = PBXBuildFile; fileRef = FD353A831D9D821D00B715CE /* CloudScript.m */; };
 		FD353A961D9E5A2300B715CE /* UserContentController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD353A951D9E5A2300B715CE /* UserContentController.m */; };
@@ -231,6 +233,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1915721C1EA5C32D0055974F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FD29EC6A1BAF9BE300B8724B /* VPPlugin.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = FD0CCC831BAF1FCC008FD9BF;
+			remoteInfo = VPPlugin;
+		};
 		FD29EC6E1BAF9BE300B8724B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FD29EC6A1BAF9BE300B8724B /* VPPlugin.xcodeproj */;
@@ -388,6 +397,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		191572201EA5C4180055974F /* VPPlugin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VPPlugin.framework; path = plugin/VPPluginAPI/build/Release/VPPlugin.framework; sourceTree = "<group>"; };
+		191572221EA5C48A0055974F /* ChromiumTabs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChromiumTabs.framework; path = "chromium-tabs/build/Release/ChromiumTabs.framework"; sourceTree = "<group>"; };
+		191572281EA5C51D0055974F /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = fmdb/build/Release/FMDB.framework; sourceTree = "<group>"; };
+		1915722A1EA5C5F70055974F /* GCDWebServers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GCDWebServers.framework; path = GCDWebServer/build/Release/GCDWebServers.framework; sourceTree = "<group>"; };
 		E0D6D54D1B84D6970052253E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E0DF88161B875D650051870D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E0DF88171B875D660051870D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -689,17 +702,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1915722B1EA5C5F70055974F /* GCDWebServers.framework in Frameworks */,
+				191572231EA5C48A0055974F /* ChromiumTabs.framework in Frameworks */,
+				191572211EA5C4180055974F /* VPPlugin.framework in Frameworks */,
 				FD01032D1C8B2D4200505344 /* CoreGraphics.framework in Frameworks */,
+				FDA01C661C56976700298CEF /* FMDB.framework in Frameworks */,
 				FDA01C8E1C576C6700298CEF /* liblcms2.2.dylib in Frameworks */,
 				FDA01C841C576C6700298CEF /* libass.5.dylib in Frameworks */,
-				FDA01C661C56976700298CEF /* FMDB.framework in Frameworks */,
 				FDA01C951C576C6700298CEF /* libswscale.4.dylib in Frameworks */,
 				FDA01C861C576C6700298CEF /* libavformat.57.dylib in Frameworks */,
 				FDA01C871C576C6700298CEF /* libavresample.3.dylib in Frameworks */,
 				FDA01C8C1C576C6700298CEF /* libharfbuzz.0.dylib in Frameworks */,
 				FDA01C821C576C6700298CEF /* libavdevice.57.dylib in Frameworks */,
 				FDA01C8B1C576C6700298CEF /* libglib-2.0.0.dylib in Frameworks */,
-				FD29EC691BAF9AF200B8724B /* VPPlugin.framework in Frameworks */,
 				FDA01C921C576C6700298CEF /* libpostproc.54.dylib in Frameworks */,
 				FDA01C991C576C6700298CEF /* libfontconfig.1.dylib in Frameworks */,
 				FDA01C811C576C6700298CEF /* libmpv.dylib in Frameworks */,
@@ -741,6 +756,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1915721F1EA5C4180055974F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1915722A1EA5C5F70055974F /* GCDWebServers.framework */,
+				191572281EA5C51D0055974F /* FMDB.framework */,
+				191572221EA5C48A0055974F /* ChromiumTabs.framework */,
+				191572201EA5C4180055974F /* VPPlugin.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FD076C471AC8CBBB00C893FA = {
 			isa = PBXGroup;
 			children = (
@@ -756,6 +782,7 @@
 				FD29EC6A1BAF9BE300B8724B /* VPPlugin.xcodeproj */,
 				FD72570D1B9D52FD0015B0F1 /* GCDWebServer.xcodeproj */,
 				FD36B09B1B988E4A00FB32CC /* chromium-tabs.xcodeproj */,
+				1915721F1EA5C4180055974F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1396,9 +1423,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD076C701AC8CBBB00C893FA /* Build configuration list for PBXNativeTarget "Bilibili" */;
 			buildPhases = (
+				FDAF8BA21ACA4EF100C0C55D /* Copy Files */,
 				FD076C4C1AC8CBBB00C893FA /* Sources */,
 				FD076C4D1AC8CBBB00C893FA /* Frameworks */,
-				FDAF8BA21ACA4EF100C0C55D /* Copy Files */,
 				FD471F731AC911CD00A2A727 /* CopyFiles */,
 				FD61025F1AD7CBD80013119A /* CopyFiles */,
 				FD4855091AE67B2C008F49AA /* Copy Files (3 items) */,
@@ -1410,6 +1437,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1915721D1EA5C32D0055974F /* PBXTargetDependency */,
 				FDA01C651C56975A00298CEF /* PBXTargetDependency */,
 				FDD1FDD71B9B14F9006711B0 /* PBXTargetDependency */,
 				FD7257201B9D534C0015B0F1 /* PBXTargetDependency */,
@@ -1764,6 +1792,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1915721D1EA5C32D0055974F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VPPlugin;
+			targetProxy = 1915721C1EA5C32D0055974F /* PBXContainerItemProxy */;
+		};
 		FD7257201B9D534C0015B0F1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "GCDWebServers (Mac)";
@@ -1965,6 +1998,10 @@
 					"$(PROJECT_DIR)/bilibili/libs",
 					"$(PROJECT_DIR)/Build/Products/Debug",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/plugin/VPPluginAPI/build/Release",
+					"$(PROJECT_DIR)/chromium-tabs/build/Release",
+					"$(PROJECT_DIR)/fmdb/build/Release",
+					"$(PROJECT_DIR)/GCDWebServer/build/Release",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					__danmaku2ass_native__NoMainFunc__,
@@ -2007,6 +2044,10 @@
 					"$(PROJECT_DIR)/bilibili/libs",
 					"$(PROJECT_DIR)/Build/Products/Debug",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/plugin/VPPluginAPI/build/Release",
+					"$(PROJECT_DIR)/chromium-tabs/build/Release",
+					"$(PROJECT_DIR)/fmdb/build/Release",
+					"$(PROJECT_DIR)/GCDWebServer/build/Release",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					__danmaku2ass_native__NoMainFunc__,
