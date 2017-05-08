@@ -276,7 +276,7 @@ Browser *browser;
     [browser selectPreviousTab];
 }
 - (IBAction)dlManager:(id)sender {
-    id ct = [browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/"];
+    id ct = [browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/v2/"];
     [browser addTabContents:ct inForeground:YES];
 }
 - (IBAction)showHelp:(id)sender {
