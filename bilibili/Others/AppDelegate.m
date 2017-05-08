@@ -191,12 +191,15 @@ Browser *browser;
             [browser.window makeKeyAndOrderFront:nil];
             return YES;
         }else if(!browser || browser.tabCount == 0){
+            browser = NULL;
             [self openBrowserWithUrl:@"http://www.bilibili.com"];
+            return YES;
         }
         return NO;
     }
     else
     {
+        browser = NULL;
         [self openBrowserWithUrl:@"http://www.bilibili.com"];
         return YES;
     }
