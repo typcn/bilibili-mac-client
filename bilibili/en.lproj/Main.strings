@@ -50,8 +50,14 @@
 /* Class = "NSTextFieldCell"; title = "弹幕字体"; ObjectID = "6ZU-bU-OI7"; */
 "6ZU-bU-OI7.title" = "Font Name of Comments";
 
-/* Class = "NSButtonCell"; title = "关闭底部弹幕"; ObjectID = "6pD-zG-Fl9"; */
-"6pD-zG-Fl9.title" = "Disable bottom comments";
+/* Class = "NSButtonCell"; title = "关闭顶部弹幕"; ObjectID = "SNl-Cm-5OC"; */
+"SNl-Cm-5OC.title" = "Disable top comments";
+
+/* Class = "NSButtonCell"; title = "关闭滚动弹幕"; ObjectID = "UeG-rX-Ff5"; */
+"UeG-rX-Ff5.title" = "Disable rolling comments";
+
+/* Class = "NSButtonCell"; title = "关闭底部弹幕"; ObjectID = "9MS-bL-4FM"; */
+"9MS-bL-4FM.title" = "Disable bottom comments";
 
 /* Class = "NSButtonCell"; title = "播放优先 MP4 格式（发热更小，播放更快，可能有画质损失）"; ObjectID = "6zZ-XI-ZEK"; */
 "6zZ-XI-ZEK.title" = "Prefer MP4 video format (better performance with possible loss of quality)";
