@@ -1,4 +1,4 @@
-window.bilimacVersion = 251;
+window.bilimacVersion = 252;
 window.injectHTML = 'INJ_HTML';
 window.sendToView = function(data){
     var rpcdata = 'action=' + encodeURIComponent(data.action) + '&data=' + encodeURIComponent(data.data);
