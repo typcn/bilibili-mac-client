@@ -104,6 +104,17 @@ function applyUI(){
                     }, false);
                 }else{
                     window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + window.location.href + '|' + document.title;
+                    if(window.location.href.indexOf('bilibili.com/video/av') > -1){
+                        window.addEventListener("hashchange", function(){
+                            setTimeout(function(){
+                              var page = window.location.hash.replace('#page=','');
+                              if(!page || !window.aid){
+                                return;
+                              }
+                              window.location = location.origin + location.pathname.replace(/index.*/,'') + 'index_' + page + '.html';
+                            },100);
+                        }, false);
+                    }
                 }
 
                 console.log("inject player page");
