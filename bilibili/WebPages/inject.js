@@ -78,7 +78,7 @@ function applyUI(){
         console.log("cid got");
         
         if(window.TYPCN_PLAYER_CID){
-            if(window.location.origin == 'http://live.bilibili.com'){
+            if(window.location.hostname == 'live.bilibili.com'){
                 console.log("inject live page");
                 if(window.ROOMID > 0){
                     if(typeof LIVEPLAY == "undefined"){
