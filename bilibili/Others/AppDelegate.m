@@ -106,6 +106,9 @@ Browser *browser;
             [self openBrowserWithUrl:@"http://www.bilibili.com"];
         }
         [browser.window performSelector:@selector(makeMainWindow) withObject:nil afterDelay:0.2];
+        browser.window.titleVisibility = NSWindowTitleHidden;
+        browser.window.titlebarAppearsTransparent = YES;
+        browser.window.movableByWindowBackground = YES;
         [browser.window performSelector:@selector(makeKeyAndOrderFront:) withObject:NSApp afterDelay:0.2];
         [NSApp activateIgnoringOtherApps:YES];
     }
