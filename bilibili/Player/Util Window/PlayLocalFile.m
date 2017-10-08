@@ -6,7 +6,7 @@
 //  Copyright (c) 2016 TYPCN. All rights reserved.
 //
 
-#import "playLocalFile.h"
+#import "PlayLocalFile.h"
 #import "PlayerLoader.h"
 
 
