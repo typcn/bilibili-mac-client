@@ -103,7 +103,7 @@ Browser *browser;
         if(unclosed && [unclosed count] > 0){
             [self openBrowserWithUrl:@"http://vp-hub.eqoe.cn/unclosed.html"];
         }else{
-            [self openBrowserWithUrl:@"http://www.bilibili.com"];
+            [self openBrowserWithUrl:@"https://www.bilibili.com"];
         }
         [browser.window performSelector:@selector(makeMainWindow) withObject:nil afterDelay:0.2];
         [browser.window performSelector:@selector(makeKeyAndOrderFront:) withObject:NSApp afterDelay:0.2];
@@ -188,21 +188,38 @@ Browser *browser;
             [theApplication.mainWindow makeKeyAndOrderFront:nil];
             return YES;
         }else if(browser && browser.window && browser.tabCount > 0){
-            [browser.window makeKeyAndOrderFront:nil];
+            WebTabView *tc = (WebTabView *)[browser activeTabContents];
+            if(!tc){
+                [self performBrowserRestart];
+            }
+            NSString *url = [[tc GetTWebView] getURL];
+            if(url && [url length] > 2) {
+                // The browser really exists ( not ghost )
+                [browser.window makeKeyAndOrderFront:theApplication];
+            }else{
+                [self performBrowserRestart];
+            }
             return YES;
         }else if(!browser || browser.tabCount == 0){
-            browser = NULL;
-            [self openBrowserWithUrl:@"http://www.bilibili.com"];
+            [self performBrowserRestart];
             return YES;
         }
         return NO;
     }
     else
     {
-        browser = NULL;
-        [self openBrowserWithUrl:@"http://www.bilibili.com"];
+        [self performBrowserRestart];
         return YES;
     }
+}
+
+- (void)performBrowserRestart{
+    browser = NULL;
+    [self performSelector:@selector(delayedRestart) withObject:nil afterDelay:0.5];
+}
+
+- (void)delayedRestart {
+    [self openBrowserWithUrl:@"https://www.bilibili.com"];
 }
 
 - (void)AVNumberUpdated:(NSNotification *)notification {

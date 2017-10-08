@@ -98,7 +98,7 @@
 //    NSString *req_url = [NSString stringWithFormat:@"http://interface.bilibili.com/playurl?%@&sign=%@",req_path,req_sign];
 
     
-    NSString *req_url = [NSString stringWithFormat:@"http://www.bilibili.com/m/html5?aid=%@&page=%@",params[@"aid"],params[@"pid"]];
+    NSString *req_url = [NSString stringWithFormat:@"https://www.bilibili.com/m/html5?aid=%@&page=%@",params[@"aid"],params[@"pid"]];
     
     NSLog(@"[VP_Bilibili] API Request URL: %@", req_url);
     

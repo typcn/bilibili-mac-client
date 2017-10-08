@@ -111,7 +111,7 @@
 
 - (IBAction)goHome:(id)sender {
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
-    [[tc GetTWebView] setURL:@"http://www.bilibili.com"];
+    [[tc GetTWebView] setURL:@"https://www.bilibili.com"];
 }
 - (IBAction)Refresh:(id)sender {
     WebTabView *tc = (WebTabView *)[browser activeTabContents];

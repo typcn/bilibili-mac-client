@@ -16,7 +16,7 @@ function _attachBGM(){
         var url = $('#v_bgm_list_data a[idx=' + target + ']').attr('href');
         if(url && url.length > 0){
             url += '?autoplay=1';
-            window.sendToView({'action':'goURL','data':'http://www.bilibili.com' + url});
+            window.sendToView({'action':'goURL','data':'https://www.bilibili.com' + url});
         }
     }
 }
@@ -24,7 +24,7 @@ function _attachBGM(){
 function _attachPRG(){
     var nextUrl = $('.v-plist .curPage').next().attr('href');
     if(nextUrl && nextUrl.length > 1){
-        window.sendToView({'action':'goURL','data':'http://www.bilibili.com' + nextUrl + '?autoplay=1'});
+        window.sendToView({'action':'goURL','data':'https://www.bilibili.com' + nextUrl + '?autoplay=1'});
     }
 }
 

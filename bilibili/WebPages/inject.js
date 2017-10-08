@@ -190,7 +190,7 @@ function replaceMimi(){
     console.log("cid got");
 
     if(window.TYPCN_PLAYER_CID){
-        var loc = window.location.href.replace('mm','av').replace('https://mimi.tgod.co/v/','http://www.bilibili.com/video/');
+        var loc = window.location.href.replace('mm','av').replace('https://mimi.tgod.co/v/','https://www.bilibili.com/video/');
         window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + loc + '|' + document.title + '|2';
         console.log("inject player page");
         $('#bofqi').html(window.injectHTML);
