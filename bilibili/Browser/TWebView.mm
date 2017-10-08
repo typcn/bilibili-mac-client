@@ -300,6 +300,9 @@ didReceiveTitle:(NSString *)title
         NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
         request.HTTPMethod = @"POST";
         [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        if([dic[@"type"] isEqualToString:@"pluginCall"]){
+            [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        }
         NSString *postdata = dic[@"data"];
         request.HTTPBody = [postdata dataUsingEncoding:NSUTF8StringEncoding];
         NSURLConnection* connection = [NSURLConnection connectionWithRequest:request delegate:nil];
