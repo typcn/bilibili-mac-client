@@ -40,6 +40,7 @@
         hideCursorTimer = nil;
     }
     hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hideCursor) userInfo:nil repeats:YES];
+    self.collectionBehavior = NSWindowCollectionBehaviorDefault;
 }
 
 - (void)becomeKeyWindow{
