@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Window Controller-->
@@ -13,6 +15,9 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="353" width="397" height="230"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="eZN-Z3-fRP" id="Hmw-O1-Y3N"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="qFr-wi-ptm" kind="relationship" relationship="window.shadowedContentViewController" id="c1Y-pX-QZF"/>
@@ -30,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="399" height="293"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="KKd-s7-gzF">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="KKd-s7-gzF">
                                 <rect key="frame" x="18" y="240" width="363" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="系统检测到您上次使用过程中发生了崩溃 请提供一些信息（例如重现步骤）以便定位问题，谢谢！" id="bWn-Zt-9rP">
@@ -43,14 +48,14 @@
                                 <rect key="frame" x="20" y="152" width="359" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <clipView key="contentView" id="LK4-eA-AGj">
-                                    <rect key="frame" x="1" y="1" width="342" height="78"/>
+                                    <rect key="frame" x="1" y="1" width="357" height="78"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="vbw-5q-kZk">
+                                        <textView importsGraphics="NO" verticallyResizable="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="vbw-5q-kZk">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="78"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="342" height="78"/>
+                                            <size key="minSize" width="357" height="78"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -62,11 +67,11 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rih-nB-JqP">
-                                    <rect key="frame" x="343" y="1" width="15" height="78"/>
+                                    <rect key="frame" x="342" y="1" width="16" height="78"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="jPv-oc-c6Y">
+                            <textField verticalHuggingPriority="750" id="jPv-oc-c6Y">
                                 <rect key="frame" x="185" y="106" width="194" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ngX-T4-MTP">
@@ -75,7 +80,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="KMX-MO-jY7">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="KMX-MO-jY7">
                                 <rect key="frame" x="18" y="109" width="145" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="留下您的邮箱（可选）：" id="6Ay-gM-zuC">
@@ -95,7 +100,7 @@
                                     <action selector="sendCrashReport:" target="qFr-wi-ptm" id="Tr6-RG-P4C"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="6vA-Oy-Iv3">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="6vA-Oy-Iv3">
                                 <rect key="frame" x="18" y="59" width="367" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="错误报告包含您的剩余内存/磁盘大小，操作系统版本以及用于 查错的一些技术信息，不会包含您的任何隐私，不会记录您的IP" id="Fja-3l-PSU">
@@ -156,7 +161,7 @@
                                     <action selector="selectSubtitle:" target="0d3-4B-65W" id="rd6-xO-0vC"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="EP3-TH-MpO">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="EP3-TH-MpO">
                                 <rect key="frame" x="161" y="134" width="274" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="由于弹幕引擎重写，暂时只支持 Bilibili 格式" id="E2h-KF-1Hp">
@@ -165,7 +170,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="W36-Oj-e30">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="W36-Oj-e30">
                                 <rect key="frame" x="161" y="95" width="301" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="暂时只支持 ASS 格式的字幕，可以不选择" id="Dgo-Bk-4mh">
@@ -196,7 +201,7 @@
                                     <action selector="playClick:" target="0d3-4B-65W" id="QaE-mo-ddz"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="cLu-OC-0jj">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="cLu-OC-0jj">
                                 <rect key="frame" x="161" y="178" width="40" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="OR" id="Dde-ch-OBa">
@@ -205,7 +210,7 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="bDH-si-sdl">
+                            <textField verticalHuggingPriority="750" id="bDH-si-sdl">
                                 <rect key="frame" x="199" y="175" width="199" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Input URL" drawsBackground="YES" id="YHz-dM-jfm">
@@ -217,7 +222,7 @@
                                     <action selector="setURL:" target="0d3-4B-65W" id="gnk-CD-aLH"/>
                                 </connections>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="x5b-ok-GNF">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="x5b-ok-GNF">
                                 <rect key="frame" x="94" y="49" width="291" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="请确认全部为 UTF-8 格式" id="PvP-kq-5oz">
@@ -247,6 +252,9 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="313" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="xcH-VD-rhE" id="cNl-Ul-Yt5"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="ZMa-4Y-BrB" kind="relationship" relationship="window.shadowedContentViewController" id="7c8-bm-XK3"/>
@@ -286,7 +294,7 @@
                                     <action selector="copyBitcoinAddr:" target="ZMa-4Y-BrB" id="N88-zC-CJZ"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="Dzc-bX-UPW">
+                            <textField verticalHuggingPriority="750" id="Dzc-bX-UPW">
                                 <rect key="frame" x="203" y="80" width="96" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="数量（USD）" drawsBackground="YES" id="S2S-AU-gff">
@@ -307,7 +315,7 @@
                                     <action selector="alipayDonateBtn:" target="ZMa-4Y-BrB" id="Fbo-rb-Gqz"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="vWr-yv-mst">
+                            <textField verticalHuggingPriority="750" id="vWr-yv-mst">
                                 <rect key="frame" x="203" y="111" width="96" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="数量（CNY）" drawsBackground="YES" id="J4i-gl-mnb">
@@ -317,7 +325,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="YD4-6C-juN">
+                            <textField verticalHuggingPriority="750" id="YD4-6C-juN">
                                 <rect key="frame" x="203" y="48" width="96" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="1EprnUzBwcF52SZAnPZKRrj4rRaS6yhtQW" drawsBackground="YES" id="il4-dn-dZd">
@@ -326,7 +334,7 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="xVW-2o-0xH">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="xVW-2o-0xH">
                                 <rect key="frame" x="30" y="14" width="439" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="（由于服务器不稳定，如果支付宝跳转页面 SSL 连接错误，请刷新几次）" id="JGr-Ox-SQp">
@@ -346,7 +354,7 @@
                                     <action selector="hideBtn:" target="ZMa-4Y-BrB" id="cn8-c4-OwY"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="NO" id="Mxv-1f-7ht">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" id="Mxv-1f-7ht">
                                 <rect key="frame" x="18" y="141" width="444" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="Sxb-IU-YrN">
@@ -631,9 +639,15 @@ GQ
             <objects>
                 <windowController storyboardIdentifier="prefWindow" showSeguePresentationStyle="single" id="5ae-Oq-jkw" userLabel="Preferences Window Controller" sceneMemberID="viewController">
                     <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="GwV-iX-vw0" userLabel="Preferences Window">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-                        <rect key="contentRect" x="863" y="432" width="480" height="270"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
+                        <rect key="contentRect" x="863" y="432" width="653" height="536"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1057"/>
+                        <value key="minSize" type="size" width="653" height="536"/>
+                        <value key="maxSize" type="size" width="653" height="536"/>
+                        <connections>
+                            <outlet property="delegate" destination="5ae-Oq-jkw" id="Lju-KI-W7k"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="tLe-z4-o59" kind="relationship" relationship="window.shadowedContentViewController" id="lyJ-6F-PsK"/>
@@ -641,7 +655,7 @@ GQ
                 </windowController>
                 <customObject id="eIg-KT-Fae" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="869" y="-969"/>
+            <point key="canvasLocation" x="864" y="-961"/>
         </scene>
         <!--Preferences-->
         <scene sceneID="puj-og-zmN">
@@ -658,8 +672,12 @@ GQ
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems/>
+                        <connections>
+                            <outlet property="delegate" destination="tLe-z4-o59" id="QnM-f3-MfE"/>
+                        </connections>
                     </tabView>
                     <connections>
+                        <outlet property="tabView" destination="a0a-NW-aFM" id="8Xs-Gl-fu0"/>
                         <segue destination="z8a-gg-iMj" kind="relationship" relationship="tabItems" id="pKK-P3-OMw"/>
                         <segue destination="fZa-B8-J07" kind="relationship" relationship="tabItems" id="DAK-Op-0Mf"/>
                         <segue destination="pWa-Nw-Vzq" kind="relationship" relationship="tabItems" id="jJQ-M2-tgc"/>
@@ -682,14 +700,14 @@ GQ
                                 <rect key="frame" x="8" y="38" width="485" height="232"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <clipView key="contentView" id="3J2-Wo-o61">
-                                    <rect key="frame" x="1" y="1" width="468" height="230"/>
+                                    <rect key="frame" x="1" y="1" width="483" height="230"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="l0e-ZN-Cyz">
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="l0e-ZN-Cyz">
                                             <rect key="frame" x="0.0" y="0.0" width="468" height="230"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="468" height="230"/>
+                                            <size key="minSize" width="483" height="230"/>
                                             <size key="maxSize" width="485" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -701,11 +719,11 @@ GQ
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Tku-Hz-Coo">
-                                    <rect key="frame" x="469" y="1" width="15" height="230"/>
+                                    <rect key="frame" x="468" y="1" width="16" height="230"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="ZwZ-on-c9X">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ZwZ-on-c9X">
                                 <rect key="frame" x="6" y="13" width="489" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="一行一个，不区分大小写，请勿输入特殊符号，下次播放时生效，关闭窗口自动保存" id="Lfm-eh-7YA">
@@ -737,8 +755,12 @@ GQ
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="message"/>
                         <tabViewItems/>
+                        <connections>
+                            <outlet property="delegate" destination="fZa-B8-J07" id="nfO-F2-uSU"/>
+                        </connections>
                     </tabView>
                     <connections>
+                        <outlet property="tabView" destination="8Ha-pk-h56" id="Xpa-vT-NkT"/>
                         <segue destination="062-3f-byc" kind="relationship" relationship="tabItems" id="tz9-uH-Fe9"/>
                         <segue destination="nsc-wB-2EJ" kind="relationship" relationship="tabItems" id="5MT-NK-uvW"/>
                     </connections>
@@ -755,7 +777,7 @@ GQ
                         <rect key="frame" x="0.0" y="0.0" width="450" height="266"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="NO" id="fgL-iN-azg">
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" id="fgL-iN-azg">
                                 <rect key="frame" x="51" y="7" width="360" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <textFieldCell key="cell" controlSize="mini" allowsUndo="NO" sendsActionOnEndEditing="YES" title="更多功能欢迎到 GitHub 参与开发   https://github.com/typcn/bilibili-mac-client" id="BKA-mo-Ldx">
@@ -866,6 +888,9 @@ GQ
                         <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
                         <rect key="contentRect" x="0.0" y="863" width="300" height="200"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="3Nx-YC-zmP" id="nWH-kB-lSo"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="Xuz-Nv-8zc" kind="relationship" relationship="window.shadowedContentViewController" id="LPF-yx-08x"/>
@@ -896,7 +921,7 @@ GQ
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="loading" id="s2c-ae-PoS"/>
                                     </imageView>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="nwA-xX-SSg">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="nwA-xX-SSg">
                                         <rect key="frame" x="8" y="20" width="416" height="34"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="提示：开始播放后按回车可以发送弹幕" id="lbG-e1-MKm">
@@ -905,7 +930,7 @@ GQ
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="q3q-RS-pq9">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="q3q-RS-pq9">
                                         <rect key="frame" x="146" y="70" width="141" height="17"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Loading" id="hhw-OI-vOH">
@@ -939,6 +964,9 @@ GQ
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="313" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="ffQ-wz-5FH" id="Ees-aS-wN4"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="rag-YS-WW4" kind="relationship" relationship="window.shadowedContentViewController" id="Mel-oP-O06"/>
@@ -960,14 +988,14 @@ GQ
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" id="Rhz-Ly-fC1">
-                                    <rect key="frame" x="1" y="1" width="463" height="268"/>
+                                    <rect key="frame" x="1" y="1" width="478" height="268"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView editable="NO" importsGraphics="NO" horizontallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="Yey-g8-OWP">
-                                            <rect key="frame" x="0.0" y="0.0" width="463" height="268"/>
+                                        <textView editable="NO" importsGraphics="NO" horizontallyResizable="YES" verticallyResizable="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="Yey-g8-OWP">
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="463" height="268"/>
+                                            <size key="minSize" width="478" height="268"/>
                                             <size key="maxSize" width="480" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
@@ -979,7 +1007,7 @@ GQ
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Ft0-cT-2BV">
-                                    <rect key="frame" x="464" y="1" width="15" height="268"/>
+                                    <rect key="frame" x="463" y="1" width="16" height="268"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -1012,6 +1040,9 @@ GQ
                         <windowPositionMask key="initialPositionMask" bottomStrut="YES"/>
                         <rect key="contentRect" x="640" y="200" width="480" height="36"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="eqf-bZ-eNQ" id="0Pe-V4-Sb6"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="cwy-KF-di8" kind="relationship" relationship="window.shadowedContentViewController" id="k1m-kA-8W1"/>
@@ -1029,7 +1060,7 @@ GQ
                         <rect key="frame" x="0.0" y="0.0" width="480" height="36"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="TUk-1C-0AA">
+                            <textField verticalHuggingPriority="750" id="TUk-1C-0AA">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="36"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="发送弹幕" drawsBackground="YES" id="yn2-rr-jS0">
@@ -1116,7 +1147,7 @@ GQ
                                     <action selector="enableBugWorkaround:" target="z8a-gg-iMj" id="8ze-Ex-oQk"/>
                                 </connections>
                             </button>
-                            <comboBox verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="k65-FX-xi6">
+                            <comboBox verticalHuggingPriority="750" misplaced="YES" id="k65-FX-xi6">
                                 <rect key="frame" x="26" y="265" width="100" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="UtE-Jc-IKj">
@@ -1134,7 +1165,7 @@ GQ
                                     <action selector="qualityChanged:" target="z8a-gg-iMj" id="5RM-2m-jtk"/>
                                 </connections>
                             </comboBox>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="jlv-di-fx2">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="jlv-di-fx2">
                                 <rect key="frame" x="27" y="295" width="198" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="优先画质" id="Sd9-OH-JrH">
@@ -1143,7 +1174,7 @@ GQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="LGC-Jg-Mns">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="LGC-Jg-Mns">
                                 <rect key="frame" x="24" y="228" width="369" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="IP 伪造 ( 大陆用户请勿开启 )" id="vMH-pa-ZpX">
@@ -1152,7 +1183,7 @@ GQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="v5E-aw-wG4">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="v5E-aw-wG4">
                                 <rect key="frame" x="440" y="295" width="236" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕大小参数" id="dJb-2c-b1m">
@@ -1161,7 +1192,7 @@ GQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="ajt-jS-Z4K">
+                            <textField verticalHuggingPriority="750" misplaced="YES" id="ajt-jS-Z4K">
                                 <rect key="frame" x="442" y="268" width="80" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="默认25" drawsBackground="YES" id="pXu-zi-Y7u">
@@ -1174,7 +1205,7 @@ GQ
                                     <action selector="fontsizeChanged:" target="z8a-gg-iMj" id="Ekm-XY-OWF"/>
                                 </connections>
                             </textField>
-                            <comboBox verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="JLT-R0-aaz">
+                            <comboBox verticalHuggingPriority="750" misplaced="YES" id="JLT-R0-aaz">
                                 <rect key="frame" x="26" y="196" width="170" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="4" id="P8V-DP-s5N">
@@ -1201,7 +1232,7 @@ GQ
                                     <action selector="moveSpeedChanged:" target="z8a-gg-iMj" id="Gpg-vr-rWO"/>
                                 </connections>
                             </slider>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="cJc-Xd-aCd">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="cJc-Xd-aCd">
                                 <rect key="frame" x="25" y="165" width="319" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕移动速度" id="zpf-lu-2U6">
@@ -1210,7 +1241,7 @@ GQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="8GO-QK-utF">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="8GO-QK-utF">
                                 <rect key="frame" x="25" y="20" width="620" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="3.所有设置将在下次开始播放时生效，文本框需要按回车保存" id="43T-62-L37">
@@ -1219,7 +1250,7 @@ GQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="CNv-ip-Ik8">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="CNv-ip-Ik8">
                                 <rect key="frame" x="25" y="84" width="620" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="1.弹幕字体计算方式为 视频高度除以字体参数 ，参数越大 弹幕越小" id="dYW-v7-aMe">
@@ -1239,7 +1270,7 @@ GQ
                                     <action selector="disableKeepAspectRatioChanged:" target="z8a-gg-iMj" id="ujo-xw-stY"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="iLa-hJ-dgh">
+                            <textField verticalHuggingPriority="750" misplaced="YES" id="iLa-hJ-dgh">
                                 <rect key="frame" x="442" y="200" width="152" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="STHeiti" drawsBackground="YES" id="A8r-5c-QC5">
@@ -1259,7 +1290,7 @@ GQ
                                     <action selector="transparencyChanged:" target="z8a-gg-iMj" id="8hc-EG-3jB"/>
                                 </connections>
                             </slider>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="wLx-ha-LJe">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="wLx-ha-LJe">
                                 <rect key="frame" x="348" y="165" width="297" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕透明度" id="CuV-Ec-HRG">
@@ -1268,7 +1299,7 @@ GQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="Pn0-p5-eUE">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="Pn0-p5-eUE">
                                 <rect key="frame" x="261" y="295" width="132" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="最大缓冲( KB )" id="GCK-CB-vEX">
@@ -1277,7 +1308,7 @@ GQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="nHb-Pd-fXL">
+                            <textField verticalHuggingPriority="750" misplaced="YES" id="nHb-Pd-fXL">
                                 <rect key="frame" x="263" y="268" width="90" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="" drawsBackground="YES" id="QiJ-fu-Jcf">
@@ -1301,7 +1332,7 @@ GQ
                                     <action selector="disableWritePlayHistory:" target="z8a-gg-iMj" id="4H6-uC-ord"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="OIq-ag-IQD">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="OIq-ag-IQD">
                                 <rect key="frame" x="440" y="228" width="168" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="弹幕字体" id="6ZU-bU-OI7">
@@ -1354,7 +1385,7 @@ GQ
                                     <action selector="changeGestureDirection:" target="z8a-gg-iMj" id="8O2-rc-U2I"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="Ubj-zp-AMU">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="Ubj-zp-AMU">
                                 <rect key="frame" x="24" y="45" width="620" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="2.仅支持在 /System/Library/Fonts/ 中的弹幕字体" id="QaX-PH-0zE">
@@ -1430,7 +1461,7 @@ GQ
                                     <action selector="helpLua:" target="pWa-Nw-Vzq" id="quB-0K-0Qh"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="GaI-8H-iHI">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="GaI-8H-iHI">
                                 <rect key="frame" x="-2" y="20" width="658" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="原有文本框中的配置文件将在您播放一次任意视频后自动保存到该文件夹" id="LpX-yR-5U2">
@@ -1439,7 +1470,7 @@ GQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="iBe-gt-c1s">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="iBe-gt-c1s">
                                 <rect key="frame" x="-3" y="45" width="658" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="注意：错误的配置文件可能导致无法正常播放" id="MjF-vP-vTC">
@@ -1529,7 +1560,7 @@ GQ
                                     <action selector="clearURLCache:" target="Gh7-k4-ULc" id="4nU-xb-uGd"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="YRq-gK-oZF">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="YRq-gK-oZF">
                                 <rect key="frame" x="34" y="29" width="400" height="17"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="注意：谨慎使用，可能会一同清除掉其他应用程序的 Cookie" id="gn1-1w-IgH">
