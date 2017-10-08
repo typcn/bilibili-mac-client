@@ -212,8 +212,8 @@
 /* Class = "NSTextFieldCell"; title = "优先画质"; ObjectID = "Sd9-OH-JrH"; */
 "Sd9-OH-JrH.title" = "优先画质";
 
-/* Class = "NSTextFieldCell"; title = "Hello , 我是开发者 TYPCN :\n    从开发完成以来，Bilibili for mac 已经拥有上万的下载量和 9000+ 的活跃用户，且一直在持续增长。\n    软件的开发与维护需要耗费大量的时间和精力，加上更新的 CDN 和服务器，每月还需要额外花费上百元钱。我还不到 18 岁没法工作，所以没有太多资本，这类软件收费也不合适，如果您有条件，可以通过下方的按钮捐助。"; ObjectID = "Sxb-IU-YrN"; */
-"Sxb-IU-YrN.title" = "Hello , 我是开发者 TYPCN :\n    从开发完成以来，Bilibili for mac 已经拥有上万的下载量和 9000+ 的活跃用户，且一直在持续增长。\n    软件的开发与维护需要耗费大量的时间和精力，加上更新的 CDN 和服务器，每月还需要额外花费上百元钱。我还不到 18 岁没法工作，所以没有太多资本，这类软件收费也不合适，如果您有条件，可以通过下方的按钮捐助。";
+/* Class = "NSTextFieldCell"; title = "Donate Text"; ObjectID = "Sxb-IU-YrN"; */
+"Sxb-IU-YrN.title" = "Hello , 我是开发者 TYPCN :\n    从开发完成以来，Bilibili for mac 已经拥有上万的下载量和 20000+ 的活跃用户，且一直在持续增长。\n    软件的开发与维护需要耗费大量的时间和精力，加上更新的 CDN 和服务器，每月还需要额外花费上百元钱。如果您有条件，可以通过下方的按钮捐助。";
 
 /* Class = "NSMenuItem"; title = "隐藏 Bilibili"; ObjectID = "UIt-CV-9tL"; */
 "UIt-CV-9tL.title" = "隐藏 Bilibili";
