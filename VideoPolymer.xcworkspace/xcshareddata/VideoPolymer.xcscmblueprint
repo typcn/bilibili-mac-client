@@ -1,25 +1,26 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0CCD44618AE52F30F0983F8769C38291166A8AE0",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "6C0E902A660503ED1D4326F8C392D6FA86F6AF7F" : 0,
+    "97D300E66DDB1F6ADE081B27820BD9A08351D0FD" : 0,
     "0CCD44618AE52F30F0983F8769C38291166A8AE0" : 0,
     "04101981B66E318109934C9516F88D824BB96459" : 0,
     "F6F96CA34C5878B0A9123C7C37855491A5E599DA" : 0,
-    "97D300E66DDB1F6ADE081B27820BD9A08351D0FD" : 0
+    "6C0E902A660503ED1D4326F8C392D6FA86F6AF7F" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C732EEB6-B3E3-4D74-A425-68B218A60AA8",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "6C0E902A660503ED1D4326F8C392D6FA86F6AF7F" : "chromium-tabs\/",
-    "0CCD44618AE52F30F0983F8769C38291166A8AE0" : "",
-    "04101981B66E318109934C9516F88D824BB96459" : "fmdb\/",
-    "F6F96CA34C5878B0A9123C7C37855491A5E599DA" : "GCDWebServer\/",
-    "97D300E66DDB1F6ADE081B27820BD9A08351D0FD" : "bilibili\/CommentConvert\/"
+    "97D300E66DDB1F6ADE081B27820BD9A08351D0FD" : "bilibili-mac-client\/bilibili\/CommentConvert\/",
+    "0CCD44618AE52F30F0983F8769C38291166A8AE0" : "bilibili-mac-client\/",
+    "04101981B66E318109934C9516F88D824BB96459" : "bilibili-mac-client\/fmdb\/",
+    "F6F96CA34C5878B0A9123C7C37855491A5E599DA" : "bilibili-mac-client\/GCDWebServer\/",
+    "6C0E902A660503ED1D4326F8C392D6FA86F6AF7F" : "bilibili-mac-client\/chromium-tabs\/"
   },
-  "DVTSourceControlWorkspaceBlueprintNameKey" : ".",
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "VideoPolymer",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : ".",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "VideoPolymer.xcworkspace",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/typcn\/fmdb.git",
@@ -37,7 +38,7 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6C0E902A660503ED1D4326F8C392D6FA86F6AF7F"
     },
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:typcn\/danmaku2ass_native.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/typcn\/danmaku2ass_native.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "97D300E66DDB1F6ADE081B27820BD9A08351D0FD"
     },

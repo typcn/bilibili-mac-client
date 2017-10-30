@@ -41,8 +41,17 @@
     }
     hideCursorTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(hideCursor) userInfo:nil repeats:YES];
     self.collectionBehavior = NSWindowCollectionBehaviorDefault;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(switchWindowLevel:) name:@"com.typcn.Bilibili.settingschanged" object:nil];
+    [self switchWindowLevel:nil];
 }
-
+-(void)switchWindowLevel:(id)sender{
+    if([[NSUserDefaults standardUserDefaults] integerForKey:@"playerAlwaysOnTop"]==1){
+        self.level=NSStatusWindowLevel;
+    }
+    else{
+        self.level=NSNormalWindowLevel;
+    }
+}
 - (void)becomeKeyWindow{
     isActive = YES;
     if(self.player.playerControlView){
@@ -612,6 +621,7 @@ CFStringRef stringByKeyCode(CGKeyCode keyCode)
 }
 
 - (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"[PlayerWindow] Dealloc");
 }
 
