@@ -169,7 +169,11 @@
     [settingsController synchronize];
     NSLog(@"IP Changed to: %@",str);
 }
-
+- (IBAction)playerOnTopChanged:(id)sender {
+    [settingsController setInteger:[self.playerAlwaysOnTop state] forKey:@"playerAlwaysOnTop"];
+    [settingsController synchronize];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"com.typcn.Bilibili.settingschanged" object:nil];
+}
 - (NSInteger)randomNumberBetween:(NSInteger)min maxNumber:(NSInteger)max
 {
     return min + arc4random_uniform((u_int32_t)max - (u_int32_t)min + 1);
