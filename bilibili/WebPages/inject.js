@@ -150,59 +150,6 @@ function applyUI(){
         }
         console.log("inject success");
         
-    }else if(window.location.href.indexOf('mimi.gg') > -1){
-        var mimierr = document.querySelector('.error-content-inner');
-        if(mimierr.innerHTML == '该页面无法在您所在的区域访问。' || mimierr.innerHTML == '正在等待页面加载'){
-            mimierr.innerHTML = '正在尝试替换播放器';
-            var request = new XMLHttpRequest();
-            request.open('GET', 'https://mimi.tgod.co' + window.location.pathname, true);
-            
-            request.onload = function() {
-                if (request.status >= 200 && request.status < 400) {
-                    if(window.location.pathname == '/'){
-                        $('html').html(request.responseText);
-                    }else{
-                        document.getElementsByTagName('html')[0].innerHTML = request.responseText;
-                        replaceMimi();
-                    }
-                } else {
-                    document.querySelector('.error-content-inner').innerHTML = '替换服务器错误';
-                }
-            };
-            
-            request.onerror = function() {
-               document.querySelector('.error-content-inner').innerHTML = '无法替换播放器';
-            };
-            
-            request.send();
-            clearInterval(window.i);
-        }else{
-            replaceMimi();
-        }
-    }
-}
-
-function replaceMimi(){
-    var scr = $('#bofqi script').html();
-    var re = /cid=(\d+)&/;
-    var m = re.exec(scr);
-    window.TYPCN_PLAYER_CID = m[1];
-    console.log("cid got");
-
-    if(window.TYPCN_PLAYER_CID){
-        var loc = window.location.href.replace('mm','av').replace('https://mimi.tgod.co/v/','https://www.bilibili.com/video/');
-        window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + loc + '|' + document.title + '|2';
-        console.log("inject player page");
-        $('#bofqi').html(window.injectHTML);
-        var ph = document.querySelector(".TYPCN_PLAYER_INJECT_PAGE .player-placeholder");
-        if(ph){
-            var re = /http:\/\/.*?\.jpg/;
-            var m = re.exec($('.page-wrp script')[1].innerHTML);
-            ph.style.backgroundImage = "url(http://localhost:23330/blur/" + m[0] + ")"
-            ph.style.backgroundAttachment = "initial";
-            ph.style.height = "530px";
-        }
-        clearInterval(window.i);
     }
 }
 
@@ -253,14 +200,9 @@ if(!window.isInjected){
               this.addEventListener('load', function() {
                   //console.log('Request complete');
               });
-              origOpen.apply(this, arguments);
+              return origOpen.apply(this, arguments);
             };
             console.log('Local hook success');
-            var cs = document.createElement('script');
-            cs.type = 'text/javascript';
-            cs.src = 'http://cdn.eqoe.cn/files/bilibili/widget-min.js?ver=' + window.bilimacVersion;
-            cs.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(cs);
          })();
     }
 }
