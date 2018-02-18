@@ -506,7 +506,7 @@
                 NSDictionary *activeApp = [[NSWorkspace sharedWorkspace] activeApplication];
                 NSString *activeName = (NSString *)[activeApp objectForKey:@"NSApplicationName"];
                 if([activeName isEqualToString:@"Bilibili"]){
-                    id ct = [browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/v2/"];
+                    id ct = [browser createTabBasedOn:nil withUrl:@"http://static-ssl.tycdn.net/downloadManager/v2/"];
                     [browser addTabContents:ct inForeground:YES];
                 }
             }else{

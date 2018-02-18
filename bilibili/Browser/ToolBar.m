@@ -173,7 +173,7 @@
 }
 
 - (void)dlMan{
-    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withUrl:@"http://static.tycdn.net/downloadManager/v2/"];
+    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withUrl:@"http://static-ssl.tycdn.net/downloadManager/v2/"];
     [browser addTabContents:ct inForeground:YES];
 }
 
