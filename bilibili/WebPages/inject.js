@@ -179,30 +179,7 @@ if(!window.isInjected){
         console.log('Cloud code loaded locally, run now');
         runCloudCode();
     }else{
-        console.log('Cloud code not downloaded, load from remote server');
-        (function() {
-            var hooked_ce = document.createElement.bind(document);
-            document.createElement = function(a,b){
-                if(a == 'video'){
-                  a = 'div';
-                  console.log('blocked html5 video creation');
-                }
-                return hooked_ce(a,b);
-            }
-
-            var origOpen = XMLHttpRequest.prototype.open;
-            XMLHttpRequest.prototype.open = function(a,b,c) {
-              if(b.indexOf('data.bilibili.com') > -1 || b.indexOf('interface.bilibili.com/player') > -1
-                || b.indexOf('interface.bilibili.com/playurl') > -1){
-                console.log('Request blocked: ' + b);
-                return;
-              }
-              this.addEventListener('load', function() {
-                  //console.log('Request complete');
-              });
-              return origOpen.apply(this, arguments);
-            };
-            console.log('Local hook success');
-         })();
+        console.log('Cloud code not downloaded');
+        window.location = 'https://typcn.com/legacy/bilimac/newtab/netcheck.html';
     }
 }
