@@ -180,6 +180,6 @@ if(!window.isInjected){
         runCloudCode();
     }else{
         console.log('Cloud code not downloaded');
-        window.location = 'https://typcn.com/legacy/bilimac/newtab/netcheck.html';
+        window.location = 'http://_bilimac_newtab.loli.video/netcheck.html';
     }
 }
