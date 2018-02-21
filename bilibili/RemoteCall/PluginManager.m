@@ -143,6 +143,17 @@
     NSString *path = [NSString stringWithFormat:@"%@%@.bundle",sprtdir,name];
     NSLog(@"Load native plugin at path %@",path);
     NSBundle *pluginBundle = [NSBundle bundleWithPath:path];
+    
+    
+    OBCodeSignState signState = [pluginBundle ob_codeSignState];
+    if(signState != OBCodeSignStateSignatureValid){
+        NSLog(@"Plugin doesn't have a valid code signature: %@",name);
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:[NSString stringWithFormat:@"插件 %@ 加载失败，因为它的数字签名无效。可能插件下载不完整，或网络遭到劫持，请尝试重新安装。",name]];
+        [alert runModal];
+        return nil;
+    }
+    
     [pluginBundle load];
     
     Class prinClass = [pluginBundle principalClass];
@@ -197,9 +208,8 @@
     }
     
     hud.removeFromSuperViewOnHide = YES;
-    NSString *pluginHubUrl  = @"http://_bilimac_newtab.loli.video";
-    NSString *pluginManifest = [NSString stringWithFormat:@"%@/api/manifest/%@.json?t=%ld",
-                                                                    pluginHubUrl,name,time(0)];
+    NSString *pluginManifest = [NSString stringWithFormat:@"https://typcn.com/legacy/bilimac/newtab/api/manifest/%@.json?t=%ld",
+                                                                    name,time(0)];
     NSLog(@"Get manifest from %@",pluginManifest);
     
     NSURLSessionConfiguration* sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
