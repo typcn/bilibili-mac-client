@@ -162,7 +162,7 @@
 }
 
 - (IBAction)visitWebsite:(id)sender {
-	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://blog.eqoe.cn/?from=bilimac"]];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://typcn.com/?from=bilimac"]];
 }
 
 - (void)showWindow:(id)sender {

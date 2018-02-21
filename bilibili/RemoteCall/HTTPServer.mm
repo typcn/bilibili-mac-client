@@ -275,14 +275,14 @@
              rep = [GCDWebServerDataResponse responseWithJSONObject:scList];
          }else if([action isEqualToString:@"history"]){
              NSString *origin = [request headers][@"Origin"];
-             if(origin && [origin isEqualToString:@"http://vp-hub.eqoe.cn"]){
+             if(origin && [origin isEqualToString:@"http://_bilimac_newtab.loli.video"]){
                  int page = [data intValue];
                  NSArray *hsList = [browserEIF GetHistory:page];
                  rep = [GCDWebServerDataResponse responseWithJSONObject:hsList];
              }
          }else if([action isEqualToString:@"delHistory"]){
              NSString *origin = [request headers][@"Origin"];
-             if(origin && [origin isEqualToString:@"http://vp-hub.eqoe.cn"]){
+             if(origin && [origin isEqualToString:@"http://_bilimac_newtab.loli.video"]){
                  BOOL result = [browserEIF DelHistory:data];
                  if(!result){
                      rep = [GCDWebServerDataResponse responseWithText:@"error"];
@@ -290,13 +290,13 @@
              }
          }else if([action isEqualToString:@"unclosed"]){
              NSString *origin = [request headers][@"Origin"];
-             if(origin && [origin isEqualToString:@"http://vp-hub.eqoe.cn"]){
+             if(origin && [origin isEqualToString:@"http://_bilimac_newtab.loli.video"]){
                  rep = [GCDWebServerDataResponse responseWithJSONObject:[[BrowserHistory sharedManager] getUnclosed]];
              }
              
          }else if([action isEqualToString:@"resetStatus"]){
              NSString *origin = [request headers][@"Origin"];
-             if(origin && [origin isEqualToString:@"http://vp-hub.eqoe.cn"]){
+             if(origin && [origin isEqualToString:@"http://_bilimac_newtab.loli.video"]){
                  [[BrowserHistory sharedManager] resetStatus];
              }
          }

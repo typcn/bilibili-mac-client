@@ -197,7 +197,7 @@
     }
     
     hud.removeFromSuperViewOnHide = YES;
-    NSString *pluginHubUrl  = @"http://vp-hub.eqoe.cn";
+    NSString *pluginHubUrl  = @"http://_bilimac_newtab.loli.video";
     NSString *pluginManifest = [NSString stringWithFormat:@"%@/api/manifest/%@.json?t=%ld",
                                                                     pluginHubUrl,name,time(0)];
     NSLog(@"Get manifest from %@",pluginManifest);

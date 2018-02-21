@@ -24,7 +24,7 @@
 
 -(id)initWithBaseTabContents:(CTTabContents*)baseContents {
     if (!(self = [super initWithBaseTabContents:baseContents])) return nil;
-    NSURL *u = [NSURL URLWithString:@"http://vp-hub.eqoe.cn"];
+    NSURL *u = [NSURL URLWithString:@"http://_bilimac_newtab.loli.video"];
     
     return [self initWithRequest:[NSURLRequest requestWithURL:u] andConfig:nil];
 }

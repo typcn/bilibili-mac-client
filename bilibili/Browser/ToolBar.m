@@ -168,7 +168,7 @@
 }
 
 - (void)history{
-    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withUrl:@"http://vp-hub.eqoe.cn/history.html"];
+    WebTabView *ct = (WebTabView *)[browser createTabBasedOn:nil withUrl:@"http://_bilimac_newtab.loli.video/history.html"];
     [browser addTabContents:ct inForeground:YES];
 }
 

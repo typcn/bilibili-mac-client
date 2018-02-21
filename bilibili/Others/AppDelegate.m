@@ -101,7 +101,7 @@ Browser *browser;
     if(!without_gui){
         NSArray *unclosed = [[BrowserHistory sharedManager] getUnclosed];
         if(unclosed && [unclosed count] > 0){
-            [self openBrowserWithUrl:@"http://vp-hub.eqoe.cn/unclosed.html"];
+            [self openBrowserWithUrl:@"http://_bilimac_newtab.loli.video/unclosed.html"];
         }else{
             [self openBrowserWithUrl:@"https://www.bilibili.com"];
         }
@@ -297,7 +297,7 @@ Browser *browser;
     [browser addTabContents:ct inForeground:YES];
 }
 - (IBAction)showHelp:(id)sender {
-    id ct = [browser createTabBasedOn:nil withUrl:@"http://cdn.eqoe.cn/files/bilibili/faq.html"];
+    id ct = [browser createTabBasedOn:nil withUrl:@"http://_bilimac_newtab.loli.video/faq.html"];
     [browser addTabContents:ct inForeground:YES];
 }
 
