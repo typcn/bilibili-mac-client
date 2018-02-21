@@ -45,6 +45,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (NSString *)replaceURL:(NSString *)str{
+    return [str stringByReplacingOccurrencesOfString:@"http://_bilimac_newtab.loli.video/" withString:@"bilimac-newtab://"];
+}
+
 - (void)updateToolbarURL:(NSNotification*) aNotification{
     lastTabSwitch = time(0);
     [self.URLInputField resignFirstResponder];
@@ -55,7 +59,7 @@
     if(aNotification.object){
         NSString *url = aNotification.object;
         if(url && [url length] > 5){
-            [self.URLInputField setStringValue:url];
+            [self.URLInputField setStringValue:[self replaceURL:url]];
         }
     }else{
         [NSTimer scheduledTimerWithTimeInterval:0.1
@@ -71,9 +75,9 @@
     WebTabView *tc = (WebTabView *)[browser activeTabContents];
     NSString *url = [[tc GetTWebView] getURL];
     if(url && [url length] > 5) {
-        [self.URLInputField setStringValue:url];
+        [self.URLInputField setStringValue:[self replaceURL:url]];
     }else{
-        [self.URLInputField setStringValue:@"invalid"];
+        [self.URLInputField setStringValue:@"Invalid URL"];
     }
 }
 
