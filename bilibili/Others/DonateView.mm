@@ -35,9 +35,7 @@
 }
 
 - (IBAction)alipayDonateBtn:(id)sender {
-    int count = [self.alipayDonateCount intValue];
-    
-    NSString *url = [NSString stringWithFormat:@"https://secure.eqoe.cn/tpaymentGateway.typ?type=donate&platform=bilimac&amount=%d",count];
+    NSString *url = @"http://_bilimac_newtab.loli.video/donate.html";
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
     
     [[NSUserDefaults standardUserDefaults] setObject:@"opened" forKey:@"donate"];
@@ -54,7 +52,7 @@
 }
 
 - (IBAction)hideBtn:(id)sender {
-    [[NSUserDefaults standardUserDefaults] setObject:@"hidede" forKey:@"donate"];
+    [[NSUserDefaults standardUserDefaults] setObject:@"hide" forKey:@"donate"];
     action("App","donate","hide");
     [self.view.window close];
 }
