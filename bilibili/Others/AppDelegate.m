@@ -280,7 +280,6 @@ Browser *browser;
 - (IBAction)closeTab:(id)sender {
     NSWindow *kwin = [[NSApplication sharedApplication] keyWindow];
     if([[kwin className] isEqualToString:@"CTBrowserWindow"]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:nil userInfo:nil];
         [browser closeTab];
     }else{
         [kwin performClose:nil];

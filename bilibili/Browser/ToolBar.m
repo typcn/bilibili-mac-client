@@ -9,6 +9,7 @@
 #import "ToolBar.h"
 #import "Common.hpp"
 #import "WebTabView.h"
+#import "PlayerManager.h"
 
 @interface BLToolBar ()
 
@@ -33,6 +34,7 @@
 
 @implementation BLToolBarEvents{
     time_t lastTabSwitch;
+    bool isLastTab;
 }
 
 - (id)init{
@@ -50,12 +52,19 @@
 }
 
 - (void)updateToolbarURL:(NSNotification*) aNotification{
+    if([aNotification.object isKindOfClass:[NSString class]]){
+        if([aNotification.object isEqualToString:@"LastTab"]){
+            isLastTab = true;
+            return;
+        }
+    }
     lastTabSwitch = time(0);
     [self.URLInputField resignFirstResponder];
     CTTabContents *ct = [browser activeTabContents];
     if(ct) {
         [[browser window] makeFirstResponder:ct.view];
     }
+    isLastTab = false;
     if(aNotification.object){
         NSString *url = aNotification.object;
         if(url && [url length] > 5){
@@ -78,6 +87,12 @@
         [self.URLInputField setStringValue:[self replaceURL:url]];
     }else{
         [self.URLInputField setStringValue:@"Invalid URL"];
+        NSLog(@"[BUG] Browser seems freeze, isLastTab: %d",isLastTab);
+        if([[[PlayerManager sharedInstance] getPlayerList] count]){
+            NSLog(@"[BUG] Ignore this problem because video is playing");
+        }else{
+            [[NSApplication sharedApplication] terminate:nil];
+        }
     }
 }
 
