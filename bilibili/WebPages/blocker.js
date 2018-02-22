@@ -1,5 +1,5 @@
 (function() {
-  var blockList = ['cnzz','tajs.qq.com','bilibiliPlayer.min.js','data.bilibili.com'];
+  var blockList = ['cnzz','tajs.qq.com','data.bilibili.com'];
 
   if(document.head){
     headLoaded();

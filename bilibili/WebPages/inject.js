@@ -30,8 +30,8 @@ function applyUI(){
     }catch(e){
         
     }
-    var isBangumiPage = (window.location.href.indexOf('anime/') > 1);
-    if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("topic") > 1 || window.location.href.indexOf("live") > 1 || window.location.href.indexOf("html") > 1 || isBangumiPage){
+
+    if(window.location.href.indexOf("av") > 1 || window.location.href.indexOf("topic") > 1 || window.location.href.indexOf("live") > 1 || window.location.href.indexOf("html") > 1){
         console.log("getting cid");
         try{
             var fv=$("param[name='flashvars']").val();
