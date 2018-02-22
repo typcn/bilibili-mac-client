@@ -175,19 +175,15 @@ getUrl: NSLog(@"[VP_Bilibili] Getting video url");
     
     // Build-in parser's result(ws.acgvideo.com/path.flv?*&or=xxx the "or" param) have speed limit , so use dynamic parser by default
     
-#ifndef DEBUG
     VP_Plugin *plugin = [[PluginManager sharedInstance] Get:@"bilibili-resolveAddr"];
     if(plugin){
         NSLog(@"[VP_Bilibili] Using dynamic parser");
         videoResult = [self dynamicPluginParser:params];
     }else{
-#endif
         NSLog(@"[VP_Bilibili] Dynamic parser not installed ( or running in debug mode )");
         NSLog(@"[VP_Bilibili] Using built-in parser");
         videoResult = [self sendAPIRequest:URL :fakeIP];
-#ifndef DEBUG
     }
-#endif
 
     
 parseJSON: NSLog(@"[VP_Bilibili] Parsing result");

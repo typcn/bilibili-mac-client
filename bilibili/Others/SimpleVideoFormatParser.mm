@@ -8,12 +8,18 @@
 
 #import "SimpleVideoFormatParser.h"
 
+extern NSString *sharedURLFieldString;
+
 NSData *SendRangeHTTPRequest(NSString *URL,int length){
 
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URL]];
     request.HTTPMethod = @"GET";
     request.timeoutInterval = 5;
     [request setValue:@"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+    if([URL containsString:@"platform=pc"] && [URL containsString:@"acgvideo.com"]){
+        [request setValue:sharedURLFieldString forHTTPHeaderField:@"Referer"];
+        [request setValue:@"https://www.bilibili.com" forHTTPHeaderField:@"Origin"];
+    }
     [request setValue:[NSString stringWithFormat:@"bytes=0-%d",length] forHTTPHeaderField:@"Range"];
 
     NSURLResponse * response = nil;
@@ -128,7 +134,7 @@ NSDictionary *readVideoInfoFromURL(NSString *URL) {
         NSData *d = SendRangeHTTPRequest(URL,1000);
         return findMP4Resolution(d);
     }else if([URL containsString:@".flv"]){
-        NSData *d = SendRangeHTTPRequest(URL,1000);
+        NSData *d = SendRangeHTTPRequest(URL,5000);
         return findFLVResolution(d);
     }else{
         NSLog(@"[SimpleParser] Format not supported");

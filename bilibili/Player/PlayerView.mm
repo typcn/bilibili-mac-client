@@ -21,6 +21,8 @@
 
 #import "../CommentConvert/danmaku2ass.hpp"
 
+extern NSString *sharedURLFieldString;
+
 @interface PlayerView (){
     __weak PlayerWindow *window;
     __weak PlayerControlView *playerControlView;
@@ -237,6 +239,13 @@ getInfo:
     [self setMPVOption:"screenshot-directory" :"~/Desktop"];
     [self setMPVOption:"screenshot-format" :"png"];
 
+    if([URL containsString:@"platform=pc"] && [URL containsString:@"acgvideo.com"]){
+        NSString *httpheader = [NSString stringWithFormat:
+                                @"Origin: %@,Referer: %@",
+                                @"https://www.bilibili.com",
+                                sharedURLFieldString];
+        [self setMPVOption:"http-header-fields" :[httpheader cStringUsingEncoding:NSUTF8StringEncoding]];
+    }
 
     [self setMPVOption:"input-media-keys" :"no"];
     
@@ -396,6 +405,7 @@ getInfo:
     
     MediaInfoDLL::MediaInfo *MI = new MediaInfoDLL::MediaInfo;
     MI->Open([url cStringUsingEncoding:NSUTF8StringEncoding]);
+    
     MI->Option(__T("Inform"), __T("Video;%Width%"));
     NSString *width = [NSString stringWithCString:MI->Inform().c_str() encoding:NSUTF8StringEncoding];
     MI->Option(__T("Inform"), __T("Video;%Height%"));

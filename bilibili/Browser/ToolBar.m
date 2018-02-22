@@ -11,6 +11,8 @@
 #import "WebTabView.h"
 #import "PlayerManager.h"
 
+extern NSString *sharedURLFieldString;
+
 @interface BLToolBar ()
 
 
@@ -69,6 +71,7 @@
         NSString *url = aNotification.object;
         if(url && [url length] > 5){
             [self.URLInputField setStringValue:[self replaceURL:url]];
+            sharedURLFieldString = url;
         }
     }else{
         [NSTimer scheduledTimerWithTimeInterval:0.1
@@ -85,6 +88,7 @@
     NSString *url = [[tc GetTWebView] getURL];
     if(url && [url length] > 5) {
         [self.URLInputField setStringValue:[self replaceURL:url]];
+        sharedURLFieldString = url;
     }else{
         [self.URLInputField setStringValue:@"Invalid URL"];
         NSLog(@"[BUG] Browser seems freeze, isLastTab: %d",isLastTab);

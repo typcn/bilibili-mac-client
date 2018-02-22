@@ -1,4 +1,4 @@
-window.bilimacVersion = 253;
+window.bilimacVersion = 254;
 window.injectHTML = 'INJ_HTML';
 window.sendToView = function(data){
     var rpcdata = 'action=' + encodeURIComponent(data.action) + '&data=' + encodeURIComponent(data.data);
@@ -57,20 +57,6 @@ function applyUI(){
             console.log(e);
         }
         
-        var haveCorrectFlashVar = (fv.indexOf('cid') > -1) && (fv.indexOf('aid') > -1);
-        if(isBangumiPage && !haveCorrectFlashVar && window.LoadTimes > 7){
-            window.LoadTimes = 999;
-            clearInterval(window.i);
-            // There is no browser UA short than 100 , right ?
-            if(navigator.userAgent.length < 90){
-                // Running in built in webview
-                window.sendToView({'action':'goURL','data':$('.v-av-link').attr('href')});
-            }else{
-                // Running in other browser
-                window.location = $('.v-av-link').attr('href');
-            }
-        }
-        
         console.log("fv:" + fv);
         var re = /cid=(\d+)&/;
         var m = re.exec(fv);
@@ -92,29 +78,17 @@ function applyUI(){
                 $('embed').parent().html(window.injectHTML);
             }else{
                 window.sendToView({action:'preloadComment',data:TYPCN_PLAYER_CID});
-                if(isBangumiPage){
-                    if(!window.capt_pid){
-                        window.capt_pid = 0;
-                    }
-                    window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + window.location.href + '&' + aid + '&' + window.capt_pid + '|' + document.title;
+                window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + window.location.href + '|' + document.title;
+                if(window.location.href.indexOf('bilibili.com/video/av') > -1){
                     window.addEventListener("hashchange", function(){
-                        setTimeout(function(){
-                            window.location.reload();
-                        },100);
-                    }, false);
-                }else{
-                    window.TYPCN_PLAYER_CID = window.TYPCN_PLAYER_CID + '|' + window.location.href + '|' + document.title;
-                    if(window.location.href.indexOf('bilibili.com/video/av') > -1){
-                        window.addEventListener("hashchange", function(){
-                            setTimeout(function(){
-                              var page = window.location.hash.replace('#page=','');
-                              if(!page || !window.aid){
-                                return;
-                              }
-                              window.location = location.origin + location.pathname.replace(/index.*/,'') + 'index_' + page + '.html';
-                            },100);
-                        }, false);
-                    }
+                                            setTimeout(function(){
+                                                       var page = window.location.hash.replace('#page=','');
+                                                       if(!page || !window.aid){
+                                                       return;
+                                                       }
+                                                       window.location = location.origin + location.pathname.replace(/index.*/,'') + 'index_' + page + '.html';
+                                                       },100);
+                                            }, false);
                 }
 
                 console.log("inject player page");
