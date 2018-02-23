@@ -54,7 +54,7 @@ function load(){
 
     refreshPluginList();
   }).catch(function(err) {
-    $("#loading p").innerHTML = '连接失败，请确保 <a href="http://bilimac.eqoe.cn/" target="_blank">Bilibili for mac</a> 处于开启状态';
+    $("#loading p").innerHTML = '连接失败，请确保 <a href="https://typcn.com/legacy/bilimac/" target="_blank">Bilibili for mac</a> 处于开启状态';
   });
 }
 
@@ -125,15 +125,15 @@ $("#reloadPlugin").addEventListener("click",function(){
 });
 
 $("#downloadManager").addEventListener("click",function(){
-  chrome.tabs.create({ url: "http://static.tycdn.net/downloadManager/" });
+  chrome.tabs.create({ url: "http://static-ssl.tycdn.net/downloadManager/" });
 });
 
 $("#pluginCenter").addEventListener("click",function(){
-  call_uri("bl://vp-hub.eqoe.cn/");
+  call_uri("bl://_bilimac_newtab.loli.video/");
 });
 
 $("#getUserByComment").addEventListener("click",function(){
-  chrome.tabs.create({ url: "http://biliquery.typcn.com/?noredir" });
+  chrome.tabs.create({ url: "https://biliquery.typcn.com/?noredir" });
 });
 
 $("#softwareSettings").addEventListener("click",function(){
