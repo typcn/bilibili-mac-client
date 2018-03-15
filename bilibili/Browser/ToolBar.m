@@ -94,8 +94,6 @@ extern NSString *sharedURLFieldString;
         NSLog(@"[BUG] Browser seems freeze, isLastTab: %d",isLastTab);
         if([[[PlayerManager sharedInstance] getPlayerList] count]){
             NSLog(@"[BUG] Ignore this problem because video is playing");
-        }else{
-            [[NSApplication sharedApplication] terminate:nil];
         }
     }
 }
