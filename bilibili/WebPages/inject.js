@@ -92,15 +92,28 @@ function applyUI(){
                 }
 
                 console.log("inject player page");
-                $('#bofqi').html(window.injectHTML);
-                $('.player-box').html(window.injectHTML);
+                if($('#bofqi')[0]){
+                    $('#bofqi').html(window.injectHTML);
+                }else{
+                    $('.player-box').html(window.injectHTML);
+                }
+                
+                $('#bofqi').css('height','720px');
+                $('#bofqi').css('display','');
+                $('.TYPCN_PLAYER_INJECT_PAGE').css('height','720px');
+                $('.player-placeholder').css('height','720px');
+                
                 var ci = document.querySelector(".cover_image");
+                var meta = document.head.querySelector("[property='og:image']");
                 var imgUrl;
-                if(ci && ci.src){
+                if(meta && meta.content){
+                    imgUrl = meta.content;
+                }else if(ci && ci.src){
                     imgUrl = ci.src;
                 }else if(window.wb_img){
                     imgUrl = window.wb_img;
                 }
+        
                 if(imgUrl){
                     if(imgUrl.indexOf('//') == 0){
                         imgUrl = 'https:' + imgUrl;
@@ -111,6 +124,7 @@ function applyUI(){
                         ph.style.backgroundAttachment = "initial";
                     }
                 }
+                
                 if(window.location.href.indexOf('autoplay') > -1){
                     setTimeout(function(){
                        window.sendToView({action:'playVideoByCID',data:TYPCN_PLAYER_CID})
