@@ -284,6 +284,7 @@
     BrowserHistory *bhm = [BrowserHistory sharedManager];
     if(bhm && historyTabId){
         [bhm setStatus:0 forID:historyTabId];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"BLChangeURL" object:nil userInfo:nil];
         NSLog(@"[WebTabView] Closing tab %lld , set status to 0.",historyTabId);
     }
 }
