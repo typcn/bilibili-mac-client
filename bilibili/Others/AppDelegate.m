@@ -214,16 +214,15 @@ Browser *browser;
 }
 
 - (void)performBrowserRestart{
+    [browser.window close];
+    [browser.windowController close];
+    browser.windowController = NULL;
     browser = NULL;
     [self performSelector:@selector(delayedRestart) withObject:nil afterDelay:0.5];
 }
 
 - (void)delayedRestart {
     [self openBrowserWithUrl:@"https://www.bilibili.com"];
-}
-
-- (void)AVNumberUpdated:(NSNotification *)notification {
-
 }
 
 - (void)handleURLEvent:(NSAppleEventDescriptor*)event

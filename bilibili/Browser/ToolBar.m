@@ -56,6 +56,10 @@ extern NSString *sharedURLFieldString;
 - (void)updateToolbarURL:(NSNotification*) aNotification{
     if([aNotification.object isKindOfClass:[NSString class]]){
         if([aNotification.object isEqualToString:@"LastTab"]){
+            [browser.window close];
+            [browser.windowController close];
+            browser.windowController = NULL;
+            browser = NULL;
             isLastTab = true;
             return;
         }
