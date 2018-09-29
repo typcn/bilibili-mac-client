@@ -186,7 +186,7 @@
             }else if([action isEqualToString:@"updatePlugIn"]){
                 [self installPlugIn:data];
             }else if([action isEqualToString:@"setcookie"]){
-                cookie = data;
+                self->cookie = data;
             }else if([action isEqualToString:@"goURL"]){
                 WebTabView *tv = (WebTabView *)[browser activeTabContents];
                 if(!tv){
@@ -270,20 +270,20 @@
              NSArray *arr = [[PluginManager sharedInstance] getList];
              rep = [GCDWebServerDataResponse responseWithJSONObject:arr];
          }else if([action isEqualToString:@"scriptList"]){
-             NSArray *scList = [browserEIF GetScriptList];
+             NSArray *scList = [self->browserEIF GetScriptList];
 
              rep = [GCDWebServerDataResponse responseWithJSONObject:scList];
          }else if([action isEqualToString:@"history"]){
              NSString *origin = [request headers][@"Origin"];
              if(origin && [origin isEqualToString:@"http://_bilimac_newtab.loli.video"]){
                  int page = [data intValue];
-                 NSArray *hsList = [browserEIF GetHistory:page];
+                 NSArray *hsList = [self->browserEIF GetHistory:page];
                  rep = [GCDWebServerDataResponse responseWithJSONObject:hsList];
              }
          }else if([action isEqualToString:@"delHistory"]){
              NSString *origin = [request headers][@"Origin"];
              if(origin && [origin isEqualToString:@"http://_bilimac_newtab.loli.video"]){
-                 BOOL result = [browserEIF DelHistory:data];
+                 BOOL result = [self->browserEIF DelHistory:data];
                  if(!result){
                      rep = [GCDWebServerDataResponse responseWithText:@"error"];
                  }

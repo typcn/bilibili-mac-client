@@ -45,7 +45,7 @@ extern NSString *sharedURLFieldString;
 }
 
 
-- (void)finalize {
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

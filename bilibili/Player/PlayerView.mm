@@ -89,10 +89,10 @@ inline void check_error(int status)
     // The window is not got initialized here
     // But sometimes viewDidAppear not get called....
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        if(!windowSetup){
+        if(!self->windowSetup){
             CLS_LOG(@"Forced a window setup");
             [self setupWindow];
-            windowSetup = YES;
+            self->windowSetup = YES;
         }
     });
 }
@@ -189,7 +189,7 @@ getInfo:
         
         NSString *fvHost = [[NSURL URLWithString:firstVideo] host];
         if([fvHost length] > 0){
-            videoDomain = fvHost;
+            self->videoDomain = fvHost;
         }
         
         [self playVideo: playURL];
@@ -623,7 +623,7 @@ getInfo:
         case MPV_EVENT_PLAYBACK_RESTART: {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.loadingImage setAnimates:NO];
-                [LoadingView setHidden:YES];
+                [self->LoadingView setHidden:YES];
             });
             break;
         }
@@ -640,7 +640,7 @@ getInfo:
             }
             if(endFile){
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [LoadingView setHidden:NO];
+                    [self->LoadingView setHidden:NO];
                     [self.textTip setStringValue:NSLocalizedString(@"播放完成，关闭窗口继续", nil)];
                     [self runAutoSwitch];
                     [self.view.window performClose:self];

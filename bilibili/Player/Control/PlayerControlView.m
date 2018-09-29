@@ -286,23 +286,23 @@
 
 - (void)onVolume:(double)volume{
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        volumeSlider.doubleValue = volume;
+        self->volumeSlider.doubleValue = volume;
     });
 }
 
 - (void)onDuration:(double)duration{
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        timeSlider.maxValue = duration;
-        rightTimeText.stringValue = [self timeFormatted:duration];
-        v_duration = duration;
+        self->timeSlider.maxValue = duration;
+        self->rightTimeText.stringValue = [self timeFormatted:duration];
+        self->v_duration = duration;
     });
 }
 
 - (void)onPlaybackTime:(double)t{
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        timeSlider.doubleValue = t;
-        timeText.stringValue = [self timeFormatted:t];
-        v_playback_time = t;
+        self->timeSlider.doubleValue = t;
+        self->timeText.stringValue = [self timeFormatted:t];
+        self->v_playback_time = t;
     });
 }
 
@@ -310,10 +310,10 @@
     dispatch_async(dispatch_get_main_queue(), ^(void){
         if(t > 0){
             int sizeMB = t/1024;
-            rightTimeText.stringValue = [NSString stringWithFormat:@"%d MB",sizeMB];
-            if(sizeMB > 10 && !isFirstBuffed){
-                isFirstBuffed = YES;
-                isShowingDuration = YES;
+            self->rightTimeText.stringValue = [NSString stringWithFormat:@"%d MB",sizeMB];
+            if(sizeMB > 10 && !self->isFirstBuffed){
+                self->isFirstBuffed = YES;
+                self->isShowingDuration = YES;
             }
         }
     });
@@ -321,12 +321,12 @@
 
 - (void)onCacheFillRate:(double)t{
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        if(t > 0 && v_duration > 0){
-            double playbackRate = (v_playback_time / v_duration)*100;
+        if(t > 0 && self->v_duration > 0){
+            double playbackRate = (self->v_playback_time / self->v_duration)*100;
             double allRate = playbackRate + t;
             if(allRate > 90){
-                rightTimeText.stringValue = @"缓冲完成";
-                isShowingDuration = YES;
+                self->rightTimeText.stringValue = @"缓冲完成";
+                self->isShowingDuration = YES;
             }
         }
     });
@@ -336,11 +336,11 @@
 - (void)onPaused:(int)isPaused{
     dispatch_async(dispatch_get_main_queue(), ^(void){
         if(isPaused){
-            currentPaused = YES;
-            playPauseButton.state = NSOffState;
+            self->currentPaused = YES;
+            self->playPauseButton.state = NSOffState;
         }else{
-            currentPaused = NO;
-            playPauseButton.state = NSOnState;
+            self->currentPaused = NO;
+            self->playPauseButton.state = NSOnState;
         }
     });
 }
@@ -348,11 +348,11 @@
 - (void)onMuted:(int)isMuted{
     dispatch_async(dispatch_get_main_queue(), ^(void){
         if(isMuted){
-            currentMuted = YES;
-            muteButton.state = NSOnState;
+            self->currentMuted = YES;
+            self->muteButton.state = NSOnState;
         }else{
-            currentMuted = NO;
-            muteButton.state = NSOffState;
+            self->currentMuted = NO;
+            self->muteButton.state = NSOffState;
         }
     });
 }
@@ -360,11 +360,11 @@
 - (void)onSubVisibility:(int)vis{
     dispatch_async(dispatch_get_main_queue(), ^(void){
         if(vis){
-            currentSubVis = YES;
-            subVisButton.state = NSOffState;
+            self->currentSubVis = YES;
+            self->subVisButton.state = NSOffState;
         }else{
-            currentSubVis = NO;
-            subVisButton.state = NSOnState;
+            self->currentSubVis = NO;
+            self->subVisButton.state = NSOnState;
         }
     });
 }
@@ -380,11 +380,11 @@
         [videoView setFrame:rect];
         
         if(keep){
-            isKeepAspect = YES;
-            keepAspectButton.state = NSOffState;
+            self->isKeepAspect = YES;
+            self->keepAspectButton.state = NSOffState;
         }else{
-            isKeepAspect = NO;
-            keepAspectButton.state = NSOnState;
+            self->isKeepAspect = NO;
+            self->keepAspectButton.state = NSOnState;
         }
     });
 }

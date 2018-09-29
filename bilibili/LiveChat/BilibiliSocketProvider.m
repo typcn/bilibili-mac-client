@@ -58,17 +58,17 @@
                 if(range.length > 0){
                     NSString *server = [resp substringWithRange:range];
                     NSLog(@"[LiveComment] Found server: %@",server);
-                    host = server;
+                    self->host = server;
                     [self connect];
                 }
             }else{
                 NSLog(@"[LiveComment] Failed with status Code %d",code);
-                [delegate onNewError:@"无法获取服务器地址"];
+                [self->delegate onNewError:@"无法获取服务器地址"];
             }
         }
         else {
             NSLog(@"[LiveComment] Failed to request server url: %@", [error localizedDescription]);
-            [delegate onNewError:@"无法连接到 API"];
+            [self->delegate onNewError:@"无法连接到 API"];
         }
     }];
     
@@ -133,11 +133,11 @@
 
 - (void)doRecv {
     dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
-        while (!disconnected) {
+        while (!self->disconnected) {
             uint8_t buf[1024];
-            [lock lock];
-            ssize_t recvlen = recv(sockfd, buf, 1024, 0);
-            [lock unlock];
+            [self->lock lock];
+            ssize_t recvlen = recv(self->sockfd, buf, 1024, 0);
+            [self->lock unlock];
             if(recvlen == 0){
                 [self reconnect];
                 return;
@@ -149,7 +149,7 @@
                 return;
             }
     
-            [mBuf appendBytes:buf length:recvlen];
+            [self->mBuf appendBytes:buf length:recvlen];
             [self checkData];
         }
     });

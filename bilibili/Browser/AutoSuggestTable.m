@@ -130,13 +130,13 @@ extern NSString *sharedURLFieldString;
     /* Start a new Task */
     NSURLSessionDataTask* task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error == nil) {
-            if([currentKey isEqualToString:online_cache_key]){
+            if([currentKey isEqualToString:self->online_cache_key]){
                 NSError *err;
                 NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
                 if(err || !dic){
                     return;
                 }
-                online_cache = [[NSMutableArray alloc] init];
+                self->online_cache = [[NSMutableArray alloc] init];
                 // FXXK Objective-C JSON processing
                 @try {
                     if(dic[@"result"]){
@@ -146,7 +146,7 @@ extern NSString *sharedURLFieldString;
                                 for(int i = 0; i < [b count]; i++){
                                     NSString *bgmName = [b objectAtIndex:i][@"value"];
                                     if(bgmName){
-                                        [online_cache addObject:bgmName];
+                                        [self->online_cache addObject:bgmName];
                                     }
                                 }
                             }
@@ -157,7 +157,7 @@ extern NSString *sharedURLFieldString;
                                 for(int i = 0; i < [tags count]; i++){
                                     NSString *tagName = [tags objectAtIndex:i][@"value"];
                                     if(tagName){
-                                        [online_cache addObject:tagName];
+                                        [self->online_cache addObject:tagName];
                                     }
                                 }
                             }
@@ -166,7 +166,7 @@ extern NSString *sharedURLFieldString;
                 }@catch ( NSException *e ) {
                     NSLog(@"[AddressBar] Ignore json read exception %@",e);
                 }
-                NSLog(@"[AddressBar] Online Suggest Load Succeeded with %lu object",(unsigned long)[online_cache count]);
+                NSLog(@"[AddressBar] Online Suggest Load Succeeded with %lu object",(unsigned long)[self->online_cache count]);
                 dispatch_async(dispatch_get_main_queue(), ^(void){
                     if(tv){
                         [tv reloadData];

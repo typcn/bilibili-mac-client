@@ -408,9 +408,9 @@
                 }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSStoryboard *storyBoard = [NSStoryboard storyboardWithName:@"Main" bundle:nil];
-                    postCommentWindowC = [storyBoard instantiateControllerWithIdentifier:@"PostCommentWindow"];
-                    [postCommentWindowC showWindow:self];
-                    PostComment *pcv = (PostComment *)postCommentWindowC.window.contentViewController;
+                    self->postCommentWindowC = [storyBoard instantiateControllerWithIdentifier:@"PostCommentWindow"];
+                    [self->postCommentWindowC showWindow:self];
+                    PostComment *pcv = (PostComment *)self->postCommentWindowC.window.contentViewController;
                     [pcv setPlayer:self.player];
                 });
             }
@@ -425,14 +425,14 @@
                 NSUInteger flags = [[NSApp currentEvent] modifierFlags];
                 if ((flags & NSCommandKeyMask)) {
                     [self toggleFullScreen:self]; // Command+F key to toggle fullscreen
-                }else if(frontMost){
+                }else if(self->frontMost){
                     [self setLevel:NSNormalWindowLevel];
-                    frontMost = NO;
+                    self->frontMost = NO;
                 }else{
                     [self setLevel:NSScreenSaverWindowLevel + 1]; // F key to front most
                     [self orderFront:nil];
                     [self becomeKeyWindow];
-                    frontMost = YES;
+                    self->frontMost = YES;
                 }
             });
             break;

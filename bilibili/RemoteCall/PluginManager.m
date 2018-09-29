@@ -221,7 +221,7 @@
     NSURLSessionDataTask* task = [bgsession dataTaskWithURL:URL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error == nil) {
             if(!data || ![[response className] isEqualToString:@"NSHTTPURLResponse"]){
-                hud.labelText = NSLocalizedString(@"插件信息解析失败，返回内容为空", nil);
+                self->hud.labelText = NSLocalizedString(@"插件信息解析失败，返回内容为空", nil);
                 [self hidehud];
                 return;
             }
@@ -230,33 +230,33 @@
             NSError *err;
             id object = [NSJSONSerialization JSONObjectWithData:data options:0 error:&err];
             if(!object || err){
-                hud.labelText = NSLocalizedString(@"插件信息解析失败，连接可能被劫持", nil);
+                self->hud.labelText = NSLocalizedString(@"插件信息解析失败，连接可能被劫持", nil);
                 [self hidehud];
                 return;
             }
             
             if (![object respondsToSelector:@selector(integerForKey:)]) {
-                hud.labelText = NSLocalizedString(@"插件信息解析失败，返回内容错误", nil);
+                self->hud.labelText = NSLocalizedString(@"插件信息解析失败，返回内容错误", nil);
                 [self hidehud];
                 return;
             }
             
             NSInteger minver = [object integerForKey:@"minver"];
-            if(ver < minver){
-                hud.labelText = NSLocalizedString(@"您的客户端版本过旧，无法安装该插件", nil);
+            if(self->ver < minver){
+                self->hud.labelText = NSLocalizedString(@"您的客户端版本过旧，无法安装该插件", nil);
                 [self hidehud];
                 return;
             }
             NSInteger maxver = [object integerForKey:@"maxver"];
-            if(ver > maxver){
-                hud.labelText = NSLocalizedString(@"该插件无法兼容，请等待作者更新", nil);
+            if(self->ver > maxver){
+                self->hud.labelText = NSLocalizedString(@"该插件无法兼容，请等待作者更新", nil);
                 [self hidehud];
                 return;
             }
 
             NSString *downloadAddr = [object objectForKey:@"download"];
             if(!downloadAddr){
-                hud.labelText = NSLocalizedString(@"没有找到下载地址", nil);
+                self->hud.labelText = NSLocalizedString(@"没有找到下载地址", nil);
                 [self hidehud];
                 return;
             }
@@ -265,7 +265,7 @@
             if(filename && [filename length] > 0){
                 @try {
                     NSError *err;
-                    NSString *path = [NSString stringWithFormat:@"%@%@.bundle",sprtdir,filename];
+                    NSString *path = [NSString stringWithFormat:@"%@%@.bundle",self->sprtdir,filename];
                     [[NSFileManager defaultManager] removeItemAtPath:path error:&err];
                     NSLog(@"[PluginManager] Removed old plugin, Error: %@",err);
                 }
@@ -276,20 +276,20 @@
             
             
             if(instType == 1){
-                hud.labelText = NSLocalizedString(@"正在更新解析模块", nil);
+                self->hud.labelText = NSLocalizedString(@"正在更新解析模块", nil);
             }else{
-                hud.labelText = NSLocalizedString(@"正在下载插件", nil);
+                self->hud.labelText = NSLocalizedString(@"正在下载插件", nil);
             }
-            hud.mode =  MBProgressHUDModeAnnularDeterminate;
-            bgsession = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+            self->hud.mode =  MBProgressHUDModeAnnularDeterminate;
+            self->bgsession = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
             NSLog(@"Plugin download address: %@",downloadAddr);
-            NSURLSessionDownloadTask *downloadTask = [bgsession downloadTaskWithURL:[NSURL URLWithString:downloadAddr]];
+            NSURLSessionDownloadTask *downloadTask = [self->bgsession downloadTaskWithURL:[NSURL URLWithString:downloadAddr]];
             [downloadTask resume];
         } else {
             if(instType == 1){
-                hud.labelText = NSLocalizedString(@"解析模块更新失败", nil);
+                self->hud.labelText = NSLocalizedString(@"解析模块更新失败", nil);
             }else{
-                hud.labelText = NSLocalizedString(@"插件安装失败，无法连接到服务器", nil);
+                self->hud.labelText = NSLocalizedString(@"插件安装失败，无法连接到服务器", nil);
             }
             
             [self hidehud];
@@ -303,13 +303,13 @@
 
 - (void)hidehud{
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        if(lastInstType == 1){
-            [hud hide:YES afterDelay:0.5];
+        if(self->lastInstType == 1){
+            [self->hud hide:YES afterDelay:0.5];
         }else{
-            [hud hide:YES afterDelay:1.5];
+            [self->hud hide:YES afterDelay:1.5];
         }
-        hud.mode = MBProgressHUDModeText;
-        isRunning = false;
+        self->hud.mode = MBProgressHUDModeText;
+        self->isRunning = false;
     });
 }
 
@@ -392,7 +392,7 @@
     double process = (double)totalBytesWritten / totalBytesExpectedToWrite;
     dispatch_async(dispatch_get_main_queue(), ^(void){
         // The real gui progress seems to 0-60, not 0-1
-        hud.progress = process*60;
+        self->hud.progress = process*60;
     });
 }
 

@@ -48,8 +48,8 @@
 - (void)onNewMessage:(NSString *)cmContent :(NSString *)userName :(int)ftype :(int)fsize :(NSColor *)color{
     dispatch_async(dispatch_get_main_queue(), ^(void){
         bool isBlocked = false;
-        if([blockwords count] > 0){
-            for (NSString* string in blockwords) {
+        if([self->blockwords count] > 0){
+            for (NSString* string in self->blockwords) {
                 if([cmContent containsString:string]){
                     isBlocked = true;
                 }

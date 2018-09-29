@@ -49,17 +49,17 @@
     [refreshBtn setEnabled:NO];
     [refreshBtn setTitle:NSLocalizedString(@"读取中", NULL)];
     dispatch_async(queue, ^(void){
-        NSDictionary *ddlist = ap->getDeviceList();
+        NSDictionary *ddlist = self->ap->getDeviceList();
         for(id key in ddlist){
             NSArray *arr = [NSArray arrayWithObjects:key, ddlist[key] , nil];
-            [deviceList addObject:arr];
+            [self->deviceList addObject:arr];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^(void){
             NSLog(@"Ready to reload");
-            [tableView reloadData];
-            [refreshBtn setTitle:NSLocalizedString(@"刷新",NULL)];
-            [refreshBtn setEnabled:YES];
+            [self->tableView reloadData];
+            [self->refreshBtn setTitle:NSLocalizedString(@"刷新",NULL)];
+            [self->refreshBtn setEnabled:YES];
             [self writeLog:@"设备列表刷新成功，请在左边选择一个服务器进行连接"];
         });
     });
@@ -78,14 +78,14 @@
     [refreshBtn setEnabled:NO];
     dispatch_async(queue, ^(void){
         [self writeLog:@"正在初始化引擎（注意：暂时不支持分段视频与弹幕）"];
-        bool suc = ap->selectDevice(sel_devName,sel_domain);
+        bool suc = self->ap->selectDevice(self->sel_devName,self->sel_domain);
         if(!suc){
             [self writeLog:@"无法查找到设备地址"];
             [self connStop];
             return;
         }
         [self writeLog:@"正在尝试连接设备"];
-        suc = ap->reverse();
+        suc = self->ap->reverse();
         if(!suc){
             [self writeLog:@"无法连接到指定设备"];
             [self connStop];
@@ -95,10 +95,10 @@
         
 
         VP_Bilibili *bili = [VP_Bilibili sharedInstance];
-        NSMutableDictionary *params = [[bili generateParamsFromURL:apwc.url] mutableCopy];
+        NSMutableDictionary *params = [[bili generateParamsFromURL:self->apwc.url] mutableCopy];
 
-        params[@"cid"] = apwc.cid;
-        params[@"title"] = apwc.vtitle;
+        params[@"cid"] = self->apwc.cid;
+        params[@"title"] = self->apwc.vtitle;
         params[@"forceType"] = @"mp4";
         
         NSString *playurl;
@@ -122,11 +122,11 @@
             return;
         }
         [self writeLog:@"视频解析成功，正在尝试开始播放"];
-        ap->playVideo([playurl cStringUsingEncoding:NSUTF8StringEncoding], 0);
+        self->ap->playVideo([playurl cStringUsingEncoding:NSUTF8StringEncoding], 0);
         [self writeLog:@"已发起播放，请查看电视"];
         dispatch_async(dispatch_get_main_queue(), ^(void){
-            isPlaying = true;
-            [disconnBtn setEnabled:YES];
+            self->isPlaying = true;
+            [self->disconnBtn setEnabled:YES];
         });
     });
 }
@@ -167,10 +167,10 @@
 
 - (IBAction)stopAction:(id)sender {
     dispatch_async(queue, ^(void){
-        ap->stop();
-        ap->disconnect();
+        self->ap->stop();
+        self->ap->disconnect();
         sleep(0.1);
-        ap->clear();
+        self->ap->clear();
         dispatch_async(dispatch_get_main_queue(), ^(void){
            [self.view.window close];
         });
@@ -179,8 +179,8 @@
 
 - (void)connStop {
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        [connectBtn setEnabled:YES];
-        [refreshBtn setEnabled:YES];
+        [self->connectBtn setEnabled:YES];
+        [self->refreshBtn setEnabled:YES];
     });
 }
 
@@ -240,10 +240,10 @@ objectValueForTableColumn:(NSTableColumn *)aTableColumn
         NSString *userContent = [NSString stringWithFormat:@"%@\n",NSLocalizedString(text, NULL)];
         NSAttributedString* attr = [[NSAttributedString alloc] initWithString:userContent];
         
-        [[textView textStorage] appendAttributedString:timeattr];
-        [[textView textStorage] appendAttributedString:attr];
+        [[self->textView textStorage] appendAttributedString:timeattr];
+        [[self->textView textStorage] appendAttributedString:attr];
         
-        [textView scrollRangeToVisible:NSMakeRange([[textView string] length], 0)];
+        [self->textView scrollRangeToVisible:NSMakeRange([[self->textView string] length], 0)];
     });
 }
 

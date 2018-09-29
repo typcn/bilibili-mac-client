@@ -26,7 +26,7 @@
 
 - (void)startMonitor{
     monitor = [NSEvent addGlobalMonitorForEventsMatchingMask:NSLeftMouseDownMask | NSRightMouseDownMask handler:^(NSEvent* evt){
-        if(popover.shown){
+        if(self->popover.shown){
             [self hidePopover:evt];
         }
     }];

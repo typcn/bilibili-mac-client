@@ -37,7 +37,7 @@
         if (error == nil && [[response className] isEqualToString:@"NSHTTPURLResponse"]) {
             int code = (int)((NSHTTPURLResponse*)response).statusCode;
             if(code == 200){
-                cmPreloadList[cid] = data;
+                self->cmPreloadList[cid] = data;
                 NSLog(@"[PreloadManager] Comment Preloaded for %@",cid);
             }else{
                 NSLog(@"[PreloadManager] Comment Preload Failed: Status Code %d",code);

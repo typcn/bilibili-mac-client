@@ -121,10 +121,10 @@
     }
     dispatch_async(vl_queue, ^(void){
         NSDictionary *_attrs = attrs;
-        BOOL haveSub = [subHelper canHandle:_attrs];
+        BOOL haveSub = [self->subHelper canHandle:_attrs];
         if(haveSub){
             [self setText:@"正在下载弹幕/字幕"];
-            _attrs = [subHelper getSubtitle:attrs];
+            _attrs = [self->subHelper getSubtitle:attrs];
         }
         dispatch_async(dispatch_get_main_queue(), ^(void){
             [self _loadVideo:video withAttrs:_attrs];
@@ -163,9 +163,9 @@
 
 - (void)showError:(NSString *)title :(NSString *)desc{
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        hud.mode = MBProgressHUDModeText;
-        hud.labelText = NSLocalizedString(title, nil);
-        hud.detailsLabelText = NSLocalizedString(desc, nil);
+        self->hud.mode = MBProgressHUDModeText;
+        self->hud.labelText = NSLocalizedString(title, nil);
+        self->hud.detailsLabelText = NSLocalizedString(desc, nil);
         [self hide:3.0];
     });
 }
@@ -173,7 +173,7 @@
 - (void)setText:(NSString *)text{
     dispatch_async(dispatch_get_main_queue(), ^(void){
         [self show];
-        hud.labelText = NSLocalizedString(text, nil);
+        self->hud.labelText = NSLocalizedString(text, nil);
     });
 }
 
@@ -192,7 +192,7 @@
 
 - (void)hide:(NSTimeInterval)i{
     dispatch_async(dispatch_get_main_queue(), ^(void){
-        [hud hide:YES afterDelay:i];
+        [self->hud hide:YES afterDelay:i];
         [NSTimer scheduledTimerWithTimeInterval:i+0.5
                                          target:self
                                        selector:@selector(hideWindow)

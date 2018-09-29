@@ -51,7 +51,7 @@
     dispatch_async(dispatch_get_global_queue(0, 0), ^(void){
         [[NSUserDefaults standardUserDefaults] setDouble:frame.size.width forKey:@"webwidth"];
         [[NSUserDefaults standardUserDefaults] setDouble:frame.size.height forKey:@"webheight"];
-        pm = [PluginManager sharedInstance];
+        self->pm = [PluginManager sharedInstance];
     });
 }
 

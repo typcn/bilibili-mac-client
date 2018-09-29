@@ -85,27 +85,27 @@ typedef enum : unsigned {
 
 - (void)start {
     dispatch_async(_stateChangeQueue, ^{
-        if (_isRunning)
+        if (self->_isRunning)
             return;
         
-        _isRunning = true;
+        self->_isRunning = true;
         
         // We CFRetain self while the displaylink thread is active, to ensure it
         // always has a valid 'self' pointer. The CFRetain is undone by [1].
         CFRetain((__bridge CFTypeRef)self);
         
-        CVDisplayLinkStart(_displayLink);
+        CVDisplayLinkStart(self->_displayLink);
     });
 }
 
 - (void)stop {
     dispatch_async(_stateChangeQueue, ^{
-        if (!_isRunning)
+        if (!self->_isRunning)
             return;
         
-        _isRunning = false;
+        self->_isRunning = false;
         // The displaylink thread resumes the queue at [2]
-        dispatch_suspend(_stateChangeQueue);
+        dispatch_suspend(self->_stateChangeQueue);
     });
 }
 
