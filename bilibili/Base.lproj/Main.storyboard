@@ -551,12 +551,6 @@ GQ
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="j5T-Aj-GCA"/>
-                                        <menuItem title="论坛反馈" id="m2k-Ll-pRS" userLabel="Forum Feedback">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="goForum:" target="Voe-Tx-rLC" id="wao-vh-0Ss"/>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="GitHub 反馈" id="KKI-vi-xOu" userLabel="GitHub Feedback">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
