@@ -98,10 +98,17 @@ function applyUI(){
                     $('.player-box').html(window.injectHTML);
                 }
                 
-                $('#bofqi').css('height','720px');
-                $('#bofqi').css('display','');
-                $('.TYPCN_PLAYER_INJECT_PAGE').css('height','720px');
-                $('.player-placeholder').css('height','720px');
+                if(!$('.player-wrap')[0]){
+                    $('#bofqi').css('height','720px');
+                    $('#bofqi').css('display','');
+                    $('.TYPCN_PLAYER_INJECT_PAGE').css('height','720px');
+                    $('.player-placeholder').css('height','720px');
+                }else{
+                    $('.TYPCN_PLAYER_INJECT_PAGE').css('position','relative');
+                    var height = $('#bofqi').height();
+                    $('.TYPCN_PLAYER_INJECT_PAGE').css('height',height);
+                    $('.player-placeholder').css('height',height);
+                }
                 
                 var ci = document.querySelector(".cover_image");
                 var meta = document.head.querySelector("[property='og:image']");
