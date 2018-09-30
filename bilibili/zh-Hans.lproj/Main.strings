@@ -98,8 +98,8 @@
 /* Class = "NSMenuItem"; title = "撤销"; ObjectID = "EBS-37-po7"; */
 "EBS-37-po7.title" = "撤销";
 
-/* Class = "NSButtonCell"; title = "使用 Paypal"; ObjectID = "EUW-5g-blR"; */
-"EUW-5g-blR.title" = "使用 Paypal";
+/* Class = "NSButtonCell"; title = "立即支付"; ObjectID = "EUW-5g-blR"; */
+"EUW-5g-blR.title" = "立即支付";
 
 /* Class = "NSMenu"; title = "帮助"; ObjectID = "F2S-fz-NVQ"; */
 "F2S-fz-NVQ.title" = "帮助";
@@ -203,8 +203,8 @@
 /* Class = "NSWindow"; title = "TYPCN Media Player"; ObjectID = "Qzs-of-Uzm"; */
 "Qzs-of-Uzm.title" = "TYPCN Media Player";
 
-/* Class = "NSTextFieldCell"; placeholderString = "数量（USD）"; ObjectID = "S2S-AU-gff"; */
-"S2S-AU-gff.placeholderString" = "数量（USD）";
+/* Class = "NSTextFieldCell"; placeholderString = "数量（HKD）"; ObjectID = "S2S-AU-gff"; */
+"S2S-AU-gff.placeholderString" = "数量（HKD）";
 
 /* Class = "NSMenu"; title = "窗口"; ObjectID = "SBm-2K-ZsN"; */
 "SBm-2K-ZsN.title" = "窗口";
