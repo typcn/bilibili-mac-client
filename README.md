@@ -20,7 +20,7 @@ Mac 必备的在线视频播放器
 
 # Screenshot
 
-![](http://bilimac.eqoe.cn/images/player_new.jpg)
+![](https://typcn.com/legacy/bilimac/images/player_new.jpg)
 
 # Download
 
@@ -28,12 +28,9 @@ Mac 必备的在线视频播放器
 
 [GitHub](https://github.com/typcn/bilibili-mac-client/releases)
 
-[百度盘](http://pan.baidu.com/s/1pLSrVVP)
-
-
 # FAQ
 
-see [FAQ](http://cdn2.eqoe.cn/files/bilibili/faq.html?v=3)
+see [FAQ](https://typcn.com/legacy/bilimac/newtab/faq.html)
 
 # Build
 
