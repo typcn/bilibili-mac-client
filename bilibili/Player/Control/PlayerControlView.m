@@ -178,6 +178,8 @@
                                                      selector:@selector(updateTime)
                                                      userInfo:nil
                                                       repeats:YES];
+	
+/*
     if(playerWindow.level - NSNormalWindowLevel > -1){
         [self.window setLevel:playerWindow.level + 1];
         [self.window orderWindow:NSWindowAbove relativeTo:playerWindow.windowNumber];
@@ -187,6 +189,14 @@
             [self savePlayPosition];
         }
     }
+*/
+	
+	[playerWindow addChildWindow:self.window ordered:1];
+	[[self.window animator] setAlphaValue:1.0];
+	isHided = NO;
+	if(needSaveTime){
+		[self savePlayPosition];
+	}
 }
 
 - (void)hide:(BOOL)noAnimation{
@@ -194,8 +204,13 @@
         return;
     }
     [[self.window animator] setAlphaValue:0.0];
+	
+/*
     [self.window setLevel:NSNormalWindowLevel];
     [self.window orderWindow:NSWindowAbove relativeTo:playerWindow.windowNumber];
+*/
+	[playerWindow removeChildWindow:self.window];
+	
     if(noAnimation){
         [self orderOut];
     }else{
